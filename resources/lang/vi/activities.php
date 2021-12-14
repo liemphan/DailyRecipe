@@ -26,14 +26,14 @@ return [
     'chapter_move'                => 'đã di chuyển chương',
 
     // Books
-    'book_create'                 => 'đã tạo sách',
-    'book_create_notification'    => 'Sách đã được tạo thành công',
-    'book_update'                 => 'đã cập nhật sách',
-    'book_update_notification'    => 'Sách đã được cập nhật thành công',
-    'book_delete'                 => 'đã xóa sách',
-    'book_delete_notification'    => 'Sách đã được xóa thành công',
-    'book_sort'                   => 'đã sắp xếp sách',
-    'book_sort_notification'      => 'Sách đã được sắp xếp lại thành công',
+    'book_create'                 => 'đã tạo công thức nấu ăn',
+    'book_create_notification'    => 'Công thức nấu ăn đã được tạo thành công',
+    'book_update'                 => 'đã cập nhật công thức nấu ăn',
+    'book_update_notification'    => 'Công thức nấu ăn đã được cập nhật thành công',
+    'book_delete'                 => 'đã xóa công thức nấu ăn',
+    'book_delete_notification'    => 'Công thức nấu ăn đã được xóa thành công',
+    'book_sort'                   => 'đã sắp xếp công thức nấu ăn',
+    'book_sort_notification'      => 'Công thức nấu ăn đã được sắp xếp lại thành công',
 
     // Bookshelves
     'bookshelf_create'            => 'đã tạo giá sách',

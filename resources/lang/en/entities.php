@@ -108,7 +108,7 @@ return [
     // Books
     'book' => 'Recipe',
     'books' => 'Recipes',
-    'x_books' => ':count Book|:count Books',
+    'x_books' => ':count Recipe|:count Recipes',
     'books_empty' => 'No recipes have been created',
     'books_popular' => 'Popular Recipes',
     'books_recent' => 'Recent Recipes',
