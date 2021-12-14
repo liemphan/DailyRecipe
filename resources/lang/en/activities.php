@@ -26,14 +26,14 @@ return [
     'chapter_move'                => 'moved chapter',
 
     // Books
-    'book_create'                 => 'created book',
-    'book_create_notification'    => 'Book Successfully Created',
-    'book_update'                 => 'updated book',
-    'book_update_notification'    => 'Book Successfully Updated',
-    'book_delete'                 => 'deleted book',
-    'book_delete_notification'    => 'Book Successfully Deleted',
-    'book_sort'                   => 'sorted book',
-    'book_sort_notification'      => 'Book Successfully Re-sorted',
+    'book_create'                 => 'created recipe',
+    'book_create_notification'    => 'Recipe Successfully Created',
+    'book_update'                 => 'updated recipe',
+    'book_update_notification'    => 'Recipe Successfully Updated',
+    'book_delete'                 => 'deleted recipe',
+    'book_delete_notification'    => 'Recipe Successfully Deleted',
+    'book_sort'                   => 'sorted recipe',
+    'book_sort_notification'      => 'Recipe Successfully Re-sorted',
 
     // Bookshelves
     'bookshelf_create'            => 'created Bookshelf',
