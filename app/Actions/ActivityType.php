@@ -15,14 +15,14 @@ class ActivityType
     const CHAPTER_DELETE = 'chapter_delete';
     const CHAPTER_MOVE = 'chapter_move';
 
-    const BOOK_CREATE = 'book_create';
-    const BOOK_UPDATE = 'book_update';
-    const BOOK_DELETE = 'book_delete';
-    const BOOK_SORT = 'book_sort';
+    const BOOK_CREATE = 'recipe_create';
+    const BOOK_UPDATE = 'recipe_update';
+    const BOOK_DELETE = 'recipe_delete';
+    const BOOK_SORT = 'recipe_sort';
 
-    const BOOKSHELF_CREATE = 'bookshelf_create';
-    const BOOKSHELF_UPDATE = 'bookshelf_update';
-    const BOOKSHELF_DELETE = 'bookshelf_delete';
+    const BOOKSHELF_CREATE = 'menu_create';
+    const BOOKSHELF_UPDATE = 'menu_update';
+    const BOOKSHELF_DELETE = 'menu_delete';
 
     const COMMENTED_ON = 'commented_on';
     const PERMISSIONS_UPDATE = 'permissions_update';

@@ -21,7 +21,7 @@
     </div>
 
     @if($model instanceof \BookStack\Entities\Models\Bookshelf)
-        <p class="text-warn">{{ trans('entities.shelves_permissions_cascade_warning') }}</p>
+        <p class="text-warn">{{ trans('entities.menus_permissions_cascade_warning') }}</p>
     @endif
 
     <hr>

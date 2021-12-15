@@ -13,20 +13,20 @@
     @endif
 
     <div id="popular" class="mb-xl">
-        <h5>{{ trans('entities.books_popular') }}</h5>
+        <h5>{{ trans('entities.recipes_popular') }}</h5>
         @if(count($popular) > 0)
             @include('entities.list', ['entities' => $popular, 'style' => 'compact'])
         @else
-            <div class="body text-muted">{{ trans('entities.books_popular_empty') }}</div>
+            <div class="body text-muted">{{ trans('entities.recipes_popular_empty') }}</div>
         @endif
     </div>
 
     <div id="new" class="mb-xl">
-        <h5>{{ trans('entities.books_new') }}</h5>
+        <h5>{{ trans('entities.recipes_new') }}</h5>
         @if(count($popular) > 0)
             @include('entities.list', ['entities' => $new, 'style' => 'compact'])
         @else
-            <div class="body text-muted">{{ trans('entities.books_new_empty') }}</div>
+            <div class="body text-muted">{{ trans('entities.recipes_new_empty') }}</div>
         @endif
     </div>
 @stop
@@ -39,7 +39,7 @@
             @if(user()->can('book-create-all'))
                 <a href="{{ url("/create-book") }}" class="icon-list-item">
                     <span>@icon('add')</span>
-                    <span>{{ trans('entities.books_create') }}</span>
+                    <span>{{ trans('entities.recipes_create') }}</span>
                 </a>
             @endif
 

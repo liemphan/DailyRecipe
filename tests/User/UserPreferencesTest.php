@@ -26,7 +26,7 @@ class UserPreferencesTest extends TestCase
             'setting_key' => 'user:' . $editor->id . ':books_sort_order',
             'value'       => 'desc',
         ]);
-        $this->assertEquals('created_at', setting()->getForCurrentUser('books_sort'));
+        $this->assertEquals('created_at', setting()->getForCurrentUser('recipes_sort'));
         $this->assertEquals('desc', setting()->getForCurrentUser('books_sort_order'));
     }
 

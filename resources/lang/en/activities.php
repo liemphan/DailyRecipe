@@ -26,22 +26,22 @@ return [
     'chapter_move'                => 'moved chapter',
 
     // Books
-    'book_create'                 => 'created recipe',
-    'book_create_notification'    => 'Recipe Successfully Created',
-    'book_update'                 => 'updated recipe',
-    'book_update_notification'    => 'Recipe Successfully Updated',
-    'book_delete'                 => 'deleted recipe',
-    'book_delete_notification'    => 'Recipe Successfully Deleted',
-    'book_sort'                   => 'sorted recipe',
-    'book_sort_notification'      => 'Recipe Successfully Re-sorted',
+    'recipe_create'                 => 'created recipe',
+    'recipe_create_notification'    => 'Recipe Successfully Created',
+    'recipe_update'                 => 'updated recipe',
+    'recipe_update_notification'    => 'Recipe Successfully Updated',
+    'recipe_delete'                 => 'deleted recipe',
+    'recipe_delete_notification'    => 'Recipe Successfully Deleted',
+    'recipe_sort'                   => 'sorted recipe',
+    'recipe_sort_notification'      => 'Recipe Successfully Re-sorted',
 
     // Bookshelves
-    'bookshelf_create'            => 'created Bookshelf',
-    'bookshelf_create_notification'    => 'Bookshelf Successfully Created',
-    'bookshelf_update'                 => 'updated bookshelf',
-    'bookshelf_update_notification'    => 'Bookshelf Successfully Updated',
-    'bookshelf_delete'                 => 'deleted bookshelf',
-    'bookshelf_delete_notification'    => 'Bookshelf Successfully Deleted',
+    'menu_create'            => 'created Bookshelf',
+    'menu_create_notification'    => 'Bookshelf Successfully Created',
+    'menu_update'                 => 'updated bookshelf',
+    'menu_update_notification'    => 'Bookshelf Successfully Updated',
+    'menu_delete'                 => 'deleted bookshelf',
+    'menu_delete_notification'    => 'Bookshelf Successfully Deleted',
 
     // Favourites
     'favourite_add_notification' => '":name" has been added to your favourites',

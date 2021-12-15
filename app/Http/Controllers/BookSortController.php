@@ -29,7 +29,7 @@ class BookSortController extends Controller
 
         $bookChildren = (new BookContents($book))->getTree(false);
 
-        $this->setPageTitle(trans('entities.books_sort_named', ['bookName'=>$book->getShortName()]));
+        $this->setPageTitle(trans('entities.recipes_sort_named', ['bookName'=>$book->getShortName()]));
 
         return view('books.sort', ['book' => $book, 'current' => $book, 'bookChildren' => $bookChildren]);
     }

@@ -48,7 +48,7 @@ class BookshelfController extends Controller
         $new = $this->bookshelfRepo->getRecentlyCreated(4);
 
         $this->entityContextManager->clearShelfContext();
-        $this->setPageTitle(trans('entities.shelves'));
+        $this->setPageTitle(trans('entities.menus'));
 
         return view('shelves.index', [
             'shelves'     => $shelves,
@@ -69,7 +69,7 @@ class BookshelfController extends Controller
     {
         $this->checkPermission('bookshelf-create-all');
         $books = Book::hasPermission('update')->get();
-        $this->setPageTitle(trans('entities.shelves_create'));
+        $this->setPageTitle(trans('entities.menus_create'));
 
         return view('shelves.create', ['books' => $books]);
     }
@@ -141,7 +141,7 @@ class BookshelfController extends Controller
         $shelfBookIds = $shelf->books()->get(['id'])->pluck('id');
         $books = Book::hasPermission('update')->whereNotIn('id', $shelfBookIds)->get();
 
-        $this->setPageTitle(trans('entities.shelves_edit_named', ['name' => $shelf->getShortName()]));
+        $this->setPageTitle(trans('entities.menus_edit_named', ['name' => $shelf->getShortName()]));
 
         return view('shelves.edit', [
             'shelf' => $shelf,
@@ -182,7 +182,7 @@ class BookshelfController extends Controller
         $shelf = $this->bookshelfRepo->getBySlug($slug);
         $this->checkOwnablePermission('bookshelf-delete', $shelf);
 
-        $this->setPageTitle(trans('entities.shelves_delete_named', ['name' => $shelf->getShortName()]));
+        $this->setPageTitle(trans('entities.menus_delete_named', ['name' => $shelf->getShortName()]));
 
         return view('shelves.delete', ['shelf' => $shelf]);
     }
@@ -225,7 +225,7 @@ class BookshelfController extends Controller
 
         $permissionsUpdater->updateFromPermissionsForm($shelf, $request);
 
-        $this->showSuccessNotification(trans('entities.shelves_permissions_updated'));
+        $this->showSuccessNotification(trans('entities.menus_permissions_updated'));
 
         return redirect($shelf->getUrl());
     }
@@ -239,7 +239,7 @@ class BookshelfController extends Controller
         $this->checkOwnablePermission('restrictions-manage', $shelf);
 
         $updateCount = $this->bookshelfRepo->copyDownPermissions($shelf);
-        $this->showSuccessNotification(trans('entities.shelves_copy_permission_success', ['count' => $updateCount]));
+        $this->showSuccessNotification(trans('entities.menus_copy_permission_success', ['count' => $updateCount]));
 
         return redirect($shelf->getUrl());
     }

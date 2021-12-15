@@ -34,9 +34,9 @@
                     @if (hasAppAccess())
                         <a class="hide-over-l" href="{{ url('/search') }}">@icon('search'){{ trans('common.search') }}</a>
                         @if(userCanOnAny('view', \BookStack\Entities\Models\Bookshelf::class) || userCan('bookshelf-view-all') || userCan('bookshelf-view-own'))
-                            <a href="{{ url('/shelves') }}">@icon('bookshelf'){{ trans('entities.shelves') }}</a>
+                            <a href="{{ url('/shelves') }}">@icon('bookshelf'){{ trans('entities.menus') }}</a>
                         @endif
-                        <a href="{{ url('/books') }}">@icon('books'){{ trans('entities.books') }}</a>
+                        <a href="{{ url('/books') }}">@icon('books'){{ trans('entities.recipes') }}</a>
                         @if(signedInUser() && userCan('settings-manage'))
                             <a href="{{ url('/settings') }}">@icon('settings'){{ trans('settings.settings') }}</a>
                         @endif

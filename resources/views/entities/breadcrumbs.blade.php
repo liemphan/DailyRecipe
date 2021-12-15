@@ -5,7 +5,7 @@
     @if (count($crumbs) > 0 && ($crumbs[0] ?? null) instanceof  \BookStack\Entities\Models\Book)
         <a href="{{  url('/books')  }}" class="text-book icon-list-item outline-hover">
             <span>@icon('books')</span>
-            <span>{{ trans('entities.books') }}</span>
+            <span>{{ trans('entities.recipes') }}</span>
         </a>
         <?php $breadcrumbCount++; ?>
     @endif
@@ -14,7 +14,7 @@
     @if (count($crumbs) > 0 && ($crumbs[0] ?? null) instanceof  \BookStack\Entities\Models\Bookshelf)
         <a href="{{  url('/shelves')  }}" class="text-bookshelf icon-list-item outline-hover">
             <span>@icon('bookshelf')</span>
-            <span>{{ trans('entities.shelves') }}</span>
+            <span>{{ trans('entities.menus') }}</span>
         </a>
         <?php $breadcrumbCount++; ?>
     @endif

@@ -32,7 +32,7 @@ class BookController extends Controller
     public function index()
     {
         $view = setting()->getForCurrentUser('books_view_type');
-        $sort = setting()->getForCurrentUser('books_sort', 'name');
+        $sort = setting()->getForCurrentUser('recipes_sort', 'name');
         $order = setting()->getForCurrentUser('books_sort_order', 'asc');
 
         $books = $this->bookRepo->getAllPaginated(18, $sort, $order);
@@ -42,7 +42,7 @@ class BookController extends Controller
 
         $this->entityContextManager->clearShelfContext();
 
-        $this->setPageTitle(trans('entities.books'));
+        $this->setPageTitle(trans('entities.recipes'));
 
         return view('books.index', [
             'books'   => $books,
@@ -68,7 +68,7 @@ class BookController extends Controller
             $this->checkOwnablePermission('bookshelf-update', $bookshelf);
         }
 
-        $this->setPageTitle(trans('entities.books_create'));
+        $this->setPageTitle(trans('entities.recipes_create'));
 
         return view('books.create', [
             'bookshelf' => $bookshelf,
@@ -139,7 +139,7 @@ class BookController extends Controller
     {
         $book = $this->bookRepo->getBySlug($slug);
         $this->checkOwnablePermission('book-update', $book);
-        $this->setPageTitle(trans('entities.books_edit_named', ['bookName'=>$book->getShortName()]));
+        $this->setPageTitle(trans('entities.recipes_edit_named', ['bookName'=>$book->getShortName()]));
 
         return view('books.edit', ['book' => $book, 'current' => $book]);
     }
@@ -175,7 +175,7 @@ class BookController extends Controller
     {
         $book = $this->bookRepo->getBySlug($bookSlug);
         $this->checkOwnablePermission('book-delete', $book);
-        $this->setPageTitle(trans('entities.books_delete_named', ['bookName' => $book->getShortName()]));
+        $this->setPageTitle(trans('entities.recipes_delete_named', ['bookName' => $book->getShortName()]));
 
         return view('books.delete', ['book' => $book, 'current' => $book]);
     }
@@ -220,7 +220,7 @@ class BookController extends Controller
 
         $permissionsUpdater->updateFromPermissionsForm($book, $request);
 
-        $this->showSuccessNotification(trans('entities.books_permissions_updated'));
+        $this->showSuccessNotification(trans('entities.recipes_permissions_updated'));
 
         return redirect($book->getUrl());
     }

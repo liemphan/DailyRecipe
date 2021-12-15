@@ -49,18 +49,18 @@
             @else
                 <div class="mt-xl">
                     <hr>
-                    <p class="text-muted italic mt-xl mb-m">{{ trans('entities.shelves_empty_contents') }}</p>
+                    <p class="text-muted italic mt-xl mb-m">{{ trans('entities.menus_empty_contents') }}</p>
                     <div class="icon-list inline block">
                         @if(userCan('book-create-all') && userCan('bookshelf-update', $shelf))
                             <a href="{{ $shelf->getUrl('/create-book') }}" class="icon-list-item text-book">
                                 <span class="icon">@icon('add')</span>
-                                <span>{{ trans('entities.books_create') }}</span>
+                                <span>{{ trans('entities.recipes_create') }}</span>
                             </a>
                         @endif
                         @if(userCan('bookshelf-update', $shelf))
                             <a href="{{ $shelf->getUrl('/edit') }}" class="icon-list-item text-bookshelf">
                                 <span class="icon">@icon('edit')</span>
-                                <span>{{ trans('entities.shelves_edit_and_assign') }}</span>
+                                <span>{{ trans('entities.menus_edit_and_assign') }}</span>
                             </a>
                         @endif
                     </div>
@@ -86,9 +86,9 @@
             @if($shelf->restricted)
                 <div class="active-restriction">
                     @if(userCan('restrictions-manage', $shelf))
-                        <a href="{{ $shelf->getUrl('/permissions') }}">@icon('lock'){{ trans('entities.shelves_permissions_active') }}</a>
+                        <a href="{{ $shelf->getUrl('/permissions') }}">@icon('lock'){{ trans('entities.menus_permissions_active') }}</a>
                     @else
-                        @icon('lock'){{ trans('entities.shelves_permissions_active') }}
+                        @icon('lock'){{ trans('entities.menus_permissions_active') }}
                     @endif
                 </div>
             @endif
@@ -111,7 +111,7 @@
             @if(userCan('book-create-all') && userCan('bookshelf-update', $shelf))
                 <a href="{{ $shelf->getUrl('/create-book') }}" class="icon-list-item">
                     <span class="icon">@icon('add')</span>
-                    <span>{{ trans('entities.books_new_action') }}</span>
+                    <span>{{ trans('entities.recipes_new_action') }}</span>
                 </a>
             @endif
 

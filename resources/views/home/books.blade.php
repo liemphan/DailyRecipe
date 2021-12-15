@@ -15,7 +15,7 @@
             @if(user()->can('book-create-all'))
                 <a href="{{ url("/create-book") }}" class="icon-list-item">
                     <span>@icon('add')</span>
-                    <span>{{ trans('entities.books_create') }}</span>
+                    <span>{{ trans('entities.recipes_create') }}</span>
                 </a>
             @endif
             @include('entities.view-toggle', ['view' => $view, 'type' => 'books'])

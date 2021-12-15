@@ -81,7 +81,7 @@ class BookTest extends TestCase
 
         $deleteReq = $this->delete($book->getUrl());
         $deleteReq->assertRedirect(url('/books'));
-        $this->assertActivityExists('book_delete', $book);
+        $this->assertActivityExists('recipe_delete', $book);
 
         $book->refresh();
         $this->assertNotNull($book->deleted_at);

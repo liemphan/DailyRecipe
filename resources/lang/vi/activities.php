@@ -26,22 +26,22 @@ return [
     'chapter_move'                => 'đã di chuyển chương',
 
     // Books
-    'book_create'                 => 'đã tạo công thức nấu ăn',
-    'book_create_notification'    => 'Công thức nấu ăn đã được tạo thành công',
-    'book_update'                 => 'đã cập nhật công thức nấu ăn',
-    'book_update_notification'    => 'Công thức nấu ăn đã được cập nhật thành công',
-    'book_delete'                 => 'đã xóa công thức nấu ăn',
-    'book_delete_notification'    => 'Công thức nấu ăn đã được xóa thành công',
-    'book_sort'                   => 'đã sắp xếp công thức nấu ăn',
-    'book_sort_notification'      => 'Công thức nấu ăn đã được sắp xếp lại thành công',
+    'recipe_create'                 => 'đã tạo công thức nấu ăn',
+    'recipe_create_notification'    => 'Công thức nấu ăn đã được tạo thành công',
+    'recipe_update'                 => 'đã cập nhật công thức nấu ăn',
+    'recipe_update_notification'    => 'Công thức nấu ăn đã được cập nhật thành công',
+    'recipe_delete'                 => 'đã xóa công thức nấu ăn',
+    'recipe_delete_notification'    => 'Công thức nấu ăn đã được xóa thành công',
+    'recipe_sort'                   => 'đã sắp xếp công thức nấu ăn',
+    'recipe_sort_notification'      => 'Công thức nấu ăn đã được sắp xếp lại thành công',
 
     // Bookshelves
-    'bookshelf_create'            => 'đã tạo giá sách',
-    'bookshelf_create_notification'    => 'Giá sách đã được tạo thành công',
-    'bookshelf_update'                 => 'cập nhật giá sách',
-    'bookshelf_update_notification'    => 'Giá sách đã tạo thành công',
-    'bookshelf_delete'                 => 'đã xóa giá sách',
-    'bookshelf_delete_notification'    => 'Giá sách đã được xóa thành công',
+    'menu_create'            => 'đã tạo giá sách',
+    'menu_create_notification'    => 'Giá sách đã được tạo thành công',
+    'menu_update'                 => 'cập nhật giá sách',
+    'menu_update_notification'    => 'Giá sách đã tạo thành công',
+    'menu_delete'                 => 'đã xóa giá sách',
+    'menu_delete_notification'    => 'Giá sách đã được xóa thành công',
 
     // Favourites
     'favourite_add_notification' => '":name" đã được thêm vào danh sách yêu thích của bạn',

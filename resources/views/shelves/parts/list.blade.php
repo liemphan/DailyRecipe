@@ -2,7 +2,7 @@
 <main class="content-wrap mt-m card">
 
     <div class="grid half v-center">
-        <h1 class="list-heading">{{ trans('entities.shelves') }}</h1>
+        <h1 class="list-heading">{{ trans('entities.menus') }}</h1>
         <div class="text-right">
             @include('entities.sort', ['options' => $sortOptions, 'order' => $order, 'sort' => $sort, 'type' => 'bookshelves'])
         </div>
@@ -29,7 +29,7 @@
             {!! $shelves->render() !!}
         </div>
     @else
-        <p class="text-muted">{{ trans('entities.shelves_empty') }}</p>
+        <p class="text-muted">{{ trans('entities.menus_empty') }}</p>
         @if(userCan('bookshelf-create-all'))
             <a href="{{ url("/create-shelf") }}" class="button outline">@icon('edit'){{ trans('entities.create_now') }}</a>
         @endif

@@ -41,7 +41,7 @@ class ShelvesApiTest extends TestCase
         $resp->assertStatus(200);
         $newItem = Bookshelf::query()->orderByDesc('id')->where('name', '=', $details['name'])->first();
         $resp->assertJson(array_merge($details, ['id' => $newItem->id, 'slug' => $newItem->slug]));
-        $this->assertActivityExists('bookshelf_create', $newItem);
+        $this->assertActivityExists('menu_create', $newItem);
         foreach ($books as $index => $book) {
             $this->assertDatabaseHas('bookshelves_books', [
                 'bookshelf_id' => $newItem->id,
@@ -108,7 +108,7 @@ class ShelvesApiTest extends TestCase
 
         $resp->assertStatus(200);
         $resp->assertJson(array_merge($details, ['id' => $shelf->id, 'slug' => $shelf->slug]));
-        $this->assertActivityExists('bookshelf_update', $shelf);
+        $this->assertActivityExists('menu_update', $shelf);
     }
 
     public function test_update_only_assigns_books_if_param_provided()
@@ -136,6 +136,6 @@ class ShelvesApiTest extends TestCase
         $resp = $this->deleteJson($this->baseEndpoint . "/{$shelf->id}");
 
         $resp->assertStatus(204);
-        $this->assertActivityExists('bookshelf_delete');
+        $this->assertActivityExists('menu_delete');
     }
 }

@@ -38,13 +38,13 @@
                         @if(userCan('page-create', $chapter))
                             <a href="{{ $chapter->getUrl('/create-page') }}" class="icon-list-item text-page">
                                 <span class="icon">@icon('page')</span>
-                                <span>{{ trans('entities.books_empty_create_page') }}</span>
+                                <span>{{ trans('entities.recipes_empty_create_page') }}</span>
                             </a>
                         @endif
                         @if(userCan('book-update', $book))
                             <a href="{{ $book->getUrl('/sort') }}" class="icon-list-item text-book">
                                 <span class="icon">@icon('book')</span>
-                                <span>{{ trans('entities.books_empty_sort_current_book') }}</span>
+                                <span>{{ trans('entities.recipes_empty_sort_current_recipe') }}</span>
                             </a>
                         @endif
                     </div>
@@ -70,9 +70,9 @@
             @if($book->restricted)
                 <div class="active-restriction">
                     @if(userCan('restrictions-manage', $book))
-                        <a href="{{ $book->getUrl('/permissions') }}">@icon('lock'){{ trans('entities.books_permissions_active') }}</a>
+                        <a href="{{ $book->getUrl('/permissions') }}">@icon('lock'){{ trans('entities.recipes_permissions_active') }}</a>
                     @else
-                        @icon('lock'){{ trans('entities.books_permissions_active') }}
+                        @icon('lock'){{ trans('entities.recipes_permissions_active') }}
                     @endif
                 </div>
             @endif

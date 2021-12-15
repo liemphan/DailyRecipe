@@ -1,6 +1,6 @@
 <main class="content-wrap mt-m card">
     <div class="grid half v-center no-row-gap">
-        <h1 class="list-heading">{{ trans('entities.books') }}</h1>
+        <h1 class="list-heading">{{ trans('entities.recipes') }}</h1>
         <div class="text-m-right my-m">
 
             @include('entities.sort', ['options' => [
@@ -29,7 +29,7 @@
             {!! $books->render() !!}
         </div>
     @else
-        <p class="text-muted">{{ trans('entities.books_empty') }}</p>
+        <p class="text-muted">{{ trans('entities.recipes') }}</p>
         @if(userCan('books-create-all'))
             <a href="{{ url("/create-book") }}" class="text-pos">@icon('edit'){{ trans('entities.create_now') }}</a>
         @endif

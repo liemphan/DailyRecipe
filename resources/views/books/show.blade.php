@@ -38,13 +38,13 @@
             @else
                 <div class="mt-xl">
                     <hr>
-                    <p class="text-muted italic mb-m mt-xl">{{ trans('entities.books_empty_contents') }}</p>
+                    <p class="text-muted italic mb-m mt-xl">{{ trans('entities.recipes_empty_contents') }}</p>
 
                     <div class="icon-list block inline">
                         @if(userCan('page-create', $book))
                             <a href="{{ $book->getUrl('/create-page') }}" class="icon-list-item text-page">
                                 <span class="icon">@icon('page')</span>
-                                <span>{{ trans('entities.books_empty_create_page') }}</span>
+                                <span>{{ trans('entities.recipes_empty_create_page') }}</span>
                             </a>
                         @endif
                         @if(userCan('chapter-create', $book))
@@ -72,9 +72,9 @@
             @if($book->restricted)
                 <div class="active-restriction">
                     @if(userCan('restrictions-manage', $book))
-                        <a href="{{ $book->getUrl('/permissions') }}">@icon('lock'){{ trans('entities.books_permissions_active') }}</a>
+                        <a href="{{ $book->getUrl('/permissions') }}">@icon('lock'){{ trans('entities.recipes_permissions_active') }}</a>
                     @else
-                        @icon('lock'){{ trans('entities.books_permissions_active') }}
+                        @icon('lock'){{ trans('entities.recipes_permissions_active') }}
                     @endif
                 </div>
             @endif
@@ -138,7 +138,7 @@
 
 @section('left')
 
-    @include('entities.search-form', ['label' => trans('entities.books_search_this')])
+    @include('entities.search-form', ['label' => trans('entities.recipes_search_this')])
 
     @if($book->tags->count() > 0)
         <div class="mb-xl">
@@ -148,7 +148,7 @@
 
     @if(count($bookParentShelves) > 0)
         <div class="actions mb-xl">
-            <h5>{{ trans('entities.shelves_long') }}</h5>
+            <h5>{{ trans('entities.menus_long') }}</h5>
             @include('entities.list', ['entities' => $bookParentShelves, 'style' => 'compact'])
         </div>
     @endif

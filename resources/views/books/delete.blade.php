@@ -8,16 +8,16 @@
             @include('entities.breadcrumbs', ['crumbs' => [
                 $book,
                 $book->getUrl('/delete') => [
-                    'text' => trans('entities.books_delete'),
+                    'text' => trans('entities.recipes_delete'),
                     'icon' => 'delete',
                 ]
             ]])
         </div>
 
         <div class="card content-wrap auto-height">
-            <h1 class="list-heading">{{ trans('entities.books_delete') }}</h1>
-            <p>{{ trans('entities.books_delete_explain', ['bookName' => $book->name]) }}</p>
-            <p class="text-neg"><strong>{{ trans('entities.books_delete_confirmation') }}</strong></p>
+            <h1 class="list-heading">{{ trans('entities.recipes_delete') }}</h1>
+            <p>{{ trans('entities.recipes_delete_explain', ['bookName' => $book->name]) }}</p>
+            <p class="text-neg"><strong>{{ trans('entities.recipes_delete_confirmation') }}</strong></p>
 
             <form action="{{$book->getUrl()}}" method="POST" class="text-right">
                 {!! csrf_field() !!}

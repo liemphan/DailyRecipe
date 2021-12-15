@@ -12,7 +12,7 @@
             @if(userCan('bookshelf-create-all'))
                 <a href="{{ url("/create-shelf") }}" class="icon-list-item">
                     <span>@icon('add')</span>
-                    <span>{{ trans('entities.shelves_new_action') }}</span>
+                    <span>{{ trans('entities.menus_new_action') }}</span>
                 </a>
             @endif
 
@@ -36,20 +36,20 @@
     @endif
 
     <div id="popular" class="mb-xl">
-        <h5>{{ trans('entities.shelves_popular') }}</h5>
+        <h5>{{ trans('entities.menus_popular') }}</h5>
         @if(count($popular) > 0)
             @include('entities.list', ['entities' => $popular, 'style' => 'compact'])
         @else
-            <div class="text-muted">{{ trans('entities.shelves_popular_empty') }}</div>
+            <div class="text-muted">{{ trans('entities.menus_popular_empty') }}</div>
         @endif
     </div>
 
     <div id="new" class="mb-xl">
-        <h5>{{ trans('entities.shelves_new') }}</h5>
+        <h5>{{ trans('entities.menus_new') }}</h5>
         @if(count($new) > 0)
             @include('entities.list', ['entities' => $new, 'style' => 'compact'])
         @else
-            <div class="text-muted">{{ trans('entities.shelves_new_empty') }}</div>
+            <div class="text-muted">{{ trans('entities.menus_new_empty') }}</div>
         @endif
     </div>
 @stop

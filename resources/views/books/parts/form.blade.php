@@ -37,5 +37,5 @@
 
 <div class="form-group text-right">
     <a href="{{ $returnLocation }}" class="button outline">{{ trans('common.cancel') }}</a>
-    <button type="submit" class="button">{{ trans('entities.books_save') }}</button>
+    <button type="submit" class="button">{{ trans('entities.recipes_save') }}</button>
 </div>

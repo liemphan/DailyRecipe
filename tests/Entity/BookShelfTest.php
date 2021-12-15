@@ -273,7 +273,7 @@ class BookShelfTest extends TestCase
 
         $deleteReq = $this->delete($shelf->getUrl());
         $deleteReq->assertRedirect(url('/shelves'));
-        $this->assertActivityExists('bookshelf_delete', $shelf);
+        $this->assertActivityExists('menu_delete', $shelf);
 
         $shelf->refresh();
         $this->assertNotNull($shelf->deleted_at);

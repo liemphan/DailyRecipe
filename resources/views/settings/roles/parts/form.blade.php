@@ -72,7 +72,7 @@
                 </tr>
                 <tr>
                     <td>
-                        <div>{{ trans('entities.shelves_long') }}</div>
+                        <div>{{ trans('entities.menus_long') }}</div>
                         <a href="#" permissions-table-toggle-all-in-row class="text-small text-primary">{{ trans('common.toggle_all') }}</a>
                     </td>
                     <td>
@@ -96,7 +96,7 @@
                 </tr>
                 <tr>
                     <td>
-                        <div>{{ trans('entities.books') }}</div>
+                        <div>{{ trans('entities.recipes') }}</div>
                         <a href="#" permissions-table-toggle-all-in-row class="text-small text-primary">{{ trans('common.toggle_all') }}</a>
                     </td>
                     <td>

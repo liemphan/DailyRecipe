@@ -8,7 +8,7 @@
             @include('entities.breadcrumbs', ['crumbs' => [
                 $book,
                 $book->getUrl('/sort') => [
-                    'text' => trans('entities.books_sort'),
+                    'text' => trans('entities.recipes_sort'),
                     'icon' => 'sort',
                 ]
             ]])
@@ -17,7 +17,7 @@
         <div class="grid left-focus gap-xl">
             <div>
                 <div book-sort class="card content-wrap">
-                    <h1 class="list-heading mb-l">{{ trans('entities.books_sort') }}</h1>
+                    <h1 class="list-heading mb-l">{{ trans('entities.recipes_sort') }}</h1>
                     <div book-sort-boxes>
                         @include('books.parts.sort-box', ['book' => $book, 'bookChildren' => $bookChildren])
                     </div>
@@ -28,7 +28,7 @@
                         <input book-sort-input type="hidden" name="sort-tree">
                         <div class="list text-right">
                             <a href="{{ $book->getUrl() }}" class="button outline">{{ trans('common.cancel') }}</a>
-                            <button class="button" type="submit">{{ trans('entities.books_sort_save') }}</button>
+                            <button class="button" type="submit">{{ trans('entities.recipes_sort_save') }}</button>
                         </div>
                     </form>
                 </div>
@@ -36,7 +36,7 @@
 
             <div>
                 <main class="card content-wrap">
-                    <h2 class="list-heading mb-m">{{ trans('entities.books_sort_show_other') }}</h2>
+                    <h2 class="list-heading mb-m">{{ trans('entities.recipes_sort_show_other') }}</h2>
 
                     @include('entities.selector', ['name' => 'books_list', 'selectorSize' => 'compact', 'entityTypes' => 'book', 'entityPermission' => 'update', 'showAdd' => true])
 

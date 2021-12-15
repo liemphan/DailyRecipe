@@ -19,7 +19,6 @@
                 <a href="{{ url('/') }}" class="button outline">{{ trans('errors.return_home') }}</a>
             </div>
         </div>
-
     </div>
 
     @if (setting('app-public') || !user()->isDefault())
@@ -34,7 +33,7 @@
             </div>
             <div>
                 <div class="card mb-xl">
-                    <h3 class="card-title">{{ trans('entities.books_popular') }}</h3>
+                    <h3 class="card-title">{{ trans('entities.recipes_popular') }}</h3>
                     <div class="px-m">
                         @include('entities.list', ['entities' => (new \BookStack\Entities\Queries\Popular)->run(10, 0, ['book']), 'style' => 'compact'])
                     </div>

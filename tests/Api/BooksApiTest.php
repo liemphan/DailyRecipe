@@ -38,7 +38,7 @@ class BooksApiTest extends TestCase
         $resp->assertStatus(200);
         $newItem = Book::query()->orderByDesc('id')->where('name', '=', $details['name'])->first();
         $resp->assertJson(array_merge($details, ['id' => $newItem->id, 'slug' => $newItem->slug]));
-        $this->assertActivityExists('book_create', $newItem);
+        $this->assertActivityExists('recipe_create', $newItem);
     }
 
     public function test_book_name_needed_to_create()
@@ -98,7 +98,7 @@ class BooksApiTest extends TestCase
 
         $resp->assertStatus(200);
         $resp->assertJson(array_merge($details, ['id' => $book->id, 'slug' => $book->slug]));
-        $this->assertActivityExists('book_update', $book);
+        $this->assertActivityExists('recipe_update', $book);
     }
 
     public function test_delete_endpoint()
@@ -108,7 +108,7 @@ class BooksApiTest extends TestCase
         $resp = $this->deleteJson($this->baseEndpoint . "/{$book->id}");
 
         $resp->assertStatus(204);
-        $this->assertActivityExists('book_delete');
+        $this->assertActivityExists('recipe_delete');
     }
 
     public function test_export_html_endpoint()

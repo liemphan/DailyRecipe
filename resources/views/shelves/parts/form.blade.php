@@ -12,10 +12,10 @@
 
 <div shelf-sort class="grid half gap-xl">
     <div class="form-group">
-        <label for="books">{{ trans('entities.shelves_books') }}</label>
+        <label for="books">{{ trans('entities.menus_recipes') }}</label>
         <input type="hidden" id="books-input" name="books"
                value="{{ isset($shelf) ? $shelf->visibleBooks->implode('id', ',') : '' }}">
-        <div class="scroll-box" shelf-sort-assigned-books data-instruction="{{ trans('entities.shelves_drag_books') }}">
+        <div class="scroll-box" shelf-sort-assigned-books data-instruction="{{ trans('entities.menus_drag_recipes') }}">
             @if (count($shelf->visibleBooks ?? []) > 0)
                 @foreach ($shelf->visibleBooks as $book)
                     <div data-id="{{ $book->id }}" class="scroll-box-item">
@@ -26,7 +26,7 @@
         </div>
     </div>
     <div class="form-group">
-        <label for="books">{{ trans('entities.shelves_add_books') }}</label>
+        <label for="books">{{ trans('entities.menus_add_recipes') }}</label>
         <div class="scroll-box">
             @foreach ($books as $book)
                 <div data-id="{{ $book->id }}" class="scroll-box-item">
@@ -66,5 +66,5 @@
 
 <div class="form-group text-right">
     <a href="{{ isset($shelf) ? $shelf->getUrl() : url('/shelves') }}" class="button outline">{{ trans('common.cancel') }}</a>
-    <button type="submit" class="button">{{ trans('entities.shelves_save') }}</button>
+    <button type="submit" class="button">{{ trans('entities.menus_save') }}</button>
 </div>

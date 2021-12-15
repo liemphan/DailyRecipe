@@ -82,9 +82,9 @@
             @if($book->restricted)
                 <div class="active-restriction">
                     @if(userCan('restrictions-manage', $book))
-                        <a href="{{ $book->getUrl('/permissions') }}">@icon('lock'){{ trans('entities.books_permissions_active') }}</a>
+                        <a href="{{ $book->getUrl('/permissions') }}">@icon('lock'){{ trans('entities.recipes_permissions_active') }}</a>
                     @else
-                        @icon('lock'){{ trans('entities.books_permissions_active') }}
+                        @icon('lock'){{ trans('entities.recipes_permissions_active') }}
                     @endif
                 </div>
             @endif

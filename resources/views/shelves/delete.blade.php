@@ -8,19 +8,19 @@
             @include('entities.breadcrumbs', ['crumbs' => [
                 $shelf,
                 $shelf->getUrl('/delete') => [
-                    'text' => trans('entities.shelves_delete'),
+                    'text' => trans('entities.menus_delete'),
                     'icon' => 'delete',
                 ]
             ]])
         </div>
 
         <div class="card content-wrap auto-height">
-            <h1 class="list-heading">{{ trans('entities.shelves_delete') }}</h1>
-            <p>{{ trans('entities.shelves_delete_explain', ['name' => $shelf->name]) }}</p>
+            <h1 class="list-heading">{{ trans('entities.menus_delete') }}</h1>
+            <p>{{ trans('entities.menus_delete_explain', ['name' => $shelf->name]) }}</p>
 
             <div class="grid half">
                 <p class="text-neg">
-                    <strong>{{ trans('entities.shelves_delete_confirmation') }}</strong>
+                    <strong>{{ trans('entities.menus_delete_confirmation') }}</strong>
                 </p>
 
                 <form action="{{ $shelf->getUrl() }}" method="POST" class="text-right">

@@ -1,8 +1,8 @@
 <nav id="book-tree"
      class="book-tree mb-xl"
-     aria-label="{{ trans('entities.books_navigation') }}">
+     aria-label="{{ trans('entities.recipes_navigation') }}">
 
-    <h5>{{ trans('entities.books_navigation') }}</h5>
+    <h5>{{ trans('entities.recipes_navigation') }}</h5>
 
     <ul class="sidebar-page-list mt-xs menu entity-list">
         @if (userCan('view', $book))
