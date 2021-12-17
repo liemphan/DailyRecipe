@@ -5,7 +5,7 @@ namespace Database\Seeders;
 use DailyRecipe\Auth\Permissions\PermissionService;
 use DailyRecipe\Auth\Role;
 use DailyRecipe\Auth\User;
-use DailyRecipe\Entities\Models\Book;
+use DailyRecipe\Entities\Models\Recipe;
 use DailyRecipe\Entities\Models\Chapter;
 use DailyRecipe\Entities\Models\Page;
 use DailyRecipe\Entities\Tools\SearchIndex;
@@ -26,8 +26,8 @@ class LargeContentSeeder extends Seeder
         $editorRole = Role::getRole('editor');
         $editorUser->attachRole($editorRole);
 
-        /** @var Book $largeBook */
-        $largeBook = Book::factory()->create(['name' => 'Large book' . Str::random(10), 'created_by' => $editorUser->id, 'updated_by' => $editorUser->id]);
+        /** @var Recipe $largeBook */
+        $largeBook = Recipe::factory()->create(['name' => 'Large book' . Str::random(10), 'created_by' => $editorUser->id, 'updated_by' => $editorUser->id]);
         $pages = Page::factory()->count(200)->make(['created_by' => $editorUser->id, 'updated_by' => $editorUser->id]);
         $chapters = Chapter::factory()->count(50)->make(['created_by' => $editorUser->id, 'updated_by' => $editorUser->id]);
 

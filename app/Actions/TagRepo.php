@@ -30,7 +30,7 @@ class TagRepo
                 DB::raw('COUNT(id) as usages'),
                 DB::raw('SUM(IF(entity_type = \'DailyRecipe\\\\Page\', 1, 0)) as page_count'),
                 DB::raw('SUM(IF(entity_type = \'DailyRecipe\\\\Chapter\', 1, 0)) as chapter_count'),
-                DB::raw('SUM(IF(entity_type = \'DailyRecipe\\\\Book\', 1, 0)) as book_count'),
+                DB::raw('SUM(IF(entity_type = \'DailyRecipe\\\\Recipe\', 1, 0)) as book_count'),
                 DB::raw('SUM(IF(entity_type = \'DailyRecipe\\\\BookShelf\', 1, 0)) as shelf_count'),
             ])
             ->orderBy($nameFilter ? 'value' : 'name');

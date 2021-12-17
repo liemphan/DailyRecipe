@@ -3,7 +3,7 @@
 namespace DailyRecipe\Entities\Tools;
 
 use DailyRecipe\Entities\EntityProvider;
-use DailyRecipe\Entities\Models\Book;
+use DailyRecipe\Entities\Models\Recipe;
 use DailyRecipe\Entities\Models\Bookshelf;
 use DailyRecipe\Entities\Models\Chapter;
 use DailyRecipe\Entities\Models\Page;
@@ -29,14 +29,14 @@ class SiblingFetcher
             $entities = $entity->book->getDirectChildren();
         }
 
-        // Book
+        // Recipe
         // Gets just the books in a shelf if shelf is in context
-        if ($entity instanceof Book) {
+        if ($entity instanceof Recipe) {
             $contextShelf = (new ShelfContext())->getContextualShelfForBook($entity);
             if ($contextShelf) {
                 $entities = $contextShelf->visibleBooks()->get();
             } else {
-                $entities = Book::visible()->get();
+                $entities = Recipe::visible()->get();
             }
         }
 

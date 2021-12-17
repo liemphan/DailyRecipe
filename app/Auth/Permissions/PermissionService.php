@@ -4,7 +4,7 @@ namespace DailyRecipe\Auth\Permissions;
 
 use DailyRecipe\Auth\Role;
 use DailyRecipe\Auth\User;
-use DailyRecipe\Entities\Models\Book;
+use DailyRecipe\Entities\Models\Recipe;
 use DailyRecipe\Entities\Models\BookChild;
 use DailyRecipe\Entities\Models\Bookshelf;
 use DailyRecipe\Entities\Models\Chapter;
@@ -78,13 +78,13 @@ class PermissionService
     /**
      * Get a book via ID, Checks local cache.
      */
-    protected function getBook(int $bookId): ?Book
+    protected function getBook(int $bookId): ?Recipe
     {
-        if (isset($this->entityCache[Book::class]) && $this->entityCache[Book::class]->has($bookId)) {
-            return $this->entityCache[Book::class]->get($bookId);
+        if (isset($this->entityCache[Recipe::class]) && $this->entityCache[Recipe::class]->has($bookId)) {
+            return $this->entityCache[Recipe::class]->get($bookId);
         }
 
-        return Book::query()->withTrashed()->find($bookId);
+        return Recipe::query()->withTrashed()->find($bookId);
     }
 
     /**
@@ -147,7 +147,7 @@ class PermissionService
      */
     protected function bookFetchQuery(): Builder
     {
-        return Book::query()->withTrashed()
+        return Recipe::query()->withTrashed()
             ->select(['id', 'restricted', 'owned_by'])->with([
                 'chapters' => function ($query) {
                     $query->withTrashed()->select(['id', 'restricted', 'owned_by', 'book_id']);
@@ -180,7 +180,7 @@ class PermissionService
     {
         $entities = clone $books;
 
-        /** @var Book $book */
+        /** @var Recipe $book */
         foreach ($books->all() as $book) {
             foreach ($book->getRelation('chapters') as $chapter) {
                 $entities->push($chapter);
@@ -204,7 +204,7 @@ class PermissionService
     public function buildJointPermissionsForEntity(Entity $entity)
     {
         $entities = [$entity];
-        if ($entity instanceof Book) {
+        if ($entity instanceof Recipe) {
             $books = $this->bookFetchQuery()->where('id', '=', $entity->id)->get();
             $this->buildJointPermissionsForBooks($books, Role::query()->get()->all(), true);
 
@@ -383,10 +383,10 @@ class PermissionService
     protected function getActions(Entity $entity): array
     {
         $baseActions = ['view', 'update', 'delete'];
-        if ($entity instanceof Chapter || $entity instanceof Book) {
+        if ($entity instanceof Chapter || $entity instanceof Recipe) {
             $baseActions[] = 'page-create';
         }
-        if ($entity instanceof Book) {
+        if ($entity instanceof Recipe) {
             $baseActions[] = 'chapter-create';
         }
 
@@ -415,11 +415,11 @@ class PermissionService
             return $this->createJointPermissionDataArray($entity, $role, $action, $hasAccess, $hasAccess);
         }
 
-        if ($entity instanceof Book || $entity instanceof Bookshelf) {
+        if ($entity instanceof Recipe || $entity instanceof Bookshelf) {
             return $this->createJointPermissionDataArray($entity, $role, $action, $roleHasPermission, $roleHasPermissionOwn);
         }
 
-        // For chapters and pages, Check if explicit permissions are set on the Book.
+        // For chapters and pages, Check if explicit permissions are set on the Recipe.
         $book = $this->getBook($entity->book_id);
         $hasExplicitAccessToParents = $this->mapHasActiveRestriction($permissionMap, $book, $role, $restrictionAction);
         $hasPermissiveAccessToParents = !$book->restricted;

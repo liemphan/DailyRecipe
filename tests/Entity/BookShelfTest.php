@@ -3,7 +3,7 @@
 namespace Tests\Entity;
 
 use DailyRecipe\Auth\User;
-use DailyRecipe\Entities\Models\Book;
+use DailyRecipe\Entities\Models\Recipe;
 use DailyRecipe\Entities\Models\Bookshelf;
 use DailyRecipe\Uploads\Image;
 use Illuminate\Support\Str;
@@ -78,7 +78,7 @@ class BookShelfTest extends TestCase
 
     public function test_shelves_create()
     {
-        $booksToInclude = Book::take(2)->get();
+        $booksToInclude = Recipe::take(2)->get();
         $shelfInfo = [
             'name'        => 'My test book' . Str::random(4),
             'description' => 'Test book description ' . Str::random(10),
@@ -148,7 +148,7 @@ class BookShelfTest extends TestCase
         $resp->assertSee($shelf->getUrl('/edit'));
         $resp->assertSee($shelf->getUrl('/permissions'));
         $resp->assertSee($shelf->getUrl('/delete'));
-        $resp->assertElementContains('a', 'New Book');
+        $resp->assertElementContains('a', 'New Recipe');
         $resp->assertElementContains('a', 'Edit');
         $resp->assertElementContains('a', 'Permissions');
         $resp->assertElementContains('a', 'Delete');
@@ -168,7 +168,7 @@ class BookShelfTest extends TestCase
     public function test_shelf_view_sort_takes_action()
     {
         $shelf = Bookshelf::query()->whereHas('books')->with('books')->first();
-        $books = Book::query()->take(3)->get(['id', 'name']);
+        $books = Recipe::query()->take(3)->get(['id', 'name']);
         $books[0]->fill(['name' => 'bsfsdfsdfsd'])->save();
         $books[1]->fill(['name' => 'adsfsdfsdfsd'])->save();
         $books[2]->fill(['name' => 'hdgfgdfg'])->save();
@@ -204,7 +204,7 @@ class BookShelfTest extends TestCase
         $resp = $this->asEditor()->get($shelf->getUrl('/edit'));
         $resp->assertSeeText('Edit Bookshelf');
 
-        $booksToInclude = Book::take(2)->get();
+        $booksToInclude = Recipe::take(2)->get();
         $shelfInfo = [
             'name'        => 'My test book' . Str::random(4),
             'description' => 'Test book description ' . Str::random(10),
@@ -241,18 +241,18 @@ class BookShelfTest extends TestCase
         $shelf = Bookshelf::first();
         $resp = $this->asEditor()->get($shelf->getUrl('/create-book'));
 
-        $resp->assertSee('Create New Book');
+        $resp->assertSee('Create New Recipe');
         $resp->assertSee($shelf->getShortName());
 
-        $testName = 'Test Book in Shelf Name';
+        $testName = 'Test Recipe in Shelf Name';
 
         $createBookResp = $this->asEditor()->post($shelf->getUrl('/create-book'), [
             'name'        => $testName,
-            'description' => 'Book in shelf description',
+            'description' => 'Recipe in shelf description',
         ]);
         $createBookResp->assertRedirect();
 
-        $newBook = Book::query()->orderBy('id', 'desc')->first();
+        $newBook = Recipe::query()->orderBy('id', 'desc')->first();
         $this->assertDatabaseHas('bookshelves_books', [
             'bookshelf_id' => $shelf->id,
             'book_id'      => $newBook->id,
@@ -355,10 +355,10 @@ class BookShelfTest extends TestCase
         // Create book and add to shelf
         $this->asEditor()->post($shelf->getUrl('/create-book'), [
             'name'        => 'Test book name',
-            'description' => 'Book in shelf description',
+            'description' => 'Recipe in shelf description',
         ]);
 
-        $newBook = Book::query()->orderBy('id', 'desc')->first();
+        $newBook = Recipe::query()->orderBy('id', 'desc')->first();
 
         $resp = $this->asEditor()->get($newBook->getUrl());
         $resp->assertElementContains('.tri-layout-left-contents', $shelfInfo['name']);

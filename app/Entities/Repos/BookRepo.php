@@ -4,7 +4,7 @@ namespace DailyRecipe\Entities\Repos;
 
 use DailyRecipe\Actions\ActivityType;
 use DailyRecipe\Actions\TagRepo;
-use DailyRecipe\Entities\Models\Book;
+use DailyRecipe\Entities\Models\Recipe;
 use DailyRecipe\Entities\Tools\TrashCan;
 use DailyRecipe\Exceptions\ImageUploadException;
 use DailyRecipe\Exceptions\NotFoundException;
@@ -36,7 +36,7 @@ class BookRepo
      */
     public function getAllPaginated(int $count = 20, string $sort = 'name', string $order = 'asc'): LengthAwarePaginator
     {
-        return Book::visible()->with('cover')->orderBy($sort, $order)->paginate($count);
+        return Recipe::visible()->with('cover')->orderBy($sort, $order)->paginate($count);
     }
 
     /**
@@ -44,7 +44,7 @@ class BookRepo
      */
     public function getRecentlyViewed(int $count = 20): Collection
     {
-        return Book::visible()->withLastView()
+        return Recipe::visible()->withLastView()
             ->having('last_viewed_at', '>', 0)
             ->orderBy('last_viewed_at', 'desc')
             ->take($count)->get();
@@ -55,7 +55,7 @@ class BookRepo
      */
     public function getPopular(int $count = 20): Collection
     {
-        return Book::visible()->withViewCount()
+        return Recipe::visible()->withViewCount()
             ->having('view_count', '>', 0)
             ->orderBy('view_count', 'desc')
             ->take($count)->get();
@@ -66,16 +66,16 @@ class BookRepo
      */
     public function getRecentlyCreated(int $count = 20): Collection
     {
-        return Book::visible()->orderBy('created_at', 'desc')
+        return Recipe::visible()->orderBy('created_at', 'desc')
             ->take($count)->get();
     }
 
     /**
      * Get a book by its slug.
      */
-    public function getBySlug(string $slug): Book
+    public function getBySlug(string $slug): Recipe
     {
-        $book = Book::visible()->where('slug', '=', $slug)->first();
+        $book = Recipe::visible()->where('slug', '=', $slug)->first();
 
         if ($book === null) {
             throw new NotFoundException(trans('errors.book_not_found'));
@@ -87,9 +87,9 @@ class BookRepo
     /**
      * Create a new book in the system.
      */
-    public function create(array $input): Book
+    public function create(array $input): Recipe
     {
-        $book = new Book();
+        $book = new Recipe();
         $this->baseRepo->create($book, $input);
         Activity::addForEntity($book, ActivityType::BOOK_CREATE);
 
@@ -99,7 +99,7 @@ class BookRepo
     /**
      * Update the given book.
      */
-    public function update(Book $book, array $input): Book
+    public function update(Recipe $book, array $input): Recipe
     {
         $this->baseRepo->update($book, $input);
         Activity::addForEntity($book, ActivityType::BOOK_UPDATE);
@@ -113,7 +113,7 @@ class BookRepo
      * @throws ImageUploadException
      * @throws Exception
      */
-    public function updateCoverImage(Book $book, ?UploadedFile $coverImage, bool $removeImage = false)
+    public function updateCoverImage(Recipe $book, ?UploadedFile $coverImage, bool $removeImage = false)
     {
         $this->baseRepo->updateCoverImage($book, $coverImage, $removeImage);
     }
@@ -123,7 +123,7 @@ class BookRepo
      *
      * @throws Exception
      */
-    public function destroy(Book $book)
+    public function destroy(Recipe $book)
     {
         $trashCan = new TrashCan();
         $trashCan->softDestroyBook($book);

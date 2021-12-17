@@ -3,7 +3,7 @@
 namespace Tests\Entity;
 
 use DailyRecipe\Actions\Tag;
-use DailyRecipe\Entities\Models\Book;
+use DailyRecipe\Entities\Models\Recipe;
 use DailyRecipe\Entities\Models\Bookshelf;
 use DailyRecipe\Entities\Models\Chapter;
 use DailyRecipe\Entities\Models\Page;
@@ -13,7 +13,7 @@ class EntitySearchTest extends TestCase
 {
     public function test_page_search()
     {
-        $book = Book::all()->first();
+        $book = Recipe::all()->first();
         $page = $book->pages->first();
 
         $search = $this->asEditor()->get('/search?term=' . urlencode($page->name));
@@ -59,7 +59,7 @@ class EntitySearchTest extends TestCase
 
     public function test_book_search()
     {
-        $book = Book::first();
+        $book = Recipe::first();
         $page = $book->pages->last();
         $chapter = $book->chapters->last();
 
@@ -277,7 +277,7 @@ class EntitySearchTest extends TestCase
 
     public function test_sibling_search_for_books()
     {
-        $books = Book::query()->take(10)->get();
+        $books = Recipe::query()->take(10)->get();
         $book = $books->first();
         $this->assertGreaterThan(2, count($books), 'Ensure we\'re testing with at least 1 sibling');
 

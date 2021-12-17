@@ -23,6 +23,7 @@
         "filp/whoops": "^2.14",
         "guzzlehttp/guzzle": "^7.4",
         "intervention/image": "^2.7",
+        "itsgoingd/clockwork": "^5.1",
         "laravel/framework": "^8.68",
         "laravel/socialite": "^5.2",
         "laravel/tinker": "^2.6",
@@ -45,7 +46,6 @@
     },
     "require-dev": {
         "fakerphp/faker": "^1.16",
-        "itsgoingd/clockwork": "^5.1",
         "mockery/mockery": "^1.4",
         "nunomaduro/collision": "^5.10",
         "nunomaduro/larastan": "^1.0",

@@ -23,21 +23,21 @@ class CreateBookshelvesTable extends Migration
             $prefix = DB::getTablePrefix();
             DB::statement("ALTER TABLE {$prefix}pages ENGINE = InnoDB;");
             DB::statement("ALTER TABLE {$prefix}chapters ENGINE = InnoDB;");
-            DB::statement("ALTER TABLE {$prefix}books ENGINE = InnoDB;");
+            DB::statement("ALTER TABLE {$prefix}recipes ENGINE = InnoDB;");
         } catch (Exception $exception) {
         }
 
         // Here we have table drops before the creations due to upgrade issues
         // people were having due to the bookshelves_books table creation failing.
-        if (Schema::hasTable('bookshelves_books')) {
-            Schema::drop('bookshelves_books');
+        if (Schema::hasTable('menu_recipes')) {
+            Schema::drop('menu_recipes');
         }
 
-        if (Schema::hasTable('bookshelves')) {
-            Schema::drop('bookshelves');
+        if (Schema::hasTable('menus')) {
+            Schema::drop('menus');
         }
 
-        Schema::create('bookshelves', function (Blueprint $table) {
+        Schema::create('menus', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name', 180);
             $table->string('slug', 180);
@@ -54,16 +54,16 @@ class CreateBookshelvesTable extends Migration
             $table->index('restricted');
         });
 
-        Schema::create('bookshelves_books', function (Blueprint $table) {
+        Schema::create('menu_recipes', function (Blueprint $table) {
             $table->integer('bookshelf_id')->unsigned();
             $table->integer('book_id')->unsigned();
             $table->integer('order')->unsigned();
 
             $table->primary(['bookshelf_id', 'book_id']);
 
-            $table->foreign('bookshelf_id')->references('id')->on('bookshelves')
+            $table->foreign('bookshelf_id')->references('id')->on('menus')
                 ->onUpdate('cascade')->onDelete('cascade');
-            $table->foreign('book_id')->references('id')->on('books')
+            $table->foreign('book_id')->references('id')->on('recipes')
                 ->onUpdate('cascade')->onDelete('cascade');
         });
 
@@ -82,7 +82,7 @@ class CreateBookshelvesTable extends Migration
 
             $permId = DB::table('role_permissions')->insertGetId([
                 'name'         => 'bookshelf-' . $dbOpName,
-                'display_name' => $op . ' ' . 'BookShelves',
+                'display_name' => $op . ' ' . 'Menu',
                 'created_at'   => \Carbon\Carbon::now()->toDateTimeString(),
                 'updated_at'   => \Carbon\Carbon::now()->toDateTimeString(),
             ]);
@@ -117,15 +117,15 @@ class CreateBookshelvesTable extends Migration
         DB::table('role_permissions')->whereIn('id', $permissionIds)->delete();
 
         // Drop shelves table
-        Schema::dropIfExists('bookshelves_books');
-        Schema::dropIfExists('bookshelves');
+        Schema::dropIfExists('menu_recipes');
+        Schema::dropIfExists('menus');
 
         // Drop related polymorphic items
-        DB::table('activities')->where('entity_type', '=', 'DailyRecipe\Entities\Models\Bookshelf')->delete();
-        DB::table('views')->where('viewable_type', '=', 'DailyRecipe\Entities\Models\Bookshelf')->delete();
-        DB::table('entity_permissions')->where('restrictable_type', '=', 'DailyRecipe\Entities\Models\Bookshelf')->delete();
-        DB::table('tags')->where('entity_type', '=', 'DailyRecipe\Entities\Models\Bookshelf')->delete();
-        DB::table('search_terms')->where('entity_type', '=', 'DailyRecipe\Entities\Models\Bookshelf')->delete();
-        DB::table('comments')->where('entity_type', '=', 'DailyRecipe\Entities\Models\Bookshelf')->delete();
+        DB::table('activities')->where('entity_type', '=', 'DailyRecipe\Entities\Models\Menu')->delete();
+        DB::table('views')->where('viewable_type', '=', 'DailyRecipe\Entities\Models\Menu')->delete();
+        DB::table('entity_permissions')->where('restrictable_type', '=', 'DailyRecipe\Entities\Models\Menu')->delete();
+        DB::table('tags')->where('entity_type', '=', 'DailyRecipe\Entities\Models\Menu')->delete();
+        DB::table('search_terms')->where('entity_type', '=', 'DailyRecipe\Entities\Models\Menu')->delete();
+        DB::table('comments')->where('entity_type', '=', 'DailyRecipe\Entities\Models\Menu')->delete();
     }
 }

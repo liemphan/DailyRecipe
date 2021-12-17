@@ -135,7 +135,7 @@ return [
     'recipes_search_this' => 'Search this recipe',
     'recipes_navigation' => 'Recipe Navigation',
     'recipes_sort' => 'Sort Recipes Contents',
-    'recipes_sort_named' => 'Sort Book :bookName',
+    'recipes_sort_named' => 'Sort Recipe :bookName',
     'recipes_sort_name' => 'Sort by Name',
     'recipes_sort_created' => 'Sort by Created Date',
     'recipes_sort_updated' => 'Sort by Updated Date',

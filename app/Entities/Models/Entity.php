@@ -121,7 +121,7 @@ abstract class Entity extends Model implements Sluggable, Favouritable, Viewable
             return true;
         }
 
-        if (($entity instanceof BookChild) && $this instanceof Book) {
+        if (($entity instanceof BookChild) && $this instanceof Recipe) {
             return $entity->book_id === $this->id;
         }
 

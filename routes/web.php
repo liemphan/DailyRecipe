@@ -60,7 +60,7 @@ Route::middleware('auth')->group(function () {
     Route::put('/shelves/{slug}/permissions', [BookshelfController::class, 'permissions']);
     Route::post('/shelves/{slug}/copy-permissions', [BookshelfController::class, 'copyPermissions']);
 
-    // Book Creation
+    // Recipe Creation
     Route::get('/shelves/{shelfSlug}/create-book', [BookController::class, 'create']);
     Route::post('/shelves/{shelfSlug}/create-book', [BookController::class, 'store']);
     Route::get('/create-book', [BookController::class, 'create']);

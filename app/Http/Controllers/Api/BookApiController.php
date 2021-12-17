@@ -2,7 +2,7 @@
 
 namespace DailyRecipe\Http\Controllers\Api;
 
-use DailyRecipe\Entities\Models\Book;
+use DailyRecipe\Entities\Models\Recipe;
 use DailyRecipe\Entities\Repos\BookRepo;
 use Illuminate\Http\Request;
 use Illuminate\Validation\ValidationException;
@@ -34,7 +34,7 @@ class BookApiController extends ApiController
      */
     public function list()
     {
-        $books = Book::visible();
+        $books = Recipe::visible();
 
         return $this->apiListingResponse($books, [
             'id', 'name', 'slug', 'description', 'created_at', 'updated_at', 'created_by', 'updated_by', 'owned_by', 'image_id',
@@ -61,7 +61,7 @@ class BookApiController extends ApiController
      */
     public function read(string $id)
     {
-        $book = Book::visible()->with(['tags', 'cover', 'createdBy', 'updatedBy', 'ownedBy'])->findOrFail($id);
+        $book = Recipe::visible()->with(['tags', 'cover', 'createdBy', 'updatedBy', 'ownedBy'])->findOrFail($id);
 
         return response()->json($book);
     }
@@ -73,7 +73,7 @@ class BookApiController extends ApiController
      */
     public function update(Request $request, string $id)
     {
-        $book = Book::visible()->findOrFail($id);
+        $book = Recipe::visible()->findOrFail($id);
         $this->checkOwnablePermission('book-update', $book);
 
         $requestData = $this->validate($request, $this->rules['update']);
@@ -90,7 +90,7 @@ class BookApiController extends ApiController
      */
     public function delete(string $id)
     {
-        $book = Book::visible()->findOrFail($id);
+        $book = Recipe::visible()->findOrFail($id);
         $this->checkOwnablePermission('book-delete', $book);
 
         $this->bookRepo->destroy($book);

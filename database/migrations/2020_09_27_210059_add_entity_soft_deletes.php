@@ -13,10 +13,10 @@ class AddEntitySoftDeletes extends Migration
      */
     public function up()
     {
-        Schema::table('bookshelves', function (Blueprint $table) {
+        Schema::table('menus', function (Blueprint $table) {
             $table->softDeletes();
         });
-        Schema::table('books', function (Blueprint $table) {
+        Schema::table('recipes', function (Blueprint $table) {
             $table->softDeletes();
         });
         Schema::table('chapters', function (Blueprint $table) {
@@ -34,10 +34,10 @@ class AddEntitySoftDeletes extends Migration
      */
     public function down()
     {
-        Schema::table('bookshelves', function (Blueprint $table) {
+        Schema::table('menus', function (Blueprint $table) {
             $table->dropSoftDeletes();
         });
-        Schema::table('books', function (Blueprint $table) {
+        Schema::table('recipes', function (Blueprint $table) {
             $table->dropSoftDeletes();
         });
         Schema::table('chapters', function (Blueprint $table) {

@@ -2,7 +2,7 @@
 
 namespace DailyRecipe\Entities\Tools;
 
-use DailyRecipe\Entities\Models\Book;
+use DailyRecipe\Entities\Models\Recipe;
 use DailyRecipe\Entities\Models\BookChild;
 use DailyRecipe\Entities\Models\Chapter;
 use DailyRecipe\Entities\Models\Entity;
@@ -13,14 +13,14 @@ use Illuminate\Support\Collection;
 class BookContents
 {
     /**
-     * @var Book
+     * @var Recipe
      */
     protected $book;
 
     /**
      * BookContents constructor.
      */
-    public function __construct(Book $book)
+    public function __construct(Recipe $book)
     {
         $this->book = $book;
     }
@@ -133,7 +133,7 @@ class BookContents
         });
 
         // Update permissions and activity.
-        $booksInvolved->each(function (Book $book) {
+        $booksInvolved->each(function (Recipe $book) {
             $book->rebuildPermissions();
         });
 
@@ -206,7 +206,7 @@ class BookContents
         $bookIdsInvolved = $bookIdsInvolved->concat($sortMap->pluck('model.book_id'));
         $bookIdsInvolved = $bookIdsInvolved->unique()->toArray();
 
-        $books = Book::hasPermission('update')->whereIn('id', $bookIdsInvolved)->get();
+        $books = Recipe::hasPermission('update')->whereIn('id', $bookIdsInvolved)->get();
 
         if (count($books) !== count($bookIdsInvolved)) {
             throw new SortOperationException('Could not find all books requested in sort operation');
