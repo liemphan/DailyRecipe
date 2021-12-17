@@ -1,16 +1,16 @@
 <?php
 
-namespace BookStack\Auth;
+namespace DailyRecipe\Auth;
 
-use BookStack\Actions\Favourite;
-use BookStack\Api\ApiToken;
-use BookStack\Auth\Access\Mfa\MfaValue;
-use BookStack\Entities\Tools\SlugGenerator;
-use BookStack\Interfaces\Loggable;
-use BookStack\Interfaces\Sluggable;
-use BookStack\Model;
-use BookStack\Notifications\ResetPassword;
-use BookStack\Uploads\Image;
+use DailyRecipe\Actions\Favourite;
+use DailyRecipe\Api\ApiToken;
+use DailyRecipe\Auth\Access\Mfa\MfaValue;
+use DailyRecipe\Entities\Tools\SlugGenerator;
+use DailyRecipe\Interfaces\Loggable;
+use DailyRecipe\Interfaces\Sluggable;
+use DailyRecipe\Model;
+use DailyRecipe\Notifications\ResetPassword;
+use DailyRecipe\Uploads\Image;
 use Carbon\Carbon;
 use Exception;
 use Illuminate\Auth\Authenticatable;

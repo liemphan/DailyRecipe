@@ -1,8 +1,8 @@
 <?php
 
-namespace BookStack\Settings;
+namespace DailyRecipe\Settings;
 
-use BookStack\Model;
+use DailyRecipe\Model;
 
 class Setting extends Model
 {

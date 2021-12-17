@@ -1,6 +1,6 @@
 <?php
 
-namespace BookStack\Exceptions;
+namespace DailyRecipe\Exceptions;
 
 use Exception;
 

@@ -119,18 +119,18 @@ return [
         Barryvdh\Snappy\ServiceProvider::class,
 
         // BookStack replacement service providers (Extends Laravel)
-        BookStack\Providers\PaginationServiceProvider::class,
-        BookStack\Providers\TranslationServiceProvider::class,
+        DailyRecipe\Providers\PaginationServiceProvider::class,
+        DailyRecipe\Providers\TranslationServiceProvider::class,
 
         // BookStack custom service providers
-        BookStack\Providers\ThemeServiceProvider::class,
-        BookStack\Providers\AuthServiceProvider::class,
-        BookStack\Providers\AppServiceProvider::class,
-        BookStack\Providers\BroadcastServiceProvider::class,
-        BookStack\Providers\EventServiceProvider::class,
-        BookStack\Providers\RouteServiceProvider::class,
-        BookStack\Providers\CustomFacadeProvider::class,
-        BookStack\Providers\CustomValidationServiceProvider::class,
+        DailyRecipe\Providers\ThemeServiceProvider::class,
+        DailyRecipe\Providers\AuthServiceProvider::class,
+        DailyRecipe\Providers\AppServiceProvider::class,
+        DailyRecipe\Providers\BroadcastServiceProvider::class,
+        DailyRecipe\Providers\EventServiceProvider::class,
+        DailyRecipe\Providers\RouteServiceProvider::class,
+        DailyRecipe\Providers\CustomFacadeProvider::class,
+        DailyRecipe\Providers\CustomValidationServiceProvider::class,
     ],
 
     /*
@@ -194,9 +194,9 @@ return [
         'SnappyPDF' => Barryvdh\Snappy\Facades\SnappyPdf::class,
 
         // Custom BookStack
-        'Activity'    => BookStack\Facades\Activity::class,
-        'Permissions' => BookStack\Facades\Permissions::class,
-        'Theme'       => BookStack\Facades\Theme::class,
+        'Activity'    => DailyRecipe\Facades\Activity::class,
+        'Permissions' => DailyRecipe\Facades\Permissions::class,
+        'Theme'       => DailyRecipe\Facades\Theme::class,
     ],
 
     // Proxy configuration

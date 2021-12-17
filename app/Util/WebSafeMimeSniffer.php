@@ -1,6 +1,6 @@
 <?php
 
-namespace BookStack\Util;
+namespace DailyRecipe\Util;
 
 use finfo;
 

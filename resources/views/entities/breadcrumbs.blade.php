@@ -2,7 +2,7 @@
     <?php $breadcrumbCount = 0; ?>
 
     {{-- Show top level books item --}}
-    @if (count($crumbs) > 0 && ($crumbs[0] ?? null) instanceof  \BookStack\Entities\Models\Book)
+    @if (count($crumbs) > 0 && ($crumbs[0] ?? null) instanceof  \DailyRecipe\Entities\Models\Book)
         <a href="{{  url('/books')  }}" class="text-book icon-list-item outline-hover">
             <span>@icon('books')</span>
             <span>{{ trans('entities.recipes') }}</span>
@@ -11,7 +11,7 @@
     @endif
 
     {{-- Show top level shelves item --}}
-    @if (count($crumbs) > 0 && ($crumbs[0] ?? null) instanceof  \BookStack\Entities\Models\Bookshelf)
+    @if (count($crumbs) > 0 && ($crumbs[0] ?? null) instanceof  \DailyRecipe\Entities\Models\Bookshelf)
         <a href="{{  url('/shelves')  }}" class="text-bookshelf icon-list-item outline-hover">
             <span>@icon('bookshelf')</span>
             <span>{{ trans('entities.menus') }}</span>
@@ -20,7 +20,7 @@
     @endif
 
     @foreach($crumbs as $key => $crumb)
-        <?php $isEntity = ($crumb instanceof \BookStack\Entities\Models\Entity); ?>
+        <?php $isEntity = ($crumb instanceof \DailyRecipe\Entities\Models\Entity); ?>
 
         @if (is_null($crumb))
             <?php continue; ?>

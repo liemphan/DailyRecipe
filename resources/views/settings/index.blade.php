@@ -84,7 +84,7 @@
                             <p class="small">{{ trans('settings.app_name_desc') }}</p>
                         </div>
                         <div class="pt-xs">
-                            <input type="text" value="{{ setting('app-name', 'BookStack') }}" name="setting-app-name" id="setting-app-name">
+                            <input type="text" value="{{ setting('app-name', 'DailyRecipe') }}" name="setting-app-name" id="setting-app-name">
                             @include('form.toggle-switch', [
                                 'name' => 'setting-app-name-header',
                                 'value' => setting('app-name-header'),
@@ -227,10 +227,10 @@
 
                             <label for="setting-registration-role">{{ trans('settings.reg_default_role') }}</label>
                             <select id="setting-registration-role" name="setting-registration-role" @if($errors->has('setting-registration-role')) class="neg" @endif>
-                                @foreach(\BookStack\Auth\Role::all() as $role)
+                                @foreach(\DailyRecipe\Auth\Role::all() as $role)
                                     <option value="{{$role->id}}"
                                             data-system-role-name="{{ $role->system_name ?? '' }}"
-                                            @if(setting('registration-role', \BookStack\Auth\Role::first()->id) == $role->id) selected @endif
+                                            @if(setting('registration-role', \DailyRecipe\Auth\Role::first()->id) == $role->id) selected @endif
                                     >
                                         {{ $role->display_name }}
                                     </option>

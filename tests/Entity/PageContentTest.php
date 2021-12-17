@@ -2,8 +2,8 @@
 
 namespace Tests\Entity;
 
-use BookStack\Entities\Models\Page;
-use BookStack\Entities\Tools\PageContent;
+use DailyRecipe\Entities\Models\Page;
+use DailyRecipe\Entities\Tools\PageContent;
 use Tests\TestCase;
 use Tests\Uploads\UsesImages;
 

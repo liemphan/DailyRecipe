@@ -1,8 +1,8 @@
 <?php
 
-namespace BookStack\Uploads;
+namespace DailyRecipe\Uploads;
 
-use BookStack\Exceptions\HttpFetchException;
+use DailyRecipe\Exceptions\HttpFetchException;
 
 class HttpFetcher
 {

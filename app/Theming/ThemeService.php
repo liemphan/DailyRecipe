@@ -1,8 +1,8 @@
 <?php
 
-namespace BookStack\Theming;
+namespace DailyRecipe\Theming;
 
-use BookStack\Auth\Access\SocialAuthService;
+use DailyRecipe\Auth\Access\SocialAuthService;
 use Illuminate\Console\Application;
 use Illuminate\Console\Application as Artisan;
 use Symfony\Component\Console\Command\Command;

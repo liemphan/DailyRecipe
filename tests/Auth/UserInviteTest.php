@@ -2,9 +2,9 @@
 
 namespace Tests\Auth;
 
-use BookStack\Auth\Access\UserInviteService;
-use BookStack\Auth\User;
-use BookStack\Notifications\UserInvite;
+use DailyRecipe\Auth\Access\UserInviteService;
+use DailyRecipe\Auth\User;
+use DailyRecipe\Notifications\UserInvite;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Notification;

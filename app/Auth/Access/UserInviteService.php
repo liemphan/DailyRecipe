@@ -1,9 +1,9 @@
 <?php
 
-namespace BookStack\Auth\Access;
+namespace DailyRecipe\Auth\Access;
 
-use BookStack\Auth\User;
-use BookStack\Notifications\UserInvite;
+use DailyRecipe\Auth\User;
+use DailyRecipe\Notifications\UserInvite;
 
 class UserInviteService extends UserTokenService
 {

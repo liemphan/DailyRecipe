@@ -1,8 +1,8 @@
 <?php
 
-namespace BookStack\Http\Controllers;
+namespace DailyRecipe\Http\Controllers;
 
-use BookStack\Actions\Activity;
+use DailyRecipe\Actions\Activity;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 

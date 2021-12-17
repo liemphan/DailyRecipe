@@ -1,19 +1,19 @@
 <?php
 
-namespace BookStack\Entities\Tools;
+namespace DailyRecipe\Entities\Tools;
 
-use BookStack\Entities\EntityProvider;
-use BookStack\Entities\Models\Book;
-use BookStack\Entities\Models\Bookshelf;
-use BookStack\Entities\Models\Chapter;
-use BookStack\Entities\Models\Deletion;
-use BookStack\Entities\Models\Entity;
-use BookStack\Entities\Models\HasCoverImage;
-use BookStack\Entities\Models\Page;
-use BookStack\Exceptions\NotifyException;
-use BookStack\Facades\Activity;
-use BookStack\Uploads\AttachmentService;
-use BookStack\Uploads\ImageService;
+use DailyRecipe\Entities\EntityProvider;
+use DailyRecipe\Entities\Models\Book;
+use DailyRecipe\Entities\Models\Bookshelf;
+use DailyRecipe\Entities\Models\Chapter;
+use DailyRecipe\Entities\Models\Deletion;
+use DailyRecipe\Entities\Models\Entity;
+use DailyRecipe\Entities\Models\HasCoverImage;
+use DailyRecipe\Entities\Models\Page;
+use DailyRecipe\Exceptions\NotifyException;
+use DailyRecipe\Facades\Activity;
+use DailyRecipe\Uploads\AttachmentService;
+use DailyRecipe\Uploads\ImageService;
 use Exception;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Carbon;

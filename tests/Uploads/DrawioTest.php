@@ -2,8 +2,8 @@
 
 namespace Tests\Uploads;
 
-use BookStack\Entities\Models\Page;
-use BookStack\Uploads\Image;
+use DailyRecipe\Entities\Models\Page;
+use DailyRecipe\Uploads\Image;
 use Tests\TestCase;
 
 class DrawioTest extends TestCase

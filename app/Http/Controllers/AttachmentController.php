@@ -1,12 +1,12 @@
 <?php
 
-namespace BookStack\Http\Controllers;
+namespace DailyRecipe\Http\Controllers;
 
-use BookStack\Entities\Repos\PageRepo;
-use BookStack\Exceptions\FileUploadException;
-use BookStack\Exceptions\NotFoundException;
-use BookStack\Uploads\Attachment;
-use BookStack\Uploads\AttachmentService;
+use DailyRecipe\Entities\Repos\PageRepo;
+use DailyRecipe\Exceptions\FileUploadException;
+use DailyRecipe\Exceptions\NotFoundException;
+use DailyRecipe\Uploads\Attachment;
+use DailyRecipe\Uploads\AttachmentService;
 use Exception;
 use Illuminate\Contracts\Filesystem\FileNotFoundException;
 use Illuminate\Http\Request;

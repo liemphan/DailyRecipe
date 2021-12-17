@@ -2,10 +2,10 @@
 
 namespace Tests\Uploads;
 
-use BookStack\Entities\Models\Page;
-use BookStack\Entities\Repos\PageRepo;
-use BookStack\Uploads\Image;
-use BookStack\Uploads\ImageService;
+use DailyRecipe\Entities\Models\Page;
+use DailyRecipe\Entities\Repos\PageRepo;
+use DailyRecipe\Uploads\Image;
+use DailyRecipe\Uploads\ImageService;
 use Illuminate\Support\Str;
 use Tests\TestCase;
 

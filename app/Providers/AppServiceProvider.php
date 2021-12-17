@@ -1,18 +1,18 @@
 <?php
 
-namespace BookStack\Providers;
+namespace DailyRecipe\Providers;
 
-use BookStack\Auth\Access\LoginService;
-use BookStack\Auth\Access\SocialAuthService;
-use BookStack\Entities\BreadcrumbsViewComposer;
-use BookStack\Entities\Models\Book;
-use BookStack\Entities\Models\Bookshelf;
-use BookStack\Entities\Models\Chapter;
-use BookStack\Entities\Models\Page;
-use BookStack\Exceptions\WhoopsBookStackPrettyHandler;
-use BookStack\Settings\Setting;
-use BookStack\Settings\SettingService;
-use BookStack\Util\CspService;
+use DailyRecipe\Auth\Access\LoginService;
+use DailyRecipe\Auth\Access\SocialAuthService;
+use DailyRecipe\Entities\BreadcrumbsViewComposer;
+use DailyRecipe\Entities\Models\Book;
+use DailyRecipe\Entities\Models\Bookshelf;
+use DailyRecipe\Entities\Models\Chapter;
+use DailyRecipe\Entities\Models\Page;
+use DailyRecipe\Exceptions\WhoopsBookStackPrettyHandler;
+use DailyRecipe\Settings\Setting;
+use DailyRecipe\Settings\SettingService;
+use DailyRecipe\Util\CspService;
 use GuzzleHttp\Client;
 use Illuminate\Contracts\Cache\Repository;
 use Illuminate\Database\Eloquent\Relations\Relation;

@@ -2,10 +2,10 @@
 
 namespace Tests\Auth;
 
-use BookStack\Auth\Access\Ldap;
-use BookStack\Auth\Access\LdapService;
-use BookStack\Auth\Role;
-use BookStack\Auth\User;
+use DailyRecipe\Auth\Access\Ldap;
+use DailyRecipe\Auth\Access\LdapService;
+use DailyRecipe\Auth\Role;
+use DailyRecipe\Auth\User;
 use Mockery\MockInterface;
 use Tests\TestCase;
 use Tests\TestResponse;

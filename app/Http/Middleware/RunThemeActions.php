@@ -1,9 +1,9 @@
 <?php
 
-namespace BookStack\Http\Middleware;
+namespace DailyRecipe\Http\Middleware;
 
-use BookStack\Facades\Theme;
-use BookStack\Theming\ThemeEvents;
+use DailyRecipe\Facades\Theme;
+use DailyRecipe\Theming\ThemeEvents;
 use Closure;
 
 class RunThemeActions

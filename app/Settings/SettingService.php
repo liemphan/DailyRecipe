@@ -1,8 +1,8 @@
 <?php
 
-namespace BookStack\Settings;
+namespace DailyRecipe\Settings;
 
-use BookStack\Auth\User;
+use DailyRecipe\Auth\User;
 use Illuminate\Contracts\Cache\Repository as Cache;
 
 /**

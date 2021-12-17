@@ -1,8 +1,8 @@
 <?php
 
-namespace BookStack\Console\Commands;
+namespace DailyRecipe\Console\Commands;
 
-use BookStack\Entities\Models\PageRevision;
+use DailyRecipe\Entities\Models\PageRevision;
 use Illuminate\Console\Command;
 
 class ClearRevisions extends Command

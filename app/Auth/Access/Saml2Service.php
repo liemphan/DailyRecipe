@@ -1,12 +1,12 @@
 <?php
 
-namespace BookStack\Auth\Access;
+namespace DailyRecipe\Auth\Access;
 
-use BookStack\Auth\User;
-use BookStack\Exceptions\JsonDebugException;
-use BookStack\Exceptions\SamlException;
-use BookStack\Exceptions\StoppedAuthenticationException;
-use BookStack\Exceptions\UserRegistrationException;
+use DailyRecipe\Auth\User;
+use DailyRecipe\Exceptions\JsonDebugException;
+use DailyRecipe\Exceptions\SamlException;
+use DailyRecipe\Exceptions\StoppedAuthenticationException;
+use DailyRecipe\Exceptions\UserRegistrationException;
 use Exception;
 use OneLogin\Saml2\Auth;
 use OneLogin\Saml2\Constants;

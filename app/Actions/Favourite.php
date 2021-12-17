@@ -1,8 +1,8 @@
 <?php
 
-namespace BookStack\Actions;
+namespace DailyRecipe\Actions;
 
-use BookStack\Model;
+use DailyRecipe\Model;
 use Illuminate\Database\Eloquent\Relations\MorphTo;
 
 class Favourite extends Model

@@ -1,8 +1,8 @@
 <?php
 
-namespace BookStack\Traits;
+namespace DailyRecipe\Traits;
 
-use BookStack\Auth\User;
+use DailyRecipe\Auth\User;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 /**

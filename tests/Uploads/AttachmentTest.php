@@ -2,11 +2,11 @@
 
 namespace Tests\Uploads;
 
-use BookStack\Entities\Models\Page;
-use BookStack\Entities\Repos\PageRepo;
-use BookStack\Entities\Tools\TrashCan;
-use BookStack\Uploads\Attachment;
-use BookStack\Uploads\AttachmentService;
+use DailyRecipe\Entities\Models\Page;
+use DailyRecipe\Entities\Repos\PageRepo;
+use DailyRecipe\Entities\Tools\TrashCan;
+use DailyRecipe\Uploads\Attachment;
+use DailyRecipe\Uploads\AttachmentService;
 use Illuminate\Http\UploadedFile;
 use Tests\TestCase;
 

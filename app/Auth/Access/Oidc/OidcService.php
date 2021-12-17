@@ -1,15 +1,15 @@
 <?php
 
-namespace BookStack\Auth\Access\Oidc;
+namespace DailyRecipe\Auth\Access\Oidc;
 
 use function auth;
-use BookStack\Auth\Access\LoginService;
-use BookStack\Auth\Access\RegistrationService;
-use BookStack\Auth\User;
-use BookStack\Exceptions\JsonDebugException;
-use BookStack\Exceptions\OpenIdConnectException;
-use BookStack\Exceptions\StoppedAuthenticationException;
-use BookStack\Exceptions\UserRegistrationException;
+use DailyRecipe\Auth\Access\LoginService;
+use DailyRecipe\Auth\Access\RegistrationService;
+use DailyRecipe\Auth\User;
+use DailyRecipe\Exceptions\JsonDebugException;
+use DailyRecipe\Exceptions\OpenIdConnectException;
+use DailyRecipe\Exceptions\StoppedAuthenticationException;
+use DailyRecipe\Exceptions\UserRegistrationException;
 use function config;
 use Exception;
 use Illuminate\Support\Facades\Cache;

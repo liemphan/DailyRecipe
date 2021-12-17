@@ -1,11 +1,11 @@
 <?php
 
-namespace BookStack\Providers;
+namespace DailyRecipe\Providers;
 
-use BookStack\Actions\ActivityService;
-use BookStack\Auth\Permissions\PermissionService;
-use BookStack\Theming\ThemeService;
-use BookStack\Uploads\ImageService;
+use DailyRecipe\Actions\ActivityService;
+use DailyRecipe\Auth\Permissions\PermissionService;
+use DailyRecipe\Theming\ThemeService;
+use DailyRecipe\Uploads\ImageService;
 use Illuminate\Support\ServiceProvider;
 
 class CustomFacadeProvider extends ServiceProvider

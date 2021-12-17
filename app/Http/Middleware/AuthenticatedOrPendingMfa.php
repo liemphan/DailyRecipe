@@ -1,9 +1,9 @@
 <?php
 
-namespace BookStack\Http\Middleware;
+namespace DailyRecipe\Http\Middleware;
 
-use BookStack\Auth\Access\LoginService;
-use BookStack\Auth\Access\Mfa\MfaSession;
+use DailyRecipe\Auth\Access\LoginService;
+use DailyRecipe\Auth\Access\Mfa\MfaSession;
 use Closure;
 
 class AuthenticatedOrPendingMfa

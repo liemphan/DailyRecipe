@@ -1,16 +1,16 @@
 <?php
 
-namespace BookStack\Http\Controllers;
+namespace DailyRecipe\Http\Controllers;
 
 use Activity;
-use BookStack\Actions\View;
-use BookStack\Entities\Models\Book;
-use BookStack\Entities\Repos\BookshelfRepo;
-use BookStack\Entities\Tools\PermissionsUpdater;
-use BookStack\Entities\Tools\ShelfContext;
-use BookStack\Exceptions\ImageUploadException;
-use BookStack\Exceptions\NotFoundException;
-use BookStack\Uploads\ImageRepo;
+use DailyRecipe\Actions\View;
+use DailyRecipe\Entities\Models\Book;
+use DailyRecipe\Entities\Repos\BookshelfRepo;
+use DailyRecipe\Entities\Tools\PermissionsUpdater;
+use DailyRecipe\Entities\Tools\ShelfContext;
+use DailyRecipe\Exceptions\ImageUploadException;
+use DailyRecipe\Exceptions\NotFoundException;
+use DailyRecipe\Uploads\ImageRepo;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Validation\ValidationException;

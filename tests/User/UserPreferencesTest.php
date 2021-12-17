@@ -2,7 +2,7 @@
 
 namespace Tests\User;
 
-use BookStack\Entities\Models\Bookshelf;
+use DailyRecipe\Entities\Models\Bookshelf;
 use Tests\TestCase;
 
 class UserPreferencesTest extends TestCase

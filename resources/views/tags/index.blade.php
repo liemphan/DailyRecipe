@@ -24,7 +24,7 @@
             @if($nameFilter)
                 <div class="mb-m">
                     <span class="mr-xs">{{ trans('common.filter_active') }}</span>
-                    @include('entities.tag', ['tag' => new \BookStack\Actions\Tag(['name' => $nameFilter])])
+                    @include('entities.tag', ['tag' => new \DailyRecipe\Actions\Tag(['name' => $nameFilter])])
                     <form method="get" action="{{ url("/tags") }}" class="inline block">
                         @include('form.request-query-inputs', ['params' => ['search']])
                         <button class="text-button text-warn">@icon('close'){{ trans('common.filter_clear') }}</button>

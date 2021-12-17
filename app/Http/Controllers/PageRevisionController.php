@@ -1,10 +1,10 @@
 <?php
 
-namespace BookStack\Http\Controllers;
+namespace DailyRecipe\Http\Controllers;
 
-use BookStack\Entities\Repos\PageRepo;
-use BookStack\Entities\Tools\PageContent;
-use BookStack\Exceptions\NotFoundException;
+use DailyRecipe\Entities\Repos\PageRepo;
+use DailyRecipe\Entities\Tools\PageContent;
+use DailyRecipe\Exceptions\NotFoundException;
 use Ssddanbrown\HtmlDiff\Diff;
 
 class PageRevisionController extends Controller

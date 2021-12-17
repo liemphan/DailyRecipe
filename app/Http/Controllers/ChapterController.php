@@ -1,15 +1,15 @@
 <?php
 
-namespace BookStack\Http\Controllers;
+namespace DailyRecipe\Http\Controllers;
 
-use BookStack\Actions\View;
-use BookStack\Entities\Models\Book;
-use BookStack\Entities\Repos\ChapterRepo;
-use BookStack\Entities\Tools\BookContents;
-use BookStack\Entities\Tools\NextPreviousContentLocator;
-use BookStack\Entities\Tools\PermissionsUpdater;
-use BookStack\Exceptions\MoveOperationException;
-use BookStack\Exceptions\NotFoundException;
+use DailyRecipe\Actions\View;
+use DailyRecipe\Entities\Models\Book;
+use DailyRecipe\Entities\Repos\ChapterRepo;
+use DailyRecipe\Entities\Tools\BookContents;
+use DailyRecipe\Entities\Tools\NextPreviousContentLocator;
+use DailyRecipe\Entities\Tools\PermissionsUpdater;
+use DailyRecipe\Exceptions\MoveOperationException;
+use DailyRecipe\Exceptions\NotFoundException;
 use Illuminate\Http\Request;
 use Illuminate\Validation\ValidationException;
 use Throwable;

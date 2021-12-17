@@ -1,10 +1,10 @@
 <?php
 
-namespace BookStack\Entities\Tools;
+namespace DailyRecipe\Entities\Tools;
 
-use BookStack\Entities\Models\BookChild;
-use BookStack\Interfaces\Sluggable;
-use BookStack\Model;
+use DailyRecipe\Entities\Models\BookChild;
+use DailyRecipe\Interfaces\Sluggable;
+use DailyRecipe\Model;
 use Illuminate\Support\Str;
 
 class SlugGenerator

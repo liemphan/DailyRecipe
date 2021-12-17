@@ -2,13 +2,13 @@
 
 namespace Tests;
 
-use BookStack\Auth\Permissions\PermissionService;
-use BookStack\Auth\Permissions\RolePermission;
-use BookStack\Auth\Role;
-use BookStack\Auth\User;
-use BookStack\Entities\Models\Book;
-use BookStack\Entities\Models\Chapter;
-use BookStack\Entities\Models\Page;
+use DailyRecipe\Auth\Permissions\PermissionService;
+use DailyRecipe\Auth\Permissions\RolePermission;
+use DailyRecipe\Auth\Role;
+use DailyRecipe\Auth\User;
+use DailyRecipe\Entities\Models\Book;
+use DailyRecipe\Entities\Models\Chapter;
+use DailyRecipe\Entities\Models\Page;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\View;
 

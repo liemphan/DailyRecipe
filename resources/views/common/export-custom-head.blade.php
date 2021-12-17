@@ -1,4 +1,4 @@
-@inject('headContent', 'BookStack\Theming\CustomHtmlHeadContentProvider')
+@inject('headContent', 'DailyRecipe\Theming\CustomHtmlHeadContentProvider')
 
 @if(setting('app-custom-head'))
 <!-- Custom user content -->

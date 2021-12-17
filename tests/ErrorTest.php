@@ -2,7 +2,7 @@
 
 namespace Tests;
 
-use BookStack\Entities\Models\Book;
+use DailyRecipe\Entities\Models\Book;
 use Illuminate\Support\Facades\Log;
 
 class ErrorTest extends TestCase

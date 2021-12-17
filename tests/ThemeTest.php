@@ -2,11 +2,11 @@
 
 namespace Tests;
 
-use BookStack\Auth\User;
-use BookStack\Entities\Models\Page;
-use BookStack\Entities\Tools\PageContent;
-use BookStack\Facades\Theme;
-use BookStack\Theming\ThemeEvents;
+use DailyRecipe\Auth\User;
+use DailyRecipe\Entities\Models\Page;
+use DailyRecipe\Entities\Tools\PageContent;
+use DailyRecipe\Facades\Theme;
+use DailyRecipe\Theming\ThemeEvents;
 use Illuminate\Console\Command;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
@@ -40,7 +40,7 @@ class ThemeTest extends TestCase
         $this->usingThemeFolder(function ($themeFolder) {
             $functionsFile = theme_path('functions.php');
             app()->alias('cat', 'dog');
-            file_put_contents($functionsFile, "<?php\nTheme::listen(\BookStack\Theming\ThemeEvents::APP_BOOT, function(\$app) { \$app->alias('cat', 'dog');});");
+            file_put_contents($functionsFile, "<?php\nTheme::listen(\DailyRecipe\Theming\ThemeEvents::APP_BOOT, function(\$app) { \$app->alias('cat', 'dog');});");
             $this->runWithEnv('APP_THEME', $themeFolder, function () {
                 $this->assertEquals('cat', $this->app->getAlias('dog'));
             });

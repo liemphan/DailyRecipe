@@ -1,9 +1,9 @@
 <?php
 
-namespace BookStack\Exceptions;
+namespace DailyRecipe\Exceptions;
 
-use BookStack\Auth\Access\LoginService;
-use BookStack\Auth\User;
+use DailyRecipe\Auth\Access\LoginService;
+use DailyRecipe\Auth\User;
 use Illuminate\Contracts\Support\Responsable;
 use Illuminate\Http\Request;
 

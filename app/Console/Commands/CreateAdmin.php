@@ -1,8 +1,8 @@
 <?php
 
-namespace BookStack\Console\Commands;
+namespace DailyRecipe\Console\Commands;
 
-use BookStack\Auth\UserRepo;
+use DailyRecipe\Auth\UserRepo;
 use Illuminate\Console\Command;
 use Symfony\Component\Console\Command\Command as SymfonyCommand;
 
@@ -39,9 +39,9 @@ class CreateAdmin extends Command
     /**
      * Execute the console command.
      *
-     * @throws \BookStack\Exceptions\NotFoundException
-     *
      * @return mixed
+     * @throws \DailyRecipe\Exceptions\NotFoundException
+     *
      */
     public function handle()
     {

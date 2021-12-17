@@ -1,12 +1,12 @@
 <?php
 
-namespace BookStack\Http\Controllers;
+namespace DailyRecipe\Http\Controllers;
 
-use BookStack\Entities\Queries\Popular;
-use BookStack\Entities\Tools\SearchOptions;
-use BookStack\Entities\Tools\SearchResultsFormatter;
-use BookStack\Entities\Tools\SearchRunner;
-use BookStack\Entities\Tools\SiblingFetcher;
+use DailyRecipe\Entities\Queries\Popular;
+use DailyRecipe\Entities\Tools\SearchOptions;
+use DailyRecipe\Entities\Tools\SearchResultsFormatter;
+use DailyRecipe\Entities\Tools\SearchRunner;
+use DailyRecipe\Entities\Tools\SiblingFetcher;
 use Illuminate\Http\Request;
 
 class SearchController extends Controller

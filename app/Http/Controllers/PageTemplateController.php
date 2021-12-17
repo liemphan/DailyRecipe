@@ -1,9 +1,9 @@
 <?php
 
-namespace BookStack\Http\Controllers;
+namespace DailyRecipe\Http\Controllers;
 
-use BookStack\Entities\Repos\PageRepo;
-use BookStack\Exceptions\NotFoundException;
+use DailyRecipe\Entities\Repos\PageRepo;
+use DailyRecipe\Exceptions\NotFoundException;
 use Illuminate\Http\Request;
 
 class PageTemplateController extends Controller

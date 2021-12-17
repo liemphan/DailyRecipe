@@ -1,8 +1,8 @@
 <?php
 
-namespace BookStack\Console\Commands;
+namespace DailyRecipe\Console\Commands;
 
-use BookStack\Actions\Activity;
+use DailyRecipe\Actions\Activity;
 use Illuminate\Console\Command;
 
 class ClearActivity extends Command

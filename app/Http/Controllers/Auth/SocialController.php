@@ -1,15 +1,15 @@
 <?php
 
-namespace BookStack\Http\Controllers\Auth;
+namespace DailyRecipe\Http\Controllers\Auth;
 
-use BookStack\Auth\Access\LoginService;
-use BookStack\Auth\Access\RegistrationService;
-use BookStack\Auth\Access\SocialAuthService;
-use BookStack\Exceptions\SocialDriverNotConfigured;
-use BookStack\Exceptions\SocialSignInAccountNotUsed;
-use BookStack\Exceptions\SocialSignInException;
-use BookStack\Exceptions\UserRegistrationException;
-use BookStack\Http\Controllers\Controller;
+use DailyRecipe\Auth\Access\LoginService;
+use DailyRecipe\Auth\Access\RegistrationService;
+use DailyRecipe\Auth\Access\SocialAuthService;
+use DailyRecipe\Exceptions\SocialDriverNotConfigured;
+use DailyRecipe\Exceptions\SocialSignInAccountNotUsed;
+use DailyRecipe\Exceptions\SocialSignInException;
+use DailyRecipe\Exceptions\UserRegistrationException;
+use DailyRecipe\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Laravel\Socialite\Contracts\User as SocialUser;

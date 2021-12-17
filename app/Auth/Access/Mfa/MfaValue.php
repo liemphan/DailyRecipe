@@ -1,8 +1,8 @@
 <?php
 
-namespace BookStack\Auth\Access\Mfa;
+namespace DailyRecipe\Auth\Access\Mfa;
 
-use BookStack\Auth\User;
+use DailyRecipe\Auth\User;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 

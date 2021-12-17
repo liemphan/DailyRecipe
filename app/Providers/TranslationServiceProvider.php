@@ -1,8 +1,8 @@
 <?php
 
-namespace BookStack\Providers;
+namespace DailyRecipe\Providers;
 
-use BookStack\Translation\FileLoader;
+use DailyRecipe\Translation\FileLoader;
 use Illuminate\Translation\TranslationServiceProvider as BaseProvider;
 
 class TranslationServiceProvider extends BaseProvider

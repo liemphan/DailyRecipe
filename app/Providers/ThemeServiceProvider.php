@@ -1,9 +1,9 @@
 <?php
 
-namespace BookStack\Providers;
+namespace DailyRecipe\Providers;
 
-use BookStack\Theming\ThemeEvents;
-use BookStack\Theming\ThemeService;
+use DailyRecipe\Theming\ThemeEvents;
+use DailyRecipe\Theming\ThemeService;
 use Illuminate\Support\ServiceProvider;
 
 class ThemeServiceProvider extends ServiceProvider

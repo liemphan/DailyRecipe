@@ -1,9 +1,9 @@
 <?php
 
-namespace BookStack\Http\Controllers\Auth;
+namespace DailyRecipe\Http\Controllers\Auth;
 
-use BookStack\Auth\Access\Saml2Service;
-use BookStack\Http\Controllers\Controller;
+use DailyRecipe\Auth\Access\Saml2Service;
+use DailyRecipe\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 

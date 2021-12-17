@@ -55,12 +55,12 @@ return [
     'providers' => [
         'users' => [
             'driver' => 'eloquent',
-            'model'  => \BookStack\Auth\User::class,
+            'model'  => \DailyRecipe\Auth\User::class,
         ],
 
         'external' => [
             'driver' => 'external-users',
-            'model'  => \BookStack\Auth\User::class,
+            'model'  => \DailyRecipe\Auth\User::class,
         ],
 
         // 'users' => [

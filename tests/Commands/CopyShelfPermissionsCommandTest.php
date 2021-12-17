@@ -2,7 +2,7 @@
 
 namespace Tests\Commands;
 
-use BookStack\Entities\Models\Bookshelf;
+use DailyRecipe\Entities\Models\Bookshelf;
 use Tests\TestCase;
 
 class CopyShelfPermissionsCommandTest extends TestCase

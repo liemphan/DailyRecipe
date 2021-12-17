@@ -1,12 +1,12 @@
 <?php
 
-namespace BookStack\Entities\Tools;
+namespace DailyRecipe\Entities\Tools;
 
-use BookStack\Actions\Tag;
-use BookStack\Entities\EntityProvider;
-use BookStack\Entities\Models\Entity;
-use BookStack\Entities\Models\Page;
-use BookStack\Entities\Models\SearchTerm;
+use DailyRecipe\Actions\Tag;
+use DailyRecipe\Entities\EntityProvider;
+use DailyRecipe\Entities\Models\Entity;
+use DailyRecipe\Entities\Models\Page;
+use DailyRecipe\Entities\Models\SearchTerm;
 use DOMDocument;
 use DOMNode;
 use Illuminate\Database\Eloquent\Builder;

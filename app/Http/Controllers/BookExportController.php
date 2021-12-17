@@ -1,9 +1,9 @@
 <?php
 
-namespace BookStack\Http\Controllers;
+namespace DailyRecipe\Http\Controllers;
 
-use BookStack\Entities\Repos\BookRepo;
-use BookStack\Entities\Tools\ExportFormatter;
+use DailyRecipe\Entities\Repos\BookRepo;
+use DailyRecipe\Entities\Tools\ExportFormatter;
 use Throwable;
 
 class BookExportController extends Controller

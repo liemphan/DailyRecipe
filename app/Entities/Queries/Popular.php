@@ -1,8 +1,8 @@
 <?php
 
-namespace BookStack\Entities\Queries;
+namespace DailyRecipe\Entities\Queries;
 
-use BookStack\Actions\View;
+use DailyRecipe\Actions\View;
 use Illuminate\Support\Facades\DB;
 
 class Popular extends EntityQuery

@@ -1,14 +1,14 @@
 <?php
 
-namespace BookStack\Http\Controllers\Auth;
+namespace DailyRecipe\Http\Controllers\Auth;
 
-use BookStack\Auth\Access\EmailConfirmationService;
-use BookStack\Auth\Access\LoginService;
-use BookStack\Auth\UserRepo;
-use BookStack\Exceptions\ConfirmationEmailException;
-use BookStack\Exceptions\UserTokenExpiredException;
-use BookStack\Exceptions\UserTokenNotFoundException;
-use BookStack\Http\Controllers\Controller;
+use DailyRecipe\Auth\Access\EmailConfirmationService;
+use DailyRecipe\Auth\Access\LoginService;
+use DailyRecipe\Auth\UserRepo;
+use DailyRecipe\Exceptions\ConfirmationEmailException;
+use DailyRecipe\Exceptions\UserTokenExpiredException;
+use DailyRecipe\Exceptions\UserTokenNotFoundException;
+use DailyRecipe\Http\Controllers\Controller;
 use Exception;
 use Illuminate\Http\Request;
 

@@ -1,9 +1,9 @@
 <?php
 
-namespace BookStack\Http\Controllers\Api;
+namespace DailyRecipe\Http\Controllers\Api;
 
-use BookStack\Entities\Models\Book;
-use BookStack\Entities\Repos\BookRepo;
+use DailyRecipe\Entities\Models\Book;
+use DailyRecipe\Entities\Repos\BookRepo;
 use Illuminate\Http\Request;
 use Illuminate\Validation\ValidationException;
 

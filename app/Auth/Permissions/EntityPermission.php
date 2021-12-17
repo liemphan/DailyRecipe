@@ -1,8 +1,8 @@
 <?php
 
-namespace BookStack\Auth\Permissions;
+namespace DailyRecipe\Auth\Permissions;
 
-use BookStack\Model;
+use DailyRecipe\Model;
 
 class EntityPermission extends Model
 {

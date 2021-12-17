@@ -1,6 +1,6 @@
 <?php
 
-namespace BookStack\Theming;
+namespace DailyRecipe\Theming;
 
 /**
  * The ThemeEvents used within BookStack.
@@ -19,7 +19,7 @@ class ThemeEvents
      * Application boot-up.
      * After main services are registered.
      *
-     * @param \BookStack\Application $app
+     * @param \DailyRecipe\Application $app
      */
     const APP_BOOT = 'app_boot';
 
@@ -54,7 +54,7 @@ class ThemeEvents
      * after registration. This is not emitted upon API usage.
      *
      * @param string               $authSystem
-     * @param \BookStack\Auth\User $user
+     * @param \DailyRecipe\Auth\User $user
      */
     const AUTH_LOGIN = 'auth_login';
 
@@ -65,7 +65,7 @@ class ThemeEvents
      * by LDAP, SAML and social systems. It only includes self-registrations.
      *
      * @param string               $authSystem
-     * @param \BookStack\Auth\User $user
+     * @param \DailyRecipe\Auth\User $user
      */
     const AUTH_REGISTER = 'auth_register';
 

@@ -1,9 +1,9 @@
 <?php
 
-namespace BookStack\Console\Commands;
+namespace DailyRecipe\Console\Commands;
 
-use BookStack\Entities\Models\Bookshelf;
-use BookStack\Entities\Repos\BookshelfRepo;
+use DailyRecipe\Entities\Models\Bookshelf;
+use DailyRecipe\Entities\Repos\BookshelfRepo;
 use Illuminate\Console\Command;
 
 class CopyShelfPermissions extends Command

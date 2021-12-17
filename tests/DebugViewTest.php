@@ -2,7 +2,7 @@
 
 namespace Tests;
 
-use BookStack\Auth\Access\SocialAuthService;
+use DailyRecipe\Auth\Access\SocialAuthService;
 
 class DebugViewTest extends TestCase
 {
@@ -23,7 +23,7 @@ class DebugViewTest extends TestCase
         // PHP version
         $resp->assertSeeText('PHP Version: ' . phpversion());
         // BookStack version
-        $resp->assertSeeText('BookStack Version: ' . trim(file_get_contents(base_path('version'))));
+        $resp->assertSeeText('DailyRecipe Version: ' . trim(file_get_contents(base_path('version'))));
         // Dynamic help links
         $resp->assertElementExists('a[href*="q=' . urlencode('BookStack An error occurred during testing') . '"]');
         $resp->assertElementExists('a[href*="?q=is%3Aissue+' . urlencode('An error occurred during testing') . '"]');

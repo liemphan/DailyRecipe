@@ -2,11 +2,11 @@
 
 namespace Tests\Entity;
 
-use BookStack\Actions\Tag;
-use BookStack\Entities\Models\Book;
-use BookStack\Entities\Models\Bookshelf;
-use BookStack\Entities\Models\Chapter;
-use BookStack\Entities\Models\Page;
+use DailyRecipe\Actions\Tag;
+use DailyRecipe\Entities\Models\Book;
+use DailyRecipe\Entities\Models\Bookshelf;
+use DailyRecipe\Entities\Models\Chapter;
+use DailyRecipe\Entities\Models\Page;
 use Tests\TestCase;
 
 class EntitySearchTest extends TestCase

@@ -1,8 +1,8 @@
 <?php
 
-namespace BookStack\Http\Controllers;
+namespace DailyRecipe\Http\Controllers;
 
-use BookStack\Auth\UserRepo;
+use DailyRecipe\Auth\UserRepo;
 
 class UserProfileController extends Controller
 {

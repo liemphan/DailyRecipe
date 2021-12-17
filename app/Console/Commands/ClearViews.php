@@ -1,8 +1,8 @@
 <?php
 
-namespace BookStack\Console\Commands;
+namespace DailyRecipe\Console\Commands;
 
-use BookStack\Actions\View;
+use DailyRecipe\Actions\View;
 use Illuminate\Console\Command;
 
 class ClearViews extends Command

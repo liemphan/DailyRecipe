@@ -1,9 +1,9 @@
 <?php
 
-namespace BookStack\Entities\Tools;
+namespace DailyRecipe\Entities\Tools;
 
-use BookStack\Entities\Models\BookChild;
-use BookStack\Entities\Models\Entity;
+use DailyRecipe\Entities\Models\BookChild;
+use DailyRecipe\Entities\Models\Entity;
 use Illuminate\Support\Collection;
 
 /**

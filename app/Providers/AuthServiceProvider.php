@@ -1,14 +1,14 @@
 <?php
 
-namespace BookStack\Providers;
+namespace DailyRecipe\Providers;
 
-use BookStack\Api\ApiTokenGuard;
-use BookStack\Auth\Access\ExternalBaseUserProvider;
-use BookStack\Auth\Access\Guards\AsyncExternalBaseSessionGuard;
-use BookStack\Auth\Access\Guards\LdapSessionGuard;
-use BookStack\Auth\Access\LdapService;
-use BookStack\Auth\Access\LoginService;
-use BookStack\Auth\Access\RegistrationService;
+use DailyRecipe\Api\ApiTokenGuard;
+use DailyRecipe\Auth\Access\ExternalBaseUserProvider;
+use DailyRecipe\Auth\Access\Guards\AsyncExternalBaseSessionGuard;
+use DailyRecipe\Auth\Access\Guards\LdapSessionGuard;
+use DailyRecipe\Auth\Access\LdapService;
+use DailyRecipe\Auth\Access\LoginService;
+use DailyRecipe\Auth\Access\RegistrationService;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\ServiceProvider;
 

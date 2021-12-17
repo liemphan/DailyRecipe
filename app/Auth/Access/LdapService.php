@@ -1,11 +1,11 @@
 <?php
 
-namespace BookStack\Auth\Access;
+namespace DailyRecipe\Auth\Access;
 
-use BookStack\Auth\User;
-use BookStack\Exceptions\JsonDebugException;
-use BookStack\Exceptions\LdapException;
-use BookStack\Uploads\UserAvatars;
+use DailyRecipe\Auth\User;
+use DailyRecipe\Exceptions\JsonDebugException;
+use DailyRecipe\Exceptions\LdapException;
+use DailyRecipe\Uploads\UserAvatars;
 use ErrorException;
 use Illuminate\Support\Facades\Log;
 

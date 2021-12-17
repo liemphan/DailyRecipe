@@ -2,8 +2,8 @@
 
 namespace Tests\Entity;
 
-use BookStack\Entities\Models\Page;
-use BookStack\Entities\Repos\PageRepo;
+use DailyRecipe\Entities\Models\Page;
+use DailyRecipe\Entities\Repos\PageRepo;
 use Tests\TestCase;
 
 class PageRevisionTest extends TestCase

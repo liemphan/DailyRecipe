@@ -1,9 +1,9 @@
 <?php
 
-namespace BookStack\Console\Commands;
+namespace DailyRecipe\Console\Commands;
 
-use BookStack\Actions\Comment;
-use BookStack\Actions\CommentRepo;
+use DailyRecipe\Actions\Comment;
+use DailyRecipe\Actions\CommentRepo;
 use Illuminate\Console\Command;
 
 class RegenerateCommentContent extends Command

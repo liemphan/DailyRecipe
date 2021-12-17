@@ -2,8 +2,8 @@
 
 namespace Tests\User;
 
-use BookStack\Actions\ActivityType;
-use BookStack\Api\ApiToken;
+use DailyRecipe\Actions\ActivityType;
+use DailyRecipe\Api\ApiToken;
 use Carbon\Carbon;
 use Tests\TestCase;
 

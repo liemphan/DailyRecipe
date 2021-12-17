@@ -2,12 +2,12 @@
 
 namespace Tests;
 
-use BookStack\Entities\Models\Book;
-use BookStack\Entities\Models\Bookshelf;
-use BookStack\Entities\Models\Chapter;
-use BookStack\Entities\Models\Page;
-use BookStack\Entities\Repos\BookRepo;
-use BookStack\Entities\Repos\BookshelfRepo;
+use DailyRecipe\Entities\Models\Book;
+use DailyRecipe\Entities\Models\Bookshelf;
+use DailyRecipe\Entities\Models\Chapter;
+use DailyRecipe\Entities\Models\Page;
+use DailyRecipe\Entities\Repos\BookRepo;
+use DailyRecipe\Entities\Repos\BookshelfRepo;
 use Illuminate\Support\Str;
 use Tests\Uploads\UsesImages;
 

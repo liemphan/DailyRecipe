@@ -1,9 +1,9 @@
 <?php
 
-namespace BookStack\Entities\Tools;
+namespace DailyRecipe\Entities\Tools;
 
-use BookStack\Entities\Models\Page;
-use BookStack\Entities\Models\PageRevision;
+use DailyRecipe\Entities\Models\Page;
+use DailyRecipe\Entities\Models\PageRevision;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Builder;
 

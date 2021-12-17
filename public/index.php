@@ -1,6 +1,6 @@
 <?php
 
-use BookStack\Http\Request;
+use DailyRecipe\Http\Request;
 use Illuminate\Contracts\Http\Kernel;
 
 define('LARAVEL_START', microtime(true));

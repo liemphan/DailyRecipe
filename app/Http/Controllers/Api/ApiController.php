@@ -1,9 +1,9 @@
 <?php
 
-namespace BookStack\Http\Controllers\Api;
+namespace DailyRecipe\Http\Controllers\Api;
 
-use BookStack\Api\ListingResponseBuilder;
-use BookStack\Http\Controllers\Controller;
+use DailyRecipe\Api\ListingResponseBuilder;
+use DailyRecipe\Http\Controllers\Controller;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\JsonResponse;
 

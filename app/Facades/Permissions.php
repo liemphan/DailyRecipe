@@ -1,6 +1,6 @@
 <?php
 
-namespace BookStack\Facades;
+namespace DailyRecipe\Facades;
 
 use Illuminate\Support\Facades\Facade;
 

@@ -2,10 +2,10 @@
 
 namespace Tests\Entity;
 
-use BookStack\Actions\Tag;
-use BookStack\Entities\Models\Book;
-use BookStack\Entities\Models\Entity;
-use BookStack\Entities\Models\Page;
+use DailyRecipe\Actions\Tag;
+use DailyRecipe\Entities\Models\Book;
+use DailyRecipe\Entities\Models\Entity;
+use DailyRecipe\Entities\Models\Page;
 use Tests\TestCase;
 
 class TagTest extends TestCase

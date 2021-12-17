@@ -2,10 +2,10 @@
 
 namespace Tests\Entity;
 
-use BookStack\Auth\User;
-use BookStack\Entities\Models\Book;
-use BookStack\Entities\Models\Bookshelf;
-use BookStack\Uploads\Image;
+use DailyRecipe\Auth\User;
+use DailyRecipe\Entities\Models\Book;
+use DailyRecipe\Entities\Models\Bookshelf;
+use DailyRecipe\Uploads\Image;
 use Illuminate\Support\Str;
 use Tests\TestCase;
 use Tests\Uploads\UsesImages;

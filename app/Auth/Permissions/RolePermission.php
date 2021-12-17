@@ -1,9 +1,9 @@
 <?php
 
-namespace BookStack\Auth\Permissions;
+namespace DailyRecipe\Auth\Permissions;
 
-use BookStack\Auth\Role;
-use BookStack\Model;
+use DailyRecipe\Auth\Role;
+use DailyRecipe\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 /**

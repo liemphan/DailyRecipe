@@ -1,16 +1,16 @@
 <?php
 
-namespace BookStack\Auth;
+namespace DailyRecipe\Auth;
 
 use Activity;
-use BookStack\Entities\EntityProvider;
-use BookStack\Entities\Models\Book;
-use BookStack\Entities\Models\Bookshelf;
-use BookStack\Entities\Models\Chapter;
-use BookStack\Entities\Models\Page;
-use BookStack\Exceptions\NotFoundException;
-use BookStack\Exceptions\UserUpdateException;
-use BookStack\Uploads\UserAvatars;
+use DailyRecipe\Entities\EntityProvider;
+use DailyRecipe\Entities\Models\Book;
+use DailyRecipe\Entities\Models\Bookshelf;
+use DailyRecipe\Entities\Models\Chapter;
+use DailyRecipe\Entities\Models\Page;
+use DailyRecipe\Exceptions\NotFoundException;
+use DailyRecipe\Exceptions\UserUpdateException;
+use DailyRecipe\Uploads\UserAvatars;
 use Exception;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;

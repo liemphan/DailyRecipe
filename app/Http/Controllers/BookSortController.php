@@ -1,13 +1,13 @@
 <?php
 
-namespace BookStack\Http\Controllers;
+namespace DailyRecipe\Http\Controllers;
 
-use BookStack\Actions\ActivityType;
-use BookStack\Entities\Models\Book;
-use BookStack\Entities\Repos\BookRepo;
-use BookStack\Entities\Tools\BookContents;
-use BookStack\Exceptions\SortOperationException;
-use BookStack\Facades\Activity;
+use DailyRecipe\Actions\ActivityType;
+use DailyRecipe\Entities\Models\Book;
+use DailyRecipe\Entities\Repos\BookRepo;
+use DailyRecipe\Entities\Tools\BookContents;
+use DailyRecipe\Exceptions\SortOperationException;
+use DailyRecipe\Facades\Activity;
 use Illuminate\Http\Request;
 
 class BookSortController extends Controller

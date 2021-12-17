@@ -1,10 +1,10 @@
 <?php
 
-namespace BookStack\Http\Controllers\Images;
+namespace DailyRecipe\Http\Controllers\Images;
 
-use BookStack\Exceptions\ImageUploadException;
-use BookStack\Http\Controllers\Controller;
-use BookStack\Uploads\ImageRepo;
+use DailyRecipe\Exceptions\ImageUploadException;
+use DailyRecipe\Http\Controllers\Controller;
+use DailyRecipe\Uploads\ImageRepo;
 use Exception;
 use Illuminate\Http\Request;
 

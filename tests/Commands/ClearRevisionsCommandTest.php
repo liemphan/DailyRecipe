@@ -2,8 +2,8 @@
 
 namespace Tests\Commands;
 
-use BookStack\Entities\Models\Page;
-use BookStack\Entities\Repos\PageRepo;
+use DailyRecipe\Entities\Models\Page;
+use DailyRecipe\Entities\Repos\PageRepo;
 use Illuminate\Support\Facades\Artisan;
 use Tests\TestCase;
 

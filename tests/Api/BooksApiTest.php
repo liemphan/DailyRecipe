@@ -2,7 +2,7 @@
 
 namespace Tests\Api;
 
-use BookStack\Entities\Models\Book;
+use DailyRecipe\Entities\Models\Book;
 use Tests\TestCase;
 
 class BooksApiTest extends TestCase

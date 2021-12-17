@@ -2,7 +2,7 @@
 
 namespace Tests;
 
-use BookStack\Util\CspService;
+use DailyRecipe\Util\CspService;
 
 class SecurityHeaderTest extends TestCase
 {

@@ -1,8 +1,8 @@
 <?php
 
-namespace BookStack\Console\Commands;
+namespace DailyRecipe\Console\Commands;
 
-use BookStack\Auth\User;
+use DailyRecipe\Auth\User;
 use Illuminate\Console\Command;
 
 class ResetMfa extends Command

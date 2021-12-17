@@ -1,10 +1,10 @@
 <?php
 
-namespace BookStack\Auth\Access;
+namespace DailyRecipe\Auth\Access;
 
-use BookStack\Auth\User;
-use BookStack\Exceptions\ConfirmationEmailException;
-use BookStack\Notifications\ConfirmEmail;
+use DailyRecipe\Auth\User;
+use DailyRecipe\Exceptions\ConfirmationEmailException;
+use DailyRecipe\Notifications\ConfirmEmail;
 
 class EmailConfirmationService extends UserTokenService
 {

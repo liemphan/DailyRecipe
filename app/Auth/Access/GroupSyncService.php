@@ -1,9 +1,9 @@
 <?php
 
-namespace BookStack\Auth\Access;
+namespace DailyRecipe\Auth\Access;
 
-use BookStack\Auth\Role;
-use BookStack\Auth\User;
+use DailyRecipe\Auth\Role;
+use DailyRecipe\Auth\User;
 use Illuminate\Support\Collection;
 
 class GroupSyncService

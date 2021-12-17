@@ -2,8 +2,8 @@
 
 namespace Tests\Permissions;
 
-use BookStack\Entities\Models\Book;
-use BookStack\Entities\Models\Chapter;
+use DailyRecipe\Entities\Models\Book;
+use DailyRecipe\Entities\Models\Chapter;
 use Illuminate\Support\Str;
 use Tests\TestCase;
 

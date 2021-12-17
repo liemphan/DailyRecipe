@@ -1,8 +1,8 @@
 <?php
 
-namespace BookStack\Api;
+namespace DailyRecipe\Api;
 
-use BookStack\Http\Controllers\Api\ApiController;
+use DailyRecipe\Http\Controllers\Api\ApiController;
 use Illuminate\Contracts\Container\BindingResolutionException;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Cache;

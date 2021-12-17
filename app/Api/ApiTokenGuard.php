@@ -1,9 +1,9 @@
 <?php
 
-namespace BookStack\Api;
+namespace DailyRecipe\Api;
 
-use BookStack\Auth\Access\LoginService;
-use BookStack\Exceptions\ApiAuthException;
+use DailyRecipe\Auth\Access\LoginService;
+use DailyRecipe\Exceptions\ApiAuthException;
 use Illuminate\Auth\GuardHelpers;
 use Illuminate\Contracts\Auth\Authenticatable;
 use Illuminate\Contracts\Auth\Guard;

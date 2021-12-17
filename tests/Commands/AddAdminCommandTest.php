@@ -2,7 +2,7 @@
 
 namespace Tests\Commands;
 
-use BookStack\Auth\User;
+use DailyRecipe\Auth\User;
 use Tests\TestCase;
 
 class AddAdminCommandTest extends TestCase

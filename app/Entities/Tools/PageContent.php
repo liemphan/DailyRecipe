@@ -1,16 +1,16 @@
 <?php
 
-namespace BookStack\Entities\Tools;
+namespace DailyRecipe\Entities\Tools;
 
-use BookStack\Entities\Models\Page;
-use BookStack\Entities\Tools\Markdown\CustomListItemRenderer;
-use BookStack\Entities\Tools\Markdown\CustomStrikeThroughExtension;
-use BookStack\Exceptions\ImageUploadException;
-use BookStack\Facades\Theme;
-use BookStack\Theming\ThemeEvents;
-use BookStack\Uploads\ImageRepo;
-use BookStack\Uploads\ImageService;
-use BookStack\Util\HtmlContentFilter;
+use DailyRecipe\Entities\Models\Page;
+use DailyRecipe\Entities\Tools\Markdown\CustomListItemRenderer;
+use DailyRecipe\Entities\Tools\Markdown\CustomStrikeThroughExtension;
+use DailyRecipe\Exceptions\ImageUploadException;
+use DailyRecipe\Facades\Theme;
+use DailyRecipe\Theming\ThemeEvents;
+use DailyRecipe\Uploads\ImageRepo;
+use DailyRecipe\Uploads\ImageService;
+use DailyRecipe\Util\HtmlContentFilter;
 use DOMDocument;
 use DOMElement;
 use DOMNode;

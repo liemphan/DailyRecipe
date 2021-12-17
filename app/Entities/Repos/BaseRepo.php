@@ -1,12 +1,12 @@
 <?php
 
-namespace BookStack\Entities\Repos;
+namespace DailyRecipe\Entities\Repos;
 
-use BookStack\Actions\TagRepo;
-use BookStack\Entities\Models\Entity;
-use BookStack\Entities\Models\HasCoverImage;
-use BookStack\Exceptions\ImageUploadException;
-use BookStack\Uploads\ImageRepo;
+use DailyRecipe\Actions\TagRepo;
+use DailyRecipe\Entities\Models\Entity;
+use DailyRecipe\Entities\Models\HasCoverImage;
+use DailyRecipe\Exceptions\ImageUploadException;
+use DailyRecipe\Uploads\ImageRepo;
 use Illuminate\Http\UploadedFile;
 
 class BaseRepo

@@ -2,8 +2,8 @@
 
 namespace Tests\Auth;
 
-use BookStack\Actions\ActivityType;
-use BookStack\Auth\User;
+use DailyRecipe\Actions\ActivityType;
+use DailyRecipe\Auth\User;
 use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\Psr7\Response;
 use Illuminate\Filesystem\Cache;

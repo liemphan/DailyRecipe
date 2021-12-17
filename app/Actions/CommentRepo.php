@@ -1,9 +1,9 @@
 <?php
 
-namespace BookStack\Actions;
+namespace DailyRecipe\Actions;
 
-use BookStack\Entities\Models\Entity;
-use BookStack\Facades\Activity as ActivityService;
+use DailyRecipe\Entities\Models\Entity;
+use DailyRecipe\Facades\Activity as ActivityService;
 use League\CommonMark\CommonMarkConverter;
 
 /**

@@ -1,9 +1,9 @@
 <?php
 
-namespace BookStack\Api;
+namespace DailyRecipe\Api;
 
-use BookStack\Auth\User;
-use BookStack\Interfaces\Loggable;
+use DailyRecipe\Auth\User;
+use DailyRecipe\Interfaces\Loggable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Support\Carbon;

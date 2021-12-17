@@ -1,11 +1,11 @@
 <?php
 
-namespace BookStack\Http\Controllers;
+namespace DailyRecipe\Http\Controllers;
 
-use BookStack\Facades\Activity;
-use BookStack\Interfaces\Loggable;
-use BookStack\Model;
-use BookStack\Util\WebSafeMimeSniffer;
+use DailyRecipe\Facades\Activity;
+use DailyRecipe\Interfaces\Loggable;
+use DailyRecipe\Model;
+use DailyRecipe\Util\WebSafeMimeSniffer;
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Http\Exceptions\HttpResponseException;

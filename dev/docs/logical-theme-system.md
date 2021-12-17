@@ -32,7 +32,7 @@ If an action returns a non-null value then BookStack will stop cycling through a
 
 ```php
 Theme::listen(
-    \BookStack\Theming\ThemeEvents::AUTH_LOGIN,
+    \DailyRecipe\Theming\ThemeEvents::AUTH_LOGIN,
     function($service, $user) {
         \Log::info("Login by {$user->name} via {$service}");
     }
@@ -80,8 +80,8 @@ The comments above each constant with the `ThemeEvents.php` file describe the di
 ```php
 <?php
 
-use BookStack\Facades\Theme;
-use BookStack\Theming\ThemeEvents;
+use DailyRecipe\Facades\Theme;
+use DailyRecipe\Theming\ThemeEvents;
 
 // Logs custom message on user login
 Theme::listen(ThemeEvents::AUTH_LOGIN, function($method, $user) {
@@ -106,7 +106,7 @@ Below is an example of registering a command that could then be ran using `php a
 ```php
 <?php
 
-use BookStack\Facades\Theme;
+use DailyRecipe\Facades\Theme;
 use Illuminate\Console\Command;
 
 class MeowCommand extends Command

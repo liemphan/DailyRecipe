@@ -1,10 +1,10 @@
 <?php
 
-namespace BookStack\Uploads;
+namespace DailyRecipe\Uploads;
 
-use BookStack\Auth\Permissions\PermissionService;
-use BookStack\Entities\Models\Page;
-use BookStack\Exceptions\ImageUploadException;
+use DailyRecipe\Auth\Permissions\PermissionService;
+use DailyRecipe\Entities\Models\Page;
+use DailyRecipe\Exceptions\ImageUploadException;
 use Exception;
 use Illuminate\Database\Eloquent\Builder;
 use Symfony\Component\HttpFoundation\File\UploadedFile;

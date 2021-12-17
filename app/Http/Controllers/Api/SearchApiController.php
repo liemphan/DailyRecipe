@@ -1,10 +1,10 @@
 <?php
 
-namespace BookStack\Http\Controllers\Api;
+namespace DailyRecipe\Http\Controllers\Api;
 
-use BookStack\Entities\Models\Entity;
-use BookStack\Entities\Tools\SearchOptions;
-use BookStack\Entities\Tools\SearchRunner;
+use DailyRecipe\Entities\Models\Entity;
+use DailyRecipe\Entities\Tools\SearchOptions;
+use DailyRecipe\Entities\Tools\SearchRunner;
 use Illuminate\Http\Request;
 
 class SearchApiController extends ApiController

@@ -20,7 +20,7 @@
         </div>
     </div>
 
-    @if($model instanceof \BookStack\Entities\Models\Bookshelf)
+    @if($model instanceof \DailyRecipe\Entities\Models\Bookshelf)
         <p class="text-warn">{{ trans('entities.menus_permissions_cascade_warning') }}</p>
     @endif
 
@@ -34,7 +34,7 @@
                 <a href="#" permissions-table-toggle-all class="text-small ml-m text-primary">{{ trans('common.toggle_all') }}</a>
             </th>
         </tr>
-        @foreach(\BookStack\Auth\Role::restrictable() as $role)
+        @foreach(\DailyRecipe\Auth\Role::restrictable() as $role)
             <tr>
                 <td width="33%" class="pt-m">
                     {{ $role->display_name }}

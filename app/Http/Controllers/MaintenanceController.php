@@ -1,11 +1,11 @@
 <?php
 
-namespace BookStack\Http\Controllers;
+namespace DailyRecipe\Http\Controllers;
 
-use BookStack\Actions\ActivityType;
-use BookStack\Entities\Tools\TrashCan;
-use BookStack\Notifications\TestEmail;
-use BookStack\Uploads\ImageService;
+use DailyRecipe\Actions\ActivityType;
+use DailyRecipe\Entities\Tools\TrashCan;
+use DailyRecipe\Notifications\TestEmail;
+use DailyRecipe\Uploads\ImageService;
 use Illuminate\Http\Request;
 
 class MaintenanceController extends Controller

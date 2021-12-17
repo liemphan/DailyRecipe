@@ -1,6 +1,6 @@
 <?php
 
-namespace BookStack\Util;
+namespace DailyRecipe\Util;
 
 use Illuminate\Support\Str;
 use Symfony\Component\HttpFoundation\Response;

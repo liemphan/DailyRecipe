@@ -1,14 +1,14 @@
 <?php
 
-namespace BookStack\Auth\Access;
+namespace DailyRecipe\Auth\Access;
 
-use BookStack\Actions\ActivityType;
-use BookStack\Auth\Access\Mfa\MfaSession;
-use BookStack\Auth\User;
-use BookStack\Exceptions\StoppedAuthenticationException;
-use BookStack\Facades\Activity;
-use BookStack\Facades\Theme;
-use BookStack\Theming\ThemeEvents;
+use DailyRecipe\Actions\ActivityType;
+use DailyRecipe\Auth\Access\Mfa\MfaSession;
+use DailyRecipe\Auth\User;
+use DailyRecipe\Exceptions\StoppedAuthenticationException;
+use DailyRecipe\Facades\Activity;
+use DailyRecipe\Facades\Theme;
+use DailyRecipe\Theming\ThemeEvents;
 use Exception;
 
 class LoginService

@@ -1,8 +1,8 @@
 <?php
 
-namespace BookStack\Http\Controllers;
+namespace DailyRecipe\Http\Controllers;
 
-use BookStack\Auth\User;
+use DailyRecipe\Auth\User;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
 

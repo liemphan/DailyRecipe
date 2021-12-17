@@ -1,10 +1,10 @@
 <?php
 
-namespace BookStack\Actions;
+namespace DailyRecipe\Actions;
 
-use BookStack\Auth\User;
-use BookStack\Entities\Models\Entity;
-use BookStack\Model;
+use DailyRecipe\Auth\User;
+use DailyRecipe\Entities\Models\Entity;
+use DailyRecipe\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\MorphTo;
 use Illuminate\Support\Str;

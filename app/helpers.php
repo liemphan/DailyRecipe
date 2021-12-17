@@ -1,9 +1,9 @@
 <?php
 
-use BookStack\Auth\Permissions\PermissionService;
-use BookStack\Auth\User;
-use BookStack\Model;
-use BookStack\Settings\SettingService;
+use DailyRecipe\Auth\Permissions\PermissionService;
+use DailyRecipe\Auth\User;
+use DailyRecipe\Model;
+use DailyRecipe\Settings\SettingService;
 
 /**
  * Get the path to a versioned file.

@@ -1,8 +1,8 @@
 <?php
 
-namespace BookStack\Uploads;
+namespace DailyRecipe\Uploads;
 
-use BookStack\Exceptions\ImageUploadException;
+use DailyRecipe\Exceptions\ImageUploadException;
 use ErrorException;
 use Exception;
 use Illuminate\Contracts\Cache\Repository as Cache;
