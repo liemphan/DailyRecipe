@@ -27,7 +27,7 @@ class SearchApiController extends ApiController
     /**
      * Run a search query against all main content types (shelves, books, chapters & pages)
      * in the system. Takes the same input as the main search bar within the DailyRecipe
-     * interface as a 'query' parameter. See https://www.bookstackapp.com/docs/user/searching/
+     * interface as a 'query' parameter. See https://www.dailyrecipeapp.com/docs/user/searching/
      * for a full list of search term options. Results contain a 'type' property to distinguish
      * between: bookshelf, book, chapter & page.
      *

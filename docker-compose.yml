@@ -10,9 +10,9 @@ services:
   db:
     image: mysql:8
     environment:
-      MYSQL_DATABASE: bookstack-dev
-      MYSQL_USER: bookstack-test
-      MYSQL_PASSWORD: bookstack-test
+      MYSQL_DATABASE: dailyrecipe-dev
+      MYSQL_USER: dailyrecipe-test
+      MYSQL_PASSWORD: dailyrecipe-test
       MYSQL_RANDOM_ROOT_PASSWORD: 'true'
     command: --default-authentication-plugin=mysql_native_password
     volumes:
@@ -27,10 +27,10 @@ services:
       DB_CONNECTION: mysql
       DB_HOST: db
       DB_PORT: 3306
-      DB_DATABASE: bookstack-dev
-      DB_USERNAME: bookstack-test
-      DB_PASSWORD: bookstack-test
-      TEST_DATABASE_URL: mysql://bookstack-test:bookstack-test@db/bookstack-test
+      DB_DATABASE: dailyrecipe-dev
+      DB_USERNAME: dailyrecipe-test
+      DB_PASSWORD: dailyrecipe-test
+      TEST_DATABASE_URL: mysql://dailyrecipe-test:dailyrecipe-test@db/dailyrecipe-test
       MAIL_DRIVER: smtp
       MAIL_HOST: mailhog
       MAIL_PORT: 1025

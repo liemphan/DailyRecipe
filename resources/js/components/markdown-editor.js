@@ -104,7 +104,7 @@ class MarkdownEditor {
         });
 
         this.codeMirrorSetup();
-        this.listenForBookStackEditorEvents();
+        this.listenForDailyRecipeEditorEvents();
 
         // Scroll to text if needed.
         const queryParams = (new URL(window.location)).searchParams;
@@ -244,7 +244,7 @@ class MarkdownEditor {
         // Handle image & content drag n drop
         cm.on('drop', (cm, event) => {
 
-            const templateId = event.dataTransfer.getData('bookstack/template');
+            const templateId = event.dataTransfer.getData('dailyrecipe/template');
             if (templateId) {
                 const cursorPos = cm.coordsChar({left: event.pageX, top: event.pageY});
                 cm.setCursor(cursorPos);
@@ -539,7 +539,7 @@ class MarkdownEditor {
         })
     }
 
-    listenForBookStackEditorEvents() {
+    listenForDailyRecipeEditorEvents() {
 
         function getContentToInsert({html, markdown}) {
             return markdown || html;

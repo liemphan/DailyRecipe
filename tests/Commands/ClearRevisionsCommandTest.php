@@ -26,7 +26,7 @@ class ClearRevisionsCommandTest extends TestCase
             'type'    => 'update_draft',
         ]);
 
-        $exitCode = Artisan::call('bookstack:clear-revisions');
+        $exitCode = Artisan::call('dailyrecipe:clear-revisions');
         $this->assertTrue($exitCode === 0, 'Command executed successfully');
 
         $this->assertDatabaseMissing('page_revisions', [
@@ -38,7 +38,7 @@ class ClearRevisionsCommandTest extends TestCase
             'type'    => 'update_draft',
         ]);
 
-        $exitCode = Artisan::call('bookstack:clear-revisions', ['--all' => true]);
+        $exitCode = Artisan::call('dailyrecipe:clear-revisions', ['--all' => true]);
         $this->assertTrue($exitCode === 0, 'Command executed successfully');
 
         $this->assertDatabaseMissing('page_revisions', [

@@ -28,7 +28,7 @@
   "cover": {
     "id": 501,
     "name": "anafrancisconi_Sp04AfFCPNM.jpg",
-    "url": "http://bookstack.local/uploads/images/cover_book/2020-04/anafrancisconi_Sp04AfFCPNM.jpg",
+    "url": "http://dailyrecipe.local/uploads/images/cover_book/2020-04/anafrancisconi_Sp04AfFCPNM.jpg",
     "created_at": "2020-04-10T13:31:04.000000Z",
     "updated_at": "2020-04-10T13:31:04.000000Z",
     "created_by": 1,
@@ -46,7 +46,7 @@
     {
       "id": 1,
       "name": "DailyRecipe User Guide",
-      "slug": "bookstack-user-guide"
+      "slug": "dailyrecipe-user-guide"
     },
     {
       "id": 3,

@@ -29,7 +29,7 @@ class TemplateManager {
 
     handleTemplateItemDragStart(event, templateItem) {
         const templateId = templateItem.closest('[template-id]').getAttribute('template-id');
-        event.dataTransfer.setData('bookstack/template', templateId);
+        event.dataTransfer.setData('dailyrecipe/template', templateId);
         event.dataTransfer.setData('text/plain', templateId);
     }
 

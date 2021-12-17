@@ -31,7 +31,7 @@ class ConfigTest extends TestCase
     public function test_app_url_blank_if_old_default_value()
     {
         $initUrl = 'https://example.com/docs';
-        $oldDefault = 'http://bookstack.dev';
+        $oldDefault = 'http://dailyrecipe.dev';
         $this->checkEnvConfigResult('APP_URL', $initUrl, 'app.url', $initUrl);
         $this->checkEnvConfigResult('APP_URL', $oldDefault, 'app.url', '');
     }

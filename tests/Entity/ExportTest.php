@@ -355,7 +355,7 @@ class ExportTest extends TestCase
         $resp->assertSee("# Dogcat\n\n<p class=\"callout info\">Some callout text</p>\n\nAnother line", false);
     }
 
-    public function test_page_markdown_export_handles_bookstacks_wysiwyg_codeblock_format()
+    public function test_page_markdown_export_handles_dailyrecipes_wysiwyg_codeblock_format()
     {
         $page = Page::query()->first()->forceFill([
             'markdown' => '',

@@ -212,7 +212,7 @@ class ThemeTest extends TestCase
     {
         Theme::registerCommand(new MyCustomCommand());
 
-        Artisan::call('bookstack:test-custom-command', []);
+        Artisan::call('dailyrecipe:test-custom-command', []);
         $output = Artisan::output();
 
         $this->assertStringContainsString('Command ran!', $output);
@@ -235,7 +235,7 @@ class ThemeTest extends TestCase
 
 class MyCustomCommand extends Command
 {
-    protected $signature = 'bookstack:test-custom-command';
+    protected $signature = 'dailyrecipe:test-custom-command';
 
     public function handle()
     {

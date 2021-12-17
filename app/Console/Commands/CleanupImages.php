@@ -13,7 +13,7 @@ class CleanupImages extends Command
      *
      * @var string
      */
-    protected $signature = 'bookstack:cleanup-images
+    protected $signature = 'dailyrecipe:cleanup-images
                             {--a|all : Also delete images that are only used in old revisions}
                             {--f|force : Actually run the deletions, Defaults to a dry-run}
                             ';

@@ -510,18 +510,18 @@ class LdapTest extends TestCase
 
     public function test_ldap_port_provided_on_host_if_host_is_full_uri()
     {
-        $hostName = 'ldaps://bookstack:8080';
+        $hostName = 'ldaps://dailyrecipe:8080';
         $this->checkLdapReceivesCorrectDetails($hostName, $hostName, 389);
     }
 
     public function test_ldap_port_parsed_from_server_if_host_is_not_full_uri()
     {
-        $this->checkLdapReceivesCorrectDetails('ldap.bookstack.com:8080', 'ldap.bookstack.com', 8080);
+        $this->checkLdapReceivesCorrectDetails('ldap.dailyrecipe.com:8080', 'ldap.dailyrecipe.com', 8080);
     }
 
     public function test_default_ldap_port_used_if_not_in_server_string_and_not_uri()
     {
-        $this->checkLdapReceivesCorrectDetails('ldap.bookstack.com', 'ldap.bookstack.com', 389);
+        $this->checkLdapReceivesCorrectDetails('ldap.dailyrecipe.com', 'ldap.dailyrecipe.com', 389);
     }
 
     public function test_forgot_password_routes_inaccessible()
@@ -576,7 +576,7 @@ class LdapTest extends TestCase
         ]);
         $resp->assertJsonStructure([
             'details_from_ldap'        => [],
-            'details_bookstack_parsed' => [],
+            'details_dailyrecipe_parsed' => [],
         ]);
     }
 

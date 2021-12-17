@@ -22,7 +22,7 @@ class ClearActivityCommandTest extends TestCase
         ]);
 
         DB::rollBack();
-        $exitCode = \Artisan::call('bookstack:clear-activity');
+        $exitCode = \Artisan::call('dailyrecipe:clear-activity');
         DB::beginTransaction();
         $this->assertTrue($exitCode === 0, 'Command executed successfully');
 

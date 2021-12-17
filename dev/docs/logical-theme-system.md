@@ -71,7 +71,7 @@ Theme::registerCommand(new SayHelloCommand());
 
 ## Available Events
 
-All available events dispatched by DailyRecipe are exposed as static properties on the `\DailyRecipe\Theming\ThemeEvents` class, which can be found within the file `app/Theming/ThemeEvents.php` relative to your root DailyRecipe folder. Alternatively, the events for the latest release can be [seen on GitHub here](https://github.com/BookStackApp/DailyRecipe/blob/release/app/Theming/ThemeEvents.php).
+All available events dispatched by DailyRecipe are exposed as static properties on the `\DailyRecipe\Theming\ThemeEvents` class, which can be found within the file `app/Theming/ThemeEvents.php` relative to your root DailyRecipe folder. Alternatively, the events for the latest release can be [seen on GitHub here](https://github.com/DailyRecipeApp/DailyRecipe/blob/release/app/Theming/ThemeEvents.php).
 
 The comments above each constant with the `ThemeEvents.php` file describe the dispatch conditions of the event, in addition to the arguments the action will receive. The comments may also describe any ways the return value of the action may be used. 
 
@@ -101,7 +101,7 @@ Theme::listen(ThemeEvents::APP_BOOT, function($app) {
 The logical theme system supports adding custom [artisan commands](https://laravel.com/docs/8.x/artisan) to DailyRecipe.
 These can be registered in your `functions.php` file by calling `Theme::registerCommand($command)`, where `$command` is an instance of `\Symfony\Component\Console\Command\Command`. 
 
-Below is an example of registering a command that could then be ran using `php artisan bookstack:meow` on the command line.
+Below is an example of registering a command that could then be ran using `php artisan dailyrecipe:meow` on the command line.
 
 ```php
 <?php
@@ -111,7 +111,7 @@ use Illuminate\Console\Command;
 
 class MeowCommand extends Command
 {
-    protected $signature = 'bookstack:meow';
+    protected $signature = 'dailyrecipe:meow';
     protected $description = 'Say meow on the command line';
 
     public function handle()

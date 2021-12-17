@@ -1,22 +1,22 @@
 # DailyRecipe
 
-[![GitHub release](https://img.shields.io/github/release/BookStackApp/DailyRecipe.svg)](https://github.com/BookStackApp/DailyRecipe/releases/latest)
-[![license](https://img.shields.io/badge/License-MIT-yellow.svg)](https://github.com/BookStackApp/DailyRecipe/blob/master/LICENSE)
-[![Crowdin](https://badges.crowdin.net/bookstack/localized.svg)](https://crowdin.com/project/bookstack)
+[![GitHub release](https://img.shields.io/github/release/DailyRecipeApp/DailyRecipe.svg)](https://github.com/DailyRecipeApp/DailyRecipe/releases/latest)
+[![license](https://img.shields.io/badge/License-MIT-yellow.svg)](https://github.com/DailyRecipeApp/DailyRecipe/blob/master/LICENSE)
+[![Crowdin](https://badges.crowdin.net/dailyrecipe/localized.svg)](https://crowdin.com/project/dailyrecipe)
 [![Discord](https://img.shields.io/static/v1?label=chat&message=discord&color=738adb&logo=discord)](https://discord.gg/ztkBqR2)
-[![Repo Stats](https://img.shields.io/static/v1?label=GitHub+project&message=stats&color=f27e3f)](https://gh-stats.bookstackapp.com/)
-[![Build Status](https://github.com/BookStackApp/DailyRecipe/workflows/phpunit/badge.svg)](https://github.com/BookStackApp/DailyRecipe/actions)
+[![Repo Stats](https://img.shields.io/static/v1?label=GitHub+project&message=stats&color=f27e3f)](https://gh-stats.dailyrecipeapp.com/)
+[![Build Status](https://github.com/DailyRecipeApp/DailyRecipe/workflows/phpunit/badge.svg)](https://github.com/DailyRecipeApp/DailyRecipe/actions)
 [![StyleCI](https://github.styleci.io/repos/41589337/shield?style=flat)](https://github.styleci.io/repos/41589337)
 
-A platform for storing and organising information and documentation. Details for DailyRecipe can be found on the official website at https://www.bookstackapp.com/.
+A platform for storing and organising information and documentation. Details for DailyRecipe can be found on the official website at https://www.dailyrecipeapp.com/.
 
-* [Installation Instructions](https://www.bookstackapp.com/docs/admin/installation)
-* [Documentation](https://www.bookstackapp.com/docs)
-* [Demo Instance](https://demo.bookstackapp.com)
-    * [Admin Login](https://demo.bookstackapp.com/login?email=admin@example.com&password=password)
-* [Screenshots](https://www.bookstackapp.com/#screenshots) 
-* [DailyRecipe Blog](https://www.bookstackapp.com/blog)
-* [Issue List](https://github.com/BookStackApp/DailyRecipe/issues)
+* [Installation Instructions](https://www.dailyrecipeapp.com/docs/admin/installation)
+* [Documentation](https://www.dailyrecipeapp.com/docs)
+* [Demo Instance](https://demo.dailyrecipeapp.com)
+    * [Admin Login](https://demo.dailyrecipeapp.com/login?email=admin@example.com&password=password)
+* [Screenshots](https://www.dailyrecipeapp.com/#screenshots) 
+* [DailyRecipe Blog](https://www.dailyrecipeapp.com/blog)
+* [Issue List](https://github.com/DailyRecipeApp/DailyRecipe/issues)
 * [Discord Chat](https://discord.gg/ztkBqR2)
 
 ## 📚 Project Definition
@@ -38,11 +38,11 @@ Note: Listed services are not tested, vetted nor supported by the official Daily
 
 <table><tbody><tr>
 <td><a href="https://www.diagrams.net/" target="_blank">
-    <img width="280" src="https://media.githubusercontent.com/media/BookStackApp/website/main/static/images/sponsors/diagramsnet.png" alt="Diagrams.net">
+    <img width="280" src="https://media.githubusercontent.com/media/DailyRecipeApp/website/main/static/images/sponsors/diagramsnet.png" alt="Diagrams.net">
 </a></td>
 
-<td><a href="https://www.stellarhosted.com/bookstack/" target="_blank">
-    <img width="280" src="https://media.githubusercontent.com/media/BookStackApp/website/main/static/images/sponsors/stellarhosted.png" alt="Stellar Hosted">
+<td><a href="https://www.stellarhosted.com/dailyrecipe/" target="_blank">
+    <img width="280" src="https://media.githubusercontent.com/media/DailyRecipeApp/website/main/static/images/sponsors/stellarhosted.png" alt="Stellar Hosted">
 </a></td>
 </tr></tbody></table>
 
@@ -67,11 +67,11 @@ DailyRecipe releases are each assigned a date-based version number in the format
 - `v21.06.2` - Second patch release upon the June 2021 feature release.
 
 Patch releases are generally fairly minor, primarily intended for fixes and therefore is fairly unlikely to cause breakages upon update.
-Feature releases are generally larger, bringing new features in addition to fixes and enhancements. These releases have a greater chance of introducing breaking changes upon update, so it's worth checking for any notes in the [update guide](https://www.bookstackapp.com/docs/admin/updates/).
+Feature releases are generally larger, bringing new features in addition to fixes and enhancements. These releases have a greater chance of introducing breaking changes upon update, so it's worth checking for any notes in the [update guide](https://www.dailyrecipeapp.com/docs/admin/updates/).
 
-Each DailyRecipe release will have a [milestone](https://github.com/BookStackApp/DailyRecipe/milestones) created with issues & pull requests assigned to it to define what will be in that release. Milestones are built up then worked through until complete at which point, after some testing and documentation updates, the release will be deployed.
+Each DailyRecipe release will have a [milestone](https://github.com/DailyRecipeApp/DailyRecipe/milestones) created with issues & pull requests assigned to it to define what will be in that release. Milestones are built up then worked through until complete at which point, after some testing and documentation updates, the release will be deployed.
 
-Feature releases, and some patch releases, will be accompanied by a post on the [DailyRecipe blog](https://www.bookstackapp.com/blog/) which will provide additional detail on features, changes & updates otherwise the [GitHub release page](https://github.com/BookStackApp/DailyRecipe/releases) will show a list of changes. You can sign up to be alerted to new DailyRecipe blogs posts (once per week maximum) [at this link](https://updates.bookstackapp.com/signup/bookstack-news-and-updates).
+Feature releases, and some patch releases, will be accompanied by a post on the [DailyRecipe blog](https://www.dailyrecipeapp.com/blog/) which will provide additional detail on features, changes & updates otherwise the [GitHub release page](https://github.com/DailyRecipeApp/DailyRecipe/releases) will show a list of changes. You can sign up to be alerted to new DailyRecipe blogs posts (once per week maximum) [at this link](https://updates.dailyrecipeapp.com/signup/dailyrecipe-news-and-updates).
 
 ## 🛠️ Development & Testing
 
@@ -95,7 +95,7 @@ npm run production
 npm run dev
 ```
 
-DailyRecipe has many integration tests that use Laravel's built-in testing capabilities which makes use of PHPUnit. There is a `mysql_testing` database defined within the app config which is what is used by PHPUnit. This database is set with the database name, user name and password all defined as `bookstack-test`. You will have to create that database and that set of credentials before testing.
+DailyRecipe has many integration tests that use Laravel's built-in testing capabilities which makes use of PHPUnit. There is a `mysql_testing` database defined within the app config which is what is used by PHPUnit. This database is set with the database name, user name and password all defined as `dailyrecipe-test`. You will have to create that database and that set of credentials before testing.
 
 The testing database will also need migrating and seeding beforehand. This can be done with the following commands:
 
@@ -154,9 +154,9 @@ docker-compose run app php vendor/bin/phpunit
 
 ## 🌎 Translations
 
-Translations for text within DailyRecipe is managed through the [DailyRecipe project on Crowdin](https://crowdin.com/project/bookstack). Some strings have colon-prefixed variables in such as `:userName`. Leave these values as they are as they will be replaced at run-time. Crowdin is the preferred way to provide translations, otherwise the raw translations files can be found within the `resources/lang` path.
+Translations for text within DailyRecipe is managed through the [DailyRecipe project on Crowdin](https://crowdin.com/project/dailyrecipe). Some strings have colon-prefixed variables in such as `:userName`. Leave these values as they are as they will be replaced at run-time. Crowdin is the preferred way to provide translations, otherwise the raw translations files can be found within the `resources/lang` path.
 
-If you'd like a new language to be added to Crowdin, for you to be able to provide translations for, please [open a new issue here](https://github.com/BookStackApp/DailyRecipe/issues/new?template=language_request.md).
+If you'd like a new language to be added to Crowdin, for you to be able to provide translations for, please [open a new issue here](https://github.com/DailyRecipeApp/DailyRecipe/issues/new?template=language_request.md).
 
 Please note, translations in DailyRecipe are provided to the "Crowdin Global Translation Memory" which helps DailyRecipe and other projects with finding translations. If you are not happy with contributing to this then providing translations to DailyRecipe, even manually via GitHub, is not advised.
 
@@ -168,15 +168,15 @@ Pull requests are welcome. Unless a small tweak or language update, It may be be
 
 Pull requests should be created from the `master` branch since they will be merged back into `master` once done. Please do not build from or request a merge into the `release` branch as this is only for publishing releases. If you are looking to alter CSS or JavaScript content please edit the source files found in `resources/`. Any CSS or JS files within `public` are built from these source files and therefore should not be edited directly.
 
-The project's code of conduct [can be found here](https://github.com/BookStackApp/DailyRecipe/blob/master/.github/CODE_OF_CONDUCT.md).
+The project's code of conduct [can be found here](https://github.com/DailyRecipeApp/DailyRecipe/blob/master/.github/CODE_OF_CONDUCT.md).
 
 ## 🔒 Security
 
-Security information for administering a DailyRecipe instance can be found on the [documentation site here](https://www.bookstackapp.com/docs/admin/security/).
+Security information for administering a DailyRecipe instance can be found on the [documentation site here](https://www.dailyrecipeapp.com/docs/admin/security/).
 
-If you'd like to be notified of new potential security concerns you can [sign-up to the DailyRecipe security mailing list](https://updates.bookstackapp.com/signup/bookstack-security-updates).
+If you'd like to be notified of new potential security concerns you can [sign-up to the DailyRecipe security mailing list](https://updates.dailyrecipeapp.com/signup/dailyrecipe-security-updates).
 
-If you would like to report a security concern, details of doing so can [can be found here](https://github.com/BookStackApp/DailyRecipe/blob/master/.github/SECURITY.md).
+If you would like to report a security concern, details of doing so can [can be found here](https://github.com/DailyRecipeApp/DailyRecipe/blob/master/.github/SECURITY.md).
 
 ## ♿ Accessibility
 
@@ -184,7 +184,7 @@ We want DailyRecipe to remain accessible to as many people as possible. We aim f
 
 ## 🖥️ Website, Docs & Blog
 
-The website which contains the project docs & Blog can be found in the [BookStackApp/website](https://github.com/BookStackApp/website) repo.
+The website which contains the project docs & Blog can be found in the [DailyRecipeApp/website](https://github.com/DailyRecipeApp/website) repo.
 
 ## ⚖️ License
 
@@ -192,9 +192,9 @@ The DailyRecipe source is provided under the MIT License. The libraries used by,
 
 ## 👪 Attribution
 
-The great people that have worked to build and improve DailyRecipe can [be seen here](https://github.com/BookStackApp/DailyRecipe/graphs/contributors).
+The great people that have worked to build and improve DailyRecipe can [be seen here](https://github.com/DailyRecipeApp/DailyRecipe/graphs/contributors).
 
-The wonderful people that have provided translations, either through GitHub or via Crowdin [can be seen here](https://github.com/BookStackApp/DailyRecipe/blob/master/.github/translators.txt).
+The wonderful people that have provided translations, either through GitHub or via Crowdin [can be seen here](https://github.com/DailyRecipeApp/DailyRecipe/blob/master/.github/translators.txt).
 
 These are the great open-source projects used to help build DailyRecipe:
 

@@ -12,7 +12,7 @@ class ClearRevisions extends Command
      *
      * @var string
      */
-    protected $signature = 'bookstack:clear-revisions
+    protected $signature = 'dailyrecipe:clear-revisions
                             {--a|all : Include active update drafts in deletion}
                             ';
 

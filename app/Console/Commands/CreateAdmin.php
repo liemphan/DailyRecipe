@@ -13,7 +13,7 @@ class CreateAdmin extends Command
      *
      * @var string
      */
-    protected $signature = 'bookstack:create-admin
+    protected $signature = 'dailyrecipe:create-admin
                             {--email= : The email address for the new admin user}
                             {--name= : The name of the new admin user}
                             {--password= : The password to assign to the new admin user}';

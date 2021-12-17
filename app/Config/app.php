@@ -51,7 +51,7 @@ return [
 
     // Application Base URL, Used by laravel in development commands
     // and used by DailyRecipe in URL generation.
-    'url' => env('APP_URL', '') === 'http://bookstack.dev' ? '' : env('APP_URL', ''),
+    'url' => env('APP_URL', '') === 'http://dailyrecipe.dev' ? '' : env('APP_URL', ''),
 
     // A list of hosts that DailyRecipe can be iframed within.
     // Space separated if multiple. DailyRecipe host domain is auto-inferred.

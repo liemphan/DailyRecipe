@@ -12,7 +12,7 @@ class UpdateUrl extends Command
      *
      * @var string
      */
-    protected $signature = 'bookstack:update-url
+    protected $signature = 'dailyrecipe:update-url
                             {oldUrl : URL to replace}
                             {newUrl : URL to use as the replacement}';
 

@@ -19,7 +19,7 @@
     <server name="APP_LANG" value="en"/>
     <server name="APP_THEME" value="none"/>
     <server name="APP_AUTO_LANG_PUBLIC" value="true"/>
-    <server name="APP_URL" value="http://bookstack.dev"/>
+    <server name="APP_URL" value="http://dailyrecipe.dev"/>
     <server name="ALLOWED_IFRAME_HOSTS" value=""/>
     <server name="CACHE_DRIVER" value="array"/>
     <server name="SESSION_DRIVER" value="array"/>

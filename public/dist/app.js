@@ -40335,7 +40335,7 @@
         this.updateAndRender();
       });
       this.codeMirrorSetup();
-      this.listenForBookStackEditorEvents();
+      this.listenForDailyRecipeEditorEvents();
       const queryParams = new URL(window.location).searchParams;
       const scrollText = queryParams.get("content-text");
       if (scrollText) {
@@ -40468,7 +40468,7 @@
         }
       });
       cm.on("drop", (cm2, event) => {
-        const templateId = event.dataTransfer.getData("bookstack/template");
+        const templateId = event.dataTransfer.getData("dailyrecipe/template");
         if (templateId) {
           const cursorPos = cm2.coordsChar({ left: event.pageX, top: event.pageY });
           cm2.setCursor(cursorPos);
@@ -40714,7 +40714,7 @@
         char: lines[lineNumber].length
       });
     }
-    listenForBookStackEditorEvents() {
+    listenForDailyRecipeEditorEvents() {
       function getContentToInsert({ html, markdown }) {
         return markdown || html;
       }
@@ -41721,7 +41721,7 @@
     }
     handleTemplateItemDragStart(event, templateItem) {
       const templateId = templateItem.closest("[template-id]").getAttribute("template-id");
-      event.dataTransfer.setData("bookstack/template", templateId);
+      event.dataTransfer.setData("dailyrecipe/template", templateId);
       event.dataTransfer.setData("text/plain", templateId);
     }
     handleTemplateActionClick(event, actionButton) {
@@ -42192,7 +42192,7 @@
       });
     });
   }
-  function listenForBookStackEditorEvents(editor) {
+  function listenForDailyRecipeEditorEvents(editor) {
     window.$events.listen("editor::replace", ({ html }) => {
       editor.setContent(html);
     });
@@ -42371,7 +42371,7 @@
             editor.selection.collapse(false);
             editor.focus();
           }
-          listenForBookStackEditorEvents(editor);
+          listenForDailyRecipeEditorEvents(editor);
           window.$events.listen("editor-html-update", (html) => {
             editor.setContent(html);
             editor.selection.select(editor.getBody(), true);
@@ -42398,7 +42398,7 @@
           });
           editor.on("drop", function(event) {
             let dom = editor.dom, rng = tinymce.dom.RangeUtils.getCaretRangeFromPoint(event.clientX, event.clientY, editor.getDoc());
-            const templateId = event.dataTransfer && event.dataTransfer.getData("bookstack/template");
+            const templateId = event.dataTransfer && event.dataTransfer.getData("dailyrecipe/template");
             if (templateId) {
               event.preventDefault();
               window.$http.get(`/templates/${templateId}`).then((resp) => {

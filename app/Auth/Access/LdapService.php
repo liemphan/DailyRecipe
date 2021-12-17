@@ -106,7 +106,7 @@ class LdapService
         if ($this->config['dump_user_details']) {
             throw new JsonDebugException([
                 'details_from_ldap'        => $user,
-                'details_bookstack_parsed' => $formatted,
+                'details_dailyrecipe_parsed' => $formatted,
             ]);
         }
 

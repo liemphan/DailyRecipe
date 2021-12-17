@@ -12,7 +12,7 @@ class ClearViews extends Command
      *
      * @var string
      */
-    protected $signature = 'bookstack:clear-views';
+    protected $signature = 'dailyrecipe:clear-views';
 
     /**
      * The console command description.

@@ -8,8 +8,8 @@ class UrlTest extends TestCase
 {
     public function test_url_helper_takes_custom_url_into_account()
     {
-        $this->runWithEnv('APP_URL', 'http://example.com/bookstack', function () {
-            $this->assertEquals('http://example.com/bookstack/books', url('/books'));
+        $this->runWithEnv('APP_URL', 'http://example.com/dailyrecipe', function () {
+            $this->assertEquals('http://example.com/dailyrecipe/books', url('/books'));
         });
     }
 

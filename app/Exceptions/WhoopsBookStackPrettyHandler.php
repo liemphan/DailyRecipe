@@ -4,7 +4,7 @@ namespace DailyRecipe\Exceptions;
 
 use Whoops\Handler\Handler;
 
-class WhoopsBookStackPrettyHandler extends Handler
+class WhoopsDailyRecipePrettyHandler extends Handler
 {
     /**
      * @return int|null A handler may return nothing, or a Handler::HANDLE_* constant

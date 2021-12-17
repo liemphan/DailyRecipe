@@ -22,7 +22,7 @@ class ClearViewsCommandTest extends TestCase
         ]);
 
         DB::rollBack();
-        $exitCode = \Artisan::call('bookstack:clear-views');
+        $exitCode = \Artisan::call('dailyrecipe:clear-views');
         DB::beginTransaction();
         $this->assertTrue($exitCode === 0, 'Command executed successfully');
 

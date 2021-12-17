@@ -12,7 +12,7 @@ class ClearActivity extends Command
      *
      * @var string
      */
-    protected $signature = 'bookstack:clear-activity';
+    protected $signature = 'dailyrecipe:clear-activity';
 
     /**
      * The console command description.

@@ -6,7 +6,7 @@
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
         'reference' => NULL,
-        'name' => 'bookstackapp/bookstack',
+        'name' => 'dailyrecipeapp/dailyrecipe',
         'dev' => false,
     ),
     'versions' => array(
@@ -55,7 +55,7 @@
             'reference' => '1903ab84171072b6bff8d98eb58d38b2c9aaf645',
             'dev_requirement' => false,
         ),
-        'bookstackapp/bookstack' => array(
+        'dailyrecipeapp/dailyrecipe' => array(
             'pretty_version' => '1.0.0+no-version-set',
             'version' => '1.0.0.0',
             'type' => 'project',

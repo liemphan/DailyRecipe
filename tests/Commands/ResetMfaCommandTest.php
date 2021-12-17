@@ -10,7 +10,7 @@ class ResetMfaCommandTest extends TestCase
 {
     public function test_command_requires_email_or_id_option()
     {
-        $this->artisan('bookstack:reset-mfa')
+        $this->artisan('dailyrecipe:reset-mfa')
             ->expectsOutput('Either a --id=<number> or --email=<email> option must be provided.')
             ->assertExitCode(1);
     }
@@ -22,7 +22,7 @@ class ResetMfaCommandTest extends TestCase
         MfaValue::upsertWithValue($user, MfaValue::METHOD_TOTP, 'test');
 
         $this->assertEquals(1, $user->mfaValues()->count());
-        $this->artisan("bookstack:reset-mfa --email={$user->email}")
+        $this->artisan("dailyrecipe:reset-mfa --email={$user->email}")
             ->expectsQuestion('Are you sure you want to proceed?', true)
             ->expectsOutput('User MFA methods have been reset.')
             ->assertExitCode(0);
@@ -36,7 +36,7 @@ class ResetMfaCommandTest extends TestCase
         MfaValue::upsertWithValue($user, MfaValue::METHOD_TOTP, 'test');
 
         $this->assertEquals(1, $user->mfaValues()->count());
-        $this->artisan("bookstack:reset-mfa --id={$user->id}")
+        $this->artisan("dailyrecipe:reset-mfa --id={$user->id}")
             ->expectsQuestion('Are you sure you want to proceed?', true)
             ->expectsOutput('User MFA methods have been reset.')
             ->assertExitCode(0);
@@ -50,7 +50,7 @@ class ResetMfaCommandTest extends TestCase
         MfaValue::upsertWithValue($user, MfaValue::METHOD_TOTP, 'test');
 
         $this->assertEquals(1, $user->mfaValues()->count());
-        $this->artisan("bookstack:reset-mfa --id={$user->id}")
+        $this->artisan("dailyrecipe:reset-mfa --id={$user->id}")
             ->expectsQuestion('Are you sure you want to proceed?', false)
             ->assertExitCode(1);
         $this->assertEquals(1, $user->mfaValues()->count());
@@ -58,7 +58,7 @@ class ResetMfaCommandTest extends TestCase
 
     public function test_giving_non_existing_user_shows_error_message()
     {
-        $this->artisan('bookstack:reset-mfa --email=donkeys@example.com')
+        $this->artisan('dailyrecipe:reset-mfa --email=donkeys@example.com')
             ->expectsOutput('A user where email=donkeys@example.com could not be found.')
             ->assertExitCode(1);
     }

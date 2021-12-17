@@ -14,7 +14,7 @@ class UpdateUrlCommandTest extends TestCase
         $page->html = '<a href="https://example.com/donkeys"></a>';
         $page->save();
 
-        $this->artisan('bookstack:update-url https://example.com https://cats.example.com')
+        $this->artisan('dailyrecipe:update-url https://example.com https://cats.example.com')
             ->expectsQuestion("This will search for \"https://example.com\" in your database and replace it with  \"https://cats.example.com\".\nAre you sure you want to proceed?", 'y')
             ->expectsQuestion('This operation could cause issues if used incorrectly. Have you made a backup of your existing database?', 'y');
 
@@ -27,12 +27,12 @@ class UpdateUrlCommandTest extends TestCase
     public function test_command_requires_valid_url()
     {
         $badUrlMessage = 'The given urls are expected to be full urls starting with http:// or https://';
-        $this->artisan('bookstack:update-url //example.com https://cats.example.com')->expectsOutput($badUrlMessage);
-        $this->artisan('bookstack:update-url https://example.com htts://cats.example.com')->expectsOutput($badUrlMessage);
-        $this->artisan('bookstack:update-url example.com https://cats.example.com')->expectsOutput($badUrlMessage);
+        $this->artisan('dailyrecipe:update-url //example.com https://cats.example.com')->expectsOutput($badUrlMessage);
+        $this->artisan('dailyrecipe:update-url https://example.com htts://cats.example.com')->expectsOutput($badUrlMessage);
+        $this->artisan('dailyrecipe:update-url example.com https://cats.example.com')->expectsOutput($badUrlMessage);
 
         $this->expectException(RuntimeException::class);
-        $this->artisan('bookstack:update-url https://cats.example.com');
+        $this->artisan('dailyrecipe:update-url https://cats.example.com');
     }
 
     public function test_command_updates_settings()
@@ -54,7 +54,7 @@ class UpdateUrlCommandTest extends TestCase
 
     protected function runUpdate(string $oldUrl, string $newUrl)
     {
-        $this->artisan("bookstack:update-url {$oldUrl} {$newUrl}")
+        $this->artisan("dailyrecipe:update-url {$oldUrl} {$newUrl}")
             ->expectsQuestion("This will search for \"{$oldUrl}\" in your database and replace it with  \"{$newUrl}\".\nAre you sure you want to proceed?", 'y')
             ->expectsQuestion('This operation could cause issues if used incorrectly. Have you made a backup of your existing database?', 'y');
     }

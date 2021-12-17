@@ -17,7 +17,7 @@ class RegeneratePermissionsCommandTest extends TestCase
 
         $this->assertDatabaseMissing('joint_permissions', ['entity_id' => $page->id]);
 
-        $exitCode = \Artisan::call('bookstack:regenerate-permissions');
+        $exitCode = \Artisan::call('dailyrecipe:regenerate-permissions');
         $this->assertTrue($exitCode === 0, 'Command executed successfully');
         DB::beginTransaction();
 

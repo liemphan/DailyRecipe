@@ -12,7 +12,7 @@ class ResetMfa extends Command
      *
      * @var string
      */
-    protected $signature = 'bookstack:reset-mfa
+    protected $signature = 'dailyrecipe:reset-mfa
                             {--id= : Numeric ID of the user to reset MFA for}
                             {--email= : Email address of the user to reset MFA for} 
                             ';

@@ -401,7 +401,7 @@ function customHrPlugin() {
 }
 
 
-function listenForBookStackEditorEvents(editor) {
+function listenForDailyRecipeEditorEvents(editor) {
 
     // Replace editor content
     window.$events.listen('editor::replace', ({html}) => {
@@ -625,10 +625,10 @@ class WysiwygEditor {
                     editor.focus();
                 }
 
-                listenForBookStackEditorEvents(editor);
+                listenForDailyRecipeEditorEvents(editor);
 
                 // TODO - Update to standardise across both editors
-                // Use events within listenForBookStackEditorEvents instead (Different event signature)
+                // Use events within listenForDailyRecipeEditorEvents instead (Different event signature)
                 window.$events.listen('editor-html-update', html => {
                     editor.setContent(html);
                     editor.selection.select(editor.getBody(), true);
@@ -669,7 +669,7 @@ class WysiwygEditor {
                         rng = tinymce.dom.RangeUtils.getCaretRangeFromPoint(event.clientX, event.clientY, editor.getDoc());
 
                     // Template insertion
-                    const templateId = event.dataTransfer && event.dataTransfer.getData('bookstack/template');
+                    const templateId = event.dataTransfer && event.dataTransfer.getData('dailyrecipe/template');
                     if (templateId) {
                         event.preventDefault();
                         window.$http.get(`/templates/${templateId}`).then(resp => {

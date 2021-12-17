@@ -18,7 +18,7 @@ return [
     'app_name_desc' => 'この名前はヘッダーやEメール内で表示されます。',
     'app_name_header' => 'ヘッダーにアプリケーション名を表示する',
     'app_public_access' => 'パブリック・アクセス',
-    'app_public_access_desc' => 'このオプションを有効にすると、ログインしていない訪問者があなたのBookStackインスタンスのコンテンツにアクセスできるようになります。',
+    'app_public_access_desc' => 'このオプションを有効にすると、ログインしていない訪問者があなたのDailyRecipeインスタンスのコンテンツにアクセスできるようになります。',
     'app_public_access_desc_guest' => '一般の訪問者のアクセスは、「ゲスト」ユーザー権限を通じて制御することができます。',
     'app_public_access_toggle' => 'パブリックアクセスを許可',
     'app_public_viewing' => 'アプリケーションを公開する',

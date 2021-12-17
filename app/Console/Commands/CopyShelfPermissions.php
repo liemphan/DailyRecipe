@@ -13,7 +13,7 @@ class CopyShelfPermissions extends Command
      *
      * @var string
      */
-    protected $signature = 'bookstack:copy-shelf-permissions
+    protected $signature = 'dailyrecipe:copy-shelf-permissions
                             {--a|all : Perform for all shelves in the system}
                             {--s|slug= : The slug for a shelf to target}
                             ';

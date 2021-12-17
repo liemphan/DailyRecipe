@@ -53,7 +53,7 @@ return [
     // Here you may change the name of the cookie used to identify a session
     // instance by ID. The name specified here will get used every time a
     // new session cookie is created by the framework for every driver.
-    'cookie' => env('SESSION_COOKIE_NAME', 'bookstack_session'),
+    'cookie' => env('SESSION_COOKIE_NAME', 'dailyrecipe_session'),
 
     // Session Cookie Path
     // The session cookie path determines the path for which the cookie will

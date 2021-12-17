@@ -9,7 +9,7 @@ class AddAdminCommandTest extends TestCase
 {
     public function test_add_admin_command()
     {
-        $exitCode = \Artisan::call('bookstack:create-admin', [
+        $exitCode = \Artisan::call('dailyrecipe:create-admin', [
             '--email'    => 'admintest@example.com',
             '--name'     => 'Admin Test',
             '--password' => 'testing-4',

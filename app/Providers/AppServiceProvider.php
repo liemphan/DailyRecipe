@@ -9,7 +9,7 @@ use DailyRecipe\Entities\Models\Book;
 use DailyRecipe\Entities\Models\Bookshelf;
 use DailyRecipe\Entities\Models\Chapter;
 use DailyRecipe\Entities\Models\Page;
-use DailyRecipe\Exceptions\WhoopsBookStackPrettyHandler;
+use DailyRecipe\Exceptions\WhoopsDailyRecipePrettyHandler;
 use DailyRecipe\Settings\Setting;
 use DailyRecipe\Settings\SettingService;
 use DailyRecipe\Util\CspService;
@@ -74,7 +74,7 @@ class AppServiceProvider extends ServiceProvider
     public function register()
     {
         $this->app->bind(HandlerInterface::class, function ($app) {
-            return $app->make(WhoopsBookStackPrettyHandler::class);
+            return $app->make(WhoopsDailyRecipePrettyHandler::class);
         });
 
         $this->app->singleton(SettingService::class, function ($app) {

@@ -24,7 +24,7 @@ return [
 
     // Global "From" address & name
     'from' => [
-        'address' => env('MAIL_FROM', 'mail@bookstackapp.com'),
+        'address' => env('MAIL_FROM', 'mail@dailyrecipeapp.com'),
         'name'    => env('MAIL_FROM_NAME', 'DailyRecipe'),
     ],
 

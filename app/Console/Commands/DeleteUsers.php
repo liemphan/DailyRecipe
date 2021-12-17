@@ -13,7 +13,7 @@ class DeleteUsers extends Command
      *
      * @var string
      */
-    protected $signature = 'bookstack:delete-users';
+    protected $signature = 'dailyrecipe:delete-users';
 
     protected $user;
 

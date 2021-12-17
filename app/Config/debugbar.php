@@ -128,5 +128,5 @@ return [
     // DebugBar route domain
     // By default DebugBar route served from the same domain that request served.
     // To override default domain, specify it as a non-empty value.
-    'route_domain' => env('APP_URL', '') === 'http://bookstack.dev' ? '' : env('APP_URL', ''),
+    'route_domain' => env('APP_URL', '') === 'http://dailyrecipe.dev' ? '' : env('APP_URL', ''),
 ];
