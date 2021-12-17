@@ -1,6 +1,6 @@
 # JavaScript Components
 
-This document details the format for JavaScript components in BookStack. This is a really simple class-based setup with a few helpers provided.
+This document details the format for JavaScript components in DailyRecipe. This is a really simple class-based setup with a few helpers provided.
 
 #### Defining a Component in JS
 

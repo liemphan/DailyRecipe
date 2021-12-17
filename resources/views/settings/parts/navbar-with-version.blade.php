@@ -8,8 +8,8 @@ $version - Version of bookstack to display
     </div>
     <div class="flex"></div>
     <div class="text-right p-m flex fit-content">
-        <a target="_blank" rel="noopener noreferrer" href="https://github.com/BookStackApp/BookStack/releases">
-            BookStack @if(strpos($version, 'v') !== 0) version @endif {{ $version }}
+        <a target="_blank" rel="noopener noreferrer" href="https://github.com/BookStackApp/DailyRecipe/releases">
+            DailyRecipe @if(strpos($version, 'v') !== 0) version @endif {{ $version }}
         </a>
     </div>
 </div>

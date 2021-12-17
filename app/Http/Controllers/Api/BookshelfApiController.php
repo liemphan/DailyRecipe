@@ -1,9 +1,9 @@
 <?php
 
-namespace BookStack\Http\Controllers\Api;
+namespace DailyRecipe\Http\Controllers\Api;
 
-use BookStack\Entities\Models\Bookshelf;
-use BookStack\Entities\Repos\BookshelfRepo;
+use DailyRecipe\Entities\Models\Bookshelf;
+use DailyRecipe\Entities\Repos\BookshelfRepo;
 use Exception;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Http\Request;

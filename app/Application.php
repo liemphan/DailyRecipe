@@ -1,6 +1,6 @@
 <?php
 
-namespace BookStack;
+namespace DailyRecipe;
 
 class Application extends \Illuminate\Foundation\Application
 {

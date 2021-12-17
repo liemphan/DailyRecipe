@@ -1,6 +1,6 @@
 <?php
 
-namespace BookStack\Http\Middleware;
+namespace DailyRecipe\Http\Middleware;
 
 use Illuminate\Foundation\Http\Middleware\VerifyCsrfToken as Middleware;
 

@@ -1,11 +1,11 @@
 <?php
 
-namespace BookStack\Http\Controllers;
+namespace DailyRecipe\Http\Controllers;
 
-use BookStack\Actions\ActivityType;
-use BookStack\Entities\Models\Deletion;
-use BookStack\Entities\Models\Entity;
-use BookStack\Entities\Tools\TrashCan;
+use DailyRecipe\Actions\ActivityType;
+use DailyRecipe\Entities\Models\Deletion;
+use DailyRecipe\Entities\Models\Entity;
+use DailyRecipe\Entities\Tools\TrashCan;
 
 class RecycleBinController extends Controller
 {

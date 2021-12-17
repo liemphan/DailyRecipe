@@ -1,6 +1,6 @@
 <?php
 
-namespace BookStack\Interfaces;
+namespace DailyRecipe\Interfaces;
 
 /**
  * Assigned to models that can have slugs.

@@ -1,18 +1,18 @@
 <?php
 
-namespace BookStack\Auth\Permissions;
+namespace DailyRecipe\Auth\Permissions;
 
-use BookStack\Auth\Role;
-use BookStack\Auth\User;
-use BookStack\Entities\Models\Book;
-use BookStack\Entities\Models\BookChild;
-use BookStack\Entities\Models\Bookshelf;
-use BookStack\Entities\Models\Chapter;
-use BookStack\Entities\Models\Entity;
-use BookStack\Entities\Models\Page;
-use BookStack\Model;
-use BookStack\Traits\HasCreatorAndUpdater;
-use BookStack\Traits\HasOwner;
+use DailyRecipe\Auth\Role;
+use DailyRecipe\Auth\User;
+use DailyRecipe\Entities\Models\Book;
+use DailyRecipe\Entities\Models\BookChild;
+use DailyRecipe\Entities\Models\Bookshelf;
+use DailyRecipe\Entities\Models\Chapter;
+use DailyRecipe\Entities\Models\Entity;
+use DailyRecipe\Entities\Models\Page;
+use DailyRecipe\Model;
+use DailyRecipe\Traits\HasCreatorAndUpdater;
+use DailyRecipe\Traits\HasOwner;
 use Illuminate\Database\Connection;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection as EloquentCollection;

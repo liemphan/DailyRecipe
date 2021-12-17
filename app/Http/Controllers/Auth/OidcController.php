@@ -1,9 +1,9 @@
 <?php
 
-namespace BookStack\Http\Controllers\Auth;
+namespace DailyRecipe\Http\Controllers\Auth;
 
-use BookStack\Auth\Access\Oidc\OidcService;
-use BookStack\Http\Controllers\Controller;
+use DailyRecipe\Auth\Access\Oidc\OidcService;
+use DailyRecipe\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
 class OidcController extends Controller

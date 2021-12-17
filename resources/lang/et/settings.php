@@ -1,7 +1,7 @@
 <?php
 /**
  * Settings text strings
- * Contains all text strings used in the general settings sections of BookStack
+ * Contains all text strings used in the general settings sections of DailyRecipe
  * including users and roles.
  */
 return [
@@ -18,7 +18,7 @@ return [
     'app_name_desc' => 'Seda nime näidatakse päises ja kõigis süsteemsetes e-kirjades.',
     'app_name_header' => 'Näita nime päises',
     'app_public_access' => 'Avalik ligipääs',
-    'app_public_access_desc' => 'Selle sisselülitamine võimaldab külalistel ilma sisselogimata ligipääsu su BookStack\'i sisule.',
+    'app_public_access_desc' => 'Selle sisselülitamine võimaldab külalistel ilma sisselogimata ligipääsu su DailyRecipe\'i sisule.',
     'app_public_access_desc_guest' => 'Sisselogimata kasutajate ligipääsu saab seadistada "Külaline" kasutaja kaudu.',
     'app_public_access_toggle' => 'Luba avalik ligipääs',
     'app_public_viewing' => 'Luba avalik ligipääs?',

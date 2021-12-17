@@ -2,11 +2,11 @@
 
 namespace Tests\Auth;
 
-use BookStack\Auth\Access\Mfa\MfaSession;
-use BookStack\Auth\User;
-use BookStack\Entities\Models\Page;
-use BookStack\Notifications\ConfirmEmail;
-use BookStack\Notifications\ResetPassword;
+use DailyRecipe\Auth\Access\Mfa\MfaSession;
+use DailyRecipe\Auth\User;
+use DailyRecipe\Entities\Models\Page;
+use DailyRecipe\Notifications\ConfirmEmail;
+use DailyRecipe\Notifications\ResetPassword;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Notification;
 use Tests\TestCase;

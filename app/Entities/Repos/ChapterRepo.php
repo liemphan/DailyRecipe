@@ -1,15 +1,15 @@
 <?php
 
-namespace BookStack\Entities\Repos;
+namespace DailyRecipe\Entities\Repos;
 
-use BookStack\Actions\ActivityType;
-use BookStack\Entities\Models\Book;
-use BookStack\Entities\Models\Chapter;
-use BookStack\Entities\Tools\BookContents;
-use BookStack\Entities\Tools\TrashCan;
-use BookStack\Exceptions\MoveOperationException;
-use BookStack\Exceptions\NotFoundException;
-use BookStack\Facades\Activity;
+use DailyRecipe\Actions\ActivityType;
+use DailyRecipe\Entities\Models\Book;
+use DailyRecipe\Entities\Models\Chapter;
+use DailyRecipe\Entities\Tools\BookContents;
+use DailyRecipe\Entities\Tools\TrashCan;
+use DailyRecipe\Exceptions\MoveOperationException;
+use DailyRecipe\Exceptions\NotFoundException;
+use DailyRecipe\Facades\Activity;
 use Exception;
 
 class ChapterRepo

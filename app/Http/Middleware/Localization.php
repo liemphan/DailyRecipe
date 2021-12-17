@@ -1,6 +1,6 @@
 <?php
 
-namespace BookStack\Http\Middleware;
+namespace DailyRecipe\Http\Middleware;
 
 use Carbon\Carbon;
 use Closure;
@@ -14,7 +14,7 @@ class Localization
     protected $rtlLocales = ['ar', 'he'];
 
     /**
-     * Map of BookStack locale names to best-estimate system locale names.
+     * Map of DailyRecipe locale names to best-estimate system locale names.
      * Locales can often be found by running `locale -a` on a linux system.
      */
     protected $localeMap = [
@@ -102,7 +102,7 @@ class Localization
 
     /**
      * Autodetect the visitors locale by matching locales in their headers
-     * against the locales supported by BookStack.
+     * against the locales supported by DailyRecipe.
      */
     protected function autoDetectLocale(Request $request, string $default): string
     {
@@ -117,7 +117,7 @@ class Localization
     }
 
     /**
-     * Get the ISO version of a BookStack language name.
+     * Get the ISO version of a DailyRecipe language name.
      */
     public function getLocaleIso(string $locale): string
     {

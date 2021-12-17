@@ -1,8 +1,8 @@
 <?php
 
-namespace BookStack\Console\Commands;
+namespace DailyRecipe\Console\Commands;
 
-use BookStack\Auth\Permissions\PermissionService;
+use DailyRecipe\Auth\Permissions\PermissionService;
 use Illuminate\Console\Command;
 
 class RegeneratePermissions extends Command

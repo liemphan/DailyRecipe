@@ -2,7 +2,7 @@
 
 namespace Tests;
 
-use BookStack\Entities\Models\Entity;
+use DailyRecipe\Entities\Models\Entity;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Illuminate\Foundation\Testing\TestCase as BaseTestCase;
 

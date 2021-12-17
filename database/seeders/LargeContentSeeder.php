@@ -2,13 +2,13 @@
 
 namespace Database\Seeders;
 
-use BookStack\Auth\Permissions\PermissionService;
-use BookStack\Auth\Role;
-use BookStack\Auth\User;
-use BookStack\Entities\Models\Book;
-use BookStack\Entities\Models\Chapter;
-use BookStack\Entities\Models\Page;
-use BookStack\Entities\Tools\SearchIndex;
+use DailyRecipe\Auth\Permissions\PermissionService;
+use DailyRecipe\Auth\Role;
+use DailyRecipe\Auth\User;
+use DailyRecipe\Entities\Models\Book;
+use DailyRecipe\Entities\Models\Chapter;
+use DailyRecipe\Entities\Models\Page;
+use DailyRecipe\Entities\Tools\SearchIndex;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Str;
 

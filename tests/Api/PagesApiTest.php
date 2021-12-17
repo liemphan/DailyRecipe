@@ -2,9 +2,9 @@
 
 namespace Tests\Api;
 
-use BookStack\Entities\Models\Book;
-use BookStack\Entities\Models\Chapter;
-use BookStack\Entities\Models\Page;
+use DailyRecipe\Entities\Models\Book;
+use DailyRecipe\Entities\Models\Chapter;
+use DailyRecipe\Entities\Models\Page;
 use Tests\TestCase;
 
 class PagesApiTest extends TestCase

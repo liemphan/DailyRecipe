@@ -1,6 +1,6 @@
 <?php
 
-namespace BookStack\Notifications;
+namespace DailyRecipe\Notifications;
 
 class UserInvite extends MailNotification
 {

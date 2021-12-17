@@ -1,7 +1,7 @@
 <?php
 /**
  * Settings text strings
- * Contains all text strings used in the general settings sections of BookStack
+ * Contains all text strings used in the general settings sections of DailyRecipe
  * including users and roles.
  */
 return [
@@ -18,7 +18,7 @@ return [
     'app_name_desc' => 'Šis vārds tiks rādīts navigācijas joslā un sistēmas sūtītajis e-pastos.',
     'app_name_header' => 'Rādīt vārdu navigācijas joslā',
     'app_public_access' => 'Publiska piekļuve',
-    'app_public_access_desc' => 'Šīs opcijas ieslēgšana ļaus neautorizētiem apmeklētājiem piekļūt jūsu BookStack saturam.',
+    'app_public_access_desc' => 'Šīs opcijas ieslēgšana ļaus neautorizētiem apmeklētājiem piekļūt jūsu DailyRecipe saturam.',
     'app_public_access_desc_guest' => 'Publisku apmeklētāju piekļuvi var kontrolēt "Guest" (Viesa) lietotāja uzstādījumos.',
     'app_public_access_toggle' => 'Atļaut publisku piekļuvi',
     'app_public_viewing' => 'Atļaut publisku piekļuvi?',

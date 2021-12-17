@@ -1,7 +1,7 @@
 <?php
 /**
  * Settings text strings
- * Contains all text strings used in the general settings sections of BookStack
+ * Contains all text strings used in the general settings sections of DailyRecipe
  * including users and roles.
  */
 return [
@@ -18,7 +18,7 @@ return [
     'app_name_desc' => '此名稱會在網頁頂端與任何系統傳送的電子郵件中出現。',
     'app_name_header' => '在網頁頂端顯示名稱',
     'app_public_access' => '公開存取',
-    'app_public_access_desc' => '啟用此選項將會允許未登入的訪客存取您 BookStack 站台中的內容。',
+    'app_public_access_desc' => '啟用此選項將會允許未登入的訪客存取您 DailyRecipe 站台中的內容。',
     'app_public_access_desc_guest' => '可以透過「訪客」使用者控制公開訪客的存取。',
     'app_public_access_toggle' => '允許公開存取',
     'app_public_viewing' => '允許公開檢視？',

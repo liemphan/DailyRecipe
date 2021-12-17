@@ -2,14 +2,14 @@
 
 namespace Tests;
 
-use BookStack\Actions\Activity;
-use BookStack\Actions\ActivityService;
-use BookStack\Actions\ActivityType;
-use BookStack\Auth\UserRepo;
-use BookStack\Entities\Models\Chapter;
-use BookStack\Entities\Models\Page;
-use BookStack\Entities\Repos\PageRepo;
-use BookStack\Entities\Tools\TrashCan;
+use DailyRecipe\Actions\Activity;
+use DailyRecipe\Actions\ActivityService;
+use DailyRecipe\Actions\ActivityType;
+use DailyRecipe\Auth\UserRepo;
+use DailyRecipe\Entities\Models\Chapter;
+use DailyRecipe\Entities\Models\Page;
+use DailyRecipe\Entities\Repos\PageRepo;
+use DailyRecipe\Entities\Tools\TrashCan;
 use Carbon\Carbon;
 
 class AuditLogTest extends TestCase

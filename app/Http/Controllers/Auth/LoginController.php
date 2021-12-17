@@ -1,13 +1,13 @@
 <?php
 
-namespace BookStack\Http\Controllers\Auth;
+namespace DailyRecipe\Http\Controllers\Auth;
 
 use Activity;
-use BookStack\Auth\Access\LoginService;
-use BookStack\Auth\Access\SocialAuthService;
-use BookStack\Exceptions\LoginAttemptEmailNeededException;
-use BookStack\Exceptions\LoginAttemptException;
-use BookStack\Http\Controllers\Controller;
+use DailyRecipe\Auth\Access\LoginService;
+use DailyRecipe\Auth\Access\SocialAuthService;
+use DailyRecipe\Exceptions\LoginAttemptEmailNeededException;
+use DailyRecipe\Exceptions\LoginAttemptException;
+use DailyRecipe\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
 use Illuminate\Validation\ValidationException;

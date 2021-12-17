@@ -1,8 +1,8 @@
 <?php
 
-namespace BookStack\Http\Middleware;
+namespace DailyRecipe\Http\Middleware;
 
-use BookStack\Util\CspService;
+use DailyRecipe\Util\CspService;
 use Closure;
 use Illuminate\Http\Request;
 

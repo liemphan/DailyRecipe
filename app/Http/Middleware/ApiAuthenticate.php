@@ -1,9 +1,9 @@
 <?php
 
-namespace BookStack\Http\Middleware;
+namespace DailyRecipe\Http\Middleware;
 
-use BookStack\Exceptions\ApiAuthException;
-use BookStack\Exceptions\UnauthorizedException;
+use DailyRecipe\Exceptions\ApiAuthException;
+use DailyRecipe\Exceptions\UnauthorizedException;
 use Closure;
 use Illuminate\Http\Request;
 

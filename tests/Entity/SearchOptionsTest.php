@@ -2,7 +2,7 @@
 
 namespace Tests\Entity;
 
-use BookStack\Entities\Tools\SearchOptions;
+use DailyRecipe\Entities\Tools\SearchOptions;
 use Tests\TestCase;
 
 class SearchOptionsTest extends TestCase

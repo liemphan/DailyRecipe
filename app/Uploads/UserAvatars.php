@@ -1,9 +1,9 @@
 <?php
 
-namespace BookStack\Uploads;
+namespace DailyRecipe\Uploads;
 
-use BookStack\Auth\User;
-use BookStack\Exceptions\HttpFetchException;
+use DailyRecipe\Auth\User;
+use DailyRecipe\Exceptions\HttpFetchException;
 use Exception;
 use Illuminate\Support\Facades\Log;
 

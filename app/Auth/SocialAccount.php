@@ -1,9 +1,9 @@
 <?php
 
-namespace BookStack\Auth;
+namespace DailyRecipe\Auth;
 
-use BookStack\Interfaces\Loggable;
-use BookStack\Model;
+use DailyRecipe\Interfaces\Loggable;
+use DailyRecipe\Model;
 
 /**
  * Class SocialAccount.

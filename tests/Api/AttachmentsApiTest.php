@@ -2,8 +2,8 @@
 
 namespace Tests\Api;
 
-use BookStack\Entities\Models\Page;
-use BookStack\Uploads\Attachment;
+use DailyRecipe\Entities\Models\Page;
+use DailyRecipe\Uploads\Attachment;
 use Illuminate\Http\UploadedFile;
 use Tests\TestCase;
 

@@ -1,6 +1,6 @@
 <?php
 
-namespace BookStack\Auth\Access\Mfa;
+namespace DailyRecipe\Auth\Access\Mfa;
 
 use Illuminate\Support\Str;
 

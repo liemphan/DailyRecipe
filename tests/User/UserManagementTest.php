@@ -2,10 +2,10 @@
 
 namespace Tests\User;
 
-use BookStack\Actions\ActivityType;
-use BookStack\Auth\Role;
-use BookStack\Auth\User;
-use BookStack\Entities\Models\Page;
+use DailyRecipe\Actions\ActivityType;
+use DailyRecipe\Auth\Role;
+use DailyRecipe\Auth\User;
+use DailyRecipe\Entities\Models\Page;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
 use Tests\TestCase;

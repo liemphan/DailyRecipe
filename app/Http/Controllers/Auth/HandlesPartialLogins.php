@@ -1,10 +1,10 @@
 <?php
 
-namespace BookStack\Http\Controllers\Auth;
+namespace DailyRecipe\Http\Controllers\Auth;
 
-use BookStack\Auth\Access\LoginService;
-use BookStack\Auth\User;
-use BookStack\Exceptions\NotFoundException;
+use DailyRecipe\Auth\Access\LoginService;
+use DailyRecipe\Auth\User;
+use DailyRecipe\Exceptions\NotFoundException;
 
 trait HandlesPartialLogins
 {

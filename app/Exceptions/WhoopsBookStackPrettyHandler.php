@@ -1,6 +1,6 @@
 <?php
 
-namespace BookStack\Exceptions;
+namespace DailyRecipe\Exceptions;
 
 use Whoops\Handler\Handler;
 
@@ -36,7 +36,7 @@ class WhoopsBookStackPrettyHandler extends Handler
     {
         return [
             'PHP Version'       => phpversion(),
-            'BookStack Version' => $this->safeReturn(function () {
+            'DailyRecipe Version' => $this->safeReturn(function () {
                 $versionFile = base_path('version');
 
                 return trim(file_get_contents($versionFile));

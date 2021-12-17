@@ -1,9 +1,9 @@
 <?php
 
-namespace BookStack\Http\Controllers\Api;
+namespace DailyRecipe\Http\Controllers\Api;
 
-use BookStack\Entities\Models\Chapter;
-use BookStack\Entities\Tools\ExportFormatter;
+use DailyRecipe\Entities\Models\Chapter;
+use DailyRecipe\Entities\Tools\ExportFormatter;
 use Throwable;
 
 class ChapterExportApiController extends ApiController

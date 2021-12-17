@@ -2,7 +2,7 @@
 
 namespace Tests\Commands;
 
-use BookStack\Entities\Models\Page;
+use DailyRecipe\Entities\Models\Page;
 use Illuminate\Support\Facades\DB;
 use Tests\TestCase;
 

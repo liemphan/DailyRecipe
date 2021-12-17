@@ -1,10 +1,10 @@
 <?php
 
-namespace BookStack\Theming;
+namespace DailyRecipe\Theming;
 
-use BookStack\Util\CspService;
-use BookStack\Util\HtmlContentFilter;
-use BookStack\Util\HtmlNonceApplicator;
+use DailyRecipe\Util\CspService;
+use DailyRecipe\Util\HtmlContentFilter;
+use DailyRecipe\Util\HtmlNonceApplicator;
 use Illuminate\Contracts\Cache\Repository as Cache;
 
 class CustomHtmlHeadContentProvider

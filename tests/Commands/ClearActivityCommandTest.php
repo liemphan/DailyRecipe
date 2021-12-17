@@ -2,8 +2,8 @@
 
 namespace Tests\Commands;
 
-use BookStack\Actions\ActivityType;
-use BookStack\Entities\Models\Page;
+use DailyRecipe\Actions\ActivityType;
+use DailyRecipe\Entities\Models\Page;
 use Illuminate\Support\Facades\DB;
 use Tests\TestCase;
 

@@ -2,7 +2,7 @@
 
 namespace Tests;
 
-use BookStack\Notifications\TestEmail;
+use DailyRecipe\Notifications\TestEmail;
 use Illuminate\Contracts\Notifications\Dispatcher;
 use Illuminate\Support\Facades\Notification;
 

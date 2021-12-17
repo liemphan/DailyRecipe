@@ -1,14 +1,14 @@
 <?php
 
-namespace BookStack\Entities\Repos;
+namespace DailyRecipe\Entities\Repos;
 
-use BookStack\Actions\ActivityType;
-use BookStack\Entities\Models\Book;
-use BookStack\Entities\Models\Bookshelf;
-use BookStack\Entities\Tools\TrashCan;
-use BookStack\Exceptions\ImageUploadException;
-use BookStack\Exceptions\NotFoundException;
-use BookStack\Facades\Activity;
+use DailyRecipe\Actions\ActivityType;
+use DailyRecipe\Entities\Models\Book;
+use DailyRecipe\Entities\Models\Bookshelf;
+use DailyRecipe\Entities\Tools\TrashCan;
+use DailyRecipe\Exceptions\ImageUploadException;
+use DailyRecipe\Exceptions\NotFoundException;
+use DailyRecipe\Facades\Activity;
 use Exception;
 use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 use Illuminate\Http\UploadedFile;

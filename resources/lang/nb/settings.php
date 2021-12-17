@@ -1,7 +1,7 @@
 <?php
 /**
  * Settings text strings
- * Contains all text strings used in the general settings sections of BookStack
+ * Contains all text strings used in the general settings sections of DailyRecipe
  * including users and roles.
  */
 return [
@@ -18,7 +18,7 @@ return [
     'app_name_desc' => 'Dette navnet vises i overskriften og i alle e-postmeldinger som sendes av systemet.',
     'app_name_header' => 'Vis navn i topptekst',
     'app_public_access' => 'Offentlig tilgang',
-    'app_public_access_desc' => 'Hvis du aktiverer dette alternativet, kan besøkende, som ikke er logget på, få tilgang til innhold i din BookStack-forekomst.',
+    'app_public_access_desc' => 'Hvis du aktiverer dette alternativet, kan besøkende, som ikke er logget på, få tilgang til innhold i din DailyRecipe-forekomst.',
     'app_public_access_desc_guest' => 'Tilgang for offentlige besøkende kan kontrolleres gjennom "Gjest" -brukeren.',
     'app_public_access_toggle' => 'Tillat offentlig tilgang',
     'app_public_viewing' => 'Tillat offentlig visning?',

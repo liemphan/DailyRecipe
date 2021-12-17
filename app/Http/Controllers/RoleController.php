@@ -1,9 +1,9 @@
 <?php
 
-namespace BookStack\Http\Controllers;
+namespace DailyRecipe\Http\Controllers;
 
-use BookStack\Auth\Permissions\PermissionsRepo;
-use BookStack\Exceptions\PermissionsException;
+use DailyRecipe\Auth\Permissions\PermissionsRepo;
+use DailyRecipe\Exceptions\PermissionsException;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Validation\ValidationException;

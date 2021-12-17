@@ -1,9 +1,9 @@
 <?php
 
-namespace BookStack\Entities\Models;
+namespace DailyRecipe\Entities\Models;
 
-use BookStack\Auth\User;
-use BookStack\Model;
+use DailyRecipe\Auth\User;
+use DailyRecipe\Model;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 

@@ -1,10 +1,10 @@
 <?php
 
-namespace BookStack\Entities\Models;
+namespace DailyRecipe\Entities\Models;
 
-use BookStack\Auth\User;
-use BookStack\Interfaces\Deletable;
-use BookStack\Interfaces\Loggable;
+use DailyRecipe\Auth\User;
+use DailyRecipe\Interfaces\Deletable;
+use DailyRecipe\Interfaces\Loggable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\MorphTo;

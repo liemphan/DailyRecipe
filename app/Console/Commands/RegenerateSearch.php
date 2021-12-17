@@ -1,9 +1,9 @@
 <?php
 
-namespace BookStack\Console\Commands;
+namespace DailyRecipe\Console\Commands;
 
-use BookStack\Entities\Models\Entity;
-use BookStack\Entities\Tools\SearchIndex;
+use DailyRecipe\Entities\Models\Entity;
+use DailyRecipe\Entities\Tools\SearchIndex;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\DB;
 

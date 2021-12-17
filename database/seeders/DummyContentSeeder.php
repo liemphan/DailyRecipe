@@ -2,15 +2,15 @@
 
 namespace Database\Seeders;
 
-use BookStack\Api\ApiToken;
-use BookStack\Auth\Permissions\PermissionService;
-use BookStack\Auth\Permissions\RolePermission;
-use BookStack\Auth\Role;
-use BookStack\Auth\User;
-use BookStack\Entities\Models\Bookshelf;
-use BookStack\Entities\Models\Chapter;
-use BookStack\Entities\Models\Page;
-use BookStack\Entities\Tools\SearchIndex;
+use DailyRecipe\Api\ApiToken;
+use DailyRecipe\Auth\Permissions\PermissionService;
+use DailyRecipe\Auth\Permissions\RolePermission;
+use DailyRecipe\Auth\Role;
+use DailyRecipe\Auth\User;
+use DailyRecipe\Entities\Models\Bookshelf;
+use DailyRecipe\Entities\Models\Chapter;
+use DailyRecipe\Entities\Models\Page;
+use DailyRecipe\Entities\Tools\SearchIndex;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
@@ -36,7 +36,7 @@ class DummyContentSeeder extends Seeder
 
         $byData = ['created_by' => $editorUser->id, 'updated_by' => $editorUser->id, 'owned_by' => $editorUser->id];
 
-        \BookStack\Entities\Models\Book::factory()->count(5)->create($byData)
+        \DailyRecipe\Entities\Models\Book::factory()->count(5)->create($byData)
             ->each(function ($book) use ($byData) {
                 $chapters = Chapter::factory()->count(3)->create($byData)
                     ->each(function ($chapter) use ($book, $byData) {
@@ -48,7 +48,7 @@ class DummyContentSeeder extends Seeder
                 $book->pages()->saveMany($pages);
             });
 
-        $largeBook = \BookStack\Entities\Models\Book::factory()->create(array_merge($byData, ['name' => 'Large book' . Str::random(10)]));
+        $largeBook = \DailyRecipe\Entities\Models\Book::factory()->create(array_merge($byData, ['name' => 'Large book' . Str::random(10)]));
         $pages = Page::factory()->count(200)->make($byData);
         $chapters = Chapter::factory()->count(50)->make($byData);
         $largeBook->pages()->saveMany($pages);

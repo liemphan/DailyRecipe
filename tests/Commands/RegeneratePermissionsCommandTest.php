@@ -2,8 +2,8 @@
 
 namespace Tests\Commands;
 
-use BookStack\Auth\Permissions\JointPermission;
-use BookStack\Entities\Models\Page;
+use DailyRecipe\Auth\Permissions\JointPermission;
+use DailyRecipe\Entities\Models\Page;
 use Illuminate\Support\Facades\DB;
 use Tests\TestCase;
 

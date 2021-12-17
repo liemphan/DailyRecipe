@@ -1,14 +1,14 @@
 <?php
 
-namespace BookStack\Http\Controllers\Auth;
+namespace DailyRecipe\Http\Controllers\Auth;
 
-use BookStack\Actions\ActivityType;
-use BookStack\Auth\Access\LoginService;
-use BookStack\Auth\Access\Mfa\BackupCodeService;
-use BookStack\Auth\Access\Mfa\MfaSession;
-use BookStack\Auth\Access\Mfa\MfaValue;
-use BookStack\Exceptions\NotFoundException;
-use BookStack\Http\Controllers\Controller;
+use DailyRecipe\Actions\ActivityType;
+use DailyRecipe\Auth\Access\LoginService;
+use DailyRecipe\Auth\Access\Mfa\BackupCodeService;
+use DailyRecipe\Auth\Access\Mfa\MfaSession;
+use DailyRecipe\Auth\Access\Mfa\MfaValue;
+use DailyRecipe\Exceptions\NotFoundException;
+use DailyRecipe\Http\Controllers\Controller;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Validation\ValidationException;

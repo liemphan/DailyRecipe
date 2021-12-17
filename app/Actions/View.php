@@ -1,9 +1,9 @@
 <?php
 
-namespace BookStack\Actions;
+namespace DailyRecipe\Actions;
 
-use BookStack\Interfaces\Viewable;
-use BookStack\Model;
+use DailyRecipe\Interfaces\Viewable;
+use DailyRecipe\Model;
 use Illuminate\Database\Eloquent\Relations\MorphTo;
 
 /**

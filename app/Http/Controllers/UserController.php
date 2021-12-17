@@ -1,15 +1,15 @@
 <?php
 
-namespace BookStack\Http\Controllers;
+namespace DailyRecipe\Http\Controllers;
 
-use BookStack\Actions\ActivityType;
-use BookStack\Auth\Access\SocialAuthService;
-use BookStack\Auth\Access\UserInviteService;
-use BookStack\Auth\User;
-use BookStack\Auth\UserRepo;
-use BookStack\Exceptions\ImageUploadException;
-use BookStack\Exceptions\UserUpdateException;
-use BookStack\Uploads\ImageRepo;
+use DailyRecipe\Actions\ActivityType;
+use DailyRecipe\Auth\Access\SocialAuthService;
+use DailyRecipe\Auth\Access\UserInviteService;
+use DailyRecipe\Auth\User;
+use DailyRecipe\Auth\UserRepo;
+use DailyRecipe\Exceptions\ImageUploadException;
+use DailyRecipe\Exceptions\UserUpdateException;
+use DailyRecipe\Uploads\ImageRepo;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;

@@ -2,8 +2,8 @@
 
 namespace Tests\Api;
 
-use BookStack\Auth\Permissions\RolePermission;
-use BookStack\Auth\User;
+use DailyRecipe\Auth\Permissions\RolePermission;
+use DailyRecipe\Auth\User;
 use Carbon\Carbon;
 use Tests\TestCase;
 

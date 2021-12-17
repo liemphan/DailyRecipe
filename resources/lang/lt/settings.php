@@ -1,7 +1,7 @@
 <?php
 /**
  * Settings text strings
- * Contains all text strings used in the general settings sections of BookStack
+ * Contains all text strings used in the general settings sections of DailyRecipe
  * including users and roles.
  */
 return [
@@ -18,7 +18,7 @@ return [
     'app_name_desc' => 'Šis pavadinimas yra rodomas antraštėje ir bet kuriuose sistemos siunčiamuose elektroniniuose laiškuose.',
     'app_name_header' => 'Rodyti pavadinimą antraštėje',
     'app_public_access' => 'Vieša prieiga',
-    'app_public_access_desc' => 'Įjungus šią parinktį lankytojai, kurie nėra prisijungę, galės pasiekti BookStack egzemplioriaus turinį.',
+    'app_public_access_desc' => 'Įjungus šią parinktį lankytojai, kurie nėra prisijungę, galės pasiekti DailyRecipe egzemplioriaus turinį.',
     'app_public_access_desc_guest' => 'Prieiga viešiems lankytojams gali būti kontroliuojama per "Svečio" naudotoją.',
     'app_public_access_toggle' => 'Leisti viešą prieigą',
     'app_public_viewing' => 'Leisti viešą žiūrėjimą?',

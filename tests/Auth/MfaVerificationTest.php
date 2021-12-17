@@ -2,12 +2,12 @@
 
 namespace Tests\Auth;
 
-use BookStack\Auth\Access\LoginService;
-use BookStack\Auth\Access\Mfa\MfaValue;
-use BookStack\Auth\Access\Mfa\TotpService;
-use BookStack\Auth\Role;
-use BookStack\Auth\User;
-use BookStack\Exceptions\StoppedAuthenticationException;
+use DailyRecipe\Auth\Access\LoginService;
+use DailyRecipe\Auth\Access\Mfa\MfaValue;
+use DailyRecipe\Auth\Access\Mfa\TotpService;
+use DailyRecipe\Auth\Role;
+use DailyRecipe\Auth\User;
+use DailyRecipe\Exceptions\StoppedAuthenticationException;
 use Illuminate\Support\Facades\Hash;
 use PragmaRX\Google2FA\Google2FA;
 use Tests\TestCase;

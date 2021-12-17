@@ -12,7 +12,7 @@ class UserFactory extends Factory
      *
      * @var string
      */
-    protected $model = \BookStack\Auth\User::class;
+    protected $model = \DailyRecipe\Auth\User::class;
 
     /**
      * Define the model's default state.

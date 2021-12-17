@@ -2,11 +2,11 @@
 
 namespace Tests\Entity;
 
-use BookStack\Auth\Role;
-use BookStack\Entities\Models\Book;
-use BookStack\Entities\Models\Chapter;
-use BookStack\Entities\Models\Page;
-use BookStack\Entities\Tools\PdfGenerator;
+use DailyRecipe\Auth\Role;
+use DailyRecipe\Entities\Models\Book;
+use DailyRecipe\Entities\Models\Chapter;
+use DailyRecipe\Entities\Models\Page;
+use DailyRecipe\Entities\Tools\PdfGenerator;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 use Tests\TestCase;

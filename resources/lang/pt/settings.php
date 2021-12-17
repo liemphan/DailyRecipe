@@ -1,7 +1,7 @@
 <?php
 /**
  * Settings text strings
- * Contains all text strings used in the general settings sections of BookStack
+ * Contains all text strings used in the general settings sections of DailyRecipe
  * including users and roles.
  */
 return [
@@ -18,7 +18,7 @@ return [
     'app_name_desc' => 'Este nome será mostrado no cabeçalho e em e-mails.',
     'app_name_header' => 'Mostrar o nome no cabeçalho',
     'app_public_access' => 'Acesso Público',
-    'app_public_access_desc' => 'Ativar esta opção irá permitir que os visitantes que não estão autenticados, acedam ao conteúdo da sua instância do BookStack.',
+    'app_public_access_desc' => 'Ativar esta opção irá permitir que os visitantes que não estão autenticados, acedam ao conteúdo da sua instância do DailyRecipe.',
     'app_public_access_desc_guest' => 'O acesso de visitantes públicos pode ser controlado através do utilizador "Convidado".',
     'app_public_access_toggle' => 'Permitir acesso público',
     'app_public_viewing' => 'Permitir visualização pública?',

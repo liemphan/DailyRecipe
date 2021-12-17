@@ -1,6 +1,6 @@
 <?php
 
-namespace BookStack;
+namespace DailyRecipe;
 
 use Illuminate\Database\Eloquent\Model as EloquentModel;
 

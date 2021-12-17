@@ -1,10 +1,10 @@
 <?php
 
-namespace BookStack\Http\Controllers;
+namespace DailyRecipe\Http\Controllers;
 
-use BookStack\Actions\ActivityType;
-use BookStack\Api\ApiToken;
-use BookStack\Auth\User;
+use DailyRecipe\Actions\ActivityType;
+use DailyRecipe\Api\ApiToken;
+use DailyRecipe\Auth\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;

@@ -1,15 +1,15 @@
 <?php
 
-namespace BookStack\Auth\Access;
+namespace DailyRecipe\Auth\Access;
 
-use BookStack\Actions\ActivityType;
-use BookStack\Auth\SocialAccount;
-use BookStack\Auth\User;
-use BookStack\Auth\UserRepo;
-use BookStack\Exceptions\UserRegistrationException;
-use BookStack\Facades\Activity;
-use BookStack\Facades\Theme;
-use BookStack\Theming\ThemeEvents;
+use DailyRecipe\Actions\ActivityType;
+use DailyRecipe\Auth\SocialAccount;
+use DailyRecipe\Auth\User;
+use DailyRecipe\Auth\UserRepo;
+use DailyRecipe\Exceptions\UserRegistrationException;
+use DailyRecipe\Facades\Activity;
+use DailyRecipe\Facades\Theme;
+use DailyRecipe\Theming\ThemeEvents;
 use Exception;
 use Illuminate\Support\Str;
 
@@ -40,7 +40,7 @@ class RegistrationService
     }
 
     /**
-     * Check if standard BookStack User registrations are currently allowed.
+     * Check if standard DailyRecipe User registrations are currently allowed.
      * Does not prevent external-auth based registration.
      */
     protected function registrationAllowed(): bool

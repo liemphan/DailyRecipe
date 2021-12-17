@@ -1,10 +1,10 @@
 <?php
 
-namespace BookStack\Http\Controllers\Auth;
+namespace DailyRecipe\Http\Controllers\Auth;
 
-use BookStack\Actions\ActivityType;
-use BookStack\Auth\Access\Mfa\MfaValue;
-use BookStack\Http\Controllers\Controller;
+use DailyRecipe\Actions\ActivityType;
+use DailyRecipe\Auth\Access\Mfa\MfaValue;
+use DailyRecipe\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
 class MfaController extends Controller

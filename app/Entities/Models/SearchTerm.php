@@ -1,8 +1,8 @@
 <?php
 
-namespace BookStack\Entities\Models;
+namespace DailyRecipe\Entities\Models;
 
-use BookStack\Model;
+use DailyRecipe\Model;
 
 class SearchTerm extends Model
 {

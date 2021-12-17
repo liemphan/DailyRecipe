@@ -1,7 +1,7 @@
 <?php
 /**
  * Settings text strings
- * Contains all text strings used in the general settings sections of BookStack
+ * Contains all text strings used in the general settings sections of DailyRecipe
  * including users and roles.
  */
 return [
@@ -18,7 +18,7 @@ return [
     'app_name_desc' => 'Tento názov sa zobrazuje v hlavičke a v emailoch.',
     'app_name_header' => 'Zobraziť názov aplikácie v hlavičke?',
     'app_public_access' => 'Verejný prístup',
-    'app_public_access_desc' => 'Povolenie tejto možnosti umožní návštevníkom, ktorí nie sú prihlásení, prístup k obsahu vo vašej inštancii BookStack.',
+    'app_public_access_desc' => 'Povolenie tejto možnosti umožní návštevníkom, ktorí nie sú prihlásení, prístup k obsahu vo vašej inštancii DailyRecipe.',
     'app_public_access_desc_guest' => 'Prístup pre verejných návštevníkov je možné ovládať prostredníctvom používateľa "Hosť".',
     'app_public_access_toggle' => 'Povoliť verejný prístup',
     'app_public_viewing' => 'Povoliť verejné zobrazenie?',

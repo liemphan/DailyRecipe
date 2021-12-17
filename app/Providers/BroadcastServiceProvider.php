@@ -1,6 +1,6 @@
 <?php
 
-namespace BookStack\Providers;
+namespace DailyRecipe\Providers;
 
 use Illuminate\Support\ServiceProvider;
 
@@ -18,7 +18,7 @@ class BroadcastServiceProvider extends ServiceProvider
 //        /*
 //         * Authenticate the user's personal channel...
 //         */
-//        Broadcast::channel('BookStack.User.*', function ($user, $userId) {
+//        Broadcast::channel('DailyRecipe.User.*', function ($user, $userId) {
 //            return (int) $user->id === (int) $userId;
 //        });
     }

@@ -1,7 +1,7 @@
 <?php
 /**
  * Settings text strings
- * Contains all text strings used in the general settings sections of BookStack
+ * Contains all text strings used in the general settings sections of DailyRecipe
  * including users and roles.
  */
 return [
@@ -18,7 +18,7 @@ return [
     'app_name_desc' => 'Nama ini ditampilkan di tajuk dan di semua email yang dikirim oleh sistem.',
     'app_name_header' => 'Tampilkan nama di header',
     'app_public_access' => 'Akses publik',
-    'app_public_access_desc' => 'Mengaktifkan opsi ini akan memungkinkan pengunjung, yang tidak masuk, untuk mengakses konten dalam contoh BookStack Anda.',
+    'app_public_access_desc' => 'Mengaktifkan opsi ini akan memungkinkan pengunjung, yang tidak masuk, untuk mengakses konten dalam contoh DailyRecipe Anda.',
     'app_public_access_desc_guest' => 'Akses untuk pengunjung umum dapat dikontrol melalui pengguna "Tamu".',
     'app_public_access_toggle' => 'Izinkan akses publik',
     'app_public_viewing' => 'Izinkan tontonan publik?',

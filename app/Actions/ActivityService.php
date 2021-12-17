@@ -1,14 +1,14 @@
 <?php
 
-namespace BookStack\Actions;
+namespace DailyRecipe\Actions;
 
-use BookStack\Auth\Permissions\PermissionService;
-use BookStack\Auth\User;
-use BookStack\Entities\Models\Book;
-use BookStack\Entities\Models\Chapter;
-use BookStack\Entities\Models\Entity;
-use BookStack\Entities\Models\Page;
-use BookStack\Interfaces\Loggable;
+use DailyRecipe\Auth\Permissions\PermissionService;
+use DailyRecipe\Auth\User;
+use DailyRecipe\Entities\Models\Book;
+use DailyRecipe\Entities\Models\Chapter;
+use DailyRecipe\Entities\Models\Entity;
+use DailyRecipe\Entities\Models\Page;
+use DailyRecipe\Interfaces\Loggable;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Relations\Relation;
 use Illuminate\Support\Facades\Log;

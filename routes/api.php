@@ -1,19 +1,19 @@
 <?php
 
-use BookStack\Http\Controllers\Api\ApiDocsController;
-use BookStack\Http\Controllers\Api\AttachmentApiController;
-use BookStack\Http\Controllers\Api\BookApiController;
-use BookStack\Http\Controllers\Api\BookExportApiController;
-use BookStack\Http\Controllers\Api\BookshelfApiController;
-use BookStack\Http\Controllers\Api\ChapterApiController;
-use BookStack\Http\Controllers\Api\ChapterExportApiController;
-use BookStack\Http\Controllers\Api\PageApiController;
-use BookStack\Http\Controllers\Api\PageExportApiController;
-use BookStack\Http\Controllers\Api\SearchApiController;
+use DailyRecipe\Http\Controllers\Api\ApiDocsController;
+use DailyRecipe\Http\Controllers\Api\AttachmentApiController;
+use DailyRecipe\Http\Controllers\Api\BookApiController;
+use DailyRecipe\Http\Controllers\Api\BookExportApiController;
+use DailyRecipe\Http\Controllers\Api\BookshelfApiController;
+use DailyRecipe\Http\Controllers\Api\ChapterApiController;
+use DailyRecipe\Http\Controllers\Api\ChapterExportApiController;
+use DailyRecipe\Http\Controllers\Api\PageApiController;
+use DailyRecipe\Http\Controllers\Api\PageExportApiController;
+use DailyRecipe\Http\Controllers\Api\SearchApiController;
 use Illuminate\Support\Facades\Route;
 
 /**
- * Routes for the BookStack API.
+ * Routes for the DailyRecipe API.
  * Routes have a uri prefix of /api/.
  * Controllers are all within app/Http/Controllers/Api.
  */

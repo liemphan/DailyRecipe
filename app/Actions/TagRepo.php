@@ -1,9 +1,9 @@
 <?php
 
-namespace BookStack\Actions;
+namespace DailyRecipe\Actions;
 
-use BookStack\Auth\Permissions\PermissionService;
-use BookStack\Entities\Models\Entity;
+use DailyRecipe\Auth\Permissions\PermissionService;
+use DailyRecipe\Entities\Models\Entity;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\DB;
@@ -28,10 +28,10 @@ class TagRepo
                 'name',
                 ($searchTerm || $nameFilter) ? 'value' : DB::raw('COUNT(distinct value) as `values`'),
                 DB::raw('COUNT(id) as usages'),
-                DB::raw('SUM(IF(entity_type = \'BookStack\\\\Page\', 1, 0)) as page_count'),
-                DB::raw('SUM(IF(entity_type = \'BookStack\\\\Chapter\', 1, 0)) as chapter_count'),
-                DB::raw('SUM(IF(entity_type = \'BookStack\\\\Book\', 1, 0)) as book_count'),
-                DB::raw('SUM(IF(entity_type = \'BookStack\\\\BookShelf\', 1, 0)) as shelf_count'),
+                DB::raw('SUM(IF(entity_type = \'DailyRecipe\\\\Page\', 1, 0)) as page_count'),
+                DB::raw('SUM(IF(entity_type = \'DailyRecipe\\\\Chapter\', 1, 0)) as chapter_count'),
+                DB::raw('SUM(IF(entity_type = \'DailyRecipe\\\\Book\', 1, 0)) as book_count'),
+                DB::raw('SUM(IF(entity_type = \'DailyRecipe\\\\BookShelf\', 1, 0)) as shelf_count'),
             ])
             ->orderBy($nameFilter ? 'value' : 'name');
 

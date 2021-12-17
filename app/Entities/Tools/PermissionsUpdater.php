@@ -1,11 +1,11 @@
 <?php
 
-namespace BookStack\Entities\Tools;
+namespace DailyRecipe\Entities\Tools;
 
-use BookStack\Actions\ActivityType;
-use BookStack\Auth\User;
-use BookStack\Entities\Models\Entity;
-use BookStack\Facades\Activity;
+use DailyRecipe\Actions\ActivityType;
+use DailyRecipe\Auth\User;
+use DailyRecipe\Entities\Models\Entity;
+use DailyRecipe\Facades\Activity;
 use Illuminate\Http\Request;
 use Illuminate\Support\Collection;
 

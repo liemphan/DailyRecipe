@@ -1,6 +1,6 @@
 <?php
 
-namespace BookStack\Providers;
+namespace DailyRecipe\Providers;
 
 use Illuminate\Cache\RateLimiting\Limit;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;

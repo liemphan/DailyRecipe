@@ -1,9 +1,9 @@
 <?php
 
-namespace BookStack\Entities\Queries;
+namespace DailyRecipe\Entities\Queries;
 
-use BookStack\Auth\Permissions\PermissionService;
-use BookStack\Entities\EntityProvider;
+use DailyRecipe\Auth\Permissions\PermissionService;
+use DailyRecipe\Entities\EntityProvider;
 
 abstract class EntityQuery
 {

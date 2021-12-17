@@ -1,6 +1,6 @@
 <?php
 
-namespace BookStack\Entities\Tools\Markdown;
+namespace DailyRecipe\Entities\Tools\Markdown;
 
 use League\CommonMark\Block\Element\AbstractBlock;
 use League\CommonMark\Block\Element\ListItem;

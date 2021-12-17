@@ -2,9 +2,9 @@
 
 namespace Tests\Entity;
 
-use BookStack\Auth\UserRepo;
-use BookStack\Entities\Models\Entity;
-use BookStack\Entities\Repos\PageRepo;
+use DailyRecipe\Auth\UserRepo;
+use DailyRecipe\Entities\Models\Entity;
+use DailyRecipe\Entities\Repos\PageRepo;
 use Tests\TestCase;
 
 class EntityAccessTest extends TestCase

@@ -12,7 +12,7 @@ class ChapterFactory extends Factory
      *
      * @var string
      */
-    protected $model = \BookStack\Entities\Models\Chapter::class;
+    protected $model = \DailyRecipe\Entities\Models\Chapter::class;
 
     /**
      * Define the model's default state.

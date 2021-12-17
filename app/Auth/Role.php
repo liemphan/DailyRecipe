@@ -1,11 +1,11 @@
 <?php
 
-namespace BookStack\Auth;
+namespace DailyRecipe\Auth;
 
-use BookStack\Auth\Permissions\JointPermission;
-use BookStack\Auth\Permissions\RolePermission;
-use BookStack\Interfaces\Loggable;
-use BookStack\Model;
+use DailyRecipe\Auth\Permissions\JointPermission;
+use DailyRecipe\Auth\Permissions\RolePermission;
+use DailyRecipe\Interfaces\Loggable;
+use DailyRecipe\Model;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;

@@ -1,4 +1,4 @@
-# BookStack Views
+# DailyRecipe Views
 
 All views within this folder are [Laravel blade](https://laravel.com/docs/6.x/blade) views.
 

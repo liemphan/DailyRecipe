@@ -1,8 +1,8 @@
 <?php
 
-namespace BookStack\Http\Controllers\Api;
+namespace DailyRecipe\Http\Controllers\Api;
 
-use BookStack\Api\ApiDocsGenerator;
+use DailyRecipe\Api\ApiDocsGenerator;
 
 class ApiDocsController extends ApiController
 {

@@ -1,10 +1,10 @@
 <?php
 
-namespace BookStack\Http\Controllers\Api;
+namespace DailyRecipe\Http\Controllers\Api;
 
-use BookStack\Entities\Models\Entity;
-use BookStack\Entities\Tools\SearchOptions;
-use BookStack\Entities\Tools\SearchRunner;
+use DailyRecipe\Entities\Models\Entity;
+use DailyRecipe\Entities\Tools\SearchOptions;
+use DailyRecipe\Entities\Tools\SearchRunner;
 use Illuminate\Http\Request;
 
 class SearchApiController extends ApiController
@@ -26,7 +26,7 @@ class SearchApiController extends ApiController
 
     /**
      * Run a search query against all main content types (shelves, books, chapters & pages)
-     * in the system. Takes the same input as the main search bar within the BookStack
+     * in the system. Takes the same input as the main search bar within the DailyRecipe
      * interface as a 'query' parameter. See https://www.bookstackapp.com/docs/user/searching/
      * for a full list of search term options. Results contain a 'type' property to distinguish
      * between: bookshelf, book, chapter & page.

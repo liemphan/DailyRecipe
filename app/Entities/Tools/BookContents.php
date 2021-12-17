@@ -1,13 +1,13 @@
 <?php
 
-namespace BookStack\Entities\Tools;
+namespace DailyRecipe\Entities\Tools;
 
-use BookStack\Entities\Models\Book;
-use BookStack\Entities\Models\BookChild;
-use BookStack\Entities\Models\Chapter;
-use BookStack\Entities\Models\Entity;
-use BookStack\Entities\Models\Page;
-use BookStack\Exceptions\SortOperationException;
+use DailyRecipe\Entities\Models\Book;
+use DailyRecipe\Entities\Models\BookChild;
+use DailyRecipe\Entities\Models\Chapter;
+use DailyRecipe\Entities\Models\Entity;
+use DailyRecipe\Entities\Models\Page;
+use DailyRecipe\Exceptions\SortOperationException;
 use Illuminate\Support\Collection;
 
 class BookContents

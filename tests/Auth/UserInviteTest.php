@@ -2,9 +2,9 @@
 
 namespace Tests\Auth;
 
-use BookStack\Auth\Access\UserInviteService;
-use BookStack\Auth\User;
-use BookStack\Notifications\UserInvite;
+use DailyRecipe\Auth\Access\UserInviteService;
+use DailyRecipe\Auth\User;
+use DailyRecipe\Notifications\UserInvite;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Notification;
@@ -45,14 +45,14 @@ class UserInviteTest extends TestCase
 
         $setPasswordPageResp = $this->get('/register/invite/' . $token);
         $setPasswordPageResp->assertSuccessful();
-        $setPasswordPageResp->assertSee('Welcome to BookStack!');
+        $setPasswordPageResp->assertSee('Welcome to DailyRecipe!');
         $setPasswordPageResp->assertSee('Password');
         $setPasswordPageResp->assertSee('Confirm Password');
 
         $setPasswordResp = $this->followingRedirects()->post('/register/invite/' . $token, [
             'password' => 'my test password',
         ]);
-        $setPasswordResp->assertSee('Password set, you should now be able to login using your set password to access BookStack!');
+        $setPasswordResp->assertSee('Password set, you should now be able to login using your set password to access DailyRecipe!');
         $newPasswordValid = auth()->validate([
             'email'    => $user->email,
             'password' => 'my test password',

@@ -1,8 +1,8 @@
 <?php
 
-namespace BookStack\Http\Controllers;
+namespace DailyRecipe\Http\Controllers;
 
-use BookStack\Actions\TagRepo;
+use DailyRecipe\Actions\TagRepo;
 use Illuminate\Http\Request;
 
 class TagController extends Controller

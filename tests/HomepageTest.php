@@ -2,10 +2,10 @@
 
 namespace Tests;
 
-use BookStack\Auth\Role;
-use BookStack\Auth\User;
-use BookStack\Entities\Models\Bookshelf;
-use BookStack\Entities\Models\Page;
+use DailyRecipe\Auth\Role;
+use DailyRecipe\Auth\User;
+use DailyRecipe\Entities\Models\Bookshelf;
+use DailyRecipe\Entities\Models\Page;
 
 class HomepageTest extends TestCase
 {

@@ -1,10 +1,10 @@
 <?php
 
-namespace BookStack\Auth\Permissions;
+namespace DailyRecipe\Auth\Permissions;
 
-use BookStack\Auth\Role;
-use BookStack\Entities\Models\Entity;
-use BookStack\Model;
+use DailyRecipe\Auth\Role;
+use DailyRecipe\Entities\Models\Entity;
+use DailyRecipe\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\MorphOne;
 

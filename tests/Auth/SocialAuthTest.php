@@ -2,9 +2,9 @@
 
 namespace Tests\Auth;
 
-use BookStack\Actions\ActivityType;
-use BookStack\Auth\SocialAccount;
-use BookStack\Auth\User;
+use DailyRecipe\Actions\ActivityType;
+use DailyRecipe\Auth\SocialAccount;
+use DailyRecipe\Auth\User;
 use Illuminate\Support\Facades\DB;
 use Laravel\Socialite\Contracts\Factory;
 use Laravel\Socialite\Contracts\Provider;

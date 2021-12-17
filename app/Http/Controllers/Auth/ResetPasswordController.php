@@ -1,9 +1,9 @@
 <?php
 
-namespace BookStack\Http\Controllers\Auth;
+namespace DailyRecipe\Http\Controllers\Auth;
 
-use BookStack\Actions\ActivityType;
-use BookStack\Http\Controllers\Controller;
+use DailyRecipe\Actions\ActivityType;
+use DailyRecipe\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ResetsPasswords;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Password;

@@ -1,17 +1,17 @@
 <?php
 
-namespace BookStack\Http\Controllers;
+namespace DailyRecipe\Http\Controllers;
 
-use BookStack\Actions\View;
-use BookStack\Entities\Models\Page;
-use BookStack\Entities\Repos\PageRepo;
-use BookStack\Entities\Tools\BookContents;
-use BookStack\Entities\Tools\NextPreviousContentLocator;
-use BookStack\Entities\Tools\PageContent;
-use BookStack\Entities\Tools\PageEditActivity;
-use BookStack\Entities\Tools\PermissionsUpdater;
-use BookStack\Exceptions\NotFoundException;
-use BookStack\Exceptions\PermissionsException;
+use DailyRecipe\Actions\View;
+use DailyRecipe\Entities\Models\Page;
+use DailyRecipe\Entities\Repos\PageRepo;
+use DailyRecipe\Entities\Tools\BookContents;
+use DailyRecipe\Entities\Tools\NextPreviousContentLocator;
+use DailyRecipe\Entities\Tools\PageContent;
+use DailyRecipe\Entities\Tools\PageEditActivity;
+use DailyRecipe\Entities\Tools\PermissionsUpdater;
+use DailyRecipe\Exceptions\NotFoundException;
+use DailyRecipe\Exceptions\PermissionsException;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Validation\ValidationException;

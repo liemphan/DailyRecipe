@@ -1,34 +1,34 @@
 <?php
 
-use BookStack\Http\Controllers\Api;
-use BookStack\Http\Controllers\AttachmentController;
-use BookStack\Http\Controllers\AuditLogController;
-use BookStack\Http\Controllers\Auth;
-use BookStack\Http\Controllers\BookController;
-use BookStack\Http\Controllers\BookExportController;
-use BookStack\Http\Controllers\BookshelfController;
-use BookStack\Http\Controllers\BookSortController;
-use BookStack\Http\Controllers\ChapterController;
-use BookStack\Http\Controllers\ChapterExportController;
-use BookStack\Http\Controllers\CommentController;
-use BookStack\Http\Controllers\FavouriteController;
-use BookStack\Http\Controllers\HomeController;
-use BookStack\Http\Controllers\Images;
-use BookStack\Http\Controllers\MaintenanceController;
-use BookStack\Http\Controllers\PageController;
-use BookStack\Http\Controllers\PageExportController;
-use BookStack\Http\Controllers\PageRevisionController;
-use BookStack\Http\Controllers\PageTemplateController;
-use BookStack\Http\Controllers\RecycleBinController;
-use BookStack\Http\Controllers\RoleController;
-use BookStack\Http\Controllers\SearchController;
-use BookStack\Http\Controllers\SettingController;
-use BookStack\Http\Controllers\StatusController;
-use BookStack\Http\Controllers\TagController;
-use BookStack\Http\Controllers\UserApiTokenController;
-use BookStack\Http\Controllers\UserController;
-use BookStack\Http\Controllers\UserProfileController;
-use BookStack\Http\Controllers\UserSearchController;
+use DailyRecipe\Http\Controllers\Api;
+use DailyRecipe\Http\Controllers\AttachmentController;
+use DailyRecipe\Http\Controllers\AuditLogController;
+use DailyRecipe\Http\Controllers\Auth;
+use DailyRecipe\Http\Controllers\BookController;
+use DailyRecipe\Http\Controllers\BookExportController;
+use DailyRecipe\Http\Controllers\BookshelfController;
+use DailyRecipe\Http\Controllers\BookSortController;
+use DailyRecipe\Http\Controllers\ChapterController;
+use DailyRecipe\Http\Controllers\ChapterExportController;
+use DailyRecipe\Http\Controllers\CommentController;
+use DailyRecipe\Http\Controllers\FavouriteController;
+use DailyRecipe\Http\Controllers\HomeController;
+use DailyRecipe\Http\Controllers\Images;
+use DailyRecipe\Http\Controllers\MaintenanceController;
+use DailyRecipe\Http\Controllers\PageController;
+use DailyRecipe\Http\Controllers\PageExportController;
+use DailyRecipe\Http\Controllers\PageRevisionController;
+use DailyRecipe\Http\Controllers\PageTemplateController;
+use DailyRecipe\Http\Controllers\RecycleBinController;
+use DailyRecipe\Http\Controllers\RoleController;
+use DailyRecipe\Http\Controllers\SearchController;
+use DailyRecipe\Http\Controllers\SettingController;
+use DailyRecipe\Http\Controllers\StatusController;
+use DailyRecipe\Http\Controllers\TagController;
+use DailyRecipe\Http\Controllers\UserApiTokenController;
+use DailyRecipe\Http\Controllers\UserController;
+use DailyRecipe\Http\Controllers\UserProfileController;
+use DailyRecipe\Http\Controllers\UserSearchController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/status', [StatusController::class, 'show']);
@@ -293,7 +293,7 @@ Route::get('/saml2/sls', [Auth\Saml2Controller::class, 'sls']);
 Route::post('/saml2/acs', [Auth\Saml2Controller::class, 'startAcs'])->withoutMiddleware([
     \Illuminate\Session\Middleware\StartSession::class,
     \Illuminate\View\Middleware\ShareErrorsFromSession::class,
-    \BookStack\Http\Middleware\VerifyCsrfToken::class,
+    \DailyRecipe\Http\Middleware\VerifyCsrfToken::class,
 ]);
 Route::get('/saml2/acs', [Auth\Saml2Controller::class, 'processAcs']);
 

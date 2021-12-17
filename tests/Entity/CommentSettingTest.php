@@ -2,7 +2,7 @@
 
 namespace Tests\Entity;
 
-use BookStack\Entities\Models\Page;
+use DailyRecipe\Entities\Models\Page;
 use Tests\TestCase;
 
 class CommentSettingTest extends TestCase

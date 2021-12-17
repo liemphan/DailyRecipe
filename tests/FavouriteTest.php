@@ -1,10 +1,10 @@
 <?php
 
-use BookStack\Actions\Favourite;
-use BookStack\Entities\Models\Book;
-use BookStack\Entities\Models\Bookshelf;
-use BookStack\Entities\Models\Chapter;
-use BookStack\Entities\Models\Page;
+use DailyRecipe\Actions\Favourite;
+use DailyRecipe\Entities\Models\Book;
+use DailyRecipe\Entities\Models\Bookshelf;
+use DailyRecipe\Entities\Models\Chapter;
+use DailyRecipe\Entities\Models\Page;
 use Tests\TestCase;
 
 class FavouriteTest extends TestCase

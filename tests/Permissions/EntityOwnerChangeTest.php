@@ -2,11 +2,11 @@
 
 namespace Tests\Permissions;
 
-use BookStack\Auth\User;
-use BookStack\Entities\Models\Book;
-use BookStack\Entities\Models\Bookshelf;
-use BookStack\Entities\Models\Chapter;
-use BookStack\Entities\Models\Page;
+use DailyRecipe\Auth\User;
+use DailyRecipe\Entities\Models\Book;
+use DailyRecipe\Entities\Models\Bookshelf;
+use DailyRecipe\Entities\Models\Chapter;
+use DailyRecipe\Entities\Models\Page;
 use Tests\TestCase;
 
 class EntityOwnerChangeTest extends TestCase

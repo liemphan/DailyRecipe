@@ -2,7 +2,7 @@
 
 namespace Tests\Commands;
 
-use BookStack\Entities\Models\Page;
+use DailyRecipe\Entities\Models\Page;
 use Symfony\Component\Console\Exception\RuntimeException;
 use Tests\TestCase;
 

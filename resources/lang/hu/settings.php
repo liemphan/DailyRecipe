@@ -1,7 +1,7 @@
 <?php
 /**
  * Settings text strings
- * Contains all text strings used in the general settings sections of BookStack
+ * Contains all text strings used in the general settings sections of DailyRecipe
  * including users and roles.
  */
 return [
@@ -18,7 +18,7 @@ return [
     'app_name_desc' => 'Ez a név meg fog jelenni a fejlécben és minden a rendszer által küldött emailben.',
     'app_name_header' => 'Név mutatása a fejlécben',
     'app_public_access' => 'Nyilvános hozzáférés',
-    'app_public_access_desc' => 'Ha engedélyezett, a nem bejelentkezett felhasználók is hozzá tudnak férni a BookStack példány tartalmaihoz.',
+    'app_public_access_desc' => 'Ha engedélyezett, a nem bejelentkezett felhasználók is hozzá tudnak férni a DailyRecipe példány tartalmaihoz.',
     'app_public_access_desc_guest' => 'A nyilvános látogatók hozzáférése a "Guest" felhasználón keresztül irányítható.',
     'app_public_access_toggle' => 'Nyilvános hozzáférés engedélyezése',
     'app_public_viewing' => 'Nyilvános megtekintés engedélyezve?',

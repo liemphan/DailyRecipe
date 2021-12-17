@@ -1,9 +1,9 @@
 <?php
 
-namespace BookStack\Auth\Access;
+namespace DailyRecipe\Auth\Access;
 
-use BookStack\Auth\User;
-use BookStack\Notifications\UserInvite;
+use DailyRecipe\Auth\User;
+use DailyRecipe\Notifications\UserInvite;
 
 class UserInviteService extends UserTokenService
 {
@@ -11,7 +11,7 @@ class UserInviteService extends UserTokenService
     protected $expiryTime = 336; // Two weeks
 
     /**
-     * Send an invitation to a user to sign into BookStack
+     * Send an invitation to a user to sign into DailyRecipe
      * Removes existing invitation tokens.
      *
      * @param User $user

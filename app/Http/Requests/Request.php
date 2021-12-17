@@ -1,6 +1,6 @@
 <?php
 
-namespace BookStack\Http\Requests;
+namespace DailyRecipe\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 

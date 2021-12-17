@@ -1,15 +1,15 @@
 <?php
 
-namespace BookStack\Http\Controllers\Auth;
+namespace DailyRecipe\Http\Controllers\Auth;
 
-use BookStack\Actions\ActivityType;
-use BookStack\Auth\Access\LoginService;
-use BookStack\Auth\Access\Mfa\MfaSession;
-use BookStack\Auth\Access\Mfa\MfaValue;
-use BookStack\Auth\Access\Mfa\TotpService;
-use BookStack\Auth\Access\Mfa\TotpValidationRule;
-use BookStack\Exceptions\NotFoundException;
-use BookStack\Http\Controllers\Controller;
+use DailyRecipe\Actions\ActivityType;
+use DailyRecipe\Auth\Access\LoginService;
+use DailyRecipe\Auth\Access\Mfa\MfaSession;
+use DailyRecipe\Auth\Access\Mfa\MfaValue;
+use DailyRecipe\Auth\Access\Mfa\TotpService;
+use DailyRecipe\Auth\Access\Mfa\TotpValidationRule;
+use DailyRecipe\Exceptions\NotFoundException;
+use DailyRecipe\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Validation\ValidationException;
 

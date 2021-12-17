@@ -1,8 +1,8 @@
 {
     "name": "bookstackapp/bookstack",
-    "description": "BookStack documentation platform",
+    "description": "DailyRecipe documentation platform",
     "keywords": [
-        "BookStack",
+        "DailyRecipe",
         "Documentation"
     ],
     "license": "MIT",
@@ -54,7 +54,7 @@
     },
     "autoload": {
         "psr-4": {
-            "BookStack\\": "app/",
+            "DailyRecipe\\": "app/",
             "Database\\Factories\\": "database/factories/",
             "Database\\Seeders\\": "database/seeders/"
         },

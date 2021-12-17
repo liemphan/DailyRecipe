@@ -1,13 +1,13 @@
 <?php
 
-namespace BookStack\Entities;
+namespace DailyRecipe\Entities;
 
-use BookStack\Entities\Models\Book;
-use BookStack\Entities\Models\Bookshelf;
-use BookStack\Entities\Models\Chapter;
-use BookStack\Entities\Models\Entity;
-use BookStack\Entities\Models\Page;
-use BookStack\Entities\Models\PageRevision;
+use DailyRecipe\Entities\Models\Book;
+use DailyRecipe\Entities\Models\Bookshelf;
+use DailyRecipe\Entities\Models\Chapter;
+use DailyRecipe\Entities\Models\Entity;
+use DailyRecipe\Entities\Models\Page;
+use DailyRecipe\Entities\Models\PageRevision;
 
 /**
  * Class EntityProvider.

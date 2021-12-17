@@ -1,10 +1,10 @@
 <?php
 
-namespace BookStack\Auth\Access;
+namespace DailyRecipe\Auth\Access;
 
-use BookStack\Auth\User;
-use BookStack\Exceptions\UserTokenExpiredException;
-use BookStack\Exceptions\UserTokenNotFoundException;
+use DailyRecipe\Auth\User;
+use DailyRecipe\Exceptions\UserTokenExpiredException;
+use DailyRecipe\Exceptions\UserTokenNotFoundException;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;

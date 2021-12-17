@@ -1,9 +1,9 @@
 <?php
 
-namespace BookStack\Entities\Tools;
+namespace DailyRecipe\Entities\Tools;
 
-use BookStack\Actions\Tag;
-use BookStack\Entities\Models\Entity;
+use DailyRecipe\Actions\Tag;
+use DailyRecipe\Entities\Models\Entity;
 use Illuminate\Support\HtmlString;
 
 class SearchResultsFormatter

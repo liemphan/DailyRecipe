@@ -1,9 +1,9 @@
 <?php
 
-namespace BookStack\Actions;
+namespace DailyRecipe\Actions;
 
-use BookStack\Model;
-use BookStack\Traits\HasCreatorAndUpdater;
+use DailyRecipe\Model;
+use DailyRecipe\Traits\HasCreatorAndUpdater;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\MorphTo;
 

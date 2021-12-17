@@ -1,20 +1,20 @@
 <?php
 
-namespace BookStack\Entities\Repos;
+namespace DailyRecipe\Entities\Repos;
 
-use BookStack\Actions\ActivityType;
-use BookStack\Entities\Models\Book;
-use BookStack\Entities\Models\Chapter;
-use BookStack\Entities\Models\Entity;
-use BookStack\Entities\Models\Page;
-use BookStack\Entities\Models\PageRevision;
-use BookStack\Entities\Tools\BookContents;
-use BookStack\Entities\Tools\PageContent;
-use BookStack\Entities\Tools\TrashCan;
-use BookStack\Exceptions\MoveOperationException;
-use BookStack\Exceptions\NotFoundException;
-use BookStack\Exceptions\PermissionsException;
-use BookStack\Facades\Activity;
+use DailyRecipe\Actions\ActivityType;
+use DailyRecipe\Entities\Models\Book;
+use DailyRecipe\Entities\Models\Chapter;
+use DailyRecipe\Entities\Models\Entity;
+use DailyRecipe\Entities\Models\Page;
+use DailyRecipe\Entities\Models\PageRevision;
+use DailyRecipe\Entities\Tools\BookContents;
+use DailyRecipe\Entities\Tools\PageContent;
+use DailyRecipe\Entities\Tools\TrashCan;
+use DailyRecipe\Exceptions\MoveOperationException;
+use DailyRecipe\Exceptions\NotFoundException;
+use DailyRecipe\Exceptions\PermissionsException;
+use DailyRecipe\Facades\Activity;
 use Exception;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Pagination\LengthAwarePaginator;

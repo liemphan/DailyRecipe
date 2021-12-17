@@ -1,9 +1,9 @@
 <?php
 
-namespace BookStack\Http\Controllers;
+namespace DailyRecipe\Http\Controllers;
 
-use BookStack\Actions\CommentRepo;
-use BookStack\Entities\Models\Page;
+use DailyRecipe\Actions\CommentRepo;
+use DailyRecipe\Entities\Models\Page;
 use Illuminate\Http\Request;
 use Illuminate\Validation\ValidationException;
 

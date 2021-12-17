@@ -27,9 +27,9 @@
   "data": [
     {
       "id": 1,
-      "name": "BookStack User Guide",
+      "name": "DailyRecipe User Guide",
       "slug": "bookstack-user-guide",
-      "description": "This is a general guide on using BookStack on a day-to-day basis.",
+      "description": "This is a general guide on using DailyRecipe on a day-to-day basis.",
       "created_at": "2019-05-05 21:48:46",
       "updated_at": "2019-12-11 20:57:31",
       "created_by": 1,

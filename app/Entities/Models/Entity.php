@@ -1,24 +1,24 @@
 <?php
 
-namespace BookStack\Entities\Models;
+namespace DailyRecipe\Entities\Models;
 
-use BookStack\Actions\Activity;
-use BookStack\Actions\Comment;
-use BookStack\Actions\Favourite;
-use BookStack\Actions\Tag;
-use BookStack\Actions\View;
-use BookStack\Auth\Permissions\EntityPermission;
-use BookStack\Auth\Permissions\JointPermission;
-use BookStack\Entities\Tools\SearchIndex;
-use BookStack\Entities\Tools\SlugGenerator;
-use BookStack\Facades\Permissions;
-use BookStack\Interfaces\Deletable;
-use BookStack\Interfaces\Favouritable;
-use BookStack\Interfaces\Sluggable;
-use BookStack\Interfaces\Viewable;
-use BookStack\Model;
-use BookStack\Traits\HasCreatorAndUpdater;
-use BookStack\Traits\HasOwner;
+use DailyRecipe\Actions\Activity;
+use DailyRecipe\Actions\Comment;
+use DailyRecipe\Actions\Favourite;
+use DailyRecipe\Actions\Tag;
+use DailyRecipe\Actions\View;
+use DailyRecipe\Auth\Permissions\EntityPermission;
+use DailyRecipe\Auth\Permissions\JointPermission;
+use DailyRecipe\Entities\Tools\SearchIndex;
+use DailyRecipe\Entities\Tools\SlugGenerator;
+use DailyRecipe\Facades\Permissions;
+use DailyRecipe\Interfaces\Deletable;
+use DailyRecipe\Interfaces\Favouritable;
+use DailyRecipe\Interfaces\Sluggable;
+use DailyRecipe\Interfaces\Viewable;
+use DailyRecipe\Model;
+use DailyRecipe\Traits\HasCreatorAndUpdater;
+use DailyRecipe\Traits\HasOwner;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;

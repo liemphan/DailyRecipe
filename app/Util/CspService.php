@@ -1,6 +1,6 @@
 <?php
 
-namespace BookStack\Util;
+namespace DailyRecipe\Util;
 
 use Illuminate\Support\Str;
 use Symfony\Component\HttpFoundation\Response;
@@ -45,7 +45,7 @@ class CspService
     }
 
     /**
-     * Sets CSP "frame-ancestors" headers to restrict the hosts that BookStack can be
+     * Sets CSP "frame-ancestors" headers to restrict the hosts that DailyRecipe can be
      * iframed within. Also adjusts the cookie samesite options so that cookies will
      * operate in the third-party context.
      */

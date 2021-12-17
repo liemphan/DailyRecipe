@@ -1,11 +1,11 @@
 <?php
 
-namespace BookStack\Auth\Permissions;
+namespace DailyRecipe\Auth\Permissions;
 
-use BookStack\Actions\ActivityType;
-use BookStack\Auth\Role;
-use BookStack\Exceptions\PermissionsException;
-use BookStack\Facades\Activity;
+use DailyRecipe\Actions\ActivityType;
+use DailyRecipe\Auth\Role;
+use DailyRecipe\Exceptions\PermissionsException;
+use DailyRecipe\Facades\Activity;
 use Exception;
 use Illuminate\Database\Eloquent\Collection;
 

@@ -1,14 +1,14 @@
 <?php
 
-namespace BookStack\Entities\Tools;
+namespace DailyRecipe\Entities\Tools;
 
-use BookStack\Auth\Permissions\PermissionService;
-use BookStack\Auth\User;
-use BookStack\Entities\EntityProvider;
-use BookStack\Entities\Models\BookChild;
-use BookStack\Entities\Models\Entity;
-use BookStack\Entities\Models\Page;
-use BookStack\Entities\Models\SearchTerm;
+use DailyRecipe\Auth\Permissions\PermissionService;
+use DailyRecipe\Auth\User;
+use DailyRecipe\Entities\EntityProvider;
+use DailyRecipe\Entities\Models\BookChild;
+use DailyRecipe\Entities\Models\Entity;
+use DailyRecipe\Entities\Models\Page;
+use DailyRecipe\Entities\Models\SearchTerm;
 use Illuminate\Database\Connection;
 use Illuminate\Database\Eloquent\Builder as EloquentBuilder;
 use Illuminate\Database\Eloquent\Collection as EloquentCollection;

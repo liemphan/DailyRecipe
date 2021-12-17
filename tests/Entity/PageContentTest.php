@@ -2,8 +2,8 @@
 
 namespace Tests\Entity;
 
-use BookStack\Entities\Models\Page;
-use BookStack\Entities\Tools\PageContent;
+use DailyRecipe\Entities\Models\Page;
+use DailyRecipe\Entities\Tools\PageContent;
 use Tests\TestCase;
 use Tests\Uploads\UsesImages;
 
@@ -615,7 +615,7 @@ class PageContentTest extends TestCase
 
     public function test_base64_images_within_html_blanked_if_not_supported_extension_for_extract()
     {
-        // Relevant to https://github.com/BookStackApp/BookStack/issues/3010 and other cases
+        // Relevant to https://github.com/BookStackApp/DailyRecipe/issues/3010 and other cases
         $extensions = [
             'jiff', 'pngr', 'png ', ' png', '.png', 'png.', 'p.ng', ',png',
             'data:image/png', ',data:image/png',

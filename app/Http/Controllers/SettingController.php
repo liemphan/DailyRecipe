@@ -1,10 +1,10 @@
 <?php
 
-namespace BookStack\Http\Controllers;
+namespace DailyRecipe\Http\Controllers;
 
-use BookStack\Actions\ActivityType;
-use BookStack\Auth\User;
-use BookStack\Uploads\ImageRepo;
+use DailyRecipe\Actions\ActivityType;
+use DailyRecipe\Auth\User;
+use DailyRecipe\Uploads\ImageRepo;
 use Illuminate\Http\Request;
 
 class SettingController extends Controller

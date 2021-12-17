@@ -1,8 +1,8 @@
 <?php
 
-namespace BookStack\Facades;
+namespace DailyRecipe\Facades;
 
-use BookStack\Theming\ThemeService;
+use DailyRecipe\Theming\ThemeService;
 use Illuminate\Support\Facades\Facade;
 
 class Theme extends Facade

@@ -2,8 +2,8 @@
 
 namespace Tests\Api;
 
-use BookStack\Entities\Models\Book;
-use BookStack\Entities\Models\Bookshelf;
+use DailyRecipe\Entities\Models\Book;
+use DailyRecipe\Entities\Models\Bookshelf;
 use Tests\TestCase;
 
 class ShelvesApiTest extends TestCase

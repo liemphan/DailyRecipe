@@ -1,6 +1,6 @@
 <?php
 
-namespace BookStack\Actions;
+namespace DailyRecipe\Actions;
 
 class ActivityType
 {

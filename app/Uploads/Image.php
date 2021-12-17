@@ -1,10 +1,10 @@
 <?php
 
-namespace BookStack\Uploads;
+namespace DailyRecipe\Uploads;
 
-use BookStack\Entities\Models\Page;
-use BookStack\Model;
-use BookStack\Traits\HasCreatorAndUpdater;
+use DailyRecipe\Entities\Models\Page;
+use DailyRecipe\Model;
+use DailyRecipe\Traits\HasCreatorAndUpdater;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 /**

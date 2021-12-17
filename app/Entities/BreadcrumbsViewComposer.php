@@ -1,9 +1,9 @@
 <?php
 
-namespace BookStack\Entities;
+namespace DailyRecipe\Entities;
 
-use BookStack\Entities\Models\Book;
-use BookStack\Entities\Tools\ShelfContext;
+use DailyRecipe\Entities\Models\Book;
+use DailyRecipe\Entities\Tools\ShelfContext;
 use Illuminate\View\View;
 
 class BreadcrumbsViewComposer

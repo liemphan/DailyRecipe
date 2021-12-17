@@ -1,15 +1,15 @@
 <?php
 
-namespace BookStack\Http\Controllers;
+namespace DailyRecipe\Http\Controllers;
 
 use Activity;
-use BookStack\Entities\Models\Book;
-use BookStack\Entities\Models\Page;
-use BookStack\Entities\Queries\RecentlyViewed;
-use BookStack\Entities\Queries\TopFavourites;
-use BookStack\Entities\Repos\BookRepo;
-use BookStack\Entities\Repos\BookshelfRepo;
-use BookStack\Entities\Tools\PageContent;
+use DailyRecipe\Entities\Models\Book;
+use DailyRecipe\Entities\Models\Page;
+use DailyRecipe\Entities\Queries\RecentlyViewed;
+use DailyRecipe\Entities\Queries\TopFavourites;
+use DailyRecipe\Entities\Repos\BookRepo;
+use DailyRecipe\Entities\Repos\BookshelfRepo;
+use DailyRecipe\Entities\Tools\PageContent;
 
 class HomeController extends Controller
 {

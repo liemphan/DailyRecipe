@@ -1,6 +1,6 @@
 <?php
 
-namespace BookStack\Translation;
+namespace DailyRecipe\Translation;
 
 use Illuminate\Translation\FileLoader as BaseLoader;
 

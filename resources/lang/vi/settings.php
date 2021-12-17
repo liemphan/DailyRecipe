@@ -1,7 +1,7 @@
 <?php
 /**
  * Settings text strings
- * Contains all text strings used in the general settings sections of BookStack
+ * Contains all text strings used in the general settings sections of DailyRecipe
  * including users and roles.
  */
 return [
@@ -18,7 +18,7 @@ return [
     'app_name_desc' => 'Tên này được hiển thị trong header và trong bất kì email hệ thống được gửi.',
     'app_name_header' => 'Hiển thị tên trong header',
     'app_public_access' => 'Quyền truy cập công khai',
-    'app_public_access_desc' => 'Bật tùy chọn này sẽ cho phép khách, người không cần đăng nhập, truy cập đến nội dung bản BookStack của bạn.',
+    'app_public_access_desc' => 'Bật tùy chọn này sẽ cho phép khách, người không cần đăng nhập, truy cập đến nội dung bản DailyRecipe của bạn.',
     'app_public_access_desc_guest' => 'Quyền truy cập của khách có thể được điều khiển thông qua người dùng "Guest".',
     'app_public_access_toggle' => 'Cho phép truy cập công khai',
     'app_public_viewing' => 'Cho phép xem công khai?',

@@ -1,9 +1,9 @@
 <?php
 
-namespace BookStack\Console\Commands;
+namespace DailyRecipe\Console\Commands;
 
-use BookStack\Auth\User;
-use BookStack\Auth\UserRepo;
+use DailyRecipe\Auth\User;
+use DailyRecipe\Auth\UserRepo;
 use Illuminate\Console\Command;
 
 class DeleteUsers extends Command

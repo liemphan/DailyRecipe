@@ -1,13 +1,13 @@
 <?php
 
-namespace BookStack\Uploads;
+namespace DailyRecipe\Uploads;
 
-use BookStack\Auth\Permissions\PermissionService;
-use BookStack\Auth\User;
-use BookStack\Entities\Models\Entity;
-use BookStack\Entities\Models\Page;
-use BookStack\Model;
-use BookStack\Traits\HasCreatorAndUpdater;
+use DailyRecipe\Auth\Permissions\PermissionService;
+use DailyRecipe\Auth\User;
+use DailyRecipe\Entities\Models\Entity;
+use DailyRecipe\Entities\Models\Page;
+use DailyRecipe\Model;
+use DailyRecipe\Traits\HasCreatorAndUpdater;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 

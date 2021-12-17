@@ -1,7 +1,7 @@
 <?php
 /**
  * Settings text strings
- * Contains all text strings used in the general settings sections of BookStack
+ * Contains all text strings used in the general settings sections of DailyRecipe
  * including users and roles.
  */
 return [
@@ -18,7 +18,7 @@ return [
     'app_name_desc' => 'Ця назва показується у заголовку та в усіх листах.',
     'app_name_header' => 'Показати назву програми в заголовку',
     'app_public_access' => 'Публічнй доступ',
-    'app_public_access_desc' => 'Увімкнення цієї опції дозволить відвідувачам, які не увійшли в систему, отримати доступ до вмісту у вашому екземплярі BookStack.',
+    'app_public_access_desc' => 'Увімкнення цієї опції дозволить відвідувачам, які не увійшли в систему, отримати доступ до вмісту у вашому екземплярі DailyRecipe.',
     'app_public_access_desc_guest' => 'Доступ для публічних відвідувачів можна контролювати через користувача "Гість".',
     'app_public_access_toggle' => 'Дозволити публічний доступ',
     'app_public_viewing' => 'Дозволити публічний перегляд?',

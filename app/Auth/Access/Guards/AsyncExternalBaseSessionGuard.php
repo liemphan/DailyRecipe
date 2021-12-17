@@ -1,6 +1,6 @@
 <?php
 
-namespace BookStack\Auth\Access\Guards;
+namespace DailyRecipe\Auth\Access\Guards;
 
 /**
  * Saml2 Session Guard.

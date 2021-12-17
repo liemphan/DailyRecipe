@@ -1,8 +1,8 @@
 <?php
 
-namespace BookStack\Uploads;
+namespace DailyRecipe\Uploads;
 
-use BookStack\Exceptions\ImageUploadException;
+use DailyRecipe\Exceptions\ImageUploadException;
 use ErrorException;
 use Exception;
 use Illuminate\Contracts\Cache\Repository as Cache;
@@ -460,7 +460,7 @@ class ImageService
     }
 
     /**
-     * Check if the given image extension is supported by BookStack.
+     * Check if the given image extension is supported by DailyRecipe.
      * The extension must not be altered in this function. This check should provide a guarantee
      * that the provided extension is safe to use for the image to be saved.
      */

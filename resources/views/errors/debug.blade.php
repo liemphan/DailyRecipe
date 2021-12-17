@@ -110,19 +110,19 @@
             <h4 class="panel-title">Help Resources</h4>
             <ul>
                 <li>
-                    <a href="https://www.bookstackapp.com/docs/admin/debugging/" target="_blank">Review BookStack debugging documentation &raquo;</a>
+                    <a href="https://www.bookstackapp.com/docs/admin/debugging/" target="_blank">Review DailyRecipe debugging documentation &raquo;</a>
                 </li>
                 <li>
-                    <a href="https://github.com/BookStackApp/BookStack/releases" target="_blank">Ensure your instance is up-to-date &raquo;</a>
+                    <a href="https://github.com/BookStackApp/DailyRecipe/releases" target="_blank">Ensure your instance is up-to-date &raquo;</a>
                 </li>
                 <li>
-                    <a href="https://github.com/BookStackApp/BookStack/issues?q=is%3Aissue+{{ urlencode($error) }}" target="_blank">Search for the issue on GitHub &raquo;</a>
+                    <a href="https://github.com/BookStackApp/DailyRecipe/issues?q=is%3Aissue+{{ urlencode($error) }}" target="_blank">Search for the issue on GitHub &raquo;</a>
                 </li>
                 <li>
                     <a href="https://discord.gg/ztkBqR2" target="_blank">Ask for help via Discord &raquo;</a>
                 </li>
                 <li>
-                    <a href="https://duckduckgo.com/?q={{urlencode("BookStack {$error}")}}" target="_blank">Search the error message &raquo;</a>
+                    <a href="https://duckduckgo.com/?q={{urlencode("DailyRecipe {$error}")}}" target="_blank">Search the error message &raquo;</a>
                 </li>
             </ul>
         </div>

@@ -2,16 +2,16 @@
 
 namespace Tests\Permissions;
 
-use BookStack\Actions\ActivityType;
-use BookStack\Actions\Comment;
-use BookStack\Auth\Role;
-use BookStack\Auth\User;
-use BookStack\Entities\Models\Book;
-use BookStack\Entities\Models\Bookshelf;
-use BookStack\Entities\Models\Chapter;
-use BookStack\Entities\Models\Entity;
-use BookStack\Entities\Models\Page;
-use BookStack\Uploads\Image;
+use DailyRecipe\Actions\ActivityType;
+use DailyRecipe\Actions\Comment;
+use DailyRecipe\Auth\Role;
+use DailyRecipe\Auth\User;
+use DailyRecipe\Entities\Models\Book;
+use DailyRecipe\Entities\Models\Bookshelf;
+use DailyRecipe\Entities\Models\Chapter;
+use DailyRecipe\Entities\Models\Entity;
+use DailyRecipe\Entities\Models\Page;
+use DailyRecipe\Uploads\Image;
 use Tests\TestCase;
 use Tests\TestResponse;
 

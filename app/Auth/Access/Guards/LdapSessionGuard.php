@@ -1,14 +1,14 @@
 <?php
 
-namespace BookStack\Auth\Access\Guards;
+namespace DailyRecipe\Auth\Access\Guards;
 
-use BookStack\Auth\Access\LdapService;
-use BookStack\Auth\Access\RegistrationService;
-use BookStack\Auth\User;
-use BookStack\Exceptions\LdapException;
-use BookStack\Exceptions\LoginAttemptEmailNeededException;
-use BookStack\Exceptions\LoginAttemptException;
-use BookStack\Exceptions\UserRegistrationException;
+use DailyRecipe\Auth\Access\LdapService;
+use DailyRecipe\Auth\Access\RegistrationService;
+use DailyRecipe\Auth\User;
+use DailyRecipe\Exceptions\LdapException;
+use DailyRecipe\Exceptions\LoginAttemptEmailNeededException;
+use DailyRecipe\Exceptions\LoginAttemptException;
+use DailyRecipe\Exceptions\UserRegistrationException;
 use Illuminate\Contracts\Auth\UserProvider;
 use Illuminate\Contracts\Session\Session;
 use Illuminate\Support\Str;

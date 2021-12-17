@@ -11,7 +11,7 @@
 |
 */
 
-$app = new BookStack\Application(
+$app = new DailyRecipe\Application(
     dirname(__DIR__)
 );
 
@@ -28,17 +28,17 @@ $app = new BookStack\Application(
 
 $app->singleton(
     Illuminate\Contracts\Http\Kernel::class,
-    BookStack\Http\Kernel::class
+    DailyRecipe\Http\Kernel::class
 );
 
 $app->singleton(
     Illuminate\Contracts\Console\Kernel::class,
-    BookStack\Console\Kernel::class
+    DailyRecipe\Console\Kernel::class
 );
 
 $app->singleton(
     Illuminate\Contracts\Debug\ExceptionHandler::class,
-    BookStack\Exceptions\Handler::class
+    DailyRecipe\Exceptions\Handler::class
 );
 
 /*

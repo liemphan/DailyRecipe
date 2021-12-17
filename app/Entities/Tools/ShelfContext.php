@@ -1,9 +1,9 @@
 <?php
 
-namespace BookStack\Entities\Tools;
+namespace DailyRecipe\Entities\Tools;
 
-use BookStack\Entities\Models\Book;
-use BookStack\Entities\Models\Bookshelf;
+use DailyRecipe\Entities\Models\Book;
+use DailyRecipe\Entities\Models\Bookshelf;
 
 class ShelfContext
 {

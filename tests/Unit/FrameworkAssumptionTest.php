@@ -3,7 +3,7 @@
 namespace Tests\Unit;
 
 use BadMethodCallException;
-use BookStack\Entities\Models\Page;
+use DailyRecipe\Entities\Models\Page;
 use Tests\TestCase;
 
 /**
@@ -16,7 +16,7 @@ class FrameworkAssumptionTest extends TestCase
     public function test_scopes_error_if_not_existing()
     {
         $this->expectException(BadMethodCallException::class);
-        $this->expectExceptionMessage('Call to undefined method BookStack\Entities\Models\Page::scopeNotfoundscope()');
+        $this->expectExceptionMessage('Call to undefined method DailyRecipe\Entities\Models\Page::scopeNotfoundscope()');
         Page::query()->scopes('notfoundscope');
     }
 

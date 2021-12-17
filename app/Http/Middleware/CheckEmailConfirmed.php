@@ -1,9 +1,9 @@
 <?php
 
-namespace BookStack\Http\Middleware;
+namespace DailyRecipe\Http\Middleware;
 
-use BookStack\Auth\Access\EmailConfirmationService;
-use BookStack\Auth\User;
+use DailyRecipe\Auth\Access\EmailConfirmationService;
+use DailyRecipe\Auth\User;
 use Closure;
 
 /**

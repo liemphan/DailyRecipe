@@ -1,10 +1,10 @@
 <?php
 
-namespace BookStack\Entities\Models;
+namespace DailyRecipe\Entities\Models;
 
-use BookStack\Entities\Tools\PageContent;
-use BookStack\Facades\Permissions;
-use BookStack\Uploads\Attachment;
+use DailyRecipe\Entities\Tools\PageContent;
+use DailyRecipe\Facades\Permissions;
+use DailyRecipe\Uploads\Attachment;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
