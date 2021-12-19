@@ -3,7 +3,7 @@
 namespace DailyRecipe\Http\Controllers;
 
 use DailyRecipe\Actions\View;
-use DailyRecipe\Entities\Models\Book;
+use DailyRecipe\Entities\Models\Recipe;
 use DailyRecipe\Entities\Repos\ChapterRepo;
 use DailyRecipe\Entities\Tools\BookContents;
 use DailyRecipe\Entities\Tools\NextPreviousContentLocator;
@@ -31,7 +31,7 @@ class ChapterController extends Controller
      */
     public function create(string $bookSlug)
     {
-        $book = Book::visible()->where('slug', '=', $bookSlug)->firstOrFail();
+        $book = Recipe::visible()->where('slug', '=', $bookSlug)->firstOrFail();
         $this->checkOwnablePermission('chapter-create', $book);
 
         $this->setPageTitle(trans('entities.chapters_create'));
@@ -50,7 +50,7 @@ class ChapterController extends Controller
             'name' => ['required', 'string', 'max:255'],
         ]);
 
-        $book = Book::visible()->where('slug', '=', $bookSlug)->firstOrFail();
+        $book = Recipe::visible()->where('slug', '=', $bookSlug)->firstOrFail();
         $this->checkOwnablePermission('chapter-create', $book);
 
         $chapter = $this->chapterRepo->create($request->all(), $book);

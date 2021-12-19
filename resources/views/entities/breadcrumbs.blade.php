@@ -2,7 +2,7 @@
     <?php $breadcrumbCount = 0; ?>
 
     {{-- Show top level books item --}}
-    @if (count($crumbs) > 0 && ($crumbs[0] ?? null) instanceof  \DailyRecipe\Entities\Models\Book)
+    @if (count($crumbs) > 0 && ($crumbs[0] ?? null) instanceof  \DailyRecipe\Entities\Models\Recipe)
         <a href="{{  url('/books')  }}" class="text-book icon-list-item outline-hover">
             <span>@icon('books')</span>
             <span>{{ trans('entities.recipes') }}</span>

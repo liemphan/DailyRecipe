@@ -24,7 +24,7 @@ class AddUsersToEntities extends Migration
             $table->integer('created_by');
             $table->integer('updated_by');
         });
-        Schema::table('books', function (Blueprint $table) {
+        Schema::table('recipes', function (Blueprint $table) {
             $table->integer('created_by');
             $table->integer('updated_by');
         });
@@ -49,7 +49,7 @@ class AddUsersToEntities extends Migration
             $table->dropColumn('created_by');
             $table->dropColumn('updated_by');
         });
-        Schema::table('books', function (Blueprint $table) {
+        Schema::table('recipes', function (Blueprint $table) {
             $table->dropColumn('created_by');
             $table->dropColumn('updated_by');
         });

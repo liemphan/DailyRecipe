@@ -12,7 +12,7 @@ class AddEntityIndexes extends Migration
      */
     public function up()
     {
-        Schema::table('books', function (Blueprint $table) {
+        Schema::table('recipes', function (Blueprint $table) {
             $table->index('slug');
             $table->index('created_by');
             $table->index('updated_by');
@@ -53,7 +53,7 @@ class AddEntityIndexes extends Migration
      */
     public function down()
     {
-        Schema::table('books', function (Blueprint $table) {
+        Schema::table('recipes', function (Blueprint $table) {
             $table->dropIndex('books_slug_index');
             $table->dropIndex('books_created_by_index');
             $table->dropIndex('books_updated_by_index');

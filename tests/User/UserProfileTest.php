@@ -54,7 +54,7 @@ class UserProfileTest extends TestCase
 
         $this->asAdmin()->get('/user/' . $newUser->slug)
             ->assertSee($newUser->name)
-            ->assertElementContains('#content-counts', '1 Book')
+            ->assertElementContains('#content-counts', '1 Recipe')
             ->assertElementContains('#content-counts', '1 Chapter')
             ->assertElementContains('#content-counts', '1 Page');
     }

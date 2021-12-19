@@ -2,7 +2,7 @@
 
 namespace Tests\Api;
 
-use DailyRecipe\Entities\Models\Book;
+use DailyRecipe\Entities\Models\Recipe;
 use DailyRecipe\Entities\Models\Chapter;
 use Tests\TestCase;
 
@@ -32,7 +32,7 @@ class ChaptersApiTest extends TestCase
     public function test_create_endpoint()
     {
         $this->actingAsApiEditor();
-        $book = Book::query()->first();
+        $book = Recipe::query()->first();
         $details = [
             'name'        => 'My API chapter',
             'description' => 'A chapter created via the API',
@@ -62,7 +62,7 @@ class ChaptersApiTest extends TestCase
     public function test_chapter_name_needed_to_create()
     {
         $this->actingAsApiEditor();
-        $book = Book::query()->first();
+        $book = Recipe::query()->first();
         $details = [
             'book_id'     => $book->id,
             'description' => 'A chapter created via the API',

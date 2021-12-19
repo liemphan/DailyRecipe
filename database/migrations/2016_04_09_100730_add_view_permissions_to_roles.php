@@ -14,7 +14,7 @@ class AddViewPermissionsToRoles extends Migration
         $currentRoles = DB::table('roles')->get();
 
         // Create new view permission
-        $entities = ['Book', 'Page', 'Chapter'];
+        $entities = ['Recipe', 'Page', 'Chapter'];
         $ops = ['View All', 'View Own'];
         foreach ($entities as $entity) {
             foreach ($ops as $op) {
@@ -43,7 +43,7 @@ class AddViewPermissionsToRoles extends Migration
     public function down()
     {
         // Delete the new view permission
-        $entities = ['Book', 'Page', 'Chapter'];
+        $entities = ['Recipe', 'Page', 'Chapter'];
         $ops = ['View All', 'View Own'];
         foreach ($entities as $entity) {
             foreach ($ops as $op) {

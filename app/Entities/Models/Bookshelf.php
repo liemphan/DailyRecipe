@@ -11,7 +11,7 @@ class Bookshelf extends Entity implements HasCoverImage
 {
     use HasFactory;
 
-    protected $table = 'bookshelves';
+    protected $table = 'menus';
 
     public $searchFactor = 1.2;
 
@@ -27,7 +27,7 @@ class Bookshelf extends Entity implements HasCoverImage
      */
     public function books()
     {
-        return $this->belongsToMany(Book::class, 'bookshelves_books', 'bookshelf_id', 'book_id')
+        return $this->belongsToMany(Recipe::class, 'menu_recipes', 'bookshelf_id', 'book_id')
             ->withPivot('order')
             ->orderBy('order', 'asc');
     }
@@ -92,11 +92,11 @@ class Bookshelf extends Entity implements HasCoverImage
     /**
      * Check if this shelf contains the given book.
      *
-     * @param Book $book
+     * @param Recipe $book
      *
      * @return bool
      */
-    public function contains(Book $book): bool
+    public function contains(Recipe $book): bool
     {
         return $this->books()->where('id', '=', $book->id)->count() > 0;
     }
@@ -104,9 +104,9 @@ class Bookshelf extends Entity implements HasCoverImage
     /**
      * Add a book to the end of this shelf.
      *
-     * @param Book $book
+     * @param Recipe $book
      */
-    public function appendBook(Book $book)
+    public function appendBook(Recipe $book)
     {
         if ($this->contains($book)) {
             return;

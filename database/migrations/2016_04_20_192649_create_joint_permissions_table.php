@@ -59,7 +59,7 @@ class CreateJointPermissionsTable extends Migration
         $publicRoleId = DB::table('roles')->insertGetId($publicRoleData);
 
         // Add new view permissions to public role
-        $entities = ['Book', 'Page', 'Chapter'];
+        $entities = ['Recipe', 'Page', 'Chapter'];
         $ops = ['View All', 'View Own'];
         foreach ($entities as $entity) {
             foreach ($ops as $op) {

@@ -2,7 +2,7 @@
 
 namespace Tests\Entity;
 
-use DailyRecipe\Entities\Models\Book;
+use DailyRecipe\Entities\Models\Recipe;
 use DailyRecipe\Entities\Models\Chapter;
 use DailyRecipe\Entities\Models\Page;
 use Tests\TestCase;
@@ -55,8 +55,8 @@ class PageEditorTest extends TestCase
     public function test_empty_markdown_still_saves_without_error()
     {
         $this->setSettings(['app-editor' => 'markdown']);
-        /** @var Book $book */
-        $book = Book::query()->first();
+        /** @var Recipe $book */
+        $book = Recipe::query()->first();
 
         $this->asEditor()->get($book->getUrl('/create-page'));
         $draft = Page::query()->where('book_id', '=', $book->id)
@@ -78,15 +78,15 @@ class PageEditorTest extends TestCase
 
     public function test_back_link_in_editor_has_correct_url()
     {
-        /** @var Book $book */
-        $book = Book::query()->whereHas('pages')->whereHas('chapters')->firstOrFail();
+        /** @var Recipe $book */
+        $book = Recipe::query()->whereHas('pages')->whereHas('chapters')->firstOrFail();
         $this->asEditor()->get($book->getUrl('/create-page'));
         /** @var Chapter $chapter */
         $chapter = $book->chapters()->firstOrFail();
         /** @var Page $draft */
         $draft = $book->pages()->where('draft', '=', true)->firstOrFail();
 
-        // Book draft goes back to book
+        // Recipe draft goes back to book
         $resp = $this->get($book->getUrl("/draft/{$draft->id}"));
         $resp->assertElementContains('a[href="' . $book->getUrl() . '"]', 'Back');
 

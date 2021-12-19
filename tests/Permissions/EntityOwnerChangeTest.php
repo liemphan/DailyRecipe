@@ -3,7 +3,7 @@
 namespace Tests\Permissions;
 
 use DailyRecipe\Auth\User;
-use DailyRecipe\Entities\Models\Book;
+use DailyRecipe\Entities\Models\Recipe;
 use DailyRecipe\Entities\Models\Bookshelf;
 use DailyRecipe\Entities\Models\Chapter;
 use DailyRecipe\Entities\Models\Page;
@@ -31,7 +31,7 @@ class EntityOwnerChangeTest extends TestCase
 
     public function test_changing_book_owner()
     {
-        $book = Book::query()->first();
+        $book = Recipe::query()->first();
         $user = User::query()->where('id', '!=', $book->owned_by)->first();
 
         $this->asAdmin()->put($book->getUrl('permissions'), ['owned_by' => $user->id]);

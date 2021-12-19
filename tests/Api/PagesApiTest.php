@@ -2,7 +2,7 @@
 
 namespace Tests\Api;
 
-use DailyRecipe\Entities\Models\Book;
+use DailyRecipe\Entities\Models\Recipe;
 use DailyRecipe\Entities\Models\Chapter;
 use DailyRecipe\Entities\Models\Page;
 use Tests\TestCase;
@@ -33,7 +33,7 @@ class PagesApiTest extends TestCase
     public function test_create_endpoint()
     {
         $this->actingAsApiEditor();
-        $book = Book::query()->first();
+        $book = Recipe::query()->first();
         $details = [
             'name'    => 'My API page',
             'book_id' => $book->id,
@@ -65,7 +65,7 @@ class PagesApiTest extends TestCase
     public function test_page_name_needed_to_create()
     {
         $this->actingAsApiEditor();
-        $book = Book::query()->first();
+        $book = Recipe::query()->first();
         $details = [
             'book_id' => $book->id,
             'html'    => '<p>A page created via the API</p>',
@@ -97,7 +97,7 @@ class PagesApiTest extends TestCase
         $resp = $this->postJson($this->baseEndpoint, array_merge($details, ['chapter_id' => $chapter->id]));
         $resp->assertStatus(200);
 
-        $book = Book::visible()->first();
+        $book = Recipe::visible()->first();
         $resp = $this->postJson($this->baseEndpoint, array_merge($details, ['book_id' => $book->id]));
         $resp->assertStatus(200);
     }
@@ -105,7 +105,7 @@ class PagesApiTest extends TestCase
     public function test_markdown_can_be_provided_for_create()
     {
         $this->actingAsApiEditor();
-        $book = Book::visible()->first();
+        $book = Recipe::visible()->first();
         $details = [
             'book_id'  => $book->id,
             'name'     => 'My api page',

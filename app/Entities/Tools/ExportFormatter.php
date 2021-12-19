@@ -2,7 +2,7 @@
 
 namespace DailyRecipe\Entities\Tools;
 
-use DailyRecipe\Entities\Models\Book;
+use DailyRecipe\Entities\Models\Recipe;
 use DailyRecipe\Entities\Models\Chapter;
 use DailyRecipe\Entities\Models\Page;
 use DailyRecipe\Entities\Tools\Markdown\HtmlToMarkdown;
@@ -69,7 +69,7 @@ class ExportFormatter
      *
      * @throws Throwable
      */
-    public function bookToContainedHtml(Book $book)
+    public function bookToContainedHtml(Recipe $book)
     {
         $bookTree = (new BookContents($book))->getTree(false, true);
         $html = view('books.export', [
@@ -123,7 +123,7 @@ class ExportFormatter
      *
      * @throws Throwable
      */
-    public function bookToPdf(Book $book)
+    public function bookToPdf(Recipe $book)
     {
         $bookTree = (new BookContents($book))->getTree(false, true);
         $html = view('books.export', [
@@ -258,7 +258,7 @@ class ExportFormatter
     /**
      * Convert a book into a plain text string.
      */
-    public function bookToPlainText(Book $book): string
+    public function bookToPlainText(Recipe $book): string
     {
         $bookTree = (new BookContents($book))->getTree(false, false);
         $text = $book->name . "\n\n";
@@ -302,7 +302,7 @@ class ExportFormatter
     /**
      * Convert a book into a plain text string.
      */
-    public function bookToMarkdown(Book $book): string
+    public function bookToMarkdown(Recipe $book): string
     {
         $bookTree = (new BookContents($book))->getTree(false, true);
         $text = '# ' . $book->name . "\n\n";

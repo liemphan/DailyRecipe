@@ -2,7 +2,7 @@
 
 namespace Tests;
 
-use DailyRecipe\Entities\Models\Book;
+use DailyRecipe\Entities\Models\Recipe;
 use Illuminate\Support\Facades\Log;
 
 class ErrorTest extends TestCase
@@ -27,7 +27,7 @@ class ErrorTest extends TestCase
     {
         $this->actingAs($this->getViewer());
         $handler = $this->withTestLogger();
-        $book = Book::query()->first();
+        $book = Recipe::query()->first();
 
         // Ensure we're seeing errors
         Log::error('cat');

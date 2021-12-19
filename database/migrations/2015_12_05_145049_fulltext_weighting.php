@@ -30,7 +30,7 @@ class FulltextWeighting extends Migration
     {
         $sm = Schema::getConnection()->getDoctrineSchemaManager();
         $pages = $sm->listTableDetails('pages');
-        $books = $sm->listTableDetails('books');
+        $books = $sm->listTableDetails('recipes');
         $chapters = $sm->listTableDetails('chapters');
 
         if ($pages->hasIndex('name_search')) {
@@ -40,7 +40,7 @@ class FulltextWeighting extends Migration
         }
 
         if ($books->hasIndex('name_search')) {
-            Schema::table('books', function (Blueprint $table) {
+            Schema::table('recipes', function (Blueprint $table) {
                 $table->dropIndex('name_search');
             });
         }

@@ -17,7 +17,7 @@ class AddEntityAccessControls extends Migration
             $table->index('uploaded_to');
         });
 
-        Schema::table('books', function (Blueprint $table) {
+        Schema::table('recipes', function (Blueprint $table) {
             $table->boolean('restricted')->default(false);
             $table->index('restricted');
         });
@@ -55,7 +55,7 @@ class AddEntityAccessControls extends Migration
             $table->dropColumn('uploaded_to');
         });
 
-        Schema::table('books', function (Blueprint $table) {
+        Schema::table('recipes', function (Blueprint $table) {
             $table->dropColumn('restricted');
         });
 

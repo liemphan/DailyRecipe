@@ -4,7 +4,7 @@ namespace DailyRecipe\Http\Controllers;
 
 use Activity;
 use DailyRecipe\Actions\View;
-use DailyRecipe\Entities\Models\Book;
+use DailyRecipe\Entities\Models\Recipe;
 use DailyRecipe\Entities\Repos\BookshelfRepo;
 use DailyRecipe\Entities\Tools\PermissionsUpdater;
 use DailyRecipe\Entities\Tools\ShelfContext;
@@ -68,7 +68,7 @@ class BookshelfController extends Controller
     public function create()
     {
         $this->checkPermission('bookshelf-create-all');
-        $books = Book::hasPermission('update')->get();
+        $books = Recipe::hasPermission('update')->get();
         $this->setPageTitle(trans('entities.menus_create'));
 
         return view('shelves.create', ['books' => $books]);
@@ -139,7 +139,7 @@ class BookshelfController extends Controller
         $this->checkOwnablePermission('bookshelf-update', $shelf);
 
         $shelfBookIds = $shelf->books()->get(['id'])->pluck('id');
-        $books = Book::hasPermission('update')->whereNotIn('id', $shelfBookIds)->get();
+        $books = Recipe::hasPermission('update')->whereNotIn('id', $shelfBookIds)->get();
 
         $this->setPageTitle(trans('entities.menus_edit_named', ['name' => $shelf->getShortName()]));
 
