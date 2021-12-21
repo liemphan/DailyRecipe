@@ -26,7 +26,7 @@ class ThemeTest extends TestCase
             File::makeDirectory($translationPath, 0777, true);
 
             $customTranslations = '<?php
-            return [\'books\' => \'Sandwiches\'];
+            return [\'recipes\' => \'Sandwiches\'];
         ';
             file_put_contents($translationPath . '/entities.php', $customTranslations);
 

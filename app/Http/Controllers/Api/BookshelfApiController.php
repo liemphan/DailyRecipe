@@ -2,7 +2,7 @@
 
 namespace DailyRecipe\Http\Controllers\Api;
 
-use DailyRecipe\Entities\Models\Bookshelf;
+use DailyRecipe\Entities\Models\Recipemenus;
 use DailyRecipe\Entities\Repos\BookshelfRepo;
 use Exception;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
@@ -20,12 +20,12 @@ class BookshelfApiController extends ApiController
         'create' => [
             'name'        => ['required', 'string', 'max:255'],
             'description' => ['string', 'max:1000'],
-            'books'       => ['array'],
+            'recipes'       => ['array'],
         ],
         'update' => [
             'name'        => ['string', 'min:1', 'max:255'],
             'description' => ['string', 'max:1000'],
-            'books'       => ['array'],
+            'recipes'       => ['array'],
         ],
     ];
 
@@ -38,11 +38,11 @@ class BookshelfApiController extends ApiController
     }
 
     /**
-     * Get a listing of shelves visible to the user.
+     * Get a listing of menus visible to the user.
      */
     public function list()
     {
-        $shelves = Bookshelf::visible();
+        $shelves = Recipemenus::visible();
 
         return $this->apiListingResponse($shelves, [
             'id', 'name', 'slug', 'description', 'created_at', 'updated_at', 'created_by', 'updated_by', 'owned_by', 'image_id',
@@ -51,7 +51,7 @@ class BookshelfApiController extends ApiController
 
     /**
      * Create a new shelf in the system.
-     * An array of books IDs can be provided in the request. These
+     * An array of recipes IDs can be provided in the request. These
      * will be added to the shelf in the same order as provided.
      *
      * @throws ValidationException
@@ -61,7 +61,7 @@ class BookshelfApiController extends ApiController
         $this->checkPermission('bookshelf-create-all');
         $requestData = $this->validate($request, $this->rules['create']);
 
-        $bookIds = $request->get('books', []);
+        $bookIds = $request->get('recipes', []);
         $shelf = $this->bookshelfRepo->create($requestData, $bookIds);
 
         return response()->json($shelf);
@@ -72,9 +72,9 @@ class BookshelfApiController extends ApiController
      */
     public function read(string $id)
     {
-        $shelf = Bookshelf::visible()->with([
+        $shelf = Recipemenus::visible()->with([
             'tags', 'cover', 'createdBy', 'updatedBy', 'ownedBy',
-            'books' => function (BelongsToMany $query) {
+            'recipes' => function (BelongsToMany $query) {
                 $query->scopes('visible')->get(['id', 'name', 'slug']);
             },
         ])->findOrFail($id);
@@ -84,7 +84,7 @@ class BookshelfApiController extends ApiController
 
     /**
      * Update the details of a single shelf.
-     * An array of books IDs can be provided in the request. These
+     * An array of recipes IDs can be provided in the request. These
      * will be added to the shelf in the same order as provided and overwrite
      * any existing book assignments.
      *
@@ -92,11 +92,11 @@ class BookshelfApiController extends ApiController
      */
     public function update(Request $request, string $id)
     {
-        $shelf = Bookshelf::visible()->findOrFail($id);
+        $shelf = Recipemenus::visible()->findOrFail($id);
         $this->checkOwnablePermission('bookshelf-update', $shelf);
 
         $requestData = $this->validate($request, $this->rules['update']);
-        $bookIds = $request->get('books', null);
+        $bookIds = $request->get('recipes', null);
 
         $shelf = $this->bookshelfRepo->update($shelf, $requestData, $bookIds);
 
@@ -111,7 +111,7 @@ class BookshelfApiController extends ApiController
      */
     public function delete(string $id)
     {
-        $shelf = Bookshelf::visible()->findOrFail($id);
+        $shelf = Recipemenus::visible()->findOrFail($id);
         $this->checkOwnablePermission('bookshelf-delete', $shelf);
 
         $this->bookshelfRepo->destroy($shelf);

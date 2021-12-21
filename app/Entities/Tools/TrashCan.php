@@ -3,8 +3,8 @@
 namespace DailyRecipe\Entities\Tools;
 
 use DailyRecipe\Entities\EntityProvider;
-use DailyRecipe\Entities\Models\Book;
-use DailyRecipe\Entities\Models\Bookshelf;
+use DailyRecipe\Entities\Models\Recipe;
+use DailyRecipe\Entities\Models\Recipemenus;
 use DailyRecipe\Entities\Models\Chapter;
 use DailyRecipe\Entities\Models\Deletion;
 use DailyRecipe\Entities\Models\Entity;
@@ -23,7 +23,7 @@ class TrashCan
     /**
      * Send a shelf to the recycle bin.
      */
-    public function softDestroyShelf(Bookshelf $shelf)
+    public function softDestroyShelf(Recipemenus $shelf)
     {
         Deletion::createForEntity($shelf);
         $shelf->delete();
@@ -34,7 +34,7 @@ class TrashCan
      *
      * @throws Exception
      */
-    public function softDestroyBook(Book $book)
+    public function softDestroyBook(Recipe $book)
     {
         Deletion::createForEntity($book);
 
@@ -97,7 +97,7 @@ class TrashCan
      *
      * @throws Exception
      */
-    protected function destroyShelf(Bookshelf $shelf): int
+    protected function destroyShelf(Recipemenus $shelf): int
     {
         $this->destroyCommonRelations($shelf);
         $shelf->forceDelete();
@@ -111,7 +111,7 @@ class TrashCan
      *
      * @throws Exception
      */
-    protected function destroyBook(Book $book): int
+    protected function destroyBook(Recipe $book): int
     {
         $count = 0;
         $pages = $book->pages()->withTrashed()->get();
@@ -295,11 +295,11 @@ class TrashCan
             $count++;
         };
 
-        if ($entity instanceof Chapter || $entity instanceof Book) {
+        if ($entity instanceof Chapter || $entity instanceof Recipe) {
             $entity->pages()->withTrashed()->withCount('deletions')->get()->each($restoreAction);
         }
 
-        if ($entity instanceof Book) {
+        if ($entity instanceof Recipe) {
             $entity->chapters()->withTrashed()->withCount('deletions')->get()->each($restoreAction);
         }
 
@@ -319,10 +319,10 @@ class TrashCan
         if ($entity instanceof Chapter) {
             return $this->destroyChapter($entity);
         }
-        if ($entity instanceof Book) {
+        if ($entity instanceof Recipe) {
             return $this->destroyBook($entity);
         }
-        if ($entity instanceof Bookshelf) {
+        if ($entity instanceof Recipemenus) {
             return $this->destroyShelf($entity);
         }
 

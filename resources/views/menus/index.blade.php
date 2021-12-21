@@ -1,7 +1,7 @@
 @extends('layouts.tri')
 
 @section('body')
-    @include('shelves.parts.list', ['shelves' => $shelves, 'view' => $view])
+    @include('menus.parts.list', ['menus' => $menus, 'view' => $view])
 @stop
 
 @section('right')
@@ -16,7 +16,7 @@
                 </a>
             @endif
 
-            @include('entities.view-toggle', ['view' => $view, 'type' => 'shelves'])
+            @include('entities.view-toggle', ['view' => $view, 'type' => 'menus'])
 
             <a href="{{ url('/tags') }}" class="icon-list-item">
                 <span>@icon('tag')</span>

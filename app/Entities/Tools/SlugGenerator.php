@@ -47,7 +47,7 @@ class SlugGenerator
         $query = $model->newQuery()->where('slug', '=', $slug);
 
         if ($model instanceof BookChild) {
-            $query->where('book_id', '=', $model->book_id);
+            $query->where('recipe_id', '=', $model->recipe_id);
         }
 
         if ($model->id) {

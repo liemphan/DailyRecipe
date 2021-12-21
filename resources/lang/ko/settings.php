@@ -85,7 +85,7 @@ return [
     'maint_send_test_email_mail_subject' => '테스트 메일',
     'maint_send_test_email_mail_greeting' => '이메일 전송이 성공하였습니다.',
     'maint_send_test_email_mail_text' => '축하합니다! 이 메일을 받음으로 이메일 설정이 정상적으로 되었음을 확인하였습니다.',
-    'maint_recycle_bin_desc' => 'Deleted shelves, books, chapters & pages are sent to the recycle bin so they can be restored or permanently deleted. Older items in the recycle bin may be automatically removed after a while depending on system configuration.',
+    'maint_recycle_bin_desc' => 'Deleted menus, recipes, chapters & pages are sent to the recycle bin so they can be restored or permanently deleted. Older items in the recycle bin may be automatically removed after a while depending on system configuration.',
     'maint_recycle_bin_open' => 'Open Recycle Bin',
 
     // Recycle Bin

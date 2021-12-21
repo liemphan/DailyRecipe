@@ -74,7 +74,7 @@ return [
 
     // Shelves
     'shelf' => 'Estante',
-    'shelves' => 'Estantes',
+    'menus' => 'Estantes',
     'x_shelves' => ':count Estante|:count Estantes',
     'shelves_long' => 'Estantes de Livros',
     'shelves_empty' => 'Nenhuma estante foi criada',
@@ -107,7 +107,7 @@ return [
 
     // Books
     'book' => 'Livro',
-    'books' => 'Livros',
+    'recipes' => 'Livros',
     'x_books' => ':count Livro|:count Livros',
     'books_empty' => 'Nenhum livro foi criado',
     'books_popular' => 'Livros Populares',

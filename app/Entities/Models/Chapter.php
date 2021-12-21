@@ -18,7 +18,7 @@ class Chapter extends BookChild
 
     public $searchFactor = 1.2;
 
-    protected $fillable = ['name', 'description', 'priority', 'book_id'];
+    protected $fillable = ['name', 'description', 'priority', 'recipe_id'];
     protected $hidden = ['restricted', 'pivot', 'deleted_at'];
 
     /**
@@ -37,7 +37,7 @@ class Chapter extends BookChild
     public function getUrl(string $path = ''): string
     {
         $parts = [
-            'books',
+            'recipes',
             urlencode($this->book_slug ?? $this->book->slug),
             'chapter',
             urlencode($this->slug),

@@ -2,7 +2,7 @@
 
 namespace DailyRecipe\Http\Controllers\Api;
 
-use DailyRecipe\Entities\Models\Book;
+use DailyRecipe\Entities\Models\Recipe;
 use DailyRecipe\Entities\Tools\ExportFormatter;
 use Throwable;
 
@@ -23,7 +23,7 @@ class BookExportApiController extends ApiController
      */
     public function exportPdf(int $id)
     {
-        $book = Book::visible()->findOrFail($id);
+        $book = Recipe::visible()->findOrFail($id);
         $pdfContent = $this->exportFormatter->bookToPdf($book);
 
         return $this->downloadResponse($pdfContent, $book->slug . '.pdf');
@@ -36,7 +36,7 @@ class BookExportApiController extends ApiController
      */
     public function exportHtml(int $id)
     {
-        $book = Book::visible()->findOrFail($id);
+        $book = Recipe::visible()->findOrFail($id);
         $htmlContent = $this->exportFormatter->bookToContainedHtml($book);
 
         return $this->downloadResponse($htmlContent, $book->slug . '.html');
@@ -47,7 +47,7 @@ class BookExportApiController extends ApiController
      */
     public function exportPlainText(int $id)
     {
-        $book = Book::visible()->findOrFail($id);
+        $book = Recipe::visible()->findOrFail($id);
         $textContent = $this->exportFormatter->bookToPlainText($book);
 
         return $this->downloadResponse($textContent, $book->slug . '.txt');
@@ -58,7 +58,7 @@ class BookExportApiController extends ApiController
      */
     public function exportMarkdown(int $id)
     {
-        $book = Book::visible()->findOrFail($id);
+        $book = Recipe::visible()->findOrFail($id);
         $markdown = $this->exportFormatter->bookToMarkdown($book);
 
         return $this->downloadResponse($markdown, $book->slug . '.md');

@@ -2,7 +2,7 @@
 
 namespace DailyRecipe\Console\Commands;
 
-use DailyRecipe\Entities\Models\Bookshelf;
+use DailyRecipe\Entities\Models\Recipemenus;
 use DailyRecipe\Entities\Repos\BookshelfRepo;
 use Illuminate\Console\Command;
 
@@ -14,7 +14,7 @@ class CopyShelfPermissions extends Command
      * @var string
      */
     protected $signature = 'bookstack:copy-shelf-permissions
-                            {--a|all : Perform for all shelves in the system}
+                            {--a|all : Perform for all menus in the system}
                             {--s|slug= : The slug for a shelf to target}
                             ';
 
@@ -23,7 +23,7 @@ class CopyShelfPermissions extends Command
      *
      * @var string
      */
-    protected $description = 'Copy shelf permissions to all child books';
+    protected $description = 'Copy shelf permissions to all child recipes';
 
     /**
      * @var BookshelfRepo
@@ -60,8 +60,8 @@ class CopyShelfPermissions extends Command
 
         if ($cascadeAll) {
             $continue = $this->confirm(
-                'Permission settings for all shelves will be cascaded. ' .
-                        'Books assigned to multiple shelves will receive only the permissions of it\'s last processed shelf. ' .
+                'Permission settings for all menus will be cascaded. ' .
+                        'Books assigned to multiple menus will receive only the permissions of it\'s last processed shelf. ' .
                         'Are you sure you want to proceed?'
             );
 
@@ -69,13 +69,13 @@ class CopyShelfPermissions extends Command
                 return;
             }
 
-            $shelves = Bookshelf::query()->get(['id', 'restricted']);
+            $shelves = Recipemenus::query()->get(['id', 'restricted']);
         }
 
         if ($shelfSlug) {
-            $shelves = Bookshelf::query()->where('slug', '=', $shelfSlug)->get(['id', 'restricted']);
+            $shelves = Recipemenus::query()->where('slug', '=', $shelfSlug)->get(['id', 'restricted']);
             if ($shelves->count() === 0) {
-                $this->info('No shelves found with the given slug.');
+                $this->info('No menus found with the given slug.');
             }
         }
 
@@ -84,6 +84,6 @@ class CopyShelfPermissions extends Command
             $this->info('Copied permissions for shelf [' . $shelf->id . ']');
         }
 
-        $this->info('Permissions copied for ' . $shelves->count() . ' shelves.');
+        $this->info('Permissions copied for ' . $shelves->count() . ' menus.');
     }
 }

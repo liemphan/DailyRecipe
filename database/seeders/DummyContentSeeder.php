@@ -7,7 +7,7 @@ use DailyRecipe\Auth\Permissions\PermissionService;
 use DailyRecipe\Auth\Permissions\RolePermission;
 use DailyRecipe\Auth\Role;
 use DailyRecipe\Auth\User;
-use DailyRecipe\Entities\Models\Bookshelf;
+use DailyRecipe\Entities\Models\Recipemenus;
 use DailyRecipe\Entities\Models\Chapter;
 use DailyRecipe\Entities\Models\Page;
 use DailyRecipe\Entities\Tools\SearchIndex;
@@ -36,7 +36,7 @@ class DummyContentSeeder extends Seeder
 
         $byData = ['created_by' => $editorUser->id, 'updated_by' => $editorUser->id, 'owned_by' => $editorUser->id];
 
-        \DailyRecipe\Entities\Models\Book::factory()->count(5)->create($byData)
+        \DailyRecipe\Entities\Models\Recipe::factory()->count(5)->create($byData)
             ->each(function ($book) use ($byData) {
                 $chapters = Chapter::factory()->count(3)->create($byData)
                     ->each(function ($chapter) use ($book, $byData) {
@@ -48,13 +48,13 @@ class DummyContentSeeder extends Seeder
                 $book->pages()->saveMany($pages);
             });
 
-        $largeBook = \DailyRecipe\Entities\Models\Book::factory()->create(array_merge($byData, ['name' => 'Large book' . Str::random(10)]));
+        $largeBook = \DailyRecipe\Entities\Models\Recipe::factory()->create(array_merge($byData, ['name' => 'Large book' . Str::random(10)]));
         $pages = Page::factory()->count(200)->make($byData);
         $chapters = Chapter::factory()->count(50)->make($byData);
         $largeBook->pages()->saveMany($pages);
         $largeBook->chapters()->saveMany($chapters);
 
-        $shelves = Bookshelf::factory()->count(10)->create($byData);
+        $shelves = Recipemenus::factory()->count(10)->create($byData);
         $largeBook->shelves()->attach($shelves->pluck('id'));
 
         // Assign API permission to editor role and create an API key

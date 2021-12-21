@@ -3,7 +3,7 @@
 namespace DailyRecipe\Entities\Repos;
 
 use DailyRecipe\Actions\ActivityType;
-use DailyRecipe\Entities\Models\Book;
+use DailyRecipe\Entities\Models\Recipe;
 use DailyRecipe\Entities\Models\Chapter;
 use DailyRecipe\Entities\Models\Entity;
 use DailyRecipe\Entities\Models\Page;
@@ -114,7 +114,7 @@ class PageRepo
             return $chapter = Chapter::visible()->whereSlugs($bookSlug, $chapterSlug)->firstOrFail();
         }
 
-        return Book::visible()->where('slug', '=', $bookSlug)->firstOrFail();
+        return Recipe::visible()->where('slug', '=', $bookSlug)->firstOrFail();
     }
 
     /**
@@ -142,9 +142,9 @@ class PageRepo
 
         if ($parent instanceof Chapter) {
             $page->chapter_id = $parent->id;
-            $page->book_id = $parent->book_id;
+            $page->recipe_id = $parent->recipe_id;
         } else {
-            $page->book_id = $parent->id;
+            $page->recipe_id = $parent->id;
         }
 
         $page->save();
@@ -329,7 +329,7 @@ class PageRepo
     {
         $parent = $this->findParentByIdentifier($parentIdentifier);
         if ($parent === null) {
-            throw new MoveOperationException('Book or chapter to move page into not found');
+            throw new MoveOperationException('Recipe or chapter to move page into not found');
         }
 
         if (!userCan('page-create', $parent)) {
@@ -357,7 +357,7 @@ class PageRepo
     {
         $parent = $parentIdentifier ? $this->findParentByIdentifier($parentIdentifier) : $page->getParent();
         if ($parent === null) {
-            throw new MoveOperationException('Book or chapter to move page into not found');
+            throw new MoveOperationException('Recipe or chapter to move page into not found');
         }
 
         if (!userCan('page-create', $parent)) {
@@ -397,10 +397,10 @@ class PageRepo
         $entityId = intval($stringExploded[1]);
 
         if ($entityType !== 'book' && $entityType !== 'chapter') {
-            throw new MoveOperationException('Pages can only be in books or chapters');
+            throw new MoveOperationException('Pages can only be in recipes or chapters');
         }
 
-        $parentClass = $entityType === 'book' ? Book::class : Chapter::class;
+        $parentClass = $entityType === 'book' ? Recipe::class : Chapter::class;
 
         return $parentClass::visible()->where('id', '=', $entityId)->first();
     }

@@ -74,7 +74,7 @@ return [
 
     // Shelves
     'shelf' => 'Libreria',
-    'shelves' => 'Librerie',
+    'menus' => 'Librerie',
     'x_shelves' => ':count Libreria|:count Librerie',
     'shelves_long' => 'Librerie',
     'shelves_empty' => 'Nessuna libreria è stata creata',
@@ -107,7 +107,7 @@ return [
 
     // Books
     'book' => 'Libro',
-    'books' => 'Libri',
+    'recipes' => 'Libri',
     'x_books' => ':count Libro|:count Libri',
     'books_empty' => 'Nessun libro è stato creato',
     'books_popular' => 'Libri Popolari',

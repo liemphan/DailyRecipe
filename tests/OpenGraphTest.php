@@ -2,8 +2,8 @@
 
 namespace Tests;
 
-use DailyRecipe\Entities\Models\Book;
-use DailyRecipe\Entities\Models\Bookshelf;
+use DailyRecipe\Entities\Models\Recipe;
+use DailyRecipe\Entities\Models\Recipemenus;
 use DailyRecipe\Entities\Models\Chapter;
 use DailyRecipe\Entities\Models\Page;
 use DailyRecipe\Entities\Repos\BookRepo;
@@ -39,7 +39,7 @@ class OpenGraphTest extends TestCase
 
     public function test_book_tags()
     {
-        $book = Book::query()->first();
+        $book = Recipe::query()->first();
         $resp = $this->asEditor()->get($book->getUrl());
         $tags = $this->getOpenGraphTags($resp);
 
@@ -59,7 +59,7 @@ class OpenGraphTest extends TestCase
 
     public function test_shelf_tags()
     {
-        $shelf = Bookshelf::query()->first();
+        $shelf = Recipemenus::query()->first();
         $resp = $this->asEditor()->get($shelf->getUrl());
         $tags = $this->getOpenGraphTags($resp);
 

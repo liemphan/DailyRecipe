@@ -3,8 +3,8 @@
 namespace DailyRecipe\Entities\Repos;
 
 use DailyRecipe\Actions\ActivityType;
-use DailyRecipe\Entities\Models\Book;
-use DailyRecipe\Entities\Models\Bookshelf;
+use DailyRecipe\Entities\Models\Recipe;
+use DailyRecipe\Entities\Models\Recipemenus;
 use DailyRecipe\Entities\Tools\TrashCan;
 use DailyRecipe\Exceptions\ImageUploadException;
 use DailyRecipe\Exceptions\NotFoundException;
@@ -31,7 +31,7 @@ class BookshelfRepo
      */
     public function getAllPaginated(int $count = 20, string $sort = 'name', string $order = 'asc'): LengthAwarePaginator
     {
-        return Bookshelf::visible()
+        return Recipemenus::visible()
             ->with(['visibleBooks', 'cover'])
             ->orderBy($sort, $order)
             ->paginate($count);
@@ -42,7 +42,7 @@ class BookshelfRepo
      */
     public function getRecentlyViewed(int $count = 20): Collection
     {
-        return Bookshelf::visible()->withLastView()
+        return Recipemenus::visible()->withLastView()
             ->having('last_viewed_at', '>', 0)
             ->orderBy('last_viewed_at', 'desc')
             ->take($count)->get();
@@ -53,7 +53,7 @@ class BookshelfRepo
      */
     public function getPopular(int $count = 20): Collection
     {
-        return Bookshelf::visible()->withViewCount()
+        return Recipemenus::visible()->withViewCount()
             ->having('view_count', '>', 0)
             ->orderBy('view_count', 'desc')
             ->take($count)->get();
@@ -64,16 +64,16 @@ class BookshelfRepo
      */
     public function getRecentlyCreated(int $count = 20): Collection
     {
-        return Bookshelf::visible()->orderBy('created_at', 'desc')
+        return Recipemenus::visible()->orderBy('created_at', 'desc')
             ->take($count)->get();
     }
 
     /**
      * Get a shelf by its slug.
      */
-    public function getBySlug(string $slug): Bookshelf
+    public function getBySlug(string $slug): Recipemenus
     {
-        $shelf = Bookshelf::visible()->where('slug', '=', $slug)->first();
+        $shelf = Recipemenus::visible()->where('slug', '=', $slug)->first();
 
         if ($shelf === null) {
             throw new NotFoundException(trans('errors.bookshelf_not_found'));
@@ -85,9 +85,9 @@ class BookshelfRepo
     /**
      * Create a new shelf in the system.
      */
-    public function create(array $input, array $bookIds): Bookshelf
+    public function create(array $input, array $bookIds): Recipemenus
     {
-        $shelf = new Bookshelf();
+        $shelf = new Recipemenus();
         $this->baseRepo->create($shelf, $input);
         $this->updateBooks($shelf, $bookIds);
         Activity::addForEntity($shelf, ActivityType::BOOKSHELF_CREATE);
@@ -98,7 +98,7 @@ class BookshelfRepo
     /**
      * Update an existing shelf in the system using the given input.
      */
-    public function update(Bookshelf $shelf, array $input, ?array $bookIds): Bookshelf
+    public function update(Recipemenus $shelf, array $input, ?array $bookIds): Recipemenus
     {
         $this->baseRepo->update($shelf, $input);
 
@@ -112,17 +112,17 @@ class BookshelfRepo
     }
 
     /**
-     * Update which books are assigned to this shelf by
+     * Update which recipes are assigned to this shelf by
      * syncing the given book ids.
-     * Function ensures the books are visible to the current user and existing.
+     * Function ensures the recipes are visible to the current user and existing.
      */
-    protected function updateBooks(Bookshelf $shelf, array $bookIds)
+    protected function updateBooks(Recipemenus $shelf, array $bookIds)
     {
         $numericIDs = collect($bookIds)->map(function ($id) {
             return intval($id);
         });
 
-        $syncData = Book::visible()
+        $syncData = Recipe::visible()
             ->whereIn('id', $bookIds)
             ->pluck('id')
             ->mapWithKeys(function ($bookId) use ($numericIDs) {
@@ -138,21 +138,21 @@ class BookshelfRepo
      * @throws ImageUploadException
      * @throws Exception
      */
-    public function updateCoverImage(Bookshelf $shelf, ?UploadedFile $coverImage, bool $removeImage = false)
+    public function updateCoverImage(Recipemenus $shelf, ?UploadedFile $coverImage, bool $removeImage = false)
     {
         $this->baseRepo->updateCoverImage($shelf, $coverImage, $removeImage);
     }
 
     /**
-     * Copy down the permissions of the given shelf to all child books.
+     * Copy down the permissions of the given shelf to all child recipes.
      */
-    public function copyDownPermissions(Bookshelf $shelf, $checkUserPermissions = true): int
+    public function copyDownPermissions(Recipemenus $shelf, $checkUserPermissions = true): int
     {
         $shelfPermissions = $shelf->permissions()->get(['role_id', 'action'])->toArray();
         $shelfBooks = $shelf->books()->get(['id', 'restricted']);
         $updatedBookCount = 0;
 
-        /** @var Book $book */
+        /** @var Recipe $book */
         foreach ($shelfBooks as $book) {
             if ($checkUserPermissions && !userCan('restrictions-manage', $book)) {
                 continue;
@@ -173,7 +173,7 @@ class BookshelfRepo
      *
      * @throws Exception
      */
-    public function destroy(Bookshelf $shelf)
+    public function destroy(Recipemenus $shelf)
     {
         $trashCan = new TrashCan();
         $trashCan->softDestroyShelf($shelf);

@@ -2,8 +2,8 @@
 
 namespace Tests\Api;
 
-use DailyRecipe\Entities\Models\Book;
-use DailyRecipe\Entities\Models\Bookshelf;
+use DailyRecipe\Entities\Models\Recipe;
+use DailyRecipe\Entities\Models\Recipemenus;
 use DailyRecipe\Entities\Models\Chapter;
 use DailyRecipe\Entities\Models\Entity;
 use DailyRecipe\Entities\Models\Page;
@@ -21,7 +21,7 @@ class SearchApiTest extends TestCase
         $uniqueTerm = 'MySuperUniqueTermForSearching';
 
         /** @var Entity $entityClass */
-        foreach ([Page::class, Chapter::class, Book::class, Bookshelf::class] as $entityClass) {
+        foreach ([Page::class, Chapter::class, Recipe::class, Recipemenus::class] as $entityClass) {
             /** @var Entity $first */
             $first = $entityClass::query()->first();
             $first->update(['name' => $uniqueTerm]);

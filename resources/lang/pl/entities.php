@@ -74,7 +74,7 @@ return [
 
     // Shelves
     'shelf' => 'Półka',
-    'shelves' => 'Półki',
+    'menus' => 'Półki',
     'x_shelves' => ':count Półek|:count Półek',
     'shelves_long' => 'Półki',
     'shelves_empty' => 'Brak utworzonych półek',
@@ -107,7 +107,7 @@ return [
 
     // Books
     'book' => 'Książka',
-    'books' => 'Książki',
+    'recipes' => 'Książki',
     'x_books' => ':count Książka|:count Książki',
     'books_empty' => 'Brak utworzonych książek',
     'books_popular' => 'Popularne książki',

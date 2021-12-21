@@ -36,12 +36,12 @@ return [
     'recipe_sort_notification'      => 'Recipe Successfully Re-sorted',
 
     // Bookshelves
-    'menu_create'            => 'created Bookshelf',
-    'menu_create_notification'    => 'Bookshelf Successfully Created',
+    'menu_create'            => 'created Recipemenus',
+    'menu_create_notification'    => 'Recipemenus Successfully Created',
     'menu_update'                 => 'updated bookshelf',
-    'menu_update_notification'    => 'Bookshelf Successfully Updated',
+    'menu_update_notification'    => 'Recipemenus Successfully Updated',
     'menu_delete'                 => 'deleted bookshelf',
-    'menu_delete_notification'    => 'Bookshelf Successfully Deleted',
+    'menu_delete_notification'    => 'Recipemenus Successfully Deleted',
 
     // Favourites
     'favourite_add_notification' => '":name" has been added to your favourites',

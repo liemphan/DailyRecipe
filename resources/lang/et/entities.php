@@ -74,7 +74,7 @@ return [
 
     // Shelves
     'shelf' => 'Riiul',
-    'shelves' => 'Riiulid',
+    'menus' => 'Riiulid',
     'x_shelves' => ':count riiul|:count riiulit',
     'shelves_long' => 'Raamaturiiulid',
     'shelves_empty' => 'Ühtegi riiulit pole lisatud',
@@ -107,7 +107,7 @@ return [
 
     // Books
     'book' => 'Raamat',
-    'books' => 'Raamatud',
+    'recipes' => 'Raamatud',
     'x_books' => ':count raamat|:count raamatut',
     'books_empty' => 'Ühtegi raamatut pole lisatud',
     'books_popular' => 'Populaarsed raamatud',

@@ -7,11 +7,11 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
-class Bookshelf extends Entity implements HasCoverImage
+class Recipemenus extends Entity implements HasCoverImage
 {
     use HasFactory;
 
-    protected $table = 'bookshelves';
+    protected $table = 'recipemenus';
 
     public $searchFactor = 1.2;
 
@@ -20,20 +20,20 @@ class Bookshelf extends Entity implements HasCoverImage
     protected $hidden = ['restricted', 'image_id', 'deleted_at'];
 
     /**
-     * Get the books in this shelf.
+     * Get the recipes in this shelf.
      * Should not be used directly since does not take into account permissions.
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
      */
     public function books()
     {
-        return $this->belongsToMany(Book::class, 'bookshelves_books', 'bookshelf_id', 'book_id')
+        return $this->belongsToMany(Recipe::class, 'recipemenus_recipes', 'bookshelf_id', 'recipe_id')
             ->withPivot('order')
             ->orderBy('order', 'asc');
     }
 
     /**
-     * Related books that are visible to the current user.
+     * Related recipes that are visible to the current user.
      */
     public function visibleBooks(): BelongsToMany
     {
@@ -45,7 +45,7 @@ class Bookshelf extends Entity implements HasCoverImage
      */
     public function getUrl(string $path = ''): string
     {
-        return url('/shelves/' . implode('/', [urlencode($this->slug), trim($path, '/')]));
+        return url('/menus/' . implode('/', [urlencode($this->slug), trim($path, '/')]));
     }
 
     /**
@@ -58,7 +58,7 @@ class Bookshelf extends Entity implements HasCoverImage
      */
     public function getBookCover($width = 440, $height = 250)
     {
-        // TODO - Make generic, focused on books right now, Perhaps set-up a better image
+        // TODO - Make generic, focused on recipes right now, Perhaps set-up a better image
         $default = 'data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==';
         if (!$this->image_id) {
             return $default;
@@ -92,11 +92,11 @@ class Bookshelf extends Entity implements HasCoverImage
     /**
      * Check if this shelf contains the given book.
      *
-     * @param Book $book
+     * @param Recipe $book
      *
      * @return bool
      */
-    public function contains(Book $book): bool
+    public function contains(Recipe $book): bool
     {
         return $this->books()->where('id', '=', $book->id)->count() > 0;
     }
@@ -104,9 +104,9 @@ class Bookshelf extends Entity implements HasCoverImage
     /**
      * Add a book to the end of this shelf.
      *
-     * @param Book $book
+     * @param Recipe $book
      */
-    public function appendBook(Book $book)
+    public function appendBook(Recipe $book)
     {
         if ($this->contains($book)) {
             return;

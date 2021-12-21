@@ -2,7 +2,7 @@
 
 namespace Tests\Entity;
 
-use DailyRecipe\Entities\Models\Book;
+use DailyRecipe\Entities\Models\Recipe;
 use DailyRecipe\Entities\Models\Chapter;
 use DailyRecipe\Entities\Models\Page;
 use Carbon\Carbon;
@@ -55,7 +55,7 @@ class PageTest extends TestCase
     public function test_page_creation_with_markdown_content()
     {
         $this->setSettings(['app-editor' => 'markdown']);
-        $book = Book::query()->first();
+        $book = Recipe::query()->first();
 
         $this->asEditor()->get($book->getUrl('/create-page'));
         $draft = Page::query()->where('book_id', '=', $book->id)
@@ -135,7 +135,7 @@ class PageTest extends TestCase
         $page->save();
 
         $currentBook = $page->book;
-        $newBook = Book::where('id', '!=', $currentBook->id)->first();
+        $newBook = Recipe::where('id', '!=', $currentBook->id)->first();
 
         $resp = $this->asEditor()->get($page->getUrl('/copy'));
         $resp->assertSee('Copy Page');
@@ -157,7 +157,7 @@ class PageTest extends TestCase
         $page->html = '<h1>This is some test content</h1>';
         $page->markdown = '# This is some test content';
         $page->save();
-        $newBook = Book::where('id', '!=', $page->book->id)->first();
+        $newBook = Recipe::where('id', '!=', $page->book->id)->first();
 
         $this->asEditor()->post($page->getUrl('/copy'), [
             'entity_selection' => 'book:' . $newBook->id,
@@ -192,7 +192,7 @@ class PageTest extends TestCase
     {
         $page = Page::first();
         $currentBook = $page->book;
-        $newBook = Book::where('id', '!=', $currentBook->id)->first();
+        $newBook = Recipe::where('id', '!=', $currentBook->id)->first();
         $viewer = $this->getViewer();
 
         $resp = $this->actingAs($viewer)->get($page->getUrl());
@@ -239,7 +239,7 @@ class PageTest extends TestCase
         ]);
 
         $this->get($pageUrl)
-            ->assertRedirect("/books/{$page->book->slug}/page/super-test-page");
+            ->assertRedirect("/recipes/{$page->book->slug}/page/super-test-page");
     }
 
     public function test_page_within_chapter_deletion_returns_to_chapter()

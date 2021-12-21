@@ -11,7 +11,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Support\Collection;
 
 /**
- * Class Book.
+ * Class Recipe.
  *
  * @property string                                   $description
  * @property int                                      $image_id
@@ -20,7 +20,7 @@ use Illuminate\Support\Collection;
  * @property \Illuminate\Database\Eloquent\Collection $pages
  * @property \Illuminate\Database\Eloquent\Collection $directPages
  */
-class Book extends Entity implements HasCoverImage
+class Recipe extends Entity implements HasCoverImage
 {
     use HasFactory;
 
@@ -34,7 +34,7 @@ class Book extends Entity implements HasCoverImage
      */
     public function getUrl(string $path = ''): string
     {
-        return url('/books/' . implode('/', [urlencode($this->slug), trim($path, '/')]));
+        return url('/recipes/' . implode('/', [urlencode($this->slug), trim($path, '/')]));
     }
 
     /**
@@ -102,11 +102,11 @@ class Book extends Entity implements HasCoverImage
     }
 
     /**
-     * Get the shelves this book is contained within.
+     * Get the menus this book is contained within.
      */
     public function shelves(): BelongsToMany
     {
-        return $this->belongsToMany(Bookshelf::class, 'bookshelves_books', 'book_id', 'bookshelf_id');
+        return $this->belongsToMany(Recipemenus::class, 'recipemenus_recipes', 'recipe_id', 'bookshelf_id');
     }
 
     /**

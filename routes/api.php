@@ -25,16 +25,16 @@ Route::get('attachments/{id}', [AttachmentApiController::class, 'read']);
 Route::put('attachments/{id}', [AttachmentApiController::class, 'update']);
 Route::delete('attachments/{id}', [AttachmentApiController::class, 'delete']);
 
-Route::get('books', [BookApiController::class, 'list']);
-Route::post('books', [BookApiController::class, 'create']);
-Route::get('books/{id}', [BookApiController::class, 'read']);
-Route::put('books/{id}', [BookApiController::class, 'update']);
-Route::delete('books/{id}', [BookApiController::class, 'delete']);
+Route::get('recipes', [BookApiController::class, 'list']);
+Route::post('recipes', [BookApiController::class, 'create']);
+Route::get('recipes/{id}', [BookApiController::class, 'read']);
+Route::put('recipes/{id}', [BookApiController::class, 'update']);
+Route::delete('recipes/{id}', [BookApiController::class, 'delete']);
 
-Route::get('books/{id}/export/html', [BookExportApiController::class, 'exportHtml']);
-Route::get('books/{id}/export/pdf', [BookExportApiController::class, 'exportPdf']);
-Route::get('books/{id}/export/plaintext', [BookExportApiController::class, 'exportPlainText']);
-Route::get('books/{id}/export/markdown', [BookExportApiController::class, 'exportMarkdown']);
+Route::get('recipes/{id}/export/html', [BookExportApiController::class, 'exportHtml']);
+Route::get('recipes/{id}/export/pdf', [BookExportApiController::class, 'exportPdf']);
+Route::get('recipes/{id}/export/plaintext', [BookExportApiController::class, 'exportPlainText']);
+Route::get('recipes/{id}/export/markdown', [BookExportApiController::class, 'exportMarkdown']);
 
 Route::get('chapters', [ChapterApiController::class, 'list']);
 Route::post('chapters', [ChapterApiController::class, 'create']);
@@ -60,8 +60,8 @@ Route::get('pages/{id}/export/markdown', [PageExportApiController::class, 'expor
 
 Route::get('search', [SearchApiController::class, 'all']);
 
-Route::get('shelves', [BookshelfApiController::class, 'list']);
-Route::post('shelves', [BookshelfApiController::class, 'create']);
-Route::get('shelves/{id}', [BookshelfApiController::class, 'read']);
-Route::put('shelves/{id}', [BookshelfApiController::class, 'update']);
-Route::delete('shelves/{id}', [BookshelfApiController::class, 'delete']);
+Route::get('menus', [BookshelfApiController::class, 'list']);
+Route::post('menus', [BookshelfApiController::class, 'create']);
+Route::get('menus/{id}', [BookshelfApiController::class, 'read']);
+Route::put('menus/{id}', [BookshelfApiController::class, 'update']);
+Route::delete('menus/{id}', [BookshelfApiController::class, 'delete']);

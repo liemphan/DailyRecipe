@@ -2,8 +2,8 @@
 
 namespace DailyRecipe\Entities\Tools;
 
-use DailyRecipe\Entities\Models\Book;
-use DailyRecipe\Entities\Models\Bookshelf;
+use DailyRecipe\Entities\Models\Recipe;
+use DailyRecipe\Entities\Models\Recipemenus;
 
 class ShelfContext
 {
@@ -12,7 +12,7 @@ class ShelfContext
     /**
      * Get the current bookshelf context for the given book.
      */
-    public function getContextualShelfForBook(Book $book): ?Bookshelf
+    public function getContextualShelfForBook(Recipe $book): ?Recipemenus
     {
         $contextBookshelfId = session()->get($this->KEY_SHELF_CONTEXT_ID, null);
 
@@ -20,7 +20,7 @@ class ShelfContext
             return null;
         }
 
-        $shelf = Bookshelf::visible()->find($contextBookshelfId);
+        $shelf = Recipemenus::visible()->find($contextBookshelfId);
         $shelfContainsBook = $shelf && $shelf->contains($book);
 
         return $shelfContainsBook ? $shelf : null;

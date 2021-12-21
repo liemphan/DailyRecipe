@@ -74,7 +74,7 @@ return [
 
     // Shelves
     'shelf' => 'Polica',
-    'shelves' => 'Police',
+    'menus' => 'Police',
     'x_shelves' => ':count polica|:count polica',
     'shelves_long' => 'Police za knjige',
     'shelves_empty' => 'Nijedna polica nije stvorena',
@@ -94,12 +94,12 @@ return [
     'shelves_edit' => 'Uredi policu',
     'shelves_delete' => 'Izbriši policu',
     'shelves_delete_named' => 'Izbriši policu :name',
-    'shelves_delete_explain' => "This will delete the bookshelf with the name ':name'. Contained books will not be deleted.",
+    'shelves_delete_explain' => "This will delete the bookshelf with the name ':name'. Contained recipes will not be deleted.",
     'shelves_delete_confirmation' => 'Jeste li sigurni da želite obrisati policu?',
     'shelves_permissions' => 'Dopuštenja za policu',
     'shelves_permissions_updated' => 'Ažurirana dopuštenja za policu',
     'shelves_permissions_active' => 'Aktivirana dopuštenja za policu',
-    'shelves_permissions_cascade_warning' => 'Permissions on bookshelves do not automatically cascade to contained books. This is because a book can exist on multiple shelves. Permissions can however be copied down to child books using the option found below.',
+    'shelves_permissions_cascade_warning' => 'Permissions on bookshelves do not automatically cascade to contained recipes. This is because a book can exist on multiple menus. Permissions can however be copied down to child recipes using the option found below.',
     'shelves_copy_permissions_to_books' => 'Kopiraj dopuštenja za knjige',
     'shelves_copy_permissions' => 'Kopiraj dopuštenja',
     'shelves_copy_permissions_explain' => 'Ovo će promijeniti trenutna dopuštenja za policu i knjige u njoj. Prije aktivacije provjerite jesu li sve dopuštenja za ovu policu spremljena.',
@@ -107,7 +107,7 @@ return [
 
     // Books
     'book' => 'Knjiga',
-    'books' => 'Knjige',
+    'recipes' => 'Knjige',
     'x_books' => ':count knjiga|:count knjiga',
     'books_empty' => 'Nijedna knjiga nije stvorena',
     'books_popular' => 'Popularne knjige',

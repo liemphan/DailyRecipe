@@ -12,7 +12,7 @@ class BookshelfFactory extends Factory
      *
      * @var string
      */
-    protected $model = \DailyRecipe\Entities\Models\Bookshelf::class;
+    protected $model = \DailyRecipe\Entities\Models\Recipemenus::class;
 
     /**
      * Define the model's default state.

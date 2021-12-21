@@ -100,7 +100,7 @@ class PageContentTest extends TestCase
     {
         $page = Page::query()->first();
         $secondPage = Page::query()
-            ->where('book_id', '!=', $page->book_id)
+            ->where('book_id', '!=', $page->recipe_id)
             ->first();
 
         $content = '<p id="bkmrk-meow">my cat is awesome and scratchy</p>';

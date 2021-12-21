@@ -137,7 +137,7 @@ final class Versions
   'vlucas/phpdotenv' => 'v5.4.0@d4394d044ed69a8f244f3445bcedf8a0d7fe2403',
   'voku/portable-ascii' => '1.5.6@80953678b19901e5165c56752d087fc11526017c',
   'webmozart/assert' => '1.10.0@6964c76c7804814a842473e0c8fd15bab0f18e25',
-  'bookstackapp/bookstack' => '1.0.0+no-version-set@',
+  'bookstackapp/bookstack' => 'dev-main@ae7c22cac05278702f2a1b9fd4ccccf569a9ad45',
 );
 
     private function __construct()

@@ -2,20 +2,20 @@
 
 namespace Tests\Api;
 
-use DailyRecipe\Entities\Models\Book;
-use DailyRecipe\Entities\Models\Bookshelf;
+use DailyRecipe\Entities\Models\Recipe;
+use DailyRecipe\Entities\Models\Recipemenus;
 use Tests\TestCase;
 
 class ShelvesApiTest extends TestCase
 {
     use TestsApi;
 
-    protected $baseEndpoint = '/api/shelves';
+    protected $baseEndpoint = '/api/menus';
 
     public function test_index_endpoint_returns_expected_shelf()
     {
         $this->actingAsApiEditor();
-        $firstBookshelf = Bookshelf::query()->orderBy('id', 'asc')->first();
+        $firstBookshelf = Recipemenus::query()->orderBy('id', 'asc')->first();
 
         $resp = $this->getJson($this->baseEndpoint . '?count=1&sort=+id');
         $resp->assertJson(['data' => [
@@ -30,16 +30,16 @@ class ShelvesApiTest extends TestCase
     public function test_create_endpoint()
     {
         $this->actingAsApiEditor();
-        $books = Book::query()->take(2)->get();
+        $books = Recipe::query()->take(2)->get();
 
         $details = [
             'name'        => 'My API shelf',
             'description' => 'A shelf created via the API',
         ];
 
-        $resp = $this->postJson($this->baseEndpoint, array_merge($details, ['books' => [$books[0]->id, $books[1]->id]]));
+        $resp = $this->postJson($this->baseEndpoint, array_merge($details, ['recipes' => [$books[0]->id, $books[1]->id]]));
         $resp->assertStatus(200);
-        $newItem = Bookshelf::query()->orderByDesc('id')->where('name', '=', $details['name'])->first();
+        $newItem = Recipemenus::query()->orderByDesc('id')->where('name', '=', $details['name'])->first();
         $resp->assertJson(array_merge($details, ['id' => $newItem->id, 'slug' => $newItem->slug]));
         $this->assertActivityExists('menu_create', $newItem);
         foreach ($books as $index => $book) {
@@ -74,7 +74,7 @@ class ShelvesApiTest extends TestCase
     public function test_read_endpoint()
     {
         $this->actingAsApiEditor();
-        $shelf = Bookshelf::visible()->first();
+        $shelf = Recipemenus::visible()->first();
 
         $resp = $this->getJson($this->baseEndpoint . "/{$shelf->id}");
 
@@ -97,7 +97,7 @@ class ShelvesApiTest extends TestCase
     public function test_update_endpoint()
     {
         $this->actingAsApiEditor();
-        $shelf = Bookshelf::visible()->first();
+        $shelf = Recipemenus::visible()->first();
         $details = [
             'name'        => 'My updated API shelf',
             'description' => 'A shelf created via the API',
@@ -114,7 +114,7 @@ class ShelvesApiTest extends TestCase
     public function test_update_only_assigns_books_if_param_provided()
     {
         $this->actingAsApiEditor();
-        $shelf = Bookshelf::visible()->first();
+        $shelf = Recipemenus::visible()->first();
         $this->assertTrue($shelf->books()->count() > 0);
         $details = [
             'name' => 'My updated API shelf',
@@ -124,7 +124,7 @@ class ShelvesApiTest extends TestCase
         $resp->assertStatus(200);
         $this->assertTrue($shelf->books()->count() > 0);
 
-        $resp = $this->putJson($this->baseEndpoint . "/{$shelf->id}", ['books' => []]);
+        $resp = $this->putJson($this->baseEndpoint . "/{$shelf->id}", ['recipes' => []]);
         $resp->assertStatus(200);
         $this->assertTrue($shelf->books()->count() === 0);
     }
@@ -132,7 +132,7 @@ class ShelvesApiTest extends TestCase
     public function test_delete_endpoint()
     {
         $this->actingAsApiEditor();
-        $shelf = Bookshelf::visible()->first();
+        $shelf = Recipemenus::visible()->first();
         $resp = $this->deleteJson($this->baseEndpoint . "/{$shelf->id}");
 
         $resp->assertStatus(204);

@@ -36,7 +36,7 @@ return [
     'book_sort_notification'      => 'הספר מוין מחדש בהצלחה',
 
     // Bookshelves
-    'bookshelf_create'            => 'created Bookshelf',
+    'bookshelf_create'            => 'created Recipemenus',
     'bookshelf_create_notification'    => 'מדף הספרים נוצר בהצלחה',
     'bookshelf_update'                 => 'updated bookshelf',
     'bookshelf_update_notification'    => 'מדף הספרים עודכן בהצלחה',

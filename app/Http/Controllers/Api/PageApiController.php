@@ -2,7 +2,7 @@
 
 namespace DailyRecipe\Http\Controllers\Api;
 
-use DailyRecipe\Entities\Models\Book;
+use DailyRecipe\Entities\Models\Recipe;
 use DailyRecipe\Entities\Models\Chapter;
 use DailyRecipe\Entities\Models\Page;
 use DailyRecipe\Entities\Repos\PageRepo;
@@ -71,7 +71,7 @@ class PageApiController extends ApiController
         if ($request->has('chapter_id')) {
             $parent = Chapter::visible()->findOrFail($request->get('chapter_id'));
         } else {
-            $parent = Book::visible()->findOrFail($request->get('book_id'));
+            $parent = Recipe::visible()->findOrFail($request->get('book_id'));
         }
         $this->checkOwnablePermission('page-create', $parent);
 
@@ -110,7 +110,7 @@ class PageApiController extends ApiController
         if ($request->has('chapter_id')) {
             $parent = Chapter::visible()->findOrFail($request->get('chapter_id'));
         } elseif ($request->has('book_id')) {
-            $parent = Book::visible()->findOrFail($request->get('book_id'));
+            $parent = Recipe::visible()->findOrFail($request->get('book_id'));
         }
 
         if ($parent && !$parent->matches($page->getParent())) {

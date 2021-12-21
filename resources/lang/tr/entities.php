@@ -74,7 +74,7 @@ return [
 
     // Shelves
     'shelf' => 'Kitaplık',
-    'shelves' => 'Kitaplıklar',
+    'menus' => 'Kitaplıklar',
     'x_shelves' => ':count Kitaplık|:count Kitaplık',
     'shelves_long' => 'Kitaplıklar',
     'shelves_empty' => 'Hiç kitaplık oluşturulmamış',
@@ -99,7 +99,7 @@ return [
     'shelves_permissions' => 'Kitaplık İzinleri',
     'shelves_permissions_updated' => 'Kitaplık İzinleri Güncellendi',
     'shelves_permissions_active' => 'Kitaplık İzinleri Aktif',
-    'shelves_permissions_cascade_warning' => 'Permissions on bookshelves do not automatically cascade to contained books. This is because a book can exist on multiple shelves. Permissions can however be copied down to child books using the option found below.',
+    'shelves_permissions_cascade_warning' => 'Permissions on bookshelves do not automatically cascade to contained recipes. This is because a book can exist on multiple menus. Permissions can however be copied down to child recipes using the option found below.',
     'shelves_copy_permissions_to_books' => 'İzinleri Kitaplara Kopyala',
     'shelves_copy_permissions' => 'İzinleri Kopyala',
     'shelves_copy_permissions_explain' => 'Bu işlem sonucunda kitaplığınızın izinleri, içerdiği kitaplara da aynen uygulanır. Aktifleştirmeden önce bu kitaplığa ait izinleri kaydettiğinizden emin olun.',
@@ -107,7 +107,7 @@ return [
 
     // Books
     'book' => 'Kitap',
-    'books' => 'Kitaplar',
+    'recipes' => 'Kitaplar',
     'x_books' => ':count Kitap|:count Kitap',
     'books_empty' => 'Hiç kitap oluşturulmamış',
     'books_popular' => 'Popüler Kitaplar',

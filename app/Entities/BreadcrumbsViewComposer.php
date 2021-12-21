@@ -2,7 +2,7 @@
 
 namespace DailyRecipe\Entities;
 
-use DailyRecipe\Entities\Models\Book;
+use DailyRecipe\Entities\Models\Recipe;
 use DailyRecipe\Entities\Tools\ShelfContext;
 use Illuminate\View\View;
 
@@ -29,7 +29,7 @@ class BreadcrumbsViewComposer
     {
         $crumbs = $view->getData()['crumbs'];
         $firstCrumb = $crumbs[0] ?? null;
-        if ($firstCrumb instanceof Book) {
+        if ($firstCrumb instanceof Recipe) {
             $shelf = $this->entityContextManager->getContextualShelfForBook($firstCrumb);
             if ($shelf) {
                 array_unshift($crumbs, $shelf);

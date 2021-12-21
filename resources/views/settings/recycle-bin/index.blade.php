@@ -61,17 +61,17 @@
                                 {{ $deletion->deletable->name }}
                             </div>
                         </div>
-                        @if($deletion->deletable instanceof \DailyRecipe\Entities\Models\Book || $deletion->deletable instanceof \DailyRecipe\Entities\Models\Chapter)
+                        @if($deletion->deletable instanceof \DailyRecipe\Entities\Models\Recipe || $deletion->deletable instanceof \DailyRecipe\Entities\Models\Chapter)
                             <div class="mb-m"></div>
                         @endif
-                        @if($deletion->deletable instanceof \DailyRecipe\Entities\Models\Book)
+                        @if($deletion->deletable instanceof \DailyRecipe\Entities\Models\Recipe)
                             <div class="pl-xl block inline">
                                 <div class="text-chapter">
                                     @icon('chapter') {{ trans_choice('entities.x_chapters', $deletion->deletable->chapters()->withTrashed()->count()) }}
                                 </div>
                             </div>
                         @endif
-                        @if($deletion->deletable instanceof \DailyRecipe\Entities\Models\Book || $deletion->deletable instanceof \DailyRecipe\Entities\Models\Chapter)
+                        @if($deletion->deletable instanceof \DailyRecipe\Entities\Models\Recipe || $deletion->deletable instanceof \DailyRecipe\Entities\Models\Chapter)
                         <div class="pl-xl block inline">
                             <div class="text-page">
                                 @icon('page') {{ trans_choice('entities.x_pages', $deletion->deletable->pages()->withTrashed()->count()) }}

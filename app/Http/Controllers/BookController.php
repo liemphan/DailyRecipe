@@ -5,7 +5,7 @@ namespace DailyRecipe\Http\Controllers;
 use Activity;
 use DailyRecipe\Actions\ActivityType;
 use DailyRecipe\Actions\View;
-use DailyRecipe\Entities\Models\Bookshelf;
+use DailyRecipe\Entities\Models\Recipemenus;
 use DailyRecipe\Entities\Repos\BookRepo;
 use DailyRecipe\Entities\Tools\BookContents;
 use DailyRecipe\Entities\Tools\PermissionsUpdater;
@@ -44,8 +44,8 @@ class BookController extends Controller
 
         $this->setPageTitle(trans('entities.recipes'));
 
-        return view('books.index', [
-            'books'   => $books,
+        return view('recipes.index', [
+            'recipes'   => $books,
             'recents' => $recents,
             'popular' => $popular,
             'new'     => $new,
@@ -64,13 +64,13 @@ class BookController extends Controller
 
         $bookshelf = null;
         if ($shelfSlug !== null) {
-            $bookshelf = Bookshelf::visible()->where('slug', '=', $shelfSlug)->firstOrFail();
+            $bookshelf = Recipemenus::visible()->where('slug', '=', $shelfSlug)->firstOrFail();
             $this->checkOwnablePermission('bookshelf-update', $bookshelf);
         }
 
         $this->setPageTitle(trans('entities.recipes_create'));
 
-        return view('books.create', [
+        return view('recipes.create', [
             'bookshelf' => $bookshelf,
         ]);
     }
@@ -92,7 +92,7 @@ class BookController extends Controller
 
         $bookshelf = null;
         if ($shelfSlug !== null) {
-            $bookshelf = Bookshelf::visible()->where('slug', '=', $shelfSlug)->firstOrFail();
+            $bookshelf = Recipemenus::visible()->where('slug', '=', $shelfSlug)->firstOrFail();
             $this->checkOwnablePermission('bookshelf-update', $bookshelf);
         }
 
@@ -123,7 +123,7 @@ class BookController extends Controller
 
         $this->setPageTitle($book->getShortName());
 
-        return view('books.show', [
+        return view('recipes.show', [
             'book'              => $book,
             'current'           => $book,
             'bookChildren'      => $bookChildren,
@@ -141,7 +141,7 @@ class BookController extends Controller
         $this->checkOwnablePermission('book-update', $book);
         $this->setPageTitle(trans('entities.recipes_edit_named', ['bookName'=>$book->getShortName()]));
 
-        return view('books.edit', ['book' => $book, 'current' => $book]);
+        return view('recipes.edit', ['book' => $book, 'current' => $book]);
     }
 
     /**
@@ -177,7 +177,7 @@ class BookController extends Controller
         $this->checkOwnablePermission('book-delete', $book);
         $this->setPageTitle(trans('entities.recipes_delete_named', ['bookName' => $book->getShortName()]));
 
-        return view('books.delete', ['book' => $book, 'current' => $book]);
+        return view('recipes.delete', ['book' => $book, 'current' => $book]);
     }
 
     /**
@@ -192,7 +192,7 @@ class BookController extends Controller
 
         $this->bookRepo->destroy($book);
 
-        return redirect('/books');
+        return redirect('/recipes');
     }
 
     /**
@@ -203,7 +203,7 @@ class BookController extends Controller
         $book = $this->bookRepo->getBySlug($bookSlug);
         $this->checkOwnablePermission('restrictions-manage', $book);
 
-        return view('books.permissions', [
+        return view('recipes.permissions', [
             'book' => $book,
         ]);
     }

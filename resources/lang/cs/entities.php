@@ -74,7 +74,7 @@ return [
 
     // Shelves
     'shelf' => 'Knihovna',
-    'shelves' => 'Knihovny',
+    'menus' => 'Knihovny',
     'x_shelves' => '{0}:count knihoven|{1}:count knihovna|[2,4]:count knihovny|[5,*]:count knihoven',
     'shelves_long' => 'Knihovny',
     'shelves_empty' => 'Nebyly vytvořeny žádné knihovny',
@@ -107,7 +107,7 @@ return [
 
     // Books
     'book' => 'Kniha',
-    'books' => 'Knihy',
+    'recipes' => 'Knihy',
     'x_books' => '{0}:count knih|{1}:count kniha|[2,4]:count knihy|[5,*]:count knih',
     'books_empty' => 'Nebyly vytvořeny žádné knihy',
     'books_popular' => 'Oblíbené knihy',

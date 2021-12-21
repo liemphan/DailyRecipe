@@ -74,7 +74,7 @@ return [
 
     // Shelves
     'shelf' => 'Étagère',
-    'shelves' => 'Étagères',
+    'menus' => 'Étagères',
     'x_shelves' => ':count Étagère|:count Étagères',
     'shelves_long' => 'Étagères',
     'shelves_empty' => 'Aucune étagère n\'a été créée',
@@ -107,7 +107,7 @@ return [
 
     // Books
     'book' => 'Livre',
-    'books' => 'Livres',
+    'recipes' => 'Livres',
     'x_books' => ':count livre|:count livres',
     'books_empty' => 'Aucun livre n\'a été créé',
     'books_popular' => 'Livres populaires',

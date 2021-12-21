@@ -74,7 +74,7 @@ return [
 
     // Shelves
     'shelf' => 'Plaukts',
-    'shelves' => 'Plaukti',
+    'menus' => 'Plaukti',
     'x_shelves' => ':count Plaukts|:count Plaukti',
     'shelves_long' => 'Grāmatu plautki',
     'shelves_empty' => 'Neviens plaukts nav izveidots',
@@ -107,7 +107,7 @@ return [
 
     // Books
     'book' => 'Grāmata',
-    'books' => 'Grāmatas',
+    'recipes' => 'Grāmatas',
     'x_books' => ':count grāmata|:count grāmatas',
     'books_empty' => 'Neviena grāmata nav izveidota',
     'books_popular' => 'Populārās grāmatas',

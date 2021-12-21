@@ -74,7 +74,7 @@ return [
 
     // Shelves
     'shelf' => 'Полка',
-    'shelves' => 'Полки',
+    'menus' => 'Полки',
     'x_shelves' => ':count полка|:count полки|:count полок',
     'shelves_long' => 'Книжные полки',
     'shelves_empty' => 'Полки не созданы',
@@ -107,7 +107,7 @@ return [
 
     // Books
     'book' => 'Книга',
-    'books' => 'Книги',
+    'recipes' => 'Книги',
     'x_books' => ':count книга|:count книги|:count книг',
     'books_empty' => 'Нет созданных книг',
     'books_popular' => 'Популярные книги',

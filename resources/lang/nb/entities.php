@@ -74,7 +74,7 @@ return [
 
     // Shelves
     'shelf' => 'Hylle',
-    'shelves' => 'Hyller',
+    'menus' => 'Hyller',
     'x_shelves' => ':count hylle|:count hyller',
     'shelves_long' => 'Bokhyller',
     'shelves_empty' => 'Ingen bokhyller er opprettet',
@@ -99,7 +99,7 @@ return [
     'shelves_permissions' => 'Tilganger til hylla',
     'shelves_permissions_updated' => 'Hyllas tilganger er oppdatert',
     'shelves_permissions_active' => 'Hyllas tilganger er aktive',
-    'shelves_permissions_cascade_warning' => 'Permissions on bookshelves do not automatically cascade to contained books. This is because a book can exist on multiple shelves. Permissions can however be copied down to child books using the option found below.',
+    'shelves_permissions_cascade_warning' => 'Permissions on bookshelves do not automatically cascade to contained recipes. This is because a book can exist on multiple menus. Permissions can however be copied down to child recipes using the option found below.',
     'shelves_copy_permissions_to_books' => 'Kopier tilganger til bøkene på hylla',
     'shelves_copy_permissions' => 'Kopier tilganger',
     'shelves_copy_permissions_explain' => 'Dette vil angi gjeldende tillatelsesinnstillinger for denne bokhyllen på alle bøkene som finnes på den. Før du aktiverer, må du forsikre deg om at endringer i tillatelsene til denne bokhyllen er lagret.',
@@ -107,7 +107,7 @@ return [
 
     // Books
     'book' => 'Bok',
-    'books' => 'Bøker',
+    'recipes' => 'Bøker',
     'x_books' => ':count bok|:count bøker',
     'books_empty' => 'Ingen bøker er skrevet',
     'books_popular' => 'Populære bøker',

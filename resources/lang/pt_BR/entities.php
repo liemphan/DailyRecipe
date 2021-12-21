@@ -74,7 +74,7 @@ return [
 
     // Shelves
     'shelf' => 'Prateleira',
-    'shelves' => 'Prateleiras',
+    'menus' => 'Prateleiras',
     'x_shelves' => ':count Prateleira|:count Prateleiras',
     'shelves_long' => 'Prateleiras de Livros',
     'shelves_empty' => 'Nenhuma prateleira foi criada',
@@ -99,7 +99,7 @@ return [
     'shelves_permissions' => 'Permissões da Prateleira',
     'shelves_permissions_updated' => 'Permissões da Prateleira Atualizadas',
     'shelves_permissions_active' => 'Permissões da Prateleira Ativas',
-    'shelves_permissions_cascade_warning' => 'Permissions on bookshelves do not automatically cascade to contained books. This is because a book can exist on multiple shelves. Permissions can however be copied down to child books using the option found below.',
+    'shelves_permissions_cascade_warning' => 'Permissions on bookshelves do not automatically cascade to contained recipes. This is because a book can exist on multiple menus. Permissions can however be copied down to child recipes using the option found below.',
     'shelves_copy_permissions_to_books' => 'Copiar Permissões para Livros',
     'shelves_copy_permissions' => 'Copiar Permissões',
     'shelves_copy_permissions_explain' => 'Isto aplicará as configurações de permissões atuais desta prateleira a todos os livros contidos nela. Antes de ativar, assegure-se de que quaisquer alterações nas permissões desta prateleira tenham sido salvas.',
@@ -107,7 +107,7 @@ return [
 
     // Books
     'book' => 'Livro',
-    'books' => 'Livros',
+    'recipes' => 'Livros',
     'x_books' => ':count Livro|:count Livros',
     'books_empty' => 'Nenhum livro foi criado',
     'books_popular' => 'Livros Populares',

@@ -3,7 +3,7 @@
 namespace Tests\Entity;
 
 use DailyRecipe\Actions\Tag;
-use DailyRecipe\Entities\Models\Book;
+use DailyRecipe\Entities\Models\Recipe;
 use DailyRecipe\Entities\Models\Entity;
 use DailyRecipe\Entities\Models\Page;
 use Tests\TestCase;
@@ -119,8 +119,8 @@ class TagTest extends TestCase
         $resp->assertElementContains('a[title="Assigned to Shelves"]', '0');
         $resp->assertElementContains('a[href$="/tags?name=Category"]', '2 unique values');
 
-        /** @var Book $book */
-        $book = Book::query()->first();
+        /** @var Recipe $book */
+        $book = Recipe::query()->first();
         $book->tags()->create(['name' => 'Category', 'value' => 'GreatTestContent']);
         $resp = $this->asEditor()->get('/tags');
         $resp->assertElementContains('a[title="Total tag usages"]', '3');

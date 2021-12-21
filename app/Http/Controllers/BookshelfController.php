@@ -4,7 +4,7 @@ namespace DailyRecipe\Http\Controllers;
 
 use Activity;
 use DailyRecipe\Actions\View;
-use DailyRecipe\Entities\Models\Book;
+use DailyRecipe\Entities\Models\Recipe;
 use DailyRecipe\Entities\Repos\BookshelfRepo;
 use DailyRecipe\Entities\Tools\PermissionsUpdater;
 use DailyRecipe\Entities\Tools\ShelfContext;
@@ -50,8 +50,8 @@ class BookshelfController extends Controller
         $this->entityContextManager->clearShelfContext();
         $this->setPageTitle(trans('entities.menus'));
 
-        return view('shelves.index', [
-            'shelves'     => $shelves,
+        return view('menus.index', [
+            'menus'     => $shelves,
             'recents'     => $recents,
             'popular'     => $popular,
             'new'         => $new,
@@ -68,10 +68,10 @@ class BookshelfController extends Controller
     public function create()
     {
         $this->checkPermission('bookshelf-create-all');
-        $books = Book::hasPermission('update')->get();
+        $books = Recipe::hasPermission('update')->get();
         $this->setPageTitle(trans('entities.menus_create'));
 
-        return view('shelves.create', ['books' => $books]);
+        return view('menus.create', ['recipes' => $books]);
     }
 
     /**
@@ -89,7 +89,7 @@ class BookshelfController extends Controller
             'image'       => array_merge(['nullable'], $this->getImageValidationRules()),
         ]);
 
-        $bookIds = explode(',', $request->get('books', ''));
+        $bookIds = explode(',', $request->get('recipes', ''));
         $shelf = $this->bookshelfRepo->create($request->all(), $bookIds);
         $this->bookshelfRepo->updateCoverImage($shelf, $request->file('image', null));
 
@@ -120,7 +120,7 @@ class BookshelfController extends Controller
 
         $this->setPageTitle($shelf->getShortName());
 
-        return view('shelves.show', [
+        return view('menus.show', [
             'shelf'                   => $shelf,
             'sortedVisibleShelfBooks' => $sortedVisibleShelfBooks,
             'view'                    => $view,
@@ -139,13 +139,13 @@ class BookshelfController extends Controller
         $this->checkOwnablePermission('bookshelf-update', $shelf);
 
         $shelfBookIds = $shelf->books()->get(['id'])->pluck('id');
-        $books = Book::hasPermission('update')->whereNotIn('id', $shelfBookIds)->get();
+        $books = Recipe::hasPermission('update')->whereNotIn('id', $shelfBookIds)->get();
 
         $this->setPageTitle(trans('entities.menus_edit_named', ['name' => $shelf->getShortName()]));
 
-        return view('shelves.edit', [
+        return view('menus.edit', [
             'shelf' => $shelf,
-            'books' => $books,
+            'recipes' => $books,
         ]);
     }
 
@@ -166,7 +166,7 @@ class BookshelfController extends Controller
             'image'       => array_merge(['nullable'], $this->getImageValidationRules()),
         ]);
 
-        $bookIds = explode(',', $request->get('books', ''));
+        $bookIds = explode(',', $request->get('recipes', ''));
         $shelf = $this->bookshelfRepo->update($shelf, $request->all(), $bookIds);
         $resetCover = $request->has('image_reset');
         $this->bookshelfRepo->updateCoverImage($shelf, $request->file('image', null), $resetCover);
@@ -184,7 +184,7 @@ class BookshelfController extends Controller
 
         $this->setPageTitle(trans('entities.menus_delete_named', ['name' => $shelf->getShortName()]));
 
-        return view('shelves.delete', ['shelf' => $shelf]);
+        return view('menus.delete', ['shelf' => $shelf]);
     }
 
     /**
@@ -199,7 +199,7 @@ class BookshelfController extends Controller
 
         $this->bookshelfRepo->destroy($shelf);
 
-        return redirect('/shelves');
+        return redirect('/menus');
     }
 
     /**
@@ -210,7 +210,7 @@ class BookshelfController extends Controller
         $shelf = $this->bookshelfRepo->getBySlug($slug);
         $this->checkOwnablePermission('restrictions-manage', $shelf);
 
-        return view('shelves.permissions', [
+        return view('menus.permissions', [
             'shelf' => $shelf,
         ]);
     }
@@ -231,7 +231,7 @@ class BookshelfController extends Controller
     }
 
     /**
-     * Copy the permissions of a bookshelf to the child books.
+     * Copy the permissions of a bookshelf to the child recipes.
      */
     public function copyPermissions(string $slug)
     {

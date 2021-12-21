@@ -74,7 +74,7 @@ return [
 
     // Shelves
     'shelf' => 'Regal',
-    'shelves' => 'Regale',
+    'menus' => 'Regale',
     'x_shelves' => ':count Regal|:count Regale',
     'shelves_long' => 'Bücherregal',
     'shelves_empty' => 'Es wurden noch keine Regale angelegt',
@@ -107,7 +107,7 @@ return [
 
     // Books
     'book' => 'Buch',
-    'books' => 'Bücher',
+    'recipes' => 'Bücher',
     'x_books' => ':count Buch|:count Bücher',
     'books_empty' => 'Keine Bücher vorhanden',
     'books_popular' => 'Beliebte Bücher',

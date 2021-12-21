@@ -20,7 +20,7 @@
         </div>
     </div>
 
-    @if($model instanceof \DailyRecipe\Entities\Models\Bookshelf)
+    @if($model instanceof \DailyRecipe\Entities\Models\Recipemenus)
         <p class="text-warn">{{ trans('entities.menus_permissions_cascade_warning') }}</p>
     @endif
 

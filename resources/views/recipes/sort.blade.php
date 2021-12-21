@@ -19,7 +19,7 @@
                 <div book-sort class="card content-wrap">
                     <h1 class="list-heading mb-l">{{ trans('entities.recipes_sort') }}</h1>
                     <div book-sort-boxes>
-                        @include('books.parts.sort-box', ['book' => $book, 'bookChildren' => $bookChildren])
+                        @include('recipes.parts.sort-box', ['book' => $book, 'bookChildren' => $bookChildren])
                     </div>
 
                     <form action="{{ $book->getUrl('/sort') }}" method="POST">

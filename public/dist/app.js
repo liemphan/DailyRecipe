@@ -41539,8 +41539,8 @@
   var ShelfSort = class {
     constructor(elem) {
       this.elem = elem;
-      this.input = document.getElementById("books-input");
-      this.shelfBooksList = elem.querySelector("[shelf-sort-assigned-books]");
+      this.input = document.getElementById("recipes-input");
+      this.shelfBooksList = elem.querySelector("[shelf-sort-assigned-recipes]");
       this.initSortable();
       this.setupListeners();
     }
@@ -41548,7 +41548,7 @@
       const scrollBoxes = this.elem.querySelectorAll(".scroll-box");
       for (let scrollBox of scrollBoxes) {
         new sortable_esm_default(scrollBox, {
-          group: "shelf-books",
+          group: "shelf-recipes",
           ghostClass: "primary-background-light",
           animation: 150,
           onSort: this.onChange.bind(this)

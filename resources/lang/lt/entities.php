@@ -74,7 +74,7 @@ return [
 
     // Shelves
     'shelf' => 'Lentyna',
-    'shelves' => 'Lentynos',
+    'menus' => 'Lentynos',
     'x_shelves' => ':count lentyna|:count lentynos',
     'shelves_long' => 'Knygų lentynos',
     'shelves_empty' => 'Nebuvo sukurtos jokios lentynos',
@@ -94,12 +94,12 @@ return [
     'shelves_edit' => 'Redaguoti knygų lentyną',
     'shelves_delete' => 'Ištrinti knygų lentyną',
     'shelves_delete_named' => 'Ištrinti knygų lentyną :name',
-    'shelves_delete_explain' => "This will delete the bookshelf with the name ':name'. Contained books will not be deleted.",
+    'shelves_delete_explain' => "This will delete the bookshelf with the name ':name'. Contained recipes will not be deleted.",
     'shelves_delete_confirmation' => 'Ar jūs esate tikri, kad norite ištrinti šią knygų lentyną?',
     'shelves_permissions' => 'Knygų lentynos leidimai',
     'shelves_permissions_updated' => 'Knygų lentynos leidimai atnaujinti',
     'shelves_permissions_active' => 'Knygų lentynos leidimai aktyvūs',
-    'shelves_permissions_cascade_warning' => 'Permissions on bookshelves do not automatically cascade to contained books. This is because a book can exist on multiple shelves. Permissions can however be copied down to child books using the option found below.',
+    'shelves_permissions_cascade_warning' => 'Permissions on bookshelves do not automatically cascade to contained recipes. This is because a book can exist on multiple menus. Permissions can however be copied down to child recipes using the option found below.',
     'shelves_copy_permissions_to_books' => 'Kopijuoti leidimus knygoms',
     'shelves_copy_permissions' => 'Kopijuoti leidimus',
     'shelves_copy_permissions_explain' => 'Visoms knygoms, esančioms šioje knygų lentynoje, bus taikomi dabartiniai leidimų nustatymai. Prieš suaktyvindami įsitikinkite, kad visi šios knygų lentynos leidimų pakeitimai buvo išsaugoti.',
@@ -107,7 +107,7 @@ return [
 
     // Books
     'book' => 'Knyga',
-    'books' => 'Knygos',
+    'recipes' => 'Knygos',
     'x_books' => ':count knyga|:count knygos',
     'books_empty' => 'Nebuvo sukurta jokių knygų',
     'books_popular' => 'Populiarios knygos',

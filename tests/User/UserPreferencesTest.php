@@ -2,7 +2,7 @@
 
 namespace Tests\User;
 
-use DailyRecipe\Entities\Models\Bookshelf;
+use DailyRecipe\Entities\Models\Recipemenus;
 use Tests\TestCase;
 
 class UserPreferencesTest extends TestCase
@@ -12,7 +12,7 @@ class UserPreferencesTest extends TestCase
         $editor = $this->getEditor();
         $this->actingAs($editor);
 
-        $updateRequest = $this->patch('/settings/users/' . $editor->id . '/change-sort/books', [
+        $updateRequest = $this->patch('/settings/users/' . $editor->id . '/change-sort/recipes', [
             'sort'  => 'created_at',
             'order' => 'desc',
         ]);
@@ -113,7 +113,7 @@ class UserPreferencesTest extends TestCase
         $editor = $this->getEditor();
         setting()->putUser($editor, 'books_view_type', 'list');
 
-        $this->actingAs($editor)->get('/books')
+        $this->actingAs($editor)->get('/recipes')
             ->assertElementNotExists('.featured-image-container')
             ->assertElementExists('.content-wrap .entity-list-item');
     }
@@ -123,15 +123,15 @@ class UserPreferencesTest extends TestCase
         $editor = $this->getEditor();
         setting()->putUser($editor, 'books_view_type', 'grid');
 
-        $this->actingAs($editor)->get('/books')
+        $this->actingAs($editor)->get('/recipes')
             ->assertElementExists('.featured-image-container');
     }
 
     public function test_shelf_view_type_change()
     {
         $editor = $this->getEditor();
-        /** @var Bookshelf $shelf */
-        $shelf = Bookshelf::query()->first();
+        /** @var Recipemenus $shelf */
+        $shelf = Recipemenus::query()->first();
         setting()->putUser($editor, 'bookshelf_view_type', 'list');
 
         $this->actingAs($editor)->get($shelf->getUrl())

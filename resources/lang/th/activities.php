@@ -27,21 +27,21 @@ return [
 
     // Books
     'book_create'                 => 'created book',
-    'book_create_notification'    => 'Book Successfully Created',
+    'book_create_notification'    => 'Recipe Successfully Created',
     'book_update'                 => 'updated book',
-    'book_update_notification'    => 'Book Successfully Updated',
+    'book_update_notification'    => 'Recipe Successfully Updated',
     'book_delete'                 => 'deleted book',
-    'book_delete_notification'    => 'Book Successfully Deleted',
+    'book_delete_notification'    => 'Recipe Successfully Deleted',
     'book_sort'                   => 'sorted book',
-    'book_sort_notification'      => 'Book Successfully Re-sorted',
+    'book_sort_notification'      => 'Recipe Successfully Re-sorted',
 
     // Bookshelves
-    'bookshelf_create'            => 'created Bookshelf',
-    'bookshelf_create_notification'    => 'Bookshelf Successfully Created',
+    'bookshelf_create'            => 'created Recipemenus',
+    'bookshelf_create_notification'    => 'Recipemenus Successfully Created',
     'bookshelf_update'                 => 'updated bookshelf',
-    'bookshelf_update_notification'    => 'Bookshelf Successfully Updated',
+    'bookshelf_update_notification'    => 'Recipemenus Successfully Updated',
     'bookshelf_delete'                 => 'deleted bookshelf',
-    'bookshelf_delete_notification'    => 'Bookshelf Successfully Deleted',
+    'bookshelf_delete_notification'    => 'Recipemenus Successfully Deleted',
 
     // Other
     'commented_on'                => 'commented on',

@@ -4,7 +4,7 @@ namespace Tests;
 
 use DailyRecipe\Auth\Role;
 use DailyRecipe\Auth\User;
-use DailyRecipe\Entities\Models\Bookshelf;
+use DailyRecipe\Entities\Models\Recipemenus;
 use DailyRecipe\Entities\Models\Page;
 
 class HomepageTest extends TestCase
@@ -103,7 +103,7 @@ class HomepageTest extends TestCase
         $editor = $this->getEditor();
         setting()->putUser($editor, 'books_view_type', 'grid');
 
-        $this->setSettings(['app-homepage-type' => 'books']);
+        $this->setSettings(['app-homepage-type' => 'recipes']);
 
         $this->asEditor();
         $homeVisit = $this->get('/');
@@ -121,7 +121,7 @@ class HomepageTest extends TestCase
     {
         $editor = $this->getEditor();
         setting()->putUser($editor, 'bookshelves_view_type', 'grid');
-        $shelf = Bookshelf::query()->firstOrFail();
+        $shelf = Recipemenus::query()->firstOrFail();
 
         $this->setSettings(['app-homepage-type' => 'bookshelves']);
 
@@ -143,7 +143,7 @@ class HomepageTest extends TestCase
         $this->setSettings(['app-homepage-type' => 'bookshelves']);
         $this->asEditor();
 
-        $shelf = Bookshelf::query()->first();
+        $shelf = Recipemenus::query()->first();
         $book = $shelf->books()->first();
 
         // Ensure initially visible

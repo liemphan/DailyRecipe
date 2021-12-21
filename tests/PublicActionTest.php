@@ -6,7 +6,7 @@ use DailyRecipe\Auth\Permissions\PermissionService;
 use DailyRecipe\Auth\Permissions\RolePermission;
 use DailyRecipe\Auth\Role;
 use DailyRecipe\Auth\User;
-use DailyRecipe\Entities\Models\Book;
+use DailyRecipe\Entities\Models\Recipe;
 use DailyRecipe\Entities\Models\Chapter;
 use DailyRecipe\Entities\Models\Page;
 use Illuminate\Support\Facades\Auth;
@@ -17,8 +17,8 @@ class PublicActionTest extends TestCase
     public function test_app_not_public()
     {
         $this->setSettings(['app-public' => 'false']);
-        $book = Book::query()->first();
-        $this->get('/books')->assertRedirect('/login');
+        $book = Recipe::query()->first();
+        $this->get('/recipes')->assertRedirect('/login');
         $this->get($book->getUrl())->assertRedirect('/login');
 
         $page = Page::query()->first();
@@ -47,11 +47,11 @@ class PublicActionTest extends TestCase
     public function test_books_viewable()
     {
         $this->setSettings(['app-public' => 'true']);
-        $books = Book::query()->orderBy('name', 'asc')->take(10)->get();
+        $books = Recipe::query()->orderBy('name', 'asc')->take(10)->get();
         $bookToVisit = $books[1];
 
-        // Check books index page is showing
-        $resp = $this->get('/books');
+        // Check recipes index page is showing
+        $resp = $this->get('/recipes');
         $resp->assertStatus(200);
         $resp->assertSee($books[0]->name);
 
@@ -160,8 +160,8 @@ class PublicActionTest extends TestCase
     public function test_public_view_then_login_redirects_to_previous_content()
     {
         $this->setSettings(['app-public' => 'true']);
-        /** @var Book $book */
-        $book = Book::query()->first();
+        /** @var Recipe $book */
+        $book = Recipe::query()->first();
         $resp = $this->get($book->getUrl());
         $resp->assertSee($book->name);
 
@@ -173,12 +173,12 @@ class PublicActionTest extends TestCase
     public function test_access_hidden_content_then_login_redirects_to_intended_content()
     {
         $this->setSettings(['app-public' => 'true']);
-        /** @var Book $book */
-        $book = Book::query()->first();
+        /** @var Recipe $book */
+        $book = Recipe::query()->first();
         $this->setEntityRestrictions($book);
 
         $resp = $this->get($book->getUrl());
-        $resp->assertSee('Book not found');
+        $resp->assertSee('Recipe not found');
 
         $this->get('/login');
         $resp = $this->post('/login', ['email' => 'admin@admin.com', 'password' => 'password']);

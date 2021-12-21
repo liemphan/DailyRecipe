@@ -1,8 +1,8 @@
 <?php
 
 use DailyRecipe\Actions\Favourite;
-use DailyRecipe\Entities\Models\Book;
-use DailyRecipe\Entities\Models\Bookshelf;
+use DailyRecipe\Entities\Models\Recipe;
+use DailyRecipe\Entities\Models\Recipemenus;
 use DailyRecipe\Entities\Models\Chapter;
 use DailyRecipe\Entities\Models\Page;
 use Tests\TestCase;
@@ -61,8 +61,8 @@ class FavouriteTest extends TestCase
     public function test_book_chapter_shelf_pages_contain_favourite_button()
     {
         $entities = [
-            Bookshelf::query()->first(),
-            Book::query()->first(),
+            Recipemenus::query()->first(),
+            Recipe::query()->first(),
             Chapter::query()->first(),
         ];
         $this->actingAs($this->getEditor());

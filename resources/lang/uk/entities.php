@@ -74,7 +74,7 @@ return [
 
     // Shelves
     'shelf' => 'Полиця',
-    'shelves' => 'Полиці',
+    'menus' => 'Полиці',
     'x_shelves' => ':count Полиця|:count Полиць',
     'shelves_long' => 'Книжкові полиці',
     'shelves_empty' => 'Жодних полиць не було створено',
@@ -99,7 +99,7 @@ return [
     'shelves_permissions' => 'Дозволи на книжкову полицю',
     'shelves_permissions_updated' => 'Дозволи на книжкову полицю оновлено',
     'shelves_permissions_active' => 'Діючі дозволи на книжкову полицю',
-    'shelves_permissions_cascade_warning' => 'Permissions on bookshelves do not automatically cascade to contained books. This is because a book can exist on multiple shelves. Permissions can however be copied down to child books using the option found below.',
+    'shelves_permissions_cascade_warning' => 'Permissions on bookshelves do not automatically cascade to contained recipes. This is because a book can exist on multiple menus. Permissions can however be copied down to child recipes using the option found below.',
     'shelves_copy_permissions_to_books' => 'Копіювати дозволи на книги',
     'shelves_copy_permissions' => 'Копіювати дозволи',
     'shelves_copy_permissions_explain' => 'Це застосовує поточні налаштування дозволів цієї книжкової полиці до всіх книг, що містяться всередині. Перш ніж активувати, переконайтесь що будь-які зміни дозволів цієї книжкової полиці були збережені.',
@@ -107,7 +107,7 @@ return [
 
     // Books
     'book' => 'Книга',
-    'books' => 'Книги',
+    'recipes' => 'Книги',
     'x_books' => ':count книга|:count книг',
     'books_empty' => 'Немає створених книг',
     'books_popular' => 'Популярні книги',

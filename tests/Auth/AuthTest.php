@@ -121,7 +121,7 @@ class AuthTest extends TestCase
         $resp = $this->get('/register/confirm/awaiting');
         $resp->assertElementContains('form[action="' . url('/register/confirm/resend') . '"]', 'Resend');
 
-        $this->get('/books')->assertRedirect('/login');
+        $this->get('/recipes')->assertRedirect('/login');
         $this->post('/register/confirm/resend', $user->only('email'));
 
         // Get confirmation and confirm notification matches
@@ -322,10 +322,10 @@ class AuthTest extends TestCase
 
     public function test_login_intended_redirect_does_not_factor_mfa_routes()
     {
-        $this->get('/books')->assertRedirect('/login');
+        $this->get('/recipes')->assertRedirect('/login');
         $this->get('/mfa/setup')->assertRedirect('/login');
         $login = $this->post('/login', ['email' => 'admin@admin.com', 'password' => 'password']);
-        $login->assertRedirect('/books');
+        $login->assertRedirect('/recipes');
     }
 
     public function test_login_authenticates_admins_on_all_guards()
@@ -372,7 +372,7 @@ class AuthTest extends TestCase
         auth()->login($user);
         $this->assertTrue(auth()->check());
 
-        $this->get('/books')->assertRedirect('/');
+        $this->get('/recipes')->assertRedirect('/');
         $this->assertFalse(auth()->check());
     }
 

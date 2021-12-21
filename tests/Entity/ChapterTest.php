@@ -2,7 +2,7 @@
 
 namespace Tests\Entity;
 
-use DailyRecipe\Entities\Models\Book;
+use DailyRecipe\Entities\Models\Recipe;
 use DailyRecipe\Entities\Models\Chapter;
 use Tests\TestCase;
 
@@ -10,8 +10,8 @@ class ChapterTest extends TestCase
 {
     public function test_create()
     {
-        /** @var Book $book */
-        $book = Book::query()->first();
+        /** @var Recipe $book */
+        $book = Recipe::query()->first();
 
         $chapter = Chapter::factory()->make([
             'name' => 'My First Chapter',

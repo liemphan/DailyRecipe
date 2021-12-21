@@ -74,7 +74,7 @@ return [
 
     // Shelves
     'shelf' => 'Reol',
-    'shelves' => 'Reoler',
+    'menus' => 'Reoler',
     'x_shelves' => ':count reol|:count reoler',
     'shelves_long' => 'Bogreoler',
     'shelves_empty' => 'Ingen reoler er blevet oprettet',
@@ -107,7 +107,7 @@ return [
 
     // Books
     'book' => 'Bog',
-    'books' => 'Bøger',
+    'recipes' => 'Bøger',
     'x_books' => ':count bog|:count bøger',
     'books_empty' => 'Ingen bøger er blevet oprettet',
     'books_popular' => 'Populære bøger',

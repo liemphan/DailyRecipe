@@ -38,7 +38,7 @@ class EntityAccessTest extends TestCase
      */
     private function checkEntitiesViewable(array $entities)
     {
-        // Check pages and books are visible.
+        // Check pages and recipes are visible.
         $this->asAdmin();
         foreach ($entities as $entity) {
             $this->get($entity->getUrl())

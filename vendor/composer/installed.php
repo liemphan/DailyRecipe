@@ -1,11 +1,11 @@
 <?php return array(
     'root' => array(
-        'pretty_version' => '1.0.0+no-version-set',
-        'version' => '1.0.0.0',
+        'pretty_version' => 'dev-main',
+        'version' => 'dev-main',
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'reference' => NULL,
+        'reference' => 'ae7c22cac05278702f2a1b9fd4ccccf569a9ad45',
         'name' => 'bookstackapp/bookstack',
         'dev' => false,
     ),
@@ -56,12 +56,12 @@
             'dev_requirement' => false,
         ),
         'bookstackapp/bookstack' => array(
-            'pretty_version' => '1.0.0+no-version-set',
-            'version' => '1.0.0.0',
+            'pretty_version' => 'dev-main',
+            'version' => 'dev-main',
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
-            'reference' => NULL,
+            'reference' => 'ae7c22cac05278702f2a1b9fd4ccccf569a9ad45',
             'dev_requirement' => false,
         ),
         'brick/math' => array(

@@ -7,8 +7,8 @@ use DailyRecipe\Auth\Permissions\PermissionsRepo;
 use DailyRecipe\Auth\Permissions\RolePermission;
 use DailyRecipe\Auth\Role;
 use DailyRecipe\Auth\User;
-use DailyRecipe\Entities\Models\Book;
-use DailyRecipe\Entities\Models\Bookshelf;
+use DailyRecipe\Entities\Models\Recipe;
+use DailyRecipe\Entities\Models\Recipemenus;
 use DailyRecipe\Entities\Models\Chapter;
 use DailyRecipe\Entities\Models\Entity;
 use DailyRecipe\Entities\Models\Page;
@@ -111,7 +111,7 @@ trait SharedTestHelpers
     /**
      * Create and return a new bookshelf.
      */
-    public function newShelf(array $input = ['name' => 'test shelf', 'description' => 'My new test shelf']): Bookshelf
+    public function newShelf(array $input = ['name' => 'test shelf', 'description' => 'My new test shelf']): Recipemenus
     {
         return app(BookshelfRepo::class)->create($input, []);
     }
@@ -119,7 +119,7 @@ trait SharedTestHelpers
     /**
      * Create and return a new book.
      */
-    public function newBook(array $input = ['name' => 'test book', 'description' => 'My new test book']): Book
+    public function newBook(array $input = ['name' => 'test book', 'description' => 'My new test book']): Recipe
     {
         return app(BookRepo::class)->create($input);
     }
@@ -127,7 +127,7 @@ trait SharedTestHelpers
     /**
      * Create and return a new test chapter.
      */
-    public function newChapter(array $input, Book $book): Chapter
+    public function newChapter(array $input, Recipe $book): Chapter
     {
         return app(ChapterRepo::class)->create($input, $book);
     }
@@ -137,7 +137,7 @@ trait SharedTestHelpers
      */
     public function newPage(array $input = ['name' => 'test page', 'html' => 'My new test page']): Page
     {
-        $book = Book::query()->first();
+        $book = Recipe::query()->first();
         $pageRepo = app(PageRepo::class);
         $draftPage = $pageRepo->getNewDraftPage($book);
 
@@ -219,7 +219,7 @@ trait SharedTestHelpers
     /**
      * Create a group of entities that belong to a specific user.
      *
-     * @return array{book: Book, chapter: Chapter, page: Page}
+     * @return array{book: Recipe, chapter: Chapter, page: Page}
      */
     protected function createEntityChainBelongingToUser(User $creatorUser, ?User $updaterUser = null): array
     {
@@ -228,7 +228,7 @@ trait SharedTestHelpers
         }
 
         $userAttrs = ['created_by' => $creatorUser->id, 'owned_by' => $creatorUser->id, 'updated_by' => $updaterUser->id];
-        $book = Book::factory()->create($userAttrs);
+        $book = Recipe::factory()->create($userAttrs);
         $chapter = Chapter::factory()->create(array_merge(['book_id' => $book->id], $userAttrs));
         $page = Page::factory()->create(array_merge(['book_id' => $book->id, 'chapter_id' => $chapter->id], $userAttrs));
         $restrictionService = $this->app[PermissionService::class];

@@ -5,8 +5,8 @@ namespace DailyRecipe\Providers;
 use DailyRecipe\Auth\Access\LoginService;
 use DailyRecipe\Auth\Access\SocialAuthService;
 use DailyRecipe\Entities\BreadcrumbsViewComposer;
-use DailyRecipe\Entities\Models\Book;
-use DailyRecipe\Entities\Models\Bookshelf;
+use DailyRecipe\Entities\Models\Recipe;
+use DailyRecipe\Entities\Models\Recipemenus;
 use DailyRecipe\Entities\Models\Chapter;
 use DailyRecipe\Entities\Models\Page;
 use DailyRecipe\Exceptions\WhoopsBookStackPrettyHandler;
@@ -53,8 +53,8 @@ class AppServiceProvider extends ServiceProvider
 
         // Set morph-map due to namespace changes
         Relation::morphMap([
-            'BookStack\\Bookshelf' => Bookshelf::class,
-            'BookStack\\Book'      => Book::class,
+            'BookStack\\Recipemenus' => Recipemenus::class,
+            'BookStack\\Recipe'      => Recipe::class,
             'BookStack\\Chapter'   => Chapter::class,
             'BookStack\\Page'      => Page::class,
         ]);

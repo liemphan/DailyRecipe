@@ -74,7 +74,7 @@ return [
 
     // Shelves
     'shelf' => 'Boekenplank',
-    'shelves' => 'Boekenplanken',
+    'menus' => 'Boekenplanken',
     'x_shelves' => ':count Boekenplank|:count Boekenplanken',
     'shelves_long' => 'Boekenplanken',
     'shelves_empty' => 'Er zijn geen boekenplanken aangemaakt',
@@ -107,7 +107,7 @@ return [
 
     // Books
     'book' => 'Boek',
-    'books' => 'Boeken',
+    'recipes' => 'Boeken',
     'x_books' => ':count Boek|:count Boeken',
     'books_empty' => 'Er zijn geen boeken aangemaakt',
     'books_popular' => 'Populaire boeken',

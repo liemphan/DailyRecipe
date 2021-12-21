@@ -74,7 +74,7 @@ return [
 
     // Shelves
     'shelf' => 'Рафт',
-    'shelves' => 'Рафтове',
+    'menus' => 'Рафтове',
     'x_shelves' => ':count Рафт|:count Рафтове',
     'shelves_long' => 'Рафтове с книги',
     'shelves_empty' => 'Няма създадени рафтове',
@@ -99,15 +99,15 @@ return [
     'shelves_permissions' => 'Настройки за достъп до рафта с книги',
     'shelves_permissions_updated' => 'Настройките за достъп до рафта с книги е обновен',
     'shelves_permissions_active' => 'Настройките за достъп до рафта с книги е активен',
-    'shelves_permissions_cascade_warning' => 'Permissions on bookshelves do not automatically cascade to contained books. This is because a book can exist on multiple shelves. Permissions can however be copied down to child books using the option found below.',
+    'shelves_permissions_cascade_warning' => 'Permissions on bookshelves do not automatically cascade to contained recipes. This is because a book can exist on multiple menus. Permissions can however be copied down to child recipes using the option found below.',
     'shelves_copy_permissions_to_books' => 'Копирай настойките за достъп към книгите',
     'shelves_copy_permissions' => 'Копирай настройките за достъп',
     'shelves_copy_permissions_explain' => 'Това ще приложи настоящите настройки за достъп на този рафт с книги за всички книги, съдържащи се в него. Преди да активирате, уверете се, че всички промени в настройките за достъп на този рафт са запазени.',
-    'shelves_copy_permission_success' => 'Настройките за достъп на рафта с книги бяха копирани върху :count books',
+    'shelves_copy_permission_success' => 'Настройките за достъп на рафта с книги бяха копирани върху :count recipes',
 
     // Books
     'book' => 'Книга',
-    'books' => 'Книги',
+    'recipes' => 'Книги',
     'x_books' => ':count Книга|:count Книги',
     'books_empty' => 'Няма създадени книги',
     'books_popular' => 'Популярни книги',

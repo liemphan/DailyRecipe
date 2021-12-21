@@ -74,7 +74,7 @@ return [
 
     // Shelves
     'shelf' => 'Hylla',
-    'shelves' => 'Hyllor',
+    'menus' => 'Hyllor',
     'x_shelves' => ':count hylla|:count hyllor',
     'shelves_long' => 'Bokhyllor',
     'shelves_empty' => 'Du har inte skapat någon hylla',
@@ -99,7 +99,7 @@ return [
     'shelves_permissions' => 'Bokhyllerättigheter',
     'shelves_permissions_updated' => 'Bokhyllerättigheterna har ändrats',
     'shelves_permissions_active' => 'Bokhyllerättigheterna är aktiva',
-    'shelves_permissions_cascade_warning' => 'Permissions on bookshelves do not automatically cascade to contained books. This is because a book can exist on multiple shelves. Permissions can however be copied down to child books using the option found below.',
+    'shelves_permissions_cascade_warning' => 'Permissions on bookshelves do not automatically cascade to contained recipes. This is because a book can exist on multiple menus. Permissions can however be copied down to child recipes using the option found below.',
     'shelves_copy_permissions_to_books' => 'Kopiera rättigheter till böcker',
     'shelves_copy_permissions' => 'Kopiera rättigheter',
     'shelves_copy_permissions_explain' => 'Detta kommer kopiera hyllans rättigheter till alla böcker på den. Se till att du har sparat alla ändringar innan du går vidare.',
@@ -107,7 +107,7 @@ return [
 
     // Books
     'book' => 'Bok',
-    'books' => 'Böcker',
+    'recipes' => 'Böcker',
     'x_books' => ':count bok|:count böcker',
     'books_empty' => 'Inga böcker har skapats',
     'books_popular' => 'Populära böcker',

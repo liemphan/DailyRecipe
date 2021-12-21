@@ -74,7 +74,7 @@ return [
 
     // Shelves
     'shelf' => 'Rak',
-    'shelves' => 'Rak',
+    'menus' => 'Rak',
     'x_shelves' => ':count Rak|:count Rak',
     'shelves_long' => 'Rak Buku',
     'shelves_empty' => 'Tidak ada rak yang dibuat',
@@ -99,7 +99,7 @@ return [
     'shelves_permissions' => 'Izin Rak Buku',
     'shelves_permissions_updated' => 'Izin Rak Buku Diperbarui',
     'shelves_permissions_active' => 'Izin Rak Buku Aktif',
-    'shelves_permissions_cascade_warning' => 'Permissions on bookshelves do not automatically cascade to contained books. This is because a book can exist on multiple shelves. Permissions can however be copied down to child books using the option found below.',
+    'shelves_permissions_cascade_warning' => 'Permissions on bookshelves do not automatically cascade to contained recipes. This is because a book can exist on multiple menus. Permissions can however be copied down to child recipes using the option found below.',
     'shelves_copy_permissions_to_books' => 'Salin Izin ke Buku',
     'shelves_copy_permissions' => 'Salin Izin',
     'shelves_copy_permissions_explain' => 'Ini akan menerapkan setelan izin rak buku ini saat ini ke semua buku yang ada di dalamnya. Sebelum mengaktifkan, pastikan setiap perubahan pada izin rak buku ini telah disimpan.',
@@ -107,7 +107,7 @@ return [
 
     // Books
     'book' => 'Buku',
-    'books' => 'Semua Buku',
+    'recipes' => 'Semua Buku',
     'x_books' => ':count Buku|:count Semua Buku',
     'books_empty' => 'Tidak ada buku yang telah dibuat',
     'books_popular' => 'Buku Populer',
@@ -115,7 +115,7 @@ return [
     'books_new' => 'Buku baru',
     'books_new_action' => 'Buku baru',
     'books_popular_empty' => 'Buku paling populer akan muncul di sini.',
-    'books_new_empty' => 'The most recently created books will appear here.',
+    'books_new_empty' => 'The most recently created recipes will appear here.',
     'books_create' => 'Buat Buku Baru',
     'books_delete' => 'Hapus Buku',
     'books_delete_named' => 'Hapus buku :bookName',

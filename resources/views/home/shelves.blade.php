@@ -1,7 +1,7 @@
 @extends('layouts.tri')
 
 @section('body')
-    @include('shelves.parts.list', ['shelves' => $shelves, 'view' => $view])
+    @include('menus.parts.list', ['menus' => $shelves, 'view' => $view])
 @stop
 
 @section('left')
@@ -18,7 +18,7 @@
                     <span>{{ trans('entities.menus_new_action') }}</span>
                 </a>
             @endif
-            @include('entities.view-toggle', ['view' => $view, 'type' => 'shelves'])
+            @include('entities.view-toggle', ['view' => $view, 'type' => 'menus'])
             @include('home.parts.expand-toggle', ['classes' => 'text-primary', 'target' => '.entity-list.compact .entity-item-snippet', 'key' => 'home-details'])
             @include('common.dark-mode-toggle', ['classes' => 'icon-list-item text-primary'])
         </div>

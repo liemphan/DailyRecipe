@@ -16,6 +16,25 @@ class AddActivitiesIpColumn extends Migration
         Schema::table('activities', function (Blueprint $table) {
             $table->string('ip', 45)->after('user_id');
         });
+        Schema::table('books', function (Blueprint $table) {
+             Schema::rename('books','recipes');
+         });
+
+         Schema::table('pages', function (Blueprint $table) {
+             $table->renameColumn('book_id', 'recipe_id');
+         });
+         Schema::table('chapters', function (Blueprint $table) {
+             $table->renameColumn('book_id', 'recipe_id');
+         });
+         Schema::table('bookshelves', function (Blueprint $table) {
+             Schema::rename('bookshelves','recipemenus');
+         });
+                 Schema::table('bookshelves_books', function (Blueprint $table) {
+             Schema::rename('bookshelves_books','recipemenus_recipes');
+         });
+         Schema::table('recipemenus_recipes', function (Blueprint $table) {
+             $table->renameColumn('book_id', 'recipe_id');
+         });
     }
 
     /**
@@ -28,5 +47,10 @@ class AddActivitiesIpColumn extends Migration
         Schema::table('activities', function (Blueprint $table) {
             $table->dropColumn('ip');
         });
+            Schema::drop('recipes');
+            Schema::drop('recipemenus');
+            Schema::drop('recipemenus_recipes');
+            Schema::drop('pages');
+            Schema::drop('chapters');
     }
 }

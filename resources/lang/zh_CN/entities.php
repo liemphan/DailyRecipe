@@ -74,7 +74,7 @@ return [
 
     // Shelves
     'shelf' => '书架',
-    'shelves' => '书架',
+    'menus' => '书架',
     'x_shelves' => ':count 书架|:count 书架',
     'shelves_long' => '书架',
     'shelves_empty' => '当前未创建书架',
@@ -107,7 +107,7 @@ return [
 
     // Books
     'book' => '图书',
-    'books' => '图书',
+    'recipes' => '图书',
     'x_books' => ':count 本书',
     'books_empty' => '不存在已创建的书',
     'books_popular' => '热门图书',

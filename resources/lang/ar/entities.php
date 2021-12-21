@@ -74,7 +74,7 @@ return [
 
     // Shelves
     'shelf' => 'رف',
-    'shelves' => 'الأرفف',
+    'menus' => 'الأرفف',
     'x_shelves' => ':count رف|:count أرفف',
     'shelves_long' => 'أرفف الكتب',
     'shelves_empty' => 'لم ينشأ أي رف',
@@ -99,15 +99,15 @@ return [
     'shelves_permissions' => 'أذونات رف الكتب',
     'shelves_permissions_updated' => 'تم تحديث أذونات رف الكتب',
     'shelves_permissions_active' => 'أذونات رف الكتب نشطة',
-    'shelves_permissions_cascade_warning' => 'Permissions on bookshelves do not automatically cascade to contained books. This is because a book can exist on multiple shelves. Permissions can however be copied down to child books using the option found below.',
+    'shelves_permissions_cascade_warning' => 'Permissions on bookshelves do not automatically cascade to contained recipes. This is because a book can exist on multiple menus. Permissions can however be copied down to child recipes using the option found below.',
     'shelves_copy_permissions_to_books' => 'نسخ أذونات الوصول إلى الكتب',
     'shelves_copy_permissions' => 'نسخ الأذونات',
     'shelves_copy_permissions_explain' => 'سيؤدي هذا إلى تطبيق إعدادات الأذونات الحالية لهذا الرف على جميع الكتب المتضمنة فيه. قبل التفعيل، تأكد من حفظ أي تغييرات في أذونات هذا الرف.',
-    'shelves_copy_permission_success' => 'تم نسخ أذونات رف الكتب إلى :count books',
+    'shelves_copy_permission_success' => 'تم نسخ أذونات رف الكتب إلى :count recipes',
 
     // Books
     'book' => 'كتاب',
-    'books' => 'الكتب',
+    'recipes' => 'الكتب',
     'x_books' => ':count كتاب|:count كتب',
     'books_empty' => 'لم يتم إنشاء أي كتب',
     'books_popular' => 'كتب رائجة',

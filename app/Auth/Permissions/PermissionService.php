@@ -4,9 +4,9 @@ namespace DailyRecipe\Auth\Permissions;
 
 use DailyRecipe\Auth\Role;
 use DailyRecipe\Auth\User;
-use DailyRecipe\Entities\Models\Book;
+use DailyRecipe\Entities\Models\Recipe;
 use DailyRecipe\Entities\Models\BookChild;
-use DailyRecipe\Entities\Models\Bookshelf;
+use DailyRecipe\Entities\Models\Recipemenus;
 use DailyRecipe\Entities\Models\Chapter;
 use DailyRecipe\Entities\Models\Entity;
 use DailyRecipe\Entities\Models\Page;
@@ -78,13 +78,13 @@ class PermissionService
     /**
      * Get a book via ID, Checks local cache.
      */
-    protected function getBook(int $bookId): ?Book
+    protected function getBook(int $bookId): ?Recipe
     {
-        if (isset($this->entityCache[Book::class]) && $this->entityCache[Book::class]->has($bookId)) {
-            return $this->entityCache[Book::class]->get($bookId);
+        if (isset($this->entityCache[Recipe::class]) && $this->entityCache[Recipe::class]->has($bookId)) {
+            return $this->entityCache[Recipe::class]->get($bookId);
         }
 
-        return Book::query()->withTrashed()->find($bookId);
+        return Recipe::query()->withTrashed()->find($bookId);
     }
 
     /**
@@ -130,13 +130,13 @@ class PermissionService
         // Get all roles (Should be the most limited dimension)
         $roles = Role::query()->with('permissions')->get()->all();
 
-        // Chunk through all books
+        // Chunk through all recipes
         $this->bookFetchQuery()->chunk(5, function (EloquentCollection $books) use ($roles) {
             $this->buildJointPermissionsForBooks($books, $roles);
         });
 
         // Chunk through all bookshelves
-        Bookshelf::query()->withTrashed()->select(['id', 'restricted', 'owned_by'])
+        Recipemenus::query()->withTrashed()->select(['id', 'restricted', 'owned_by'])
             ->chunk(50, function (EloquentCollection $shelves) use ($roles) {
                 $this->buildJointPermissionsForShelves($shelves, $roles);
             });
@@ -147,13 +147,13 @@ class PermissionService
      */
     protected function bookFetchQuery(): Builder
     {
-        return Book::query()->withTrashed()
+        return Recipe::query()->withTrashed()
             ->select(['id', 'restricted', 'owned_by'])->with([
                 'chapters' => function ($query) {
-                    $query->withTrashed()->select(['id', 'restricted', 'owned_by', 'book_id']);
+                    $query->withTrashed()->select(['id', 'restricted', 'owned_by', 'recipe_id']);
                 },
                 'pages' => function ($query) {
-                    $query->withTrashed()->select(['id', 'restricted', 'owned_by', 'book_id', 'chapter_id']);
+                    $query->withTrashed()->select(['id', 'restricted', 'owned_by', 'recipe_id', 'chapter_id']);
                 },
             ]);
     }
@@ -180,7 +180,7 @@ class PermissionService
     {
         $entities = clone $books;
 
-        /** @var Book $book */
+        /** @var Recipe $book */
         foreach ($books->all() as $book) {
             foreach ($book->getRelation('chapters') as $chapter) {
                 $entities->push($chapter);
@@ -204,7 +204,7 @@ class PermissionService
     public function buildJointPermissionsForEntity(Entity $entity)
     {
         $entities = [$entity];
-        if ($entity instanceof Book) {
+        if ($entity instanceof Recipe) {
             $books = $this->bookFetchQuery()->where('id', '=', $entity->id)->get();
             $this->buildJointPermissionsForBooks($books, Role::query()->get()->all(), true);
 
@@ -249,13 +249,13 @@ class PermissionService
         $roles = [$role];
         $this->deleteManyJointPermissionsForRoles($roles);
 
-        // Chunk through all books
+        // Chunk through all recipes
         $this->bookFetchQuery()->chunk(20, function ($books) use ($roles) {
             $this->buildJointPermissionsForBooks($books, $roles);
         });
 
         // Chunk through all bookshelves
-        Bookshelf::query()->select(['id', 'restricted', 'owned_by'])
+        Recipemenus::query()->select(['id', 'restricted', 'owned_by'])
             ->chunk(50, function ($shelves) use ($roles) {
                 $this->buildJointPermissionsForShelves($shelves, $roles);
             });
@@ -383,10 +383,10 @@ class PermissionService
     protected function getActions(Entity $entity): array
     {
         $baseActions = ['view', 'update', 'delete'];
-        if ($entity instanceof Chapter || $entity instanceof Book) {
+        if ($entity instanceof Chapter || $entity instanceof Recipe) {
             $baseActions[] = 'page-create';
         }
-        if ($entity instanceof Book) {
+        if ($entity instanceof Recipe) {
             $baseActions[] = 'chapter-create';
         }
 
@@ -415,12 +415,12 @@ class PermissionService
             return $this->createJointPermissionDataArray($entity, $role, $action, $hasAccess, $hasAccess);
         }
 
-        if ($entity instanceof Book || $entity instanceof Bookshelf) {
+        if ($entity instanceof Recipe || $entity instanceof Recipemenus) {
             return $this->createJointPermissionDataArray($entity, $role, $action, $roleHasPermission, $roleHasPermissionOwn);
         }
 
-        // For chapters and pages, Check if explicit permissions are set on the Book.
-        $book = $this->getBook($entity->book_id);
+        // For chapters and pages, Check if explicit permissions are set on the Recipe.
+        $book = $this->getBook($entity->recipe_id);
         $hasExplicitAccessToParents = $this->mapHasActiveRestriction($permissionMap, $book, $role, $restrictionAction);
         $hasPermissiveAccessToParents = !$book->restricted;
 

@@ -8,10 +8,10 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 /**
  * Class BookChild.
  *
- * @property int    $book_id
+ * @property int    $recipe_id
  * @property int    $priority
  * @property string $book_slug
- * @property Book   $book
+ * @property Recipe   $book
  *
  * @method Builder whereSlugs(string $bookSlug, string $childSlug)
  */
@@ -25,8 +25,8 @@ abstract class BookChild extends Entity
         static::addGlobalScope('book_slug', function (Builder $builder) {
             $builder->addSelect(['book_slug' => function ($builder) {
                 $builder->select('slug')
-                    ->from('books')
-                    ->whereColumn('books.id', '=', 'book_id');
+                    ->from('recipes')
+                    ->whereColumn('recipes.id', '=', 'recipe_id');
             }]);
         });
     }
@@ -49,7 +49,7 @@ abstract class BookChild extends Entity
      */
     public function book(): BelongsTo
     {
-        return $this->belongsTo(Book::class)->withTrashed();
+        return $this->belongsTo(Recipe::class)->withTrashed();
     }
 
     /**
@@ -57,7 +57,7 @@ abstract class BookChild extends Entity
      */
     public function changeBook(int $newBookId): Entity
     {
-        $this->book_id = $newBookId;
+        $this->recipe_id = $newBookId;
         $this->refreshSlug();
         $this->save();
         $this->refresh();
