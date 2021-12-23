@@ -57,7 +57,6 @@ class PageRevision extends Model
         if ($path) {
             return $url . '/' . trim($path, '/');
         }
-
         return $url;
     }
 
