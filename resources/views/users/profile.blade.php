@@ -45,9 +45,9 @@
                                         <span>@icon('book')</span>
                                         <span>{{ trans_choice('entities.x_recipes', $assetCounts['books']) }}</span>
                                     </a>
-                                    <a href="#recent-shelves" class="text-bookshelf icon-list-item">
-                                        <span>@icon('bookshelf')</span>
-                                        <span>{{ trans_choice('entities.x_menus', $assetCounts['shelves']) }}</span>
+                                    <a href="#recent-menus" class="text-recipemenu icon-list-item">
+                                        <span>@icon('recipemenu')</span>
+                                        <span>{{ trans_choice('entities.x_menus', $assetCounts['menus']) }}</span>
                                     </a>
                                 </div>
                             </div>
@@ -99,16 +99,16 @@
                 </section>
 
                 <section class="card content-wrap auto-height book-contents">
-                    <h2 id="recent-shelves" class="list-heading">
-                        {{ trans('entities.recently_created_shelves') }}
-                        @if (count($recentlyCreated['shelves']) > 0)
-                            <a href="{{ url('/search?term=' . urlencode('{created_by:'.$user->slug.'} {type:bookshelf}') ) }}" class="text-small ml-s">{{ trans('common.view_all') }}</a>
+                    <h2 id="recent-menus" class="list-heading">
+                        {{ trans('entities.recently_created_menus') }}
+                        @if (count($recentlyCreated['menus']) > 0)
+                            <a href="{{ url('/search?term=' . urlencode('{created_by:'.$user->slug.'} {type:recipemenu}') ) }}" class="text-small ml-s">{{ trans('common.view_all') }}</a>
                         @endif
                     </h2>
-                    @if (count($recentlyCreated['shelves']) > 0)
-                        @include('entities.list', ['entities' => $recentlyCreated['shelves'], 'showPath' => true])
+                    @if (count($recentlyCreated['menus']) > 0)
+                        @include('entities.list', ['entities' => $recentlyCreated['menus'], 'showPath' => true])
                     @else
-                        <p class="text-muted">{{ trans('entities.profile_not_created_shelves', ['userName' => $user->name]) }}</p>
+                        <p class="text-muted">{{ trans('entities.profile_not_created_menus', ['userName' => $user->name]) }}</p>
                     @endif
                 </section>
             </div>

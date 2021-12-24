@@ -10,14 +10,14 @@
     @include('form.textarea', ['name' => 'description'])
 </div>
 
-<div shelf-sort class="grid half gap-xl">
+<div menu-sort class="grid half gap-xl">
     <div class="form-group">
         <label for="books">{{ trans('entities.menus_recipes') }}</label>
         <input type="hidden" id="books-input" name="books"
-               value="{{ isset($shelf) ? $shelf->visibleBooks->implode('id', ',') : '' }}">
-        <div class="scroll-box" shelf-sort-assigned-books data-instruction="{{ trans('entities.menus_drag_recipes') }}">
-            @if (count($shelf->visibleBooks ?? []) > 0)
-                @foreach ($shelf->visibleBooks as $book)
+               value="{{ isset($menu) ? $menu->visibleBooks->implode('id', ',') : '' }}">
+        <div class="scroll-box" menu-sort-assigned-books data-instruction="{{ trans('entities.menus_drag_recipes') }}">
+            @if (count($menu->visibleBooks ?? []) > 0)
+                @foreach ($menu->visibleBooks as $book)
                     <div data-id="{{ $book->id }}" class="scroll-box-item">
                         <a href="{{ $book->getUrl() }}" class="text-book">@icon('book'){{ $book->name }}</a>
                     </div>
@@ -48,7 +48,7 @@
 
         @include('form.image-picker', [
             'defaultImage' => url('/book_default_cover.png'),
-            'currentImage' => (isset($shelf) && $shelf->cover) ? $shelf->getBookCover() : url('/book_default_cover.png') ,
+            'currentImage' => (isset($menu) && $menu->cover) ? $menu->getBookCover() : url('/book_default_cover.png') ,
             'name' => 'image',
             'imageClass' => 'cover'
         ])
@@ -57,14 +57,14 @@
 
 <div class="form-group" collapsible id="tags-control">
     <button type="button" class="collapse-title text-primary" collapsible-trigger aria-expanded="false">
-        <label for="tag-manager">{{ trans('entities.shelf_tags') }}</label>
+        <label for="tag-manager">{{ trans('entities.menu_tags') }}</label>
     </button>
     <div class="collapse-content" collapsible-content>
-        @include('entities.tag-manager', ['entity' => $shelf ?? null])
+        @include('entities.tag-manager', ['entity' => $menu ?? null])
     </div>
 </div>
 
 <div class="form-group text-right">
-    <a href="{{ isset($shelf) ? $shelf->getUrl() : url('/shelves') }}" class="button outline">{{ trans('common.cancel') }}</a>
+    <a href="{{ isset($menu) ? $menu->getUrl() : url('/menus') }}" class="button outline">{{ trans('common.cancel') }}</a>
     <button type="submit" class="button">{{ trans('entities.menus_save') }}</button>
 </div>

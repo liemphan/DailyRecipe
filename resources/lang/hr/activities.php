@@ -35,13 +35,13 @@ return [
     'book_sort'                   => 'razvrstana knjiga',
     'book_sort_notification'      => 'Knjiga je uspješno razvrstana',
 
-    // Bookshelves
-    'bookshelf_create'            => 'stvorena polica za knjige',
-    'bookshelf_create_notification'    => 'Polica za knjige je uspješno stvorena',
-    'bookshelf_update'                 => 'ažurirana polica za knjige',
-    'bookshelf_update_notification'    => 'Polica za knjige je uspješno ažurirana',
-    'bookshelf_delete'                 => 'izbrisana polica za knjige',
-    'bookshelf_delete_notification'    => 'Polica za knjige je uspješno izbrisana',
+    // Recipemenus
+    'recipemenu_create'            => 'stvorena polica za knjige',
+    'recipemenu_create_notification'    => 'Polica za knjige je uspješno stvorena',
+    'recipemenu_update'                 => 'ažurirana polica za knjige',
+    'recipemenu_update_notification'    => 'Polica za knjige je uspješno ažurirana',
+    'recipemenu_delete'                 => 'izbrisana polica za knjige',
+    'recipemenu_delete_notification'    => 'Polica za knjige je uspješno izbrisana',
 
     // Favourites
     'favourite_add_notification' => '":name" has been added to your favourites',

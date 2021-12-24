@@ -35,13 +35,13 @@ return [
     'book_sort'                   => 'сортирана книга',
     'book_sort_notification'      => 'Книгата беше успешно преподредена',
 
-    // Bookshelves
-    'bookshelf_create'            => 'създаден рафт',
-    'bookshelf_create_notification'    => 'Рафтът беше успешно създаден',
-    'bookshelf_update'                 => 'обновен рафт',
-    'bookshelf_update_notification'    => 'Рафтът беше успешно обновен',
-    'bookshelf_delete'                 => 'изтрит рафт',
-    'bookshelf_delete_notification'    => 'Рафтът беше успешно изтрит',
+    // Recipemenus
+    'recipemenu_create'            => 'създаден рафт',
+    'recipemenu_create_notification'    => 'Рафтът беше успешно създаден',
+    'recipemenu_update'                 => 'обновен рафт',
+    'recipemenu_update_notification'    => 'Рафтът беше успешно обновен',
+    'recipemenu_delete'                 => 'изтрит рафт',
+    'recipemenu_delete_notification'    => 'Рафтът беше успешно изтрит',
 
     // Favourites
     'favourite_add_notification' => '":name" has been added to your favourites',

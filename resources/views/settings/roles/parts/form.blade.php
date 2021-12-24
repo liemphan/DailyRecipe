@@ -76,22 +76,22 @@
                         <a href="#" permissions-table-toggle-all-in-row class="text-small text-primary">{{ trans('common.toggle_all') }}</a>
                     </td>
                     <td>
-                        @include('settings.roles.parts.checkbox', ['permission' => 'bookshelf-create-all', 'label' => trans('settings.role_all')])
+                        @include('settings.roles.parts.checkbox', ['permission' => 'recipemenu-create-all', 'label' => trans('settings.role_all')])
                     </td>
                     <td>
-                        @include('settings.roles.parts.checkbox', ['permission' => 'bookshelf-view-own', 'label' => trans('settings.role_own')])
+                        @include('settings.roles.parts.checkbox', ['permission' => 'recipemenu-view-own', 'label' => trans('settings.role_own')])
                         <br>
-                        @include('settings.roles.parts.checkbox', ['permission' => 'bookshelf-view-all', 'label' => trans('settings.role_all')])
+                        @include('settings.roles.parts.checkbox', ['permission' => 'recipemenu-view-all', 'label' => trans('settings.role_all')])
                     </td>
                     <td>
-                        @include('settings.roles.parts.checkbox', ['permission' => 'bookshelf-update-own', 'label' => trans('settings.role_own')])
+                        @include('settings.roles.parts.checkbox', ['permission' => 'recipemenu-update-own', 'label' => trans('settings.role_own')])
                         <br>
-                        @include('settings.roles.parts.checkbox', ['permission' => 'bookshelf-update-all', 'label' => trans('settings.role_all')])
+                        @include('settings.roles.parts.checkbox', ['permission' => 'recipemenu-update-all', 'label' => trans('settings.role_all')])
                     </td>
                     <td>
-                        @include('settings.roles.parts.checkbox', ['permission' => 'bookshelf-delete-own', 'label' => trans('settings.role_own')])
+                        @include('settings.roles.parts.checkbox', ['permission' => 'recipemenu-delete-own', 'label' => trans('settings.role_own')])
                         <br>
-                        @include('settings.roles.parts.checkbox', ['permission' => 'bookshelf-delete-all', 'label' => trans('settings.role_all')])
+                        @include('settings.roles.parts.checkbox', ['permission' => 'recipemenu-delete-all', 'label' => trans('settings.role_all')])
                     </td>
                 </tr>
                 <tr>

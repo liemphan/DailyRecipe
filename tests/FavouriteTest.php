@@ -2,7 +2,7 @@
 
 use DailyRecipe\Actions\Favourite;
 use DailyRecipe\Entities\Models\Book;
-use DailyRecipe\Entities\Models\Bookshelf;
+use DailyRecipe\Entities\Models\Recipemenu;
 use DailyRecipe\Entities\Models\Chapter;
 use DailyRecipe\Entities\Models\Page;
 use Tests\TestCase;
@@ -58,10 +58,10 @@ class FavouriteTest extends TestCase
         ]);
     }
 
-    public function test_book_chapter_shelf_pages_contain_favourite_button()
+    public function test_book_chapter_menu_pages_contain_favourite_button()
     {
         $entities = [
-            Bookshelf::query()->first(),
+            Recipemenu::query()->first(),
             Book::query()->first(),
             Chapter::query()->first(),
         ];

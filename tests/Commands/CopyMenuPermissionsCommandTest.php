@@ -2,31 +2,31 @@
 
 namespace Tests\Commands;
 
-use DailyRecipe\Entities\Models\Bookshelf;
+use DailyRecipe\Entities\Models\Recipemenu;
 use Tests\TestCase;
 
-class CopyShelfPermissionsCommandTest extends TestCase
+class CopyMenuPermissionsCommandTest extends TestCase
 {
-    public function test_copy_shelf_permissions_command_shows_error_when_no_required_option_given()
+    public function test_copy_menu_permissions_command_shows_error_when_no_required_option_given()
     {
-        $this->artisan('dailyrecipe:copy-shelf-permissions')
+        $this->artisan('dailyrecipe:copy-menu-permissions')
             ->expectsOutput('Either a --slug or --all option must be provided.')
             ->assertExitCode(0);
     }
 
-    public function test_copy_shelf_permissions_command_using_slug()
+    public function test_copy_menu_permissions_command_using_slug()
     {
-        $shelf = Bookshelf::first();
-        $child = $shelf->books()->first();
+        $menu = Recipemenu::first();
+        $child = $menu->books()->first();
         $editorRole = $this->getEditor()->roles()->first();
         $this->assertFalse(boolval($child->restricted), 'Child book should not be restricted by default');
         $this->assertTrue($child->permissions()->count() === 0, 'Child book should have no permissions by default');
 
-        $this->setEntityRestrictions($shelf, ['view', 'update'], [$editorRole]);
-        $this->artisan('dailyrecipe:copy-shelf-permissions', [
-            '--slug' => $shelf->slug,
+        $this->setEntityRestrictions($menu, ['view', 'update'], [$editorRole]);
+        $this->artisan('dailyrecipe:copy-menu-permissions', [
+            '--slug' => $menu->slug,
         ]);
-        $child = $shelf->books()->first();
+        $child = $menu->books()->first();
 
         $this->assertTrue(boolval($child->restricted), 'Child book should now be restricted');
         $this->assertTrue($child->permissions()->count() === 2, 'Child book should have copied permissions');
@@ -34,19 +34,19 @@ class CopyShelfPermissionsCommandTest extends TestCase
         $this->assertDatabaseHas('entity_permissions', ['restrictable_id' => $child->id, 'action' => 'update', 'role_id' => $editorRole->id]);
     }
 
-    public function test_copy_shelf_permissions_command_using_all()
+    public function test_copy_menu_permissions_command_using_all()
     {
-        $shelf = Bookshelf::query()->first();
-        Bookshelf::query()->where('id', '!=', $shelf->id)->delete();
-        $child = $shelf->books()->first();
+        $menu = Recipemenu::query()->first();
+        Recipemenu::query()->where('id', '!=', $menu->id)->delete();
+        $child = $menu->books()->first();
         $editorRole = $this->getEditor()->roles()->first();
         $this->assertFalse(boolval($child->restricted), 'Child book should not be restricted by default');
         $this->assertTrue($child->permissions()->count() === 0, 'Child book should have no permissions by default');
 
-        $this->setEntityRestrictions($shelf, ['view', 'update'], [$editorRole]);
-        $this->artisan('dailyrecipe:copy-shelf-permissions --all')
-            ->expectsQuestion('Permission settings for all shelves will be cascaded. Books assigned to multiple shelves will receive only the permissions of it\'s last processed shelf. Are you sure you want to proceed?', 'y');
-        $child = $shelf->books()->first();
+        $this->setEntityRestrictions($menu, ['view', 'update'], [$editorRole]);
+        $this->artisan('dailyrecipe:copy-menu-permissions --all')
+            ->expectsQuestion('Permission settings for all menus will be cascaded. Books assigned to multiple menus will receive only the permissions of it\'s last processed menu. Are you sure you want to proceed?', 'y');
+        $child = $menu->books()->first();
 
         $this->assertTrue(boolval($child->restricted), 'Child book should now be restricted');
         $this->assertTrue($child->permissions()->count() === 2, 'Child book should have copied permissions');

@@ -35,13 +35,13 @@ return [
     'book_sort'                   => '排序了图书',
     'book_sort_notification'      => '图书已重新排序成功',
 
-    // Bookshelves
-    'bookshelf_create'            => '创建了书架',
-    'bookshelf_create_notification'    => '书架已成功创建',
-    'bookshelf_update'                 => '更新了书架',
-    'bookshelf_update_notification'    => '书架已成功更新',
-    'bookshelf_delete'                 => '删除了书架',
-    'bookshelf_delete_notification'    => '书架已成功删除',
+    // Recipemenus
+    'recipemenu_create'            => '创建了书架',
+    'recipemenu_create_notification'    => '书架已成功创建',
+    'recipemenu_update'                 => '更新了书架',
+    'recipemenu_update_notification'    => '书架已成功更新',
+    'recipemenu_delete'                 => '删除了书架',
+    'recipemenu_delete_notification'    => '书架已成功删除',
 
     // Favourites
     'favourite_add_notification' => '":name" 已添加到您的收藏',

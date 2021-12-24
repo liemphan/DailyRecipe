@@ -35,13 +35,13 @@ return [
     'book_sort'                   => 'surūšiuota knyga',
     'book_sort_notification'      => 'Knyga sėkmingai perrūšiuota',
 
-    // Bookshelves
-    'bookshelf_create'            => 'sukurta knygų lentyna',
-    'bookshelf_create_notification'    => 'Knygų lentyna sėkmingai sukurta',
-    'bookshelf_update'                 => 'atnaujinta knygų lentyna',
-    'bookshelf_update_notification'    => 'Knygų lentyna sėkmingai atnaujinta',
-    'bookshelf_delete'                 => 'ištrinta knygų lentyna',
-    'bookshelf_delete_notification'    => 'Knygų lentyna sėkmingai ištrinta',
+    // Recipemenus
+    'recipemenu_create'            => 'sukurta knygų lentyna',
+    'recipemenu_create_notification'    => 'Knygų lentyna sėkmingai sukurta',
+    'recipemenu_update'                 => 'atnaujinta knygų lentyna',
+    'recipemenu_update_notification'    => 'Knygų lentyna sėkmingai atnaujinta',
+    'recipemenu_delete'                 => 'ištrinta knygų lentyna',
+    'recipemenu_delete_notification'    => 'Knygų lentyna sėkmingai ištrinta',
 
     // Favourites
     'favourite_add_notification' => '":name" has been added to your favourites',

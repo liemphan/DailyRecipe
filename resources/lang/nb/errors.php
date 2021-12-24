@@ -58,7 +58,7 @@ return [
 
     // Entities
     'entity_not_found' => 'Entitet ble ikke funnet',
-    'bookshelf_not_found' => 'Bokhyllen ble ikke funnet',
+    'recipemenu_not_found' => 'Bokhyllen ble ikke funnet',
     'book_not_found' => 'Boken ble ikke funnet',
     'page_not_found' => 'Siden ble ikke funnet',
     'chapter_not_found' => 'Kapittel ble ikke funnet',

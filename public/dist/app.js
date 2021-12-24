@@ -41535,12 +41535,12 @@
   };
   var setting_color_picker_default = SettingColorPicker;
 
-  // resources/js/components/shelf-sort.js
-  var ShelfSort = class {
+  // resources/js/components/menu-sort.js
+  var MenuSort = class {
     constructor(elem) {
       this.elem = elem;
       this.input = document.getElementById("books-input");
-      this.shelfBooksList = elem.querySelector("[shelf-sort-assigned-books]");
+      this.menuBooksList = elem.querySelector("[menu-sort-assigned-books]");
       this.initSortable();
       this.setupListeners();
     }
@@ -41548,7 +41548,7 @@
       const scrollBoxes = this.elem.querySelectorAll(".scroll-box");
       for (let scrollBox of scrollBoxes) {
         new sortable_esm_default(scrollBox, {
-          group: "shelf-books",
+          group: "menu-books",
           ghostClass: "primary-background-light",
           animation: 150,
           onSort: this.onChange.bind(this)
@@ -41573,11 +41573,11 @@
       this.onChange();
     }
     onChange() {
-      const shelfBookElems = Array.from(this.shelfBooksList.querySelectorAll("[data-id]"));
-      this.input.value = shelfBookElems.map((elem) => elem.getAttribute("data-id")).join(",");
+      const menuBookElems = Array.from(this.menuBooksList.querySelectorAll("[data-id]"));
+      this.input.value = menuBookElems.map((elem) => elem.getAttribute("data-id")).join(",");
     }
   };
-  var shelf_sort_default = ShelfSort;
+  var menu_sort_default = MenuSort;
 
   // resources/js/components/sidebar.js
   var Sidebar = class {
@@ -42501,7 +42501,7 @@
     "popup": popup_default,
     "setting-app-color-picker": setting_app_color_picker_default,
     "setting-color-picker": setting_color_picker_default,
-    "shelf-sort": shelf_sort_default,
+    "menu-sort": menu_sort_default,
     "sidebar": sidebar_default,
     "sortable-list": sortable_list_default,
     "submit-on-change": submit_on_change_default,

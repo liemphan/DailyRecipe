@@ -35,13 +35,13 @@ return [
     'book_sort'                   => 'sorteeris raamatut',
     'book_sort_notification'      => 'Raamat on sorteeritud',
 
-    // Bookshelves
-    'bookshelf_create'            => 'lisas riiuli',
-    'bookshelf_create_notification'    => 'Riiul on lisatud',
-    'bookshelf_update'                 => 'muutis riiulit',
-    'bookshelf_update_notification'    => 'Riiul on muudetud',
-    'bookshelf_delete'                 => 'kustutas riiuli',
-    'bookshelf_delete_notification'    => 'Riiul on kustutatud',
+    // Recipemenus
+    'recipemenu_create'            => 'lisas riiuli',
+    'recipemenu_create_notification'    => 'Riiul on lisatud',
+    'recipemenu_update'                 => 'muutis riiulit',
+    'recipemenu_update_notification'    => 'Riiul on muudetud',
+    'recipemenu_delete'                 => 'kustutas riiuli',
+    'recipemenu_delete_notification'    => 'Riiul on kustutatud',
 
     // Favourites
     'favourite_add_notification' => '":name" lisati su lemmikute hulka',

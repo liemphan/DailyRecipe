@@ -35,13 +35,13 @@ return [
     'recipe_sort'                   => 'sorted recipe',
     'recipe_sort_notification'      => 'Recipe Successfully Re-sorted',
 
-    // Bookshelves
-    'menu_create'            => 'created Bookshelf',
-    'menu_create_notification'    => 'Bookshelf Successfully Created',
-    'menu_update'                 => 'updated bookshelf',
-    'menu_update_notification'    => 'Bookshelf Successfully Updated',
-    'menu_delete'                 => 'deleted bookshelf',
-    'menu_delete_notification'    => 'Bookshelf Successfully Deleted',
+    // Recipemenus
+    'menu_create'            => 'created Recipemenu',
+    'menu_create_notification'    => 'Recipemenu Successfully Created',
+    'menu_update'                 => 'updated recipemenu',
+    'menu_update_notification'    => 'Recipemenu Successfully Updated',
+    'menu_delete'                 => 'deleted recipemenu',
+    'menu_delete_notification'    => 'Recipemenu Successfully Deleted',
 
     // Favourites
     'favourite_add_notification' => '":name" has been added to your favourites',

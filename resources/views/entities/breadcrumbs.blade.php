@@ -10,10 +10,10 @@
         <?php $breadcrumbCount++; ?>
     @endif
 
-    {{-- Show top level shelves item --}}
-    @if (count($crumbs) > 0 && ($crumbs[0] ?? null) instanceof  \DailyRecipe\Entities\Models\Bookshelf)
-        <a href="{{  url('/shelves')  }}" class="text-bookshelf icon-list-item outline-hover">
-            <span>@icon('bookshelf')</span>
+    {{-- Show top level menus item --}}
+    @if (count($crumbs) > 0 && ($crumbs[0] ?? null) instanceof  \DailyRecipe\Entities\Models\Recipemenu)
+        <a href="{{  url('/menus')  }}" class="text-recipemenu icon-list-item outline-hover">
+            <span>@icon('recipemenu')</span>
             <span>{{ trans('entities.menus') }}</span>
         </a>
         <?php $breadcrumbCount++; ?>

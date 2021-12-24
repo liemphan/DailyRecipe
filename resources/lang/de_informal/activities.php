@@ -35,13 +35,13 @@ return [
     'book_sort'                   => 'sortiert Buch',
     'book_sort_notification'      => 'Das Buch wurde erfolgreich umsortiert.',
 
-    // Bookshelves
-    'bookshelf_create'            => 'erstellt Bücherregal',
-    'bookshelf_create_notification'    => 'Das Bücherregal wurde erfolgreich erstellt',
-    'bookshelf_update'                 => 'aktualisiert Bücherregal',
-    'bookshelf_update_notification'    => 'Das Bücherregal wurde erfolgreich aktualisiert',
-    'bookshelf_delete'                 => 'löscht Bücherregal',
-    'bookshelf_delete_notification'    => 'Das Bücherregal wurde erfolgreich gelöscht',
+    // Recipemenus
+    'recipemenu_create'            => 'erstellt Bücherregal',
+    'recipemenu_create_notification'    => 'Das Bücherregal wurde erfolgreich erstellt',
+    'recipemenu_update'                 => 'aktualisiert Bücherregal',
+    'recipemenu_update_notification'    => 'Das Bücherregal wurde erfolgreich aktualisiert',
+    'recipemenu_delete'                 => 'löscht Bücherregal',
+    'recipemenu_delete_notification'    => 'Das Bücherregal wurde erfolgreich gelöscht',
 
     // Favourites
     'favourite_add_notification' => '":name" wurde zu deinen Favoriten hinzugefügt',

@@ -35,13 +35,13 @@ return [
     'book_sort'                   => 'átrendezte a könyvet:',
     'book_sort_notification'      => 'Könyv sikeresen újrarendezve',
 
-    // Bookshelves
-    'bookshelf_create'            => 'létrehozta a könyvespolcot:',
-    'bookshelf_create_notification'    => 'Könyvespolc sikeresen létrehozva',
-    'bookshelf_update'                 => 'frissítette a könyvespolcot:',
-    'bookshelf_update_notification'    => 'Könyvespolc sikeresen frissítve',
-    'bookshelf_delete'                 => 'törölte a könyvespolcot:',
-    'bookshelf_delete_notification'    => 'Könyvespolc sikeresen törölve',
+    // Recipemenus
+    'recipemenu_create'            => 'létrehozta a könyvespolcot:',
+    'recipemenu_create_notification'    => 'Könyvespolc sikeresen létrehozva',
+    'recipemenu_update'                 => 'frissítette a könyvespolcot:',
+    'recipemenu_update_notification'    => 'Könyvespolc sikeresen frissítve',
+    'recipemenu_delete'                 => 'törölte a könyvespolcot:',
+    'recipemenu_delete_notification'    => 'Könyvespolc sikeresen törölve',
 
     // Favourites
     'favourite_add_notification' => '":name" has been added to your favourites',

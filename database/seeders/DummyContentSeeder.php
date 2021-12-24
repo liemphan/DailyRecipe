@@ -7,7 +7,7 @@ use DailyRecipe\Auth\Permissions\PermissionService;
 use DailyRecipe\Auth\Permissions\RolePermission;
 use DailyRecipe\Auth\Role;
 use DailyRecipe\Auth\User;
-use DailyRecipe\Entities\Models\Bookshelf;
+use DailyRecipe\Entities\Models\Recipemenu;
 use DailyRecipe\Entities\Models\Chapter;
 use DailyRecipe\Entities\Models\Page;
 use DailyRecipe\Entities\Tools\SearchIndex;
@@ -54,8 +54,8 @@ class DummyContentSeeder extends Seeder
         $largeBook->pages()->saveMany($pages);
         $largeBook->chapters()->saveMany($chapters);
 
-        $shelves = Bookshelf::factory()->count(10)->create($byData);
-        $largeBook->shelves()->attach($shelves->pluck('id'));
+        $menus = Recipemenu::factory()->count(10)->create($byData);
+        $largeBook->menus()->attach($menus->pluck('id'));
 
         // Assign API permission to editor role and create an API key
         $apiPermission = RolePermission::getByName('access-api');

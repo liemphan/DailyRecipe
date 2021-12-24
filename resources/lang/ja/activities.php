@@ -35,13 +35,13 @@ return [
     'book_sort'                   => 'がブックの並び順を変更:',
     'book_sort_notification'      => '並び順を変更しました',
 
-    // Bookshelves
-    'bookshelf_create'            => 'が本棚を作成:',
-    'bookshelf_create_notification'    => '本棚を作成しました',
-    'bookshelf_update'                 => 'が本棚を更新:',
-    'bookshelf_update_notification'    => '本棚を更新しました',
-    'bookshelf_delete'                 => 'が本棚を削除:',
-    'bookshelf_delete_notification'    => '本棚を削除しました',
+    // Recipemenus
+    'recipemenu_create'            => 'が本棚を作成:',
+    'recipemenu_create_notification'    => '本棚を作成しました',
+    'recipemenu_update'                 => 'が本棚を更新:',
+    'recipemenu_update_notification'    => '本棚を更新しました',
+    'recipemenu_delete'                 => 'が本棚を削除:',
+    'recipemenu_delete_notification'    => '本棚を削除しました',
 
     // Favourites
     'favourite_add_notification' => '":name"がお気に入りに追加されました',

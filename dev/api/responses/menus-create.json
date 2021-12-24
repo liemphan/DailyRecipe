@@ -1,10 +1,10 @@
 {
-  "name": "My shelf",
-  "description": "This is my shelf with some books",
+  "name": "My menu",
+  "description": "This is my menu with some books",
   "created_by": 1,
   "updated_by": 1,
   "owned_by": 1,
-  "slug": "my-shelf",
+  "slug": "my-menu",
   "updated_at": "2020-04-10T13:24:09.000000Z",
   "created_at": "2020-04-10T13:24:09.000000Z",
   "id": 14

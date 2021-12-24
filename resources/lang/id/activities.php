@@ -35,13 +35,13 @@ return [
     'book_sort'                   => 'buku yang diurutkan',
     'book_sort_notification'      => 'Buku berhasil diurutkan',
 
-    // Bookshelves
-    'bookshelf_create'            => 'membuat rak',
-    'bookshelf_create_notification'    => 'Rak berhasil dibuat',
-    'bookshelf_update'                 => 'update rak',
-    'bookshelf_update_notification'    => 'Rak Berhasil Diperbarui',
-    'bookshelf_delete'                 => 'hapus rak buku',
-    'bookshelf_delete_notification'    => 'Rak berhasil dihapus',
+    // Recipemenus
+    'recipemenu_create'            => 'membuat rak',
+    'recipemenu_create_notification'    => 'Rak berhasil dibuat',
+    'recipemenu_update'                 => 'update rak',
+    'recipemenu_update_notification'    => 'Rak Berhasil Diperbarui',
+    'recipemenu_delete'                 => 'hapus rak buku',
+    'recipemenu_delete_notification'    => 'Rak berhasil dihapus',
 
     // Favourites
     'favourite_add_notification' => '":name" telah ditambahkan ke favorit Anda',

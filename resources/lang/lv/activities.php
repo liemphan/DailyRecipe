@@ -35,13 +35,13 @@ return [
     'book_sort'                   => 'kārtoja grāmatu',
     'book_sort_notification'      => 'Grāmata Veiksmīgi Pārkārtota',
 
-    // Bookshelves
-    'bookshelf_create'            => 'izveidoja Plauktu',
-    'bookshelf_create_notification'    => 'Plaukts Veiksmīgi Izveidots',
-    'bookshelf_update'                 => 'atjaunoja plauktu',
-    'bookshelf_update_notification'    => 'Plaukts Veiksmīgi Atjaunots',
-    'bookshelf_delete'                 => 'izdzēsa plauktu',
-    'bookshelf_delete_notification'    => 'Plaukts Veiksmīgi Dzēsts',
+    // Recipemenus
+    'recipemenu_create'            => 'izveidoja Plauktu',
+    'recipemenu_create_notification'    => 'Plaukts Veiksmīgi Izveidots',
+    'recipemenu_update'                 => 'atjaunoja plauktu',
+    'recipemenu_update_notification'    => 'Plaukts Veiksmīgi Atjaunots',
+    'recipemenu_delete'                 => 'izdzēsa plauktu',
+    'recipemenu_delete_notification'    => 'Plaukts Veiksmīgi Dzēsts',
 
     // Favourites
     'favourite_add_notification' => '":name" ir pievienots jūsu favorītiem',

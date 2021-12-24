@@ -8,12 +8,12 @@ use DailyRecipe\Auth\Permissions\RolePermission;
 use DailyRecipe\Auth\Role;
 use DailyRecipe\Auth\User;
 use DailyRecipe\Entities\Models\Book;
-use DailyRecipe\Entities\Models\Bookshelf;
+use DailyRecipe\Entities\Models\Recipemenu;
 use DailyRecipe\Entities\Models\Chapter;
 use DailyRecipe\Entities\Models\Entity;
 use DailyRecipe\Entities\Models\Page;
 use DailyRecipe\Entities\Repos\BookRepo;
-use DailyRecipe\Entities\Repos\BookshelfRepo;
+use DailyRecipe\Entities\Repos\RecipemenuRepo;
 use DailyRecipe\Entities\Repos\ChapterRepo;
 use DailyRecipe\Entities\Repos\PageRepo;
 use DailyRecipe\Settings\SettingService;
@@ -109,11 +109,11 @@ trait SharedTestHelpers
     }
 
     /**
-     * Create and return a new bookshelf.
+     * Create and return a new recipemenu.
      */
-    public function newShelf(array $input = ['name' => 'test shelf', 'description' => 'My new test shelf']): Bookshelf
+    public function newMenu(array $input = ['name' => 'test menu', 'description' => 'My new test menu']): Recipemenu
     {
-        return app(BookshelfRepo::class)->create($input, []);
+        return app(RecipemenuRepo::class)->create($input, []);
     }
 
     /**

@@ -4,7 +4,7 @@ namespace Tests\Permissions;
 
 use DailyRecipe\Auth\User;
 use DailyRecipe\Entities\Models\Book;
-use DailyRecipe\Entities\Models\Bookshelf;
+use DailyRecipe\Entities\Models\Recipemenu;
 use DailyRecipe\Entities\Models\Chapter;
 use DailyRecipe\Entities\Models\Page;
 use Tests\TestCase;
@@ -38,12 +38,12 @@ class EntityOwnerChangeTest extends TestCase
         $this->assertDatabaseHas('books', ['owned_by' => $user->id, 'id' => $book->id]);
     }
 
-    public function test_changing_shelf_owner()
+    public function test_changing_menu_owner()
     {
-        $shelf = Bookshelf::query()->first();
-        $user = User::query()->where('id', '!=', $shelf->owned_by)->first();
+        $menu = Recipemenu::query()->first();
+        $user = User::query()->where('id', '!=', $menu->owned_by)->first();
 
-        $this->asAdmin()->put($shelf->getUrl('permissions'), ['owned_by' => $user->id]);
-        $this->assertDatabaseHas('bookshelves', ['owned_by' => $user->id, 'id' => $shelf->id]);
+        $this->asAdmin()->put($menu->getUrl('permissions'), ['owned_by' => $user->id]);
+        $this->assertDatabaseHas('recipemenus', ['owned_by' => $user->id, 'id' => $menu->id]);
     }
 }

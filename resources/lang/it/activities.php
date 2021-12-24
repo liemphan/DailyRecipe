@@ -35,13 +35,13 @@ return [
     'book_sort'                   => 'ha ordinato il libro',
     'book_sort_notification'      => 'Libro Riordinato Correttamente',
 
-    // Bookshelves
-    'bookshelf_create'            => 'ha creato la Libreria',
-    'bookshelf_create_notification'    => 'Libreria Creata Correttamente',
-    'bookshelf_update'                 => 'ha aggiornato la libreria',
-    'bookshelf_update_notification'    => 'Libreria Aggiornata Correttamente',
-    'bookshelf_delete'                 => 'ha eliminato la libreria',
-    'bookshelf_delete_notification'    => 'Libreria Eliminata Correttamente',
+    // Recipemenus
+    'recipemenu_create'            => 'ha creato la Libreria',
+    'recipemenu_create_notification'    => 'Libreria Creata Correttamente',
+    'recipemenu_update'                 => 'ha aggiornato la libreria',
+    'recipemenu_update_notification'    => 'Libreria Aggiornata Correttamente',
+    'recipemenu_delete'                 => 'ha eliminato la libreria',
+    'recipemenu_delete_notification'    => 'Libreria Eliminata Correttamente',
 
     // Favourites
     'favourite_add_notification' => '":name" è stato aggiunto ai tuoi preferiti',

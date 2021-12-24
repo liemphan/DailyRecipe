@@ -6,7 +6,7 @@ use DailyRecipe\Auth\Role;
 use DailyRecipe\Auth\User;
 use DailyRecipe\Entities\Models\Book;
 use DailyRecipe\Entities\Models\BookChild;
-use DailyRecipe\Entities\Models\Bookshelf;
+use DailyRecipe\Entities\Models\Recipemenu;
 use DailyRecipe\Entities\Models\Chapter;
 use DailyRecipe\Entities\Models\Entity;
 use DailyRecipe\Entities\Models\Page;
@@ -135,10 +135,10 @@ class PermissionService
             $this->buildJointPermissionsForBooks($books, $roles);
         });
 
-        // Chunk through all bookshelves
-        Bookshelf::query()->withTrashed()->select(['id', 'restricted', 'owned_by'])
-            ->chunk(50, function (EloquentCollection $shelves) use ($roles) {
-                $this->buildJointPermissionsForShelves($shelves, $roles);
+        // Chunk through all recipemenus
+        Recipemenu::query()->withTrashed()->select(['id', 'restricted', 'owned_by'])
+            ->chunk(50, function (EloquentCollection $menus) use ($roles) {
+                $this->buildJointPermissionsForMenus($menus, $roles);
             });
     }
 
@@ -159,16 +159,16 @@ class PermissionService
     }
 
     /**
-     * Build joint permissions for the given shelf and role combinations.
+     * Build joint permissions for the given menu and role combinations.
      *
      * @throws Throwable
      */
-    protected function buildJointPermissionsForShelves(EloquentCollection $shelves, array $roles, bool $deleteOld = false)
+    protected function buildJointPermissionsForMenus(EloquentCollection $menus, array $roles, bool $deleteOld = false)
     {
         if ($deleteOld) {
-            $this->deleteManyJointPermissionsForEntities($shelves->all());
+            $this->deleteManyJointPermissionsForEntities($menus->all());
         }
-        $this->createManyJointPermissions($shelves->all(), $roles);
+        $this->createManyJointPermissions($menus->all(), $roles);
     }
 
     /**
@@ -254,10 +254,10 @@ class PermissionService
             $this->buildJointPermissionsForBooks($books, $roles);
         });
 
-        // Chunk through all bookshelves
-        Bookshelf::query()->select(['id', 'restricted', 'owned_by'])
-            ->chunk(50, function ($shelves) use ($roles) {
-                $this->buildJointPermissionsForShelves($shelves, $roles);
+        // Chunk through all recipemenus
+        Recipemenu::query()->select(['id', 'restricted', 'owned_by'])
+            ->chunk(50, function ($menus) use ($roles) {
+                $this->buildJointPermissionsForMenus($menus, $roles);
             });
     }
 
@@ -415,7 +415,7 @@ class PermissionService
             return $this->createJointPermissionDataArray($entity, $role, $action, $hasAccess, $hasAccess);
         }
 
-        if ($entity instanceof Book || $entity instanceof Bookshelf) {
+        if ($entity instanceof Book || $entity instanceof Recipemenu) {
             return $this->createJointPermissionDataArray($entity, $role, $action, $roleHasPermission, $roleHasPermissionOwn);
         }
 

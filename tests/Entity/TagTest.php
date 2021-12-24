@@ -116,7 +116,7 @@ class TagTest extends TestCase
         $resp->assertElementContains('a[title="Assigned to Pages"]', '2');
         $resp->assertElementContains('a[title="Assigned to Books"]', '0');
         $resp->assertElementContains('a[title="Assigned to Chapters"]', '0');
-        $resp->assertElementContains('a[title="Assigned to Shelves"]', '0');
+        $resp->assertElementContains('a[title="Assigned to Menus"]', '0');
         $resp->assertElementContains('a[href$="/tags?name=Category"]', '2 unique values');
 
         /** @var Book $book */

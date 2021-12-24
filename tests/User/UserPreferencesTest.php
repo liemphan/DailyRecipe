@@ -2,7 +2,7 @@
 
 namespace Tests\User;
 
-use DailyRecipe\Entities\Models\Bookshelf;
+use DailyRecipe\Entities\Models\Recipemenu;
 use Tests\TestCase;
 
 class UserPreferencesTest extends TestCase
@@ -35,14 +35,14 @@ class UserPreferencesTest extends TestCase
         $editor = $this->getEditor();
         $this->actingAs($editor);
 
-        $updateRequest = $this->patch('/settings/users/' . $editor->id . '/change-sort/bookshelves', [
+        $updateRequest = $this->patch('/settings/users/' . $editor->id . '/change-sort/recipemenus', [
             'sort'  => 'cat',
             'order' => 'dog',
         ]);
         $updateRequest->assertStatus(302);
 
-        $this->assertEquals('name', setting()->getForCurrentUser('bookshelves_sort'));
-        $this->assertEquals('asc', setting()->getForCurrentUser('bookshelves_sort_order'));
+        $this->assertEquals('name', setting()->getForCurrentUser('recipemenus_sort'));
+        $this->assertEquals('asc', setting()->getForCurrentUser('recipemenus_sort_order'));
     }
 
     public function test_update_sort_bad_entity_type_handled()
@@ -56,8 +56,8 @@ class UserPreferencesTest extends TestCase
         ]);
         $updateRequest->assertStatus(500);
 
-        $this->assertNotEmpty('name', setting()->getForCurrentUser('bookshelves_sort'));
-        $this->assertNotEmpty('asc', setting()->getForCurrentUser('bookshelves_sort_order'));
+        $this->assertNotEmpty('name', setting()->getForCurrentUser('recipemenus_sort'));
+        $this->assertNotEmpty('asc', setting()->getForCurrentUser('recipemenus_sort_order'));
     }
 
     public function test_update_expansion_preference()
@@ -127,22 +127,22 @@ class UserPreferencesTest extends TestCase
             ->assertElementExists('.featured-image-container');
     }
 
-    public function test_shelf_view_type_change()
+    public function test_menu_view_type_change()
     {
         $editor = $this->getEditor();
-        /** @var Bookshelf $shelf */
-        $shelf = Bookshelf::query()->first();
-        setting()->putUser($editor, 'bookshelf_view_type', 'list');
+        /** @var Recipemenu $menu */
+        $menu = Recipemenu::query()->first();
+        setting()->putUser($editor, 'recipemenu_view_type', 'list');
 
-        $this->actingAs($editor)->get($shelf->getUrl())
+        $this->actingAs($editor)->get($menu->getUrl())
             ->assertElementNotExists('.featured-image-container')
             ->assertElementExists('.content-wrap .entity-list-item')
             ->assertSee('Grid View');
 
-        $req = $this->patch("/settings/users/{$editor->id}/switch-shelf-view", ['view_type' => 'grid']);
-        $req->assertRedirect($shelf->getUrl());
+        $req = $this->patch("/settings/users/{$editor->id}/switch-menu-view", ['view_type' => 'grid']);
+        $req->assertRedirect($menu->getUrl());
 
-        $this->actingAs($editor)->get($shelf->getUrl())
+        $this->actingAs($editor)->get($menu->getUrl())
             ->assertElementExists('.featured-image-container')
             ->assertElementNotExists('.content-wrap .entity-list-item')
             ->assertSee('List View');

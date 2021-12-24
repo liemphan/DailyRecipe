@@ -25,11 +25,11 @@ class SearchApiController extends ApiController
     }
 
     /**
-     * Run a search query against all main content types (shelves, books, chapters & pages)
+     * Run a search query against all main content types (menus, books, chapters & pages)
      * in the system. Takes the same input as the main search bar within the DailyRecipe
      * interface as a 'query' parameter. See https://www.dailyrecipeapp.com/docs/user/searching/
      * for a full list of search term options. Results contain a 'type' property to distinguish
-     * between: bookshelf, book, chapter & page.
+     * between: recipemenu, book, chapter & page.
      *
      * The paging parameters and response format emulates a standard listing endpoint
      * but standard sorting and filtering cannot be done on this endpoint. If a count value

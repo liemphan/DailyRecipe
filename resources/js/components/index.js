@@ -40,7 +40,7 @@ import permissionsTable from "./permissions-table.js"
 import popup from "./popup.js"
 import settingAppColorPicker from "./setting-app-color-picker.js"
 import settingColorPicker from "./setting-color-picker.js"
-import shelfSort from "./shelf-sort.js"
+import menuSort from "./menu-sort.js"
 import sidebar from "./sidebar.js"
 import sortableList from "./sortable-list.js"
 import submitOnChange from "./submit-on-change.js"
@@ -95,7 +95,7 @@ const componentMapping = {
     "popup": popup,
     "setting-app-color-picker": settingAppColorPicker,
     "setting-color-picker": settingColorPicker,
-    "shelf-sort": shelfSort,
+    "menu-sort": menuSort,
     "sidebar": sidebar,
     "sortable-list": sortableList,
     "submit-on-change": submitOnChange,

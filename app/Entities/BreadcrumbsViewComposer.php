@@ -3,7 +3,7 @@
 namespace DailyRecipe\Entities;
 
 use DailyRecipe\Entities\Models\Book;
-use DailyRecipe\Entities\Tools\ShelfContext;
+use DailyRecipe\Entities\Tools\MenuContext;
 use Illuminate\View\View;
 
 class BreadcrumbsViewComposer
@@ -13,9 +13,9 @@ class BreadcrumbsViewComposer
     /**
      * BreadcrumbsViewComposer constructor.
      *
-     * @param ShelfContext $entityContextManager
+     * @param MenuContext $entityContextManager
      */
-    public function __construct(ShelfContext $entityContextManager)
+    public function __construct(MenuContext $entityContextManager)
     {
         $this->entityContextManager = $entityContextManager;
     }
@@ -30,9 +30,9 @@ class BreadcrumbsViewComposer
         $crumbs = $view->getData()['crumbs'];
         $firstCrumb = $crumbs[0] ?? null;
         if ($firstCrumb instanceof Book) {
-            $shelf = $this->entityContextManager->getContextualShelfForBook($firstCrumb);
-            if ($shelf) {
-                array_unshift($crumbs, $shelf);
+            $menu = $this->entityContextManager->getContextualMenuForBook($firstCrumb);
+            if ($menu) {
+                array_unshift($crumbs, $menu);
                 $view->with('crumbs', $crumbs);
             }
         }

@@ -3,11 +3,11 @@
 namespace Tests;
 
 use DailyRecipe\Entities\Models\Book;
-use DailyRecipe\Entities\Models\Bookshelf;
+use DailyRecipe\Entities\Models\Recipemenu;
 use DailyRecipe\Entities\Models\Chapter;
 use DailyRecipe\Entities\Models\Page;
 use DailyRecipe\Entities\Repos\BookRepo;
-use DailyRecipe\Entities\Repos\BookshelfRepo;
+use DailyRecipe\Entities\Repos\RecipemenuRepo;
 use Illuminate\Support\Str;
 use Tests\Uploads\UsesImages;
 
@@ -57,24 +57,24 @@ class OpenGraphTest extends TestCase
         $this->assertEquals($book->getBookCover(), $tags['image']);
     }
 
-    public function test_shelf_tags()
+    public function test_menu_tags()
     {
-        $shelf = Bookshelf::query()->first();
-        $resp = $this->asEditor()->get($shelf->getUrl());
+        $menu = Recipemenu::query()->first();
+        $resp = $this->asEditor()->get($menu->getUrl());
         $tags = $this->getOpenGraphTags($resp);
 
-        $this->assertEquals($shelf->getShortName() . ' | DailyRecipe', $tags['title']);
-        $this->assertEquals($shelf->getUrl(), $tags['url']);
-        $this->assertEquals(Str::limit($shelf->description, 100, '...'), $tags['description']);
+        $this->assertEquals($menu->getShortName() . ' | DailyRecipe', $tags['title']);
+        $this->assertEquals($menu->getUrl(), $tags['url']);
+        $this->assertEquals(Str::limit($menu->description, 100, '...'), $tags['description']);
         $this->assertArrayNotHasKey('image', $tags);
 
         // Test image set if image has cover image
-        $shelfRepo = app(BookshelfRepo::class);
-        $shelfRepo->updateCoverImage($shelf, $this->getTestImage('image.png'));
-        $resp = $this->asEditor()->get($shelf->getUrl());
+        $menuRepo = app(RecipemenuRepo::class);
+        $menuRepo->updateCoverImage($menu, $this->getTestImage('image.png'));
+        $resp = $this->asEditor()->get($menu->getUrl());
         $tags = $this->getOpenGraphTags($resp);
 
-        $this->assertEquals($shelf->getBookCover(), $tags['image']);
+        $this->assertEquals($menu->getBookCover(), $tags['image']);
     }
 
     /**

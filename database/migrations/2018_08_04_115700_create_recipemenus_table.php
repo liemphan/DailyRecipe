@@ -5,7 +5,7 @@ use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
 
-class CreateBookshelvesTable extends Migration
+class CreateRecipemenusTable extends Migration
 {
     /**
      * Run the migrations.
@@ -28,16 +28,16 @@ class CreateBookshelvesTable extends Migration
         }
 
         // Here we have table drops before the creations due to upgrade issues
-        // people were having due to the bookshelves_books table creation failing.
-        if (Schema::hasTable('bookshelves_books')) {
-            Schema::drop('bookshelves_books');
+        // people were having due to the recipemenus_books table creation failing.
+        if (Schema::hasTable('recipemenus_books')) {
+            Schema::drop('recipemenus_books');
         }
 
-        if (Schema::hasTable('bookshelves')) {
-            Schema::drop('bookshelves');
+        if (Schema::hasTable('recipemenus')) {
+            Schema::drop('recipemenus');
         }
 
-        Schema::create('bookshelves', function (Blueprint $table) {
+        Schema::create('recipemenus', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name', 180);
             $table->string('slug', 180);
@@ -54,22 +54,22 @@ class CreateBookshelvesTable extends Migration
             $table->index('restricted');
         });
 
-        Schema::create('bookshelves_books', function (Blueprint $table) {
-            $table->integer('bookshelf_id')->unsigned();
+        Schema::create('recipemenus_books', function (Blueprint $table) {
+            $table->integer('recipemenu_id')->unsigned();
             $table->integer('book_id')->unsigned();
             $table->integer('order')->unsigned();
 
-            $table->primary(['bookshelf_id', 'book_id']);
+            $table->primary(['recipemenu_id', 'book_id']);
 
-            $table->foreign('bookshelf_id')->references('id')->on('bookshelves')
+            $table->foreign('recipemenu_id')->references('id')->on('recipemenus')
                 ->onUpdate('cascade')->onDelete('cascade');
             $table->foreign('book_id')->references('id')->on('books')
                 ->onUpdate('cascade')->onDelete('cascade');
         });
 
-        // Delete old bookshelf permissions
+        // Delete old recipemenu permissions
         // Needed to to issues upon upgrade.
-        DB::table('role_permissions')->where('name', 'like', 'bookshelf-%')->delete();
+        DB::table('role_permissions')->where('name', 'like', 'recipemenu-%')->delete();
 
         // Copy existing role permissions from Books
         $ops = ['View All', 'View Own', 'Create All', 'Create Own', 'Update All', 'Update Own', 'Delete All', 'Delete Own'];
@@ -81,8 +81,8 @@ class CreateBookshelvesTable extends Migration
                 ->where('role_permissions.name', '=', 'book-' . $dbOpName)->get(['roles.id'])->pluck('id');
 
             $permId = DB::table('role_permissions')->insertGetId([
-                'name'         => 'bookshelf-' . $dbOpName,
-                'display_name' => $op . ' ' . 'BookShelves',
+                'name'         => 'recipemenu-' . $dbOpName,
+                'display_name' => $op . ' ' . 'RecipeMenus',
                 'created_at'   => \Carbon\Carbon::now()->toDateTimeString(),
                 'updated_at'   => \Carbon\Carbon::now()->toDateTimeString(),
             ]);
@@ -109,23 +109,23 @@ class CreateBookshelvesTable extends Migration
     public function down()
     {
         // Drop created permissions
-        $ops = ['bookshelf-create-all', 'bookshelf-create-own', 'bookshelf-delete-all', 'bookshelf-delete-own', 'bookshelf-update-all', 'bookshelf-update-own', 'bookshelf-view-all', 'bookshelf-view-own'];
+        $ops = ['recipemenu-create-all', 'recipemenu-create-own', 'recipemenu-delete-all', 'recipemenu-delete-own', 'recipemenu-update-all', 'recipemenu-update-own', 'recipemenu-view-all', 'recipemenu-view-own'];
 
         $permissionIds = DB::table('role_permissions')->whereIn('name', $ops)
             ->get(['id'])->pluck('id')->toArray();
         DB::table('permission_role')->whereIn('permission_id', $permissionIds)->delete();
         DB::table('role_permissions')->whereIn('id', $permissionIds)->delete();
 
-        // Drop shelves table
-        Schema::dropIfExists('bookshelves_books');
-        Schema::dropIfExists('bookshelves');
+        // Drop menus table
+        Schema::dropIfExists('recipemenus_books');
+        Schema::dropIfExists('recipemenus');
 
         // Drop related polymorphic items
-        DB::table('activities')->where('entity_type', '=', 'DailyRecipe\Entities\Models\Bookshelf')->delete();
-        DB::table('views')->where('viewable_type', '=', 'DailyRecipe\Entities\Models\Bookshelf')->delete();
-        DB::table('entity_permissions')->where('restrictable_type', '=', 'DailyRecipe\Entities\Models\Bookshelf')->delete();
-        DB::table('tags')->where('entity_type', '=', 'DailyRecipe\Entities\Models\Bookshelf')->delete();
-        DB::table('search_terms')->where('entity_type', '=', 'DailyRecipe\Entities\Models\Bookshelf')->delete();
-        DB::table('comments')->where('entity_type', '=', 'DailyRecipe\Entities\Models\Bookshelf')->delete();
+        DB::table('activities')->where('entity_type', '=', 'DailyRecipe\Entities\Models\Recipemenu')->delete();
+        DB::table('views')->where('viewable_type', '=', 'DailyRecipe\Entities\Models\Recipemenu')->delete();
+        DB::table('entity_permissions')->where('restrictable_type', '=', 'DailyRecipe\Entities\Models\Recipemenu')->delete();
+        DB::table('tags')->where('entity_type', '=', 'DailyRecipe\Entities\Models\Recipemenu')->delete();
+        DB::table('search_terms')->where('entity_type', '=', 'DailyRecipe\Entities\Models\Recipemenu')->delete();
+        DB::table('comments')->where('entity_type', '=', 'DailyRecipe\Entities\Models\Recipemenu')->delete();
     }
 }

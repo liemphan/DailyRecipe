@@ -35,13 +35,13 @@ return [
     'book_sort'                   => 'ha ordenat el llibre',
     'book_sort_notification'      => 'Llibre reordenat correctament',
 
-    // Bookshelves
-    'bookshelf_create'            => 'ha creat el prestatge',
-    'bookshelf_create_notification'    => 'Prestatge creat correctament',
-    'bookshelf_update'                 => 'ha actualitzat el prestatge',
-    'bookshelf_update_notification'    => 'Prestatge actualitzat correctament',
-    'bookshelf_delete'                 => 'ha suprimit un prestatge',
-    'bookshelf_delete_notification'    => 'Prestatge suprimit correctament',
+    // Recipemenus
+    'recipemenu_create'            => 'ha creat el prestatge',
+    'recipemenu_create_notification'    => 'Prestatge creat correctament',
+    'recipemenu_update'                 => 'ha actualitzat el prestatge',
+    'recipemenu_update_notification'    => 'Prestatge actualitzat correctament',
+    'recipemenu_delete'                 => 'ha suprimit un prestatge',
+    'recipemenu_delete_notification'    => 'Prestatge suprimit correctament',
 
     // Favourites
     'favourite_add_notification' => '":name" has been added to your favourites',

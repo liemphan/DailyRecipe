@@ -49,7 +49,7 @@ return [
     // Color settings
     'content_colors' => 'Turinio spalvos',
     'content_colors_desc' => 'Nustato spalvas visiems elementams puslapio organizacijos herarchijoje. Rekomenduojama pasirinkti spalvas su panačiu šviesumu kaip numatytos spalvos, kad būtų lengviau skaityti.',
-    'bookshelf_color' => 'Lentynos spalva',
+    'recipemenu_color' => 'Lentynos spalva',
     'book_color' => 'Knygos spalva',
     'chapter_color' => 'Skyriaus spalva',
     'page_color' => 'Puslapio spalva',

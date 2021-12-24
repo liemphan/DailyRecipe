@@ -33,8 +33,8 @@
                 <div class="links text-center">
                     @if (hasAppAccess())
                         <a class="hide-over-l" href="{{ url('/search') }}">@icon('search'){{ trans('common.search') }}</a>
-                        @if(userCanOnAny('view', \DailyRecipe\Entities\Models\Bookshelf::class) || userCan('bookshelf-view-all') || userCan('bookshelf-view-own'))
-                            <a href="{{ url('/shelves') }}">@icon('bookshelf'){{ trans('entities.menus') }}</a>
+                        @if(userCanOnAny('view', \DailyRecipe\Entities\Models\Recipemenu::class) || userCan('recipemenu-view-all') || userCan('recipemenu-view-own'))
+                            <a href="{{ url('/menus') }}">@icon('recipemenu'){{ trans('entities.menus') }}</a>
                         @endif
                         <a href="{{ url('/books') }}">@icon('books'){{ trans('entities.recipes') }}</a>
                         @if(signedInUser() && userCan('settings-manage'))

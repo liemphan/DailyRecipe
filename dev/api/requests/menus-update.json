@@ -1,0 +1,5 @@
+{
+  "name": "My updated menu",
+  "description": "This is my update menu with some books",
+  "books": [5,1,3]
+}

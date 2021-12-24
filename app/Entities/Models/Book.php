@@ -102,11 +102,11 @@ class Book extends Entity implements HasCoverImage
     }
 
     /**
-     * Get the shelves this book is contained within.
+     * Get the menus this book is contained within.
      */
-    public function shelves(): BelongsToMany
+    public function menus(): BelongsToMany
     {
-        return $this->belongsToMany(Bookshelf::class, 'bookshelves_books', 'book_id', 'bookshelf_id');
+        return $this->belongsToMany(Recipemenu::class, 'recipemenus_books', 'book_id', 'recipemenu_id');
     }
 
     /**

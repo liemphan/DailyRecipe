@@ -49,7 +49,7 @@ return [
     // Color settings
     'content_colors' => 'Barvy obsahu',
     'content_colors_desc' => 'Nastaví barvy pro všechny prvky v organizační struktuře stránky. Pro lepší čitelnost doporučujeme zvolit barvy s podobným jasem, jakou mají výchozí barvy.',
-    'bookshelf_color' => 'Barva knihovny',
+    'recipemenu_color' => 'Barva knihovny',
     'book_color' => 'Barva knihy',
     'chapter_color' => 'Barva kapitoly',
     'page_color' => 'Barva stránky',

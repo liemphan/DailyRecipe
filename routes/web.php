@@ -6,7 +6,7 @@ use DailyRecipe\Http\Controllers\AuditLogController;
 use DailyRecipe\Http\Controllers\Auth;
 use DailyRecipe\Http\Controllers\BookController;
 use DailyRecipe\Http\Controllers\BookExportController;
-use DailyRecipe\Http\Controllers\BookshelfController;
+use DailyRecipe\Http\Controllers\RecipemenuController;
 use DailyRecipe\Http\Controllers\BookSortController;
 use DailyRecipe\Http\Controllers\ChapterController;
 use DailyRecipe\Http\Controllers\ChapterExportController;
@@ -47,22 +47,22 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/pages/recently-updated', [PageController::class, 'showRecentlyUpdated']);
 
-    // Shelves
-    Route::get('/create-shelf', [BookshelfController::class, 'create']);
-    Route::get('/shelves/', [BookshelfController::class, 'index']);
-    Route::post('/shelves/', [BookshelfController::class, 'store']);
-    Route::get('/shelves/{slug}/edit', [BookshelfController::class, 'edit']);
-    Route::get('/shelves/{slug}/delete', [BookshelfController::class, 'showDelete']);
-    Route::get('/shelves/{slug}', [BookshelfController::class, 'show']);
-    Route::put('/shelves/{slug}', [BookshelfController::class, 'update']);
-    Route::delete('/shelves/{slug}', [BookshelfController::class, 'destroy']);
-    Route::get('/shelves/{slug}/permissions', [BookshelfController::class, 'showPermissions']);
-    Route::put('/shelves/{slug}/permissions', [BookshelfController::class, 'permissions']);
-    Route::post('/shelves/{slug}/copy-permissions', [BookshelfController::class, 'copyPermissions']);
+    // Menus
+    Route::get('/create-menu', [RecipemenuController::class, 'create']);
+    Route::get('/menus/', [RecipemenuController::class, 'index']);
+    Route::post('/menus/', [RecipemenuController::class, 'store']);
+    Route::get('/menus/{slug}/edit', [RecipemenuController::class, 'edit']);
+    Route::get('/menus/{slug}/delete', [RecipemenuController::class, 'showDelete']);
+    Route::get('/menus/{slug}', [RecipemenuController::class, 'show']);
+    Route::put('/menus/{slug}', [RecipemenuController::class, 'update']);
+    Route::delete('/menus/{slug}', [RecipemenuController::class, 'destroy']);
+    Route::get('/menus/{slug}/permissions', [RecipemenuController::class, 'showPermissions']);
+    Route::put('/menus/{slug}/permissions', [RecipemenuController::class, 'permissions']);
+    Route::post('/menus/{slug}/copy-permissions', [RecipemenuController::class, 'copyPermissions']);
 
     // Book Creation
-    Route::get('/shelves/{shelfSlug}/create-book', [BookController::class, 'create']);
-    Route::post('/shelves/{shelfSlug}/create-book', [BookController::class, 'store']);
+    Route::get('/menus/{menuSlug}/create-book', [BookController::class, 'create']);
+    Route::post('/menus/{menuSlug}/create-book', [BookController::class, 'store']);
     Route::get('/create-book', [BookController::class, 'create']);
 
     // Books
@@ -225,8 +225,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/settings/users/create', [UserController::class, 'create']);
     Route::get('/settings/users/{id}/delete', [UserController::class, 'delete']);
     Route::patch('/settings/users/{id}/switch-books-view', [UserController::class, 'switchBooksView']);
-    Route::patch('/settings/users/{id}/switch-shelves-view', [UserController::class, 'switchShelvesView']);
-    Route::patch('/settings/users/{id}/switch-shelf-view', [UserController::class, 'switchShelfView']);
+    Route::patch('/settings/users/{id}/switch-menus-view', [UserController::class, 'switchMenusView']);
+    Route::patch('/settings/users/{id}/switch-menu-view', [UserController::class, 'switchMenuView']);
     Route::patch('/settings/users/{id}/change-sort/{type}', [UserController::class, 'changeSort']);
     Route::patch('/settings/users/{id}/update-expansion-preference/{key}', [UserController::class, 'updateExpansionPreference']);
     Route::patch('/settings/users/toggle-dark-mode', [UserController::class, 'toggleDarkMode']);

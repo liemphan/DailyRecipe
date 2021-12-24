@@ -7,11 +7,11 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
-class Bookshelf extends Entity implements HasCoverImage
+class Recipemenu extends Entity implements HasCoverImage
 {
     use HasFactory;
 
-    protected $table = 'bookshelves';
+    protected $table = 'recipemenus';
 
     public $searchFactor = 1.2;
 
@@ -20,14 +20,14 @@ class Bookshelf extends Entity implements HasCoverImage
     protected $hidden = ['restricted', 'image_id', 'deleted_at'];
 
     /**
-     * Get the books in this shelf.
+     * Get the books in this menu.
      * Should not be used directly since does not take into account permissions.
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
      */
     public function books()
     {
-        return $this->belongsToMany(Book::class, 'bookshelves_books', 'bookshelf_id', 'book_id')
+        return $this->belongsToMany(Book::class, 'recipemenus_books', 'recipemenu_id', 'book_id')
             ->withPivot('order')
             ->orderBy('order', 'asc');
     }
@@ -41,15 +41,15 @@ class Bookshelf extends Entity implements HasCoverImage
     }
 
     /**
-     * Get the url for this bookshelf.
+     * Get the url for this recipemenu.
      */
     public function getUrl(string $path = ''): string
     {
-        return url('/shelves/' . implode('/', [urlencode($this->slug), trim($path, '/')]));
+        return url('/menus/' . implode('/', [urlencode($this->slug), trim($path, '/')]));
     }
 
     /**
-     * Returns BookShelf cover image, if cover does not exists return default cover image.
+     * Returns RecipeMenu cover image, if cover does not exists return default cover image.
      *
      * @param int $width  - Width of the image
      * @param int $height - Height of the image
@@ -74,7 +74,7 @@ class Bookshelf extends Entity implements HasCoverImage
     }
 
     /**
-     * Get the cover image of the shelf.
+     * Get the cover image of the menu.
      */
     public function cover(): BelongsTo
     {
@@ -86,11 +86,11 @@ class Bookshelf extends Entity implements HasCoverImage
      */
     public function coverImageTypeKey(): string
     {
-        return 'cover_shelf';
+        return 'cover_menu';
     }
 
     /**
-     * Check if this shelf contains the given book.
+     * Check if this menu contains the given book.
      *
      * @param Book $book
      *
@@ -102,7 +102,7 @@ class Bookshelf extends Entity implements HasCoverImage
     }
 
     /**
-     * Add a book to the end of this shelf.
+     * Add a book to the end of this menu.
      *
      * @param Book $book
      */

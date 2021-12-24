@@ -4,7 +4,7 @@ namespace Tests\Permissions;
 
 use DailyRecipe\Auth\User;
 use DailyRecipe\Entities\Models\Book;
-use DailyRecipe\Entities\Models\Bookshelf;
+use DailyRecipe\Entities\Models\Recipemenu;
 use DailyRecipe\Entities\Models\Chapter;
 use DailyRecipe\Entities\Models\Entity;
 use DailyRecipe\Entities\Models\Page;
@@ -39,64 +39,64 @@ class EntityPermissionsTest extends TestCase
         $this->setEntityRestrictions($entity, $actions, $roles);
     }
 
-    public function test_bookshelf_view_restriction()
+    public function test_recipemenu_view_restriction()
     {
-        /** @var Bookshelf $shelf */
-        $shelf = Bookshelf::query()->first();
+        /** @var Recipemenu $menu */
+        $menu = Recipemenu::query()->first();
 
         $this->actingAs($this->user)
-            ->get($shelf->getUrl())
+            ->get($menu->getUrl())
             ->assertStatus(200);
 
-        $this->setRestrictionsForTestRoles($shelf, []);
+        $this->setRestrictionsForTestRoles($menu, []);
 
-        $this->followingRedirects()->get($shelf->getUrl())
-            ->assertSee('Bookshelf not found');
+        $this->followingRedirects()->get($menu->getUrl())
+            ->assertSee('Recipemenu not found');
 
-        $this->setRestrictionsForTestRoles($shelf, ['view']);
+        $this->setRestrictionsForTestRoles($menu, ['view']);
 
-        $this->get($shelf->getUrl())
-            ->assertSee($shelf->name);
+        $this->get($menu->getUrl())
+            ->assertSee($menu->name);
     }
 
-    public function test_bookshelf_update_restriction()
+    public function test_recipemenu_update_restriction()
     {
-        /** @var Bookshelf $shelf */
-        $shelf = Bookshelf::query()->first();
+        /** @var Recipemenu $menu */
+        $menu = Recipemenu::query()->first();
 
         $this->actingAs($this->user)
-            ->get($shelf->getUrl('/edit'))
+            ->get($menu->getUrl('/edit'))
             ->assertSee('Edit Book');
 
-        $this->setRestrictionsForTestRoles($shelf, ['view', 'delete']);
+        $this->setRestrictionsForTestRoles($menu, ['view', 'delete']);
 
-        $resp = $this->get($shelf->getUrl('/edit'))
+        $resp = $this->get($menu->getUrl('/edit'))
             ->assertRedirect('/');
         $this->followRedirects($resp)->assertSee('You do not have permission');
 
-        $this->setRestrictionsForTestRoles($shelf, ['view', 'update']);
+        $this->setRestrictionsForTestRoles($menu, ['view', 'update']);
 
-        $this->get($shelf->getUrl('/edit'))
+        $this->get($menu->getUrl('/edit'))
             ->assertOk();
     }
 
-    public function test_bookshelf_delete_restriction()
+    public function test_recipemenu_delete_restriction()
     {
-        /** @var Bookshelf $shelf */
-        $shelf = Bookshelf::query()->first();
+        /** @var Recipemenu $menu */
+        $menu = Recipemenu::query()->first();
 
         $this->actingAs($this->user)
-            ->get($shelf->getUrl('/delete'))
+            ->get($menu->getUrl('/delete'))
             ->assertSee('Delete Book');
 
-        $this->setRestrictionsForTestRoles($shelf, ['view', 'update']);
+        $this->setRestrictionsForTestRoles($menu, ['view', 'update']);
 
-        $this->get($shelf->getUrl('/delete'))->assertRedirect('/');
+        $this->get($menu->getUrl('/delete'))->assertRedirect('/');
         $this->get('/')->assertSee('You do not have permission');
 
-        $this->setRestrictionsForTestRoles($shelf, ['view', 'delete']);
+        $this->setRestrictionsForTestRoles($menu, ['view', 'delete']);
 
-        $this->get($shelf->getUrl('/delete'))
+        $this->get($menu->getUrl('/delete'))
             ->assertOk()
             ->assertSee('Delete Book');
     }
@@ -417,9 +417,9 @@ class EntityPermissionsTest extends TestCase
         ]);
     }
 
-    public function test_bookshelf_restriction_form()
+    public function test_recipemenu_restriction_form()
     {
-        $this->entityRestrictionFormTest(Bookshelf::class, 'Bookshelf Permissions', 'view', '2');
+        $this->entityRestrictionFormTest(Recipemenu::class, 'Recipemenu Permissions', 'view', '2');
     }
 
     public function test_book_restriction_form()
@@ -494,42 +494,42 @@ class EntityPermissionsTest extends TestCase
             ->assertDontSee($chapter->pages->first()->name);
     }
 
-    public function test_bookshelf_update_restriction_override()
+    public function test_recipemenu_update_restriction_override()
     {
-        /** @var Bookshelf $shelf */
-        $shelf = Bookshelf::query()->first();
+        /** @var Recipemenu $menu */
+        $menu = Recipemenu::query()->first();
 
         $this->actingAs($this->viewer)
-            ->get($shelf->getUrl('/edit'))
+            ->get($menu->getUrl('/edit'))
             ->assertDontSee('Edit Book');
 
-        $this->setRestrictionsForTestRoles($shelf, ['view', 'delete']);
+        $this->setRestrictionsForTestRoles($menu, ['view', 'delete']);
 
-        $this->get($shelf->getUrl('/edit'))->assertRedirect('/');
+        $this->get($menu->getUrl('/edit'))->assertRedirect('/');
         $this->get('/')->assertSee('You do not have permission');
 
-        $this->setRestrictionsForTestRoles($shelf, ['view', 'update']);
+        $this->setRestrictionsForTestRoles($menu, ['view', 'update']);
 
-        $this->get($shelf->getUrl('/edit'))->assertOk();
+        $this->get($menu->getUrl('/edit'))->assertOk();
     }
 
-    public function test_bookshelf_delete_restriction_override()
+    public function test_recipemenu_delete_restriction_override()
     {
-        /** @var Bookshelf $shelf */
-        $shelf = Bookshelf::query()->first();
+        /** @var Recipemenu $menu */
+        $menu = Recipemenu::query()->first();
 
         $this->actingAs($this->viewer)
-            ->get($shelf->getUrl('/delete'))
+            ->get($menu->getUrl('/delete'))
             ->assertDontSee('Delete Book');
 
-        $this->setRestrictionsForTestRoles($shelf, ['view', 'update']);
+        $this->setRestrictionsForTestRoles($menu, ['view', 'update']);
 
-        $this->get($shelf->getUrl('/delete'))->assertRedirect('/');
+        $this->get($menu->getUrl('/delete'))->assertRedirect('/');
         $this->get('/')->assertSee('You do not have permission');
 
-        $this->setRestrictionsForTestRoles($shelf, ['view', 'delete']);
+        $this->setRestrictionsForTestRoles($menu, ['view', 'delete']);
 
-        $this->get($shelf->getUrl('/delete'))->assertOk()->assertSee('Delete Book');
+        $this->get($menu->getUrl('/delete'))->assertOk()->assertSee('Delete Book');
     }
 
     public function test_book_create_restriction_override()

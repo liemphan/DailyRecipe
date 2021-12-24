@@ -49,7 +49,7 @@ return [
     // Color settings
     'content_colors' => 'Warna Konten',
     'content_colors_desc' => 'Menyetel warna untuk semua elemen dalam hierarki organisasi halaman. Disarankan memilih warna dengan kecerahan yang mirip dengan warna default agar mudah dibaca.',
-    'bookshelf_color' => 'Warna Rak',
+    'recipemenu_color' => 'Warna Rak',
     'book_color' => 'Warna Buku',
     'chapter_color' => 'Warna Bab',
     'page_color' => 'Warna Halaman',

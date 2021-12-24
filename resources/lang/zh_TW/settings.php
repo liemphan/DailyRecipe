@@ -49,7 +49,7 @@ return [
     // Color settings
     'content_colors' => '內容顏色',
     'content_colors_desc' => '為頁面層次結構中的所有元素設定顏色。 為了提高可讀性，建議選擇亮度與預設顏色相似的顏色。',
-    'bookshelf_color' => '書架顔色',
+    'recipemenu_color' => '書架顔色',
     'book_color' => '書本顔色',
     'chapter_color' => '章節顔色',
     'page_color' => '頁面顔色',

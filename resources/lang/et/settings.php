@@ -49,7 +49,7 @@ return [
     // Color settings
     'content_colors' => 'Sisuelementide värvid',
     'content_colors_desc' => 'Määrab värvid erinevatele sisuelementidele. Loetavuse huvides on soovituslik valida värvid, mille heledus on sarnane vaikimisi värvidele.',
-    'bookshelf_color' => 'Riiuli värv',
+    'recipemenu_color' => 'Riiuli värv',
     'book_color' => 'Raamatu värv',
     'chapter_color' => 'Peatüki värv',
     'page_color' => 'Lehe värv',

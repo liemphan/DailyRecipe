@@ -8,7 +8,7 @@ use DailyRecipe\Entities\Models\Page;
 use DailyRecipe\Entities\Queries\RecentlyViewed;
 use DailyRecipe\Entities\Queries\TopFavourites;
 use DailyRecipe\Entities\Repos\BookRepo;
-use DailyRecipe\Entities\Repos\BookshelfRepo;
+use DailyRecipe\Entities\Repos\RecipemenuRepo;
 use DailyRecipe\Entities\Tools\PageContent;
 
 class HomeController extends Controller
@@ -43,7 +43,7 @@ class HomeController extends Controller
             ->select(Page::$listAttributes)
             ->get();
 
-        $homepageOptions = ['default', 'books', 'bookshelves', 'page'];
+        $homepageOptions = ['default', 'books', 'recipemenus', 'page'];
         $homepageOption = setting('app-homepage-type', 'default');
         if (!in_array($homepageOption, $homepageOptions)) {
             $homepageOption = 'default';
@@ -57,8 +57,8 @@ class HomeController extends Controller
             'favourites'           => $favourites,
         ];
 
-        // Add required list ordering & sorting for books & shelves views.
-        if ($homepageOption === 'bookshelves' || $homepageOption === 'books') {
+        // Add required list ordering & sorting for books & menus views.
+        if ($homepageOption === 'recipemenus' || $homepageOption === 'books') {
             $key = $homepageOption;
             $view = setting()->getForCurrentUser($key . '_view_type');
             $sort = setting()->getForCurrentUser($key . '_sort', 'name');
@@ -78,11 +78,11 @@ class HomeController extends Controller
             ]);
         }
 
-        if ($homepageOption === 'bookshelves') {
-            $shelves = app(BookshelfRepo::class)->getAllPaginated(18, $commonData['sort'], $commonData['order']);
-            $data = array_merge($commonData, ['shelves' => $shelves]);
+        if ($homepageOption === 'recipemenus') {
+            $menus = app(RecipemenuRepo::class)->getAllPaginated(18, $commonData['sort'], $commonData['order']);
+            $data = array_merge($commonData, ['menus' => $menus]);
 
-            return view('home.shelves', $data);
+            return view('home.menus', $data);
         }
 
         if ($homepageOption === 'books') {

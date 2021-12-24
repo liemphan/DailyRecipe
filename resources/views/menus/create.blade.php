@@ -6,11 +6,11 @@
 
         <div class="my-s">
             @include('entities.breadcrumbs', ['crumbs' => [
-                '/shelves' => [
+                '/menus' => [
                     'text' => trans('entities.menus'),
-                    'icon' => 'bookshelf',
+                    'icon' => 'recipemenu',
                 ],
-                '/create-shelf' => [
+                '/create-menu' => [
                     'text' => trans('entities.menus_create'),
                     'icon' => 'add',
                 ]
@@ -19,8 +19,8 @@
 
         <main class="card content-wrap">
             <h1 class="list-heading">{{ trans('entities.menus_create') }}</h1>
-            <form action="{{ url("/shelves") }}" method="POST" enctype="multipart/form-data">
-                @include('shelves.parts.form', ['shelf' => null, 'books' => $books])
+            <form action="{{ url("/menus") }}" method="POST" enctype="multipart/form-data">
+                @include('menus.parts.form', ['menu' => null, 'books' => $books])
             </form>
         </main>
 

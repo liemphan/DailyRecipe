@@ -51,7 +51,7 @@ Wenn Du nichts eingibst, wird die Anwendung auf die Standardfarbe zurückgesetzt
     // Color settings
     'content_colors' => 'Inhaltsfarben',
     'content_colors_desc' => 'Legt Farben für alle Elemente in der Seitenorganisationshierarchie fest. Die Auswahl von Farben mit einer ähnlichen Helligkeit wie die Standardfarben wird zur Lesbarkeit empfohlen.',
-    'bookshelf_color' => 'Regalfarbe',
+    'recipemenu_color' => 'Regalfarbe',
     'book_color' => 'Buchfarbe',
     'chapter_color' => 'Kapitelfarbe',
     'page_color' => 'Seitenfarbe',

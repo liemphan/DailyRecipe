@@ -1,8 +1,8 @@
 {
   "id": 14,
-  "name": "My shelf",
-  "slug": "my-shelf",
-  "description": "This is my shelf with some books",
+  "name": "My menu",
+  "slug": "my-menu",
+  "description": "This is my menu with some books",
   "created_by": {
     "id": 1,
     "name": "Admin"

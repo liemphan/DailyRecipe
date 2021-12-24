@@ -35,13 +35,13 @@ return [
     'book_sort'                   => 'sorted book',
     'book_sort_notification'      => 'הספר מוין מחדש בהצלחה',
 
-    // Bookshelves
-    'bookshelf_create'            => 'created Bookshelf',
-    'bookshelf_create_notification'    => 'מדף הספרים נוצר בהצלחה',
-    'bookshelf_update'                 => 'updated bookshelf',
-    'bookshelf_update_notification'    => 'מדף הספרים עודכן בהצלחה',
-    'bookshelf_delete'                 => 'deleted bookshelf',
-    'bookshelf_delete_notification'    => 'מדף הספרים הוסר בהצלחה',
+    // Recipemenus
+    'recipemenu_create'            => 'created Recipemenu',
+    'recipemenu_create_notification'    => 'מדף הספרים נוצר בהצלחה',
+    'recipemenu_update'                 => 'updated recipemenu',
+    'recipemenu_update_notification'    => 'מדף הספרים עודכן בהצלחה',
+    'recipemenu_delete'                 => 'deleted recipemenu',
+    'recipemenu_delete_notification'    => 'מדף הספרים הוסר בהצלחה',
 
     // Favourites
     'favourite_add_notification' => '":name" has been added to your favourites',

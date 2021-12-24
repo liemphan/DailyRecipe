@@ -20,9 +20,9 @@ class ActivityType
     const BOOK_DELETE = 'recipe_delete';
     const BOOK_SORT = 'recipe_sort';
 
-    const BOOKSHELF_CREATE = 'menu_create';
-    const BOOKSHELF_UPDATE = 'menu_update';
-    const BOOKSHELF_DELETE = 'menu_delete';
+    const RECIPEMENU_CREATE = 'menu_create';
+    const RECIPEMENU_UPDATE = 'menu_update';
+    const RECIPEMENU_DELETE = 'menu_delete';
 
     const COMMENTED_ON = 'commented_on';
     const PERMISSIONS_UPDATE = 'permissions_update';

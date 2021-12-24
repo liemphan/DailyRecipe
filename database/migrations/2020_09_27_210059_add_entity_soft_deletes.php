@@ -13,7 +13,7 @@ class AddEntitySoftDeletes extends Migration
      */
     public function up()
     {
-        Schema::table('bookshelves', function (Blueprint $table) {
+        Schema::table('recipemenus', function (Blueprint $table) {
             $table->softDeletes();
         });
         Schema::table('books', function (Blueprint $table) {
@@ -34,7 +34,7 @@ class AddEntitySoftDeletes extends Migration
      */
     public function down()
     {
-        Schema::table('bookshelves', function (Blueprint $table) {
+        Schema::table('recipemenus', function (Blueprint $table) {
             $table->dropSoftDeletes();
         });
         Schema::table('books', function (Blueprint $table) {

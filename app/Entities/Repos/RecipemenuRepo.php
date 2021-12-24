@@ -4,7 +4,7 @@ namespace DailyRecipe\Entities\Repos;
 
 use DailyRecipe\Actions\ActivityType;
 use DailyRecipe\Entities\Models\Book;
-use DailyRecipe\Entities\Models\Bookshelf;
+use DailyRecipe\Entities\Models\Recipemenu;
 use DailyRecipe\Entities\Tools\TrashCan;
 use DailyRecipe\Exceptions\ImageUploadException;
 use DailyRecipe\Exceptions\NotFoundException;
@@ -14,12 +14,12 @@ use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Collection;
 
-class BookshelfRepo
+class RecipemenuRepo
 {
     protected $baseRepo;
 
     /**
-     * BookshelfRepo constructor.
+     * RecipemenuRepo constructor.
      */
     public function __construct(BaseRepo $baseRepo)
     {
@@ -27,96 +27,96 @@ class BookshelfRepo
     }
 
     /**
-     * Get all bookshelves in a paginated format.
+     * Get all recipemenus in a paginated format.
      */
     public function getAllPaginated(int $count = 20, string $sort = 'name', string $order = 'asc'): LengthAwarePaginator
     {
-        return Bookshelf::visible()
+        return Recipemenu::visible()
             ->with(['visibleBooks', 'cover'])
             ->orderBy($sort, $order)
             ->paginate($count);
     }
 
     /**
-     * Get the bookshelves that were most recently viewed by this user.
+     * Get the recipemenus that were most recently viewed by this user.
      */
     public function getRecentlyViewed(int $count = 20): Collection
     {
-        return Bookshelf::visible()->withLastView()
+        return Recipemenu::visible()->withLastView()
             ->having('last_viewed_at', '>', 0)
             ->orderBy('last_viewed_at', 'desc')
             ->take($count)->get();
     }
 
     /**
-     * Get the most popular bookshelves in the system.
+     * Get the most popular recipemenus in the system.
      */
     public function getPopular(int $count = 20): Collection
     {
-        return Bookshelf::visible()->withViewCount()
+        return Recipemenu::visible()->withViewCount()
             ->having('view_count', '>', 0)
             ->orderBy('view_count', 'desc')
             ->take($count)->get();
     }
 
     /**
-     * Get the most recently created bookshelves from the system.
+     * Get the most recently created recipemenus from the system.
      */
     public function getRecentlyCreated(int $count = 20): Collection
     {
-        return Bookshelf::visible()->orderBy('created_at', 'desc')
+        return Recipemenu::visible()->orderBy('created_at', 'desc')
             ->take($count)->get();
     }
 
     /**
-     * Get a shelf by its slug.
+     * Get a menu by its slug.
      */
-    public function getBySlug(string $slug): Bookshelf
+    public function getBySlug(string $slug): Recipemenu
     {
-        $shelf = Bookshelf::visible()->where('slug', '=', $slug)->first();
+        $menu = Recipemenu::visible()->where('slug', '=', $slug)->first();
 
-        if ($shelf === null) {
-            throw new NotFoundException(trans('errors.bookshelf_not_found'));
+        if ($menu === null) {
+            throw new NotFoundException(trans('errors.recipemenu_not_found'));
         }
 
-        return $shelf;
+        return $menu;
     }
 
     /**
-     * Create a new shelf in the system.
+     * Create a new menu in the system.
      */
-    public function create(array $input, array $bookIds): Bookshelf
+    public function create(array $input, array $bookIds): Recipemenu
     {
-        $shelf = new Bookshelf();
-        $this->baseRepo->create($shelf, $input);
-        $this->updateBooks($shelf, $bookIds);
-        Activity::addForEntity($shelf, ActivityType::BOOKSHELF_CREATE);
+        $menu = new Recipemenu();
+        $this->baseRepo->create($menu, $input);
+        $this->updateBooks($menu, $bookIds);
+        Activity::addForEntity($menu, ActivityType::RECIPEMENU_CREATE);
 
-        return $shelf;
+        return $menu;
     }
 
     /**
-     * Update an existing shelf in the system using the given input.
+     * Update an existing menu in the system using the given input.
      */
-    public function update(Bookshelf $shelf, array $input, ?array $bookIds): Bookshelf
+    public function update(Recipemenu $menu, array $input, ?array $bookIds): Recipemenu
     {
-        $this->baseRepo->update($shelf, $input);
+        $this->baseRepo->update($menu, $input);
 
         if (!is_null($bookIds)) {
-            $this->updateBooks($shelf, $bookIds);
+            $this->updateBooks($menu, $bookIds);
         }
 
-        Activity::addForEntity($shelf, ActivityType::BOOKSHELF_UPDATE);
+        Activity::addForEntity($menu, ActivityType::RECIPEMENU_UPDATE);
 
-        return $shelf;
+        return $menu;
     }
 
     /**
-     * Update which books are assigned to this shelf by
+     * Update which books are assigned to this menu by
      * syncing the given book ids.
      * Function ensures the books are visible to the current user and existing.
      */
-    protected function updateBooks(Bookshelf $shelf, array $bookIds)
+    protected function updateBooks(Recipemenu $menu, array $bookIds)
     {
         $numericIDs = collect($bookIds)->map(function ($id) {
             return intval($id);
@@ -129,37 +129,37 @@ class BookshelfRepo
                 return [$bookId => ['order' => $numericIDs->search($bookId)]];
             });
 
-        $shelf->books()->sync($syncData);
+        $menu->books()->sync($syncData);
     }
 
     /**
-     * Update the given shelf cover image, or clear it.
+     * Update the given menu cover image, or clear it.
      *
      * @throws ImageUploadException
      * @throws Exception
      */
-    public function updateCoverImage(Bookshelf $shelf, ?UploadedFile $coverImage, bool $removeImage = false)
+    public function updateCoverImage(Recipemenu $menu, ?UploadedFile $coverImage, bool $removeImage = false)
     {
-        $this->baseRepo->updateCoverImage($shelf, $coverImage, $removeImage);
+        $this->baseRepo->updateCoverImage($menu, $coverImage, $removeImage);
     }
 
     /**
-     * Copy down the permissions of the given shelf to all child books.
+     * Copy down the permissions of the given menu to all child books.
      */
-    public function copyDownPermissions(Bookshelf $shelf, $checkUserPermissions = true): int
+    public function copyDownPermissions(Recipemenu $menu, $checkUserPermissions = true): int
     {
-        $shelfPermissions = $shelf->permissions()->get(['role_id', 'action'])->toArray();
-        $shelfBooks = $shelf->books()->get(['id', 'restricted']);
+        $menuPermissions = $menu->permissions()->get(['role_id', 'action'])->toArray();
+        $menuBooks = $menu->books()->get(['id', 'restricted']);
         $updatedBookCount = 0;
 
         /** @var Book $book */
-        foreach ($shelfBooks as $book) {
+        foreach ($menuBooks as $book) {
             if ($checkUserPermissions && !userCan('restrictions-manage', $book)) {
                 continue;
             }
             $book->permissions()->delete();
-            $book->restricted = $shelf->restricted;
-            $book->permissions()->createMany($shelfPermissions);
+            $book->restricted = $menu->restricted;
+            $book->permissions()->createMany($menuPermissions);
             $book->save();
             $book->rebuildPermissions();
             $updatedBookCount++;
@@ -169,15 +169,15 @@ class BookshelfRepo
     }
 
     /**
-     * Remove a bookshelf from the system.
+     * Remove a recipemenu from the system.
      *
      * @throws Exception
      */
-    public function destroy(Bookshelf $shelf)
+    public function destroy(Recipemenu $menu)
     {
         $trashCan = new TrashCan();
-        $trashCan->softDestroyShelf($shelf);
-        Activity::addForEntity($shelf, ActivityType::BOOKSHELF_DELETE);
+        $trashCan->softDestroyMenu($menu);
+        Activity::addForEntity($menu, ActivityType::RECIPEMENU_DELETE);
         $trashCan->autoClearOld();
     }
 }

@@ -5,11 +5,11 @@ namespace DailyRecipe\Http\Controllers;
 use Activity;
 use DailyRecipe\Actions\ActivityType;
 use DailyRecipe\Actions\View;
-use DailyRecipe\Entities\Models\Bookshelf;
+use DailyRecipe\Entities\Models\Recipemenu;
 use DailyRecipe\Entities\Repos\BookRepo;
 use DailyRecipe\Entities\Tools\BookContents;
 use DailyRecipe\Entities\Tools\PermissionsUpdater;
-use DailyRecipe\Entities\Tools\ShelfContext;
+use DailyRecipe\Entities\Tools\MenuContext;
 use DailyRecipe\Exceptions\ImageUploadException;
 use Illuminate\Http\Request;
 use Illuminate\Validation\ValidationException;
@@ -20,7 +20,7 @@ class BookController extends Controller
     protected $bookRepo;
     protected $entityContextManager;
 
-    public function __construct(ShelfContext $entityContextManager, BookRepo $bookRepo)
+    public function __construct(MenuContext $entityContextManager, BookRepo $bookRepo)
     {
         $this->bookRepo = $bookRepo;
         $this->entityContextManager = $entityContextManager;
@@ -40,7 +40,7 @@ class BookController extends Controller
         $popular = $this->bookRepo->getPopular(4);
         $new = $this->bookRepo->getRecentlyCreated(4);
 
-        $this->entityContextManager->clearShelfContext();
+        $this->entityContextManager->clearMenuContext();
 
         $this->setPageTitle(trans('entities.recipes'));
 
@@ -58,20 +58,20 @@ class BookController extends Controller
     /**
      * Show the form for creating a new book.
      */
-    public function create(string $shelfSlug = null)
+    public function create(string $menuSlug = null)
     {
         $this->checkPermission('book-create-all');
 
-        $bookshelf = null;
-        if ($shelfSlug !== null) {
-            $bookshelf = Bookshelf::visible()->where('slug', '=', $shelfSlug)->firstOrFail();
-            $this->checkOwnablePermission('bookshelf-update', $bookshelf);
+        $recipemenu = null;
+        if ($menuSlug !== null) {
+            $recipemenu = Recipemenu::visible()->where('slug', '=', $menuSlug)->firstOrFail();
+            $this->checkOwnablePermission('recipemenu-update', $recipemenu);
         }
 
         $this->setPageTitle(trans('entities.recipes_create'));
 
         return view('books.create', [
-            'bookshelf' => $bookshelf,
+            'recipemenu' => $recipemenu,
         ]);
     }
 
@@ -81,7 +81,7 @@ class BookController extends Controller
      * @throws ImageUploadException
      * @throws ValidationException
      */
-    public function store(Request $request, string $shelfSlug = null)
+    public function store(Request $request, string $menuSlug = null)
     {
         $this->checkPermission('book-create-all');
         $this->validate($request, [
@@ -90,18 +90,18 @@ class BookController extends Controller
             'image'       => array_merge(['nullable'], $this->getImageValidationRules()),
         ]);
 
-        $bookshelf = null;
-        if ($shelfSlug !== null) {
-            $bookshelf = Bookshelf::visible()->where('slug', '=', $shelfSlug)->firstOrFail();
-            $this->checkOwnablePermission('bookshelf-update', $bookshelf);
+        $recipemenu = null;
+        if ($menuSlug !== null) {
+            $recipemenu = Recipemenu::visible()->where('slug', '=', $menuSlug)->firstOrFail();
+            $this->checkOwnablePermission('recipemenu-update', $recipemenu);
         }
 
         $book = $this->bookRepo->create($request->all());
         $this->bookRepo->updateCoverImage($book, $request->file('image', null));
 
-        if ($bookshelf) {
-            $bookshelf->appendBook($book);
-            Activity::addForEntity($bookshelf, ActivityType::BOOKSHELF_UPDATE);
+        if ($recipemenu) {
+            $recipemenu->appendBook($book);
+            Activity::addForEntity($recipemenu, ActivityType::RECIPEMENU_UPDATE);
         }
 
         return redirect($book->getUrl());
@@ -114,11 +114,11 @@ class BookController extends Controller
     {
         $book = $this->bookRepo->getBySlug($slug);
         $bookChildren = (new BookContents($book))->getTree(true);
-        $bookParentShelves = $book->shelves()->scopes('visible')->get();
+        $bookParentMenus = $book->menus()->scopes('visible')->get();
 
         View::incrementFor($book);
-        if ($request->has('shelf')) {
-            $this->entityContextManager->setShelfContext(intval($request->get('shelf')));
+        if ($request->has('menu')) {
+            $this->entityContextManager->setMenuContext(intval($request->get('menu')));
         }
 
         $this->setPageTitle($book->getShortName());
@@ -127,7 +127,7 @@ class BookController extends Controller
             'book'              => $book,
             'current'           => $book,
             'bookChildren'      => $bookChildren,
-            'bookParentShelves' => $bookParentShelves,
+            'bookParentMenus' => $bookParentMenus,
             'activity'          => Activity::entityActivity($book, 20, 1),
         ]);
     }

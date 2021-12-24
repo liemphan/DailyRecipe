@@ -58,7 +58,7 @@ return [
 
     // Entities
     'entity_not_found' => 'Eintrag nicht gefunden',
-    'bookshelf_not_found' => 'Regal nicht gefunden',
+    'recipemenu_not_found' => 'Regal nicht gefunden',
     'book_not_found' => 'Buch nicht gefunden',
     'page_not_found' => 'Seite nicht gefunden',
     'chapter_not_found' => 'Kapitel nicht gefunden',

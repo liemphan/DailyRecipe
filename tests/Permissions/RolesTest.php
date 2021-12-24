@@ -7,7 +7,7 @@ use DailyRecipe\Actions\Comment;
 use DailyRecipe\Auth\Role;
 use DailyRecipe\Auth\User;
 use DailyRecipe\Entities\Models\Book;
-use DailyRecipe\Entities\Models\Bookshelf;
+use DailyRecipe\Entities\Models\Recipemenu;
 use DailyRecipe\Entities\Models\Chapter;
 use DailyRecipe\Entities\Models\Entity;
 use DailyRecipe\Entities\Models\Page;
@@ -312,85 +312,85 @@ class RolesTest extends TestCase
         }
     }
 
-    public function test_bookshelves_create_all_permissions()
+    public function test_recipemenus_create_all_permissions()
     {
-        $this->checkAccessPermission('bookshelf-create-all', [
-            '/create-shelf',
+        $this->checkAccessPermission('recipemenu-create-all', [
+            '/create-menu',
         ], [
-            '/shelves' => 'New Shelf',
+            '/menus' => 'New Menu',
         ]);
 
-        $this->post('/shelves', [
-            'name'        => 'test shelf',
-            'description' => 'shelf desc',
-        ])->assertRedirect('/shelves/test-shelf');
+        $this->post('/menus', [
+            'name'        => 'test menu',
+            'description' => 'menu desc',
+        ])->assertRedirect('/menus/test-menu');
     }
 
-    public function test_bookshelves_edit_own_permission()
+    public function test_recipemenus_edit_own_permission()
     {
-        /** @var Bookshelf $otherShelf */
-        $otherShelf = Bookshelf::query()->first();
-        $ownShelf = $this->newShelf(['name' => 'test-shelf', 'slug' => 'test-shelf']);
-        $ownShelf->forceFill(['owned_by' => $this->user->id, 'updated_by' => $this->user->id])->save();
-        $this->regenEntityPermissions($ownShelf);
+        /** @var Recipemenu $otherMenu */
+        $otherMenu = Recipemenu::query()->first();
+        $ownMenu = $this->newMenu(['name' => 'test-menu', 'slug' => 'test-menu']);
+        $ownMenu->forceFill(['owned_by' => $this->user->id, 'updated_by' => $this->user->id])->save();
+        $this->regenEntityPermissions($ownMenu);
 
-        $this->checkAccessPermission('bookshelf-update-own', [
-            $ownShelf->getUrl('/edit'),
+        $this->checkAccessPermission('recipemenu-update-own', [
+            $ownMenu->getUrl('/edit'),
         ], [
-            $ownShelf->getUrl() => 'Edit',
+            $ownMenu->getUrl() => 'Edit',
         ]);
 
-        $this->get($otherShelf->getUrl())->assertElementNotContains('.action-buttons', 'Edit');
-        $this->get($otherShelf->getUrl('/edit'))->assertRedirect('/');
+        $this->get($otherMenu->getUrl())->assertElementNotContains('.action-buttons', 'Edit');
+        $this->get($otherMenu->getUrl('/edit'))->assertRedirect('/');
     }
 
-    public function test_bookshelves_edit_all_permission()
+    public function test_recipemenus_edit_all_permission()
     {
-        /** @var Bookshelf $otherShelf */
-        $otherShelf = Bookshelf::query()->first();
-        $this->checkAccessPermission('bookshelf-update-all', [
-            $otherShelf->getUrl('/edit'),
+        /** @var Recipemenu $otherMenu */
+        $otherMenu = Recipemenu::query()->first();
+        $this->checkAccessPermission('recipemenu-update-all', [
+            $otherMenu->getUrl('/edit'),
         ], [
-            $otherShelf->getUrl() => 'Edit',
+            $otherMenu->getUrl() => 'Edit',
         ]);
     }
 
-    public function test_bookshelves_delete_own_permission()
+    public function test_recipemenus_delete_own_permission()
     {
-        $this->giveUserPermissions($this->user, ['bookshelf-update-all']);
-        /** @var Bookshelf $otherShelf */
-        $otherShelf = Bookshelf::query()->first();
-        $ownShelf = $this->newShelf(['name' => 'test-shelf', 'slug' => 'test-shelf']);
-        $ownShelf->forceFill(['owned_by' => $this->user->id, 'updated_by' => $this->user->id])->save();
-        $this->regenEntityPermissions($ownShelf);
+        $this->giveUserPermissions($this->user, ['recipemenu-update-all']);
+        /** @var Recipemenu $otherMenu */
+        $otherMenu = Recipemenu::query()->first();
+        $ownMenu = $this->newMenu(['name' => 'test-menu', 'slug' => 'test-menu']);
+        $ownMenu->forceFill(['owned_by' => $this->user->id, 'updated_by' => $this->user->id])->save();
+        $this->regenEntityPermissions($ownMenu);
 
-        $this->checkAccessPermission('bookshelf-delete-own', [
-            $ownShelf->getUrl('/delete'),
+        $this->checkAccessPermission('recipemenu-delete-own', [
+            $ownMenu->getUrl('/delete'),
         ], [
-            $ownShelf->getUrl() => 'Delete',
+            $ownMenu->getUrl() => 'Delete',
         ]);
 
-        $this->get($otherShelf->getUrl())->assertElementNotContains('.action-buttons', 'Delete');
-        $this->get($otherShelf->getUrl('/delete'))->assertRedirect('/');
+        $this->get($otherMenu->getUrl())->assertElementNotContains('.action-buttons', 'Delete');
+        $this->get($otherMenu->getUrl('/delete'))->assertRedirect('/');
 
-        $this->get($ownShelf->getUrl());
-        $this->delete($ownShelf->getUrl())->assertRedirect('/shelves');
-        $this->get('/shelves')->assertDontSee($ownShelf->name);
+        $this->get($ownMenu->getUrl());
+        $this->delete($ownMenu->getUrl())->assertRedirect('/menus');
+        $this->get('/menus')->assertDontSee($ownMenu->name);
     }
 
-    public function test_bookshelves_delete_all_permission()
+    public function test_recipemenus_delete_all_permission()
     {
-        $this->giveUserPermissions($this->user, ['bookshelf-update-all']);
-        /** @var Bookshelf $otherShelf */
-        $otherShelf = Bookshelf::query()->first();
-        $this->checkAccessPermission('bookshelf-delete-all', [
-            $otherShelf->getUrl('/delete'),
+        $this->giveUserPermissions($this->user, ['recipemenu-update-all']);
+        /** @var Recipemenu $otherMenu */
+        $otherMenu = Recipemenu::query()->first();
+        $this->checkAccessPermission('recipemenu-delete-all', [
+            $otherMenu->getUrl('/delete'),
         ], [
-            $otherShelf->getUrl() => 'Delete',
+            $otherMenu->getUrl() => 'Delete',
         ]);
 
-        $this->delete($otherShelf->getUrl())->assertRedirect('/shelves');
-        $this->get('/shelves')->assertDontSee($otherShelf->name);
+        $this->delete($otherMenu->getUrl())->assertRedirect('/menus');
+        $this->get('/menus')->assertDontSee($otherMenu->name);
     }
 
     public function test_books_create_all_permissions()

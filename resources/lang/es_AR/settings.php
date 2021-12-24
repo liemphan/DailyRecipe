@@ -49,7 +49,7 @@ return [
     // Color settings
     'content_colors' => 'Colores del contenido',
     'content_colors_desc' => 'Establece los colores para todos los elementos en la jerarquía de la organización de la página. Se recomienda elegir colores con un brillo similar al predeterminado para mayor legibilidad.',
-    'bookshelf_color' => 'Color del estante',
+    'recipemenu_color' => 'Color del estante',
     'book_color' => 'Color del libro',
     'chapter_color' => 'Color del capítulo',
     'page_color' => 'Color de la página',

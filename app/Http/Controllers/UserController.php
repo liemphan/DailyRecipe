@@ -276,19 +276,19 @@ class UserController extends Controller
     }
 
     /**
-     * Update the user's preferred shelf-list display setting.
+     * Update the user's preferred menu-list display setting.
      */
-    public function switchShelvesView(Request $request, int $id)
+    public function switchMenusView(Request $request, int $id)
     {
-        return $this->switchViewType($id, $request, 'bookshelves');
+        return $this->switchViewType($id, $request, 'recipemenus');
     }
 
     /**
-     * Update the user's preferred shelf-view book list display setting.
+     * Update the user's preferred menu-view book list display setting.
      */
-    public function switchShelfView(Request $request, int $id)
+    public function switchMenuView(Request $request, int $id)
     {
-        return $this->switchViewType($id, $request, 'bookshelf');
+        return $this->switchViewType($id, $request, 'recipemenu');
     }
 
     /**
@@ -315,7 +315,7 @@ class UserController extends Controller
      */
     public function changeSort(Request $request, string $id, string $type)
     {
-        $validSortTypes = ['books', 'bookshelves', 'shelf_books'];
+        $validSortTypes = ['books', 'recipemenus', 'menus'];
         if (!in_array($type, $validSortTypes)) {
             return redirect()->back(500);
         }

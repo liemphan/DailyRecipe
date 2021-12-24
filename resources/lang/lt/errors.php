@@ -58,7 +58,7 @@ return [
 
     // Entities
     'entity_not_found' => 'Subjektas nerastas',
-    'bookshelf_not_found' => 'Knygų lentyna nerasta',
+    'recipemenu_not_found' => 'Knygų lentyna nerasta',
     'book_not_found' => 'Knyga nerasta',
     'page_not_found' => 'Puslapis nerastas',
     'chapter_not_found' => 'Skyrius nerastas',

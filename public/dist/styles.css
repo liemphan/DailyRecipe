@@ -51,7 +51,7 @@ table {
   --color-page-draft: #7e50b1;
   --color-chapter: #af4d0d;
   --color-book: #077b70;
-  --color-bookshelf: #a94747;
+  --color-recipemenu: #a94747;
 }
 
 .m-none {
@@ -1213,9 +1213,9 @@ html.dark-mode .text-dark {
 /*
  * Entity text colors
  */
-.text-bookshelf, .text-bookshelf:hover {
-  color: var(--color-bookshelf);
-  fill: var(--color-bookshelf);
+.text-recipemenu, .text-recipemenu:hover {
+  color: var(--color-recipemenu);
+  fill: var(--color-recipemenu);
 }
 
 .text-book, .text-book:hover {
@@ -1253,8 +1253,8 @@ html.dark-mode .text-dark {
   background-color: var(--color-chapter);
 }
 
-.bg-bookshelf {
-  background-color: var(--color-bookshelf);
+.bg-recipemenu {
+  background-color: var(--color-recipemenu);
 }
 
 /**

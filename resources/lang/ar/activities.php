@@ -35,13 +35,13 @@ return [
     'book_sort'                   => 'تم سرد الكتاب',
     'book_sort_notification'      => 'أُعِيدَ سرد الكتاب بنجاح',
 
-    // Bookshelves
-    'bookshelf_create'            => 'تم إنشاء رف الكتب',
-    'bookshelf_create_notification'    => 'تم إنشاء الرف بنجاح',
-    'bookshelf_update'                 => 'تم تحديث الرف',
-    'bookshelf_update_notification'    => 'تم تحديث الرف بنجاح',
-    'bookshelf_delete'                 => 'تم تحديث الرف',
-    'bookshelf_delete_notification'    => 'تم حذف الرف بنجاح',
+    // Recipemenus
+    'recipemenu_create'            => 'تم إنشاء رف الكتب',
+    'recipemenu_create_notification'    => 'تم إنشاء الرف بنجاح',
+    'recipemenu_update'                 => 'تم تحديث الرف',
+    'recipemenu_update_notification'    => 'تم تحديث الرف بنجاح',
+    'recipemenu_delete'                 => 'تم تحديث الرف',
+    'recipemenu_delete_notification'    => 'تم حذف الرف بنجاح',
 
     // Favourites
     'favourite_add_notification' => '":name" has been added to your favourites',

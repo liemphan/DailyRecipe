@@ -95,7 +95,7 @@ class UserProfileTest extends TestCase
             '/search?term=%7Bcreated_by%3A' . $user->slug . '%7D+%7Btype%3Apage%7D',
             '/search?term=%7Bcreated_by%3A' . $user->slug . '%7D+%7Btype%3Achapter%7D',
             '/search?term=%7Bcreated_by%3A' . $user->slug . '%7D+%7Btype%3Abook%7D',
-            '/search?term=%7Bcreated_by%3A' . $user->slug . '%7D+%7Btype%3Abookshelf%7D',
+            '/search?term=%7Bcreated_by%3A' . $user->slug . '%7D+%7Btype%3Arecipemenu%7D',
         ];
 
         foreach ($expectedLinks as $link) {

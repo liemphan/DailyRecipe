@@ -49,7 +49,7 @@ return [
     // Color settings
     'content_colors' => 'Indholdsfarver',
     'content_colors_desc' => 'Sætter farver for alle elementer i sideorganisationshierarkiet. Valg af farver med en lignende lysstyrke som standardfarverne anbefales af hensyn til læsbarhed.',
-    'bookshelf_color' => 'Bogreolfarve',
+    'recipemenu_color' => 'Bogreolfarve',
     'book_color' => 'Bogfarve',
     'chapter_color' => 'Kapitelfarve',
     'page_color' => 'Sidefarve',

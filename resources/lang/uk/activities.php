@@ -35,13 +35,13 @@ return [
     'book_sort'                   => 'sorted книгу',
     'book_sort_notification'      => 'Книгу успішно відновлено',
 
-    // Bookshelves
-    'bookshelf_create'            => 'створив книжкову полицю',
-    'bookshelf_create_notification'    => 'Книжкову полицю успішно створено',
-    'bookshelf_update'                 => 'оновив книжкову полицю',
-    'bookshelf_update_notification'    => 'Книжкову полицю успішно оновлено',
-    'bookshelf_delete'                 => 'видалив книжкову полицю',
-    'bookshelf_delete_notification'    => 'Книжкову полицю успішно видалено',
+    // Recipemenus
+    'recipemenu_create'            => 'створив книжкову полицю',
+    'recipemenu_create_notification'    => 'Книжкову полицю успішно створено',
+    'recipemenu_update'                 => 'оновив книжкову полицю',
+    'recipemenu_update_notification'    => 'Книжкову полицю успішно оновлено',
+    'recipemenu_delete'                 => 'видалив книжкову полицю',
+    'recipemenu_delete_notification'    => 'Книжкову полицю успішно видалено',
 
     // Favourites
     'favourite_add_notification' => '":ім\'я" було додане до ваших улюлених',

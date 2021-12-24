@@ -49,7 +49,7 @@ return [
     // Color settings
     'content_colors' => 'ألوان المحتوى',
     'content_colors_desc' => 'تعيين الألوان لجميع العناصر في التسلسل الهرمي لتنظيم الصفحات. يوصى باختيار الألوان ذات السطوع المماثل للألوان الافتراضية للقراءة.',
-    'bookshelf_color' => 'لون الرف',
+    'recipemenu_color' => 'لون الرف',
     'book_color' => 'لون الكتاب',
     'chapter_color' => 'لون الفصل',
     'page_color' => 'لون الصفحة',

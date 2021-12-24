@@ -3,7 +3,7 @@
 namespace Tests;
 
 use DailyRecipe\Entities\Models\Book;
-use DailyRecipe\Entities\Models\Bookshelf;
+use DailyRecipe\Entities\Models\Recipemenu;
 use DailyRecipe\Entities\Models\Chapter;
 use DailyRecipe\Entities\Models\Deletion;
 use DailyRecipe\Entities\Models\Entity;
@@ -136,7 +136,7 @@ class RecycleBinTest extends TestCase
     public function test_permanent_delete_for_each_type()
     {
         /** @var Entity $entity */
-        foreach ([new Bookshelf(), new Book(), new Chapter(), new Page()] as $entity) {
+        foreach ([new Recipemenu(), new Book(), new Chapter(), new Page()] as $entity) {
             $entity = $entity->newQuery()->first();
             $this->asEditor()->delete($entity->getUrl());
             $deletion = Deletion::query()->orderBy('id', 'desc')->firstOrFail();

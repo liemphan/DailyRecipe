@@ -35,13 +35,13 @@ return [
     'book_sort'                   => 'مرتب سازی کتاب',
     'book_sort_notification'      => 'کتاب با موفقیت مرتب سازی شد',
 
-    // Bookshelves
-    'bookshelf_create'            => 'ایجاد قفسه کتاب',
-    'bookshelf_create_notification'    => 'قفسه کتاب با موفقیت ایجاد شد',
-    'bookshelf_update'                 => 'به روزرسانی قفسه کتاب',
-    'bookshelf_update_notification'    => 'قفسه کتاب با موفقیت به روزرسانی شد',
-    'bookshelf_delete'                 => 'حذف قفسه کتاب',
-    'bookshelf_delete_notification'    => 'قفسه کتاب با موفقیت حذف شد',
+    // Recipemenus
+    'recipemenu_create'            => 'ایجاد قفسه کتاب',
+    'recipemenu_create_notification'    => 'قفسه کتاب با موفقیت ایجاد شد',
+    'recipemenu_update'                 => 'به روزرسانی قفسه کتاب',
+    'recipemenu_update_notification'    => 'قفسه کتاب با موفقیت به روزرسانی شد',
+    'recipemenu_delete'                 => 'حذف قفسه کتاب',
+    'recipemenu_delete_notification'    => 'قفسه کتاب با موفقیت حذف شد',
 
     // Favourites
     'favourite_add_notification' => '":name" به علاقه مندی های شما اضافه شد',

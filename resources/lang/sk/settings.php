@@ -49,7 +49,7 @@ return [
     // Color settings
     'content_colors' => 'Farby obsahu',
     'content_colors_desc' => 'Nastaví farby pre všetky prvky v hierarchii organizácie stránky. Kvôli čitateľnosti sa odporúča vybrať farby s podobným jasom ako predvolené farby.',
-    'bookshelf_color' => 'Farba police',
+    'recipemenu_color' => 'Farba police',
     'book_color' => 'Farba knihy',
     'chapter_color' => 'Farba kapitoly',
     'page_color' => 'Farba stránky',

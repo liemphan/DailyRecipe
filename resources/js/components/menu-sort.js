@@ -1,11 +1,11 @@
 import Sortable from "sortablejs";
 
-class ShelfSort {
+class MenuSort {
 
     constructor(elem) {
         this.elem = elem;
         this.input = document.getElementById('books-input');
-        this.shelfBooksList = elem.querySelector('[shelf-sort-assigned-books]');
+        this.menuBooksList = elem.querySelector('[menu-sort-assigned-books]');
 
         this.initSortable();
         this.setupListeners();
@@ -15,7 +15,7 @@ class ShelfSort {
         const scrollBoxes = this.elem.querySelectorAll('.scroll-box');
         for (let scrollBox of scrollBoxes) {
             new Sortable(scrollBox, {
-                group: 'shelf-books',
+                group: 'menu-books',
                 ghostClass: 'primary-background-light',
                 animation: 150,
                 onSort: this.onChange.bind(this),
@@ -47,10 +47,10 @@ class ShelfSort {
     }
 
     onChange() {
-        const shelfBookElems = Array.from(this.shelfBooksList.querySelectorAll('[data-id]'));
-        this.input.value = shelfBookElems.map(elem => elem.getAttribute('data-id')).join(',');
+        const menuBookElems = Array.from(this.menuBooksList.querySelectorAll('[data-id]'));
+        this.input.value = menuBookElems.map(elem => elem.getAttribute('data-id')).join(',');
     }
 
 }
 
-export default ShelfSort;
+export default MenuSort;

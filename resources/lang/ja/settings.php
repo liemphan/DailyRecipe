@@ -49,7 +49,7 @@ return [
     // Color settings
     'content_colors' => 'コンテンツの色',
     'content_colors_desc' => 'ページ構成階層のすべての要素に色を設定します。読みやすさを考慮して、デフォルトの色と同じような明るさの色を選ぶことをお勧めします。',
-    'bookshelf_color' => '本棚の色',
+    'recipemenu_color' => '本棚の色',
     'book_color' => 'ブックの色',
     'chapter_color' => 'チャプターの色',
     'page_color' => 'ページの色',

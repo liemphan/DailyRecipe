@@ -35,13 +35,13 @@ return [
     'book_sort'                   => '책자 정렬',
     'book_sort_notification'      => '책자 정렬함',
 
-    // Bookshelves
-    'bookshelf_create'            => '서가 만들기',
-    'bookshelf_create_notification'    => '서가 만듦',
-    'bookshelf_update'                 => '서가 바꾸기',
-    'bookshelf_update_notification'    => '서가 바꿈',
-    'bookshelf_delete'                 => '삭제된 서가',
-    'bookshelf_delete_notification'    => '서가 지움',
+    // Recipemenus
+    'recipemenu_create'            => '서가 만들기',
+    'recipemenu_create_notification'    => '서가 만듦',
+    'recipemenu_update'                 => '서가 바꾸기',
+    'recipemenu_update_notification'    => '서가 바꿈',
+    'recipemenu_delete'                 => '삭제된 서가',
+    'recipemenu_delete_notification'    => '서가 지움',
 
     // Favourites
     'favourite_add_notification' => '":name" has been added to your favourites',

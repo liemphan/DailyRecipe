@@ -4,7 +4,7 @@ namespace DailyRecipe\Entities\Tools;
 
 use DailyRecipe\Entities\EntityProvider;
 use DailyRecipe\Entities\Models\Book;
-use DailyRecipe\Entities\Models\Bookshelf;
+use DailyRecipe\Entities\Models\Recipemenu;
 use DailyRecipe\Entities\Models\Chapter;
 use DailyRecipe\Entities\Models\Deletion;
 use DailyRecipe\Entities\Models\Entity;
@@ -21,12 +21,12 @@ use Illuminate\Support\Carbon;
 class TrashCan
 {
     /**
-     * Send a shelf to the recycle bin.
+     * Send a menu to the recycle bin.
      */
-    public function softDestroyShelf(Bookshelf $shelf)
+    public function softDestroyMenu(Recipemenu $menu)
     {
-        Deletion::createForEntity($shelf);
-        $shelf->delete();
+        Deletion::createForEntity($menu);
+        $menu->delete();
     }
 
     /**
@@ -93,14 +93,14 @@ class TrashCan
     }
 
     /**
-     * Remove a bookshelf from the system.
+     * Remove a recipemenu from the system.
      *
      * @throws Exception
      */
-    protected function destroyShelf(Bookshelf $shelf): int
+    protected function destroyMenu(Recipemenu $menu): int
     {
-        $this->destroyCommonRelations($shelf);
-        $shelf->forceDelete();
+        $this->destroyCommonRelations($menu);
+        $menu->forceDelete();
 
         return 1;
     }
@@ -322,8 +322,8 @@ class TrashCan
         if ($entity instanceof Book) {
             return $this->destroyBook($entity);
         }
-        if ($entity instanceof Bookshelf) {
-            return $this->destroyShelf($entity);
+        if ($entity instanceof Recipemenu) {
+            return $this->destroyMenu($entity);
         }
 
         return 0;

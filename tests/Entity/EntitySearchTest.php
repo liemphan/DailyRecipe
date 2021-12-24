@@ -4,7 +4,7 @@ namespace Tests\Entity;
 
 use DailyRecipe\Actions\Tag;
 use DailyRecipe\Entities\Models\Book;
-use DailyRecipe\Entities\Models\Bookshelf;
+use DailyRecipe\Entities\Models\Recipemenu;
 use DailyRecipe\Entities\Models\Chapter;
 use DailyRecipe\Entities\Models\Page;
 use Tests\TestCase;
@@ -21,14 +21,14 @@ class EntitySearchTest extends TestCase
         $search->assertSeeText($page->name, true);
     }
 
-    public function test_bookshelf_search()
+    public function test_recipemenu_search()
     {
-        /** @var Bookshelf $shelf */
-        $shelf = Bookshelf::query()->first();
+        /** @var Recipemenu $menu */
+        $menu = Recipemenu::query()->first();
 
-        $search = $this->asEditor()->get('/search?term=' . urlencode($shelf->name) . '  {type:bookshelf}');
+        $search = $this->asEditor()->get('/search?term=' . urlencode($menu->name) . '  {type:recipemenu}');
         $search->assertSee('Search Results');
-        $search->assertSeeText($shelf->name, true);
+        $search->assertSeeText($menu->name, true);
     }
 
     public function test_invalid_page_search()
@@ -288,16 +288,16 @@ class EntitySearchTest extends TestCase
         }
     }
 
-    public function test_sibling_search_for_shelves()
+    public function test_sibling_search_for_menus()
     {
-        $shelves = Bookshelf::query()->take(10)->get();
-        $shelf = $shelves->first();
-        $this->assertGreaterThan(2, count($shelves), 'Ensure we\'re testing with at least 1 sibling');
+        $menus = Recipemenu::query()->take(10)->get();
+        $menu = $menus->first();
+        $this->assertGreaterThan(2, count($menus), 'Ensure we\'re testing with at least 1 sibling');
 
-        $search = $this->actingAs($this->getViewer())->get("/search/entity/siblings?entity_id={$shelf->id}&entity_type=bookshelf");
+        $search = $this->actingAs($this->getViewer())->get("/search/entity/siblings?entity_id={$menu->id}&entity_type=recipemenu");
         $search->assertSuccessful();
-        foreach ($shelves as $expectedShelf) {
-            $search->assertSee($expectedShelf->name);
+        foreach ($menus as $expectedMenu) {
+            $search->assertSee($expectedMenu->name);
         }
     }
 

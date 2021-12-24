@@ -35,13 +35,13 @@ return [
     'book_sort'                   => 'отсортировал книгу',
     'book_sort_notification'      => 'Книга успешно отсортирована',
 
-    // Bookshelves
-    'bookshelf_create'            => 'создал полку',
-    'bookshelf_create_notification'    => 'Полка успешно создана',
-    'bookshelf_update'                 => 'обновил полку',
-    'bookshelf_update_notification'    => 'Полка успешно обновлена',
-    'bookshelf_delete'                 => 'удалил полку',
-    'bookshelf_delete_notification'    => 'Полка успешно удалена',
+    // Recipemenus
+    'recipemenu_create'            => 'создал полку',
+    'recipemenu_create_notification'    => 'Полка успешно создана',
+    'recipemenu_update'                 => 'обновил полку',
+    'recipemenu_update_notification'    => 'Полка успешно обновлена',
+    'recipemenu_delete'                 => 'удалил полку',
+    'recipemenu_delete_notification'    => 'Полка успешно удалена',
 
     // Favourites
     'favourite_add_notification' => '":name" добавлено в избранное',

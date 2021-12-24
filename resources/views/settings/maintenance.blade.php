@@ -13,7 +13,7 @@
             </div>
             <div>
                 <div class="grid half no-gap mb-m">
-                    <p class="mb-xs text-bookshelf">@icon('bookshelf'){{ trans('entities.menus') }}: {{ $recycleStats['bookshelf'] }}</p>
+                    <p class="mb-xs text-recipemenu">@icon('recipemenu'){{ trans('entities.menus') }}: {{ $recycleStats['recipemenu'] }}</p>
                     <p class="mb-xs text-book">@icon('book'){{ trans('entities.recipes') }}: {{ $recycleStats['book'] }}</p>
                     <p class="mb-xs text-chapter">@icon('chapter'){{ trans('entities.chapters') }}: {{ $recycleStats['chapter'] }}</p>
                     <p class="mb-xs text-page">@icon('page'){{ trans('entities.pages') }}: {{ $recycleStats['page'] }}</p>

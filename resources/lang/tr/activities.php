@@ -35,13 +35,13 @@ return [
     'book_sort'                   => 'kitabı sıraladı',
     'book_sort_notification'      => 'Kitap Başarıyla Yeniden Sıralandı',
 
-    // Bookshelves
-    'bookshelf_create'            => 'kitaplık oluşturdu',
-    'bookshelf_create_notification'    => 'Kitaplık Başarıyla Oluşturuldu',
-    'bookshelf_update'                 => 'kitaplığı güncelledi',
-    'bookshelf_update_notification'    => 'Kitaplık Başarıyla Güncellendi',
-    'bookshelf_delete'                 => 'kitaplığı sildi',
-    'bookshelf_delete_notification'    => 'Kitaplık Başarıyla Silindi',
+    // Recipemenus
+    'recipemenu_create'            => 'kitaplık oluşturdu',
+    'recipemenu_create_notification'    => 'Kitaplık Başarıyla Oluşturuldu',
+    'recipemenu_update'                 => 'kitaplığı güncelledi',
+    'recipemenu_update_notification'    => 'Kitaplık Başarıyla Güncellendi',
+    'recipemenu_delete'                 => 'kitaplığı sildi',
+    'recipemenu_delete_notification'    => 'Kitaplık Başarıyla Silindi',
 
     // Favourites
     'favourite_add_notification' => '":name" favorilerinize eklendi',

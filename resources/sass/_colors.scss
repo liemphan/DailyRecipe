@@ -59,9 +59,9 @@
 /*
  * Entity text colors
  */
-.text-bookshelf, .text-bookshelf:hover {
-  color: var(--color-bookshelf);
-  fill: var(--color-bookshelf);
+.text-recipemenu, .text-recipemenu:hover {
+  color: var(--color-recipemenu);
+  fill: var(--color-recipemenu);
 }
 .text-book, .text-book:hover {
   color: var(--color-book);
@@ -92,6 +92,6 @@
 .bg-chapter {
   background-color: var(--color-chapter);
 }
-.bg-bookshelf {
-  background-color: var(--color-bookshelf);
+.bg-recipemenu {
+  background-color: var(--color-recipemenu);
 }

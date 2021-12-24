@@ -35,13 +35,13 @@ return [
     'book_sort'                   => 'zoradil(a) knihu',
     'book_sort_notification'      => 'Kniha úspešne znovu zoradená',
 
-    // Bookshelves
-    'bookshelf_create'            => 'vytvoril(a) knižnicu',
-    'bookshelf_create_notification'    => 'Knižnica úspešne vytvorená',
-    'bookshelf_update'                 => 'aktualizoval(a) knižnicu',
-    'bookshelf_update_notification'    => 'Knižnica úspešne aktualizovaná',
-    'bookshelf_delete'                 => 'odstránil(a) knižnicu',
-    'bookshelf_delete_notification'    => 'Knižnica úspešne odstránená',
+    // Recipemenus
+    'recipemenu_create'            => 'vytvoril(a) knižnicu',
+    'recipemenu_create_notification'    => 'Knižnica úspešne vytvorená',
+    'recipemenu_update'                 => 'aktualizoval(a) knižnicu',
+    'recipemenu_update_notification'    => 'Knižnica úspešne aktualizovaná',
+    'recipemenu_delete'                 => 'odstránil(a) knižnicu',
+    'recipemenu_delete_notification'    => 'Knižnica úspešne odstránená',
 
     // Favourites
     'favourite_add_notification' => '":name" bol pridaný medzi obľúbené',

@@ -4,7 +4,7 @@ namespace Tests;
 
 use DailyRecipe\Auth\Role;
 use DailyRecipe\Auth\User;
-use DailyRecipe\Entities\Models\Bookshelf;
+use DailyRecipe\Entities\Models\Recipemenu;
 use DailyRecipe\Entities\Models\Page;
 
 class HomepageTest extends TestCase
@@ -117,51 +117,51 @@ class HomepageTest extends TestCase
         $this->test_default_homepage_visible();
     }
 
-    public function test_set_bookshelves_homepage()
+    public function test_set_recipemenus_homepage()
     {
         $editor = $this->getEditor();
-        setting()->putUser($editor, 'bookshelves_view_type', 'grid');
-        $shelf = Bookshelf::query()->firstOrFail();
+        setting()->putUser($editor, 'recipemenus_view_type', 'grid');
+        $menu = Recipemenu::query()->firstOrFail();
 
-        $this->setSettings(['app-homepage-type' => 'bookshelves']);
+        $this->setSettings(['app-homepage-type' => 'recipemenus']);
 
         $this->asEditor();
         $homeVisit = $this->get('/');
-        $homeVisit->assertSee('Shelves');
+        $homeVisit->assertSee('Menus');
         $homeVisit->assertSee('grid-card-content');
         $homeVisit->assertSee('featured-image-container');
-        $homeVisit->assertElementContains('.grid-card', $shelf->name);
+        $homeVisit->assertElementContains('.grid-card', $menu->name);
 
         $this->setSettings(['app-homepage-type' => false]);
         $this->test_default_homepage_visible();
     }
 
-    public function test_shelves_list_homepage_adheres_to_book_visibility_permissions()
+    public function test_menus_list_homepage_adheres_to_book_visibility_permissions()
     {
         $editor = $this->getEditor();
-        setting()->putUser($editor, 'bookshelves_view_type', 'list');
-        $this->setSettings(['app-homepage-type' => 'bookshelves']);
+        setting()->putUser($editor, 'recipemenus_view_type', 'list');
+        $this->setSettings(['app-homepage-type' => 'recipemenus']);
         $this->asEditor();
 
-        $shelf = Bookshelf::query()->first();
-        $book = $shelf->books()->first();
+        $menu = Recipemenu::query()->first();
+        $book = $menu->books()->first();
 
         // Ensure initially visible
         $homeVisit = $this->get('/');
-        $homeVisit->assertElementContains('.content-wrap', $shelf->name);
+        $homeVisit->assertElementContains('.content-wrap', $menu->name);
         $homeVisit->assertElementContains('.content-wrap', $book->name);
 
         // Ensure book no longer visible without view permission
         $editor->roles()->detach();
-        $this->giveUserPermissions($editor, ['bookshelf-view-all']);
+        $this->giveUserPermissions($editor, ['recipemenu-view-all']);
         $homeVisit = $this->get('/');
-        $homeVisit->assertElementContains('.content-wrap', $shelf->name);
+        $homeVisit->assertElementContains('.content-wrap', $menu->name);
         $homeVisit->assertElementNotContains('.content-wrap', $book->name);
 
         // Ensure is visible again with entity-level view permission
         $this->setEntityRestrictions($book, ['view'], [$editor->roles()->first()]);
         $homeVisit = $this->get('/');
-        $homeVisit->assertElementContains('.content-wrap', $shelf->name);
+        $homeVisit->assertElementContains('.content-wrap', $menu->name);
         $homeVisit->assertElementContains('.content-wrap', $book->name);
     }
 

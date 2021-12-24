@@ -263,7 +263,7 @@ abstract class Entity extends Model implements Sluggable, Favouritable, Viewable
     /**
      * Get the parent entity if existing.
      * This is the "static" parent and does not include dynamic
-     * relations such as shelves to books.
+     * relations such as menus to books.
      */
     public function getParent(): ?self
     {

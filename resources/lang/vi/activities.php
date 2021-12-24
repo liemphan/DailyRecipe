@@ -35,7 +35,7 @@ return [
     'recipe_sort'                   => 'đã sắp xếp công thức nấu ăn',
     'recipe_sort_notification'      => 'Công thức nấu ăn đã được sắp xếp lại thành công',
 
-    // Bookshelves
+    // Recipemenus
     'menu_create'            => 'đã tạo giá sách',
     'menu_create_notification'    => 'Giá sách đã được tạo thành công',
     'menu_update'                 => 'cập nhật giá sách',

@@ -1,7 +1,7 @@
 <?php
 /**
  * Text used for 'Entities' (Document Structure Elements) such as
- * Books, Shelves, Chapters & Pages
+ * Books, Menus, Chapters & Pages
  */
 return [
 
@@ -11,7 +11,7 @@ return [
     'recently_updated_pages' => 'Trang được cập nhật gần đây',
     'recently_created_chapters' => 'Chương được tạo gần đây',
     'recently_created_books' => 'Sách được tạo gần đây',
-    'recently_created_shelves' => 'Giá sách được tạo gần đây',
+    'recently_created_menus' => 'Giá sách được tạo gần đây',
     'recently_update' => 'Được cập nhật gần đây',
     'recently_viewed' => 'Được xem gần đây',
     'recent_activity' => 'Hoạt động gần đây',
@@ -72,7 +72,7 @@ return [
     'search_set_date' => 'Đặt ngày',
     'search_update' => 'Cập nhật tìm kiếm',
 
-    // Shelves
+    // Menus
     'menu' => 'Giá',
     'menus' => 'Giá',
     'x_menus' => ':count Giá |:count Giá',
@@ -250,7 +250,7 @@ return [
     'page_tags' => 'Các Thẻ Trang',
     'chapter_tags' => 'Các Thẻ Chương',
     'book_tags' => 'Các Thẻ Sách',
-    'shelf_tags' => 'Các Thẻ Kệ',
+    'menu_tags' => 'Các Thẻ Kệ',
     'tag' => 'Nhãn',
     'tags' =>  'Các Thẻ',
     'tag_name' =>  'Tên Nhãn',
@@ -262,12 +262,12 @@ return [
     'tags_assigned_pages' => 'Assigned to Pages',
     'tags_assigned_chapters' => 'Assigned to Chapters',
     'tags_assigned_books' => 'Assigned to Books',
-    'tags_assigned_shelves' => 'Assigned to Shelves',
+    'tags_assigned_menus' => 'Assigned to Menus',
     'tags_x_unique_values' => ':count unique values',
     'tags_all_values' => 'All values',
     'tags_view_tags' => 'View Tags',
     'tags_view_existing_tags' => 'View existing tags',
-    'tags_list_empty_hint' => 'Tags can be assigned via the page editor sidebar or while editing the details of a book, chapter or shelf.',
+    'tags_list_empty_hint' => 'Tags can be assigned via the page editor sidebar or while editing the details of a book, chapter or menu.',
     'attachments' => 'Các Đính kèm',
     'attachments_explain' => 'Cập nhật một số tập tin và đính một số liên kết để hiển thị trên trang của bạn. Chúng được hiện trong sidebar của trang.',
     'attachments_explain_instant_save' => 'Các thay đổi ở đây sẽ được lưu ngay lập tức.',
@@ -307,7 +307,7 @@ return [
     'profile_not_created_pages' => ':userName chưa tạo bất kỳ trang nào',
     'profile_not_created_chapters' => ':userName chưa tạo bất kì chương nào',
     'profile_not_created_books' => ':userName chưa tạo bất cứ sách nào',
-    'profile_not_created_shelves' => ':userName chưa tạo bất kỳ giá sách nào',
+    'profile_not_created_menus' => ':userName chưa tạo bất kỳ giá sách nào',
 
     // Comments
     'comment' => 'Bình luận',

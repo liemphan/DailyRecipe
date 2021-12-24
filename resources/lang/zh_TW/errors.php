@@ -58,7 +58,7 @@ return [
 
     // Entities
     'entity_not_found' => '找不到實體',
-    'bookshelf_not_found' => '找不到書架',
+    'recipemenu_not_found' => '找不到書架',
     'book_not_found' => '找不到書本',
     'page_not_found' => '找不到頁面',
     'chapter_not_found' => '找不到章節',

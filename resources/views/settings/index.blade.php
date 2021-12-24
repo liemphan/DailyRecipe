@@ -149,7 +149,7 @@
                         </div>
                         <div class="grid half pt-m">
                             <div>
-                                @include('settings.parts.setting-entity-color-picker', ['type' => 'bookshelf'])
+                                @include('settings.parts.setting-entity-color-picker', ['type' => 'recipemenu'])
                                 @include('settings.parts.setting-entity-color-picker', ['type' => 'book'])
                                 @include('settings.parts.setting-entity-color-picker', ['type' => 'chapter'])
                             </div>
@@ -169,7 +169,7 @@
                             <select name="setting-app-homepage-type" id="setting-app-homepage-type">
                                 <option @if(setting('app-homepage-type') === 'default') selected @endif value="default">{{ trans('common.default') }}</option>
                                 <option @if(setting('app-homepage-type') === 'books') selected @endif value="books">{{ trans('entities.recipes') }}</option>
-                                <option @if(setting('app-homepage-type') === 'bookshelves') selected @endif value="bookshelves">{{ trans('entities.menus') }}</option>
+                                <option @if(setting('app-homepage-type') === 'recipemenus') selected @endif value="recipemenus">{{ trans('entities.menus') }}</option>
                                 <option @if(setting('app-homepage-type') === 'page') selected @endif value="page">{{ trans('entities.pages_specific') }}</option>
                             </select>
 

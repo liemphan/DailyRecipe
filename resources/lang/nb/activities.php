@@ -36,13 +36,13 @@ return [
     'book_sort'                   => 'sorterte bok',
     'book_sort_notification'      => 'Boken ble omsortert',
 
-    // Bookshelves
-    'bookshelf_create'            => 'opprettet bokhylle',
-    'bookshelf_create_notification'    => 'Bokhyllen ble opprettet',
-    'bookshelf_update'                 => 'oppdaterte bokhylle',
-    'bookshelf_update_notification'    => 'Bokhyllen ble oppdatert',
-    'bookshelf_delete'                 => 'slettet bokhylle',
-    'bookshelf_delete_notification'    => 'Bokhyllen ble slettet',
+    // Recipemenus
+    'recipemenu_create'            => 'opprettet bokhylle',
+    'recipemenu_create_notification'    => 'Bokhyllen ble opprettet',
+    'recipemenu_update'                 => 'oppdaterte bokhylle',
+    'recipemenu_update_notification'    => 'Bokhyllen ble oppdatert',
+    'recipemenu_delete'                 => 'slettet bokhylle',
+    'recipemenu_delete_notification'    => 'Bokhyllen ble slettet',
 
     // Favourites
     'favourite_add_notification' => '«:name» ble lagt til i dine favoritter',

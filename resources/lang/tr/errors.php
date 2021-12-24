@@ -58,7 +58,7 @@ return [
 
     // Entities
     'entity_not_found' => 'Öge bulunamadı',
-    'bookshelf_not_found' => 'Kitaplık bulunamadı',
+    'recipemenu_not_found' => 'Kitaplık bulunamadı',
     'book_not_found' => 'Kitap bulunamadı',
     'page_not_found' => 'Sayfa bulunamadı',
     'chapter_not_found' => 'Bölüm bulunamadı',

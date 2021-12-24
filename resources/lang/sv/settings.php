@@ -49,7 +49,7 @@ return [
     // Color settings
     'content_colors' => 'Innehållsfärger',
     'content_colors_desc' => 'Ställer in färger för alla element i sidornas hierarki. Att välja färger med samma ljusstyrka som standardfärgerna rekommenderas för läsbarhet.',
-    'bookshelf_color' => 'Hyllfärg',
+    'recipemenu_color' => 'Hyllfärg',
     'book_color' => 'Bokens färg',
     'chapter_color' => 'Kapitels färg',
     'page_color' => 'Sidfärg',

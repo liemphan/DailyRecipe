@@ -49,7 +49,7 @@ return [
     // Color settings
     'content_colors' => 'Tartalomszínek',
     'content_colors_desc' => 'Beállítja az elemek színét az oldalszervezési hierarchiában. Az olvashatóság szempontjából javasolt az alapértelmezés szerinti színhez hasonló fényerősséget választani.',
-    'bookshelf_color' => 'Polc színe',
+    'recipemenu_color' => 'Polc színe',
     'book_color' => 'Könyv színe',
     'chapter_color' => 'Fejezet színe',
     'page_color' => 'Oldal színe',
@@ -85,7 +85,7 @@ return [
     'maint_send_test_email_mail_subject' => 'Teszt e-mail',
     'maint_send_test_email_mail_greeting' => 'Az email kézbesítés működőképesnek tűnik!',
     'maint_send_test_email_mail_text' => 'Gratulálunk! Mivel ez az email figyelmeztetés megérkezett az email beállítások megfelelőek.',
-    'maint_recycle_bin_desc' => 'Deleted shelves, books, chapters & pages are sent to the recycle bin so they can be restored or permanently deleted. Older items in the recycle bin may be automatically removed after a while depending on system configuration.',
+    'maint_recycle_bin_desc' => 'Deleted menus, books, chapters & pages are sent to the recycle bin so they can be restored or permanently deleted. Older items in the recycle bin may be automatically removed after a while depending on system configuration.',
     'maint_recycle_bin_open' => 'Lomtár megnyitása',
 
     // Recycle Bin

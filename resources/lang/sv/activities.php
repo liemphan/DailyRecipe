@@ -35,13 +35,13 @@ return [
     'book_sort'                   => 'sorterade boken',
     'book_sort_notification'      => 'Boken har sorterats om',
 
-    // Bookshelves
-    'bookshelf_create'            => 'skapade hyllan',
-    'bookshelf_create_notification'    => 'Hyllan har skapats',
-    'bookshelf_update'                 => 'uppdaterade hyllan',
-    'bookshelf_update_notification'    => 'Hyllan har uppdaterats',
-    'bookshelf_delete'                 => 'tog bort hyllan',
-    'bookshelf_delete_notification'    => 'Hyllan har tagits bort',
+    // Recipemenus
+    'recipemenu_create'            => 'skapade hyllan',
+    'recipemenu_create_notification'    => 'Hyllan har skapats',
+    'recipemenu_update'                 => 'uppdaterade hyllan',
+    'recipemenu_update_notification'    => 'Hyllan har uppdaterats',
+    'recipemenu_delete'                 => 'tog bort hyllan',
+    'recipemenu_delete_notification'    => 'Hyllan har tagits bort',
 
     // Favourites
     'favourite_add_notification' => '":name" har lagts till i dina favoriter',

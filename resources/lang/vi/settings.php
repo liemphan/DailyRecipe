@@ -49,7 +49,7 @@ return [
     // Color settings
     'content_colors' => 'Màu của phần Nội dung',
     'content_colors_desc' => 'Đặt màu cho tất cả các thành phần trong trang theo sự tổ chức kế thừa. Việc chọn màu sắc với cùng độ sáng với màu mặc định là được khuyến nghị giúp cho việc đọc thuận lợi.',
-    'bookshelf_color' => 'Màu Giá sách',
+    'recipemenu_color' => 'Màu Giá sách',
     'book_color' => 'Màu Sách',
     'chapter_color' => 'Màu Chương',
     'page_color' => 'Màu Trang',
@@ -85,7 +85,7 @@ return [
     'maint_send_test_email_mail_subject' => 'Thử Email',
     'maint_send_test_email_mail_greeting' => 'Chức năng gửi email có vẻ đã hoạt động!',
     'maint_send_test_email_mail_text' => 'Chúc mừng! Khi bạn nhận được email thông báo này, cài đặt email của bạn có vẻ đã được cấu hình đúng.',
-    'maint_recycle_bin_desc' => 'Deleted shelves, books, chapters & pages are sent to the recycle bin so they can be restored or permanently deleted. Older items in the recycle bin may be automatically removed after a while depending on system configuration.',
+    'maint_recycle_bin_desc' => 'Deleted menus, books, chapters & pages are sent to the recycle bin so they can be restored or permanently deleted. Older items in the recycle bin may be automatically removed after a while depending on system configuration.',
     'maint_recycle_bin_open' => 'Mở Thùng Rác',
 
     // Recycle Bin

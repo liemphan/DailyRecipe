@@ -16,7 +16,7 @@ return [
     'app-editor'           => 'wysiwyg',
     'app-color'            => '#206ea7',
     'app-color-light'      => 'rgba(32,110,167,0.15)',
-    'bookshelf-color'      => '#a94747',
+    'recipemenu-color'      => '#a94747',
     'book-color'           => '#077b70',
     'chapter-color'        => '#af4d0d',
     'page-color'           => '#206ea7',
@@ -27,8 +27,8 @@ return [
     // User-level default settings
     'user' => [
         'dark-mode-enabled'     => env('APP_DEFAULT_DARK_MODE', false),
-        'bookshelves_view_type' => env('APP_VIEWS_BOOKSHELVES', 'grid'),
-        'bookshelf_view_type'   => env('APP_VIEWS_BOOKSHELF', 'grid'),
+        'recipemenus_view_type' => env('APP_VIEWS_RECIPEMENUS', 'grid'),
+        'recipemenu_view_type'   => env('APP_VIEWS_RECIPEMENU', 'grid'),
         'books_view_type'       => env('APP_VIEWS_BOOKS', 'grid'),
     ],
 

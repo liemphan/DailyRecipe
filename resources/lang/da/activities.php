@@ -35,13 +35,13 @@ return [
     'book_sort'                   => 'sorterede bogen',
     'book_sort_notification'      => 'Bogen blev re-sorteret',
 
-    // Bookshelves
-    'bookshelf_create'            => 'oprettede bogreol',
-    'bookshelf_create_notification'    => 'Bogreolen blev oprettet',
-    'bookshelf_update'                 => 'opdaterede bogreolen',
-    'bookshelf_update_notification'    => 'Bogreolen blev opdateret',
-    'bookshelf_delete'                 => 'slettede bogreol',
-    'bookshelf_delete_notification'    => 'Bogreolen blev opdateret',
+    // Recipemenus
+    'recipemenu_create'            => 'oprettede bogreol',
+    'recipemenu_create_notification'    => 'Bogreolen blev oprettet',
+    'recipemenu_update'                 => 'opdaterede bogreolen',
+    'recipemenu_update_notification'    => 'Bogreolen blev opdateret',
+    'recipemenu_delete'                 => 'slettede bogreol',
+    'recipemenu_delete_notification'    => 'Bogreolen blev opdateret',
 
     // Favourites
     'favourite_add_notification' => '":name" er blevet tilføjet til dine favoritter',

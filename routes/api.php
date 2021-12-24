@@ -4,7 +4,7 @@ use DailyRecipe\Http\Controllers\Api\ApiDocsController;
 use DailyRecipe\Http\Controllers\Api\AttachmentApiController;
 use DailyRecipe\Http\Controllers\Api\BookApiController;
 use DailyRecipe\Http\Controllers\Api\BookExportApiController;
-use DailyRecipe\Http\Controllers\Api\BookshelfApiController;
+use DailyRecipe\Http\Controllers\Api\RecipemenuApiController;
 use DailyRecipe\Http\Controllers\Api\ChapterApiController;
 use DailyRecipe\Http\Controllers\Api\ChapterExportApiController;
 use DailyRecipe\Http\Controllers\Api\PageApiController;
@@ -60,8 +60,8 @@ Route::get('pages/{id}/export/markdown', [PageExportApiController::class, 'expor
 
 Route::get('search', [SearchApiController::class, 'all']);
 
-Route::get('shelves', [BookshelfApiController::class, 'list']);
-Route::post('shelves', [BookshelfApiController::class, 'create']);
-Route::get('shelves/{id}', [BookshelfApiController::class, 'read']);
-Route::put('shelves/{id}', [BookshelfApiController::class, 'update']);
-Route::delete('shelves/{id}', [BookshelfApiController::class, 'delete']);
+Route::get('menus', [RecipemenuApiController::class, 'list']);
+Route::post('menus', [RecipemenuApiController::class, 'create']);
+Route::get('menus/{id}', [RecipemenuApiController::class, 'read']);
+Route::put('menus/{id}', [RecipemenuApiController::class, 'update']);
+Route::delete('menus/{id}', [RecipemenuApiController::class, 'delete']);

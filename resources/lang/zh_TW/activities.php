@@ -35,13 +35,13 @@ return [
     'book_sort'                   => '已排序書本',
     'book_sort_notification'      => '書本已重新排序成功',
 
-    // Bookshelves
-    'bookshelf_create'            => '已建立書架',
-    'bookshelf_create_notification'    => '書架已建立成功',
-    'bookshelf_update'                 => '已更新書架',
-    'bookshelf_update_notification'    => '書架已更新成功',
-    'bookshelf_delete'                 => '已刪除書架',
-    'bookshelf_delete_notification'    => '書架已刪除成功',
+    // Recipemenus
+    'recipemenu_create'            => '已建立書架',
+    'recipemenu_create_notification'    => '書架已建立成功',
+    'recipemenu_update'                 => '已更新書架',
+    'recipemenu_update_notification'    => '書架已更新成功',
+    'recipemenu_delete'                 => '已刪除書架',
+    'recipemenu_delete_notification'    => '書架已刪除成功',
 
     // Favourites
     'favourite_add_notification' => '":name" 已加入到你的最愛',

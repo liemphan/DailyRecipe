@@ -23,9 +23,9 @@
            class="pill text-book">@icon('book'){{ $tag->book_count }}</a>
     </td>
     <td width="70" class="px-xs">
-        <a href="{{ isset($tag->value) ? $tag->valueUrl() : $tag->nameUrl() . '+{type:bookshelf}' }}"
-           title="{{ trans('entities.tags_assigned_shelves') }}"
-           class="pill text-bookshelf">@icon('bookshelf'){{ $tag->shelf_count }}</a>
+        <a href="{{ isset($tag->value) ? $tag->valueUrl() : $tag->nameUrl() . '+{type:recipemenu}' }}"
+           title="{{ trans('entities.tags_assigned_menus') }}"
+           class="pill text-recipemenu">@icon('recipemenu'){{ $tag->menu_count }}</a>
     </td>
     <td class="text-right text-muted">
         @if($tag->values ?? false)

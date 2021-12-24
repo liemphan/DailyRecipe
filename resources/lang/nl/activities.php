@@ -35,13 +35,13 @@ return [
     'book_sort'                   => 'sorteerde boek',
     'book_sort_notification'      => 'Boek succesvol gesorteerd',
 
-    // Bookshelves
-    'bookshelf_create'            => 'maakte boekenplank',
-    'bookshelf_create_notification'    => 'Boekenplank succesvol aangemaakt',
-    'bookshelf_update'                 => 'wijzigde boekenplank',
-    'bookshelf_update_notification'    => 'Boekenplank succesvol bijgewerkt',
-    'bookshelf_delete'                 => 'verwijderde boekenplank',
-    'bookshelf_delete_notification'    => 'Boekenplank succesvol verwijderd',
+    // Recipemenus
+    'recipemenu_create'            => 'maakte boekenplank',
+    'recipemenu_create_notification'    => 'Boekenplank succesvol aangemaakt',
+    'recipemenu_update'                 => 'wijzigde boekenplank',
+    'recipemenu_update_notification'    => 'Boekenplank succesvol bijgewerkt',
+    'recipemenu_delete'                 => 'verwijderde boekenplank',
+    'recipemenu_delete_notification'    => 'Boekenplank succesvol verwijderd',
 
     // Favourites
     'favourite_add_notification' => '":name" is toegevoegd aan je favorieten',

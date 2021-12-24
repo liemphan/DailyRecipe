@@ -6,8 +6,8 @@
 
         <div class="my-s">
             @include('entities.breadcrumbs', ['crumbs' => [
-                $shelf,
-                $shelf->getUrl('/delete') => [
+                $menu,
+                $menu->getUrl('/delete') => [
                     'text' => trans('entities.menus_delete'),
                     'icon' => 'delete',
                 ]
@@ -16,18 +16,18 @@
 
         <div class="card content-wrap auto-height">
             <h1 class="list-heading">{{ trans('entities.menus_delete') }}</h1>
-            <p>{{ trans('entities.menus_delete_explain', ['name' => $shelf->name]) }}</p>
+            <p>{{ trans('entities.menus_delete_explain', ['name' => $menu->name]) }}</p>
 
             <div class="grid half">
                 <p class="text-neg">
                     <strong>{{ trans('entities.menus_delete_confirmation') }}</strong>
                 </p>
 
-                <form action="{{ $shelf->getUrl() }}" method="POST" class="text-right">
+                <form action="{{ $menu->getUrl() }}" method="POST" class="text-right">
                     {!! csrf_field() !!}
                     <input type="hidden" name="_method" value="DELETE">
 
-                    <a href="{{ $shelf->getUrl() }}" class="button outline">{{ trans('common.cancel') }}</a>
+                    <a href="{{ $menu->getUrl() }}" class="button outline">{{ trans('common.cancel') }}</a>
                     <button type="submit" class="button">{{ trans('common.confirm') }}</button>
                 </form>
             </div>
