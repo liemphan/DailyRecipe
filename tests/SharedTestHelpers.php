@@ -12,7 +12,7 @@ use DailyRecipe\Entities\Models\Recipemenu;
 use DailyRecipe\Entities\Models\Chapter;
 use DailyRecipe\Entities\Models\Entity;
 use DailyRecipe\Entities\Models\Page;
-use DailyRecipe\Entities\Repos\BookRepo;
+use DailyRecipe\Entities\Repos\RecipeRepo;
 use DailyRecipe\Entities\Repos\RecipemenuRepo;
 use DailyRecipe\Entities\Repos\ChapterRepo;
 use DailyRecipe\Entities\Repos\PageRepo;
@@ -121,7 +121,7 @@ trait SharedTestHelpers
      */
     public function newBook(array $input = ['name' => 'test book', 'description' => 'My new test book']): Recipe
     {
-        return app(BookRepo::class)->create($input);
+        return app(RecipeRepo::class)->create($input);
     }
 
     /**

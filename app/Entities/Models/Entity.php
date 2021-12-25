@@ -27,7 +27,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 /**
  * Class Entity
- * The base class for book-like items such as pages, chapters & books.
+ * The base class for recipe-like items such as pages, chapters & recipes.
  * This is not a database model in itself but extended.
  *
  * @property int        $id
@@ -210,7 +210,7 @@ abstract class Entity extends Model implements Sluggable, Favouritable, Viewable
 
     /**
      * Check if this instance or class is a certain type of entity.
-     * Examples of $type are 'page', 'book', 'chapter'.
+     * Examples of $type are 'page', 'recipe', 'chapter'.
      *
      * @deprecated Use instanceof instead.
      */
@@ -263,7 +263,7 @@ abstract class Entity extends Model implements Sluggable, Favouritable, Viewable
     /**
      * Get the parent entity if existing.
      * This is the "static" parent and does not include dynamic
-     * relations such as menus to books.
+     * relations such as menus to recipes.
      */
     public function getParent(): ?self
     {

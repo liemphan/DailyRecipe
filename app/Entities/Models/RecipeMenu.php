@@ -35,7 +35,7 @@ class Recipemenu extends Entity implements HasCoverImage
     /**
      * Related books that are visible to the current user.
      */
-    public function visibleBooks(): BelongsToMany
+    public function visibleRecipes(): BelongsToMany
     {
         return $this->books()->scopes('visible');
     }

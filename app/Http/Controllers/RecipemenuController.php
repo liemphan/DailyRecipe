@@ -109,7 +109,7 @@ class RecipemenuController extends Controller
         $sort = setting()->getForCurrentUser('menu_books_sort', 'default');
         $order = setting()->getForCurrentUser('menu_books_sort_order', 'asc');
 
-        $sortedVisibleMenuBooks = $menu->visibleBooks()->get()
+        $sortedVisibleMenuBooks = $menu->visibleRecipes()->get()
             ->sortBy($sort === 'default' ? 'pivot.order' : $sort, SORT_REGULAR, $order === 'desc')
             ->values()
             ->all();

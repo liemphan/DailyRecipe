@@ -6,8 +6,8 @@ use Activity;
 use DailyRecipe\Actions\ActivityType;
 use DailyRecipe\Actions\View;
 use DailyRecipe\Entities\Models\Recipemenu;
-use DailyRecipe\Entities\Repos\BookRepo;
-use DailyRecipe\Entities\Tools\BookContents;
+use DailyRecipe\Entities\Repos\RecipeRepo;
+use DailyRecipe\Entities\Tools\RecipeContents;
 use DailyRecipe\Entities\Tools\PermissionsUpdater;
 use DailyRecipe\Entities\Tools\MenuContext;
 use DailyRecipe\Exceptions\ImageUploadException;
@@ -20,7 +20,7 @@ class BookController extends Controller
     protected $bookRepo;
     protected $entityContextManager;
 
-    public function __construct(MenuContext $entityContextManager, BookRepo $bookRepo)
+    public function __construct(MenuContext $entityContextManager, RecipeRepo $bookRepo)
     {
         $this->bookRepo = $bookRepo;
         $this->entityContextManager = $entityContextManager;
@@ -113,7 +113,7 @@ class BookController extends Controller
     public function show(Request $request, string $slug)
     {
         $book = $this->bookRepo->getBySlug($slug);
-        $bookChildren = (new BookContents($book))->getTree(true);
+        $bookChildren = (new RecipeContents($book))->getTree(true);
         $bookParentMenus = $book->menus()->scopes('visible')->get();
 
         View::incrementFor($book);

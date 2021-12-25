@@ -30,22 +30,22 @@ class Recipe extends Entity implements HasCoverImage
     protected $hidden = ['restricted', 'pivot', 'image_id', 'deleted_at'];
 
     /**
-     * Get the url for this book.
+     * Get the url for this recipe.
      */
     public function getUrl(string $path = ''): string
     {
-        return url('/books/' . implode('/', [urlencode($this->slug), trim($path, '/')]));
+        return url('/recipes/' . implode('/', [urlencode($this->slug), trim($path, '/')]));
     }
 
     /**
-     * Returns book cover image, if book cover not exists return default cover image.
+     * Returns recipe cover image, if recipe cover not exists return default cover image.
      *
      * @param int $width  - Width of the image
      * @param int $height - Height of the image
      *
      * @return string
      */
-    public function getBookCover($width = 440, $height = 250)
+    public function getRecipeCover($width = 440, $height = 250)
     {
         $default = 'data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==';
         if (!$this->image_id) {
@@ -62,7 +62,7 @@ class Recipe extends Entity implements HasCoverImage
     }
 
     /**
-     * Get the cover image of the book.
+     * Get the cover image of the recipe.
      */
     public function cover(): BelongsTo
     {
@@ -74,11 +74,11 @@ class Recipe extends Entity implements HasCoverImage
      */
     public function coverImageTypeKey(): string
     {
-        return 'cover_book';
+        return 'cover_recipe';
     }
 
     /**
-     * Get all pages within this book.
+     * Get all pages within this recipe.
      */
     public function pages(): HasMany
     {
@@ -86,7 +86,7 @@ class Recipe extends Entity implements HasCoverImage
     }
 
     /**
-     * Get the direct child pages of this book.
+     * Get the direct child pages of this recipe.
      */
     public function directPages(): HasMany
     {
@@ -94,7 +94,7 @@ class Recipe extends Entity implements HasCoverImage
     }
 
     /**
-     * Get all chapters within this book.
+     * Get all chapters within this recipe.
      */
     public function chapters(): HasMany
     {
@@ -102,15 +102,15 @@ class Recipe extends Entity implements HasCoverImage
     }
 
     /**
-     * Get the menus this book is contained within.
+     * Get the menus this recipe is contained within.
      */
     public function menus(): BelongsToMany
     {
-        return $this->belongsToMany(Recipemenu::class, 'recipemenus_books', 'book_id', 'recipemenu_id');
+        return $this->belongsToMany(Recipemenu::class, 'recipemenus_recipes', 'recipe_id', 'recipemenu_id');
     }
 
     /**
-     * Get the direct child items within this book.
+     * Get the direct child items within this recipe.
      */
     public function getDirectChildren(): Collection
     {

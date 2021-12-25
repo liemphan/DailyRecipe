@@ -71,7 +71,7 @@ class ExportFormatter
      */
     public function bookToContainedHtml(Recipe $book)
     {
-        $bookTree = (new BookContents($book))->getTree(false, true);
+        $bookTree = (new RecipeContents($book))->getTree(false, true);
         $html = view('books.export', [
             'book'         => $book,
             'bookChildren' => $bookTree,
@@ -125,7 +125,7 @@ class ExportFormatter
      */
     public function bookToPdf(Recipe $book)
     {
-        $bookTree = (new BookContents($book))->getTree(false, true);
+        $bookTree = (new RecipeContents($book))->getTree(false, true);
         $html = view('books.export', [
             'book'         => $book,
             'bookChildren' => $bookTree,
@@ -260,7 +260,7 @@ class ExportFormatter
      */
     public function bookToPlainText(Recipe $book): string
     {
-        $bookTree = (new BookContents($book))->getTree(false, false);
+        $bookTree = (new RecipeContents($book))->getTree(false, false);
         $text = $book->name . "\n\n";
         foreach ($bookTree as $bookChild) {
             if ($bookChild->isA('chapter')) {
@@ -304,7 +304,7 @@ class ExportFormatter
      */
     public function bookToMarkdown(Recipe $book): string
     {
-        $bookTree = (new BookContents($book))->getTree(false, true);
+        $bookTree = (new RecipeContents($book))->getTree(false, true);
         $text = '# ' . $book->name . "\n\n";
         foreach ($bookTree as $bookChild) {
             if ($bookChild instanceof Chapter) {

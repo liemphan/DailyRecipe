@@ -10,7 +10,7 @@ use DailyRecipe\Entities\Models\Page;
 use DailyRecipe\Exceptions\SortOperationException;
 use Illuminate\Support\Collection;
 
-class BookContents
+class RecipeContents
 {
     /**
      * @var Recipe
@@ -18,7 +18,7 @@ class BookContents
     protected $book;
 
     /**
-     * BookContents constructor.
+     * RecipeContents constructor.
      */
     public function __construct(Recipe $book)
     {

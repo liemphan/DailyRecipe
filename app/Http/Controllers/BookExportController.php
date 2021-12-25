@@ -2,7 +2,7 @@
 
 namespace DailyRecipe\Http\Controllers;
 
-use DailyRecipe\Entities\Repos\BookRepo;
+use DailyRecipe\Entities\Repos\RecipeRepo;
 use DailyRecipe\Entities\Tools\ExportFormatter;
 use Throwable;
 
@@ -14,7 +14,7 @@ class BookExportController extends Controller
     /**
      * BookExportController constructor.
      */
-    public function __construct(BookRepo $bookRepo, ExportFormatter $exportFormatter)
+    public function __construct(RecipeRepo $bookRepo, ExportFormatter $exportFormatter)
     {
         $this->bookRepo = $bookRepo;
         $this->exportFormatter = $exportFormatter;

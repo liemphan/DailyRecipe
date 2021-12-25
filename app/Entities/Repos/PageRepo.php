@@ -8,7 +8,7 @@ use DailyRecipe\Entities\Models\Chapter;
 use DailyRecipe\Entities\Models\Entity;
 use DailyRecipe\Entities\Models\Page;
 use DailyRecipe\Entities\Models\PageRevision;
-use DailyRecipe\Entities\Tools\BookContents;
+use DailyRecipe\Entities\Tools\RecipeContents;
 use DailyRecipe\Entities\Tools\PageContent;
 use DailyRecipe\Entities\Tools\TrashCan;
 use DailyRecipe\Exceptions\MoveOperationException;
@@ -477,7 +477,7 @@ class PageRepo
             return $lastPage ? $lastPage->priority + 1 : 0;
         }
 
-        return (new BookContents($page->recipe))->getLastPriority() + 1;
+        return (new RecipeContents($page->recipe))->getLastPriority() + 1;
     }
 
     /**

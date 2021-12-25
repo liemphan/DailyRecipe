@@ -5,7 +5,7 @@ namespace DailyRecipe\Http\Controllers;
 use DailyRecipe\Actions\View;
 use DailyRecipe\Entities\Models\Recipe;
 use DailyRecipe\Entities\Repos\ChapterRepo;
-use DailyRecipe\Entities\Tools\BookContents;
+use DailyRecipe\Entities\Tools\RecipeContents;
 use DailyRecipe\Entities\Tools\NextPreviousContentLocator;
 use DailyRecipe\Entities\Tools\PermissionsUpdater;
 use DailyRecipe\Exceptions\MoveOperationException;
@@ -66,7 +66,7 @@ class ChapterController extends Controller
         $chapter = $this->chapterRepo->getBySlug($bookSlug, $chapterSlug);
         $this->checkOwnablePermission('chapter-view', $chapter);
 
-        $sidebarTree = (new BookContents($chapter->recipe))->getTree();
+        $sidebarTree = (new RecipeContents($chapter->recipe))->getTree();
         $pages = $chapter->getVisiblePages();
         $nextPreviousLocator = new NextPreviousContentLocator($chapter, $sidebarTree);
         View::incrementFor($chapter);

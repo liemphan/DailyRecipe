@@ -5,7 +5,7 @@ namespace DailyRecipe\Http\Controllers;
 use DailyRecipe\Actions\View;
 use DailyRecipe\Entities\Models\Page;
 use DailyRecipe\Entities\Repos\PageRepo;
-use DailyRecipe\Entities\Tools\BookContents;
+use DailyRecipe\Entities\Tools\RecipeContents;
 use DailyRecipe\Entities\Tools\NextPreviousContentLocator;
 use DailyRecipe\Entities\Tools\PageContent;
 use DailyRecipe\Entities\Tools\PageEditActivity;
@@ -141,7 +141,7 @@ class PageController extends Controller
 
         $pageContent = (new PageContent($page));
         $page->html = $pageContent->render();
-        $sidebarTree = (new BookContents($page->recipe))->getTree();
+        $sidebarTree = (new RecipeContents($page->recipe))->getTree();
         $pageNav = $pageContent->getNavigation($page->html);
 
         // Check if page comments are enabled

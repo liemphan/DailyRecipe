@@ -12,7 +12,7 @@ class MenuContext
     /**
      * Get the current recipemenu context for the given book.
      */
-    public function getContextualMenuForBook(Recipe $book): ?Recipemenu
+    public function getContextualMenuForRecipe(Recipe $book): ?Recipemenu
     {
         $contextRecipemenuId = session()->get($this->KEY_MENU_CONTEXT_ID, null);
 

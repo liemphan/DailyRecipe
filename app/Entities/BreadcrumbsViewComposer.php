@@ -30,7 +30,7 @@ class BreadcrumbsViewComposer
         $crumbs = $view->getData()['crumbs'];
         $firstCrumb = $crumbs[0] ?? null;
         if ($firstCrumb instanceof Recipe) {
-            $menu = $this->entityContextManager->getContextualMenuForBook($firstCrumb);
+            $menu = $this->entityContextManager->getContextualMenuForRecipe($firstCrumb);
             if ($menu) {
                 array_unshift($crumbs, $menu);
                 $view->with('crumbs', $crumbs);

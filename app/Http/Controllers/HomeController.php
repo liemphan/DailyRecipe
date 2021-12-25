@@ -7,7 +7,7 @@ use DailyRecipe\Entities\Models\Recipe;
 use DailyRecipe\Entities\Models\Page;
 use DailyRecipe\Entities\Queries\RecentlyViewed;
 use DailyRecipe\Entities\Queries\TopFavourites;
-use DailyRecipe\Entities\Repos\BookRepo;
+use DailyRecipe\Entities\Repos\RecipeRepo;
 use DailyRecipe\Entities\Repos\RecipemenuRepo;
 use DailyRecipe\Entities\Tools\PageContent;
 
@@ -86,7 +86,7 @@ class HomeController extends Controller
         }
 
         if ($homepageOption === 'books') {
-            $bookRepo = app(BookRepo::class);
+            $bookRepo = app(RecipeRepo::class);
             $books = $bookRepo->getAllPaginated(18, $commonData['sort'], $commonData['order']);
             $data = array_merge($commonData, ['books' => $books]);
 

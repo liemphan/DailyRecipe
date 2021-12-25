@@ -24,17 +24,17 @@ class SiblingFetcher
             $entities = $entity->chapter->getVisiblePages();
         }
 
-        // Page in book or chapter
+        // Page in recipe or chapter
         if (($entity instanceof Page && !$entity->chapter) || $entity instanceof Chapter) {
             $entities = $entity->recipe->getDirectChildren();
         }
 
         // Recipe
-        // Gets just the books in a menu if menu is in context
+        // Gets just the recipes in a menu if menu is in context
         if ($entity instanceof Recipe) {
-            $contextMenu = (new MenuContext())->getContextualMenuForBook($entity);
+            $contextMenu = (new MenuContext())->getContextualMenuForRecipe($entity);
             if ($contextMenu) {
-                $entities = $contextMenu->visibleBooks()->get();
+                $entities = $contextMenu->visibleRecipes()->get();
             } else {
                 $entities = Recipe::visible()->get();
             }

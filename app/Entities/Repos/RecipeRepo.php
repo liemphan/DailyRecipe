@@ -15,14 +15,14 @@ use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Collection;
 
-class BookRepo
+class RecipeRepo
 {
     protected $baseRepo;
     protected $tagRepo;
     protected $imageRepo;
 
     /**
-     * BookRepo constructor.
+     * RecipeRepo constructor.
      */
     public function __construct(BaseRepo $baseRepo, TagRepo $tagRepo, ImageRepo $imageRepo)
     {
@@ -32,7 +32,7 @@ class BookRepo
     }
 
     /**
-     * Get all books in a paginated format.
+     * Get all recipes in a paginated format.
      */
     public function getAllPaginated(int $count = 20, string $sort = 'name', string $order = 'asc'): LengthAwarePaginator
     {
@@ -40,7 +40,7 @@ class BookRepo
     }
 
     /**
-     * Get the books that were most recently viewed by this user.
+     * Get the recipes that were most recently viewed by this user.
      */
     public function getRecentlyViewed(int $count = 20): Collection
     {
@@ -51,7 +51,7 @@ class BookRepo
     }
 
     /**
-     * Get the most popular books in the system.
+     * Get the most popular recipes in the system.
      */
     public function getPopular(int $count = 20): Collection
     {
@@ -62,7 +62,7 @@ class BookRepo
     }
 
     /**
-     * Get the most recently created books from the system.
+     * Get the most recently created recipes from the system.
      */
     public function getRecentlyCreated(int $count = 20): Collection
     {
@@ -71,63 +71,63 @@ class BookRepo
     }
 
     /**
-     * Get a book by its slug.
+     * Get a recipe by its slug.
      */
     public function getBySlug(string $slug): Recipe
     {
-        $book = Recipe::visible()->where('slug', '=', $slug)->first();
+        $recipe = Recipe::visible()->where('slug', '=', $slug)->first();
 
-        if ($book === null) {
-            throw new NotFoundException(trans('errors.book_not_found'));
+        if ($recipe === null) {
+            throw new NotFoundException(trans('errors.recipe_not_found'));
         }
 
-        return $book;
+        return $recipe;
     }
 
     /**
-     * Create a new book in the system.
+     * Create a new recipe in the system.
      */
     public function create(array $input): Recipe
     {
-        $book = new Recipe();
-        $this->baseRepo->create($book, $input);
-        Activity::addForEntity($book, ActivityType::BOOK_CREATE);
+        $recipe = new Recipe();
+        $this->baseRepo->create($recipe, $input);
+        Activity::addForEntity($recipe, ActivityType::RECIPE_CREATE);
 
-        return $book;
+        return $recipe;
     }
 
     /**
-     * Update the given book.
+     * Update the given recipe.
      */
-    public function update(Recipe $book, array $input): Recipe
+    public function update(Recipe $recipe, array $input): Recipe
     {
-        $this->baseRepo->update($book, $input);
-        Activity::addForEntity($book, ActivityType::BOOK_UPDATE);
+        $this->baseRepo->update($recipe, $input);
+        Activity::addForEntity($recipe, ActivityType::RECIPE_UPDATE);
 
-        return $book;
+        return $recipe;
     }
 
     /**
-     * Update the given book's cover image, or clear it.
+     * Update the given recipe's cover image, or clear it.
      *
      * @throws ImageUploadException
      * @throws Exception
      */
-    public function updateCoverImage(Recipe $book, ?UploadedFile $coverImage, bool $removeImage = false)
+    public function updateCoverImage(Recipe $recipe, ?UploadedFile $coverImage, bool $removeImage = false)
     {
-        $this->baseRepo->updateCoverImage($book, $coverImage, $removeImage);
+        $this->baseRepo->updateCoverImage($recipe, $coverImage, $removeImage);
     }
 
     /**
-     * Remove a book from the system.
+     * Remove a recipe from the system.
      *
      * @throws Exception
      */
-    public function destroy(Recipe $book)
+    public function destroy(Recipe $recipe)
     {
         $trashCan = new TrashCan();
-        $trashCan->softDestroyBook($book);
-        Activity::addForEntity($book, ActivityType::BOOK_DELETE);
+        $trashCan->softDestroyRecipe($recipe);
+        Activity::addForEntity($recipe, ActivityType::RECIPE_DELETE);
 
         $trashCan->autoClearOld();
     }

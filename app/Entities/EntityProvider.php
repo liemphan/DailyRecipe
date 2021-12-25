@@ -26,7 +26,7 @@ class EntityProvider
     /**
      * @var Recipe
      */
-    public $book;
+    public $recipe;
 
     /**
      * @var Chapter
@@ -46,7 +46,7 @@ class EntityProvider
     public function __construct()
     {
         $this->recipemenu = new Recipemenu();
-        $this->book = new Recipe();
+        $this->recipe = new Recipe();
         $this->chapter = new Chapter();
         $this->page = new Page();
         $this->pageRevision = new PageRevision();
@@ -62,7 +62,7 @@ class EntityProvider
     {
         return [
             'recipemenu' => $this->recipemenu,
-            'book'      => $this->book,
+            'recipe'      => $this->recipe,
             'chapter'   => $this->chapter,
             'page'      => $this->page,
         ];

@@ -4,8 +4,8 @@ namespace DailyRecipe\Http\Controllers;
 
 use DailyRecipe\Actions\ActivityType;
 use DailyRecipe\Entities\Models\Recipe;
-use DailyRecipe\Entities\Repos\BookRepo;
-use DailyRecipe\Entities\Tools\BookContents;
+use DailyRecipe\Entities\Repos\RecipeRepo;
+use DailyRecipe\Entities\Tools\RecipeContents;
 use DailyRecipe\Exceptions\SortOperationException;
 use DailyRecipe\Facades\Activity;
 use Illuminate\Http\Request;
@@ -14,7 +14,7 @@ class BookSortController extends Controller
 {
     protected $bookRepo;
 
-    public function __construct(BookRepo $bookRepo)
+    public function __construct(RecipeRepo $bookRepo)
     {
         $this->bookRepo = $bookRepo;
     }
@@ -27,7 +27,7 @@ class BookSortController extends Controller
         $book = $this->bookRepo->getBySlug($bookSlug);
         $this->checkOwnablePermission('book-update', $book);
 
-        $bookChildren = (new BookContents($book))->getTree(false);
+        $bookChildren = (new RecipeContents($book))->getTree(false);
 
         $this->setPageTitle(trans('entities.recipes_sort_named', ['bookName'=>$book->getShortName()]));
 
@@ -41,7 +41,7 @@ class BookSortController extends Controller
     public function showItem(string $bookSlug)
     {
         $book = $this->bookRepo->getBySlug($bookSlug);
-        $bookChildren = (new BookContents($book))->getTree();
+        $bookChildren = (new RecipeContents($book))->getTree();
 
         return view('books.parts.sort-box', ['book' => $book, 'bookChildren' => $bookChildren]);
     }
@@ -60,7 +60,7 @@ class BookSortController extends Controller
         }
 
         $sortMap = collect(json_decode($request->get('sort-tree')));
-        $bookContents = new BookContents($book);
+        $bookContents = new RecipeContents($book);
         $booksInvolved = collect();
 
         try {

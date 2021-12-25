@@ -5,7 +5,7 @@ namespace DailyRecipe\Entities\Repos;
 use DailyRecipe\Actions\ActivityType;
 use DailyRecipe\Entities\Models\Recipe;
 use DailyRecipe\Entities\Models\Chapter;
-use DailyRecipe\Entities\Tools\BookContents;
+use DailyRecipe\Entities\Tools\RecipeContents;
 use DailyRecipe\Entities\Tools\TrashCan;
 use DailyRecipe\Exceptions\MoveOperationException;
 use DailyRecipe\Exceptions\NotFoundException;
@@ -47,7 +47,7 @@ class ChapterRepo
     {
         $chapter = new Chapter();
         $chapter->recipe_id = $parentBook->id;
-        $chapter->priority = (new BookContents($parentBook))->getLastPriority() + 1;
+        $chapter->priority = (new RecipeContents($parentBook))->getLastPriority() + 1;
         $this->baseRepo->create($chapter, $input);
         Activity::addForEntity($chapter, ActivityType::CHAPTER_CREATE);
 

@@ -3,13 +3,13 @@
 namespace DailyRecipe\Http\Controllers\Api;
 
 use DailyRecipe\Entities\Models\Recipe;
-use DailyRecipe\Entities\Repos\BookRepo;
+use DailyRecipe\Entities\Repos\RecipeRepo;
 use Illuminate\Http\Request;
 use Illuminate\Validation\ValidationException;
 
-class BookApiController extends ApiController
+class RecipeApiController extends ApiController
 {
-    protected $bookRepo;
+    protected $recipeRepo;
 
     protected $rules = [
         'create' => [
@@ -24,76 +24,76 @@ class BookApiController extends ApiController
         ],
     ];
 
-    public function __construct(BookRepo $bookRepo)
+    public function __construct(RecipeRepo $recipeRepo)
     {
-        $this->bookRepo = $bookRepo;
+        $this->recipeRepo = $recipeRepo;
     }
 
     /**
-     * Get a listing of books visible to the user.
+     * Get a listing of recipes visible to the user.
      */
     public function list()
     {
-        $books = Recipe::visible();
+        $recipes = Recipe::visible();
 
-        return $this->apiListingResponse($books, [
+        return $this->apiListingResponse($recipes, [
             'id', 'name', 'slug', 'description', 'created_at', 'updated_at', 'created_by', 'updated_by', 'owned_by', 'image_id',
         ]);
     }
 
     /**
-     * Create a new book in the system.
+     * Create a new recipe in the system.
      *
      * @throws ValidationException
      */
     public function create(Request $request)
     {
-        $this->checkPermission('book-create-all');
+        $this->checkPermission('recipe-create-all');
         $requestData = $this->validate($request, $this->rules['create']);
 
-        $book = $this->bookRepo->create($requestData);
+        $recipe = $this->recipeRepo->create($requestData);
 
-        return response()->json($book);
+        return response()->json($recipe);
     }
 
     /**
-     * View the details of a single book.
+     * View the details of a single recipe.
      */
     public function read(string $id)
     {
-        $book = Recipe::visible()->with(['tags', 'cover', 'createdBy', 'updatedBy', 'ownedBy'])->findOrFail($id);
+        $recipe = Recipe::visible()->with(['tags', 'cover', 'createdBy', 'updatedBy', 'ownedBy'])->findOrFail($id);
 
-        return response()->json($book);
+        return response()->json($recipe);
     }
 
     /**
-     * Update the details of a single book.
+     * Update the details of a single recipe.
      *
      * @throws ValidationException
      */
     public function update(Request $request, string $id)
     {
-        $book = Recipe::visible()->findOrFail($id);
-        $this->checkOwnablePermission('book-update', $book);
+        $recipe = Recipe::visible()->findOrFail($id);
+        $this->checkOwnablePermission('recipe-update', $recipe);
 
         $requestData = $this->validate($request, $this->rules['update']);
-        $book = $this->bookRepo->update($book, $requestData);
+        $recipe = $this->recipeRepo->update($recipe, $requestData);
 
-        return response()->json($book);
+        return response()->json($recipe);
     }
 
     /**
-     * Delete a single book.
-     * This will typically send the book to the recycle bin.
+     * Delete a single recipe.
+     * This will typically send the recipe to the recycle bin.
      *
      * @throws \Exception
      */
     public function delete(string $id)
     {
-        $book = Recipe::visible()->findOrFail($id);
-        $this->checkOwnablePermission('book-delete', $book);
+        $recipe = Recipe::visible()->findOrFail($id);
+        $this->checkOwnablePermission('recipe-delete', $recipe);
 
-        $this->bookRepo->destroy($book);
+        $this->recipeRepo->destroy($recipe);
 
         return response('', 204);
     }
