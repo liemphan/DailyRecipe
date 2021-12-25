@@ -2,7 +2,7 @@
 
 namespace DailyRecipe\Http\Controllers\Api;
 
-use DailyRecipe\Entities\Models\Book;
+use DailyRecipe\Entities\Models\Recipe;
 use DailyRecipe\Entities\Models\Chapter;
 use DailyRecipe\Entities\Repos\ChapterRepo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
@@ -56,7 +56,7 @@ class ChapterApiController extends ApiController
         $this->validate($request, $this->rules['create']);
 
         $bookId = $request->get('book_id');
-        $book = Book::visible()->findOrFail($bookId);
+        $book = Recipe::visible()->findOrFail($bookId);
         $this->checkOwnablePermission('chapter-create', $book);
 
         $chapter = $this->chapterRepo->create($request->all(), $book);

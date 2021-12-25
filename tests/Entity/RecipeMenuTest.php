@@ -3,7 +3,7 @@
 namespace Tests\Entity;
 
 use DailyRecipe\Auth\User;
-use DailyRecipe\Entities\Models\Book;
+use DailyRecipe\Entities\Models\Recipe;
 use DailyRecipe\Entities\Models\Recipemenu;
 use DailyRecipe\Uploads\Image;
 use Illuminate\Support\Str;
@@ -78,7 +78,7 @@ class RecipeMenuTest extends TestCase
 
     public function test_menus_create()
     {
-        $booksToInclude = Book::take(2)->get();
+        $booksToInclude = Recipe::take(2)->get();
         $menuInfo = [
             'name'        => 'My test book' . Str::random(4),
             'description' => 'Test book description ' . Str::random(10),
@@ -148,7 +148,7 @@ class RecipeMenuTest extends TestCase
         $resp->assertSee($menu->getUrl('/edit'));
         $resp->assertSee($menu->getUrl('/permissions'));
         $resp->assertSee($menu->getUrl('/delete'));
-        $resp->assertElementContains('a', 'New Book');
+        $resp->assertElementContains('a', 'New Recipe');
         $resp->assertElementContains('a', 'Edit');
         $resp->assertElementContains('a', 'Permissions');
         $resp->assertElementContains('a', 'Delete');
@@ -168,7 +168,7 @@ class RecipeMenuTest extends TestCase
     public function test_menu_view_sort_takes_action()
     {
         $menu = Recipemenu::query()->whereHas('books')->with('books')->first();
-        $books = Book::query()->take(3)->get(['id', 'name']);
+        $books = Recipe::query()->take(3)->get(['id', 'name']);
         $books[0]->fill(['name' => 'bsfsdfsdfsd'])->save();
         $books[1]->fill(['name' => 'adsfsdfsdfsd'])->save();
         $books[2]->fill(['name' => 'hdgfgdfg'])->save();
@@ -204,7 +204,7 @@ class RecipeMenuTest extends TestCase
         $resp = $this->asEditor()->get($menu->getUrl('/edit'));
         $resp->assertSeeText('Edit Recipemenu');
 
-        $booksToInclude = Book::take(2)->get();
+        $booksToInclude = Recipe::take(2)->get();
         $menuInfo = [
             'name'        => 'My test book' . Str::random(4),
             'description' => 'Test book description ' . Str::random(10),
@@ -241,18 +241,18 @@ class RecipeMenuTest extends TestCase
         $menu = Recipemenu::first();
         $resp = $this->asEditor()->get($menu->getUrl('/create-book'));
 
-        $resp->assertSee('Create New Book');
+        $resp->assertSee('Create New Recipe');
         $resp->assertSee($menu->getShortName());
 
-        $testName = 'Test Book in Menu Name';
+        $testName = 'Test Recipe in Menu Name';
 
         $createBookResp = $this->asEditor()->post($menu->getUrl('/create-book'), [
             'name'        => $testName,
-            'description' => 'Book in menu description',
+            'description' => 'Recipe in menu description',
         ]);
         $createBookResp->assertRedirect();
 
-        $newBook = Book::query()->orderBy('id', 'desc')->first();
+        $newBook = Recipe::query()->orderBy('id', 'desc')->first();
         $this->assertDatabaseHas('recipemenus_books', [
             'recipemenu_id' => $menu->id,
             'book_id'      => $newBook->id,
@@ -355,10 +355,10 @@ class RecipeMenuTest extends TestCase
         // Create book and add to menu
         $this->asEditor()->post($menu->getUrl('/create-book'), [
             'name'        => 'Test book name',
-            'description' => 'Book in menu description',
+            'description' => 'Recipe in menu description',
         ]);
 
-        $newBook = Book::query()->orderBy('id', 'desc')->first();
+        $newBook = Recipe::query()->orderBy('id', 'desc')->first();
 
         $resp = $this->asEditor()->get($newBook->getUrl());
         $resp->assertElementContains('.tri-layout-left-contents', $menuInfo['name']);

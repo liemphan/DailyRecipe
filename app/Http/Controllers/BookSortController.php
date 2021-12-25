@@ -3,7 +3,7 @@
 namespace DailyRecipe\Http\Controllers;
 
 use DailyRecipe\Actions\ActivityType;
-use DailyRecipe\Entities\Models\Book;
+use DailyRecipe\Entities\Models\Recipe;
 use DailyRecipe\Entities\Repos\BookRepo;
 use DailyRecipe\Entities\Tools\BookContents;
 use DailyRecipe\Exceptions\SortOperationException;
@@ -70,7 +70,7 @@ class BookSortController extends Controller
         }
 
         // Rebuild permissions and add activity for involved books.
-        $booksInvolved->each(function (Book $book) {
+        $booksInvolved->each(function (Recipe $book) {
             Activity::addForEntity($book, ActivityType::BOOK_SORT);
         });
 

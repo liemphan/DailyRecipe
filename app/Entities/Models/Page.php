@@ -24,7 +24,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
  * @property Chapter    $chapter
  * @property Collection $attachments
  */
-class Page extends BookChild
+class Page extends RecipeChild
 {
     use HasFactory;
 
@@ -108,7 +108,7 @@ class Page extends BookChild
     {
         $parts = [
             'books',
-            urlencode($this->book_slug ?? $this->book->slug),
+            urlencode($this->recipe_slug ?? $this->recipe->slug),
             $this->draft ? 'draft' : 'page',
             $this->draft ? $this->id : urlencode($this->slug),
             trim($path, '/'),

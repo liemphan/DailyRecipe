@@ -3,7 +3,7 @@
 namespace DailyRecipe\Entities\Repos;
 
 use DailyRecipe\Actions\ActivityType;
-use DailyRecipe\Entities\Models\Book;
+use DailyRecipe\Entities\Models\Recipe;
 use DailyRecipe\Entities\Models\Recipemenu;
 use DailyRecipe\Entities\Tools\TrashCan;
 use DailyRecipe\Exceptions\ImageUploadException;
@@ -122,7 +122,7 @@ class RecipemenuRepo
             return intval($id);
         });
 
-        $syncData = Book::visible()
+        $syncData = Recipe::visible()
             ->whereIn('id', $bookIds)
             ->pluck('id')
             ->mapWithKeys(function ($bookId) use ($numericIDs) {
@@ -152,7 +152,7 @@ class RecipemenuRepo
         $menuBooks = $menu->books()->get(['id', 'restricted']);
         $updatedBookCount = 0;
 
-        /** @var Book $book */
+        /** @var Recipe $book */
         foreach ($menuBooks as $book) {
             if ($checkUserPermissions && !userCan('restrictions-manage', $book)) {
                 continue;

@@ -6,7 +6,7 @@ use DailyRecipe\Actions\ActivityType;
 use DailyRecipe\Actions\Comment;
 use DailyRecipe\Auth\Role;
 use DailyRecipe\Auth\User;
-use DailyRecipe\Entities\Models\Book;
+use DailyRecipe\Entities\Models\Recipe;
 use DailyRecipe\Entities\Models\Recipemenu;
 use DailyRecipe\Entities\Models\Chapter;
 use DailyRecipe\Entities\Models\Entity;
@@ -398,7 +398,7 @@ class RolesTest extends TestCase
         $this->checkAccessPermission('book-create-all', [
             '/create-book',
         ], [
-            '/books' => 'Create New Book',
+            '/books' => 'Create New Recipe',
         ]);
 
         $this->post('/books', [
@@ -409,8 +409,8 @@ class RolesTest extends TestCase
 
     public function test_books_edit_own_permission()
     {
-        /** @var Book $otherBook */
-        $otherBook = Book::query()->take(1)->get()->first();
+        /** @var Recipe $otherBook */
+        $otherBook = Recipe::query()->take(1)->get()->first();
         $ownBook = $this->createEntityChainBelongingToUser($this->user)['book'];
         $this->checkAccessPermission('book-update-own', [
             $ownBook->getUrl() . '/edit',
@@ -424,8 +424,8 @@ class RolesTest extends TestCase
 
     public function test_books_edit_all_permission()
     {
-        /** @var Book $otherBook */
-        $otherBook = Book::query()->take(1)->get()->first();
+        /** @var Recipe $otherBook */
+        $otherBook = Recipe::query()->take(1)->get()->first();
         $this->checkAccessPermission('book-update-all', [
             $otherBook->getUrl() . '/edit',
         ], [
@@ -436,8 +436,8 @@ class RolesTest extends TestCase
     public function test_books_delete_own_permission()
     {
         $this->giveUserPermissions($this->user, ['book-update-all']);
-        /** @var Book $otherBook */
-        $otherBook = Book::query()->take(1)->get()->first();
+        /** @var Recipe $otherBook */
+        $otherBook = Recipe::query()->take(1)->get()->first();
         $ownBook = $this->createEntityChainBelongingToUser($this->user)['book'];
         $this->checkAccessPermission('book-delete-own', [
             $ownBook->getUrl() . '/delete',
@@ -455,8 +455,8 @@ class RolesTest extends TestCase
     public function test_books_delete_all_permission()
     {
         $this->giveUserPermissions($this->user, ['book-update-all']);
-        /** @var Book $otherBook */
-        $otherBook = Book::query()->take(1)->get()->first();
+        /** @var Recipe $otherBook */
+        $otherBook = Recipe::query()->take(1)->get()->first();
         $this->checkAccessPermission('book-delete-all', [
             $otherBook->getUrl() . '/delete',
         ], [
@@ -470,8 +470,8 @@ class RolesTest extends TestCase
 
     public function test_chapter_create_own_permissions()
     {
-        /** @var Book $book */
-        $book = Book::query()->take(1)->get()->first();
+        /** @var Recipe $book */
+        $book = Recipe::query()->take(1)->get()->first();
         $ownBook = $this->createEntityChainBelongingToUser($this->user)['book'];
         $this->checkAccessPermission('chapter-create-own', [
             $ownBook->getUrl('/create-chapter'),
@@ -490,8 +490,8 @@ class RolesTest extends TestCase
 
     public function test_chapter_create_all_permissions()
     {
-        /** @var Book $book */
-        $book = Book::query()->first();
+        /** @var Recipe $book */
+        $book = Recipe::query()->first();
         $this->checkAccessPermission('chapter-create-all', [
             $book->getUrl('/create-chapter'),
         ], [
@@ -561,7 +561,7 @@ class RolesTest extends TestCase
             $otherChapter->getUrl() => 'Delete',
         ]);
 
-        $bookUrl = $otherChapter->book->getUrl();
+        $bookUrl = $otherChapter->recipe->getUrl();
         $this->get($otherChapter->getUrl());
         $this->delete($otherChapter->getUrl())->assertRedirect($bookUrl);
         $this->get($bookUrl)->assertElementNotContains('.book-content', $otherChapter->name);
@@ -569,8 +569,8 @@ class RolesTest extends TestCase
 
     public function test_page_create_own_permissions()
     {
-        /** @var Book $book */
-        $book = Book::query()->first();
+        /** @var Recipe $book */
+        $book = Recipe::query()->first();
         /** @var Chapter $chapter */
         $chapter = Chapter::query()->first();
 
@@ -616,8 +616,8 @@ class RolesTest extends TestCase
 
     public function test_page_create_all_permissions()
     {
-        /** @var Book $book */
-        $book = Book::query()->first();
+        /** @var Recipe $book */
+        $book = Recipe::query()->first();
         /** @var Chapter $chapter */
         $chapter = Chapter::query()->first();
         $createUrl = $book->getUrl('/create-page');
@@ -718,7 +718,7 @@ class RolesTest extends TestCase
         ]);
 
         /** @var Entity $parent */
-        $parent = $otherPage->chapter ?? $otherPage->book;
+        $parent = $otherPage->chapter ?? $otherPage->recipe;
         $this->get($otherPage->getUrl());
 
         $this->delete($otherPage->getUrl())->assertRedirect($parent->getUrl());
@@ -824,8 +824,8 @@ class RolesTest extends TestCase
     public function test_empty_state_actions_not_visible_without_permission()
     {
         $admin = $this->getAdmin();
-        // Book links
-        $book = Book::factory()->create(['created_by' => $admin->id, 'updated_by' => $admin->id]);
+        // Recipe links
+        $book = Recipe::factory()->create(['created_by' => $admin->id, 'updated_by' => $admin->id]);
         $this->regenEntityPermissions($book);
         $this->actingAs($this->getViewer())->get($book->getUrl())
             ->assertDontSee('Create a new page')

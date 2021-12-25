@@ -4,7 +4,7 @@ namespace DailyRecipe\Auth;
 
 use Activity;
 use DailyRecipe\Entities\EntityProvider;
-use DailyRecipe\Entities\Models\Book;
+use DailyRecipe\Entities\Models\Recipe;
 use DailyRecipe\Entities\Models\Recipemenu;
 use DailyRecipe\Entities\Models\Chapter;
 use DailyRecipe\Entities\Models\Page;
@@ -238,7 +238,7 @@ class UserRepo
         return [
             'pages'    => $query(Page::visible()->where('draft', '=', false)),
             'chapters' => $query(Chapter::visible()),
-            'books'    => $query(Book::visible()),
+            'recipes'    => $query(Recipe::visible()),
             'menus'  => $query(Recipemenu::visible()),
         ];
     }
@@ -253,7 +253,7 @@ class UserRepo
         return [
             'pages'       => Page::visible()->where($createdBy)->count(),
             'chapters'    => Chapter::visible()->where($createdBy)->count(),
-            'books'       => Book::visible()->where($createdBy)->count(),
+            'recipes'       => Recipe::visible()->where($createdBy)->count(),
             'menus'     => Recipemenu::visible()->where($createdBy)->count(),
         ];
     }

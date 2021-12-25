@@ -5,17 +5,100 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="274eeb44-2be1-4c79-980b-c542185305a9" name="Changes" comment="update bookstack to dailyrecipe">
-      <change beforePath="$PROJECT_DIR$/.env" beforeDir="false" afterPath="$PROJECT_DIR$/.env" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2015_07_12_114933_create_books_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2015_07_12_114933_create_recipes_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2015_08_08_200447_add_users_to_entities.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2015_08_08_200447_add_users_to_entities.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Actions/Activity.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Actions/Activity.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Actions/ActivityService.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Actions/ActivityService.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Actions/ActivityType.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Actions/ActivityType.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Actions/TagRepo.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Actions/TagRepo.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Auth/Permissions/PermissionService.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Auth/Permissions/PermissionService.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Auth/UserRepo.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Auth/UserRepo.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Entities/BreadcrumbsViewComposer.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Entities/BreadcrumbsViewComposer.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Entities/EntityProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Entities/EntityProvider.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Entities/Models/Book.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Entities/Models/Recipe.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Entities/Models/BookChild.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Entities/Models/RecipeChild.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Entities/Models/Chapter.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Entities/Models/Chapter.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Entities/Models/Entity.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Entities/Models/Entity.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Entities/Models/Page.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Entities/Models/Page.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Entities/Models/RecipeMenu.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Entities/Models/RecipeMenu.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Entities/Repos/BookRepo.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Entities/Repos/BookRepo.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Entities/Repos/ChapterRepo.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Entities/Repos/ChapterRepo.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Entities/Repos/PageRepo.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Entities/Repos/PageRepo.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Entities/Repos/RecipemenuRepo.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Entities/Repos/RecipemenuRepo.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Entities/Tools/BookContents.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Entities/Tools/BookContents.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Entities/Tools/ExportFormatter.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Entities/Tools/ExportFormatter.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Entities/Tools/MenuContext.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Entities/Tools/MenuContext.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Entities/Tools/NextPreviousContentLocator.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Entities/Tools/NextPreviousContentLocator.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Entities/Tools/SearchRunner.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Entities/Tools/SearchRunner.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Entities/Tools/SiblingFetcher.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Entities/Tools/SiblingFetcher.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Entities/Tools/SlugGenerator.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Entities/Tools/SlugGenerator.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Entities/Tools/TrashCan.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Entities/Tools/TrashCan.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Api/BookApiController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Api/BookApiController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Api/BookExportApiController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Api/BookExportApiController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Api/ChapterApiController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Api/ChapterApiController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Api/PageApiController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Api/PageApiController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/BookSortController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/BookSortController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ChapterController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/ChapterController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/HomeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/HomeController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/PageController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/PageController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/PageRevisionController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/PageRevisionController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/RecipemenuController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/RecipemenuController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Providers/AppServiceProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Providers/AppServiceProvider.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Uploads/ImageRepo.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Uploads/ImageRepo.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/factories/Entities/Models/BookFactory.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/factories/Entities/Models/BookFactory.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/database/migrations/2015_08_29_105422_add_roles_and_permissions.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2015_08_29_105422_add_roles_and_permissions.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2015_08_31_175240_add_search_indexes.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2015_08_31_175240_add_search_indexes.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2015_11_26_221857_add_entity_indexes.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2015_11_26_221857_add_entity_indexes.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2015_12_05_145049_fulltext_weighting.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2015_12_05_145049_fulltext_weighting.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2016_02_28_084200_add_entity_access_controls.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2016_02_28_084200_add_entity_access_controls.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2017_03_19_091553_create_search_index_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2017_03_19_091553_create_search_index_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2017_08_29_102650_add_cover_image_display.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2017_08_29_102650_add_cover_image_display.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2016_02_27_120329_update_permissions_and_roles.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2016_02_27_120329_update_permissions_and_roles.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2016_04_09_100730_add_view_permissions_to_roles.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2016_04_09_100730_add_view_permissions_to_roles.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2016_04_20_192649_create_joint_permissions_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2016_04_20_192649_create_joint_permissions_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/seeders/DummyContentSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeders/DummyContentSeeder.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/seeders/LargeContentSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeders/LargeContentSeeder.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/libs/tinymce/plugins/legacyoutput/plugin.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/libs/tinymce/plugins/legacyoutput/plugin.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/libs/tinymce/themes/inlite/theme.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/libs/tinymce/themes/inlite/theme.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/libs/tinymce/themes/modern/theme.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/libs/tinymce/themes/modern/theme.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/lang/bg/errors.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/lang/bg/errors.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/lang/bg/settings.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/lang/bg/settings.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/lang/bs/entities.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/lang/bs/entities.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/lang/bs/settings.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/lang/bs/settings.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/lang/en/entities.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/lang/en/entities.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/lang/en/errors.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/lang/en/errors.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/lang/en/settings.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/lang/en/settings.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/lang/fa/entities.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/lang/fa/entities.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/lang/fa/errors.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/lang/fa/errors.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/lang/fa/settings.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/lang/fa/settings.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/lang/th/activities.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/lang/th/activities.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/lang/th/entities.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/lang/th/entities.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/lang/th/errors.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/lang/th/errors.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/lang/th/settings.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/lang/th/settings.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/entities/breadcrumbs.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/entities/breadcrumbs.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/settings/recycle-bin/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/settings/recycle-bin/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/Api/ApiListingTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Api/ApiListingTest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/Api/BooksApiTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Api/BooksApiTest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/Api/ChaptersApiTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Api/ChaptersApiTest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/Api/MenusApiTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Api/MenusApiTest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/Api/PagesApiTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Api/PagesApiTest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/Api/SearchApiTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Api/SearchApiTest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/Entity/BookTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Entity/BookTest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/Entity/ChapterTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Entity/ChapterTest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/Entity/EntitySearchTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Entity/EntitySearchTest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/Entity/ExportTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Entity/ExportTest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/Entity/PageContentTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Entity/PageContentTest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/Entity/PageDraftTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Entity/PageDraftTest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/Entity/PageEditorTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Entity/PageEditorTest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/Entity/PageTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Entity/PageTest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/Entity/RecipeMenuTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Entity/RecipeMenuTest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/Entity/SortTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Entity/SortTest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/Entity/TagTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Entity/TagTest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/ErrorTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/ErrorTest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/FavouriteTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/FavouriteTest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/OpenGraphTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/OpenGraphTest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/Permissions/EntityOwnerChangeTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Permissions/EntityOwnerChangeTest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/Permissions/EntityPermissionsTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Permissions/EntityPermissionsTest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/Permissions/ExportPermissionsTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Permissions/ExportPermissionsTest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/Permissions/RolesTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Permissions/RolesTest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/PublicActionTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/PublicActionTest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/RecycleBinTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/RecycleBinTest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/SharedTestHelpers.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/SharedTestHelpers.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/User/UserProfileTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/User/UserProfileTest.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -224,7 +307,7 @@
       <workItem from="1640268551232" duration="2257000" />
       <workItem from="1640317445675" duration="674000" />
       <workItem from="1640434224263" duration="254000" />
-      <workItem from="1640435445829" duration="1006000" />
+      <workItem from="1640435445829" duration="2118000" />
     </task>
     <task id="LOCAL-00001" summary="add project">
       <created>1639398042116</created>

@@ -2,7 +2,7 @@
 
 namespace Tests;
 
-use DailyRecipe\Entities\Models\Book;
+use DailyRecipe\Entities\Models\Recipe;
 use DailyRecipe\Entities\Models\Recipemenu;
 use DailyRecipe\Entities\Models\Chapter;
 use DailyRecipe\Entities\Models\Deletion;
@@ -57,7 +57,7 @@ class RecycleBinTest extends TestCase
     public function test_recycle_bin_view()
     {
         $page = Page::query()->first();
-        $book = Book::query()->whereHas('pages')->whereHas('chapters')->withCount(['pages', 'chapters'])->first();
+        $book = Recipe::query()->whereHas('pages')->whereHas('chapters')->withCount(['pages', 'chapters'])->first();
         $editor = $this->getEditor();
         $this->actingAs($editor)->delete($page->getUrl());
         $this->actingAs($editor)->delete($book->getUrl());
@@ -73,7 +73,7 @@ class RecycleBinTest extends TestCase
     public function test_recycle_bin_empty()
     {
         $page = Page::query()->first();
-        $book = Book::query()->where('id', '!=', $page->book_id)->whereHas('pages')->whereHas('chapters')->with(['pages', 'chapters'])->firstOrFail();
+        $book = Recipe::query()->where('id', '!=', $page->recipe_id)->whereHas('pages')->whereHas('chapters')->with(['pages', 'chapters'])->firstOrFail();
         $editor = $this->getEditor();
         $this->actingAs($editor)->delete($page->getUrl());
         $this->actingAs($editor)->delete($book->getUrl());
@@ -95,7 +95,7 @@ class RecycleBinTest extends TestCase
 
     public function test_entity_restore()
     {
-        $book = Book::query()->whereHas('pages')->whereHas('chapters')->with(['pages', 'chapters'])->firstOrFail();
+        $book = Recipe::query()->whereHas('pages')->whereHas('chapters')->with(['pages', 'chapters'])->firstOrFail();
         $this->asEditor()->delete($book->getUrl());
         $deletion = Deletion::query()->firstOrFail();
 
@@ -116,7 +116,7 @@ class RecycleBinTest extends TestCase
 
     public function test_permanent_delete()
     {
-        $book = Book::query()->whereHas('pages')->whereHas('chapters')->with(['pages', 'chapters'])->firstOrFail();
+        $book = Recipe::query()->whereHas('pages')->whereHas('chapters')->with(['pages', 'chapters'])->firstOrFail();
         $this->asEditor()->delete($book->getUrl());
         $deletion = Deletion::query()->firstOrFail();
 
@@ -136,7 +136,7 @@ class RecycleBinTest extends TestCase
     public function test_permanent_delete_for_each_type()
     {
         /** @var Entity $entity */
-        foreach ([new Recipemenu(), new Book(), new Chapter(), new Page()] as $entity) {
+        foreach ([new Recipemenu(), new Recipe(), new Chapter(), new Page()] as $entity) {
             $entity = $entity->newQuery()->first();
             $this->asEditor()->delete($entity->getUrl());
             $deletion = Deletion::query()->orderBy('id', 'desc')->firstOrFail();
@@ -221,7 +221,7 @@ class RecycleBinTest extends TestCase
 
     public function test_restore_flow_when_restoring_nested_delete_first()
     {
-        $book = Book::query()->whereHas('pages')->whereHas('chapters')->with(['pages', 'chapters'])->firstOrFail();
+        $book = Recipe::query()->whereHas('pages')->whereHas('chapters')->with(['pages', 'chapters'])->firstOrFail();
         $chapter = $book->chapters->first();
         $this->asEditor()->delete($chapter->getUrl());
         $this->asEditor()->delete($book->getUrl());
@@ -251,8 +251,8 @@ class RecycleBinTest extends TestCase
 
     public function test_restore_page_shows_link_to_parent_restore_if_parent_also_deleted()
     {
-        /** @var Book $book */
-        $book = Book::query()->whereHas('pages')->whereHas('chapters')->with(['pages', 'chapters'])->firstOrFail();
+        /** @var Recipe $book */
+        $book = Recipe::query()->whereHas('pages')->whereHas('chapters')->with(['pages', 'chapters'])->firstOrFail();
         $chapter = $book->chapters->first();
         /** @var Page $page */
         $page = $chapter->pages->first();

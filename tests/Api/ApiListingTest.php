@@ -2,7 +2,7 @@
 
 namespace Tests\Api;
 
-use DailyRecipe\Entities\Models\Book;
+use DailyRecipe\Entities\Models\Recipe;
 use Tests\TestCase;
 
 class ApiListingTest extends TestCase
@@ -14,7 +14,7 @@ class ApiListingTest extends TestCase
     public function test_count_parameter_limits_responses()
     {
         $this->actingAsApiEditor();
-        $bookCount = min(Book::visible()->count(), 100);
+        $bookCount = min(Recipe::visible()->count(), 100);
 
         $resp = $this->get($this->endpoint);
         $resp->assertJsonCount($bookCount, 'data');
@@ -26,7 +26,7 @@ class ApiListingTest extends TestCase
     public function test_offset_parameter()
     {
         $this->actingAsApiEditor();
-        $books = Book::visible()->orderBy('id')->take(3)->get();
+        $books = Recipe::visible()->orderBy('id')->take(3)->get();
 
         $resp = $this->get($this->endpoint . '?count=1');
         $resp->assertJsonMissing(['name' => $books[1]->name]);
@@ -40,10 +40,10 @@ class ApiListingTest extends TestCase
         $this->actingAsApiEditor();
 
         $sortChecks = [
-            '-id'   => Book::visible()->orderBy('id', 'desc')->first(),
-            '+name' => Book::visible()->orderBy('name', 'asc')->first(),
-            'name'  => Book::visible()->orderBy('name', 'asc')->first(),
-            '-name' => Book::visible()->orderBy('name', 'desc')->first(),
+            '-id'   => Recipe::visible()->orderBy('id', 'desc')->first(),
+            '+name' => Recipe::visible()->orderBy('name', 'asc')->first(),
+            'name'  => Recipe::visible()->orderBy('name', 'asc')->first(),
+            '-name' => Recipe::visible()->orderBy('name', 'desc')->first(),
         ];
 
         foreach ($sortChecks as $sortOption => $result) {
@@ -60,18 +60,18 @@ class ApiListingTest extends TestCase
     public function test_filter_parameter()
     {
         $this->actingAsApiEditor();
-        $book = Book::visible()->first();
+        $book = Recipe::visible()->first();
         $nameSubstr = substr($book->name, 0, 4);
         $encodedNameSubstr = rawurlencode($nameSubstr);
 
         $filterChecks = [
             // Test different types of filter
             "filter[id]={$book->id}"                  => 1,
-            "filter[id:ne]={$book->id}"               => Book::visible()->where('id', '!=', $book->id)->count(),
-            "filter[id:gt]={$book->id}"               => Book::visible()->where('id', '>', $book->id)->count(),
-            "filter[id:gte]={$book->id}"              => Book::visible()->where('id', '>=', $book->id)->count(),
-            "filter[id:lt]={$book->id}"               => Book::visible()->where('id', '<', $book->id)->count(),
-            "filter[name:like]={$encodedNameSubstr}%" => Book::visible()->where('name', 'like', $nameSubstr . '%')->count(),
+            "filter[id:ne]={$book->id}"               => Recipe::visible()->where('id', '!=', $book->id)->count(),
+            "filter[id:gt]={$book->id}"               => Recipe::visible()->where('id', '>', $book->id)->count(),
+            "filter[id:gte]={$book->id}"              => Recipe::visible()->where('id', '>=', $book->id)->count(),
+            "filter[id:lt]={$book->id}"               => Recipe::visible()->where('id', '<', $book->id)->count(),
+            "filter[name:like]={$encodedNameSubstr}%" => Recipe::visible()->where('name', 'like', $nameSubstr . '%')->count(),
 
             // Test mulitple filters 'and' together
             "filter[id]={$book->id}&filter[name]=random_non_existing_string" => 0,
@@ -86,7 +86,7 @@ class ApiListingTest extends TestCase
     public function test_total_on_results_shows_correctly()
     {
         $this->actingAsApiEditor();
-        $bookCount = Book::query()->count();
+        $bookCount = Recipe::query()->count();
         $resp = $this->get($this->endpoint . '?count=1');
         $resp->assertJson(['total' => $bookCount]);
     }
@@ -94,7 +94,7 @@ class ApiListingTest extends TestCase
     public function test_total_on_results_shows_correctly_when_offset_provided()
     {
         $this->actingAsApiEditor();
-        $bookCount = Book::query()->count();
+        $bookCount = Recipe::query()->count();
         $resp = $this->get($this->endpoint . '?count=1&offset=1');
         $resp->assertJson(['total' => $bookCount]);
     }

@@ -121,8 +121,8 @@ abstract class Entity extends Model implements Sluggable, Favouritable, Viewable
             return true;
         }
 
-        if (($entity instanceof BookChild) && $this instanceof Book) {
-            return $entity->book_id === $this->id;
+        if (($entity instanceof RecipeChild) && $this instanceof Recipe) {
+            return $entity->recipe_id === $this->id;
         }
 
         if ($entity instanceof Page && $this instanceof Chapter) {
@@ -268,10 +268,10 @@ abstract class Entity extends Model implements Sluggable, Favouritable, Viewable
     public function getParent(): ?self
     {
         if ($this instanceof Page) {
-            return $this->chapter_id ? $this->chapter()->withTrashed()->first() : $this->book()->withTrashed()->first();
+            return $this->chapter_id ? $this->chapter()->withTrashed()->first() : $this->recipe()->withTrashed()->first();
         }
         if ($this instanceof Chapter) {
-            return $this->book()->withTrashed()->first();
+            return $this->recipe()->withTrashed()->first();
         }
 
         return null;

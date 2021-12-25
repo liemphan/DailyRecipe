@@ -103,7 +103,7 @@ class ImageRepo
                 if ($filterType === 'page') {
                     $query->where('uploaded_to', '=', $contextPage->id);
                 } elseif ($filterType === 'book') {
-                    $validPageIds = $contextPage->book->pages()
+                    $validPageIds = $contextPage->recipe->pages()
                         ->scopes('visible')
                         ->pluck('id')
                         ->toArray();

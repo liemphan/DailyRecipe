@@ -4,7 +4,7 @@ namespace DailyRecipe\Http\Controllers;
 
 use Activity;
 use DailyRecipe\Actions\View;
-use DailyRecipe\Entities\Models\Book;
+use DailyRecipe\Entities\Models\Recipe;
 use DailyRecipe\Entities\Repos\RecipemenuRepo;
 use DailyRecipe\Entities\Tools\PermissionsUpdater;
 use DailyRecipe\Entities\Tools\MenuContext;
@@ -68,7 +68,7 @@ class RecipemenuController extends Controller
     public function create()
     {
         $this->checkPermission('recipemenu-create-all');
-        $books = Book::hasPermission('update')->get();
+        $books = Recipe::hasPermission('update')->get();
         $this->setPageTitle(trans('entities.menus_create'));
 
         return view('menus.create', ['books' => $books]);
@@ -139,7 +139,7 @@ class RecipemenuController extends Controller
         $this->checkOwnablePermission('recipemenu-update', $menu);
 
         $menuBookIds = $menu->books()->get(['id'])->pluck('id');
-        $books = Book::hasPermission('update')->whereNotIn('id', $menuBookIds)->get();
+        $books = Recipe::hasPermission('update')->whereNotIn('id', $menuBookIds)->get();
 
         $this->setPageTitle(trans('entities.menus_edit_named', ['name' => $menu->getShortName()]));
 

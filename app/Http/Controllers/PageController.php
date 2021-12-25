@@ -91,7 +91,7 @@ class PageController extends Controller
 
         return view('pages.edit', [
             'page'          => $draft,
-            'book'          => $draft->book,
+            'book'          => $draft->recipe,
             'isDraft'       => true,
             'draftsEnabled' => $draftsEnabled,
             'templates'     => $templates,
@@ -141,7 +141,7 @@ class PageController extends Controller
 
         $pageContent = (new PageContent($page));
         $page->html = $pageContent->render();
-        $sidebarTree = (new BookContents($page->book))->getTree();
+        $sidebarTree = (new BookContents($page->recipe))->getTree();
         $pageNav = $pageContent->getNavigation($page->html);
 
         // Check if page comments are enabled
@@ -157,7 +157,7 @@ class PageController extends Controller
 
         return view('pages.show', [
             'page'            => $page,
-            'book'            => $page->book,
+            'book'            => $page->recipe,
             'current'         => $page,
             'sidebarTree'     => $sidebarTree,
             'commentsEnabled' => $commentsEnabled,
@@ -218,7 +218,7 @@ class PageController extends Controller
 
         return view('pages.edit', [
             'page'          => $page,
-            'book'          => $page->book,
+            'book'          => $page->recipe,
             'current'       => $page,
             'draftsEnabled' => $draftsEnabled,
             'templates'     => $templates,
@@ -293,7 +293,7 @@ class PageController extends Controller
         $this->setPageTitle(trans('entities.pages_delete_named', ['pageName' => $page->getShortName()]));
 
         return view('pages.delete', [
-            'book'    => $page->book,
+            'book'    => $page->recipe,
             'page'    => $page,
             'current' => $page,
         ]);
@@ -311,7 +311,7 @@ class PageController extends Controller
         $this->setPageTitle(trans('entities.pages_delete_draft_named', ['pageName' => $page->getShortName()]));
 
         return view('pages.delete', [
-            'book'    => $page->book,
+            'book'    => $page->recipe,
             'page'    => $page,
             'current' => $page,
         ]);
@@ -343,7 +343,7 @@ class PageController extends Controller
     public function destroyDraft(string $bookSlug, int $pageId)
     {
         $page = $this->pageRepo->getById($pageId);
-        $book = $page->book;
+        $book = $page->recipe;
         $chapter = $page->chapter;
         $this->checkOwnablePermission('page-update', $page);
 
@@ -385,7 +385,7 @@ class PageController extends Controller
         $this->checkOwnablePermission('page-delete', $page);
 
         return view('pages.move', [
-            'book' => $page->book,
+            'book' => $page->recipe,
             'page' => $page,
         ]);
     }
@@ -436,7 +436,7 @@ class PageController extends Controller
         session()->flashInput(['name' => $page->name]);
 
         return view('pages.copy', [
-            'book' => $page->book,
+            'book' => $page->recipe,
             'page' => $page,
         ]);
     }

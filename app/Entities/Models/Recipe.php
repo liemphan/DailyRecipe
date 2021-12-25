@@ -11,7 +11,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Support\Collection;
 
 /**
- * Class Book.
+ * Class Recipe.
  *
  * @property string                                   $description
  * @property int                                      $image_id
@@ -20,7 +20,7 @@ use Illuminate\Support\Collection;
  * @property \Illuminate\Database\Eloquent\Collection $pages
  * @property \Illuminate\Database\Eloquent\Collection $directPages
  */
-class Book extends Entity implements HasCoverImage
+class Recipe extends Entity implements HasCoverImage
 {
     use HasFactory;
 

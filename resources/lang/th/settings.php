@@ -45,7 +45,7 @@ return [
     'content_colors' => 'Content Colors',
     'content_colors_desc' => 'Sets colors for all elements in the page organisation hierarchy. Choosing colors with a similar brightness to the default colors is recommended for readability.',
     'recipemenu_color' => 'Menu Color',
-    'book_color' => 'Book Color',
+    'book_color' => 'Recipe Color',
     'chapter_color' => 'Chapter Color',
     'page_color' => 'Page Color',
     'page_draft_color' => 'Page Draft Color',

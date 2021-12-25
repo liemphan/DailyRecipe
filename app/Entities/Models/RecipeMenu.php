@@ -27,7 +27,7 @@ class Recipemenu extends Entity implements HasCoverImage
      */
     public function books()
     {
-        return $this->belongsToMany(Book::class, 'recipemenus_books', 'recipemenu_id', 'book_id')
+        return $this->belongsToMany(Recipe::class, 'recipemenus_books', 'recipemenu_id', 'book_id')
             ->withPivot('order')
             ->orderBy('order', 'asc');
     }
@@ -92,11 +92,11 @@ class Recipemenu extends Entity implements HasCoverImage
     /**
      * Check if this menu contains the given book.
      *
-     * @param Book $book
+     * @param Recipe $book
      *
      * @return bool
      */
-    public function contains(Book $book): bool
+    public function contains(Recipe $book): bool
     {
         return $this->books()->where('id', '=', $book->id)->count() > 0;
     }
@@ -104,9 +104,9 @@ class Recipemenu extends Entity implements HasCoverImage
     /**
      * Add a book to the end of this menu.
      *
-     * @param Book $book
+     * @param Recipe $book
      */
-    public function appendBook(Book $book)
+    public function appendBook(Recipe $book)
     {
         if ($this->contains($book)) {
             return;

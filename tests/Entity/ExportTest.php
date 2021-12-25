@@ -3,7 +3,7 @@
 namespace Tests\Entity;
 
 use DailyRecipe\Auth\Role;
-use DailyRecipe\Entities\Models\Book;
+use DailyRecipe\Entities\Models\Recipe;
 use DailyRecipe\Entities\Models\Chapter;
 use DailyRecipe\Entities\Models\Page;
 use DailyRecipe\Entities\Tools\PdfGenerator;
@@ -48,7 +48,7 @@ class ExportTest extends TestCase
     public function test_book_text_export()
     {
         $page = Page::query()->first();
-        $book = $page->book;
+        $book = $page->recipe;
         $this->asEditor();
 
         $resp = $this->get($book->getUrl('/export/plaintext'));
@@ -61,7 +61,7 @@ class ExportTest extends TestCase
     public function test_book_pdf_export()
     {
         $page = Page::query()->first();
-        $book = $page->book;
+        $book = $page->recipe;
         $this->asEditor();
 
         $resp = $this->get($book->getUrl('/export/pdf'));
@@ -72,7 +72,7 @@ class ExportTest extends TestCase
     public function test_book_html_export()
     {
         $page = Page::query()->first();
-        $book = $page->book;
+        $book = $page->recipe;
         $this->asEditor();
 
         $resp = $this->get($book->getUrl('/export/html'));
@@ -89,7 +89,7 @@ class ExportTest extends TestCase
         $chapter->description = $chapterDesc;
         $chapter->save();
 
-        $book = $chapter->book;
+        $book = $chapter->recipe;
         $this->asEditor();
 
         $resp = $this->get($book->getUrl('/export/html'));
@@ -261,7 +261,7 @@ class ExportTest extends TestCase
     public function test_exports_removes_scripts_from_custom_head()
     {
         $entities = [
-            Page::query()->first(), Chapter::query()->first(), Book::query()->first(),
+            Page::query()->first(), Chapter::query()->first(), Recipe::query()->first(),
         ];
         setting()->put('app-custom-head', '<script>window.donkey = "cat";</script><style>.my-test-class { color: red; }</style>');
 
@@ -379,7 +379,7 @@ class ExportTest extends TestCase
 
     public function test_book_markdown_export()
     {
-        $book = Book::query()->whereHas('pages')->whereHas('chapters')->first();
+        $book = Recipe::query()->whereHas('pages')->whereHas('chapters')->first();
         $chapter = $book->chapters()->first();
         $page = $chapter->pages()->first();
         $resp = $this->asEditor()->get($book->getUrl('/export/markdown'));
@@ -391,7 +391,7 @@ class ExportTest extends TestCase
 
     public function test_export_option_only_visible_and_accessible_with_permission()
     {
-        $book = Book::query()->whereHas('pages')->whereHas('chapters')->first();
+        $book = Recipe::query()->whereHas('pages')->whereHas('chapters')->first();
         $chapter = $book->chapters()->first();
         $page = $chapter->pages()->first();
         $entities = [$book, $chapter, $page];

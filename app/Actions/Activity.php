@@ -54,7 +54,7 @@ class Activity extends Model
     public function isForEntity(): bool
     {
         return Str::startsWith($this->type, [
-            'page_', 'chapter_', 'book_', 'recipemenu_',
+            'page_', 'chapter_', 'recipe_', 'recipemenu_',
         ]);
     }
 

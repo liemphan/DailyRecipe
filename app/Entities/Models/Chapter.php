@@ -12,7 +12,7 @@ use Illuminate\Support\Collection;
  * @property Collection<Page> $pages
  * @property string           $description
  */
-class Chapter extends BookChild
+class Chapter extends RecipeChild
 {
     use HasFactory;
 
@@ -38,7 +38,7 @@ class Chapter extends BookChild
     {
         $parts = [
             'books',
-            urlencode($this->book_slug ?? $this->book->slug),
+            urlencode($this->recipe_slug ?? $this->recipe->slug),
             'chapter',
             urlencode($this->slug),
             trim($path, '/'),

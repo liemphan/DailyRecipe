@@ -2,7 +2,7 @@
 
 namespace Tests\Api;
 
-use DailyRecipe\Entities\Models\Book;
+use DailyRecipe\Entities\Models\Recipe;
 use DailyRecipe\Entities\Models\Recipemenu;
 use Tests\TestCase;
 
@@ -30,7 +30,7 @@ class MenusApiTest extends TestCase
     public function test_create_endpoint()
     {
         $this->actingAsApiEditor();
-        $books = Book::query()->take(2)->get();
+        $books = Recipe::query()->take(2)->get();
 
         $details = [
             'name'        => 'My API menu',

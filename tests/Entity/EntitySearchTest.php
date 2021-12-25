@@ -3,7 +3,7 @@
 namespace Tests\Entity;
 
 use DailyRecipe\Actions\Tag;
-use DailyRecipe\Entities\Models\Book;
+use DailyRecipe\Entities\Models\Recipe;
 use DailyRecipe\Entities\Models\Recipemenu;
 use DailyRecipe\Entities\Models\Chapter;
 use DailyRecipe\Entities\Models\Page;
@@ -13,7 +13,7 @@ class EntitySearchTest extends TestCase
 {
     public function test_page_search()
     {
-        $book = Book::all()->first();
+        $book = Recipe::all()->first();
         $page = $book->pages->first();
 
         $search = $this->asEditor()->get('/search?term=' . urlencode($page->name));
@@ -59,7 +59,7 @@ class EntitySearchTest extends TestCase
 
     public function test_book_search()
     {
-        $book = Book::first();
+        $book = Recipe::first();
         $page = $book->pages->last();
         $chapter = $book->chapters->last();
 
@@ -248,7 +248,7 @@ class EntitySearchTest extends TestCase
     public function test_sibling_search_for_pages_without_chapter()
     {
         $page = Page::query()->where('chapter_id', '=', 0)->firstOrFail();
-        $bookChildren = $page->book->getDirectChildren();
+        $bookChildren = $page->recipe->getDirectChildren();
         $this->assertGreaterThan(2, count($bookChildren), 'Ensure we\'re testing with at least 1 sibling');
 
         $search = $this->actingAs($this->getViewer())->get("/search/entity/siblings?entity_id={$page->id}&entity_type=page");
@@ -257,13 +257,13 @@ class EntitySearchTest extends TestCase
             $search->assertSee($child->name);
         }
 
-        $search->assertDontSee($page->book->name);
+        $search->assertDontSee($page->recipe->name);
     }
 
     public function test_sibling_search_for_chapters()
     {
         $chapter = Chapter::query()->firstOrFail();
-        $bookChildren = $chapter->book->getDirectChildren();
+        $bookChildren = $chapter->recipe->getDirectChildren();
         $this->assertGreaterThan(2, count($bookChildren), 'Ensure we\'re testing with at least 1 sibling');
 
         $search = $this->actingAs($this->getViewer())->get("/search/entity/siblings?entity_id={$chapter->id}&entity_type=chapter");
@@ -272,12 +272,12 @@ class EntitySearchTest extends TestCase
             $search->assertSee($child->name);
         }
 
-        $search->assertDontSee($chapter->book->name);
+        $search->assertDontSee($chapter->recipe->name);
     }
 
     public function test_sibling_search_for_books()
     {
-        $books = Book::query()->take(10)->get();
+        $books = Recipe::query()->take(10)->get();
         $book = $books->first();
         $this->assertGreaterThan(2, count($books), 'Ensure we\'re testing with at least 1 sibling');
 

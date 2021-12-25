@@ -3,7 +3,7 @@
 namespace DailyRecipe\Entities\Repos;
 
 use DailyRecipe\Actions\ActivityType;
-use DailyRecipe\Entities\Models\Book;
+use DailyRecipe\Entities\Models\Recipe;
 use DailyRecipe\Entities\Models\Chapter;
 use DailyRecipe\Entities\Tools\BookContents;
 use DailyRecipe\Entities\Tools\TrashCan;
@@ -43,10 +43,10 @@ class ChapterRepo
     /**
      * Create a new chapter in the system.
      */
-    public function create(array $input, Book $parentBook): Chapter
+    public function create(array $input, Recipe $parentBook): Chapter
     {
         $chapter = new Chapter();
-        $chapter->book_id = $parentBook->id;
+        $chapter->recipe_id = $parentBook->id;
         $chapter->priority = (new BookContents($parentBook))->getLastPriority() + 1;
         $this->baseRepo->create($chapter, $input);
         Activity::addForEntity($chapter, ActivityType::CHAPTER_CREATE);
@@ -85,7 +85,7 @@ class ChapterRepo
      *
      * @throws MoveOperationException
      */
-    public function move(Chapter $chapter, string $parentIdentifier): Book
+    public function move(Chapter $chapter, string $parentIdentifier): Recipe
     {
         $stringExploded = explode(':', $parentIdentifier);
         $entityType = $stringExploded[0];
@@ -95,13 +95,13 @@ class ChapterRepo
             throw new MoveOperationException('Chapters can only be moved into books');
         }
 
-        /** @var Book $parent */
-        $parent = Book::visible()->where('id', '=', $entityId)->first();
+        /** @var Recipe $parent */
+        $parent = Recipe::visible()->where('id', '=', $entityId)->first();
         if ($parent === null) {
-            throw new MoveOperationException('Book to move chapter into not found');
+            throw new MoveOperationException('Recipe to move chapter into not found');
         }
 
-        $chapter->changeBook($parent->id);
+        $chapter->changeRecipe($parent->id);
         $chapter->rebuildPermissions();
         Activity::addForEntity($chapter, ActivityType::CHAPTER_MOVE);
 

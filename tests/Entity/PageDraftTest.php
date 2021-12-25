@@ -2,7 +2,7 @@
 
 namespace Tests\Entity;
 
-use DailyRecipe\Entities\Models\Book;
+use DailyRecipe\Entities\Models\Recipe;
 use DailyRecipe\Entities\Models\Page;
 use DailyRecipe\Entities\Models\PageRevision;
 use DailyRecipe\Entities\Repos\PageRepo;
@@ -140,8 +140,8 @@ class PageDraftTest extends TestCase
 
     public function test_draft_pages_show_on_homepage()
     {
-        /** @var Book $book */
-        $book = Book::query()->first();
+        /** @var Recipe $book */
+        $book = Recipe::query()->first();
         $this->asAdmin()->get('/')
             ->assertElementNotContains('#recent-drafts', 'New Page');
 
@@ -152,8 +152,8 @@ class PageDraftTest extends TestCase
 
     public function test_draft_pages_not_visible_by_others()
     {
-        /** @var Book $book */
-        $book = Book::query()->first();
+        /** @var Recipe $book */
+        $book = Recipe::query()->first();
         $chapter = $book->chapters->first();
         $newUser = $this->getEditor();
 
@@ -181,8 +181,8 @@ class PageDraftTest extends TestCase
 
     public function test_updating_page_draft_with_markdown_retains_markdown_content()
     {
-        /** @var Book $book */
-        $book = Book::query()->first();
+        /** @var Recipe $book */
+        $book = Recipe::query()->first();
         $this->asEditor()->get($book->getUrl('/create-page'));
         /** @var Page $draft */
         $draft = Page::query()->where('draft', '=', true)->where('book_id', '=', $book->id)->firstOrFail();

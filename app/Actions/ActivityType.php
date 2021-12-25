@@ -15,10 +15,10 @@ class ActivityType
     const CHAPTER_DELETE = 'chapter_delete';
     const CHAPTER_MOVE = 'chapter_move';
 
-    const BOOK_CREATE = 'recipe_create';
-    const BOOK_UPDATE = 'recipe_update';
-    const BOOK_DELETE = 'recipe_delete';
-    const BOOK_SORT = 'recipe_sort';
+    const RECIPE_CREATE = 'recipe_create';
+    const RECIPE_UPDATE = 'recipe_update';
+    const RECIPE_DELETE = 'recipe_delete';
+    const RECIPE_SORT = 'recipe_sort';
 
     const RECIPEMENU_CREATE = 'menu_create';
     const RECIPEMENU_UPDATE = 'menu_update';

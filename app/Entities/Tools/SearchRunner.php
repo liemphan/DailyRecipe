@@ -5,7 +5,7 @@ namespace DailyRecipe\Entities\Tools;
 use DailyRecipe\Auth\Permissions\PermissionService;
 use DailyRecipe\Auth\User;
 use DailyRecipe\Entities\EntityProvider;
-use DailyRecipe\Entities\Models\BookChild;
+use DailyRecipe\Entities\Models\RecipeChild;
 use DailyRecipe\Entities\Models\Entity;
 use DailyRecipe\Entities\Models\Page;
 use DailyRecipe\Entities\Models\SearchTerm;
@@ -143,7 +143,7 @@ class SearchRunner
     {
         $relations = ['tags'];
 
-        if ($entityModelInstance instanceof BookChild) {
+        if ($entityModelInstance instanceof RecipeChild) {
             $relations['book'] = function (BelongsTo $query) {
                 $query->scopes('visible');
             };

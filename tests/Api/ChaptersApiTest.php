@@ -2,7 +2,7 @@
 
 namespace Tests\Api;
 
-use DailyRecipe\Entities\Models\Book;
+use DailyRecipe\Entities\Models\Recipe;
 use DailyRecipe\Entities\Models\Chapter;
 use Tests\TestCase;
 
@@ -23,7 +23,7 @@ class ChaptersApiTest extends TestCase
                 'id'       => $firstChapter->id,
                 'name'     => $firstChapter->name,
                 'slug'     => $firstChapter->slug,
-                'book_id'  => $firstChapter->book->id,
+                'book_id'  => $firstChapter->recipe->id,
                 'priority' => $firstChapter->priority,
             ],
         ]]);
@@ -32,7 +32,7 @@ class ChaptersApiTest extends TestCase
     public function test_create_endpoint()
     {
         $this->actingAsApiEditor();
-        $book = Book::query()->first();
+        $book = Recipe::query()->first();
         $details = [
             'name'        => 'My API chapter',
             'description' => 'A chapter created via the API',
@@ -62,7 +62,7 @@ class ChaptersApiTest extends TestCase
     public function test_chapter_name_needed_to_create()
     {
         $this->actingAsApiEditor();
-        $book = Book::query()->first();
+        $book = Recipe::query()->first();
         $details = [
             'book_id'     => $book->id,
             'description' => 'A chapter created via the API',
@@ -104,7 +104,7 @@ class ChaptersApiTest extends TestCase
             'created_by' => [
                 'name' => $chapter->createdBy->name,
             ],
-            'book_id'    => $chapter->book_id,
+            'book_id'    => $chapter->recipe_id,
             'updated_by' => [
                 'name' => $chapter->createdBy->name,
             ],
@@ -142,7 +142,7 @@ class ChaptersApiTest extends TestCase
 
         $resp->assertStatus(200);
         $resp->assertJson(array_merge($details, [
-            'id' => $chapter->id, 'slug' => $chapter->slug, 'book_id' => $chapter->book_id,
+            'id' => $chapter->id, 'slug' => $chapter->slug, 'book_id' => $chapter->recipe_id,
         ]));
         $this->assertActivityExists('chapter_update', $chapter);
     }
