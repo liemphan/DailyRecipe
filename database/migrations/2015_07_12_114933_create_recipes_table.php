@@ -3,7 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 
-class CreateBooksTable extends Migration
+class CreateRecipesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,7 +12,7 @@ class CreateBooksTable extends Migration
      */
     public function up()
     {
-        Schema::create('books', function (Blueprint $table) {
+        Schema::create('recipes', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
             $table->string('slug')->indexed();
@@ -28,6 +28,6 @@ class CreateBooksTable extends Migration
      */
     public function down()
     {
-        Schema::drop('books');
+        Schema::drop('recipes');
     }
 }

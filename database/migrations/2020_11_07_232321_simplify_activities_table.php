@@ -17,7 +17,7 @@ class SimplifyActivitiesTable extends Migration
         Schema::table('activities', function (Blueprint $table) {
             $table->renameColumn('key', 'type');
             $table->renameColumn('extra', 'detail');
-            $table->dropColumn('book_id');
+            $table->dropColumn('recipe_id');
             $table->integer('entity_id')->nullable()->change();
             $table->string('entity_type', 191)->nullable()->change();
         });
@@ -47,12 +47,12 @@ class SimplifyActivitiesTable extends Migration
         Schema::table('activities', function (Blueprint $table) {
             $table->renameColumn('type', 'key');
             $table->renameColumn('detail', 'extra');
-            $table->integer('book_id');
+            $table->integer('recipe_id');
 
             $table->integer('entity_id')->change();
             $table->string('entity_type', 191)->change();
 
-            $table->index('book_id');
+            $table->index('recipe_id');
         });
     }
 }

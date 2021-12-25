@@ -5,7 +5,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="274eeb44-2be1-4c79-980b-c542185305a9" name="Changes" comment="update bookstack to dailyrecipe">
-      <change beforePath="$PROJECT_DIR$/resources/views/books/parts/list.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/books/parts/list.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.env" beforeDir="false" afterPath="$PROJECT_DIR$/.env" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2015_07_12_114933_create_books_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2015_07_12_114933_create_recipes_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2015_08_08_200447_add_users_to_entities.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2015_08_08_200447_add_users_to_entities.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2015_08_29_105422_add_roles_and_permissions.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2015_08_29_105422_add_roles_and_permissions.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2015_08_31_175240_add_search_indexes.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2015_08_31_175240_add_search_indexes.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2015_11_26_221857_add_entity_indexes.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2015_11_26_221857_add_entity_indexes.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2015_12_05_145049_fulltext_weighting.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2015_12_05_145049_fulltext_weighting.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2016_02_28_084200_add_entity_access_controls.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2016_02_28_084200_add_entity_access_controls.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2017_03_19_091553_create_search_index_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2017_03_19_091553_create_search_index_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2017_08_29_102650_add_cover_image_display.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2017_08_29_102650_add_cover_image_display.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -149,7 +159,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../test" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
@@ -214,6 +224,7 @@
       <workItem from="1640268551232" duration="2257000" />
       <workItem from="1640317445675" duration="674000" />
       <workItem from="1640434224263" duration="254000" />
+      <workItem from="1640435445829" duration="1006000" />
     </task>
     <task id="LOCAL-00001" summary="add project">
       <created>1639398042116</created>
@@ -275,7 +286,6 @@
         <entry key="c31dfc9d-d606-40da-b389-3a0a8c94a909" value="TOOL_WINDOW" />
       </map>
     </option>
-    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="add project" />

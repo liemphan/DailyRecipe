@@ -30,7 +30,7 @@ class AddSearchIndexes extends Migration
     {
         $sm = Schema::getConnection()->getDoctrineSchemaManager();
         $pages = $sm->listTableDetails('pages');
-        $books = $sm->listTableDetails('books');
+        $recipes = $sm->listTableDetails('recipes');
         $chapters = $sm->listTableDetails('chapters');
 
         if ($pages->hasIndex('search')) {
@@ -39,8 +39,8 @@ class AddSearchIndexes extends Migration
             });
         }
 
-        if ($books->hasIndex('search')) {
-            Schema::table('books', function (Blueprint $table) {
+        if ($recipes->hasIndex('search')) {
+            Schema::table('recipes', function (Blueprint $table) {
                 $table->dropIndex('search');
             });
         }

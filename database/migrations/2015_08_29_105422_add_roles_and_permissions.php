@@ -76,14 +76,14 @@ class AddRolesAndPermissions extends Migration
         $editorId = DB::table('roles')->insertGetId([
             'name'         => 'editor',
             'display_name' => 'Editor',
-            'description'  => 'User can edit Books, Chapters & Pages',
+            'description'  => 'User can edit Recipes, Chapters & Pages',
             'created_at'   => \Carbon\Carbon::now()->toDateTimeString(),
             'updated_at'   => \Carbon\Carbon::now()->toDateTimeString(),
         ]);
         $viewerId = DB::table('roles')->insertGetId([
             'name'         => 'viewer',
             'display_name' => 'Viewer',
-            'description'  => 'User can view books & their content behind authentication',
+            'description'  => 'User can view recipes & their content behind authentication',
             'created_at'   => \Carbon\Carbon::now()->toDateTimeString(),
             'updated_at'   => \Carbon\Carbon::now()->toDateTimeString(),
         ]);

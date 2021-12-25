@@ -16,7 +16,7 @@ class CreateActivitiesTable extends Migration
             $table->increments('id');
             $table->string('key');
             $table->text('extra');
-            $table->integer('book_id')->indexed();
+            $table->integer('recipe_id')->indexed();
             $table->integer('user_id');
             $table->integer('entity_id');
             $table->string('entity_type');

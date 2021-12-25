@@ -23,14 +23,14 @@ class CreateRecipemenusTable extends Migration
             $prefix = DB::getTablePrefix();
             DB::statement("ALTER TABLE {$prefix}pages ENGINE = InnoDB;");
             DB::statement("ALTER TABLE {$prefix}chapters ENGINE = InnoDB;");
-            DB::statement("ALTER TABLE {$prefix}books ENGINE = InnoDB;");
+            DB::statement("ALTER TABLE {$prefix}recipes ENGINE = InnoDB;");
         } catch (Exception $exception) {
         }
 
         // Here we have table drops before the creations due to upgrade issues
-        // people were having due to the recipemenus_books table creation failing.
-        if (Schema::hasTable('recipemenus_books')) {
-            Schema::drop('recipemenus_books');
+        // people were having due to the recipemenus_recipes table creation failing.
+        if (Schema::hasTable('recipemenus_recipes')) {
+            Schema::drop('recipemenus_recipes');
         }
 
         if (Schema::hasTable('recipemenus')) {
@@ -54,16 +54,16 @@ class CreateRecipemenusTable extends Migration
             $table->index('restricted');
         });
 
-        Schema::create('recipemenus_books', function (Blueprint $table) {
+        Schema::create('recipemenus_recipes', function (Blueprint $table) {
             $table->integer('recipemenu_id')->unsigned();
-            $table->integer('book_id')->unsigned();
+            $table->integer('recipe_id')->unsigned();
             $table->integer('order')->unsigned();
 
-            $table->primary(['recipemenu_id', 'book_id']);
+            $table->primary(['recipemenu_id', 'recipe_id']);
 
             $table->foreign('recipemenu_id')->references('id')->on('recipemenus')
                 ->onUpdate('cascade')->onDelete('cascade');
-            $table->foreign('book_id')->references('id')->on('books')
+            $table->foreign('recipe_id')->references('id')->on('recipes')
                 ->onUpdate('cascade')->onDelete('cascade');
         });
 
@@ -71,7 +71,7 @@ class CreateRecipemenusTable extends Migration
         // Needed to to issues upon upgrade.
         DB::table('role_permissions')->where('name', 'like', 'recipemenu-%')->delete();
 
-        // Copy existing role permissions from Books
+        // Copy existing role permissions from Recipes
         $ops = ['View All', 'View Own', 'Create All', 'Create Own', 'Update All', 'Update Own', 'Delete All', 'Delete Own'];
         foreach ($ops as $op) {
             $dbOpName = strtolower(str_replace(' ', '-', $op));
@@ -117,7 +117,7 @@ class CreateRecipemenusTable extends Migration
         DB::table('role_permissions')->whereIn('id', $permissionIds)->delete();
 
         // Drop menus table
-        Schema::dropIfExists('recipemenus_books');
+        Schema::dropIfExists('recipemenus_recipes');
         Schema::dropIfExists('recipemenus');
 
         // Drop related polymorphic items

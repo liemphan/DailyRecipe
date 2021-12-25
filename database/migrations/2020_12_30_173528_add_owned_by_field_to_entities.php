@@ -14,7 +14,7 @@ class AddOwnedByFieldToEntities extends Migration
      */
     public function up()
     {
-        $tables = ['pages', 'books', 'chapters', 'recipemenus'];
+        $tables = ['pages', 'recipes', 'chapters', 'recipemenus'];
         foreach ($tables as $table) {
             Schema::table($table, function (Blueprint $table) {
                 $table->integer('owned_by')->unsigned()->index();
@@ -35,7 +35,7 @@ class AddOwnedByFieldToEntities extends Migration
      */
     public function down()
     {
-        $tables = ['pages', 'books', 'chapters', 'recipemenus'];
+        $tables = ['pages', 'recipes', 'chapters', 'recipemenus'];
         foreach ($tables as $table) {
             Schema::table($table, function (Blueprint $table) {
                 $table->dropColumn('owned_by');
