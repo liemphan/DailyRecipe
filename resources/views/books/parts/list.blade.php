@@ -29,7 +29,7 @@
             {!! $books->render() !!}
         </div>
     @else
-        <p class="text-muted">{{ trans('entities.recipes') }}</p>
+        <p class="text-muted">{{ trans('entities.recipes_empty') }}</p>
         @if(userCan('books-create-all'))
             <a href="{{ url("/create-book") }}" class="text-pos">@icon('edit'){{ trans('entities.create_now') }}</a>
         @endif
