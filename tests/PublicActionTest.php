@@ -18,7 +18,7 @@ class PublicActionTest extends TestCase
     {
         $this->setSettings(['app-public' => 'false']);
         $book = Recipe::query()->first();
-        $this->get('/books')->assertRedirect('/login');
+        $this->get('/recipes')->assertRedirect('/login');
         $this->get($book->getUrl())->assertRedirect('/login');
 
         $page = Page::query()->first();
@@ -50,8 +50,8 @@ class PublicActionTest extends TestCase
         $books = Recipe::query()->orderBy('name', 'asc')->take(10)->get();
         $bookToVisit = $books[1];
 
-        // Check books index page is showing
-        $resp = $this->get('/books');
+        // Check recipes index page is showing
+        $resp = $this->get('/recipes');
         $resp->assertStatus(200);
         $resp->assertSee($books[0]->name);
 

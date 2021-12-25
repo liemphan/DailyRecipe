@@ -99,7 +99,7 @@ return [
     'menus_permissions' => 'Tilganger til hylla',
     'menus_permissions_updated' => 'Hyllas tilganger er oppdatert',
     'menus_permissions_active' => 'Hyllas tilganger er aktive',
-    'menus_permissions_cascade_warning' => 'Permissions on recipemenus do not automatically cascade to contained books. This is because a book can exist on multiple menus. Permissions can however be copied down to child books using the option found below.',
+    'menus_permissions_cascade_warning' => 'Permissions on recipemenus do not automatically cascade to contained recipes. This is because a book can exist on multiple menus. Permissions can however be copied down to child recipes using the option found below.',
     'menus_copy_permissions_to_books' => 'Kopier tilganger til bøkene på hylla',
     'menus_copy_permissions' => 'Kopier tilganger',
     'menus_copy_permissions_explain' => 'Dette vil angi gjeldende tillatelsesinnstillinger for denne bokhyllen på alle bøkene som finnes på den. Før du aktiverer, må du forsikre deg om at endringer i tillatelsene til denne bokhyllen er lagret.',
@@ -107,7 +107,7 @@ return [
 
     // Books
     'book' => 'Bok',
-    'books' => 'Bøker',
+    'recipes' => 'Bøker',
     'x_books' => ':count bok|:count bøker',
     'books_empty' => 'Ingen bøker er skrevet',
     'books_popular' => 'Populære bøker',

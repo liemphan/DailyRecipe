@@ -84,7 +84,7 @@ class RecipeMenuTest extends TestCase
             'description' => 'Test book description ' . Str::random(10),
         ];
         $resp = $this->asEditor()->post('/menus', array_merge($menuInfo, [
-            'books' => $booksToInclude->implode('id', ','),
+            'recipes' => $booksToInclude->implode('id', ','),
             'tags'  => [
                 [
                     'name'  => 'Test Category',
@@ -167,7 +167,7 @@ class RecipeMenuTest extends TestCase
 
     public function test_menu_view_sort_takes_action()
     {
-        $menu = Recipemenu::query()->whereHas('books')->with('books')->first();
+        $menu = Recipemenu::query()->whereHas('recipes')->with('recipes')->first();
         $books = Recipe::query()->take(3)->get(['id', 'name']);
         $books[0]->fill(['name' => 'bsfsdfsdfsd'])->save();
         $books[1]->fill(['name' => 'adsfsdfsdfsd'])->save();
@@ -175,7 +175,7 @@ class RecipeMenuTest extends TestCase
 
         // Set book ordering
         $this->asAdmin()->put($menu->getUrl(), [
-            'books' => $books->implode('id', ','),
+            'recipes' => $books->implode('id', ','),
             'tags'  => [], 'description' => 'abc', 'name' => 'abc',
         ]);
         $this->assertEquals(3, $menu->books()->count());
@@ -211,7 +211,7 @@ class RecipeMenuTest extends TestCase
         ];
 
         $resp = $this->asEditor()->put($menu->getUrl(), array_merge($menuInfo, [
-            'books' => $booksToInclude->implode('id', ','),
+            'recipes' => $booksToInclude->implode('id', ','),
             'tags'  => [
                 [
                     'name'  => 'Test Category',
@@ -264,7 +264,7 @@ class RecipeMenuTest extends TestCase
 
     public function test_menu_delete()
     {
-        $menu = Recipemenu::query()->whereHas('books')->first();
+        $menu = Recipemenu::query()->whereHas('recipes')->first();
         $this->assertNull($menu->deleted_at);
         $bookCount = $menu->books()->count();
 
@@ -312,7 +312,7 @@ class RecipeMenuTest extends TestCase
     {
         $menu = Recipemenu::first();
         $resp = $this->asAdmin()->get($menu->getUrl('/permissions'));
-        $resp->assertSeeText('Permissions on recipemenus do not automatically cascade to contained books.');
+        $resp->assertSeeText('Permissions on recipemenus do not automatically cascade to contained recipes.');
     }
 
     public function test_recipemenus_show_in_breadcrumbs_if_in_context()
@@ -335,7 +335,7 @@ class RecipeMenuTest extends TestCase
         $pageVisit->assertElementContains('.breadcrumbs', 'Menus');
         $pageVisit->assertElementContains('.breadcrumbs', $menu->getShortName());
 
-        $this->get('/books');
+        $this->get('/recipes');
         $pageVisit = $this->get($menuPage->getUrl());
         $pageVisit->assertElementNotContains('.breadcrumbs', 'Menus');
         $pageVisit->assertElementNotContains('.breadcrumbs', $menu->getShortName());

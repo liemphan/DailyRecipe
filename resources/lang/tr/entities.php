@@ -99,7 +99,7 @@ return [
     'menus_permissions' => 'Kitaplık İzinleri',
     'menus_permissions_updated' => 'Kitaplık İzinleri Güncellendi',
     'menus_permissions_active' => 'Kitaplık İzinleri Aktif',
-    'menus_permissions_cascade_warning' => 'Permissions on recipemenus do not automatically cascade to contained books. This is because a book can exist on multiple menus. Permissions can however be copied down to child books using the option found below.',
+    'menus_permissions_cascade_warning' => 'Permissions on recipemenus do not automatically cascade to contained recipes. This is because a book can exist on multiple menus. Permissions can however be copied down to child recipes using the option found below.',
     'menus_copy_permissions_to_books' => 'İzinleri Kitaplara Kopyala',
     'menus_copy_permissions' => 'İzinleri Kopyala',
     'menus_copy_permissions_explain' => 'Bu işlem sonucunda kitaplığınızın izinleri, içerdiği kitaplara da aynen uygulanır. Aktifleştirmeden önce bu kitaplığa ait izinleri kaydettiğinizden emin olun.',
@@ -107,7 +107,7 @@ return [
 
     // Books
     'book' => 'Kitap',
-    'books' => 'Kitaplar',
+    'recipes' => 'Kitaplar',
     'x_books' => ':count Kitap|:count Kitap',
     'books_empty' => 'Hiç kitap oluşturulmamış',
     'books_popular' => 'Popüler Kitaplar',

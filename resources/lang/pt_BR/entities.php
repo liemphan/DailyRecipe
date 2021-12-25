@@ -99,7 +99,7 @@ return [
     'menus_permissions' => 'Permissões da Prateleira',
     'menus_permissions_updated' => 'Permissões da Prateleira Atualizadas',
     'menus_permissions_active' => 'Permissões da Prateleira Ativas',
-    'menus_permissions_cascade_warning' => 'Permissions on recipemenus do not automatically cascade to contained books. This is because a book can exist on multiple menus. Permissions can however be copied down to child books using the option found below.',
+    'menus_permissions_cascade_warning' => 'Permissions on recipemenus do not automatically cascade to contained recipes. This is because a book can exist on multiple menus. Permissions can however be copied down to child recipes using the option found below.',
     'menus_copy_permissions_to_books' => 'Copiar Permissões para Livros',
     'menus_copy_permissions' => 'Copiar Permissões',
     'menus_copy_permissions_explain' => 'Isto aplicará as configurações de permissões atuais desta prateleira a todos os livros contidos nela. Antes de ativar, assegure-se de que quaisquer alterações nas permissões desta prateleira tenham sido salvas.',
@@ -107,7 +107,7 @@ return [
 
     // Books
     'book' => 'Livro',
-    'books' => 'Livros',
+    'recipes' => 'Livros',
     'x_books' => ':count Livro|:count Livros',
     'books_empty' => 'Nenhum livro foi criado',
     'books_popular' => 'Livros Populares',

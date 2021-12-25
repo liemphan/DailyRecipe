@@ -107,7 +107,7 @@ return [
 
     // Books
     'book' => 'Grāmata',
-    'books' => 'Grāmatas',
+    'recipes' => 'Grāmatas',
     'x_books' => ':count grāmata|:count grāmatas',
     'books_empty' => 'Neviena grāmata nav izveidota',
     'books_popular' => 'Populārās grāmatas',

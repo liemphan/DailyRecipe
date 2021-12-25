@@ -9,7 +9,7 @@
 <pre><code class="language-css">Authorization: Token &lt;token_id&gt;:&lt;token_secret&gt;</code></pre>
 <p>Here's an example of an authorized cURL request to list books in the system:</p>
 <pre><code class="language-shell">curl --request GET \
-  --url https://example.com/api/books \
+  --url https://example.com/api/recipes \
   --header 'Authorization: Token C6mdvEQTGnebsmVn3sFNeeuelGEBjyQp:NOvD3VlzuSVuBPNaf1xWHmy7nIRlaj22'</code></pre>
 <p>If already logged into the system within the browser, via a user account with permission to access the API, the system will also accept an existing session meaning you can browse API endpoints directly in the browser or use the browser devtools to play with the API.</p>
 

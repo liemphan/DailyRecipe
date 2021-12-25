@@ -107,7 +107,7 @@ class RecipeContents
     }
 
     /**
-     * Sort the books content using the given map.
+     * Sort the recipes content using the given map.
      * The map is a single-dimension collection of objects in the following format:
      *   {
      *     +"id": "294" (ID of item)
@@ -117,7 +117,7 @@ class RecipeContents
      *     +"book": "1" (Id of book to place item in)
      *   }.
      *
-     * Returns a list of books that were involved in the operation.
+     * Returns a list of recipes that were involved in the operation.
      *
      * @throws SortOperationException
      */
@@ -194,7 +194,7 @@ class RecipeContents
     }
 
     /**
-     * Get the books involved in a sort.
+     * Get the recipes involved in a sort.
      * The given sort map should have its models loaded first.
      *
      * @throws SortOperationException
@@ -209,7 +209,7 @@ class RecipeContents
         $books = Recipe::hasPermission('update')->whereIn('id', $bookIdsInvolved)->get();
 
         if (count($books) !== count($bookIdsInvolved)) {
-            throw new SortOperationException('Could not find all books requested in sort operation');
+            throw new SortOperationException('Could not find all recipes requested in sort operation');
         }
 
         return $books;

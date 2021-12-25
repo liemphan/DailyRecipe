@@ -8,7 +8,7 @@ class ApiConfigTest extends TestCase
 {
     use TestsApi;
 
-    protected $endpoint = '/api/books';
+    protected $endpoint = '/api/recipes';
 
     public function test_default_item_count_reflected_in_listing_requests()
     {

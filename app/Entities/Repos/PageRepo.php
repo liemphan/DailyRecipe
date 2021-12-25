@@ -397,7 +397,7 @@ class PageRepo
         $entityId = intval($stringExploded[1]);
 
         if ($entityType !== 'book' && $entityType !== 'chapter') {
-            throw new MoveOperationException('Pages can only be in books or chapters');
+            throw new MoveOperationException('Pages can only be in recipes or chapters');
         }
 
         $parentClass = $entityType === 'book' ? Recipe::class : Chapter::class;

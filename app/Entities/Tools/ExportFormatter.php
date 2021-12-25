@@ -72,7 +72,7 @@ class ExportFormatter
     public function bookToContainedHtml(Recipe $book)
     {
         $bookTree = (new RecipeContents($book))->getTree(false, true);
-        $html = view('books.export', [
+        $html = view('recipes.export', [
             'book'         => $book,
             'bookChildren' => $bookTree,
             'format'       => 'html',
@@ -126,7 +126,7 @@ class ExportFormatter
     public function bookToPdf(Recipe $book)
     {
         $bookTree = (new RecipeContents($book))->getTree(false, true);
-        $html = view('books.export', [
+        $html = view('recipes.export', [
             'book'         => $book,
             'bookChildren' => $bookTree,
             'format'       => 'pdf',

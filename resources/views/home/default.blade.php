@@ -29,7 +29,7 @@
                     </div>
                 @endif
 
-                <div id="{{ auth()->check() ? 'recently-viewed' : 'recent-books' }}" class="card mb-xl">
+                <div id="{{ auth()->check() ? 'recently-viewed' : 'recent-recipes' }}" class="card mb-xl">
                     <h3 class="card-title">{{ trans('entities.' . (auth()->check() ? 'my_recently_viewed' : 'recipes_recent')) }}</h3>
                     <div class="px-m">
                         @include('entities.list', [

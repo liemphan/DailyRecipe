@@ -18,8 +18,8 @@
         <p class="small">{{ trans('common.cover_image_description') }}</p>
 
         @include('form.image-picker', [
-            'defaultImage' => url('/book_default_cover.png'),
-            'currentImage' => (isset($model) && $model->cover) ? $model->getBookCover() : url('/book_default_cover.png') ,
+            'defaultImage' => url('/recipe_default_cover.png'),
+            'currentImage' => (isset($model) && $model->cover) ? $model->getBookCover() : url('/recipe_default_cover.png') ,
             'name' => 'image',
             'imageClass' => 'cover'
         ])

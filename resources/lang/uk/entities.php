@@ -99,7 +99,7 @@ return [
     'menus_permissions' => 'Дозволи на книжкову полицю',
     'menus_permissions_updated' => 'Дозволи на книжкову полицю оновлено',
     'menus_permissions_active' => 'Діючі дозволи на книжкову полицю',
-    'menus_permissions_cascade_warning' => 'Permissions on recipemenus do not automatically cascade to contained books. This is because a book can exist on multiple menus. Permissions can however be copied down to child books using the option found below.',
+    'menus_permissions_cascade_warning' => 'Permissions on recipemenus do not automatically cascade to contained recipes. This is because a book can exist on multiple menus. Permissions can however be copied down to child recipes using the option found below.',
     'menus_copy_permissions_to_books' => 'Копіювати дозволи на книги',
     'menus_copy_permissions' => 'Копіювати дозволи',
     'menus_copy_permissions_explain' => 'Це застосовує поточні налаштування дозволів цієї книжкової полиці до всіх книг, що містяться всередині. Перш ніж активувати, переконайтесь що будь-які зміни дозволів цієї книжкової полиці були збережені.',
@@ -107,7 +107,7 @@ return [
 
     // Books
     'book' => 'Книга',
-    'books' => 'Книги',
+    'recipes' => 'Книги',
     'x_books' => ':count книга|:count книг',
     'books_empty' => 'Немає створених книг',
     'books_popular' => 'Популярні книги',

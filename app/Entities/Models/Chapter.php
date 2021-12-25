@@ -37,7 +37,7 @@ class Chapter extends RecipeChild
     public function getUrl(string $path = ''): string
     {
         $parts = [
-            'books',
+            'recipes',
             urlencode($this->recipe_slug ?? $this->recipe->slug),
             'chapter',
             urlencode($this->slug),

@@ -107,7 +107,7 @@ return [
 
     // Books
     'book' => 'Książka',
-    'books' => 'Książki',
+    'recipes' => 'Książki',
     'x_books' => ':count Książka|:count Książki',
     'books_empty' => 'Brak utworzonych książek',
     'books_popular' => 'Popularne książki',

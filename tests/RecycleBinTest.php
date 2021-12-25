@@ -83,7 +83,7 @@ class RecycleBinTest extends TestCase
         $emptyReq->assertRedirect('/settings/recycle-bin');
 
         $this->assertTrue(Deletion::query()->count() === 0);
-        $this->assertDatabaseMissing('books', ['id' => $book->id]);
+        $this->assertDatabaseMissing('recipes', ['id' => $book->id]);
         $this->assertDatabaseMissing('pages', ['id' => $page->id]);
         $this->assertDatabaseMissing('pages', ['id' => $book->pages->first()->id]);
         $this->assertDatabaseMissing('chapters', ['id' => $book->chapters->first()->id]);
@@ -124,7 +124,7 @@ class RecycleBinTest extends TestCase
         $deleteReq->assertRedirect('/settings/recycle-bin');
         $this->assertTrue(Deletion::query()->count() === 0);
 
-        $this->assertDatabaseMissing('books', ['id' => $book->id]);
+        $this->assertDatabaseMissing('recipes', ['id' => $book->id]);
         $this->assertDatabaseMissing('pages', ['id' => $book->pages->first()->id]);
         $this->assertDatabaseMissing('chapters', ['id' => $book->chapters->first()->id]);
 

@@ -15,7 +15,7 @@ use Illuminate\Http\Request;
 use Illuminate\Validation\ValidationException;
 use Throwable;
 
-class BookController extends Controller
+class RecipeController extends Controller
 {
     protected $bookRepo;
     protected $entityContextManager;
@@ -44,8 +44,8 @@ class BookController extends Controller
 
         $this->setPageTitle(trans('entities.recipes'));
 
-        return view('books.index', [
-            'books'   => $books,
+        return view('recipes.index', [
+            'recipes'   => $books,
             'recents' => $recents,
             'popular' => $popular,
             'new'     => $new,
@@ -70,7 +70,7 @@ class BookController extends Controller
 
         $this->setPageTitle(trans('entities.recipes_create'));
 
-        return view('books.create', [
+        return view('recipes.create', [
             'recipemenu' => $recipemenu,
         ]);
     }
@@ -123,7 +123,7 @@ class BookController extends Controller
 
         $this->setPageTitle($book->getShortName());
 
-        return view('books.show', [
+        return view('recipes.show', [
             'book'              => $book,
             'current'           => $book,
             'bookChildren'      => $bookChildren,
@@ -141,7 +141,7 @@ class BookController extends Controller
         $this->checkOwnablePermission('book-update', $book);
         $this->setPageTitle(trans('entities.recipes_edit_named', ['bookName'=>$book->getShortName()]));
 
-        return view('books.edit', ['book' => $book, 'current' => $book]);
+        return view('recipes.edit', ['book' => $book, 'current' => $book]);
     }
 
     /**
@@ -177,7 +177,7 @@ class BookController extends Controller
         $this->checkOwnablePermission('book-delete', $book);
         $this->setPageTitle(trans('entities.recipes_delete_named', ['bookName' => $book->getShortName()]));
 
-        return view('books.delete', ['book' => $book, 'current' => $book]);
+        return view('recipes.delete', ['book' => $book, 'current' => $book]);
     }
 
     /**
@@ -192,7 +192,7 @@ class BookController extends Controller
 
         $this->bookRepo->destroy($book);
 
-        return redirect('/books');
+        return redirect('/recipes');
     }
 
     /**
@@ -203,7 +203,7 @@ class BookController extends Controller
         $book = $this->bookRepo->getBySlug($bookSlug);
         $this->checkOwnablePermission('restrictions-manage', $book);
 
-        return view('books.permissions', [
+        return view('recipes.permissions', [
             'book' => $book,
         ]);
     }

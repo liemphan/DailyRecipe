@@ -92,7 +92,7 @@ class ChapterRepo
         $entityId = intval($stringExploded[1]);
 
         if ($entityType !== 'book') {
-            throw new MoveOperationException('Chapters can only be moved into books');
+            throw new MoveOperationException('Chapters can only be moved into recipes');
         }
 
         /** @var Recipe $parent */

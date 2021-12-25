@@ -94,12 +94,12 @@ return [
     'menus_edit' => 'Uredi policu',
     'menus_delete' => 'Izbriši policu',
     'menus_delete_named' => 'Izbriši policu :name',
-    'menus_delete_explain' => "This will delete the recipemenu with the name ':name'. Contained books will not be deleted.",
+    'menus_delete_explain' => "This will delete the recipemenu with the name ':name'. Contained recipes will not be deleted.",
     'menus_delete_confirmation' => 'Jeste li sigurni da želite obrisati policu?',
     'menus_permissions' => 'Dopuštenja za policu',
     'menus_permissions_updated' => 'Ažurirana dopuštenja za policu',
     'menus_permissions_active' => 'Aktivirana dopuštenja za policu',
-    'menus_permissions_cascade_warning' => 'Permissions on recipemenus do not automatically cascade to contained books. This is because a book can exist on multiple menus. Permissions can however be copied down to child books using the option found below.',
+    'menus_permissions_cascade_warning' => 'Permissions on recipemenus do not automatically cascade to contained recipes. This is because a book can exist on multiple menus. Permissions can however be copied down to child recipes using the option found below.',
     'menus_copy_permissions_to_books' => 'Kopiraj dopuštenja za knjige',
     'menus_copy_permissions' => 'Kopiraj dopuštenja',
     'menus_copy_permissions_explain' => 'Ovo će promijeniti trenutna dopuštenja za policu i knjige u njoj. Prije aktivacije provjerite jesu li sve dopuštenja za ovu policu spremljena.',
@@ -107,7 +107,7 @@ return [
 
     // Books
     'book' => 'Knjiga',
-    'books' => 'Knjige',
+    'recipes' => 'Knjige',
     'x_books' => ':count knjiga|:count knjiga',
     'books_empty' => 'Nijedna knjiga nije stvorena',
     'books_popular' => 'Popularne knjige',

@@ -36,7 +36,7 @@
                 @if($view === 'list')
                     <div class="entity-list">
                         @foreach($sortedVisibleMenuBooks as $book)
-                            @include('books.parts.list-item', ['book' => $book])
+                            @include('recipes.parts.list-item', ['book' => $book])
                         @endforeach
                     </div>
                 @else

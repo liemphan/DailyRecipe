@@ -99,7 +99,7 @@ return [
     'menus_permissions' => '서가 권한',
     'menus_permissions_updated' => '서가 권한 바꿈',
     'menus_permissions_active' => '서가 권한 허용함',
-    'menus_permissions_cascade_warning' => 'Permissions on recipemenus do not automatically cascade to contained books. This is because a book can exist on multiple menus. Permissions can however be copied down to child books using the option found below.',
+    'menus_permissions_cascade_warning' => 'Permissions on recipemenus do not automatically cascade to contained recipes. This is because a book can exist on multiple menus. Permissions can however be copied down to child recipes using the option found below.',
     'menus_copy_permissions_to_books' => '권한 맞춤',
     'menus_copy_permissions' => '실행',
     'menus_copy_permissions_explain' => '서가의 모든 책자에 이 권한을 적용합니다. 서가의 권한을 저장했는지 확인하세요.',
@@ -107,7 +107,7 @@ return [
 
     // Books
     'book' => '서고',
-    'books' => '서고',
+    'recipes' => '서고',
     'x_books' => '책자 :count개|총 :count개',
     'books_empty' => '만든 책자가 없습니다.',
     'books_popular' => '많이 읽은 책자',

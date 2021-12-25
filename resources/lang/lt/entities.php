@@ -94,12 +94,12 @@ return [
     'menus_edit' => 'Redaguoti knygų lentyną',
     'menus_delete' => 'Ištrinti knygų lentyną',
     'menus_delete_named' => 'Ištrinti knygų lentyną :name',
-    'menus_delete_explain' => "This will delete the recipemenu with the name ':name'. Contained books will not be deleted.",
+    'menus_delete_explain' => "This will delete the recipemenu with the name ':name'. Contained recipes will not be deleted.",
     'menus_delete_confirmation' => 'Ar jūs esate tikri, kad norite ištrinti šią knygų lentyną?',
     'menus_permissions' => 'Knygų lentynos leidimai',
     'menus_permissions_updated' => 'Knygų lentynos leidimai atnaujinti',
     'menus_permissions_active' => 'Knygų lentynos leidimai aktyvūs',
-    'menus_permissions_cascade_warning' => 'Permissions on recipemenus do not automatically cascade to contained books. This is because a book can exist on multiple menus. Permissions can however be copied down to child books using the option found below.',
+    'menus_permissions_cascade_warning' => 'Permissions on recipemenus do not automatically cascade to contained recipes. This is because a book can exist on multiple menus. Permissions can however be copied down to child recipes using the option found below.',
     'menus_copy_permissions_to_books' => 'Kopijuoti leidimus knygoms',
     'menus_copy_permissions' => 'Kopijuoti leidimus',
     'menus_copy_permissions_explain' => 'Visoms knygoms, esančioms šioje knygų lentynoje, bus taikomi dabartiniai leidimų nustatymai. Prieš suaktyvindami įsitikinkite, kad visi šios knygų lentynos leidimų pakeitimai buvo išsaugoti.',
@@ -107,7 +107,7 @@ return [
 
     // Books
     'book' => 'Knyga',
-    'books' => 'Knygos',
+    'recipes' => 'Knygos',
     'x_books' => ':count knyga|:count knygos',
     'books_empty' => 'Nebuvo sukurta jokių knygų',
     'books_popular' => 'Populiarios knygos',

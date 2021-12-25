@@ -19,7 +19,7 @@
                 <div book-sort class="card content-wrap">
                     <h1 class="list-heading mb-l">{{ trans('entities.recipes_sort') }}</h1>
                     <div book-sort-boxes>
-                        @include('books.parts.sort-box', ['book' => $book, 'bookChildren' => $bookChildren])
+                        @include('recipes.parts.sort-box', ['book' => $book, 'bookChildren' => $bookChildren])
                     </div>
 
                     <form action="{{ $book->getUrl('/sort') }}" method="POST">
@@ -38,7 +38,7 @@
                 <main class="card content-wrap">
                     <h2 class="list-heading mb-m">{{ trans('entities.recipes_sort_show_other') }}</h2>
 
-                    @include('entities.selector', ['name' => 'books_list', 'selectorSize' => 'compact', 'entityTypes' => 'book', 'entityPermission' => 'update', 'showAdd' => true])
+                    @include('entities.selector', ['name' => 'recipes_list', 'selectorSize' => 'compact', 'entityTypes' => 'book', 'entityPermission' => 'update', 'showAdd' => true])
 
                 </main>
             </div>

@@ -6,13 +6,13 @@ use DailyRecipe\Entities\Repos\RecipeRepo;
 use DailyRecipe\Entities\Tools\ExportFormatter;
 use Throwable;
 
-class BookExportController extends Controller
+class RecipeExportController extends Controller
 {
     protected $bookRepo;
     protected $exportFormatter;
 
     /**
-     * BookExportController constructor.
+     * RecipeExportController constructor.
      */
     public function __construct(RecipeRepo $bookRepo, ExportFormatter $exportFormatter)
     {

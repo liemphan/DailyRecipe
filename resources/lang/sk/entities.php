@@ -107,7 +107,7 @@ return [
 
     // Books
     'book' => 'Kniha',
-    'books' => 'Knihy',
+    'recipes' => 'Knihy',
     'x_books' => '{0}:count kníh|{1}:count kniha|[2,3,4]:count knihy|[5,*]:count kníh',
     'books_empty' => 'Žiadne knihy neboli vytvorené',
     'books_popular' => 'Populárne knihy',

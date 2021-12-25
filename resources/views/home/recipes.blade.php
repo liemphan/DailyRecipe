@@ -1,7 +1,7 @@
 @extends('layouts.tri')
 
 @section('body')
-    @include('books.parts.list', ['books' => $books, 'view' => $view])
+    @include('recipes.parts.list', ['recipes' => $books, 'view' => $view])
 @stop
 
 @section('left')
@@ -18,7 +18,7 @@
                     <span>{{ trans('entities.recipes_create') }}</span>
                 </a>
             @endif
-            @include('entities.view-toggle', ['view' => $view, 'type' => 'books'])
+            @include('entities.view-toggle', ['view' => $view, 'type' => 'recipes'])
             @include('home.parts.expand-toggle', ['classes' => 'text-primary', 'target' => '.entity-list.compact .entity-item-snippet', 'key' => 'home-details'])
             @include('common.dark-mode-toggle', ['classes' => 'icon-list-item text-primary'])
         </div>

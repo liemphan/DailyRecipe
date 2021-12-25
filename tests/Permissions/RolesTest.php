@@ -398,13 +398,13 @@ class RolesTest extends TestCase
         $this->checkAccessPermission('book-create-all', [
             '/create-book',
         ], [
-            '/books' => 'Create New Recipe',
+            '/recipes' => 'Create New Recipe',
         ]);
 
-        $this->post('/books', [
+        $this->post('/recipes', [
             'name'        => 'test book',
             'description' => 'book desc',
-        ])->assertRedirect('/books/test-book');
+        ])->assertRedirect('/recipes/test-book');
     }
 
     public function test_books_edit_own_permission()
@@ -448,8 +448,8 @@ class RolesTest extends TestCase
         $this->get($otherBook->getUrl())->assertElementNotContains('.action-buttons', 'Delete');
         $this->get($otherBook->getUrl('/delete'))->assertRedirect('/');
         $this->get($ownBook->getUrl());
-        $this->delete($ownBook->getUrl())->assertRedirect('/books');
-        $this->get('/books')->assertDontSee($ownBook->name);
+        $this->delete($ownBook->getUrl())->assertRedirect('/recipes');
+        $this->get('/recipes')->assertDontSee($ownBook->name);
     }
 
     public function test_books_delete_all_permission()
@@ -464,8 +464,8 @@ class RolesTest extends TestCase
         ]);
 
         $this->get($otherBook->getUrl());
-        $this->delete($otherBook->getUrl())->assertRedirect('/books');
-        $this->get('/books')->assertDontSee($otherBook->name);
+        $this->delete($otherBook->getUrl())->assertRedirect('/recipes');
+        $this->get('/recipes')->assertDontSee($otherBook->name);
     }
 
     public function test_chapter_create_own_permissions()

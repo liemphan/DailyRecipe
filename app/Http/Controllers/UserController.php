@@ -272,7 +272,7 @@ class UserController extends Controller
      */
     public function switchBooksView(Request $request, int $id)
     {
-        return $this->switchViewType($id, $request, 'books');
+        return $this->switchViewType($id, $request, 'recipes');
     }
 
     /**
@@ -315,7 +315,7 @@ class UserController extends Controller
      */
     public function changeSort(Request $request, string $id, string $type)
     {
-        $validSortTypes = ['books', 'recipemenus', 'menus'];
+        $validSortTypes = ['recipes', 'recipemenus', 'menus'];
         if (!in_array($type, $validSortTypes)) {
             return redirect()->back(500);
         }

@@ -99,7 +99,7 @@ return [
     'menus_permissions' => 'הרשאות מדף',
     'menus_permissions_updated' => 'הרשאות מדף עודכנו',
     'menus_permissions_active' => 'הרשאות מדף פעילות',
-    'menus_permissions_cascade_warning' => 'Permissions on recipemenus do not automatically cascade to contained books. This is because a book can exist on multiple menus. Permissions can however be copied down to child books using the option found below.',
+    'menus_permissions_cascade_warning' => 'Permissions on recipemenus do not automatically cascade to contained recipes. This is because a book can exist on multiple menus. Permissions can however be copied down to child recipes using the option found below.',
     'menus_copy_permissions_to_books' => 'העתק הרשאות מדף אל הספרים',
     'menus_copy_permissions' => 'העתק הרשאות',
     'menus_copy_permissions_explain' => 'פעולה זו תעתיק את כל הרשאות המדף לכל הספרים המשוייכים למדף זה. לפני הביצוע, יש לוודא שכל הרשאות המדף אכן נשמרו.',
@@ -107,7 +107,7 @@ return [
 
     // Books
     'book' => 'ספר',
-    'books' => 'ספרים',
+    'recipes' => 'ספרים',
     'x_books' => ':count ספר|:count ספרים',
     'books_empty' => 'לא נוצרו ספרים',
     'books_popular' => 'ספרים פופולריים',

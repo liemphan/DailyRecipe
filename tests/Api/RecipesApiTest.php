@@ -5,11 +5,11 @@ namespace Tests\Api;
 use DailyRecipe\Entities\Models\Recipe;
 use Tests\TestCase;
 
-class BooksApiTest extends TestCase
+class RecipesApiTest extends TestCase
 {
     use TestsApi;
 
-    protected $baseEndpoint = '/api/books';
+    protected $baseEndpoint = '/api/recipes';
 
     public function test_index_endpoint_returns_expected_book()
     {

@@ -99,15 +99,15 @@ return [
     'menus_permissions' => 'Настройки за достъп до рафта с книги',
     'menus_permissions_updated' => 'Настройките за достъп до рафта с книги е обновен',
     'menus_permissions_active' => 'Настройките за достъп до рафта с книги е активен',
-    'menus_permissions_cascade_warning' => 'Permissions on recipemenus do not automatically cascade to contained books. This is because a book can exist on multiple menus. Permissions can however be copied down to child books using the option found below.',
+    'menus_permissions_cascade_warning' => 'Permissions on recipemenus do not automatically cascade to contained recipes. This is because a book can exist on multiple menus. Permissions can however be copied down to child recipes using the option found below.',
     'menus_copy_permissions_to_books' => 'Копирай настойките за достъп към книгите',
     'menus_copy_permissions' => 'Копирай настройките за достъп',
     'menus_copy_permissions_explain' => 'Това ще приложи настоящите настройки за достъп на този рафт с книги за всички книги, съдържащи се в него. Преди да активирате, уверете се, че всички промени в настройките за достъп на този рафт са запазени.',
-    'menus_copy_permission_success' => 'Настройките за достъп на рафта с книги бяха копирани върху :count books',
+    'menus_copy_permission_success' => 'Настройките за достъп на рафта с книги бяха копирани върху :count recipes',
 
     // Books
     'book' => 'Книга',
-    'books' => 'Книги',
+    'recipes' => 'Книги',
     'x_books' => ':count Книга|:count Книги',
     'books_empty' => 'Няма създадени книги',
     'books_popular' => 'Популярни книги',

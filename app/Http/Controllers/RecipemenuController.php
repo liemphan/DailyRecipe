@@ -71,7 +71,7 @@ class RecipemenuController extends Controller
         $books = Recipe::hasPermission('update')->get();
         $this->setPageTitle(trans('entities.menus_create'));
 
-        return view('menus.create', ['books' => $books]);
+        return view('menus.create', ['recipes' => $books]);
     }
 
     /**
@@ -89,7 +89,7 @@ class RecipemenuController extends Controller
             'image'       => array_merge(['nullable'], $this->getImageValidationRules()),
         ]);
 
-        $bookIds = explode(',', $request->get('books', ''));
+        $bookIds = explode(',', $request->get('recipes', ''));
         $menu = $this->recipemenuRepo->create($request->all(), $bookIds);
         $this->recipemenuRepo->updateCoverImage($menu, $request->file('image', null));
 
@@ -145,7 +145,7 @@ class RecipemenuController extends Controller
 
         return view('menus.edit', [
             'menu' => $menu,
-            'books' => $books,
+            'recipes' => $books,
         ]);
     }
 
@@ -166,7 +166,7 @@ class RecipemenuController extends Controller
             'image'       => array_merge(['nullable'], $this->getImageValidationRules()),
         ]);
 
-        $bookIds = explode(',', $request->get('books', ''));
+        $bookIds = explode(',', $request->get('recipes', ''));
         $menu = $this->recipemenuRepo->update($menu, $request->all(), $bookIds);
         $resetCover = $request->has('image_reset');
         $this->recipemenuRepo->updateCoverImage($menu, $request->file('image', null), $resetCover);
@@ -231,7 +231,7 @@ class RecipemenuController extends Controller
     }
 
     /**
-     * Copy the permissions of a recipemenu to the child books.
+     * Copy the permissions of a recipemenu to the child recipes.
      */
     public function copyPermissions(string $slug)
     {

@@ -107,7 +107,7 @@ return [
 
     // Books
     'book' => 'Raamat',
-    'books' => 'Raamatud',
+    'recipes' => 'Raamatud',
     'x_books' => ':count raamat|:count raamatut',
     'books_empty' => 'Ühtegi raamatut pole lisatud',
     'books_popular' => 'Populaarsed raamatud',

@@ -35,7 +35,7 @@ const sortOperations = {
     },
 };
 
-class BookSort {
+class RecipeSort {
 
     constructor(elem) {
         this.elem = elem;
@@ -204,4 +204,4 @@ class BookSort {
 
 }
 
-export default BookSort;
+export default RecipeSort;

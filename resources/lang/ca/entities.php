@@ -99,7 +99,7 @@ return [
     'menus_permissions' => 'Permisos del prestatge',
     'menus_permissions_updated' => 'S\'han actualitzat els permisos del prestatge',
     'menus_permissions_active' => 'S\'han activat els permisos del prestatge',
-    'menus_permissions_cascade_warning' => 'Permissions on recipemenus do not automatically cascade to contained books. This is because a book can exist on multiple menus. Permissions can however be copied down to child books using the option found below.',
+    'menus_permissions_cascade_warning' => 'Permissions on recipemenus do not automatically cascade to contained recipes. This is because a book can exist on multiple menus. Permissions can however be copied down to child recipes using the option found below.',
     'menus_copy_permissions_to_books' => 'Copia els permisos als llibres',
     'menus_copy_permissions' => 'Copia els permisos',
     'menus_copy_permissions_explain' => 'Això aplicarà la configuració de permisos actual d\'aquest prestatge a tots els llibres que contingui. Abans d\'activar-ho, assegureu-vos que hàgiu desat qualsevol canvi als permisos d\'aquest prestatge.',
@@ -107,7 +107,7 @@ return [
 
     // Books
     'book' => 'Llibre',
-    'books' => 'Llibres',
+    'recipes' => 'Llibres',
     'x_books' => ':count llibre|:count llibres',
     'books_empty' => 'No hi ha cap llibre creat',
     'books_popular' => 'Llibres populars',

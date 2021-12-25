@@ -85,7 +85,7 @@ return [
     'maint_send_test_email_mail_subject' => 'Thử Email',
     'maint_send_test_email_mail_greeting' => 'Chức năng gửi email có vẻ đã hoạt động!',
     'maint_send_test_email_mail_text' => 'Chúc mừng! Khi bạn nhận được email thông báo này, cài đặt email của bạn có vẻ đã được cấu hình đúng.',
-    'maint_recycle_bin_desc' => 'Deleted menus, books, chapters & pages are sent to the recycle bin so they can be restored or permanently deleted. Older items in the recycle bin may be automatically removed after a while depending on system configuration.',
+    'maint_recycle_bin_desc' => 'Deleted menus, recipes, chapters & pages are sent to the recycle bin so they can be restored or permanently deleted. Older items in the recycle bin may be automatically removed after a while depending on system configuration.',
     'maint_recycle_bin_open' => 'Mở Thùng Rác',
 
     // Recycle Bin

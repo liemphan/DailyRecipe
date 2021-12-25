@@ -37,7 +37,7 @@ class MenusApiTest extends TestCase
             'description' => 'A menu created via the API',
         ];
 
-        $resp = $this->postJson($this->baseEndpoint, array_merge($details, ['books' => [$books[0]->id, $books[1]->id]]));
+        $resp = $this->postJson($this->baseEndpoint, array_merge($details, ['recipes' => [$books[0]->id, $books[1]->id]]));
         $resp->assertStatus(200);
         $newItem = Recipemenu::query()->orderByDesc('id')->where('name', '=', $details['name'])->first();
         $resp->assertJson(array_merge($details, ['id' => $newItem->id, 'slug' => $newItem->slug]));
@@ -124,7 +124,7 @@ class MenusApiTest extends TestCase
         $resp->assertStatus(200);
         $this->assertTrue($menu->books()->count() > 0);
 
-        $resp = $this->putJson($this->baseEndpoint . "/{$menu->id}", ['books' => []]);
+        $resp = $this->putJson($this->baseEndpoint . "/{$menu->id}", ['recipes' => []]);
         $resp->assertStatus(200);
         $this->assertTrue($menu->books()->count() === 0);
     }

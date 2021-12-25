@@ -23,7 +23,7 @@ class CopyMenuPermissions extends Command
      *
      * @var string
      */
-    protected $description = 'Copy menu permissions to all child books';
+    protected $description = 'Copy menu permissions to all child recipes';
 
     /**
      * @var RecipemenuRepo

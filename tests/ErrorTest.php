@@ -33,7 +33,7 @@ class ErrorTest extends TestCase
         Log::error('cat');
         $this->assertTrue($handler->hasErrorThatContains('cat'));
 
-        $this->get('/books/arandomnotfouindbook');
+        $this->get('/recipes/arandomnotfouindbook');
         $this->get($book->getUrl('/chapter/arandomnotfouindchapter'));
         $this->get($book->getUrl('/chapter/arandomnotfouindpages'));
 

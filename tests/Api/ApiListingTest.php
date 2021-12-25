@@ -9,7 +9,7 @@ class ApiListingTest extends TestCase
 {
     use TestsApi;
 
-    protected $endpoint = '/api/books';
+    protected $endpoint = '/api/recipes';
 
     public function test_count_parameter_limits_responses()
     {

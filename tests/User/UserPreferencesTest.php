@@ -12,7 +12,7 @@ class UserPreferencesTest extends TestCase
         $editor = $this->getEditor();
         $this->actingAs($editor);
 
-        $updateRequest = $this->patch('/settings/users/' . $editor->id . '/change-sort/books', [
+        $updateRequest = $this->patch('/settings/users/' . $editor->id . '/change-sort/recipes', [
             'sort'  => 'created_at',
             'order' => 'desc',
         ]);
@@ -113,7 +113,7 @@ class UserPreferencesTest extends TestCase
         $editor = $this->getEditor();
         setting()->putUser($editor, 'books_view_type', 'list');
 
-        $this->actingAs($editor)->get('/books')
+        $this->actingAs($editor)->get('/recipes')
             ->assertElementNotExists('.featured-image-container')
             ->assertElementExists('.content-wrap .entity-list-item');
     }
@@ -123,7 +123,7 @@ class UserPreferencesTest extends TestCase
         $editor = $this->getEditor();
         setting()->putUser($editor, 'books_view_type', 'grid');
 
-        $this->actingAs($editor)->get('/books')
+        $this->actingAs($editor)->get('/recipes')
             ->assertElementExists('.featured-image-container');
     }
 

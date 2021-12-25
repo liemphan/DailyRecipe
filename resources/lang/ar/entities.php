@@ -99,15 +99,15 @@ return [
     'menus_permissions' => 'أذونات رف الكتب',
     'menus_permissions_updated' => 'تم تحديث أذونات رف الكتب',
     'menus_permissions_active' => 'أذونات رف الكتب نشطة',
-    'menus_permissions_cascade_warning' => 'Permissions on recipemenus do not automatically cascade to contained books. This is because a book can exist on multiple menus. Permissions can however be copied down to child books using the option found below.',
+    'menus_permissions_cascade_warning' => 'Permissions on recipemenus do not automatically cascade to contained recipes. This is because a book can exist on multiple menus. Permissions can however be copied down to child recipes using the option found below.',
     'menus_copy_permissions_to_books' => 'نسخ أذونات الوصول إلى الكتب',
     'menus_copy_permissions' => 'نسخ الأذونات',
     'menus_copy_permissions_explain' => 'سيؤدي هذا إلى تطبيق إعدادات الأذونات الحالية لهذا الرف على جميع الكتب المتضمنة فيه. قبل التفعيل، تأكد من حفظ أي تغييرات في أذونات هذا الرف.',
-    'menus_copy_permission_success' => 'تم نسخ أذونات رف الكتب إلى :count books',
+    'menus_copy_permission_success' => 'تم نسخ أذونات رف الكتب إلى :count recipes',
 
     // Books
     'book' => 'كتاب',
-    'books' => 'الكتب',
+    'recipes' => 'الكتب',
     'x_books' => ':count كتاب|:count كتب',
     'books_empty' => 'لم يتم إنشاء أي كتب',
     'books_popular' => 'كتب رائجة',

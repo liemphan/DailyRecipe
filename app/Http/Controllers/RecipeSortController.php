@@ -10,7 +10,7 @@ use DailyRecipe\Exceptions\SortOperationException;
 use DailyRecipe\Facades\Activity;
 use Illuminate\Http\Request;
 
-class BookSortController extends Controller
+class RecipeSortController extends Controller
 {
     protected $bookRepo;
 
@@ -31,19 +31,19 @@ class BookSortController extends Controller
 
         $this->setPageTitle(trans('entities.recipes_sort_named', ['bookName'=>$book->getShortName()]));
 
-        return view('books.sort', ['book' => $book, 'current' => $book, 'bookChildren' => $bookChildren]);
+        return view('recipes.sort', ['book' => $book, 'current' => $book, 'bookChildren' => $bookChildren]);
     }
 
     /**
      * Shows the sort box for a single book.
-     * Used via AJAX when loading in extra books to a sort.
+     * Used via AJAX when loading in extra recipes to a sort.
      */
     public function showItem(string $bookSlug)
     {
         $book = $this->bookRepo->getBySlug($bookSlug);
         $bookChildren = (new RecipeContents($book))->getTree();
 
-        return view('books.parts.sort-box', ['book' => $book, 'bookChildren' => $bookChildren]);
+        return view('recipes.parts.sort-box', ['book' => $book, 'bookChildren' => $bookChildren]);
     }
 
     /**
@@ -69,7 +69,7 @@ class BookSortController extends Controller
             $this->showPermissionError();
         }
 
-        // Rebuild permissions and add activity for involved books.
+        // Rebuild permissions and add activity for involved recipes.
         $booksInvolved->each(function (Recipe $book) {
             Activity::addForEntity($book, ActivityType::BOOK_SORT);
         });

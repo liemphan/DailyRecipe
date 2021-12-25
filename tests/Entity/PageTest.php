@@ -239,7 +239,7 @@ class PageTest extends TestCase
         ]);
 
         $this->get($pageUrl)
-            ->assertRedirect("/books/{$page->recipe->slug}/page/super-test-page");
+            ->assertRedirect("/recipes/{$page->recipe->slug}/page/super-test-page");
     }
 
     public function test_page_within_chapter_deletion_returns_to_chapter()

@@ -38568,7 +38568,7 @@
   Sortable.mount(Remove, Revert);
   var sortable_esm_default = Sortable;
 
-  // resources/js/components/book-sort.js
+  // resources/js/components/recipe-sort.js
   var sortOperations = {
     name: function(a, b) {
       const aName = a.getAttribute("data-name").trim().toLowerCase();
@@ -41539,8 +41539,8 @@
   var MenuSort = class {
     constructor(elem) {
       this.elem = elem;
-      this.input = document.getElementById("books-input");
-      this.menuBooksList = elem.querySelector("[menu-sort-assigned-books]");
+      this.input = document.getElementById("recipes-input");
+      this.menuBooksList = elem.querySelector("[menu-sort-assigned-recipes]");
       this.initSortable();
       this.setupListeners();
     }
@@ -41548,7 +41548,7 @@
       const scrollBoxes = this.elem.querySelectorAll(".scroll-box");
       for (let scrollBox of scrollBoxes) {
         new sortable_esm_default(scrollBox, {
-          group: "menu-books",
+          group: "menu-recipes",
           ghostClass: "primary-background-light",
           animation: 150,
           onSort: this.onChange.bind(this)

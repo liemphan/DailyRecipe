@@ -11,7 +11,7 @@ class ApiAuthTest extends TestCase
 {
     use TestsApi;
 
-    protected $endpoint = '/api/books';
+    protected $endpoint = '/api/recipes';
 
     public function test_requests_succeed_with_default_auth()
     {

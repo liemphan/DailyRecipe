@@ -107,7 +107,7 @@ class Page extends RecipeChild
     public function getUrl(string $path = ''): string
     {
         $parts = [
-            'books',
+            'recipes',
             urlencode($this->recipe_slug ?? $this->recipe->slug),
             $this->draft ? 'draft' : 'page',
             $this->draft ? $this->id : urlencode($this->slug),

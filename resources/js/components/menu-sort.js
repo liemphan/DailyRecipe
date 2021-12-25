@@ -4,8 +4,8 @@ class MenuSort {
 
     constructor(elem) {
         this.elem = elem;
-        this.input = document.getElementById('books-input');
-        this.menuBooksList = elem.querySelector('[menu-sort-assigned-books]');
+        this.input = document.getElementById('recipes-input');
+        this.menuBooksList = elem.querySelector('[menu-sort-assigned-recipes]');
 
         this.initSortable();
         this.setupListeners();
@@ -15,7 +15,7 @@ class MenuSort {
         const scrollBoxes = this.elem.querySelectorAll('.scroll-box');
         for (let scrollBox of scrollBoxes) {
             new Sortable(scrollBox, {
-                group: 'menu-books',
+                group: 'menu-recipes',
                 ghostClass: 'primary-background-light',
                 animation: 150,
                 onSort: this.onChange.bind(this),

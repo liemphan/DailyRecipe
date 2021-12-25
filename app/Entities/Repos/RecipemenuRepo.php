@@ -112,9 +112,9 @@ class RecipemenuRepo
     }
 
     /**
-     * Update which books are assigned to this menu by
+     * Update which recipes are assigned to this menu by
      * syncing the given book ids.
-     * Function ensures the books are visible to the current user and existing.
+     * Function ensures the recipes are visible to the current user and existing.
      */
     protected function updateBooks(Recipemenu $menu, array $bookIds)
     {
@@ -144,7 +144,7 @@ class RecipemenuRepo
     }
 
     /**
-     * Copy down the permissions of the given menu to all child books.
+     * Copy down the permissions of the given menu to all child recipes.
      */
     public function copyDownPermissions(Recipemenu $menu, $checkUserPermissions = true): int
     {

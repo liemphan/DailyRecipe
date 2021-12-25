@@ -43,7 +43,7 @@ class HomeController extends Controller
             ->select(Page::$listAttributes)
             ->get();
 
-        $homepageOptions = ['default', 'books', 'recipemenus', 'page'];
+        $homepageOptions = ['default', 'recipes', 'recipemenus', 'page'];
         $homepageOption = setting('app-homepage-type', 'default');
         if (!in_array($homepageOption, $homepageOptions)) {
             $homepageOption = 'default';
@@ -57,8 +57,8 @@ class HomeController extends Controller
             'favourites'           => $favourites,
         ];
 
-        // Add required list ordering & sorting for books & menus views.
-        if ($homepageOption === 'recipemenus' || $homepageOption === 'books') {
+        // Add required list ordering & sorting for recipes & menus views.
+        if ($homepageOption === 'recipemenus' || $homepageOption === 'recipes') {
             $key = $homepageOption;
             $view = setting()->getForCurrentUser($key . '_view_type');
             $sort = setting()->getForCurrentUser($key . '_sort', 'name');
@@ -85,12 +85,12 @@ class HomeController extends Controller
             return view('home.menus', $data);
         }
 
-        if ($homepageOption === 'books') {
+        if ($homepageOption === 'recipes') {
             $bookRepo = app(RecipeRepo::class);
             $books = $bookRepo->getAllPaginated(18, $commonData['sort'], $commonData['order']);
-            $data = array_merge($commonData, ['books' => $books]);
+            $data = array_merge($commonData, ['recipes' => $books]);
 
-            return view('home.books', $data);
+            return view('home.recipes', $data);
         }
 
         if ($homepageOption === 'page') {

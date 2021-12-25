@@ -99,7 +99,7 @@ return [
     'menus_permissions' => 'Dovoljenja knjižnih polic',
     'menus_permissions_updated' => 'Posodobljena dovoljenja knjižnih polic',
     'menus_permissions_active' => 'Aktivna dovoljenja knjižnih polic',
-    'menus_permissions_cascade_warning' => 'Permissions on recipemenus do not automatically cascade to contained books. This is because a book can exist on multiple menus. Permissions can however be copied down to child books using the option found below.',
+    'menus_permissions_cascade_warning' => 'Permissions on recipemenus do not automatically cascade to contained recipes. This is because a book can exist on multiple menus. Permissions can however be copied down to child recipes using the option found below.',
     'menus_copy_permissions_to_books' => 'Kopiraj dovoljenja na knjige',
     'menus_copy_permissions' => 'Dovoljenja kopiranja',
     'menus_copy_permissions_explain' => 'To bo uveljavilo trenutne nastavitve dovoljenj na knjižni polici za vse knjige, ki jih vsebuje ta polica. Pred aktiviranjem zagotovite, da so shranjene vse spremembe dovoljenj te knjižne police.',
@@ -107,7 +107,7 @@ return [
 
     // Books
     'book' => 'Knjiga',
-    'books' => 'Knjige',
+    'recipes' => 'Knjige',
     'x_books' => ':count Knjiga|:count Knjig',
     'books_empty' => 'Ustvarjena ni bila nobena knjiga',
     'books_popular' => 'Priljubjene knjige',

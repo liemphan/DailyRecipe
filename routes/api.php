@@ -25,16 +25,16 @@ Route::get('attachments/{id}', [AttachmentApiController::class, 'read']);
 Route::put('attachments/{id}', [AttachmentApiController::class, 'update']);
 Route::delete('attachments/{id}', [AttachmentApiController::class, 'delete']);
 
-Route::get('books', [RecipeApiController::class, 'list']);
-Route::post('books', [RecipeApiController::class, 'create']);
-Route::get('books/{id}', [RecipeApiController::class, 'read']);
-Route::put('books/{id}', [RecipeApiController::class, 'update']);
-Route::delete('books/{id}', [RecipeApiController::class, 'delete']);
+Route::get('recipes', [RecipeApiController::class, 'list']);
+Route::post('recipes', [RecipeApiController::class, 'create']);
+Route::get('recipes/{id}', [RecipeApiController::class, 'read']);
+Route::put('recipes/{id}', [RecipeApiController::class, 'update']);
+Route::delete('recipes/{id}', [RecipeApiController::class, 'delete']);
 
-Route::get('books/{id}/export/html', [RecipeExportApiController::class, 'exportHtml']);
-Route::get('books/{id}/export/pdf', [RecipeExportApiController::class, 'exportPdf']);
-Route::get('books/{id}/export/plaintext', [RecipeExportApiController::class, 'exportPlainText']);
-Route::get('books/{id}/export/markdown', [RecipeExportApiController::class, 'exportMarkdown']);
+Route::get('recipes/{id}/export/html', [RecipeExportApiController::class, 'exportHtml']);
+Route::get('recipes/{id}/export/pdf', [RecipeExportApiController::class, 'exportPdf']);
+Route::get('recipes/{id}/export/plaintext', [RecipeExportApiController::class, 'exportPlainText']);
+Route::get('recipes/{id}/export/markdown', [RecipeExportApiController::class, 'exportMarkdown']);
 
 Route::get('chapters', [ChapterApiController::class, 'list']);
 Route::post('chapters', [ChapterApiController::class, 'create']);

@@ -20,7 +20,7 @@ class Recipemenu extends Entity implements HasCoverImage
     protected $hidden = ['restricted', 'image_id', 'deleted_at'];
 
     /**
-     * Get the books in this menu.
+     * Get the recipes in this menu.
      * Should not be used directly since does not take into account permissions.
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
@@ -33,7 +33,7 @@ class Recipemenu extends Entity implements HasCoverImage
     }
 
     /**
-     * Related books that are visible to the current user.
+     * Related recipes that are visible to the current user.
      */
     public function visibleRecipes(): BelongsToMany
     {
@@ -58,7 +58,7 @@ class Recipemenu extends Entity implements HasCoverImage
      */
     public function getBookCover($width = 440, $height = 250)
     {
-        // TODO - Make generic, focused on books right now, Perhaps set-up a better image
+        // TODO - Make generic, focused on recipes right now, Perhaps set-up a better image
         $default = 'data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==';
         if (!$this->image_id) {
             return $default;
