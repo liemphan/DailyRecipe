@@ -3,6 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="274eeb44-2be1-4c79-980b-c542185305a9" name="Changes" comment="update bookstack to dailyrecipe">
       <change beforePath="$PROJECT_DIR$/.env" beforeDir="false" afterPath="$PROJECT_DIR$/.env" afterDir="false" />
+<<<<<<< Updated upstream
       <change beforePath="$PROJECT_DIR$/.env - Copy.example" beforeDir="false" afterPath="$PROJECT_DIR$/.env - Copy.example" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.env.example.complete" beforeDir="false" afterPath="$PROJECT_DIR$/.env.example.complete" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
@@ -70,6 +71,9 @@
       <change beforePath="$PROJECT_DIR$/tests/Unit/UrlTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Unit/UrlTest.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/vendor/composer/installed.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/installed.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/vendor/composer/package-versions-deprecated/src/PackageVersions/Versions.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/package-versions-deprecated/src/PackageVersions/Versions.php" afterDir="false" />
+=======
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+>>>>>>> Stashed changes
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -263,6 +267,17 @@
       <workItem from="1639723689269" duration="2944000" />
       <workItem from="1639733938631" duration="1403000" />
       <workItem from="1639735372531" duration="495000" />
+<<<<<<< Updated upstream
+=======
+      <workItem from="1640163383542" duration="191000" />
+      <workItem from="1640171567002" duration="2066000" />
+      <workItem from="1640173904057" duration="167000" />
+      <workItem from="1640174123734" duration="573000" />
+      <workItem from="1640175348058" duration="2541000" />
+      <workItem from="1640268551232" duration="2257000" />
+      <workItem from="1640317445675" duration="674000" />
+      <workItem from="1640434798513" duration="683000" />
+>>>>>>> Stashed changes
     </task>
     <task id="LOCAL-00001" summary="add project">
       <created>1639398042116</created>
