@@ -103,8 +103,8 @@ class RecipeMenuTest extends TestCase
         $menuPage->assertElementContains('.tag-item', 'Test Category');
         $menuPage->assertElementContains('.tag-item', 'Test Tag Value');
 
-        $this->assertDatabaseHas('recipemenus_books', ['recipemenu_id' => $menu->id, 'book_id' => $booksToInclude[0]->id]);
-        $this->assertDatabaseHas('recipemenus_books', ['recipemenu_id' => $menu->id, 'book_id' => $booksToInclude[1]->id]);
+        $this->assertDatabaseHas('recipemenus_books', ['recipemenu_id' => $menu->id, 'recipe_id' => $booksToInclude[0]->id]);
+        $this->assertDatabaseHas('recipemenus_books', ['recipemenu_id' => $menu->id, 'recipe_id' => $booksToInclude[1]->id]);
     }
 
     public function test_menus_create_sets_cover_image()
@@ -232,8 +232,8 @@ class RecipeMenuTest extends TestCase
         $menuPage->assertElementContains('.tag-item', 'Test Category');
         $menuPage->assertElementContains('.tag-item', 'Test Tag Value');
 
-        $this->assertDatabaseHas('recipemenus_books', ['recipemenu_id' => $menu->id, 'book_id' => $booksToInclude[0]->id]);
-        $this->assertDatabaseHas('recipemenus_books', ['recipemenu_id' => $menu->id, 'book_id' => $booksToInclude[1]->id]);
+        $this->assertDatabaseHas('recipemenus_books', ['recipemenu_id' => $menu->id, 'recipe_id' => $booksToInclude[0]->id]);
+        $this->assertDatabaseHas('recipemenus_books', ['recipemenu_id' => $menu->id, 'recipe_id' => $booksToInclude[1]->id]);
     }
 
     public function test_menu_create_new_book()
@@ -255,7 +255,7 @@ class RecipeMenuTest extends TestCase
         $newBook = Recipe::query()->orderBy('id', 'desc')->first();
         $this->assertDatabaseHas('recipemenus_books', [
             'recipemenu_id' => $menu->id,
-            'book_id'      => $newBook->id,
+            'recipe_id'      => $newBook->id,
         ]);
 
         $resp = $this->asEditor()->get($menu->getUrl());

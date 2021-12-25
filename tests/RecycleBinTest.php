@@ -99,15 +99,15 @@ class RecycleBinTest extends TestCase
         $this->asEditor()->delete($book->getUrl());
         $deletion = Deletion::query()->firstOrFail();
 
-        $this->assertEquals($book->pages->count(), DB::table('pages')->where('book_id', '=', $book->id)->whereNotNull('deleted_at')->count());
-        $this->assertEquals($book->chapters->count(), DB::table('chapters')->where('book_id', '=', $book->id)->whereNotNull('deleted_at')->count());
+        $this->assertEquals($book->pages->count(), DB::table('pages')->where('recipe_id', '=', $book->id)->whereNotNull('deleted_at')->count());
+        $this->assertEquals($book->chapters->count(), DB::table('chapters')->where('recipe_id', '=', $book->id)->whereNotNull('deleted_at')->count());
 
         $restoreReq = $this->asAdmin()->post("/settings/recycle-bin/{$deletion->id}/restore");
         $restoreReq->assertRedirect('/settings/recycle-bin');
         $this->assertTrue(Deletion::query()->count() === 0);
 
-        $this->assertEquals($book->pages->count(), DB::table('pages')->where('book_id', '=', $book->id)->whereNull('deleted_at')->count());
-        $this->assertEquals($book->chapters->count(), DB::table('chapters')->where('book_id', '=', $book->id)->whereNull('deleted_at')->count());
+        $this->assertEquals($book->pages->count(), DB::table('pages')->where('recipe_id', '=', $book->id)->whereNull('deleted_at')->count());
+        $this->assertEquals($book->chapters->count(), DB::table('chapters')->where('recipe_id', '=', $book->id)->whereNull('deleted_at')->count());
 
         $itemCount = 1 + $book->pages->count() + $book->chapters->count();
         $redirectReq = $this->get('/settings/recycle-bin');

@@ -1,6 +1,6 @@
 {
   "id": 1,
-  "book_id": 1,
+  "recipe_id": 1,
   "slug": "content-creation",
   "name": "Content Creation",
   "description": "How to create documentation on whatever subject you need to write about.",
@@ -29,7 +29,7 @@
   "pages": [
     {
       "id": 1,
-      "book_id": 1,
+      "recipe_id": 1,
       "chapter_id": 1,
       "name": "How to create page content",
       "slug": "how-to-create-page-content",
@@ -44,7 +44,7 @@
     },
     {
       "id": 7,
-      "book_id": 1,
+      "recipe_id": 1,
       "chapter_id": 1,
       "name": "Good book structure",
       "slug": "good-book-structure",

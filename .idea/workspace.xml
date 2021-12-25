@@ -4,35 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="274eeb44-2be1-4c79-980b-c542185305a9" name="Changes" comment="update bookstack to dailyrecipe">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Config/setting-defaults.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Config/setting-defaults.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Entities/BreadcrumbsViewComposer.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Entities/BreadcrumbsViewComposer.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Entities/EntityProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Entities/EntityProvider.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Entities/Models/Entity.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Entities/Models/Entity.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Entities/Models/Recipe.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Entities/Models/Recipe.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Entities/Models/RecipeMenu.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Entities/Models/RecipeMenu.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Entities/Repos/BookRepo.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Entities/Repos/RecipeRepo.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Entities/Repos/ChapterRepo.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Entities/Repos/ChapterRepo.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Entities/Repos/PageRepo.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Entities/Repos/PageRepo.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Entities/Tools/BookContents.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Entities/Tools/RecipeContents.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Entities/Tools/ExportFormatter.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Entities/Tools/ExportFormatter.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Entities/Tools/MenuContext.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Entities/Tools/MenuContext.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Entities/Tools/SiblingFetcher.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Entities/Tools/SiblingFetcher.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Entities/Tools/TrashCan.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Entities/Tools/TrashCan.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Api/BookApiController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Api/RecipeApiController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Api/BookExportApiController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Api/RecipeExportApiController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/BookController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/BookController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/BookExportController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/BookExportController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/BookSortController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/BookSortController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ChapterController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/ChapterController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/HomeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/HomeController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/PageController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/PageController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/RecipemenuController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/RecipemenuController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/OpenGraphTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/OpenGraphTest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/SharedTestHelpers.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/SharedTestHelpers.php" afterDir="false" />
-    </list>
+    <list default="true" id="274eeb44-2be1-4c79-980b-c542185305a9" name="Changes" comment="update bookstack to dailyrecipe" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />

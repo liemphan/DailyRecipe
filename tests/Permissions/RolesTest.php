@@ -832,7 +832,7 @@ class RolesTest extends TestCase
             ->assertDontSee('Add a chapter');
 
         // Chapter links
-        $chapter = Chapter::factory()->create(['created_by' => $admin->id, 'updated_by' => $admin->id, 'book_id' => $book->id]);
+        $chapter = Chapter::factory()->create(['created_by' => $admin->id, 'updated_by' => $admin->id, 'recipe_id' => $book->id]);
         $this->regenEntityPermissions($chapter);
         $this->actingAs($this->getViewer())->get($chapter->getUrl())
             ->assertDontSee('Create a new page')

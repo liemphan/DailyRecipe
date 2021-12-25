@@ -236,7 +236,7 @@ class ImageRepo
     {
         $pages = Page::visible()
             ->where('html', 'like', '%' . $image->url . '%')
-            ->get(['id', 'name', 'slug', 'book_id']);
+            ->get(['id', 'name', 'slug', 'recipe_id']);
 
         foreach ($pages as $page) {
             $page->setAttribute('url', $page->getUrl());

@@ -1,6 +1,6 @@
 {
   "id": 75,
-  "book_id": 1,
+  "recipe_id": 1,
   "slug": "my-fantastic-updated-chapter",
   "name": "My fantastic updated chapter",
   "description": "This is an updated chapter that I've altered via the API",

@@ -27,7 +27,7 @@ class Recipemenu extends Entity implements HasCoverImage
      */
     public function books()
     {
-        return $this->belongsToMany(Recipe::class, 'recipemenus_books', 'recipemenu_id', 'book_id')
+        return $this->belongsToMany(Recipe::class, 'recipemenus_books', 'recipemenu_id', 'recipe_id')
             ->withPivot('order')
             ->orderBy('order', 'asc');
     }

@@ -117,7 +117,7 @@ class SearchRunner
             }
 
             $entityModelInstance = $this->entityProvider->get($entityType);
-            $search = $this->buildQuery($opts, $entityModelInstance)->where('book_id', '=', $bookId)->take(20)->get();
+            $search = $this->buildQuery($opts, $entityModelInstance)->where('recipe_id', '=', $bookId)->take(20)->get();
             $results = $results->merge($search);
         }
 

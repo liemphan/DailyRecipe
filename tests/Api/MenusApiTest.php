@@ -45,7 +45,7 @@ class MenusApiTest extends TestCase
         foreach ($books as $index => $book) {
             $this->assertDatabaseHas('recipemenus_books', [
                 'recipemenu_id' => $newItem->id,
-                'book_id'      => $book->id,
+                'recipe_id'      => $book->id,
                 'order'        => $index,
             ]);
         }

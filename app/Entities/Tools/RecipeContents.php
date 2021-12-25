@@ -31,10 +31,10 @@ class RecipeContents
      */
     public function getLastPriority(): int
     {
-        $maxPage = Page::visible()->where('book_id', '=', $this->book->id)
+        $maxPage = Page::visible()->where('recipe_id', '=', $this->book->id)
             ->where('draft', '=', false)
             ->where('chapter_id', '=', 0)->max('priority');
-        $maxChapter = Chapter::visible()->where('book_id', '=', $this->book->id)
+        $maxChapter = Chapter::visible()->where('recipe_id', '=', $this->book->id)
             ->max('priority');
 
         return max($maxChapter, $maxPage, 1);
@@ -46,7 +46,7 @@ class RecipeContents
     public function getTree(bool $showDrafts = false, bool $renderPages = false): Collection
     {
         $pages = $this->getPages($showDrafts, $renderPages);
-        $chapters = Chapter::visible()->where('book_id', '=', $this->book->id)->get();
+        $chapters = Chapter::visible()->where('recipe_id', '=', $this->book->id)->get();
         $all = collect()->concat($pages)->concat($chapters);
         $chapterMap = $chapters->keyBy('id');
         $lonePages = collect();
@@ -97,7 +97,7 @@ class RecipeContents
     {
         $query = Page::visible()
             ->select($getPageContent ? Page::$contentAttributes : Page::$listAttributes)
-            ->where('book_id', '=', $this->book->id);
+            ->where('recipe_id', '=', $this->book->id);
 
         if (!$showDrafts) {
             $query->where('draft', '=', false);
@@ -203,7 +203,7 @@ class RecipeContents
     {
         $bookIdsInvolved = collect([$this->book->id]);
         $bookIdsInvolved = $bookIdsInvolved->concat($sortMap->pluck('book'));
-        $bookIdsInvolved = $bookIdsInvolved->concat($sortMap->pluck('model.book_id'));
+        $bookIdsInvolved = $bookIdsInvolved->concat($sortMap->pluck('model.recipe_id'));
         $bookIdsInvolved = $bookIdsInvolved->unique()->toArray();
 
         $books = Recipe::hasPermission('update')->whereIn('id', $bookIdsInvolved)->get();

@@ -40,7 +40,7 @@ class DummyContentSeeder extends Seeder
             ->each(function ($book) use ($byData) {
                 $chapters = Chapter::factory()->count(3)->create($byData)
                     ->each(function ($chapter) use ($book, $byData) {
-                        $pages = Page::factory()->count(3)->make(array_merge($byData, ['book_id' => $book->id]));
+                        $pages = Page::factory()->count(3)->make(array_merge($byData, ['recipe_id' => $book->id]));
                         $chapter->pages()->saveMany($pages);
                     });
                 $pages = Page::factory()->count(3)->make($byData);

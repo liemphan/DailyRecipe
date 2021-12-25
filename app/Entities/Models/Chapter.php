@@ -18,7 +18,7 @@ class Chapter extends RecipeChild
 
     public $searchFactor = 1.2;
 
-    protected $fillable = ['name', 'description', 'priority', 'book_id'];
+    protected $fillable = ['name', 'description', 'priority', 'recipe_id'];
     protected $hidden = ['restricted', 'pivot', 'deleted_at'];
 
     /**

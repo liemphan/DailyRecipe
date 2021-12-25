@@ -16,15 +16,15 @@ class PageApiController extends ApiController
 
     protected $rules = [
         'create' => [
-            'book_id'    => ['required_without:chapter_id', 'integer'],
-            'chapter_id' => ['required_without:book_id', 'integer'],
+            'recipe_id'    => ['required_without:chapter_id', 'integer'],
+            'chapter_id' => ['required_without:recipe_id', 'integer'],
             'name'       => ['required', 'string', 'max:255'],
             'html'       => ['required_without:markdown', 'string'],
             'markdown'   => ['required_without:html', 'string'],
             'tags'       => ['array'],
         ],
         'update' => [
-            'book_id'    => ['required', 'integer'],
+            'recipe_id'    => ['required', 'integer'],
             'chapter_id' => ['required', 'integer'],
             'name'       => ['string', 'min:1', 'max:255'],
             'html'       => ['string'],
@@ -46,7 +46,7 @@ class PageApiController extends ApiController
         $pages = Page::visible();
 
         return $this->apiListingResponse($pages, [
-            'id', 'book_id', 'chapter_id', 'name', 'slug', 'priority',
+            'id', 'recipe_id', 'chapter_id', 'name', 'slug', 'priority',
             'draft', 'template',
             'created_at', 'updated_at',
             'created_by', 'updated_by', 'owned_by',
@@ -71,7 +71,7 @@ class PageApiController extends ApiController
         if ($request->has('chapter_id')) {
             $parent = Chapter::visible()->findOrFail($request->get('chapter_id'));
         } else {
-            $parent = Recipe::visible()->findOrFail($request->get('book_id'));
+            $parent = Recipe::visible()->findOrFail($request->get('recipe_id'));
         }
         $this->checkOwnablePermission('page-create', $parent);
 
@@ -98,7 +98,7 @@ class PageApiController extends ApiController
      * Update the details of a single page.
      *
      * See the 'create' action for details on the provided HTML/Markdown.
-     * Providing a 'book_id' or 'chapter_id' property will essentially move
+     * Providing a 'recipe_id' or 'chapter_id' property will essentially move
      * the page into that parent element if you have permissions to do so.
      */
     public function update(Request $request, string $id)
@@ -109,8 +109,8 @@ class PageApiController extends ApiController
         $parent = null;
         if ($request->has('chapter_id')) {
             $parent = Chapter::visible()->findOrFail($request->get('chapter_id'));
-        } elseif ($request->has('book_id')) {
-            $parent = Recipe::visible()->findOrFail($request->get('book_id'));
+        } elseif ($request->has('recipe_id')) {
+            $parent = Recipe::visible()->findOrFail($request->get('recipe_id'));
         }
 
         if ($parent && !$parent->matches($page->getParent())) {

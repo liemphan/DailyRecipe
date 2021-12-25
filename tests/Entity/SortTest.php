@@ -76,7 +76,7 @@ class SortTest extends TestCase
     {
         $oldChapter = Chapter::first();
         $page = $oldChapter->pages()->first();
-        $newBook = Recipe::where('id', '!=', $oldChapter->book_id)->first();
+        $newBook = Recipe::where('id', '!=', $oldChapter->recipe_id)->first();
 
         $movePageResp = $this->actingAs($this->getEditor())->put($page->getUrl('/move'), [
             'entity_selection' => 'book:' . $newBook->id,
@@ -166,7 +166,7 @@ class SortTest extends TestCase
         $newBookResp->assertSee($chapter->name);
 
         $pageToCheck = Page::find($pageToCheck->id);
-        $this->assertTrue($pageToCheck->book_id === $newBook->id, 'Chapter child page\'s book id has changed to the new book');
+        $this->assertTrue($pageToCheck->recipe_id === $newBook->id, 'Chapter child page\'s book id has changed to the new book');
         $pageCheckResp = $this->get($pageToCheck->getUrl());
         $pageCheckResp->assertSee($newBook->name);
     }
@@ -213,7 +213,7 @@ class SortTest extends TestCase
         ]);
 
         $pageToCheck->refresh();
-        $this->assertEquals($newBook->id, $pageToCheck->book_id);
+        $this->assertEquals($newBook->id, $pageToCheck->recipe_id);
     }
 
     public function test_book_sort_page_shows()
@@ -261,7 +261,7 @@ class SortTest extends TestCase
         $sortResp->assertStatus(302);
         $this->assertDatabaseHas('chapters', [
             'id'       => $chapterToMove->id,
-            'book_id'  => $newBook->id,
+            'recipe_id'  => $newBook->id,
             'priority' => 0,
         ]);
         $this->assertTrue($newBook->chapters()->count() === 1);

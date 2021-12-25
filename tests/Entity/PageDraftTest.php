@@ -185,7 +185,7 @@ class PageDraftTest extends TestCase
         $book = Recipe::query()->first();
         $this->asEditor()->get($book->getUrl('/create-page'));
         /** @var Page $draft */
-        $draft = Page::query()->where('draft', '=', true)->where('book_id', '=', $book->id)->firstOrFail();
+        $draft = Page::query()->where('draft', '=', true)->where('recipe_id', '=', $book->id)->firstOrFail();
 
         $resp = $this->put('/ajax/page/' . $draft->id . '/save-draft', [
             'name'     => 'My updated draft',

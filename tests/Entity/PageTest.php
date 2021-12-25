@@ -58,7 +58,7 @@ class PageTest extends TestCase
         $book = Recipe::query()->first();
 
         $this->asEditor()->get($book->getUrl('/create-page'));
-        $draft = Page::query()->where('book_id', '=', $book->id)
+        $draft = Page::query()->where('recipe_id', '=', $book->id)
             ->where('draft', '=', true)->first();
 
         $details = [
@@ -215,7 +215,7 @@ class PageTest extends TestCase
         $this->assertDatabaseHas('pages', [
             'name'       => 'My copied test page',
             'created_by' => $viewer->id,
-            'book_id'    => $newBook->id,
+            'recipe_id'    => $newBook->id,
         ]);
     }
 
