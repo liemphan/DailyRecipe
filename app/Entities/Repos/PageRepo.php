@@ -233,7 +233,7 @@ class PageRepo
 
         $revision->page_id = $page->id;
         $revision->slug = $page->slug;
-        $revision->book_slug = $page->recipe->slug;
+        $revision->recipe_slug = $page->recipe->slug;
         $revision->created_by = user()->id;
         $revision->created_at = $page->updated_at;
         $revision->type = 'version';
@@ -436,7 +436,7 @@ class PageRepo
         $draft = new PageRevision();
         $draft->page_id = $page->id;
         $draft->slug = $page->slug;
-        $draft->book_slug = $page->recipe->slug;
+        $draft->recipe_slug = $page->recipe->slug;
         $draft->created_by = user()->id;
         $draft->type = 'update_draft';
 
