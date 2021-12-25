@@ -8,64 +8,64 @@ use Throwable;
 
 class RecipeExportController extends Controller
 {
-    protected $bookRepo;
+    protected $recipeRepo;
     protected $exportFormatter;
 
     /**
      * RecipeExportController constructor.
      */
-    public function __construct(RecipeRepo $bookRepo, ExportFormatter $exportFormatter)
+    public function __construct(RecipeRepo $recipeRepo, ExportFormatter $exportFormatter)
     {
-        $this->bookRepo = $bookRepo;
+        $this->recipeRepo = $recipeRepo;
         $this->exportFormatter = $exportFormatter;
         $this->middleware('can:content-export');
     }
 
     /**
-     * Export a book as a PDF file.
+     * Export a recipe as a PDF file.
      *
      * @throws Throwable
      */
-    public function pdf(string $bookSlug)
+    public function pdf(string $recipeSlug)
     {
-        $book = $this->bookRepo->getBySlug($bookSlug);
-        $pdfContent = $this->exportFormatter->bookToPdf($book);
+        $recipe = $this->recipeRepo->getBySlug($recipeSlug);
+        $pdfContent = $this->exportFormatter->recipeToPdf($recipe);
 
-        return $this->downloadResponse($pdfContent, $bookSlug . '.pdf');
+        return $this->downloadResponse($pdfContent, $recipeSlug . '.pdf');
     }
 
     /**
-     * Export a book as a contained HTML file.
+     * Export a recipe as a contained HTML file.
      *
      * @throws Throwable
      */
-    public function html(string $bookSlug)
+    public function html(string $recipeSlug)
     {
-        $book = $this->bookRepo->getBySlug($bookSlug);
-        $htmlContent = $this->exportFormatter->bookToContainedHtml($book);
+        $recipe = $this->recipeRepo->getBySlug($recipeSlug);
+        $htmlContent = $this->exportFormatter->recipeToContainedHtml($recipe);
 
-        return $this->downloadResponse($htmlContent, $bookSlug . '.html');
+        return $this->downloadResponse($htmlContent, $recipeSlug . '.html');
     }
 
     /**
-     * Export a book as a plain text file.
+     * Export a recipe as a plain text file.
      */
-    public function plainText(string $bookSlug)
+    public function plainText(string $recipeSlug)
     {
-        $book = $this->bookRepo->getBySlug($bookSlug);
-        $textContent = $this->exportFormatter->bookToPlainText($book);
+        $recipe = $this->recipeRepo->getBySlug($recipeSlug);
+        $textContent = $this->exportFormatter->recipeToPlainText($recipe);
 
-        return $this->downloadResponse($textContent, $bookSlug . '.txt');
+        return $this->downloadResponse($textContent, $recipeSlug . '.txt');
     }
 
     /**
-     * Export a book as a markdown file.
+     * Export a recipe as a markdown file.
      */
-    public function markdown(string $bookSlug)
+    public function markdown(string $recipeSlug)
     {
-        $book = $this->bookRepo->getBySlug($bookSlug);
-        $textContent = $this->exportFormatter->bookToMarkdown($book);
+        $recipe = $this->recipeRepo->getBySlug($recipeSlug);
+        $textContent = $this->exportFormatter->recipeToMarkdown($recipe);
 
-        return $this->downloadResponse($textContent, $bookSlug . '.md');
+        return $this->downloadResponse($textContent, $recipeSlug . '.md');
     }
 }

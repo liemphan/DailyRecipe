@@ -6,8 +6,8 @@
 
         <div class="my-s">
             @include('entities.breadcrumbs', ['crumbs' => [
-                $book,
-                $book->getUrl('/permissions') => [
+                $recipe,
+                $recipe->getUrl('/permissions') => [
                     'text' => trans('entities.recipes_permissions'),
                     'icon' => 'lock',
                 ]
@@ -16,7 +16,7 @@
 
         <main class="card content-wrap">
             <h1 class="list-heading">{{ trans('entities.recipes_permissions') }}</h1>
-            @include('form.entity-permissions', ['model' => $book])
+            @include('form.entity-permissions', ['model' => $recipe])
         </main>
     </div>
 

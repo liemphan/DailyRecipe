@@ -12,68 +12,68 @@ use Illuminate\Http\Request;
 
 class RecipeSortController extends Controller
 {
-    protected $bookRepo;
+    protected $recipeRepo;
 
-    public function __construct(RecipeRepo $bookRepo)
+    public function __construct(RecipeRepo $recipeRepo)
     {
-        $this->bookRepo = $bookRepo;
+        $this->recipeRepo = $recipeRepo;
     }
 
     /**
      * Shows the view which allows pages to be re-ordered and sorted.
      */
-    public function show(string $bookSlug)
+    public function show(string $recipeSlug)
     {
-        $book = $this->bookRepo->getBySlug($bookSlug);
-        $this->checkOwnablePermission('book-update', $book);
+        $recipe = $this->recipeRepo->getBySlug($recipeSlug);
+        $this->checkOwnablePermission('recipe-update', $recipe);
 
-        $bookChildren = (new RecipeContents($book))->getTree(false);
+        $recipeChildren = (new RecipeContents($recipe))->getTree(false);
 
-        $this->setPageTitle(trans('entities.recipes_sort_named', ['bookName'=>$book->getShortName()]));
+        $this->setPageTitle(trans('entities.recipes_sort_named', ['recipeName'=>$recipe->getShortName()]));
 
-        return view('recipes.sort', ['book' => $book, 'current' => $book, 'bookChildren' => $bookChildren]);
+        return view('recipes.sort', ['recipe' => $recipe, 'current' => $recipe, 'recipeChildren' => $recipeChildren]);
     }
 
     /**
-     * Shows the sort box for a single book.
+     * Shows the sort box for a single recipe.
      * Used via AJAX when loading in extra recipes to a sort.
      */
-    public function showItem(string $bookSlug)
+    public function showItem(string $recipeSlug)
     {
-        $book = $this->bookRepo->getBySlug($bookSlug);
-        $bookChildren = (new RecipeContents($book))->getTree();
+        $recipe = $this->recipeRepo->getBySlug($recipeSlug);
+        $recipeChildren = (new RecipeContents($recipe))->getTree();
 
-        return view('recipes.parts.sort-box', ['book' => $book, 'bookChildren' => $bookChildren]);
+        return view('recipes.parts.sort-box', ['recipe' => $recipe, 'recipeChildren' => $recipeChildren]);
     }
 
     /**
-     * Sorts a book using a given mapping array.
+     * Sorts a recipe using a given mapping array.
      */
-    public function update(Request $request, string $bookSlug)
+    public function update(Request $request, string $recipeSlug)
     {
-        $book = $this->bookRepo->getBySlug($bookSlug);
-        $this->checkOwnablePermission('book-update', $book);
+        $recipe = $this->recipeRepo->getBySlug($recipeSlug);
+        $this->checkOwnablePermission('recipe-update', $recipe);
 
         // Return if no map sent
         if (!$request->filled('sort-tree')) {
-            return redirect($book->getUrl());
+            return redirect($recipe->getUrl());
         }
 
         $sortMap = collect(json_decode($request->get('sort-tree')));
-        $bookContents = new RecipeContents($book);
-        $booksInvolved = collect();
+        $recipeContents = new RecipeContents($recipe);
+        $recipesInvolved = collect();
 
         try {
-            $booksInvolved = $bookContents->sortUsingMap($sortMap);
+            $recipesInvolved = $recipeContents->sortUsingMap($sortMap);
         } catch (SortOperationException $exception) {
             $this->showPermissionError();
         }
 
         // Rebuild permissions and add activity for involved recipes.
-        $booksInvolved->each(function (Recipe $book) {
-            Activity::addForEntity($book, ActivityType::BOOK_SORT);
+        $recipesInvolved->each(function (Recipe $recipe) {
+            Activity::addForEntity($recipe, ActivityType::BOOK_SORT);
         });
 
-        return redirect($book->getUrl());
+        return redirect($recipe->getUrl());
     }
 }

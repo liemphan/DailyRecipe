@@ -17,35 +17,35 @@ use Throwable;
 
 class RecipeController extends Controller
 {
-    protected $bookRepo;
+    protected $recipeRepo;
     protected $entityContextManager;
 
-    public function __construct(MenuContext $entityContextManager, RecipeRepo $bookRepo)
+    public function __construct(MenuContext $entityContextManager, RecipeRepo $recipeRepo)
     {
-        $this->bookRepo = $bookRepo;
+        $this->recipeRepo = $recipeRepo;
         $this->entityContextManager = $entityContextManager;
     }
 
     /**
-     * Display a listing of the book.
+     * Display a listing of the recipe.
      */
     public function index()
     {
-        $view = setting()->getForCurrentUser('books_view_type');
+        $view = setting()->getForCurrentUser('recipes_view_type');
         $sort = setting()->getForCurrentUser('recipes_sort', 'name');
-        $order = setting()->getForCurrentUser('books_sort_order', 'asc');
+        $order = setting()->getForCurrentUser('recipes_sort_order', 'asc');
 
-        $books = $this->bookRepo->getAllPaginated(18, $sort, $order);
-        $recents = $this->isSignedIn() ? $this->bookRepo->getRecentlyViewed(4) : false;
-        $popular = $this->bookRepo->getPopular(4);
-        $new = $this->bookRepo->getRecentlyCreated(4);
+        $recipes = $this->recipeRepo->getAllPaginated(18, $sort, $order);
+        $recents = $this->isSignedIn() ? $this->recipeRepo->getRecentlyViewed(4) : false;
+        $popular = $this->recipeRepo->getPopular(4);
+        $new = $this->recipeRepo->getRecentlyCreated(4);
 
         $this->entityContextManager->clearMenuContext();
 
         $this->setPageTitle(trans('entities.recipes'));
 
         return view('recipes.index', [
-            'recipes'   => $books,
+            'recipes'   => $recipes,
             'recents' => $recents,
             'popular' => $popular,
             'new'     => $new,
@@ -56,11 +56,11 @@ class RecipeController extends Controller
     }
 
     /**
-     * Show the form for creating a new book.
+     * Show the form for creating a new recipe.
      */
     public function create(string $menuSlug = null)
     {
-        $this->checkPermission('book-create-all');
+        $this->checkPermission('recipe-create-all');
 
         $recipemenu = null;
         if ($menuSlug !== null) {
@@ -76,14 +76,14 @@ class RecipeController extends Controller
     }
 
     /**
-     * Store a newly created book in storage.
+     * Store a newly created recipe in storage.
      *
      * @throws ImageUploadException
      * @throws ValidationException
      */
     public function store(Request $request, string $menuSlug = null)
     {
-        $this->checkPermission('book-create-all');
+        $this->checkPermission('recipe-create-all');
         $this->validate($request, [
             'name'        => ['required', 'string', 'max:255'],
             'description' => ['string', 'max:1000'],
@@ -96,56 +96,56 @@ class RecipeController extends Controller
             $this->checkOwnablePermission('recipemenu-update', $recipemenu);
         }
 
-        $book = $this->bookRepo->create($request->all());
-        $this->bookRepo->updateCoverImage($book, $request->file('image', null));
+        $recipe = $this->recipeRepo->create($request->all());
+        $this->recipeRepo->updateCoverImage($recipe, $request->file('image', null));
 
         if ($recipemenu) {
-            $recipemenu->appendBook($book);
+            $recipemenu->appendBook($recipe);
             Activity::addForEntity($recipemenu, ActivityType::RECIPEMENU_UPDATE);
         }
 
-        return redirect($book->getUrl());
+        return redirect($recipe->getUrl());
     }
 
     /**
-     * Display the specified book.
+     * Display the specified recipe.
      */
     public function show(Request $request, string $slug)
     {
-        $book = $this->bookRepo->getBySlug($slug);
-        $bookChildren = (new RecipeContents($book))->getTree(true);
-        $bookParentMenus = $book->menus()->scopes('visible')->get();
+        $recipe = $this->recipeRepo->getBySlug($slug);
+        $recipeChildren = (new RecipeContents($recipe))->getTree(true);
+        $recipeParentMenus = $recipe->menus()->scopes('visible')->get();
 
-        View::incrementFor($book);
+        View::incrementFor($recipe);
         if ($request->has('menu')) {
             $this->entityContextManager->setMenuContext(intval($request->get('menu')));
         }
 
-        $this->setPageTitle($book->getShortName());
+        $this->setPageTitle($recipe->getShortName());
 
         return view('recipes.show', [
-            'book'              => $book,
-            'current'           => $book,
-            'bookChildren'      => $bookChildren,
-            'bookParentMenus' => $bookParentMenus,
-            'activity'          => Activity::entityActivity($book, 20, 1),
+            'recipe'              => $recipe,
+            'current'           => $recipe,
+            'recipeChildren'      => $recipeChildren,
+            'recipeParentMenus' => $recipeParentMenus,
+            'activity'          => Activity::entityActivity($recipe, 20, 1),
         ]);
     }
 
     /**
-     * Show the form for editing the specified book.
+     * Show the form for editing the specified recipe.
      */
     public function edit(string $slug)
     {
-        $book = $this->bookRepo->getBySlug($slug);
-        $this->checkOwnablePermission('book-update', $book);
-        $this->setPageTitle(trans('entities.recipes_edit_named', ['bookName'=>$book->getShortName()]));
+        $recipe = $this->recipeRepo->getBySlug($slug);
+        $this->checkOwnablePermission('recipe-update', $recipe);
+        $this->setPageTitle(trans('entities.recipes_edit_named', ['recipeName'=>$recipe->getShortName()]));
 
-        return view('recipes.edit', ['book' => $book, 'current' => $book]);
+        return view('recipes.edit', ['recipe' => $recipe, 'current' => $recipe]);
     }
 
     /**
-     * Update the specified book in storage.
+     * Update the specified recipe in storage.
      *
      * @throws ImageUploadException
      * @throws ValidationException
@@ -153,44 +153,44 @@ class RecipeController extends Controller
      */
     public function update(Request $request, string $slug)
     {
-        $book = $this->bookRepo->getBySlug($slug);
-        $this->checkOwnablePermission('book-update', $book);
+        $recipe = $this->recipeRepo->getBySlug($slug);
+        $this->checkOwnablePermission('recipe-update', $recipe);
         $this->validate($request, [
             'name'        => ['required', 'string', 'max:255'],
             'description' => ['string', 'max:1000'],
             'image'       => array_merge(['nullable'], $this->getImageValidationRules()),
         ]);
 
-        $book = $this->bookRepo->update($book, $request->all());
+        $recipe = $this->recipeRepo->update($recipe, $request->all());
         $resetCover = $request->has('image_reset');
-        $this->bookRepo->updateCoverImage($book, $request->file('image', null), $resetCover);
+        $this->recipeRepo->updateCoverImage($recipe, $request->file('image', null), $resetCover);
 
-        return redirect($book->getUrl());
+        return redirect($recipe->getUrl());
     }
 
     /**
      * Shows the page to confirm deletion.
      */
-    public function showDelete(string $bookSlug)
+    public function showDelete(string $recipeSlug)
     {
-        $book = $this->bookRepo->getBySlug($bookSlug);
-        $this->checkOwnablePermission('book-delete', $book);
-        $this->setPageTitle(trans('entities.recipes_delete_named', ['bookName' => $book->getShortName()]));
+        $recipe = $this->recipeRepo->getBySlug($recipeSlug);
+        $this->checkOwnablePermission('recipe-delete', $recipe);
+        $this->setPageTitle(trans('entities.recipes_delete_named', ['recipeName' => $recipe->getShortName()]));
 
-        return view('recipes.delete', ['book' => $book, 'current' => $book]);
+        return view('recipes.delete', ['recipe' => $recipe, 'current' => $recipe]);
     }
 
     /**
-     * Remove the specified book from the system.
+     * Remove the specified recipe from the system.
      *
      * @throws Throwable
      */
-    public function destroy(string $bookSlug)
+    public function destroy(string $recipeSlug)
     {
-        $book = $this->bookRepo->getBySlug($bookSlug);
-        $this->checkOwnablePermission('book-delete', $book);
+        $recipe = $this->recipeRepo->getBySlug($recipeSlug);
+        $this->checkOwnablePermission('recipe-delete', $recipe);
 
-        $this->bookRepo->destroy($book);
+        $this->recipeRepo->destroy($recipe);
 
         return redirect('/recipes');
     }
@@ -198,30 +198,30 @@ class RecipeController extends Controller
     /**
      * Show the permissions view.
      */
-    public function showPermissions(string $bookSlug)
+    public function showPermissions(string $recipeSlug)
     {
-        $book = $this->bookRepo->getBySlug($bookSlug);
-        $this->checkOwnablePermission('restrictions-manage', $book);
+        $recipe = $this->recipeRepo->getBySlug($recipeSlug);
+        $this->checkOwnablePermission('restrictions-manage', $recipe);
 
         return view('recipes.permissions', [
-            'book' => $book,
+            'recipe' => $recipe,
         ]);
     }
 
     /**
-     * Set the restrictions for this book.
+     * Set the restrictions for this recipe.
      *
      * @throws Throwable
      */
-    public function permissions(Request $request, PermissionsUpdater $permissionsUpdater, string $bookSlug)
+    public function permissions(Request $request, PermissionsUpdater $permissionsUpdater, string $recipeSlug)
     {
-        $book = $this->bookRepo->getBySlug($bookSlug);
-        $this->checkOwnablePermission('restrictions-manage', $book);
+        $recipe = $this->recipeRepo->getBySlug($recipeSlug);
+        $this->checkOwnablePermission('restrictions-manage', $recipe);
 
-        $permissionsUpdater->updateFromPermissionsForm($book, $request);
+        $permissionsUpdater->updateFromPermissionsForm($recipe, $request);
 
         $this->showSuccessNotification(trans('entities.recipes_permissions_updated'));
 
-        return redirect($book->getUrl());
+        return redirect($recipe->getUrl());
     }
 }
