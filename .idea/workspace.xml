@@ -5,9 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="274eeb44-2be1-4c79-980b-c542185305a9" name="Changes" comment="update bookstack to dailyrecipe">
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/RecipeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/RecipeController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/RecipeExportController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/RecipeExportController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/RecipeSortController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/RecipeSortController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/lang/en/entities.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/lang/en/entities.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

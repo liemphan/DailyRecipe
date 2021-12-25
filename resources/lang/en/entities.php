@@ -130,7 +130,7 @@ return [
     'recipes_empty_contents' => 'No pages or chapters have been created for this recipe.',
     'recipes_empty_create_page' => 'Create a new page',
     'recipes_empty_sort_current_recipe' => 'Sort the current recipe',
-    'books_empty_add_chapter' => 'Add a chapter',
+    'recipes_empty_add_chapter' => 'Add a chapter',
     'recipes_permissions_active' => 'Recipe Permissions Active',
     'recipes_search_this' => 'Search this recipe',
     'recipes_navigation' => 'Recipe Navigation',
