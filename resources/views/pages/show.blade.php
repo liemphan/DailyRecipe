@@ -70,7 +70,7 @@
         </nav>
     @endif
 
-    @include('entities.book-tree', ['book' => $book, 'sidebarTree' => $sidebarTree])
+    @include('entities.recipe-tree', ['book' => $book, 'sidebarTree' => $sidebarTree])
 @stop
 
 @section('right')
