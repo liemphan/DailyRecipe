@@ -27,7 +27,7 @@ class LargeContentSeeder extends Seeder
         $editorUser->attachRole($editorRole);
 
         /** @var Recipe $largeBook */
-        $largeBook = Recipe::factory()->create(['name' => 'Large book' . Str::random(10), 'created_by' => $editorUser->id, 'updated_by' => $editorUser->id]);
+        $largeBook = Recipe::factory()->create(['name' => 'Large recipe' . Str::random(10), 'created_by' => $editorUser->id, 'updated_by' => $editorUser->id]);
         $pages = Page::factory()->count(200)->make(['created_by' => $editorUser->id, 'updated_by' => $editorUser->id]);
         $chapters = Chapter::factory()->count(50)->make(['created_by' => $editorUser->id, 'updated_by' => $editorUser->id]);
 

@@ -28,9 +28,9 @@ class ChapterExportController extends Controller
      * @throws NotFoundException
      * @throws Throwable
      */
-    public function pdf(string $bookSlug, string $chapterSlug)
+    public function pdf(string $recipeSlug, string $chapterSlug)
     {
-        $chapter = $this->chapterRepo->getBySlug($bookSlug, $chapterSlug);
+        $chapter = $this->chapterRepo->getBySlug($recipeSlug, $chapterSlug);
         $pdfContent = $this->exportFormatter->chapterToPdf($chapter);
 
         return $this->downloadResponse($pdfContent, $chapterSlug . '.pdf');
@@ -42,9 +42,9 @@ class ChapterExportController extends Controller
      * @throws NotFoundException
      * @throws Throwable
      */
-    public function html(string $bookSlug, string $chapterSlug)
+    public function html(string $recipeSlug, string $chapterSlug)
     {
-        $chapter = $this->chapterRepo->getBySlug($bookSlug, $chapterSlug);
+        $chapter = $this->chapterRepo->getBySlug($recipeSlug, $chapterSlug);
         $containedHtml = $this->exportFormatter->chapterToContainedHtml($chapter);
 
         return $this->downloadResponse($containedHtml, $chapterSlug . '.html');
@@ -55,9 +55,9 @@ class ChapterExportController extends Controller
      *
      * @throws NotFoundException
      */
-    public function plainText(string $bookSlug, string $chapterSlug)
+    public function plainText(string $recipeSlug, string $chapterSlug)
     {
-        $chapter = $this->chapterRepo->getBySlug($bookSlug, $chapterSlug);
+        $chapter = $this->chapterRepo->getBySlug($recipeSlug, $chapterSlug);
         $chapterText = $this->exportFormatter->chapterToPlainText($chapter);
 
         return $this->downloadResponse($chapterText, $chapterSlug . '.txt');
@@ -68,10 +68,10 @@ class ChapterExportController extends Controller
      *
      * @throws NotFoundException
      */
-    public function markdown(string $bookSlug, string $chapterSlug)
+    public function markdown(string $recipeSlug, string $chapterSlug)
     {
         // TODO: This should probably export to a zip file.
-        $chapter = $this->chapterRepo->getBySlug($bookSlug, $chapterSlug);
+        $chapter = $this->chapterRepo->getBySlug($recipeSlug, $chapterSlug);
         $chapterText = $this->exportFormatter->chapterToMarkdown($chapter);
 
         return $this->downloadResponse($chapterText, $chapterSlug . '.md');

@@ -29,14 +29,14 @@ class ChapterController extends Controller
     /**
      * Show the form for creating a new chapter.
      */
-    public function create(string $bookSlug)
+    public function create(string $recipeSlug)
     {
-        $book = Recipe::visible()->where('slug', '=', $bookSlug)->firstOrFail();
-        $this->checkOwnablePermission('chapter-create', $book);
+        $recipe = Recipe::visible()->where('slug', '=', $recipeSlug)->firstOrFail();
+        $this->checkOwnablePermission('chapter-create', $recipe);
 
         $this->setPageTitle(trans('entities.chapters_create'));
 
-        return view('chapters.create', ['book' => $book, 'current' => $book]);
+        return view('chapters.create', ['recipe' => $recipe, 'current' => $recipe]);
     }
 
     /**
@@ -44,16 +44,16 @@ class ChapterController extends Controller
      *
      * @throws ValidationException
      */
-    public function store(Request $request, string $bookSlug)
+    public function store(Request $request, string $recipeSlug)
     {
         $this->validate($request, [
             'name' => ['required', 'string', 'max:255'],
         ]);
 
-        $book = Recipe::visible()->where('slug', '=', $bookSlug)->firstOrFail();
-        $this->checkOwnablePermission('chapter-create', $book);
+        $recipe = Recipe::visible()->where('slug', '=', $recipeSlug)->firstOrFail();
+        $this->checkOwnablePermission('chapter-create', $recipe);
 
-        $chapter = $this->chapterRepo->create($request->all(), $book);
+        $chapter = $this->chapterRepo->create($request->all(), $recipe);
 
         return redirect($chapter->getUrl());
     }
@@ -61,9 +61,9 @@ class ChapterController extends Controller
     /**
      * Display the specified chapter.
      */
-    public function show(string $bookSlug, string $chapterSlug)
+    public function show(string $recipeSlug, string $chapterSlug)
     {
-        $chapter = $this->chapterRepo->getBySlug($bookSlug, $chapterSlug);
+        $chapter = $this->chapterRepo->getBySlug($recipeSlug, $chapterSlug);
         $this->checkOwnablePermission('chapter-view', $chapter);
 
         $sidebarTree = (new RecipeContents($chapter->recipe))->getTree();
@@ -74,7 +74,7 @@ class ChapterController extends Controller
         $this->setPageTitle($chapter->getShortName());
 
         return view('chapters.show', [
-            'book'        => $chapter->recipe,
+            'recipe'        => $chapter->recipe,
             'chapter'     => $chapter,
             'current'     => $chapter,
             'sidebarTree' => $sidebarTree,
@@ -87,14 +87,14 @@ class ChapterController extends Controller
     /**
      * Show the form for editing the specified chapter.
      */
-    public function edit(string $bookSlug, string $chapterSlug)
+    public function edit(string $recipeSlug, string $chapterSlug)
     {
-        $chapter = $this->chapterRepo->getBySlug($bookSlug, $chapterSlug);
+        $chapter = $this->chapterRepo->getBySlug($recipeSlug, $chapterSlug);
         $this->checkOwnablePermission('chapter-update', $chapter);
 
         $this->setPageTitle(trans('entities.chapters_edit_named', ['chapterName' => $chapter->getShortName()]));
 
-        return view('chapters.edit', ['book' => $chapter->recipe, 'chapter' => $chapter, 'current' => $chapter]);
+        return view('chapters.edit', ['recipe' => $chapter->recipe, 'chapter' => $chapter, 'current' => $chapter]);
     }
 
     /**
@@ -102,9 +102,9 @@ class ChapterController extends Controller
      *
      * @throws NotFoundException
      */
-    public function update(Request $request, string $bookSlug, string $chapterSlug)
+    public function update(Request $request, string $recipeSlug, string $chapterSlug)
     {
-        $chapter = $this->chapterRepo->getBySlug($bookSlug, $chapterSlug);
+        $chapter = $this->chapterRepo->getBySlug($recipeSlug, $chapterSlug);
         $this->checkOwnablePermission('chapter-update', $chapter);
 
         $this->chapterRepo->update($chapter, $request->all());
@@ -117,14 +117,14 @@ class ChapterController extends Controller
      *
      * @throws NotFoundException
      */
-    public function showDelete(string $bookSlug, string $chapterSlug)
+    public function showDelete(string $recipeSlug, string $chapterSlug)
     {
-        $chapter = $this->chapterRepo->getBySlug($bookSlug, $chapterSlug);
+        $chapter = $this->chapterRepo->getBySlug($recipeSlug, $chapterSlug);
         $this->checkOwnablePermission('chapter-delete', $chapter);
 
         $this->setPageTitle(trans('entities.chapters_delete_named', ['chapterName' => $chapter->getShortName()]));
 
-        return view('chapters.delete', ['book' => $chapter->recipe, 'chapter' => $chapter, 'current' => $chapter]);
+        return view('chapters.delete', ['recipe' => $chapter->recipe, 'chapter' => $chapter, 'current' => $chapter]);
     }
 
     /**
@@ -133,9 +133,9 @@ class ChapterController extends Controller
      * @throws NotFoundException
      * @throws Throwable
      */
-    public function destroy(string $bookSlug, string $chapterSlug)
+    public function destroy(string $recipeSlug, string $chapterSlug)
     {
-        $chapter = $this->chapterRepo->getBySlug($bookSlug, $chapterSlug);
+        $chapter = $this->chapterRepo->getBySlug($recipeSlug, $chapterSlug);
         $this->checkOwnablePermission('chapter-delete', $chapter);
 
         $this->chapterRepo->destroy($chapter);
@@ -148,16 +148,16 @@ class ChapterController extends Controller
      *
      * @throws NotFoundException
      */
-    public function showMove(string $bookSlug, string $chapterSlug)
+    public function showMove(string $recipeSlug, string $chapterSlug)
     {
-        $chapter = $this->chapterRepo->getBySlug($bookSlug, $chapterSlug);
+        $chapter = $this->chapterRepo->getBySlug($recipeSlug, $chapterSlug);
         $this->setPageTitle(trans('entities.chapters_move_named', ['chapterName' => $chapter->getShortName()]));
         $this->checkOwnablePermission('chapter-update', $chapter);
         $this->checkOwnablePermission('chapter-delete', $chapter);
 
         return view('chapters.move', [
             'chapter' => $chapter,
-            'book'    => $chapter->recipe,
+            'recipe'    => $chapter->recipe,
         ]);
     }
 
@@ -166,9 +166,9 @@ class ChapterController extends Controller
      *
      * @throws NotFoundException
      */
-    public function move(Request $request, string $bookSlug, string $chapterSlug)
+    public function move(Request $request, string $recipeSlug, string $chapterSlug)
     {
-        $chapter = $this->chapterRepo->getBySlug($bookSlug, $chapterSlug);
+        $chapter = $this->chapterRepo->getBySlug($recipeSlug, $chapterSlug);
         $this->checkOwnablePermission('chapter-update', $chapter);
         $this->checkOwnablePermission('chapter-delete', $chapter);
 
@@ -180,12 +180,12 @@ class ChapterController extends Controller
         try {
             $newRecipe = $this->chapterRepo->move($chapter, $entitySelection);
         } catch (MoveOperationException $exception) {
-            $this->showErrorNotification(trans('errors.selected_book_not_found'));
+            $this->showErrorNotification(trans('errors.selected_recipe_not_found'));
 
             return redirect()->back();
         }
 
-        $this->showSuccessNotification(trans('entities.chapter_move_success', ['bookName' => $newRecipe->name]));
+        $this->showSuccessNotification(trans('entities.chapter_move_success', ['recipeName' => $newRecipe->name]));
 
         return redirect($chapter->getUrl());
     }
@@ -195,9 +195,9 @@ class ChapterController extends Controller
      *
      * @throws NotFoundException
      */
-    public function showPermissions(string $bookSlug, string $chapterSlug)
+    public function showPermissions(string $recipeSlug, string $chapterSlug)
     {
-        $chapter = $this->chapterRepo->getBySlug($bookSlug, $chapterSlug);
+        $chapter = $this->chapterRepo->getBySlug($recipeSlug, $chapterSlug);
         $this->checkOwnablePermission('restrictions-manage', $chapter);
 
         return view('chapters.permissions', [
@@ -210,9 +210,9 @@ class ChapterController extends Controller
      *
      * @throws NotFoundException
      */
-    public function permissions(Request $request, PermissionsUpdater $permissionsUpdater, string $bookSlug, string $chapterSlug)
+    public function permissions(Request $request, PermissionsUpdater $permissionsUpdater, string $recipeSlug, string $chapterSlug)
     {
-        $chapter = $this->chapterRepo->getBySlug($bookSlug, $chapterSlug);
+        $chapter = $this->chapterRepo->getBySlug($recipeSlug, $chapterSlug);
         $this->checkOwnablePermission('restrictions-manage', $chapter);
 
         $permissionsUpdater->updateFromPermissionsForm($chapter, $request);

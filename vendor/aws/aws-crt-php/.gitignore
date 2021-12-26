@@ -81,7 +81,7 @@ _deps
 .idea/**/tasks.xml
 .idea/**/usage.statistics.xml
 .idea/**/dictionaries
-.idea/**/menu
+.idea/**/shelf
 .idea/
 # Generated files
 .idea/**/contentModel.xml

@@ -3,7 +3,7 @@
 @push('social-meta')
     <meta property="og:description" content="{{ Str::limit($menu->description, 100, '...') }}">
     @if($menu->cover)
-        <meta property="og:image" content="{{ $menu->getBookCover() }}">
+        <meta property="og:image" content="{{ $menu->getRecipeCover() }}">
     @endif
 @endpush
 
@@ -32,16 +32,16 @@
 
         <div class="recipe-content">
             <p class="text-muted">{!! nl2br(e($menu->description)) !!}</p>
-            @if(count($sortedVisibleMenuBooks) > 0)
+            @if(count($sortedVisibleMenuRecipes) > 0)
                 @if($view === 'list')
                     <div class="entity-list">
-                        @foreach($sortedVisibleMenuBooks as $recipe)
+                        @foreach($sortedVisibleMenuRecipes as $recipe)
                             @include('recipes.parts.list-item', ['recipe' => $recipe])
                         @endforeach
                     </div>
                 @else
                     <div class="grid third">
-                        @foreach($sortedVisibleMenuBooks as $recipe)
+                        @foreach($sortedVisibleMenuRecipes as $recipe)
                             @include('entities.grid-item', ['entity' => $recipe])
                         @endforeach
                     </div>

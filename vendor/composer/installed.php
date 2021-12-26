@@ -1,11 +1,11 @@
 <?php return array(
     'root' => array(
-        'pretty_version' => '1.0.0+no-version-set',
-        'version' => '1.0.0.0',
+        'pretty_version' => 'dev-main',
+        'version' => 'dev-main',
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'reference' => NULL,
+        'reference' => '67edb87e0b4bd0bd04aea366c4e14adf2bf9571b',
         'name' => 'dailyrecipeapp/dailyrecipe',
         'dev' => false,
     ),
@@ -55,15 +55,6 @@
             'reference' => '1903ab84171072b6bff8d98eb58d38b2c9aaf645',
             'dev_requirement' => false,
         ),
-        'dailyrecipeapp/dailyrecipe' => array(
-            'pretty_version' => '1.0.0+no-version-set',
-            'version' => '1.0.0.0',
-            'type' => 'project',
-            'install_path' => __DIR__ . '/../../',
-            'aliases' => array(),
-            'reference' => NULL,
-            'dev_requirement' => false,
-        ),
         'brick/math' => array(
             'pretty_version' => '0.9.3',
             'version' => '0.9.3.0',
@@ -80,6 +71,15 @@
             'install_path' => __DIR__ . '/./package-versions-deprecated',
             'aliases' => array(),
             'reference' => 'b174585d1fe49ceed21928a945138948cb394600',
+            'dev_requirement' => false,
+        ),
+        'dailyrecipeapp/dailyrecipe' => array(
+            'pretty_version' => 'dev-main',
+            'version' => 'dev-main',
+            'type' => 'project',
+            'install_path' => __DIR__ . '/../../',
+            'aliases' => array(),
+            'reference' => '67edb87e0b4bd0bd04aea366c4e14adf2bf9571b',
             'dev_requirement' => false,
         ),
         'dasprid/enum' => array(
@@ -754,8 +754,8 @@
         'psr/log-implementation' => array(
             'dev_requirement' => false,
             'provided' => array(
-                0 => '1.0.0 || 2.0.0 || 3.0.0',
-                1 => '1.0|2.0',
+                0 => '1.0|2.0',
+                1 => '1.0.0 || 2.0.0 || 3.0.0',
             ),
         ),
         'psr/simple-cache' => array(

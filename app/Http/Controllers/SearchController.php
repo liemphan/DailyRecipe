@@ -45,12 +45,12 @@ class SearchController extends Controller
     }
 
     /**
-     * Searches all entities within a book.
+     * Searches all entities within a recipe.
      */
-    public function searchBook(Request $request, int $bookId)
+    public function searchRecipe(Request $request, int $recipeId)
     {
         $term = $request->get('term', '');
-        $results = $this->searchRunner->searchBook($bookId, $term);
+        $results = $this->searchRunner->searchRecipe($recipeId, $term);
 
         return view('entities.list', ['entities' => $results]);
     }
@@ -72,7 +72,7 @@ class SearchController extends Controller
      */
     public function searchEntitiesAjax(Request $request)
     {
-        $entityTypes = $request->filled('types') ? explode(',', $request->get('types')) : ['page', 'chapter', 'book'];
+        $entityTypes = $request->filled('types') ? explode(',', $request->get('types')) : ['page', 'chapter', 'recipe'];
         $searchTerm = $request->get('term', false);
         $permission = $request->get('permission', 'view');
 

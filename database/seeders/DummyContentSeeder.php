@@ -37,18 +37,18 @@ class DummyContentSeeder extends Seeder
         $byData = ['created_by' => $editorUser->id, 'updated_by' => $editorUser->id, 'owned_by' => $editorUser->id];
 
         \DailyRecipe\Entities\Models\Recipe::factory()->count(5)->create($byData)
-            ->each(function ($book) use ($byData) {
+            ->each(function ($recipe) use ($byData) {
                 $chapters = Chapter::factory()->count(3)->create($byData)
-                    ->each(function ($chapter) use ($book, $byData) {
-                        $pages = Page::factory()->count(3)->make(array_merge($byData, ['book_id' => $book->id]));
+                    ->each(function ($chapter) use ($recipe, $byData) {
+                        $pages = Page::factory()->count(3)->make(array_merge($byData, ['recipe_id' => $recipe->id]));
                         $chapter->pages()->saveMany($pages);
                     });
                 $pages = Page::factory()->count(3)->make($byData);
-                $book->chapters()->saveMany($chapters);
-                $book->pages()->saveMany($pages);
+                $recipe->chapters()->saveMany($chapters);
+                $recipe->pages()->saveMany($pages);
             });
 
-        $largeBook = \DailyRecipe\Entities\Models\Recipe::factory()->create(array_merge($byData, ['name' => 'Large book' . Str::random(10)]));
+        $largeBook = \DailyRecipe\Entities\Models\Recipe::factory()->create(array_merge($byData, ['name' => 'Large recipe' . Str::random(10)]));
         $pages = Page::factory()->count(200)->make($byData);
         $chapters = Chapter::factory()->count(50)->make($byData);
         $largeBook->pages()->saveMany($pages);

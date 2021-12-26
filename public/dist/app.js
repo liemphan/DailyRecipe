@@ -38602,13 +38602,13 @@
       return aType === "chapter" ? 1 : -1;
     }
   };
-  var BookSort = class {
+  var RecipeSort = class {
     constructor(elem) {
       this.elem = elem;
       this.sortContainer = elem.querySelector("[recipe-sort-boxes]");
       this.input = elem.querySelector("[recipe-sort-input]");
       const initialSortBox = elem.querySelector(".sort-box");
-      this.setupBookSortable(initialSortBox);
+      this.setupRecipeSortable(initialSortBox);
       this.setupSortPresets();
       window.$events.listen("entity-select-confirm", this.recipeSelect.bind(this));
     }
@@ -38648,12 +38648,12 @@
       window.$http.get(entitySortItemUrl).then((resp) => {
         const wrap = document.createElement("div");
         wrap.innerHTML = resp.data;
-        const newBookContainer = wrap.children[0];
-        this.sortContainer.append(newBookContainer);
-        this.setupBookSortable(newBookContainer);
+        const newRecipeContainer = wrap.children[0];
+        this.sortContainer.append(newRecipeContainer);
+        this.setupRecipeSortable(newRecipeContainer);
       });
     }
-    setupBookSortable(recipeContainer) {
+    setupRecipeSortable(recipeContainer) {
       const sortElems = [recipeContainer.querySelector(".sort-list")];
       sortElems.push(...recipeContainer.querySelectorAll(".entity-list-item + ul"));
       const recipeGroupConfig = {
@@ -38694,12 +38694,12 @@
         const recipeId = list.closest('[data-type="recipe"]').getAttribute("data-id");
         const directChildren = Array.from(list.children).filter((elem) => elem.matches('[data-type="page"], [data-type="chapter"]'));
         for (let i = 0; i < directChildren.length; i++) {
-          this.addBookChildToMap(directChildren[i], i, recipeId, entityMap);
+          this.addRecipeChildToMap(directChildren[i], i, recipeId, entityMap);
         }
       }
       return entityMap;
     }
-    addBookChildToMap(childElem, index2, recipeId, entityMap) {
+    addRecipeChildToMap(childElem, index2, recipeId, entityMap) {
       const type = childElem.getAttribute("data-type");
       const parentChapter = false;
       const childId = childElem.getAttribute("data-id");
@@ -38722,7 +38722,7 @@
       }
     }
   };
-  var recipe_sort_default = BookSort;
+  var recipe_sort_default = RecipeSort;
 
   // resources/js/services/animations.js
   var animateStylesCleanupMap = new WeakMap();
@@ -41540,7 +41540,7 @@
     constructor(elem) {
       this.elem = elem;
       this.input = document.getElementById("recipes-input");
-      this.menuBooksList = elem.querySelector("[menu-sort-assigned-recipes]");
+      this.menuRecipesList = elem.querySelector("[menu-sort-assigned-recipes]");
       this.initSortable();
       this.setupListeners();
     }
@@ -41573,8 +41573,8 @@
       this.onChange();
     }
     onChange() {
-      const menuBookElems = Array.from(this.menuBooksList.querySelectorAll("[data-id]"));
-      this.input.value = menuBookElems.map((elem) => elem.getAttribute("data-id")).join(",");
+      const menuRecipeElems = Array.from(this.menuRecipesList.querySelectorAll("[data-id]"));
+      this.input.value = menuRecipeElems.map((elem) => elem.getAttribute("data-id")).join(",");
     }
   };
   var menu_sort_default = MenuSort;
