@@ -59,11 +59,11 @@ return [
     // Entities
     'entity_not_found' => '找不到實體',
     'recipemenu_not_found' => '找不到書架',
-    'book_not_found' => '找不到書本',
+    'recipe_not_found' => '找不到書本',
     'page_not_found' => '找不到頁面',
     'chapter_not_found' => '找不到章節',
-    'selected_book_not_found' => '找不到選定的書本',
-    'selected_book_chapter_not_found' => '找不到選定的書本或章節',
+    'selected_recipe_not_found' => '找不到選定的書本',
+    'selected_recipe_chapter_not_found' => '找不到選定的書本或章節',
     'guests_cannot_save_drafts' => '訪客無法儲存草稿',
 
     // Users

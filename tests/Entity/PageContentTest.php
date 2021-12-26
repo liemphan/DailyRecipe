@@ -100,7 +100,7 @@ class PageContentTest extends TestCase
     {
         $page = Page::query()->first();
         $secondPage = Page::query()
-            ->where('book_id', '!=', $page->book_id)
+            ->where('book_id', '!=', $page->recipe_id)
             ->first();
 
         $content = '<p id="bkmrk-meow">my cat is awesome and scratchy</p>';
@@ -111,7 +111,7 @@ class PageContentTest extends TestCase
         $page->save();
 
         $this->asEditor();
-        $htmlContent = $this->get($page->book->getUrl('/export/html'));
+        $htmlContent = $this->get($page->recipe->getUrl('/export/html'));
         $htmlContent->assertSee('my cat is awesome and scratchy');
     }
 

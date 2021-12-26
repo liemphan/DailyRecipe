@@ -3,12 +3,12 @@
 namespace DailyRecipe\Entities\Repos;
 
 use DailyRecipe\Actions\ActivityType;
-use DailyRecipe\Entities\Models\Book;
+use DailyRecipe\Entities\Models\Recipe;
 use DailyRecipe\Entities\Models\Chapter;
 use DailyRecipe\Entities\Models\Entity;
 use DailyRecipe\Entities\Models\Page;
 use DailyRecipe\Entities\Models\PageRevision;
-use DailyRecipe\Entities\Tools\BookContents;
+use DailyRecipe\Entities\Tools\RecipeContents;
 use DailyRecipe\Entities\Tools\PageContent;
 use DailyRecipe\Entities\Tools\TrashCan;
 use DailyRecipe\Exceptions\MoveOperationException;
@@ -36,7 +36,7 @@ class PageRepo
      *
      * @throws NotFoundException
      */
-    public function getById(int $id, array $relations = ['book']): Page
+    public function getById(int $id, array $relations = ['recipe']): Page
     {
         $page = Page::visible()->with($relations)->find($id);
 
@@ -48,13 +48,13 @@ class PageRepo
     }
 
     /**
-     * Get a page its book and own slug.
+     * Get a page its recipe and own slug.
      *
      * @throws NotFoundException
      */
-    public function getBySlug(string $bookSlug, string $pageSlug): Page
+    public function getBySlug(string $recipeSlug, string $pageSlug): Page
     {
-        $page = Page::visible()->whereSlugs($bookSlug, $pageSlug)->first();
+        $page = Page::visible()->whereSlugs($recipeSlug, $pageSlug)->first();
 
         if (!$page) {
             throw new NotFoundException(trans('errors.page_not_found'));
@@ -65,9 +65,9 @@ class PageRepo
 
     /**
      * Get a page by its old slug but checking the revisions table
-     * for the last revision that matched the given page and book slug.
+     * for the last revision that matched the given page and recipe slug.
      */
-    public function getByOldSlug(string $bookSlug, string $pageSlug): ?Page
+    public function getByOldSlug(string $recipeSlug, string $pageSlug): ?Page
     {
         /** @var ?PageRevision $revision */
         $revision = PageRevision::query()
@@ -76,7 +76,7 @@ class PageRepo
             })
             ->where('slug', '=', $pageSlug)
             ->where('type', '=', 'version')
-            ->where('book_slug', '=', $bookSlug)
+            ->where('recipe_slug', '=', $recipeSlug)
             ->orderBy('created_at', 'desc')
             ->with('page')
             ->first();
@@ -108,13 +108,13 @@ class PageRepo
     /**
      * Get a parent item via slugs.
      */
-    public function getParentFromSlugs(string $bookSlug, string $chapterSlug = null): Entity
+    public function getParentFromSlugs(string $recipeSlug, string $chapterSlug = null): Entity
     {
         if ($chapterSlug !== null) {
-            return $chapter = Chapter::visible()->whereSlugs($bookSlug, $chapterSlug)->firstOrFail();
+            return $chapter = Chapter::visible()->whereSlugs($recipeSlug, $chapterSlug)->firstOrFail();
         }
 
-        return Book::visible()->where('slug', '=', $bookSlug)->firstOrFail();
+        return Recipe::visible()->where('slug', '=', $recipeSlug)->firstOrFail();
     }
 
     /**
@@ -142,9 +142,9 @@ class PageRepo
 
         if ($parent instanceof Chapter) {
             $page->chapter_id = $parent->id;
-            $page->book_id = $parent->book_id;
+            $page->recipe_id = $parent->recipe_id;
         } else {
-            $page->book_id = $parent->id;
+            $page->recipe_id = $parent->id;
         }
 
         $page->save();
@@ -233,7 +233,7 @@ class PageRepo
 
         $revision->page_id = $page->id;
         $revision->slug = $page->slug;
-        $revision->book_slug = $page->book->slug;
+        $revision->recipe_slug = $page->recipe->slug;
         $revision->created_by = user()->id;
         $revision->created_at = $page->updated_at;
         $revision->type = 'version';
@@ -318,9 +318,9 @@ class PageRepo
     }
 
     /**
-     * Move the given page into a new parent book or chapter.
+     * Move the given page into a new parent recipe or chapter.
      * The $parentIdentifier must be a string of the following format:
-     * 'book:<id>' (book:5).
+     * 'recipe:<id>' (recipe:5).
      *
      * @throws MoveOperationException
      * @throws PermissionsException
@@ -329,7 +329,7 @@ class PageRepo
     {
         $parent = $this->findParentByIdentifier($parentIdentifier);
         if ($parent === null) {
-            throw new MoveOperationException('Book or chapter to move page into not found');
+            throw new MoveOperationException('Recipe or chapter to move page into not found');
         }
 
         if (!userCan('page-create', $parent)) {
@@ -337,8 +337,8 @@ class PageRepo
         }
 
         $page->chapter_id = ($parent instanceof Chapter) ? $parent->id : null;
-        $newBookId = ($parent instanceof Chapter) ? $parent->book->id : $parent->id;
-        $page->changeBook($newBookId);
+        $newRecipeId = ($parent instanceof Chapter) ? $parent->recipe->id : $parent->id;
+        $page->changeRecipe($newRecipeId);
         $page->rebuildPermissions();
 
         Activity::addForEntity($page, ActivityType::PAGE_MOVE);
@@ -357,7 +357,7 @@ class PageRepo
     {
         $parent = $parentIdentifier ? $this->findParentByIdentifier($parentIdentifier) : $page->getParent();
         if ($parent === null) {
-            throw new MoveOperationException('Book or chapter to move page into not found');
+            throw new MoveOperationException('Recipe or chapter to move page into not found');
         }
 
         if (!userCan('page-create', $parent)) {
@@ -386,7 +386,7 @@ class PageRepo
     /**
      * Find a page parent entity via a identifier string in the format:
      * {type}:{id}
-     * Example: (book:5).
+     * Example: (recipe:5).
      *
      * @throws MoveOperationException
      */
@@ -396,11 +396,11 @@ class PageRepo
         $entityType = $stringExploded[0];
         $entityId = intval($stringExploded[1]);
 
-        if ($entityType !== 'book' && $entityType !== 'chapter') {
-            throw new MoveOperationException('Pages can only be in books or chapters');
+        if ($entityType !== 'recipe' && $entityType !== 'chapter') {
+            throw new MoveOperationException('Pages can only be in recipes or chapters');
         }
 
-        $parentClass = $entityType === 'book' ? Book::class : Chapter::class;
+        $parentClass = $entityType === 'recipe' ? Recipe::class : Chapter::class;
 
         return $parentClass::visible()->where('id', '=', $entityId)->first();
     }
@@ -410,16 +410,16 @@ class PageRepo
      */
     protected function changeParent(Page $page, Entity $parent)
     {
-        $book = ($parent instanceof Chapter) ? $parent->book : $parent;
+        $recipe = ($parent instanceof Chapter) ? $parent->recipe : $parent;
         $page->chapter_id = ($parent instanceof Chapter) ? $parent->id : 0;
         $page->save();
 
-        if ($page->book->id !== $book->id) {
-            $page->changeBook($book->id);
+        if ($page->recipe->id !== $recipe->id) {
+            $page->changeRecipe($recipe->id);
         }
 
-        $page->load('book');
-        $book->rebuildPermissions();
+        $page->load('recipe');
+        $recipe->rebuildPermissions();
     }
 
     /**
@@ -436,7 +436,7 @@ class PageRepo
         $draft = new PageRevision();
         $draft->page_id = $page->id;
         $draft->slug = $page->slug;
-        $draft->book_slug = $page->book->slug;
+        $draft->recipe_slug = $page->recipe->slug;
         $draft->created_by = user()->id;
         $draft->type = 'update_draft';
 
@@ -477,7 +477,7 @@ class PageRepo
             return $lastPage ? $lastPage->priority + 1 : 0;
         }
 
-        return (new BookContents($page->book))->getLastPriority() + 1;
+        return (new RecipeContents($page->recipe))->getLastPriority() + 1;
     }
 
     /**

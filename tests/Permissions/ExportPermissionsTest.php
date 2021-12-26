@@ -2,7 +2,7 @@
 
 namespace Tests\Permissions;
 
-use DailyRecipe\Entities\Models\Book;
+use DailyRecipe\Entities\Models\Recipe;
 use DailyRecipe\Entities\Models\Chapter;
 use Illuminate\Support\Str;
 use Tests\TestCase;
@@ -39,7 +39,7 @@ class ExportPermissionsTest extends TestCase
 
     public function test_page_content_without_view_access_hidden_on_book_export()
     {
-        $book = Book::query()->first();
+        $book = Recipe::query()->first();
         $page = $book->pages()->firstOrFail();
         $pageContent = Str::random(48);
         $page->html = '<p>' . $pageContent . '</p>';

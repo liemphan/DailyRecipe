@@ -41,9 +41,9 @@
                                     </a>
                                 </div>
                                 <div class="icon-list">
-                                    <a href="#recent-books" class="text-book icon-list-item">
-                                        <span>@icon('book')</span>
-                                        <span>{{ trans_choice('entities.x_recipes', $assetCounts['books']) }}</span>
+                                    <a href="#recent-recipes" class="text-recipe icon-list-item">
+                                        <span>@icon('recipe')</span>
+                                        <span>{{ trans_choice('entities.x_recipes', $assetCounts['recipes']) }}</span>
                                     </a>
                                     <a href="#recent-menus" class="text-recipemenu icon-list-item">
                                         <span>@icon('recipemenu')</span>
@@ -56,7 +56,7 @@
                     </div>
                 </section>
 
-                <section class="card content-wrap auto-height book-contents">
+                <section class="card content-wrap auto-height recipe-contents">
                     <h2 id="recent-pages" class="list-heading">
                         {{ trans('entities.recently_created_pages') }}
                         @if (count($recentlyCreated['pages']) > 0)
@@ -70,7 +70,7 @@
                     @endif
                 </section>
 
-                <section class="card content-wrap auto-height book-contents">
+                <section class="card content-wrap auto-height recipe-contents">
                     <h2 id="recent-chapters" class="list-heading">
                         {{ trans('entities.recently_created_chapters') }}
                         @if (count($recentlyCreated['chapters']) > 0)
@@ -84,21 +84,21 @@
                     @endif
                 </section>
 
-                <section class="card content-wrap auto-height book-contents">
-                    <h2 id="recent-books" class="list-heading">
-                        {{ trans('entities.recently_created_books') }}
-                        @if (count($recentlyCreated['books']) > 0)
-                            <a href="{{ url('/search?term=' . urlencode('{created_by:'.$user->slug.'} {type:book}') ) }}" class="text-small ml-s">{{ trans('common.view_all') }}</a>
+                <section class="card content-wrap auto-height recipe-contents">
+                    <h2 id="recent-recipes" class="list-heading">
+                        {{ trans('entities.recently_created_recipes') }}
+                        @if (count($recentlyCreated['recipes']) > 0)
+                            <a href="{{ url('/search?term=' . urlencode('{created_by:'.$user->slug.'} {type:recipe}') ) }}" class="text-small ml-s">{{ trans('common.view_all') }}</a>
                         @endif
                     </h2>
-                    @if (count($recentlyCreated['books']) > 0)
-                        @include('entities.list', ['entities' => $recentlyCreated['books'], 'showPath' => true])
+                    @if (count($recentlyCreated['recipes']) > 0)
+                        @include('entities.list', ['entities' => $recentlyCreated['recipes'], 'showPath' => true])
                     @else
-                        <p class="text-muted">{{ trans('entities.profile_not_created_books', ['userName' => $user->name]) }}</p>
+                        <p class="text-muted">{{ trans('entities.profile_not_created_recipes', ['userName' => $user->name]) }}</p>
                     @endif
                 </section>
 
-                <section class="card content-wrap auto-height book-contents">
+                <section class="card content-wrap auto-height recipe-contents">
                     <h2 id="recent-menus" class="list-heading">
                         {{ trans('entities.recently_created_menus') }}
                         @if (count($recentlyCreated['menus']) > 0)

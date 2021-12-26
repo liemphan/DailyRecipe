@@ -9,12 +9,12 @@
         </div>
     </div>
 </a>
-<div class="entity-menu-books grid third gap-y-xs entity-list-item-children">
-    @foreach($menu->visibleBooks as $book)
+<div class="entity-menu-recipes grid third gap-y-xs entity-list-item-children">
+    @foreach($menu->visibleBooks as $recipe)
         <div>
-            <a href="{{ $book->getUrl('?menu=' . $menu->id) }}" class="entity-chip text-book">
-                @icon('book')
-                {{ $book->name }}
+            <a href="{{ $recipe->getUrl('?menu=' . $menu->id) }}" class="entity-chip text-recipe">
+                @icon('recipe')
+                {{ $recipe->name }}
             </a>
         </div>
     @endforeach

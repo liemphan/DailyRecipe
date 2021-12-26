@@ -50,7 +50,7 @@ return [
     'content_colors' => 'Content Colors',
     'content_colors_desc' => 'Sets colors for all elements in the page organisation hierarchy. Choosing colors with a similar brightness to the default colors is recommended for readability.',
     'recipemenu_color' => 'Menu Color',
-    'book_color' => 'Book Color',
+    'recipe_color' => 'Recipe Color',
     'chapter_color' => 'Chapter Color',
     'page_color' => 'Page Color',
     'page_draft_color' => 'Page Draft Color',
@@ -85,7 +85,7 @@ return [
     'maint_send_test_email_mail_subject' => 'Test Email',
     'maint_send_test_email_mail_greeting' => 'Email delivery seems to work!',
     'maint_send_test_email_mail_text' => 'Congratulations! As you received this email notification, your email settings seem to be configured properly.',
-    'maint_recycle_bin_desc' => 'Deleted menus, books, chapters & pages are sent to the recycle bin so they can be restored or permanently deleted. Older items in the recycle bin may be automatically removed after a while depending on system configuration.',
+    'maint_recycle_bin_desc' => 'Deleted menus, recipes, chapters & pages are sent to the recycle bin so they can be restored or permanently deleted. Older items in the recycle bin may be automatically removed after a while depending on system configuration.',
     'maint_recycle_bin_open' => 'Open Recycle Bin',
 
     // Recycle Bin
@@ -144,8 +144,8 @@ return [
     'role_system' => 'System Permissions',
     'role_manage_users' => 'Manage users',
     'role_manage_roles' => 'Manage roles & role permissions',
-    'role_manage_entity_permissions' => 'Manage all book, chapter & page permissions',
-    'role_manage_own_entity_permissions' => 'Manage permissions on own book, chapter & pages',
+    'role_manage_entity_permissions' => 'Manage all recipe, chapter & page permissions',
+    'role_manage_own_entity_permissions' => 'Manage permissions on own recipe, chapter & pages',
     'role_manage_page_templates' => 'Manage page templates',
     'role_access_api' => 'Access system API',
     'role_manage_settings' => 'Manage app settings',

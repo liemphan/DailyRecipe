@@ -1,5 +1,5 @@
 
-.book-contents .entity-list-item {
+.recipe-contents .entity-list-item {
   .icon {
     width: 4px;
     border-radius: 1px;
@@ -152,7 +152,7 @@
 }
 
 // Sidebar list
-.book-tree .sidebar-page-list  {
+.recipe-tree .sidebar-page-list  {
   list-style: none;
   @include margin($-xs, -$-s, 0, -$-s);
   padding-inline-start: 0;
@@ -254,7 +254,7 @@
     content: '';
     border-radius: 4px;
     opacity: 0.5;
-    border: 2px solid var(--color-book);
+    border: 2px solid var(--color-recipe);
     display: block;
     top: 0;
     bottom: 0;

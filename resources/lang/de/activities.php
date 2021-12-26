@@ -26,14 +26,14 @@ return [
     'chapter_move'                => 'hat das Kapitel verschoben',
 
     // Books
-    'book_create'                 => 'hat das Buch erstellt',
-    'book_create_notification'    => 'Das Buch wurde erfolgreich erstellt',
-    'book_update'                 => 'hat das Buch aktualisiert',
-    'book_update_notification'    => 'Das Buch wurde erfolgreich aktualisiert',
-    'book_delete'                 => 'hat das Buch gelöscht',
-    'book_delete_notification'    => 'Das Buch wurde erfolgreich gelöscht',
-    'book_sort'                   => 'hat die Buch-Sortierung geändert',
-    'book_sort_notification'      => 'Das Buch wurde erfolgreich umsortiert',
+    'recipe_create'                 => 'hat das Buch erstellt',
+    'recipe_create_notification'    => 'Das Buch wurde erfolgreich erstellt',
+    'recipe_update'                 => 'hat das Buch aktualisiert',
+    'recipe_update_notification'    => 'Das Buch wurde erfolgreich aktualisiert',
+    'recipe_delete'                 => 'hat das Buch gelöscht',
+    'recipe_delete_notification'    => 'Das Buch wurde erfolgreich gelöscht',
+    'recipe_sort'                   => 'hat die Buch-Sortierung geändert',
+    'recipe_sort_notification'      => 'Das Buch wurde erfolgreich umsortiert',
 
     // Recipemenus
     'recipemenu_create'            => 'hat das Bücherregal erstellt',

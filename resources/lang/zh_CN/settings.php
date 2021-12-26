@@ -50,7 +50,7 @@ return [
     'content_colors' => '内容颜色',
     'content_colors_desc' => '设置页面组织层次中所有元素的颜色。建议选择与默认颜色相似的亮度的颜色。',
     'recipemenu_color' => '书架颜色',
-    'book_color' => '图书颜色',
+    'recipe_color' => '图书颜色',
     'chapter_color' => '章节颜色',
     'page_color' => '页面颜色',
     'page_draft_color' => '页面草稿颜色',

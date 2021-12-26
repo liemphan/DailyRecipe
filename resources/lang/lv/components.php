@@ -8,7 +8,7 @@ return [
     'image_select' => 'Attēla izvēle',
     'image_all' => 'Visi',
     'image_all_title' => 'Skatīt visus attēlus',
-    'image_book_title' => 'Apskatīt augšupielādētos attēlus šajā grāmatā',
+    'image_recipe_title' => 'Apskatīt augšupielādētos attēlus šajā grāmatā',
     'image_page_title' => 'Apskatīt augšupielādētos attēlus šajā lapā',
     'image_search_hint' => 'Meklēt pēc attēla vārda',
     'image_uploaded' => 'Augšupielādēts :uploadedDate',

@@ -59,11 +59,11 @@ return [
     // Entities
     'entity_not_found' => 'Entitas tidak ditemukan',
     'recipemenu_not_found' => 'Rak buku tidak ditemukan',
-    'book_not_found' => 'Buku tidak ditemukan',
+    'recipe_not_found' => 'Buku tidak ditemukan',
     'page_not_found' => 'Halaman tidak ditemukan',
     'chapter_not_found' => 'Bab tidak ditemukan',
-    'selected_book_not_found' => 'Buku yang dipilih tidak ditemukan',
-    'selected_book_chapter_not_found' => 'Buku atau Bab yang dipilih tidak ditemukan',
+    'selected_recipe_not_found' => 'Buku yang dipilih tidak ditemukan',
+    'selected_recipe_chapter_not_found' => 'Buku atau Bab yang dipilih tidak ditemukan',
     'guests_cannot_save_drafts' => 'Tamu tidak dapat menyimpan Draf',
 
     // Users

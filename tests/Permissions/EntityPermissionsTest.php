@@ -3,7 +3,7 @@
 namespace Tests\Permissions;
 
 use DailyRecipe\Auth\User;
-use DailyRecipe\Entities\Models\Book;
+use DailyRecipe\Entities\Models\Recipe;
 use DailyRecipe\Entities\Models\Recipemenu;
 use DailyRecipe\Entities\Models\Chapter;
 use DailyRecipe\Entities\Models\Entity;
@@ -66,7 +66,7 @@ class EntityPermissionsTest extends TestCase
 
         $this->actingAs($this->user)
             ->get($menu->getUrl('/edit'))
-            ->assertSee('Edit Book');
+            ->assertSee('Edit Recipe');
 
         $this->setRestrictionsForTestRoles($menu, ['view', 'delete']);
 
@@ -87,7 +87,7 @@ class EntityPermissionsTest extends TestCase
 
         $this->actingAs($this->user)
             ->get($menu->getUrl('/delete'))
-            ->assertSee('Delete Book');
+            ->assertSee('Delete Recipe');
 
         $this->setRestrictionsForTestRoles($menu, ['view', 'update']);
 
@@ -98,13 +98,13 @@ class EntityPermissionsTest extends TestCase
 
         $this->get($menu->getUrl('/delete'))
             ->assertOk()
-            ->assertSee('Delete Book');
+            ->assertSee('Delete Recipe');
     }
 
     public function test_book_view_restriction()
     {
-        /** @var Book $book */
-        $book = Book::query()->first();
+        /** @var Recipe $book */
+        $book = Recipe::query()->first();
         $bookPage = $book->pages->first();
         $bookChapter = $book->chapters->first();
 
@@ -116,7 +116,7 @@ class EntityPermissionsTest extends TestCase
         $this->setRestrictionsForTestRoles($book, []);
 
         $this->followingRedirects()->get($bookUrl)
-            ->assertSee('Book not found');
+            ->assertSee('Recipe not found');
         $this->followingRedirects()->get($bookPage->getUrl())
             ->assertSee('Page not found');
         $this->followingRedirects()->get($bookChapter->getUrl())
@@ -134,8 +134,8 @@ class EntityPermissionsTest extends TestCase
 
     public function test_book_create_restriction()
     {
-        /** @var Book $book */
-        $book = Book::query()->first();
+        /** @var Recipe $book */
+        $book = Recipe::query()->first();
 
         $bookUrl = $book->getUrl();
         $this->actingAs($this->viewer)
@@ -183,15 +183,15 @@ class EntityPermissionsTest extends TestCase
 
     public function test_book_update_restriction()
     {
-        /** @var Book $book */
-        $book = Book::query()->first();
+        /** @var Recipe $book */
+        $book = Recipe::query()->first();
         $bookPage = $book->pages->first();
         $bookChapter = $book->chapters->first();
 
         $bookUrl = $book->getUrl();
         $this->actingAs($this->user)
             ->get($bookUrl . '/edit')
-            ->assertSee('Edit Book');
+            ->assertSee('Edit Recipe');
 
         $this->setRestrictionsForTestRoles($book, ['view', 'delete']);
 
@@ -211,14 +211,14 @@ class EntityPermissionsTest extends TestCase
 
     public function test_book_delete_restriction()
     {
-        /** @var Book $book */
-        $book = Book::query()->first();
+        /** @var Recipe $book */
+        $book = Recipe::query()->first();
         $bookPage = $book->pages->first();
         $bookChapter = $book->chapters->first();
 
         $bookUrl = $book->getUrl();
         $this->actingAs($this->user)->get($bookUrl . '/delete')
-            ->assertSee('Delete Book');
+            ->assertSee('Delete Recipe');
 
         $this->setRestrictionsForTestRoles($book, ['view', 'update']);
 
@@ -231,7 +231,7 @@ class EntityPermissionsTest extends TestCase
 
         $this->setRestrictionsForTestRoles($book, ['view', 'delete']);
 
-        $this->get($bookUrl . '/delete')->assertOk()->assertSee('Delete Book');
+        $this->get($bookUrl . '/delete')->assertOk()->assertSee('Delete Recipe');
         $this->get($bookPage->getUrl('/delete'))->assertOk()->assertSee('Delete Page');
         $this->get($bookChapter->getUrl('/delete'))->assertSee('Delete Chapter');
     }
@@ -281,7 +281,7 @@ class EntityPermissionsTest extends TestCase
             'name' => 'test page',
             'html' => 'test content',
         ]);
-        $resp->assertRedirect($chapter->book->getUrl('/page/test-page'));
+        $resp->assertRedirect($chapter->recipe->getUrl('/page/test-page'));
 
         $this->get($chapterUrl)->assertElementContains('.actions', 'New Page');
     }
@@ -424,7 +424,7 @@ class EntityPermissionsTest extends TestCase
 
     public function test_book_restriction_form()
     {
-        $this->entityRestrictionFormTest(Book::class, 'Book Permissions', 'view', '2');
+        $this->entityRestrictionFormTest(Recipe::class, 'Recipe Permissions', 'view', '2');
     }
 
     public function test_chapter_restriction_form()
@@ -482,7 +482,7 @@ class EntityPermissionsTest extends TestCase
         /** @var Chapter $chapter */
         $chapter = Chapter::query()->first();
         $this->actingAs($this->user)
-            ->get($chapter->book->getUrl())
+            ->get($chapter->recipe->getUrl())
             ->assertSee($chapter->pages->first()->name);
 
         foreach ($chapter->pages as $page) {
@@ -490,7 +490,7 @@ class EntityPermissionsTest extends TestCase
         }
 
         $this->actingAs($this->user)
-            ->get($chapter->book->getUrl())
+            ->get($chapter->recipe->getUrl())
             ->assertDontSee($chapter->pages->first()->name);
     }
 
@@ -501,7 +501,7 @@ class EntityPermissionsTest extends TestCase
 
         $this->actingAs($this->viewer)
             ->get($menu->getUrl('/edit'))
-            ->assertDontSee('Edit Book');
+            ->assertDontSee('Edit Recipe');
 
         $this->setRestrictionsForTestRoles($menu, ['view', 'delete']);
 
@@ -520,7 +520,7 @@ class EntityPermissionsTest extends TestCase
 
         $this->actingAs($this->viewer)
             ->get($menu->getUrl('/delete'))
-            ->assertDontSee('Delete Book');
+            ->assertDontSee('Delete Recipe');
 
         $this->setRestrictionsForTestRoles($menu, ['view', 'update']);
 
@@ -529,13 +529,13 @@ class EntityPermissionsTest extends TestCase
 
         $this->setRestrictionsForTestRoles($menu, ['view', 'delete']);
 
-        $this->get($menu->getUrl('/delete'))->assertOk()->assertSee('Delete Book');
+        $this->get($menu->getUrl('/delete'))->assertOk()->assertSee('Delete Recipe');
     }
 
     public function test_book_create_restriction_override()
     {
-        /** @var Book $book */
-        $book = Book::query()->first();
+        /** @var Recipe $book */
+        $book = Recipe::query()->first();
 
         $bookUrl = $book->getUrl();
         $this->actingAs($this->viewer)
@@ -576,14 +576,14 @@ class EntityPermissionsTest extends TestCase
 
     public function test_book_update_restriction_override()
     {
-        /** @var Book $book */
-        $book = Book::query()->first();
+        /** @var Recipe $book */
+        $book = Recipe::query()->first();
         $bookPage = $book->pages->first();
         $bookChapter = $book->chapters->first();
 
         $bookUrl = $book->getUrl();
         $this->actingAs($this->viewer)->get($bookUrl . '/edit')
-            ->assertDontSee('Edit Book');
+            ->assertDontSee('Edit Recipe');
 
         $this->setRestrictionsForTestRoles($book, ['view', 'delete']);
 
@@ -603,15 +603,15 @@ class EntityPermissionsTest extends TestCase
 
     public function test_book_delete_restriction_override()
     {
-        /** @var Book $book */
-        $book = Book::query()->first();
+        /** @var Recipe $book */
+        $book = Recipe::query()->first();
         $bookPage = $book->pages->first();
         $bookChapter = $book->chapters->first();
 
         $bookUrl = $book->getUrl();
         $this->actingAs($this->viewer)
             ->get($bookUrl . '/delete')
-            ->assertDontSee('Delete Book');
+            ->assertDontSee('Delete Recipe');
 
         $this->setRestrictionsForTestRoles($book, ['view', 'update']);
 
@@ -624,15 +624,15 @@ class EntityPermissionsTest extends TestCase
 
         $this->setRestrictionsForTestRoles($book, ['view', 'delete']);
 
-        $this->get($bookUrl . '/delete')->assertOk()->assertSee('Delete Book');
+        $this->get($bookUrl . '/delete')->assertOk()->assertSee('Delete Recipe');
         $this->get($bookPage->getUrl() . '/delete')->assertOk()->assertSee('Delete Page');
         $this->get($bookChapter->getUrl() . '/delete')->assertSee('Delete Chapter');
     }
 
     public function test_page_visible_if_has_permissions_when_book_not_visible()
     {
-        /** @var Book $book */
-        $book = Book::query()->first();
+        /** @var Recipe $book */
+        $book = Recipe::query()->first();
         $bookChapter = $book->chapters->first();
         $bookPage = $bookChapter->pages->first();
 
@@ -654,10 +654,10 @@ class EntityPermissionsTest extends TestCase
 
     public function test_book_sort_view_permission()
     {
-        /** @var Book $firstBook */
-        $firstBook = Book::query()->first();
-        /** @var Book $secondBook */
-        $secondBook = Book::query()->find(2);
+        /** @var Recipe $firstBook */
+        $firstBook = Recipe::query()->first();
+        /** @var Recipe $secondBook */
+        $secondBook = Recipe::query()->find(2);
 
         $this->setRestrictionsForTestRoles($firstBook, ['view', 'update']);
         $this->setRestrictionsForTestRoles($secondBook, ['view']);
@@ -672,10 +672,10 @@ class EntityPermissionsTest extends TestCase
 
     public function test_book_sort_permission()
     {
-        /** @var Book $firstBook */
-        $firstBook = Book::query()->first();
-        /** @var Book $secondBook */
-        $secondBook = Book::query()->find(2);
+        /** @var Recipe $firstBook */
+        $firstBook = Recipe::query()->first();
+        /** @var Recipe $secondBook */
+        $secondBook = Recipe::query()->find(2);
 
         $this->setRestrictionsForTestRoles($firstBook, ['view', 'update']);
         $this->setRestrictionsForTestRoles($secondBook, ['view']);
@@ -717,8 +717,8 @@ class EntityPermissionsTest extends TestCase
 
     public function test_can_create_page_if_chapter_has_permissions_when_book_not_visible()
     {
-        /** @var Book $book */
-        $book = Book::query()->first();
+        /** @var Recipe $book */
+        $book = Recipe::query()->first();
         $this->setRestrictionsForTestRoles($book, []);
         $bookChapter = $book->chapters->first();
         $this->setRestrictionsForTestRoles($bookChapter, ['view']);

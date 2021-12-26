@@ -26,14 +26,14 @@ return [
     'chapter_move'                => 'verplaatste hoofdstuk',
 
     // Books
-    'book_create'                 => 'maakte boek',
-    'book_create_notification'    => 'Boek succesvol aangemaakt',
-    'book_update'                 => 'wijzigde boek',
-    'book_update_notification'    => 'Boek succesvol bijgewerkt',
-    'book_delete'                 => 'verwijderde boek',
-    'book_delete_notification'    => 'Boek succesvol verwijderd',
-    'book_sort'                   => 'sorteerde boek',
-    'book_sort_notification'      => 'Boek succesvol gesorteerd',
+    'recipe_create'                 => 'maakte boek',
+    'recipe_create_notification'    => 'Boek succesvol aangemaakt',
+    'recipe_update'                 => 'wijzigde boek',
+    'recipe_update_notification'    => 'Boek succesvol bijgewerkt',
+    'recipe_delete'                 => 'verwijderde boek',
+    'recipe_delete_notification'    => 'Boek succesvol verwijderd',
+    'recipe_sort'                   => 'sorteerde boek',
+    'recipe_sort_notification'      => 'Boek succesvol gesorteerd',
 
     // Recipemenus
     'recipemenu_create'            => 'maakte boekenplank',

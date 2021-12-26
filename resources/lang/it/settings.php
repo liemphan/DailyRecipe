@@ -50,7 +50,7 @@ return [
     'content_colors' => 'Colori del contenuto',
     'content_colors_desc' => 'Imposta i colori per tutti gli elementi nella gerarchia della pagina. È raccomandato scegliere colori con una luminosità simile a quelli di default per una maggiore leggibilità.',
     'recipemenu_color' => 'Colore della libreria',
-    'book_color' => 'Colore del libro',
+    'recipe_color' => 'Colore del libro',
     'chapter_color' => 'Colore del capitolo',
     'page_color' => 'Colore della Pagina',
     'page_draft_color' => 'Colore della bozza',

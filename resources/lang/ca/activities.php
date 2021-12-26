@@ -26,14 +26,14 @@ return [
     'chapter_move'                => 'ha mogut el capítol',
 
     // Books
-    'book_create'                 => 'ha creat el llibre',
-    'book_create_notification'    => 'Llibre creat correctament',
-    'book_update'                 => 'ha actualitzat el llibre',
-    'book_update_notification'    => 'Llibre actualitzat correctament',
-    'book_delete'                 => 'ha suprimit un llibre',
-    'book_delete_notification'    => 'Llibre suprimit correctament',
-    'book_sort'                   => 'ha ordenat el llibre',
-    'book_sort_notification'      => 'Llibre reordenat correctament',
+    'recipe_create'                 => 'ha creat el llibre',
+    'recipe_create_notification'    => 'Llibre creat correctament',
+    'recipe_update'                 => 'ha actualitzat el llibre',
+    'recipe_update_notification'    => 'Llibre actualitzat correctament',
+    'recipe_delete'                 => 'ha suprimit un llibre',
+    'recipe_delete_notification'    => 'Llibre suprimit correctament',
+    'recipe_sort'                   => 'ha ordenat el llibre',
+    'recipe_sort_notification'      => 'Llibre reordenat correctament',
 
     // Recipemenus
     'recipemenu_create'            => 'ha creat el prestatge',

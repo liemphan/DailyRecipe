@@ -26,14 +26,14 @@ return [
     'chapter_move'                => 'bab dipindahkan',
 
     // Books
-    'book_create'                 => 'membuat buku',
-    'book_create_notification'    => 'Buku berhasil dibuat',
-    'book_update'                 => 'update buku',
-    'book_update_notification'    => 'Buku Berhasil Diperbarui',
-    'book_delete'                 => 'hapus buku',
-    'book_delete_notification'    => 'Buku berhasil dihapus',
-    'book_sort'                   => 'buku yang diurutkan',
-    'book_sort_notification'      => 'Buku berhasil diurutkan',
+    'recipe_create'                 => 'membuat buku',
+    'recipe_create_notification'    => 'Buku berhasil dibuat',
+    'recipe_update'                 => 'update buku',
+    'recipe_update_notification'    => 'Buku Berhasil Diperbarui',
+    'recipe_delete'                 => 'hapus buku',
+    'recipe_delete_notification'    => 'Buku berhasil dihapus',
+    'recipe_sort'                   => 'buku yang diurutkan',
+    'recipe_sort_notification'      => 'Buku berhasil diurutkan',
 
     // Recipemenus
     'recipemenu_create'            => 'membuat rak',

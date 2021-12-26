@@ -103,7 +103,7 @@ class HomepageTest extends TestCase
         $editor = $this->getEditor();
         setting()->putUser($editor, 'books_view_type', 'grid');
 
-        $this->setSettings(['app-homepage-type' => 'books']);
+        $this->setSettings(['app-homepage-type' => 'recipes']);
 
         $this->asEditor();
         $homeVisit = $this->get('/');

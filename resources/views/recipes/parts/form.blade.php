@@ -18,8 +18,8 @@
         <p class="small">{{ trans('common.cover_image_description') }}</p>
 
         @include('form.image-picker', [
-            'defaultImage' => url('/book_default_cover.png'),
-            'currentImage' => (isset($model) && $model->cover) ? $model->getBookCover() : url('/book_default_cover.png') ,
+            'defaultImage' => url('/recipe_default_cover.png'),
+            'currentImage' => (isset($model) && $model->cover) ? $model->getRecipeCover() : url('/recipe_default_cover.png') ,
             'name' => 'image',
             'imageClass' => 'cover'
         ])
@@ -28,10 +28,10 @@
 
 <div class="form-group" collapsible id="tags-control">
     <button type="button" class="collapse-title text-primary" collapsible-trigger aria-expanded="false">
-        <label for="tag-manager">{{ trans('entities.book_tags') }}</label>
+        <label for="tag-manager">{{ trans('entities.recipe_tags') }}</label>
     </button>
     <div class="collapse-content" collapsible-content>
-        @include('entities.tag-manager', ['entity' => $book ?? null])
+        @include('entities.tag-manager', ['entity' => $recipe ?? null])
     </div>
 </div>
 

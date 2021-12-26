@@ -8,7 +8,7 @@ return [
     'image_select' => 'Görsel Seç',
     'image_all' => 'Hepsi',
     'image_all_title' => 'Bütün görselleri görüntüle',
-    'image_book_title' => 'Bu kitaba ait görselleri görüntüle',
+    'image_recipe_title' => 'Bu kitaba ait görselleri görüntüle',
     'image_page_title' => 'Bu sayfaya ait görselleri görüntüle',
     'image_search_hint' => 'Görsel adıyla ara',
     'image_uploaded' => ':uploadedDate tarihinde yüklendi',

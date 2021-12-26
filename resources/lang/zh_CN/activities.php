@@ -26,14 +26,14 @@ return [
     'chapter_move'                => '移动了章节',
 
     // Books
-    'book_create'                 => '创建了图书',
-    'book_create_notification'    => '图书已创建成功',
-    'book_update'                 => '更新了图书',
-    'book_update_notification'    => '图书已更新成功',
-    'book_delete'                 => '删除了图书',
-    'book_delete_notification'    => '图书已删除成功',
-    'book_sort'                   => '排序了图书',
-    'book_sort_notification'      => '图书已重新排序成功',
+    'recipe_create'                 => '创建了图书',
+    'recipe_create_notification'    => '图书已创建成功',
+    'recipe_update'                 => '更新了图书',
+    'recipe_update_notification'    => '图书已更新成功',
+    'recipe_delete'                 => '删除了图书',
+    'recipe_delete_notification'    => '图书已删除成功',
+    'recipe_sort'                   => '排序了图书',
+    'recipe_sort_notification'      => '图书已重新排序成功',
 
     // Recipemenus
     'recipemenu_create'            => '创建了书架',

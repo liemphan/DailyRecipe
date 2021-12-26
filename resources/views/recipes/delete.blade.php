@@ -6,8 +6,8 @@
 
         <div class="my-s">
             @include('entities.breadcrumbs', ['crumbs' => [
-                $book,
-                $book->getUrl('/delete') => [
+                $recipe,
+                $recipe->getUrl('/delete') => [
                     'text' => trans('entities.recipes_delete'),
                     'icon' => 'delete',
                 ]
@@ -16,13 +16,13 @@
 
         <div class="card content-wrap auto-height">
             <h1 class="list-heading">{{ trans('entities.recipes_delete') }}</h1>
-            <p>{{ trans('entities.recipes_delete_explain', ['bookName' => $book->name]) }}</p>
+            <p>{{ trans('entities.recipes_delete_explain', ['recipeName' => $recipe->name]) }}</p>
             <p class="text-neg"><strong>{{ trans('entities.recipes_delete_confirmation') }}</strong></p>
 
-            <form action="{{$book->getUrl()}}" method="POST" class="text-right">
+            <form action="{{$recipe->getUrl()}}" method="POST" class="text-right">
                 {!! csrf_field() !!}
                 <input type="hidden" name="_method" value="DELETE">
-                <a href="{{$book->getUrl()}}" class="button outline">{{ trans('common.cancel') }}</a>
+                <a href="{{$recipe->getUrl()}}" class="button outline">{{ trans('common.cancel') }}</a>
                 <button type="submit" class="button">{{ trans('common.confirm') }}</button>
             </form>
         </div>

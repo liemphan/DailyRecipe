@@ -3,9 +3,9 @@
 namespace DailyRecipe\Entities\Repos;
 
 use DailyRecipe\Actions\ActivityType;
-use DailyRecipe\Entities\Models\Book;
+use DailyRecipe\Entities\Models\Recipe;
 use DailyRecipe\Entities\Models\Chapter;
-use DailyRecipe\Entities\Tools\BookContents;
+use DailyRecipe\Entities\Tools\RecipeContents;
 use DailyRecipe\Entities\Tools\TrashCan;
 use DailyRecipe\Exceptions\MoveOperationException;
 use DailyRecipe\Exceptions\NotFoundException;
@@ -29,9 +29,9 @@ class ChapterRepo
      *
      * @throws NotFoundException
      */
-    public function getBySlug(string $bookSlug, string $chapterSlug): Chapter
+    public function getBySlug(string $recipeSlug, string $chapterSlug): Chapter
     {
-        $chapter = Chapter::visible()->whereSlugs($bookSlug, $chapterSlug)->first();
+        $chapter = Chapter::visible()->whereSlugs($recipeSlug, $chapterSlug)->first();
 
         if ($chapter === null) {
             throw new NotFoundException(trans('errors.chapter_not_found'));
@@ -43,11 +43,11 @@ class ChapterRepo
     /**
      * Create a new chapter in the system.
      */
-    public function create(array $input, Book $parentBook): Chapter
+    public function create(array $input, Recipe $parentRecipe): Chapter
     {
         $chapter = new Chapter();
-        $chapter->book_id = $parentBook->id;
-        $chapter->priority = (new BookContents($parentBook))->getLastPriority() + 1;
+        $chapter->recipe_id = $parentRecipe->id;
+        $chapter->priority = (new RecipeContents($parentRecipe))->getLastPriority() + 1;
         $this->baseRepo->create($chapter, $input);
         Activity::addForEntity($chapter, ActivityType::CHAPTER_CREATE);
 
@@ -79,29 +79,29 @@ class ChapterRepo
     }
 
     /**
-     * Move the given chapter into a new parent book.
+     * Move the given chapter into a new parent recipe.
      * The $parentIdentifier must be a string of the following format:
-     * 'book:<id>' (book:5).
+     * 'recipe:<id>' (recipe:5).
      *
      * @throws MoveOperationException
      */
-    public function move(Chapter $chapter, string $parentIdentifier): Book
+    public function move(Chapter $chapter, string $parentIdentifier): Recipe
     {
         $stringExploded = explode(':', $parentIdentifier);
         $entityType = $stringExploded[0];
         $entityId = intval($stringExploded[1]);
 
-        if ($entityType !== 'book') {
-            throw new MoveOperationException('Chapters can only be moved into books');
+        if ($entityType !== 'recipe') {
+            throw new MoveOperationException('Chapters can only be moved into recipes');
         }
 
-        /** @var Book $parent */
-        $parent = Book::visible()->where('id', '=', $entityId)->first();
+        /** @var Recipe $parent */
+        $parent = Recipe::visible()->where('id', '=', $entityId)->first();
         if ($parent === null) {
-            throw new MoveOperationException('Book to move chapter into not found');
+            throw new MoveOperationException('Recipe to move chapter into not found');
         }
 
-        $chapter->changeBook($parent->id);
+        $chapter->changeRecipe($parent->id);
         $chapter->rebuildPermissions();
         Activity::addForEntity($chapter, ActivityType::CHAPTER_MOVE);
 

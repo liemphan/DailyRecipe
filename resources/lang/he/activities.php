@@ -26,14 +26,14 @@ return [
     'chapter_move'                => 'moved chapter',
 
     // Books
-    'book_create'                 => 'created book',
-    'book_create_notification'    => 'הספר נוצר בהצלחה',
-    'book_update'                 => 'updated book',
-    'book_update_notification'    => 'הספר עודכן בהצלחה',
-    'book_delete'                 => 'deleted book',
-    'book_delete_notification'    => 'הספר הוסר בהצלחה',
-    'book_sort'                   => 'sorted book',
-    'book_sort_notification'      => 'הספר מוין מחדש בהצלחה',
+    'recipe_create'                 => 'created recipe',
+    'recipe_create_notification'    => 'הספר נוצר בהצלחה',
+    'recipe_update'                 => 'updated recipe',
+    'recipe_update_notification'    => 'הספר עודכן בהצלחה',
+    'recipe_delete'                 => 'deleted recipe',
+    'recipe_delete_notification'    => 'הספר הוסר בהצלחה',
+    'recipe_sort'                   => 'sorted recipe',
+    'recipe_sort_notification'      => 'הספר מוין מחדש בהצלחה',
 
     // Recipemenus
     'recipemenu_create'            => 'created Recipemenu',

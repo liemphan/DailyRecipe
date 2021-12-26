@@ -4,7 +4,7 @@ namespace DailyRecipe\Actions;
 
 use DailyRecipe\Auth\Permissions\PermissionService;
 use DailyRecipe\Auth\User;
-use DailyRecipe\Entities\Models\Book;
+use DailyRecipe\Entities\Models\Recipe;
 use DailyRecipe\Entities\Models\Chapter;
 use DailyRecipe\Entities\Models\Entity;
 use DailyRecipe\Entities\Models\Page;
@@ -104,10 +104,10 @@ class ActivityService
         /** @var array<string, int[]> $queryIds */
         $queryIds = [$entity->getMorphClass() => [$entity->id]];
 
-        if ($entity instanceof Book) {
+        if ($entity instanceof Recipe) {
             $queryIds[(new Chapter())->getMorphClass()] = $entity->chapters()->scopes('visible')->pluck('id');
         }
-        if ($entity instanceof Book || $entity instanceof Chapter) {
+        if ($entity instanceof Recipe || $entity instanceof Chapter) {
             $queryIds[(new Page())->getMorphClass()] = $entity->pages()->scopes('visible')->pluck('id');
         }
 

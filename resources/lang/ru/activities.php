@@ -26,14 +26,14 @@ return [
     'chapter_move'                => 'переместил главу',
 
     // Books
-    'book_create'                 => 'создал книгу',
-    'book_create_notification'    => 'Книга успешно создана',
-    'book_update'                 => 'обновил книгу',
-    'book_update_notification'    => 'Книга успешно обновлена',
-    'book_delete'                 => 'удалил книгу',
-    'book_delete_notification'    => 'Книга успешно удалена',
-    'book_sort'                   => 'отсортировал книгу',
-    'book_sort_notification'      => 'Книга успешно отсортирована',
+    'recipe_create'                 => 'создал книгу',
+    'recipe_create_notification'    => 'Книга успешно создана',
+    'recipe_update'                 => 'обновил книгу',
+    'recipe_update_notification'    => 'Книга успешно обновлена',
+    'recipe_delete'                 => 'удалил книгу',
+    'recipe_delete_notification'    => 'Книга успешно удалена',
+    'recipe_sort'                   => 'отсортировал книгу',
+    'recipe_sort_notification'      => 'Книга успешно отсортирована',
 
     // Recipemenus
     'recipemenu_create'            => 'создал полку',

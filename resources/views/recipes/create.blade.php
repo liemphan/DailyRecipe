@@ -6,18 +6,18 @@
             @if (isset($recipemenu))
                 @include('entities.breadcrumbs', ['crumbs' => [
                     $recipemenu,
-                    $recipemenu->getUrl('/create-book') => [
+                    $recipemenu->getUrl('/create-recipe') => [
                         'text' => trans('entities.recipes_create'),
                         'icon' => 'add'
                     ]
                 ]])
             @else
                 @include('entities.breadcrumbs', ['crumbs' => [
-                    '/books' => [
+                    '/recipes' => [
                         'text' => trans('entities.recipes'),
-                        'icon' => 'book'
+                        'icon' => 'recipe'
                     ],
-                    '/create-book' => [
+                    '/create-recipe' => [
                         'text' => trans('entities.recipes_create'),
                         'icon' => 'add'
                     ]
@@ -27,8 +27,8 @@
 
         <main class="content-wrap card">
             <h1 class="list-heading">{{ trans('entities.recipes_create') }}</h1>
-            <form action="{{ isset($recipemenu) ? $recipemenu->getUrl('/create-book') : url('/books') }}" method="POST" enctype="multipart/form-data">
-                @include('books.parts.form', ['returnLocation' => isset($recipemenu) ? $recipemenu->getUrl() : url('/books')])
+            <form action="{{ isset($recipemenu) ? $recipemenu->getUrl('/create-recipe') : url('/recipes') }}" method="POST" enctype="multipart/form-data">
+                @include('recipes.parts.form', ['returnLocation' => isset($recipemenu) ? $recipemenu->getUrl() : url('/recipes')])
             </form>
         </main>
     </div>

@@ -5,7 +5,7 @@
 
         <div class="my-s">
             @include('entities.breadcrumbs', ['crumbs' => [
-                $page->book,
+                $page->recipe,
                 $page->chapter,
                 $page,
                 $page->getUrl('/revisions') => [

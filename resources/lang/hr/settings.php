@@ -50,7 +50,7 @@ return [
     'content_colors' => 'Boja sadržaja',
     'content_colors_desc' => 'Postavljanje boja za sve elemente stranice. Preporuča se odabir boja čija je svjetlina slična zadanim bojama.',
     'recipemenu_color' => 'Boja police',
-    'book_color' => 'Boja knjige',
+    'recipe_color' => 'Boja knjige',
     'chapter_color' => 'Boja poglavlja',
     'page_color' => 'Boja stranice',
     'page_draft_color' => 'Boja nacrta',

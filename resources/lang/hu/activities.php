@@ -26,14 +26,14 @@ return [
     'chapter_move'                => 'áthelyezte a fejezetet:',
 
     // Books
-    'book_create'                 => 'létrehozott egy könyvet:',
-    'book_create_notification'    => 'Könyv sikeresen létrehozva',
-    'book_update'                 => 'frissítette a könyvet:',
-    'book_update_notification'    => 'Könyv sikeresen frissítve',
-    'book_delete'                 => 'törölte a könyvet:',
-    'book_delete_notification'    => 'Könyv sikeresen törölve',
-    'book_sort'                   => 'átrendezte a könyvet:',
-    'book_sort_notification'      => 'Könyv sikeresen újrarendezve',
+    'recipe_create'                 => 'létrehozott egy könyvet:',
+    'recipe_create_notification'    => 'Könyv sikeresen létrehozva',
+    'recipe_update'                 => 'frissítette a könyvet:',
+    'recipe_update_notification'    => 'Könyv sikeresen frissítve',
+    'recipe_delete'                 => 'törölte a könyvet:',
+    'recipe_delete_notification'    => 'Könyv sikeresen törölve',
+    'recipe_sort'                   => 'átrendezte a könyvet:',
+    'recipe_sort_notification'      => 'Könyv sikeresen újrarendezve',
 
     // Recipemenus
     'recipemenu_create'            => 'létrehozta a könyvespolcot:',

@@ -26,14 +26,14 @@ return [
     'chapter_move'                => 'преместена глава',
 
     // Books
-    'book_create'                 => 'създадена книга',
-    'book_create_notification'    => 'Книгата беше успешно създадена',
-    'book_update'                 => 'обновена книга',
-    'book_update_notification'    => 'Книгата беше успешно обновена',
-    'book_delete'                 => 'изтрита книга',
-    'book_delete_notification'    => 'Книгата беше успешно изтрита',
-    'book_sort'                   => 'сортирана книга',
-    'book_sort_notification'      => 'Книгата беше успешно преподредена',
+    'recipe_create'                 => 'създадена книга',
+    'recipe_create_notification'    => 'Книгата беше успешно създадена',
+    'recipe_update'                 => 'обновена книга',
+    'recipe_update_notification'    => 'Книгата беше успешно обновена',
+    'recipe_delete'                 => 'изтрита книга',
+    'recipe_delete_notification'    => 'Книгата беше успешно изтрита',
+    'recipe_sort'                   => 'сортирана книга',
+    'recipe_sort_notification'      => 'Книгата беше успешно преподредена',
 
     // Recipemenus
     'recipemenu_create'            => 'създаден рафт',

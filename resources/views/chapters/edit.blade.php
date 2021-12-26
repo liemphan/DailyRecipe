@@ -6,7 +6,7 @@
 
         <div class="my-s">
             @include('entities.breadcrumbs', ['crumbs' => [
-                $book,
+                $recipe,
                 $chapter,
                 $chapter->getUrl('/edit') => [
                     'text' => trans('entities.chapters_edit'),

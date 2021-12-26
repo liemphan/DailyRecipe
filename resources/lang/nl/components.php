@@ -8,7 +8,7 @@ return [
     'image_select' => 'Selecteer afbeelding',
     'image_all' => 'Alles',
     'image_all_title' => 'Alle afbeeldingen weergeven',
-    'image_book_title' => 'Afbeeldingen van dit boek weergeven',
+    'image_recipe_title' => 'Afbeeldingen van dit boek weergeven',
     'image_page_title' => 'Afbeeldingen van deze pagina weergeven',
     'image_search_hint' => 'Zoek op afbeeldingsnaam',
     'image_uploaded' => 'Geüpload :uploadedDate',

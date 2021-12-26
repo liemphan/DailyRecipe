@@ -59,11 +59,11 @@ return [
     // Entities
     'entity_not_found' => 'Entita nenájdená',
     'recipemenu_not_found' => 'Polička nenájdená',
-    'book_not_found' => 'Kniha nenájdená',
+    'recipe_not_found' => 'Kniha nenájdená',
     'page_not_found' => 'Stránka nenájdená',
     'chapter_not_found' => 'Kapitola nenájdená',
-    'selected_book_not_found' => 'Vybraná kniha nebola nájdená',
-    'selected_book_chapter_not_found' => 'Vybraná kniha alebo kapitola nebola nájdená',
+    'selected_recipe_not_found' => 'Vybraná kniha nebola nájdená',
+    'selected_recipe_chapter_not_found' => 'Vybraná kniha alebo kapitola nebola nájdená',
     'guests_cannot_save_drafts' => 'Hosť nemôže ukladať koncepty',
 
     // Users

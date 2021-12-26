@@ -59,11 +59,11 @@ return [
     // Entities
     'entity_not_found' => 'Objekti ei leitud',
     'recipemenu_not_found' => 'Riiulit ei leitud',
-    'book_not_found' => 'Raamatut ei leitud',
+    'recipe_not_found' => 'Raamatut ei leitud',
     'page_not_found' => 'Lehte ei leitud',
     'chapter_not_found' => 'Peatükki ei leitud',
-    'selected_book_not_found' => 'Valitud raamatut ei leitud',
-    'selected_book_chapter_not_found' => 'Valitud raamatut või peatükki ei leitud',
+    'selected_recipe_not_found' => 'Valitud raamatut ei leitud',
+    'selected_recipe_chapter_not_found' => 'Valitud raamatut või peatükki ei leitud',
     'guests_cannot_save_drafts' => 'Külalised ei saa mustandeid salvestada',
 
     // Users

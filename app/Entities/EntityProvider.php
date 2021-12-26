@@ -2,7 +2,7 @@
 
 namespace DailyRecipe\Entities;
 
-use DailyRecipe\Entities\Models\Book;
+use DailyRecipe\Entities\Models\Recipe;
 use DailyRecipe\Entities\Models\Recipemenu;
 use DailyRecipe\Entities\Models\Chapter;
 use DailyRecipe\Entities\Models\Entity;
@@ -24,9 +24,9 @@ class EntityProvider
     public $recipemenu;
 
     /**
-     * @var Book
+     * @var Recipe
      */
-    public $book;
+    public $recipe;
 
     /**
      * @var Chapter
@@ -46,7 +46,7 @@ class EntityProvider
     public function __construct()
     {
         $this->recipemenu = new Recipemenu();
-        $this->book = new Book();
+        $this->recipe = new Recipe();
         $this->chapter = new Chapter();
         $this->page = new Page();
         $this->pageRevision = new PageRevision();
@@ -62,7 +62,7 @@ class EntityProvider
     {
         return [
             'recipemenu' => $this->recipemenu,
-            'book'      => $this->book,
+            'recipe'      => $this->recipe,
             'chapter'   => $this->chapter,
             'page'      => $this->page,
         ];

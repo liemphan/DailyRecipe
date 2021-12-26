@@ -2,7 +2,7 @@
 
 namespace DailyRecipe\Entities\Tools;
 
-use DailyRecipe\Entities\Models\Book;
+use DailyRecipe\Entities\Models\Recipe;
 use DailyRecipe\Entities\Models\Chapter;
 use DailyRecipe\Entities\Models\Page;
 use DailyRecipe\Entities\Tools\Markdown\HtmlToMarkdown;
@@ -65,16 +65,16 @@ class ExportFormatter
     }
 
     /**
-     * Convert a book to a self-contained HTML file.
+     * Convert a recipe to a self-contained HTML file.
      *
      * @throws Throwable
      */
-    public function bookToContainedHtml(Book $book)
+    public function recipeToContainedHtml(Recipe $recipe)
     {
-        $bookTree = (new BookContents($book))->getTree(false, true);
-        $html = view('books.export', [
-            'book'         => $book,
-            'bookChildren' => $bookTree,
+        $recipeTree = (new RecipeContents($recipe))->getTree(false, true);
+        $html = view('recipes.export', [
+            'recipe'         => $recipe,
+            'recipeChildren' => $recipeTree,
             'format'       => 'html',
         ])->render();
 
@@ -119,16 +119,16 @@ class ExportFormatter
     }
 
     /**
-     * Convert a book to a PDF file.
+     * Convert a recipe to a PDF file.
      *
      * @throws Throwable
      */
-    public function bookToPdf(Book $book)
+    public function recipeToPdf(Recipe $recipe)
     {
-        $bookTree = (new BookContents($book))->getTree(false, true);
-        $html = view('books.export', [
-            'book'         => $book,
-            'bookChildren' => $bookTree,
+        $recipeTree = (new RecipeContents($recipe))->getTree(false, true);
+        $html = view('recipes.export', [
+            'recipe'         => $recipe,
+            'recipeChildren' => $recipeTree,
             'format'       => 'pdf',
         ])->render();
 
@@ -256,17 +256,17 @@ class ExportFormatter
     }
 
     /**
-     * Convert a book into a plain text string.
+     * Convert a recipe into a plain text string.
      */
-    public function bookToPlainText(Book $book): string
+    public function recipeToPlainText(Recipe $recipe): string
     {
-        $bookTree = (new BookContents($book))->getTree(false, false);
-        $text = $book->name . "\n\n";
-        foreach ($bookTree as $bookChild) {
-            if ($bookChild->isA('chapter')) {
-                $text .= $this->chapterToPlainText($bookChild);
+        $recipeTree = (new RecipeContents($recipe))->getTree(false, false);
+        $text = $recipe->name . "\n\n";
+        foreach ($recipeTree as $recipeChild) {
+            if ($recipeChild->isA('chapter')) {
+                $text .= $this->chapterToPlainText($recipeChild);
             } else {
-                $text .= $this->pageToPlainText($bookChild);
+                $text .= $this->pageToPlainText($recipeChild);
             }
         }
 
@@ -300,17 +300,17 @@ class ExportFormatter
     }
 
     /**
-     * Convert a book into a plain text string.
+     * Convert a recipe into a plain text string.
      */
-    public function bookToMarkdown(Book $book): string
+    public function recipeToMarkdown(Recipe $recipe): string
     {
-        $bookTree = (new BookContents($book))->getTree(false, true);
-        $text = '# ' . $book->name . "\n\n";
-        foreach ($bookTree as $bookChild) {
-            if ($bookChild instanceof Chapter) {
-                $text .= $this->chapterToMarkdown($bookChild);
+        $recipeTree = (new RecipeContents($recipe))->getTree(false, true);
+        $text = '# ' . $recipe->name . "\n\n";
+        foreach ($recipeTree as $recipeChild) {
+            if ($recipeChild instanceof Chapter) {
+                $text .= $this->chapterToMarkdown($recipeChild);
             } else {
-                $text .= $this->pageToMarkdown($bookChild);
+                $text .= $this->pageToMarkdown($recipeChild);
             }
         }
 

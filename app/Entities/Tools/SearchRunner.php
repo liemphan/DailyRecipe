@@ -5,7 +5,7 @@ namespace DailyRecipe\Entities\Tools;
 use DailyRecipe\Auth\Permissions\PermissionService;
 use DailyRecipe\Auth\User;
 use DailyRecipe\Entities\EntityProvider;
-use DailyRecipe\Entities\Models\BookChild;
+use DailyRecipe\Entities\Models\RecipeChild;
 use DailyRecipe\Entities\Models\Entity;
 use DailyRecipe\Entities\Models\Page;
 use DailyRecipe\Entities\Models\SearchTerm;
@@ -102,9 +102,9 @@ class SearchRunner
     }
 
     /**
-     * Search a book for entities.
+     * Search a recipe for entities.
      */
-    public function searchBook(int $bookId, string $searchString): Collection
+    public function searchRecipe(int $recipeId, string $searchString): Collection
     {
         $opts = SearchOptions::fromString($searchString);
         $entityTypes = ['page', 'chapter'];
@@ -117,7 +117,7 @@ class SearchRunner
             }
 
             $entityModelInstance = $this->entityProvider->get($entityType);
-            $search = $this->buildQuery($opts, $entityModelInstance)->where('book_id', '=', $bookId)->take(20)->get();
+            $search = $this->buildQuery($opts, $entityModelInstance)->where('recipe_id', '=', $recipeId)->take(20)->get();
             $results = $results->merge($search);
         }
 
@@ -143,8 +143,8 @@ class SearchRunner
     {
         $relations = ['tags'];
 
-        if ($entityModelInstance instanceof BookChild) {
-            $relations['book'] = function (BelongsTo $query) {
+        if ($entityModelInstance instanceof RecipeChild) {
+            $relations['recipe'] = function (BelongsTo $query) {
                 $query->scopes('visible');
             };
         }

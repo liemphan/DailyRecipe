@@ -8,7 +8,7 @@ return [
     'image_select' => 'Nuotraukų pasirinkimas',
     'image_all' => 'Visi',
     'image_all_title' => 'Rodyti visas nuotraukas',
-    'image_book_title' => 'Peržiūrėti nuotraukas, įkeltas į šią knygą',
+    'image_recipe_title' => 'Peržiūrėti nuotraukas, įkeltas į šią knygą',
     'image_page_title' => 'Peržiūrėti nuotraukas, įkeltas į šį puslapį',
     'image_search_hint' => 'Ieškoti pagal nuotraukos pavadinimą',
     'image_uploaded' => 'Įkelta :uploadedDate',

@@ -3,7 +3,7 @@
 namespace DailyRecipe\Entities\Repos;
 
 use DailyRecipe\Actions\ActivityType;
-use DailyRecipe\Entities\Models\Book;
+use DailyRecipe\Entities\Models\Recipe;
 use DailyRecipe\Entities\Models\Recipemenu;
 use DailyRecipe\Entities\Tools\TrashCan;
 use DailyRecipe\Exceptions\ImageUploadException;
@@ -32,7 +32,7 @@ class RecipemenuRepo
     public function getAllPaginated(int $count = 20, string $sort = 'name', string $order = 'asc'): LengthAwarePaginator
     {
         return Recipemenu::visible()
-            ->with(['visibleBooks', 'cover'])
+            ->with(['visibleRecipes', 'cover'])
             ->orderBy($sort, $order)
             ->paginate($count);
     }
@@ -85,11 +85,11 @@ class RecipemenuRepo
     /**
      * Create a new menu in the system.
      */
-    public function create(array $input, array $bookIds): Recipemenu
+    public function create(array $input, array $recipeIds): Recipemenu
     {
         $menu = new Recipemenu();
         $this->baseRepo->create($menu, $input);
-        $this->updateBooks($menu, $bookIds);
+        $this->updateRecipes($menu, $recipeIds);
         Activity::addForEntity($menu, ActivityType::RECIPEMENU_CREATE);
 
         return $menu;
@@ -98,12 +98,12 @@ class RecipemenuRepo
     /**
      * Update an existing menu in the system using the given input.
      */
-    public function update(Recipemenu $menu, array $input, ?array $bookIds): Recipemenu
+    public function update(Recipemenu $menu, array $input, ?array $recipeIds): Recipemenu
     {
         $this->baseRepo->update($menu, $input);
 
-        if (!is_null($bookIds)) {
-            $this->updateBooks($menu, $bookIds);
+        if (!is_null($recipeIds)) {
+            $this->updateRecipes($menu, $recipeIds);
         }
 
         Activity::addForEntity($menu, ActivityType::RECIPEMENU_UPDATE);
@@ -112,24 +112,24 @@ class RecipemenuRepo
     }
 
     /**
-     * Update which books are assigned to this menu by
-     * syncing the given book ids.
-     * Function ensures the books are visible to the current user and existing.
+     * Update which recipes are assigned to this menu by
+     * syncing the given recipe ids.
+     * Function ensures the recipes are visible to the current user and existing.
      */
-    protected function updateBooks(Recipemenu $menu, array $bookIds)
+    protected function updateRecipes(Recipemenu $menu, array $recipeIds)
     {
-        $numericIDs = collect($bookIds)->map(function ($id) {
+        $numericIDs = collect($recipeIds)->map(function ($id) {
             return intval($id);
         });
 
-        $syncData = Book::visible()
-            ->whereIn('id', $bookIds)
+        $syncData = Recipe::visible()
+            ->whereIn('id', $recipeIds)
             ->pluck('id')
-            ->mapWithKeys(function ($bookId) use ($numericIDs) {
-                return [$bookId => ['order' => $numericIDs->search($bookId)]];
+            ->mapWithKeys(function ($recipeId) use ($numericIDs) {
+                return [$recipeId => ['order' => $numericIDs->search($recipeId)]];
             });
 
-        $menu->books()->sync($syncData);
+        $menu->recipes()->sync($syncData);
     }
 
     /**
@@ -144,28 +144,28 @@ class RecipemenuRepo
     }
 
     /**
-     * Copy down the permissions of the given menu to all child books.
+     * Copy down the permissions of the given menu to all child recipes.
      */
     public function copyDownPermissions(Recipemenu $menu, $checkUserPermissions = true): int
     {
         $menuPermissions = $menu->permissions()->get(['role_id', 'action'])->toArray();
-        $menuBooks = $menu->books()->get(['id', 'restricted']);
-        $updatedBookCount = 0;
+        $menuRecipes = $menu->recipes()->get(['id', 'restricted']);
+        $updatedRecipeCount = 0;
 
-        /** @var Book $book */
-        foreach ($menuBooks as $book) {
-            if ($checkUserPermissions && !userCan('restrictions-manage', $book)) {
+        /** @var Recipe $recipe */
+        foreach ($menuRecipes as $recipe) {
+            if ($checkUserPermissions && !userCan('restrictions-manage', $recipe)) {
                 continue;
             }
-            $book->permissions()->delete();
-            $book->restricted = $menu->restricted;
-            $book->permissions()->createMany($menuPermissions);
-            $book->save();
-            $book->rebuildPermissions();
-            $updatedBookCount++;
+            $recipe->permissions()->delete();
+            $recipe->restricted = $menu->restricted;
+            $recipe->permissions()->createMany($menuPermissions);
+            $recipe->save();
+            $recipe->rebuildPermissions();
+            $updatedRecipeCount++;
         }
 
-        return $updatedBookCount;
+        return $updatedRecipeCount;
     }
 
     /**

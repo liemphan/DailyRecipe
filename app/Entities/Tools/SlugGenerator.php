@@ -2,7 +2,7 @@
 
 namespace DailyRecipe\Entities\Tools;
 
-use DailyRecipe\Entities\Models\BookChild;
+use DailyRecipe\Entities\Models\RecipeChild;
 use DailyRecipe\Interfaces\Sluggable;
 use DailyRecipe\Model;
 use Illuminate\Support\Str;
@@ -46,8 +46,8 @@ class SlugGenerator
     {
         $query = $model->newQuery()->where('slug', '=', $slug);
 
-        if ($model instanceof BookChild) {
-            $query->where('book_id', '=', $model->book_id);
+        if ($model instanceof RecipeChild) {
+            $query->where('recipe_id', '=', $model->recipe_id);
         }
 
         if ($model->id) {

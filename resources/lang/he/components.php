@@ -8,7 +8,7 @@ return [
     'image_select' => 'בחירת תמונה',
     'image_all' => 'הכל',
     'image_all_title' => 'הצג את כל התמונות',
-    'image_book_title' => 'הצג תמונות שהועלו לספר זה',
+    'image_recipe_title' => 'הצג תמונות שהועלו לספר זה',
     'image_page_title' => 'הצג תמונות שהועלו לדף זה',
     'image_search_hint' => 'חפש תמונה לפי שם',
     'image_uploaded' => 'הועלה :uploadedDate',

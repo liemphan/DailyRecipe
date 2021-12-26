@@ -4,7 +4,7 @@ namespace DailyRecipe\Http\Controllers;
 
 use Activity;
 use DailyRecipe\Actions\View;
-use DailyRecipe\Entities\Models\Book;
+use DailyRecipe\Entities\Models\Recipe;
 use DailyRecipe\Entities\Repos\RecipemenuRepo;
 use DailyRecipe\Entities\Tools\PermissionsUpdater;
 use DailyRecipe\Entities\Tools\MenuContext;
@@ -29,7 +29,7 @@ class RecipemenuController extends Controller
     }
 
     /**
-     * Display a listing of the book.
+     * Display a listing of the recipe.
      */
     public function index()
     {
@@ -68,10 +68,10 @@ class RecipemenuController extends Controller
     public function create()
     {
         $this->checkPermission('recipemenu-create-all');
-        $books = Book::hasPermission('update')->get();
+        $recipes = Recipe::hasPermission('update')->get();
         $this->setPageTitle(trans('entities.menus_create'));
 
-        return view('menus.create', ['books' => $books]);
+        return view('menus.create', ['recipes' => $recipes]);
     }
 
     /**
@@ -89,8 +89,8 @@ class RecipemenuController extends Controller
             'image'       => array_merge(['nullable'], $this->getImageValidationRules()),
         ]);
 
-        $bookIds = explode(',', $request->get('books', ''));
-        $menu = $this->recipemenuRepo->create($request->all(), $bookIds);
+        $recipeIds = explode(',', $request->get('recipes', ''));
+        $menu = $this->recipemenuRepo->create($request->all(), $recipeIds);
         $this->recipemenuRepo->updateCoverImage($menu, $request->file('image', null));
 
         return redirect($menu->getUrl());
@@ -104,12 +104,12 @@ class RecipemenuController extends Controller
     public function show(string $slug)
     {
         $menu = $this->recipemenuRepo->getBySlug($slug);
-        $this->checkOwnablePermission('book-view', $menu);
+        $this->checkOwnablePermission('recipe-view', $menu);
 
-        $sort = setting()->getForCurrentUser('menu_books_sort', 'default');
-        $order = setting()->getForCurrentUser('menu_books_sort_order', 'asc');
+        $sort = setting()->getForCurrentUser('menu_recipes_sort', 'default');
+        $order = setting()->getForCurrentUser('menu_recipes_sort_order', 'asc');
 
-        $sortedVisibleMenuBooks = $menu->visibleBooks()->get()
+        $sortedVisibleMenuRecipes = $menu->visibleRecipes()->get()
             ->sortBy($sort === 'default' ? 'pivot.order' : $sort, SORT_REGULAR, $order === 'desc')
             ->values()
             ->all();
@@ -122,7 +122,7 @@ class RecipemenuController extends Controller
 
         return view('menus.show', [
             'menu'                   => $menu,
-            'sortedVisibleMenuBooks' => $sortedVisibleMenuBooks,
+            'sortedVisibleMenuRecipes' => $sortedVisibleMenuRecipes,
             'view'                    => $view,
             'activity'                => Activity::entityActivity($menu, 20, 1),
             'order'                   => $order,
@@ -138,14 +138,14 @@ class RecipemenuController extends Controller
         $menu = $this->recipemenuRepo->getBySlug($slug);
         $this->checkOwnablePermission('recipemenu-update', $menu);
 
-        $menuBookIds = $menu->books()->get(['id'])->pluck('id');
-        $books = Book::hasPermission('update')->whereNotIn('id', $menuBookIds)->get();
+        $menuRecipeIds = $menu->recipes()->get(['id'])->pluck('id');
+        $recipes = Recipe::hasPermission('update')->whereNotIn('id', $menuRecipeIds)->get();
 
         $this->setPageTitle(trans('entities.menus_edit_named', ['name' => $menu->getShortName()]));
 
         return view('menus.edit', [
             'menu' => $menu,
-            'books' => $books,
+            'recipes' => $recipes,
         ]);
     }
 
@@ -166,8 +166,8 @@ class RecipemenuController extends Controller
             'image'       => array_merge(['nullable'], $this->getImageValidationRules()),
         ]);
 
-        $bookIds = explode(',', $request->get('books', ''));
-        $menu = $this->recipemenuRepo->update($menu, $request->all(), $bookIds);
+        $recipeIds = explode(',', $request->get('recipes', ''));
+        $menu = $this->recipemenuRepo->update($menu, $request->all(), $recipeIds);
         $resetCover = $request->has('image_reset');
         $this->recipemenuRepo->updateCoverImage($menu, $request->file('image', null), $resetCover);
 
@@ -231,7 +231,7 @@ class RecipemenuController extends Controller
     }
 
     /**
-     * Copy the permissions of a recipemenu to the child books.
+     * Copy the permissions of a recipemenu to the child recipes.
      */
     public function copyPermissions(string $slug)
     {

@@ -59,11 +59,11 @@ return [
     // Entities
     'entity_not_found' => 'Không tìm thấy thực thể',
     'recipemenu_not_found' => 'Không tìm thấy giá sách',
-    'book_not_found' => 'Không tìm thấy sách',
+    'recipe_not_found' => 'Không tìm thấy sách',
     'page_not_found' => 'Không tìm thấy trang',
     'chapter_not_found' => 'Không tìm thấy chương',
-    'selected_book_not_found' => 'Không tìm thấy sách được chọn',
-    'selected_book_chapter_not_found' => 'Không tìm thấy Sách hoặc Chương được chọn',
+    'selected_recipe_not_found' => 'Không tìm thấy sách được chọn',
+    'selected_recipe_chapter_not_found' => 'Không tìm thấy Sách hoặc Chương được chọn',
     'guests_cannot_save_drafts' => 'Khách không thể lưu bản nháp',
 
     // Users

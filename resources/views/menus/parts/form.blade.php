@@ -12,25 +12,25 @@
 
 <div menu-sort class="grid half gap-xl">
     <div class="form-group">
-        <label for="books">{{ trans('entities.menus_recipes') }}</label>
-        <input type="hidden" id="books-input" name="books"
+        <label for="recipes">{{ trans('entities.menus_recipes') }}</label>
+        <input type="hidden" id="recipes-input" name="recipes"
                value="{{ isset($menu) ? $menu->visibleBooks->implode('id', ',') : '' }}">
-        <div class="scroll-box" menu-sort-assigned-books data-instruction="{{ trans('entities.menus_drag_recipes') }}">
+        <div class="scroll-box" menu-sort-assigned-recipes data-instruction="{{ trans('entities.menus_drag_recipes') }}">
             @if (count($menu->visibleBooks ?? []) > 0)
-                @foreach ($menu->visibleBooks as $book)
-                    <div data-id="{{ $book->id }}" class="scroll-box-item">
-                        <a href="{{ $book->getUrl() }}" class="text-book">@icon('book'){{ $book->name }}</a>
+                @foreach ($menu->visibleBooks as $recipe)
+                    <div data-id="{{ $recipe->id }}" class="scroll-box-item">
+                        <a href="{{ $recipe->getUrl() }}" class="text-recipe">@icon('recipe'){{ $recipe->name }}</a>
                     </div>
                 @endforeach
             @endif
         </div>
     </div>
     <div class="form-group">
-        <label for="books">{{ trans('entities.menus_add_recipes') }}</label>
+        <label for="recipes">{{ trans('entities.menus_add_recipes') }}</label>
         <div class="scroll-box">
-            @foreach ($books as $book)
-                <div data-id="{{ $book->id }}" class="scroll-box-item">
-                    <a href="{{ $book->getUrl() }}" class="text-book">@icon('book'){{ $book->name }}</a>
+            @foreach ($recipes as $recipe)
+                <div data-id="{{ $recipe->id }}" class="scroll-box-item">
+                    <a href="{{ $recipe->getUrl() }}" class="text-recipe">@icon('recipe'){{ $recipe->name }}</a>
                 </div>
             @endforeach
         </div>
@@ -47,8 +47,8 @@
         <p class="small">{{ trans('common.cover_image_description') }}</p>
 
         @include('form.image-picker', [
-            'defaultImage' => url('/book_default_cover.png'),
-            'currentImage' => (isset($menu) && $menu->cover) ? $menu->getBookCover() : url('/book_default_cover.png') ,
+            'defaultImage' => url('/recipe_default_cover.png'),
+            'currentImage' => (isset($menu) && $menu->cover) ? $menu->getBookCover() : url('/recipe_default_cover.png') ,
             'name' => 'image',
             'imageClass' => 'cover'
         ])

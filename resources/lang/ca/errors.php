@@ -59,11 +59,11 @@ return [
     // Entities
     'entity_not_found' => 'No s\'ha trobat l\'entitat',
     'recipemenu_not_found' => 'No s\'ha trobat el prestatge',
-    'book_not_found' => 'No s\'ha trobat el llibre',
+    'recipe_not_found' => 'No s\'ha trobat el llibre',
     'page_not_found' => 'No s\'ha trobat la pàgina',
     'chapter_not_found' => 'No s\'ha trobat el capítol',
-    'selected_book_not_found' => 'No s\'ha trobat el llibre seleccionat',
-    'selected_book_chapter_not_found' => 'No s\'ha trobat el llibre o el capítol seleccionat',
+    'selected_recipe_not_found' => 'No s\'ha trobat el llibre seleccionat',
+    'selected_recipe_chapter_not_found' => 'No s\'ha trobat el llibre o el capítol seleccionat',
     'guests_cannot_save_drafts' => 'Els convidats no poden desar esborranys',
 
     // Users

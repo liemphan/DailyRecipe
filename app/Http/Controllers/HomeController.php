@@ -3,11 +3,11 @@
 namespace DailyRecipe\Http\Controllers;
 
 use Activity;
-use DailyRecipe\Entities\Models\Book;
+use DailyRecipe\Entities\Models\Recipe;
 use DailyRecipe\Entities\Models\Page;
 use DailyRecipe\Entities\Queries\RecentlyViewed;
 use DailyRecipe\Entities\Queries\TopFavourites;
-use DailyRecipe\Entities\Repos\BookRepo;
+use DailyRecipe\Entities\Repos\RecipeRepo;
 use DailyRecipe\Entities\Repos\RecipemenuRepo;
 use DailyRecipe\Entities\Tools\PageContent;
 
@@ -34,7 +34,7 @@ class HomeController extends Controller
         $recentFactor = count($draftPages) > 0 ? 0.5 : 1;
         $recents = $this->isSignedIn() ?
             (new RecentlyViewed())->run(12 * $recentFactor, 1)
-            : Book::visible()->orderBy('created_at', 'desc')->take(12 * $recentFactor)->get();
+            : Recipe::visible()->orderBy('created_at', 'desc')->take(12 * $recentFactor)->get();
         $favourites = (new TopFavourites())->run(6);
         $recentlyUpdatedPages = Page::visible()->with('book')
             ->where('draft', false)
@@ -43,7 +43,7 @@ class HomeController extends Controller
             ->select(Page::$listAttributes)
             ->get();
 
-        $homepageOptions = ['default', 'books', 'recipemenus', 'page'];
+        $homepageOptions = ['default', 'recipes', 'recipemenus', 'page'];
         $homepageOption = setting('app-homepage-type', 'default');
         if (!in_array($homepageOption, $homepageOptions)) {
             $homepageOption = 'default';
@@ -57,8 +57,8 @@ class HomeController extends Controller
             'favourites'           => $favourites,
         ];
 
-        // Add required list ordering & sorting for books & menus views.
-        if ($homepageOption === 'recipemenus' || $homepageOption === 'books') {
+        // Add required list ordering & sorting for recipes & menus views.
+        if ($homepageOption === 'recipemenus' || $homepageOption === 'recipes') {
             $key = $homepageOption;
             $view = setting()->getForCurrentUser($key . '_view_type');
             $sort = setting()->getForCurrentUser($key . '_sort', 'name');
@@ -85,12 +85,12 @@ class HomeController extends Controller
             return view('home.menus', $data);
         }
 
-        if ($homepageOption === 'books') {
-            $bookRepo = app(BookRepo::class);
+        if ($homepageOption === 'recipes') {
+            $bookRepo = app(RecipeRepo::class);
             $books = $bookRepo->getAllPaginated(18, $commonData['sort'], $commonData['order']);
-            $data = array_merge($commonData, ['books' => $books]);
+            $data = array_merge($commonData, ['recipes' => $books]);
 
-            return view('home.books', $data);
+            return view('home.recipes', $data);
         }
 
         if ($homepageOption === 'page') {

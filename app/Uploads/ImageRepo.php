@@ -84,7 +84,7 @@ class ImageRepo
     }
 
     /**
-     * Get paginated gallery images within a specific page or book.
+     * Get paginated gallery images within a specific page or recipe.
      */
     public function getEntityFiltered(
         string $type,
@@ -98,12 +98,12 @@ class ImageRepo
         $contextPage = Page::visible()->findOrFail($uploadedTo);
         $parentFilter = null;
 
-        if ($filterType === 'book' || $filterType === 'page') {
+        if ($filterType === 'recipe' || $filterType === 'page') {
             $parentFilter = function (Builder $query) use ($filterType, $contextPage) {
                 if ($filterType === 'page') {
                     $query->where('uploaded_to', '=', $contextPage->id);
-                } elseif ($filterType === 'book') {
-                    $validPageIds = $contextPage->book->pages()
+                } elseif ($filterType === 'recipe') {
+                    $validPageIds = $contextPage->recipe->pages()
                         ->scopes('visible')
                         ->pluck('id')
                         ->toArray();
@@ -236,7 +236,7 @@ class ImageRepo
     {
         $pages = Page::visible()
             ->where('html', 'like', '%' . $image->url . '%')
-            ->get(['id', 'name', 'slug', 'book_id']);
+            ->get(['id', 'name', 'slug', 'recipe_id']);
 
         foreach ($pages as $page) {
             $page->setAttribute('url', $page->getUrl());

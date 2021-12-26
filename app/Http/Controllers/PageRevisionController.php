@@ -57,7 +57,7 @@ class PageRevisionController extends Controller
 
         return view('pages.revision', [
             'page'     => $page,
-            'book'     => $page->book,
+            'book'     => $page->recipe,
             'diff'     => null,
             'revision' => $revision,
         ]);
@@ -88,7 +88,7 @@ class PageRevisionController extends Controller
 
         return view('pages.revision', [
             'page'     => $page,
-            'book'     => $page->book,
+            'book'     => $page->recipe,
             'diff'     => $diff,
             'revision' => $revision,
         ]);

@@ -38568,7 +38568,7 @@
   Sortable.mount(Remove, Revert);
   var sortable_esm_default = Sortable;
 
-  // resources/js/components/book-sort.js
+  // resources/js/components/recipe-sort.js
   var sortOperations = {
     name: function(a, b) {
       const aName = a.getAttribute("data-name").trim().toLowerCase();
@@ -38605,12 +38605,12 @@
   var BookSort = class {
     constructor(elem) {
       this.elem = elem;
-      this.sortContainer = elem.querySelector("[book-sort-boxes]");
-      this.input = elem.querySelector("[book-sort-input]");
+      this.sortContainer = elem.querySelector("[recipe-sort-boxes]");
+      this.input = elem.querySelector("[recipe-sort-input]");
       const initialSortBox = elem.querySelector(".sort-box");
       this.setupBookSortable(initialSortBox);
       this.setupSortPresets();
-      window.$events.listen("entity-select-confirm", this.bookSelect.bind(this));
+      window.$events.listen("entity-select-confirm", this.recipeSelect.bind(this));
     }
     setupSortPresets() {
       let lastSort = "";
@@ -38640,8 +38640,8 @@
         this.updateMapInput();
       });
     }
-    bookSelect(entityInfo) {
-      const alreadyAdded = this.elem.querySelector(`[data-type="book"][data-id="${entityInfo.id}"]`) !== null;
+    recipeSelect(entityInfo) {
+      const alreadyAdded = this.elem.querySelector(`[data-type="recipe"][data-id="${entityInfo.id}"]`) !== null;
       if (alreadyAdded)
         return;
       const entitySortItemUrl = entityInfo.link + "/sort-item";
@@ -38653,24 +38653,24 @@
         this.setupBookSortable(newBookContainer);
       });
     }
-    setupBookSortable(bookContainer) {
-      const sortElems = [bookContainer.querySelector(".sort-list")];
-      sortElems.push(...bookContainer.querySelectorAll(".entity-list-item + ul"));
-      const bookGroupConfig = {
-        name: "book",
-        pull: ["book", "chapter"],
-        put: ["book", "chapter"]
+    setupBookSortable(recipeContainer) {
+      const sortElems = [recipeContainer.querySelector(".sort-list")];
+      sortElems.push(...recipeContainer.querySelectorAll(".entity-list-item + ul"));
+      const recipeGroupConfig = {
+        name: "recipe",
+        pull: ["recipe", "chapter"],
+        put: ["recipe", "chapter"]
       };
       const chapterGroupConfig = {
         name: "chapter",
-        pull: ["book", "chapter"],
+        pull: ["recipe", "chapter"],
         put: function(toList, fromList, draggedElem) {
           return draggedElem.getAttribute("data-type") === "page";
         }
       };
       for (let sortElem of sortElems) {
         new sortable_esm_default(sortElem, {
-          group: sortElem.classList.contains("sort-list") ? bookGroupConfig : chapterGroupConfig,
+          group: sortElem.classList.contains("sort-list") ? recipeGroupConfig : chapterGroupConfig,
           animation: 150,
           fallbackOnBody: true,
           swapThreshold: 0.65,
@@ -38691,15 +38691,15 @@
       const entityMap = [];
       const lists = this.elem.querySelectorAll(".sort-list");
       for (let list of lists) {
-        const bookId = list.closest('[data-type="book"]').getAttribute("data-id");
+        const recipeId = list.closest('[data-type="recipe"]').getAttribute("data-id");
         const directChildren = Array.from(list.children).filter((elem) => elem.matches('[data-type="page"], [data-type="chapter"]'));
         for (let i = 0; i < directChildren.length; i++) {
-          this.addBookChildToMap(directChildren[i], i, bookId, entityMap);
+          this.addBookChildToMap(directChildren[i], i, recipeId, entityMap);
         }
       }
       return entityMap;
     }
-    addBookChildToMap(childElem, index2, bookId, entityMap) {
+    addBookChildToMap(childElem, index2, recipeId, entityMap) {
       const type = childElem.getAttribute("data-type");
       const parentChapter = false;
       const childId = childElem.getAttribute("data-id");
@@ -38708,7 +38708,7 @@
         sort: index2,
         parentChapter,
         type,
-        book: bookId
+        recipe: recipeId
       });
       const subPages = childElem.querySelectorAll('[data-type="page"]');
       for (let i = 0; i < subPages.length; i++) {
@@ -38717,12 +38717,12 @@
           sort: i,
           parentChapter: childId,
           type: "page",
-          book: bookId
+          recipe: recipeId
         });
       }
     }
   };
-  var book_sort_default = BookSort;
+  var recipe_sort_default = BookSort;
 
   // resources/js/services/animations.js
   var animateStylesCleanupMap = new WeakMap();
@@ -39622,7 +39622,7 @@
   var EntitySelector = class {
     setup() {
       this.elem = this.$el;
-      this.entityTypes = this.$opts.entityTypes || "page,book,chapter";
+      this.entityTypes = this.$opts.entityTypes || "page,recipe,chapter";
       this.entityPermission = this.$opts.entityPermission || "view";
       this.input = this.$refs.input;
       this.searchInput = this.$refs.search;
@@ -41105,25 +41105,25 @@
           editAnchor.href = `${editHref}?content-id=${elementId}&content-text=${encodeURIComponent(queryContent)}`;
         }
       };
-      forEach('.page-content [id^="bkmrk"]', (bookMarkElem) => {
-        onEvents(bookMarkElem, ["mouseup", "keyup"], (event) => {
+      forEach('.page-content [id^="bkmrk"]', (recipeMarkElem) => {
+        onEvents(recipeMarkElem, ["mouseup", "keyup"], (event) => {
           event.stopPropagation();
           let selection = window.getSelection();
           if (selection.toString().length === 0)
             return;
-          pointerSectionId = bookMarkElem.id;
-          updatePointerContent(bookMarkElem);
-          bookMarkElem.parentNode.insertBefore(pointer, bookMarkElem);
+          pointerSectionId = recipeMarkElem.id;
+          updatePointerContent(recipeMarkElem);
+          recipeMarkElem.parentNode.insertBefore(pointer, recipeMarkElem);
           pointer.style.display = "block";
           pointerShowing = true;
           isSelection = true;
           requestAnimationFrame(() => {
-            const bookMarkBounds = bookMarkElem.getBoundingClientRect();
-            let pointerLeftOffset = event.pageX - bookMarkBounds.left - 164;
+            const recipeMarkBounds = recipeMarkElem.getBoundingClientRect();
+            let pointerLeftOffset = event.pageX - recipeMarkBounds.left - 164;
             if (pointerLeftOffset < 0) {
               pointerLeftOffset = 0;
             }
-            const pointerLeftOffsetPercent = pointerLeftOffset / bookMarkBounds.width * 100;
+            const pointerLeftOffsetPercent = pointerLeftOffset / recipeMarkBounds.width * 100;
             pointerInner.style.left = pointerLeftOffsetPercent + "%";
             setTimeout(() => {
               isSelection = false;
@@ -41539,8 +41539,8 @@
   var MenuSort = class {
     constructor(elem) {
       this.elem = elem;
-      this.input = document.getElementById("books-input");
-      this.menuBooksList = elem.querySelector("[menu-sort-assigned-books]");
+      this.input = document.getElementById("recipes-input");
+      this.menuBooksList = elem.querySelector("[menu-sort-assigned-recipes]");
       this.initSortable();
       this.setupListeners();
     }
@@ -41548,7 +41548,7 @@
       const scrollBoxes = this.elem.querySelectorAll(".scroll-box");
       for (let scrollBox of scrollBoxes) {
         new sortable_esm_default(scrollBox, {
-          group: "menu-books",
+          group: "menu-recipes",
           ghostClass: "primary-background-light",
           animation: 150,
           onSort: this.onChange.bind(this)
@@ -42466,7 +42466,7 @@
     "attachments-list": attachments_list_default,
     "auto-suggest": auto_suggest_default,
     "back-to-top": back_to_top_default,
-    "book-sort": book_sort_default,
+    "recipe-sort": recipe_sort_default,
     "chapter-toggle": chapter_toggle_default,
     "code-editor": code_editor_default,
     "code-highlighter": code_highlighter_default,

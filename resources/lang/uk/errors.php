@@ -59,11 +59,11 @@ return [
     // Entities
     'entity_not_found' => 'Об\'єкт не знайдено',
     'recipemenu_not_found' => 'Книжкова полиця не знайдена',
-    'book_not_found' => 'Книга не знайдена',
+    'recipe_not_found' => 'Книга не знайдена',
     'page_not_found' => 'Сторінку не знайдено',
     'chapter_not_found' => 'Розділ не знайдено',
-    'selected_book_not_found' => 'Вибрана книга не знайдена',
-    'selected_book_chapter_not_found' => 'Вибрана книга або глава не знайдена',
+    'selected_recipe_not_found' => 'Вибрана книга не знайдена',
+    'selected_recipe_chapter_not_found' => 'Вибрана книга або глава не знайдена',
     'guests_cannot_save_drafts' => 'Гості не можуть зберігати чернетки',
 
     // Users

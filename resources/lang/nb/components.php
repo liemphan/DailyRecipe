@@ -8,7 +8,7 @@ return [
     'image_select' => 'Velg bilde',
     'image_all' => 'Alle',
     'image_all_title' => 'Vis alle bilder',
-    'image_book_title' => 'Vis bilder som er lastet opp i denne boken',
+    'image_recipe_title' => 'Vis bilder som er lastet opp i denne boken',
     'image_page_title' => 'Vis bilder lastet opp til denne siden',
     'image_search_hint' => 'Søk på bilder etter navn',
     'image_uploaded' => 'Opplastet :uploadedDate',

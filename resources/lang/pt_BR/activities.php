@@ -26,14 +26,14 @@ return [
     'chapter_move'                => 'moveu o capítulo',
 
     // Books
-    'book_create'                 => 'criou o livro',
-    'book_create_notification'    => 'Livro criado com sucesso',
-    'book_update'                 => 'atualizou o livro',
-    'book_update_notification'    => 'Livro atualizado com sucesso',
-    'book_delete'                 => 'excluiu o livro',
-    'book_delete_notification'    => 'Livro excluído com sucesso',
-    'book_sort'                   => 'ordenou o livro',
-    'book_sort_notification'      => 'Livro reordenado com sucesso',
+    'recipe_create'                 => 'criou o livro',
+    'recipe_create_notification'    => 'Livro criado com sucesso',
+    'recipe_update'                 => 'atualizou o livro',
+    'recipe_update_notification'    => 'Livro atualizado com sucesso',
+    'recipe_delete'                 => 'excluiu o livro',
+    'recipe_delete_notification'    => 'Livro excluído com sucesso',
+    'recipe_sort'                   => 'ordenou o livro',
+    'recipe_sort_notification'      => 'Livro reordenado com sucesso',
 
     // Recipemenus
     'recipemenu_create'            => 'criou a prateleira',

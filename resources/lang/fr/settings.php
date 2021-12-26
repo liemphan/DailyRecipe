@@ -50,7 +50,7 @@ return [
     'content_colors' => 'Couleur du contenu',
     'content_colors_desc' => 'Définit les couleurs pour tous les éléments de la hiérarchie d\'organisation des pages. Choisir les couleurs avec une luminosité similaire aux couleurs par défaut est recommandé pour la lisibilité.',
     'recipemenu_color' => 'Couleur des étagères',
-    'book_color' => 'Couleur des livres',
+    'recipe_color' => 'Couleur des livres',
     'chapter_color' => 'Couleur des chapitres',
     'page_color' => 'Couleur des pages',
     'page_draft_color' => 'Couleur des brouillons',

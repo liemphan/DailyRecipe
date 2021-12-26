@@ -59,11 +59,11 @@ return [
     // Entities
     'entity_not_found' => 'Ne najdem tega objekta',
     'recipemenu_not_found' => 'Knjižna polica ni najdena',
-    'book_not_found' => 'Knjiga ni najdena',
+    'recipe_not_found' => 'Knjiga ni najdena',
     'page_not_found' => 'Stran ni najdena',
     'chapter_not_found' => 'Poglavje ni najdeno',
-    'selected_book_not_found' => 'Izbrana knjiga ni najdena',
-    'selected_book_chapter_not_found' => 'Izbrana knjiga ali poglavje ni najdeno',
+    'selected_recipe_not_found' => 'Izbrana knjiga ni najdena',
+    'selected_recipe_chapter_not_found' => 'Izbrana knjiga ali poglavje ni najdeno',
     'guests_cannot_save_drafts' => 'Gosti ne morejo shranjevati osnutkov',
 
     // Users

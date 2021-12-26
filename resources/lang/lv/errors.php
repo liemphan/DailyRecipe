@@ -59,11 +59,11 @@ return [
     // Entities
     'entity_not_found' => 'Vienība nav atrasta',
     'recipemenu_not_found' => 'Grāmatplaukts nav atrasts',
-    'book_not_found' => 'Grāmata nav atrasta',
+    'recipe_not_found' => 'Grāmata nav atrasta',
     'page_not_found' => 'Lapa nav atrasta',
     'chapter_not_found' => 'Nodaļa nav atrasta',
-    'selected_book_not_found' => 'Iezīmētā grāmata nav atrasta',
-    'selected_book_chapter_not_found' => 'Izvēlētā grāmata vai nodaļa nav atrasta',
+    'selected_recipe_not_found' => 'Iezīmētā grāmata nav atrasta',
+    'selected_recipe_chapter_not_found' => 'Izvēlētā grāmata vai nodaļa nav atrasta',
     'guests_cannot_save_drafts' => 'Viesi nevar saglabāt melnrakstus',
 
     // Users

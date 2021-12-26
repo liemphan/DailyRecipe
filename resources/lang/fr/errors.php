@@ -59,11 +59,11 @@ return [
     // Entities
     'entity_not_found' => 'Entité non trouvée',
     'recipemenu_not_found' => 'Étagère non trouvée',
-    'book_not_found' => 'Livre non trouvé',
+    'recipe_not_found' => 'Livre non trouvé',
     'page_not_found' => 'Page non trouvée',
     'chapter_not_found' => 'Chapitre non trouvé',
-    'selected_book_not_found' => 'Ce livre n\'a pas été trouvé',
-    'selected_book_chapter_not_found' => 'Ce livre ou chapitre n\'a pas été trouvé',
+    'selected_recipe_not_found' => 'Ce livre n\'a pas été trouvé',
+    'selected_recipe_chapter_not_found' => 'Ce livre ou chapitre n\'a pas été trouvé',
     'guests_cannot_save_drafts' => 'Les invités ne peuvent pas enregistrer de brouillons',
 
     // Users

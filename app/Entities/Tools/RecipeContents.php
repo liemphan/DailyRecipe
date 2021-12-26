@@ -2,39 +2,39 @@
 
 namespace DailyRecipe\Entities\Tools;
 
-use DailyRecipe\Entities\Models\Book;
-use DailyRecipe\Entities\Models\BookChild;
+use DailyRecipe\Entities\Models\Recipe;
+use DailyRecipe\Entities\Models\RecipeChild;
 use DailyRecipe\Entities\Models\Chapter;
 use DailyRecipe\Entities\Models\Entity;
 use DailyRecipe\Entities\Models\Page;
 use DailyRecipe\Exceptions\SortOperationException;
 use Illuminate\Support\Collection;
 
-class BookContents
+class RecipeContents
 {
     /**
-     * @var Book
+     * @var Recipe
      */
-    protected $book;
+    protected $recipe;
 
     /**
-     * BookContents constructor.
+     * RecipeContents constructor.
      */
-    public function __construct(Book $book)
+    public function __construct(Recipe $recipe)
     {
-        $this->book = $book;
+        $this->recipe = $recipe;
     }
 
     /**
      * Get the current priority of the last item
-     * at the top-level of the book.
+     * at the top-level of the recipe.
      */
     public function getLastPriority(): int
     {
-        $maxPage = Page::visible()->where('book_id', '=', $this->book->id)
+        $maxPage = Page::visible()->where('recipe_id', '=', $this->recipe->id)
             ->where('draft', '=', false)
             ->where('chapter_id', '=', 0)->max('priority');
-        $maxChapter = Chapter::visible()->where('book_id', '=', $this->book->id)
+        $maxChapter = Chapter::visible()->where('recipe_id', '=', $this->recipe->id)
             ->max('priority');
 
         return max($maxChapter, $maxPage, 1);
@@ -46,7 +46,7 @@ class BookContents
     public function getTree(bool $showDrafts = false, bool $renderPages = false): Collection
     {
         $pages = $this->getPages($showDrafts, $renderPages);
-        $chapters = Chapter::visible()->where('book_id', '=', $this->book->id)->get();
+        $chapters = Chapter::visible()->where('recipe_id', '=', $this->recipe->id)->get();
         $all = collect()->concat($pages)->concat($chapters);
         $chapterMap = $chapters->keyBy('id');
         $lonePages = collect();
@@ -54,7 +54,7 @@ class BookContents
         $pages->groupBy('chapter_id')->each(function ($pages, $chapter_id) use ($chapterMap, &$lonePages) {
             $chapter = $chapterMap->get($chapter_id);
             if ($chapter) {
-                $chapter->setAttribute('visible_pages', collect($pages)->sortBy($this->bookChildSortFunc()));
+                $chapter->setAttribute('visible_pages', collect($pages)->sortBy($this->recipeChildSortFunc()));
             } else {
                 $lonePages = $lonePages->concat($pages);
             }
@@ -65,21 +65,21 @@ class BookContents
         });
 
         $all->each(function (Entity $entity) use ($renderPages) {
-            $entity->setRelation('book', $this->book);
+            $entity->setRelation('recipe', $this->recipe);
 
             if ($renderPages && $entity instanceof Page) {
                 $entity->html = (new PageContent($entity))->render();
             }
         });
 
-        return collect($chapters)->concat($lonePages)->sortBy($this->bookChildSortFunc());
+        return collect($chapters)->concat($lonePages)->sortBy($this->recipeChildSortFunc());
     }
 
     /**
      * Function for providing a sorting score for an entity in relation to the
-     * other items within the book.
+     * other items within the recipe.
      */
-    protected function bookChildSortFunc(): callable
+    protected function recipeChildSortFunc(): callable
     {
         return function (Entity $entity) {
             if (isset($entity['draft']) && $entity['draft']) {
@@ -91,13 +91,13 @@ class BookContents
     }
 
     /**
-     * Get the visible pages within this book.
+     * Get the visible pages within this recipe.
      */
     protected function getPages(bool $showDrafts = false, bool $getPageContent = false): Collection
     {
         $query = Page::visible()
             ->select($getPageContent ? Page::$contentAttributes : Page::$listAttributes)
-            ->where('book_id', '=', $this->book->id);
+            ->where('recipe_id', '=', $this->recipe->id);
 
         if (!$showDrafts) {
             $query->where('draft', '=', false);
@@ -107,17 +107,17 @@ class BookContents
     }
 
     /**
-     * Sort the books content using the given map.
+     * Sort the recipes content using the given map.
      * The map is a single-dimension collection of objects in the following format:
      *   {
      *     +"id": "294" (ID of item)
      *     +"sort": 1 (Sort order index)
      *     +"parentChapter": false (ID of parent chapter, as string, or false)
      *     +"type": "page" (Entity type of item)
-     *     +"book": "1" (Id of book to place item in)
+     *     +"recipe": "1" (Id of recipe to place item in)
      *   }.
      *
-     * Returns a list of books that were involved in the operation.
+     * Returns a list of recipes that were involved in the operation.
      *
      * @throws SortOperationException
      */
@@ -125,7 +125,7 @@ class BookContents
     {
         // Load models into map
         $this->loadModelsIntoSortMap($sortMap);
-        $booksInvolved = $this->getBooksInvolvedInSort($sortMap);
+        $recipesInvolved = $this->getRecipesInvolvedInSort($sortMap);
 
         // Perform the sort
         $sortMap->each(function ($mapItem) {
@@ -133,11 +133,11 @@ class BookContents
         });
 
         // Update permissions and activity.
-        $booksInvolved->each(function (Book $book) {
-            $book->rebuildPermissions();
+        $recipesInvolved->each(function (Recipe $recipe) {
+            $recipe->rebuildPermissions();
         });
 
-        return $booksInvolved;
+        return $recipesInvolved;
     }
 
     /**
@@ -146,15 +146,15 @@ class BookContents
      */
     protected function applySortUpdates(\stdClass $sortMapItem)
     {
-        /** @var BookChild $model */
+        /** @var RecipeChild $model */
         $model = $sortMapItem->model;
 
         $priorityChanged = intval($model->priority) !== intval($sortMapItem->sort);
-        $bookChanged = intval($model->book_id) !== intval($sortMapItem->book);
+        $recipeChanged = intval($model->recipe_id) !== intval($sortMapItem->recipe);
         $chapterChanged = ($model instanceof Page) && intval($model->chapter_id) !== $sortMapItem->parentChapter;
 
-        if ($bookChanged) {
-            $model->changeBook($sortMapItem->book);
+        if ($recipeChanged) {
+            $model->changeRecipe($sortMapItem->recipe);
         }
 
         if ($chapterChanged) {
@@ -194,24 +194,24 @@ class BookContents
     }
 
     /**
-     * Get the books involved in a sort.
+     * Get the recipes involved in a sort.
      * The given sort map should have its models loaded first.
      *
      * @throws SortOperationException
      */
-    protected function getBooksInvolvedInSort(Collection $sortMap): Collection
+    protected function getRecipesInvolvedInSort(Collection $sortMap): Collection
     {
-        $bookIdsInvolved = collect([$this->book->id]);
-        $bookIdsInvolved = $bookIdsInvolved->concat($sortMap->pluck('book'));
-        $bookIdsInvolved = $bookIdsInvolved->concat($sortMap->pluck('model.book_id'));
-        $bookIdsInvolved = $bookIdsInvolved->unique()->toArray();
+        $recipeIdsInvolved = collect([$this->recipe->id]);
+        $recipeIdsInvolved = $recipeIdsInvolved->concat($sortMap->pluck('recipe'));
+        $recipeIdsInvolved = $recipeIdsInvolved->concat($sortMap->pluck('model.recipe_id'));
+        $recipeIdsInvolved = $recipeIdsInvolved->unique()->toArray();
 
-        $books = Book::hasPermission('update')->whereIn('id', $bookIdsInvolved)->get();
+        $recipes = Recipe::hasPermission('update')->whereIn('id', $recipeIdsInvolved)->get();
 
-        if (count($books) !== count($bookIdsInvolved)) {
-            throw new SortOperationException('Could not find all books requested in sort operation');
+        if (count($recipes) !== count($recipeIdsInvolved)) {
+            throw new SortOperationException('Could not find all recipes requested in sort operation');
         }
 
-        return $books;
+        return $recipes;
     }
 }

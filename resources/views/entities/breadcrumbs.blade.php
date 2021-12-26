@@ -1,10 +1,10 @@
 <nav class="breadcrumbs text-center" aria-label="{{ trans('common.breadcrumb') }}">
     <?php $breadcrumbCount = 0; ?>
 
-    {{-- Show top level books item --}}
-    @if (count($crumbs) > 0 && ($crumbs[0] ?? null) instanceof  \DailyRecipe\Entities\Models\Book)
-        <a href="{{  url('/books')  }}" class="text-book icon-list-item outline-hover">
-            <span>@icon('books')</span>
+    {{-- Show top level recipes item --}}
+    @if (count($crumbs) > 0 && ($crumbs[0] ?? null) instanceof  \DailyRecipe\Entities\Models\Recipe)
+        <a href="{{  url('/recipes')  }}" class="text-recipe icon-list-item outline-hover">
+            <span>@icon('recipes')</span>
             <span>{{ trans('entities.recipes') }}</span>
         </a>
         <?php $breadcrumbCount++; ?>

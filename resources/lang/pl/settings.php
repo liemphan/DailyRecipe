@@ -50,7 +50,7 @@ return [
     'content_colors' => 'Kolory zawartości',
     'content_colors_desc' => 'Ustawia kolory dla wszystkich elementów w hierarchii organizacji stron. Wybór kolorów o podobnej jasności do domyślnych kolorów jest zalecany dla czytelności.',
     'recipemenu_color' => 'Kolor półki',
-    'book_color' => 'Kolor książki',
+    'recipe_color' => 'Kolor książki',
     'chapter_color' => 'Kolor rozdziału',
     'page_color' => 'Kolor strony',
     'page_draft_color' => 'Kolor szkicu strony',

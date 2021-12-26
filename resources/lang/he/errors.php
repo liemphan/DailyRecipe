@@ -59,11 +59,11 @@ return [
     // Entities
     'entity_not_found' => 'פריט לא נמצא',
     'recipemenu_not_found' => 'מדף הספרים לא נמצא',
-    'book_not_found' => 'ספר לא נמצא',
+    'recipe_not_found' => 'ספר לא נמצא',
     'page_not_found' => 'דף לא נמצא',
     'chapter_not_found' => 'פרק לא נמצא',
-    'selected_book_not_found' => 'הספר שנבחר לא נמצא',
-    'selected_book_chapter_not_found' => 'הפרק או הספר שנבחר לא נמצאו',
+    'selected_recipe_not_found' => 'הספר שנבחר לא נמצא',
+    'selected_recipe_chapter_not_found' => 'הפרק או הספר שנבחר לא נמצאו',
     'guests_cannot_save_drafts' => 'אורחים אינם יכולים לשמור סקיצות',
 
     // Users

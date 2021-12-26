@@ -22,7 +22,7 @@
                             @include('search.parts.type-filter', ['checked' => !$hasTypes || in_array('page', $types), 'entity' => 'page', 'transKey' => 'page'])
                             @include('search.parts.type-filter', ['checked' => !$hasTypes || in_array('chapter', $types), 'entity' => 'chapter', 'transKey' => 'chapter'])
                             <br>
-                                @include('search.parts.type-filter', ['checked' => !$hasTypes || in_array('book', $types), 'entity' => 'book', 'transKey' => 'book'])
+                                @include('search.parts.type-filter', ['checked' => !$hasTypes || in_array('recipe', $types), 'entity' => 'recipe', 'transKey' => 'recipe'])
                                 @include('search.parts.type-filter', ['checked' => !$hasTypes || in_array('recipemenu', $types), 'entity' => 'recipemenu', 'transKey' => 'menu'])
                         </div>
 
@@ -83,7 +83,7 @@
                     </form>
 
                     <h6 class="text-muted">{{ trans_choice('entities.search_total_results_found', $totalResults, ['count' => $totalResults]) }}</h6>
-                    <div class="book-contents">
+                    <div class="recipe-contents">
                         @include('entities.list', ['entities' => $entities, 'showPath' => true, 'showTags' => true])
                     </div>
 

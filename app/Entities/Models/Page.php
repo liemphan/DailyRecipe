@@ -24,12 +24,12 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
  * @property Chapter    $chapter
  * @property Collection $attachments
  */
-class Page extends BookChild
+class Page extends RecipeChild
 {
     use HasFactory;
 
-    public static $listAttributes = ['name', 'id', 'slug', 'book_id', 'chapter_id', 'draft', 'template', 'text', 'created_at', 'updated_at', 'priority'];
-    public static $contentAttributes = ['name', 'id', 'slug', 'book_id', 'chapter_id', 'draft', 'template', 'html', 'text', 'created_at', 'updated_at', 'priority'];
+    public static $listAttributes = ['name', 'id', 'slug', 'recipe_id', 'chapter_id', 'draft', 'template', 'text', 'created_at', 'updated_at', 'priority'];
+    public static $contentAttributes = ['name', 'id', 'slug', 'recipe_id', 'chapter_id', 'draft', 'template', 'html', 'text', 'created_at', 'updated_at', 'priority'];
 
     protected $fillable = ['name', 'priority'];
 
@@ -107,8 +107,8 @@ class Page extends BookChild
     public function getUrl(string $path = ''): string
     {
         $parts = [
-            'books',
-            urlencode($this->book_slug ?? $this->book->slug),
+            'recipes',
+            urlencode($this->recipe_slug ?? $this->recipe->slug),
             $this->draft ? 'draft' : 'page',
             $this->draft ? $this->id : urlencode($this->slug),
             trim($path, '/'),

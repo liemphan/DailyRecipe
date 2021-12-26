@@ -8,7 +8,7 @@
 
     <div class="mb-m print-hidden">
         @include('entities.breadcrumbs', ['crumbs' => [
-            $page->book,
+            $page->recipe,
             $page->hasChapter() ? $page->chapter : null,
             $page,
         ]])
@@ -70,7 +70,7 @@
         </nav>
     @endif
 
-    @include('entities.book-tree', ['book' => $book, 'sidebarTree' => $sidebarTree])
+    @include('entities.recipe-tree', ['recipe' => $recipe, 'sidebarTree' => $sidebarTree])
 @stop
 
 @section('right')
@@ -79,10 +79,10 @@
         <div class="body text-small blended-links">
             @include('entities.meta', ['entity' => $page])
 
-            @if($book->restricted)
+            @if($recipe->restricted)
                 <div class="active-restriction">
-                    @if(userCan('restrictions-manage', $book))
-                        <a href="{{ $book->getUrl('/permissions') }}">@icon('lock'){{ trans('entities.recipes_permissions_active') }}</a>
+                    @if(userCan('restrictions-manage', $recipe))
+                        <a href="{{ $recipe->getUrl('/permissions') }}">@icon('lock'){{ trans('entities.recipes_permissions_active') }}</a>
                     @else
                         @icon('lock'){{ trans('entities.recipes_permissions_active') }}
                     @endif

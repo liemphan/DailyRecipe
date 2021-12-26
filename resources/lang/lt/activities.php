@@ -26,14 +26,14 @@ return [
     'chapter_move'                => 'perkeltas skyrius',
 
     // Books
-    'book_create'                 => 'sukurta knyga',
-    'book_create_notification'    => 'Knyga sėkmingai sukurta',
-    'book_update'                 => 'atnaujinta knyga',
-    'book_update_notification'    => 'Knyga sėkmingai atnaujinta',
-    'book_delete'                 => 'ištrinta knyga',
-    'book_delete_notification'    => 'Knyga sėkmingai ištrinta',
-    'book_sort'                   => 'surūšiuota knyga',
-    'book_sort_notification'      => 'Knyga sėkmingai perrūšiuota',
+    'recipe_create'                 => 'sukurta knyga',
+    'recipe_create_notification'    => 'Knyga sėkmingai sukurta',
+    'recipe_update'                 => 'atnaujinta knyga',
+    'recipe_update_notification'    => 'Knyga sėkmingai atnaujinta',
+    'recipe_delete'                 => 'ištrinta knyga',
+    'recipe_delete_notification'    => 'Knyga sėkmingai ištrinta',
+    'recipe_sort'                   => 'surūšiuota knyga',
+    'recipe_sort_notification'      => 'Knyga sėkmingai perrūšiuota',
 
     // Recipemenus
     'recipemenu_create'            => 'sukurta knygų lentyna',

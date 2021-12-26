@@ -8,7 +8,7 @@ return [
     'image_select' => 'Kép kiválasztása',
     'image_all' => 'Összes',
     'image_all_title' => 'Összes kép megtekintése',
-    'image_book_title' => 'A könyv feltöltött képek megtekintése',
+    'image_recipe_title' => 'A könyv feltöltött képek megtekintése',
     'image_page_title' => 'Az oldalra feltöltött képek megtekintése',
     'image_search_hint' => 'Keresés kép neve alapján',
     'image_uploaded' => 'Feltöltve ekkor: :uploadedDate',

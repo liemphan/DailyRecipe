@@ -2,11 +2,11 @@
 
 namespace Tests;
 
-use DailyRecipe\Entities\Models\Book;
+use DailyRecipe\Entities\Models\Recipe;
 use DailyRecipe\Entities\Models\Recipemenu;
 use DailyRecipe\Entities\Models\Chapter;
 use DailyRecipe\Entities\Models\Page;
-use DailyRecipe\Entities\Repos\BookRepo;
+use DailyRecipe\Entities\Repos\RecipeRepo;
 use DailyRecipe\Entities\Repos\RecipemenuRepo;
 use Illuminate\Support\Str;
 use Tests\Uploads\UsesImages;
@@ -39,7 +39,7 @@ class OpenGraphTest extends TestCase
 
     public function test_book_tags()
     {
-        $book = Book::query()->first();
+        $book = Recipe::query()->first();
         $resp = $this->asEditor()->get($book->getUrl());
         $tags = $this->getOpenGraphTags($resp);
 
@@ -49,7 +49,7 @@ class OpenGraphTest extends TestCase
         $this->assertArrayNotHasKey('image', $tags);
 
         // Test image set if image has cover image
-        $bookRepo = app(BookRepo::class);
+        $bookRepo = app(RecipeRepo::class);
         $bookRepo->updateCoverImage($book, $this->getTestImage('image.png'));
         $resp = $this->asEditor()->get($book->getUrl());
         $tags = $this->getOpenGraphTags($resp);

@@ -35,18 +35,18 @@ const sortOperations = {
     },
 };
 
-class BookSort {
+class RecipeSort {
 
     constructor(elem) {
         this.elem = elem;
-        this.sortContainer = elem.querySelector('[book-sort-boxes]');
-        this.input = elem.querySelector('[book-sort-input]');
+        this.sortContainer = elem.querySelector('[recipe-sort-boxes]');
+        this.input = elem.querySelector('[recipe-sort-input]');
 
         const initialSortBox = elem.querySelector('.sort-box');
         this.setupBookSortable(initialSortBox);
         this.setupSortPresets();
 
-        window.$events.listen('entity-select-confirm', this.bookSelect.bind(this));
+        window.$events.listen('entity-select-confirm', this.recipeSelect.bind(this));
     }
 
     /**
@@ -86,11 +86,11 @@ class BookSort {
     }
 
     /**
-     * Handle book selection from the entity selector.
+     * Handle recipe selection from the entity selector.
      * @param {Object} entityInfo
      */
-    bookSelect(entityInfo) {
-        const alreadyAdded = this.elem.querySelector(`[data-type="book"][data-id="${entityInfo.id}"]`) !== null;
+    recipeSelect(entityInfo) {
+        const alreadyAdded = this.elem.querySelector(`[data-type="recipe"][data-id="${entityInfo.id}"]`) !== null;
         if (alreadyAdded) return;
 
         const entitySortItemUrl = entityInfo.link + '/sort-item';
@@ -104,22 +104,22 @@ class BookSort {
     }
 
     /**
-     * Setup the given book container element to have sortable items.
-     * @param {Element} bookContainer
+     * Setup the given recipe container element to have sortable items.
+     * @param {Element} recipeContainer
      */
-    setupBookSortable(bookContainer) {
-        const sortElems = [bookContainer.querySelector('.sort-list')];
-        sortElems.push(...bookContainer.querySelectorAll('.entity-list-item + ul'));
+    setupBookSortable(recipeContainer) {
+        const sortElems = [recipeContainer.querySelector('.sort-list')];
+        sortElems.push(...recipeContainer.querySelectorAll('.entity-list-item + ul'));
 
-        const bookGroupConfig = {
-            name: 'book',
-            pull: ['book', 'chapter'],
-            put: ['book', 'chapter'],
+        const recipeGroupConfig = {
+            name: 'recipe',
+            pull: ['recipe', 'chapter'],
+            put: ['recipe', 'chapter'],
         };
 
         const chapterGroupConfig = {
             name: 'chapter',
-            pull: ['book', 'chapter'],
+            pull: ['recipe', 'chapter'],
             put: function(toList, fromList, draggedElem) {
                 return draggedElem.getAttribute('data-type') === 'page';
             }
@@ -127,7 +127,7 @@ class BookSort {
 
         for (let sortElem of sortElems) {
             new Sortable(sortElem, {
-                group: sortElem.classList.contains('sort-list') ? bookGroupConfig : chapterGroupConfig,
+                group: sortElem.classList.contains('sort-list') ? recipeGroupConfig : chapterGroupConfig,
                 animation: 150,
                 fallbackOnBody: true,
                 swapThreshold: 0.65,
@@ -158,11 +158,11 @@ class BookSort {
         const lists = this.elem.querySelectorAll('.sort-list');
 
         for (let list of lists) {
-            const bookId = list.closest('[data-type="book"]').getAttribute('data-id');
+            const recipeId = list.closest('[data-type="recipe"]').getAttribute('data-id');
             const directChildren = Array.from(list.children)
                 .filter(elem => elem.matches('[data-type="page"], [data-type="chapter"]'));
             for (let i = 0; i < directChildren.length; i++) {
-                this.addBookChildToMap(directChildren[i], i, bookId, entityMap);
+                this.addBookChildToMap(directChildren[i], i, recipeId, entityMap);
             }
         }
 
@@ -174,10 +174,10 @@ class BookSort {
      * Parses sub0items if existing also.
      * @param {Element} childElem
      * @param {Number} index
-     * @param {Number} bookId
+     * @param {Number} recipeId
      * @param {Array} entityMap
      */
-    addBookChildToMap(childElem, index, bookId, entityMap) {
+    addBookChildToMap(childElem, index, recipeId, entityMap) {
         const type = childElem.getAttribute('data-type');
         const parentChapter = false;
         const childId = childElem.getAttribute('data-id');
@@ -187,7 +187,7 @@ class BookSort {
             sort: index,
             parentChapter: parentChapter,
             type: type,
-            book: bookId
+            recipe: recipeId
         });
 
         const subPages = childElem.querySelectorAll('[data-type="page"]');
@@ -197,11 +197,11 @@ class BookSort {
                 sort: i,
                 parentChapter: childId,
                 type: 'page',
-                book: bookId
+                recipe: recipeId
             });
         }
     }
 
 }
 
-export default BookSort;
+export default RecipeSort;

@@ -1,7 +1,7 @@
 @extends('layouts.tri')
 
 @section('body')
-    @include('books.parts.list', ['books' => $books, 'view' => $view])
+    @include('recipes.parts.list', ['recipes' => $recipes, 'view' => $view])
 @stop
 
 @section('left')
@@ -36,14 +36,14 @@
     <div class="actions mb-xl">
         <h5>{{ trans('common.actions') }}</h5>
         <div class="icon-list text-primary">
-            @if(user()->can('book-create-all'))
-                <a href="{{ url("/create-book") }}" class="icon-list-item">
+            @if(user()->can('recipe-create-all'))
+                <a href="{{ url("/create-recipe") }}" class="icon-list-item">
                     <span>@icon('add')</span>
                     <span>{{ trans('entities.recipes_create') }}</span>
                 </a>
             @endif
 
-            @include('entities.view-toggle', ['view' => $view, 'type' => 'books'])
+            @include('entities.view-toggle', ['view' => $view, 'type' => 'recipes'])
 
             <a href="{{ url('/tags') }}" class="icon-list-item">
                 <span>@icon('tag')</span>

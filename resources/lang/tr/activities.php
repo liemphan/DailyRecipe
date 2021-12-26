@@ -26,14 +26,14 @@ return [
     'chapter_move'                => 'bölümü taşıdı',
 
     // Books
-    'book_create'                 => 'kitap oluşturdu',
-    'book_create_notification'    => 'Kitap Başarıyla Oluşturuldu',
-    'book_update'                 => 'kitabı güncelledi',
-    'book_update_notification'    => 'Kitap Başarıyla Güncellendi',
-    'book_delete'                 => 'kitabı sildi',
-    'book_delete_notification'    => 'Kitap Başarıyla Silindi',
-    'book_sort'                   => 'kitabı sıraladı',
-    'book_sort_notification'      => 'Kitap Başarıyla Yeniden Sıralandı',
+    'recipe_create'                 => 'kitap oluşturdu',
+    'recipe_create_notification'    => 'Kitap Başarıyla Oluşturuldu',
+    'recipe_update'                 => 'kitabı güncelledi',
+    'recipe_update_notification'    => 'Kitap Başarıyla Güncellendi',
+    'recipe_delete'                 => 'kitabı sildi',
+    'recipe_delete_notification'    => 'Kitap Başarıyla Silindi',
+    'recipe_sort'                   => 'kitabı sıraladı',
+    'recipe_sort_notification'      => 'Kitap Başarıyla Yeniden Sıralandı',
 
     // Recipemenus
     'recipemenu_create'            => 'kitaplık oluşturdu',

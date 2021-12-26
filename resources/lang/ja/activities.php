@@ -26,14 +26,14 @@ return [
     'chapter_move'                => 'がチャプターを移動:',
 
     // Books
-    'book_create'                 => 'がブックを作成:',
-    'book_create_notification'    => 'ブックを作成しました',
-    'book_update'                 => 'がブックを更新:',
-    'book_update_notification'    => 'ブックを更新しました',
-    'book_delete'                 => 'がブックを削除:',
-    'book_delete_notification'    => 'ブックを削除しました',
-    'book_sort'                   => 'がブックの並び順を変更:',
-    'book_sort_notification'      => '並び順を変更しました',
+    'recipe_create'                 => 'がブックを作成:',
+    'recipe_create_notification'    => 'ブックを作成しました',
+    'recipe_update'                 => 'がブックを更新:',
+    'recipe_update_notification'    => 'ブックを更新しました',
+    'recipe_delete'                 => 'がブックを削除:',
+    'recipe_delete_notification'    => 'ブックを削除しました',
+    'recipe_sort'                   => 'がブックの並び順を変更:',
+    'recipe_sort_notification'      => '並び順を変更しました',
 
     // Recipemenus
     'recipemenu_create'            => 'が本棚を作成:',

@@ -6,7 +6,7 @@
 
         <div class="my-s">
             @include('entities.breadcrumbs', ['crumbs' => [
-                $page->book,
+                $page->recipe,
                 $page->chapter,
                 $page,
                 $page->getUrl('/move') => [
@@ -23,7 +23,7 @@
                 {!! csrf_field() !!}
                 <input type="hidden" name="_method" value="PUT">
 
-                @include('entities.selector', ['name' => 'entity_selection', 'selectorSize' => 'large', 'entityTypes' => 'book,chapter', 'entityPermission' => 'page-create', 'autofocus' => true])
+                @include('entities.selector', ['name' => 'entity_selection', 'selectorSize' => 'large', 'entityTypes' => 'recipe,chapter', 'entityPermission' => 'page-create', 'autofocus' => true])
 
                 <div class="form-group text-right">
                     <a href="{{ $page->getUrl() }}" class="button outline">{{ trans('common.cancel') }}</a>

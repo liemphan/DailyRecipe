@@ -8,7 +8,7 @@ return [
     'image_select' => 'Image Select',
     'image_all' => 'All',
     'image_all_title' => 'View all images',
-    'image_book_title' => 'View images uploaded to this book',
+    'image_recipe_title' => 'View images uploaded to this recipe',
     'image_page_title' => 'View images uploaded to this page',
     'image_search_hint' => 'Search by image name',
     'image_uploaded' => 'Uploaded :uploadedDate',

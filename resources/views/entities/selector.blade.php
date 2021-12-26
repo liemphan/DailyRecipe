@@ -1,7 +1,7 @@
 <div class="form-group entity-selector-container">
     <div component="entity-selector"
          class="entity-selector {{$selectorSize ?? ''}}"
-         option:entity-selector:entity-types="{{ $entityTypes ?? 'book,chapter,page' }}"
+         option:entity-selector:entity-types="{{ $entityTypes ?? 'recipe,chapter,page' }}"
          option:entity-selector:entity-permission="{{ $entityPermission ?? 'view' }}">
         <input refs="entity-selector@input" type="hidden" name="{{$name}}" value="">
         <input type="text" placeholder="{{ trans('common.search') }}" @if($autofocus ?? false) autofocus @endif refs="entity-selector@search">

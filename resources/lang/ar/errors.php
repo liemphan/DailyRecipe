@@ -59,11 +59,11 @@ return [
     // Entities
     'entity_not_found' => 'الكيان غير موجود',
     'recipemenu_not_found' => 'رف الكتب غير موجود',
-    'book_not_found' => 'لم يتم العثور على الكتاب',
+    'recipe_not_found' => 'لم يتم العثور على الكتاب',
     'page_not_found' => 'لم يتم العثور على الصفحة',
     'chapter_not_found' => 'لم يتم العثور على الفصل',
-    'selected_book_not_found' => 'لم يتم العثور على الكتاب المحدد',
-    'selected_book_chapter_not_found' => 'لم يتم العثور على الكتاب أو الفصل المحدد',
+    'selected_recipe_not_found' => 'لم يتم العثور على الكتاب المحدد',
+    'selected_recipe_chapter_not_found' => 'لم يتم العثور على الكتاب أو الفصل المحدد',
     'guests_cannot_save_drafts' => 'لا يمكن حفظ المسودات من قبل الضيوف',
 
     // Users

@@ -3,9 +3,9 @@
 namespace DailyRecipe\Http\Controllers;
 
 use DailyRecipe\Actions\View;
-use DailyRecipe\Entities\Models\Book;
+use DailyRecipe\Entities\Models\Recipe;
 use DailyRecipe\Entities\Repos\ChapterRepo;
-use DailyRecipe\Entities\Tools\BookContents;
+use DailyRecipe\Entities\Tools\RecipeContents;
 use DailyRecipe\Entities\Tools\NextPreviousContentLocator;
 use DailyRecipe\Entities\Tools\PermissionsUpdater;
 use DailyRecipe\Exceptions\MoveOperationException;
@@ -31,7 +31,7 @@ class ChapterController extends Controller
      */
     public function create(string $bookSlug)
     {
-        $book = Book::visible()->where('slug', '=', $bookSlug)->firstOrFail();
+        $book = Recipe::visible()->where('slug', '=', $bookSlug)->firstOrFail();
         $this->checkOwnablePermission('chapter-create', $book);
 
         $this->setPageTitle(trans('entities.chapters_create'));
@@ -50,7 +50,7 @@ class ChapterController extends Controller
             'name' => ['required', 'string', 'max:255'],
         ]);
 
-        $book = Book::visible()->where('slug', '=', $bookSlug)->firstOrFail();
+        $book = Recipe::visible()->where('slug', '=', $bookSlug)->firstOrFail();
         $this->checkOwnablePermission('chapter-create', $book);
 
         $chapter = $this->chapterRepo->create($request->all(), $book);
@@ -66,7 +66,7 @@ class ChapterController extends Controller
         $chapter = $this->chapterRepo->getBySlug($bookSlug, $chapterSlug);
         $this->checkOwnablePermission('chapter-view', $chapter);
 
-        $sidebarTree = (new BookContents($chapter->book))->getTree();
+        $sidebarTree = (new RecipeContents($chapter->recipe))->getTree();
         $pages = $chapter->getVisiblePages();
         $nextPreviousLocator = new NextPreviousContentLocator($chapter, $sidebarTree);
         View::incrementFor($chapter);
@@ -74,7 +74,7 @@ class ChapterController extends Controller
         $this->setPageTitle($chapter->getShortName());
 
         return view('chapters.show', [
-            'book'        => $chapter->book,
+            'book'        => $chapter->recipe,
             'chapter'     => $chapter,
             'current'     => $chapter,
             'sidebarTree' => $sidebarTree,
@@ -94,7 +94,7 @@ class ChapterController extends Controller
 
         $this->setPageTitle(trans('entities.chapters_edit_named', ['chapterName' => $chapter->getShortName()]));
 
-        return view('chapters.edit', ['book' => $chapter->book, 'chapter' => $chapter, 'current' => $chapter]);
+        return view('chapters.edit', ['book' => $chapter->recipe, 'chapter' => $chapter, 'current' => $chapter]);
     }
 
     /**
@@ -124,7 +124,7 @@ class ChapterController extends Controller
 
         $this->setPageTitle(trans('entities.chapters_delete_named', ['chapterName' => $chapter->getShortName()]));
 
-        return view('chapters.delete', ['book' => $chapter->book, 'chapter' => $chapter, 'current' => $chapter]);
+        return view('chapters.delete', ['book' => $chapter->recipe, 'chapter' => $chapter, 'current' => $chapter]);
     }
 
     /**
@@ -140,7 +140,7 @@ class ChapterController extends Controller
 
         $this->chapterRepo->destroy($chapter);
 
-        return redirect($chapter->book->getUrl());
+        return redirect($chapter->recipe->getUrl());
     }
 
     /**
@@ -157,7 +157,7 @@ class ChapterController extends Controller
 
         return view('chapters.move', [
             'chapter' => $chapter,
-            'book'    => $chapter->book,
+            'book'    => $chapter->recipe,
         ]);
     }
 
@@ -178,14 +178,14 @@ class ChapterController extends Controller
         }
 
         try {
-            $newBook = $this->chapterRepo->move($chapter, $entitySelection);
+            $newRecipe = $this->chapterRepo->move($chapter, $entitySelection);
         } catch (MoveOperationException $exception) {
             $this->showErrorNotification(trans('errors.selected_book_not_found'));
 
             return redirect()->back();
         }
 
-        $this->showSuccessNotification(trans('entities.chapter_move_success', ['bookName' => $newBook->name]));
+        $this->showSuccessNotification(trans('entities.chapter_move_success', ['bookName' => $newRecipe->name]));
 
         return redirect($chapter->getUrl());
     }

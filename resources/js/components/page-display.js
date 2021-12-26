@@ -118,29 +118,29 @@ class PageDisplay {
         };
 
         // Show pointer when selecting a single block of tagged content
-        DOM.forEach('.page-content [id^="bkmrk"]', bookMarkElem => {
-            DOM.onEvents(bookMarkElem, ['mouseup', 'keyup'], event => {
+        DOM.forEach('.page-content [id^="bkmrk"]', recipeMarkElem => {
+            DOM.onEvents(recipeMarkElem, ['mouseup', 'keyup'], event => {
                 event.stopPropagation();
                 let selection = window.getSelection();
                 if (selection.toString().length === 0) return;
 
                 // Show pointer and set link
-                pointerSectionId = bookMarkElem.id;
-                updatePointerContent(bookMarkElem);
+                pointerSectionId = recipeMarkElem.id;
+                updatePointerContent(recipeMarkElem);
 
-                bookMarkElem.parentNode.insertBefore(pointer, bookMarkElem);
+                recipeMarkElem.parentNode.insertBefore(pointer, recipeMarkElem);
                 pointer.style.display = 'block';
                 pointerShowing = true;
                 isSelection = true;
 
                 // Set pointer to sit near mouse-up position
                 requestAnimationFrame(() => {
-                    const bookMarkBounds = bookMarkElem.getBoundingClientRect();
-                    let pointerLeftOffset = (event.pageX - bookMarkBounds.left - 164);
+                    const recipeMarkBounds = recipeMarkElem.getBoundingClientRect();
+                    let pointerLeftOffset = (event.pageX - recipeMarkBounds.left - 164);
                     if (pointerLeftOffset < 0) {
                         pointerLeftOffset = 0
                     }
-                    const pointerLeftOffsetPercent = (pointerLeftOffset / bookMarkBounds.width) * 100;
+                    const pointerLeftOffsetPercent = (pointerLeftOffset / recipeMarkBounds.width) * 100;
 
                     pointerInner.style.left = pointerLeftOffsetPercent + '%';
 

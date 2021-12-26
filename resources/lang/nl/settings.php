@@ -50,7 +50,7 @@ return [
     'content_colors' => 'Kleuren inhoud',
     'content_colors_desc' => 'Stelt de kleuren in voor alle elementen in de pagina-organisatieleiding. Het kiezen van kleuren met dezelfde helderheid als de standaard kleuren wordt aanbevolen voor de leesbaarheid.',
     'recipemenu_color' => 'Kleur van de Boekenplank',
-    'book_color' => 'Kleur van het Boek',
+    'recipe_color' => 'Kleur van het Boek',
     'chapter_color' => 'Kleur van het Hoofdstuk',
     'page_color' => 'Pagina kleur',
     'page_draft_color' => 'Klad pagina kleur',

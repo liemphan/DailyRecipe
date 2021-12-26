@@ -26,14 +26,14 @@ return [
     'chapter_move'                => '챕터 이동된',
 
     // Books
-    'book_create'                 => '책자 만들기',
-    'book_create_notification'    => '책자 만듦',
-    'book_update'                 => '책자 바꾸기',
-    'book_update_notification'    => '책자 바꿈',
-    'book_delete'                 => '삭제 된 책자',
-    'book_delete_notification'    => '책자 지움',
-    'book_sort'                   => '책자 정렬',
-    'book_sort_notification'      => '책자 정렬함',
+    'recipe_create'                 => '책자 만들기',
+    'recipe_create_notification'    => '책자 만듦',
+    'recipe_update'                 => '책자 바꾸기',
+    'recipe_update_notification'    => '책자 바꿈',
+    'recipe_delete'                 => '삭제 된 책자',
+    'recipe_delete_notification'    => '책자 지움',
+    'recipe_sort'                   => '책자 정렬',
+    'recipe_sort_notification'      => '책자 정렬함',
 
     // Recipemenus
     'recipemenu_create'            => '서가 만들기',

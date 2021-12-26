@@ -17,7 +17,7 @@ class FulltextWeighting extends Migration
 
 //        $prefix = DB::getTablePrefix();
 //        DB::statement("ALTER TABLE {$prefix}pages ADD FULLTEXT name_search(name)");
-//        DB::statement("ALTER TABLE {$prefix}books ADD FULLTEXT name_search(name)");
+//        DB::statement("ALTER TABLE {$prefix}recipes ADD FULLTEXT name_search(name)");
 //        DB::statement("ALTER TABLE {$prefix}chapters ADD FULLTEXT name_search(name)");
     }
 

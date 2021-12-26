@@ -20,12 +20,12 @@ class RecipemenuApiController extends ApiController
         'create' => [
             'name'        => ['required', 'string', 'max:255'],
             'description' => ['string', 'max:1000'],
-            'books'       => ['array'],
+            'recipes'       => ['array'],
         ],
         'update' => [
             'name'        => ['string', 'min:1', 'max:255'],
             'description' => ['string', 'max:1000'],
-            'books'       => ['array'],
+            'recipes'       => ['array'],
         ],
     ];
 
@@ -51,7 +51,7 @@ class RecipemenuApiController extends ApiController
 
     /**
      * Create a new menu in the system.
-     * An array of books IDs can be provided in the request. These
+     * An array of recipes IDs can be provided in the request. These
      * will be added to the menu in the same order as provided.
      *
      * @throws ValidationException
@@ -61,8 +61,8 @@ class RecipemenuApiController extends ApiController
         $this->checkPermission('recipemenu-create-all');
         $requestData = $this->validate($request, $this->rules['create']);
 
-        $bookIds = $request->get('books', []);
-        $menu = $this->recipemenuRepo->create($requestData, $bookIds);
+        $recipeIds = $request->get('recipes', []);
+        $menu = $this->recipemenuRepo->create($requestData, $recipeIds);
 
         return response()->json($menu);
     }
@@ -74,7 +74,7 @@ class RecipemenuApiController extends ApiController
     {
         $menu = Recipemenu::visible()->with([
             'tags', 'cover', 'createdBy', 'updatedBy', 'ownedBy',
-            'books' => function (BelongsToMany $query) {
+            'recipes' => function (BelongsToMany $query) {
                 $query->scopes('visible')->get(['id', 'name', 'slug']);
             },
         ])->findOrFail($id);
@@ -84,9 +84,9 @@ class RecipemenuApiController extends ApiController
 
     /**
      * Update the details of a single menu.
-     * An array of books IDs can be provided in the request. These
+     * An array of recipes IDs can be provided in the request. These
      * will be added to the menu in the same order as provided and overwrite
-     * any existing book assignments.
+     * any existing recipe assignments.
      *
      * @throws ValidationException
      */
@@ -96,9 +96,9 @@ class RecipemenuApiController extends ApiController
         $this->checkOwnablePermission('recipemenu-update', $menu);
 
         $requestData = $this->validate($request, $this->rules['update']);
-        $bookIds = $request->get('books', null);
+        $recipeIds = $request->get('recipes', null);
 
-        $menu = $this->recipemenuRepo->update($menu, $requestData, $bookIds);
+        $menu = $this->recipemenuRepo->update($menu, $requestData, $recipeIds);
 
         return response()->json($menu);
     }

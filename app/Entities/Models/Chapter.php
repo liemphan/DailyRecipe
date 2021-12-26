@@ -12,13 +12,13 @@ use Illuminate\Support\Collection;
  * @property Collection<Page> $pages
  * @property string           $description
  */
-class Chapter extends BookChild
+class Chapter extends RecipeChild
 {
     use HasFactory;
 
     public $searchFactor = 1.2;
 
-    protected $fillable = ['name', 'description', 'priority', 'book_id'];
+    protected $fillable = ['name', 'description', 'priority', 'recipe_id'];
     protected $hidden = ['restricted', 'pivot', 'deleted_at'];
 
     /**
@@ -37,8 +37,8 @@ class Chapter extends BookChild
     public function getUrl(string $path = ''): string
     {
         $parts = [
-            'books',
-            urlencode($this->book_slug ?? $this->book->slug),
+            'recipes',
+            urlencode($this->recipe_slug ?? $this->recipe->slug),
             'chapter',
             urlencode($this->slug),
             trim($path, '/'),

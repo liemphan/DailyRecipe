@@ -14,7 +14,7 @@
 
     <div class="mb-m print-hidden">
         @include('entities.breadcrumbs', ['crumbs' => [
-            $chapter->book,
+            $chapter->recipe,
             $chapter,
         ]])
     </div>
@@ -24,7 +24,7 @@
         <div refs="entity-search@contentView" class="chapter-content">
             <p class="text-muted break-text">{!! nl2br(e($chapter->description)) !!}</p>
             @if(count($pages) > 0)
-                <div class="entity-list book-contents">
+                <div class="entity-list recipe-contents">
                     @foreach($pages as $page)
                         @include('pages.parts.list-item', ['page' => $page])
                     @endforeach
@@ -41,9 +41,9 @@
                                 <span>{{ trans('entities.recipes_empty_create_page') }}</span>
                             </a>
                         @endif
-                        @if(userCan('book-update', $book))
-                            <a href="{{ $book->getUrl('/sort') }}" class="icon-list-item text-book">
-                                <span class="icon">@icon('book')</span>
+                        @if(userCan('recipe-update', $recipe))
+                            <a href="{{ $recipe->getUrl('/sort') }}" class="icon-list-item text-recipe">
+                                <span class="icon">@icon('recipe')</span>
                                 <span>{{ trans('entities.recipes_empty_sort_current_recipe') }}</span>
                             </a>
                         @endif
@@ -67,10 +67,10 @@
         <div class="blended-links text-small text-muted">
             @include('entities.meta', ['entity' => $chapter])
 
-            @if($book->restricted)
+            @if($recipe->restricted)
                 <div class="active-restriction">
-                    @if(userCan('restrictions-manage', $book))
-                        <a href="{{ $book->getUrl('/permissions') }}">@icon('lock'){{ trans('entities.recipes_permissions_active') }}</a>
+                    @if(userCan('restrictions-manage', $recipe))
+                        <a href="{{ $recipe->getUrl('/permissions') }}">@icon('lock'){{ trans('entities.recipes_permissions_active') }}</a>
                     @else
                         @icon('lock'){{ trans('entities.recipes_permissions_active') }}
                     @endif
@@ -149,7 +149,7 @@
         </div>
     @endif
 
-    @include('entities.book-tree', ['book' => $book, 'sidebarTree' => $sidebarTree])
+    @include('entities.recipe-tree', ['recipe' => $recipe, 'sidebarTree' => $sidebarTree])
 @stop
 
 

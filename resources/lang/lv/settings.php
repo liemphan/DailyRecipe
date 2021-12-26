@@ -50,7 +50,7 @@ return [
     'content_colors' => 'Satura krāsas',
     'content_colors_desc' => 'Norādīt krāsas visiem lapas hierarhijas elementiem. Lasāmības labad ieteicams izvēlēties krāsas ar līdzīgu spilgtumu kā noklusētajām.',
     'recipemenu_color' => 'Plaukta krāsa',
-    'book_color' => 'Grāmatas krāsa',
+    'recipe_color' => 'Grāmatas krāsa',
     'chapter_color' => 'Nodaļas krāsa',
     'page_color' => 'Lapas krāsa',
     'page_draft_color' => 'Lapas uzmetuma krāsa',

@@ -59,11 +59,11 @@ return [
     // Entities
     'entity_not_found' => 'Entity not found',
     'recipemenu_not_found' => 'Recipemenu not found',
-    'book_not_found' => 'Book not found',
+    'recipe_not_found' => 'Recipe not found',
     'page_not_found' => 'Page not found',
     'chapter_not_found' => 'Chapter not found',
-    'selected_book_not_found' => 'The selected book was not found',
-    'selected_book_chapter_not_found' => 'The selected Book or Chapter was not found',
+    'selected_recipe_not_found' => 'The selected recipe was not found',
+    'selected_recipe_chapter_not_found' => 'The selected Recipe or Chapter was not found',
     'guests_cannot_save_drafts' => 'Guests cannot save drafts',
 
     // Users

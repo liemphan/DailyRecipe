@@ -26,14 +26,14 @@ return [
     'chapter_move'                => 'flyttede kapitel',
 
     // Books
-    'book_create'                 => 'oprettede bog',
-    'book_create_notification'    => 'Bogen blev oprettet',
-    'book_update'                 => 'opdaterede bog',
-    'book_update_notification'    => 'Bogen blev opdateret',
-    'book_delete'                 => 'slettede bog',
-    'book_delete_notification'    => 'Bogen blev slettet',
-    'book_sort'                   => 'sorterede bogen',
-    'book_sort_notification'      => 'Bogen blev re-sorteret',
+    'recipe_create'                 => 'oprettede bog',
+    'recipe_create_notification'    => 'Bogen blev oprettet',
+    'recipe_update'                 => 'opdaterede bog',
+    'recipe_update_notification'    => 'Bogen blev opdateret',
+    'recipe_delete'                 => 'slettede bog',
+    'recipe_delete_notification'    => 'Bogen blev slettet',
+    'recipe_sort'                   => 'sorterede bogen',
+    'recipe_sort_notification'      => 'Bogen blev re-sorteret',
 
     // Recipemenus
     'recipemenu_create'            => 'oprettede bogreol',

@@ -26,14 +26,14 @@ return [
     'chapter_move'                => 'انتقال فصل',
 
     // Books
-    'book_create'                 => 'ایجاد کتاب',
-    'book_create_notification'    => 'کتاب با موفقیت ایجاد شد',
-    'book_update'                 => 'به روزرسانی کتاب',
-    'book_update_notification'    => 'کتاب با موفقیت به روزرسانی شد',
-    'book_delete'                 => 'حذف کتاب',
-    'book_delete_notification'    => 'کتاب با موفقیت حذف شد',
-    'book_sort'                   => 'مرتب سازی کتاب',
-    'book_sort_notification'      => 'کتاب با موفقیت مرتب سازی شد',
+    'recipe_create'                 => 'ایجاد کتاب',
+    'recipe_create_notification'    => 'کتاب با موفقیت ایجاد شد',
+    'recipe_update'                 => 'به روزرسانی کتاب',
+    'recipe_update_notification'    => 'کتاب با موفقیت به روزرسانی شد',
+    'recipe_delete'                 => 'حذف کتاب',
+    'recipe_delete_notification'    => 'کتاب با موفقیت حذف شد',
+    'recipe_sort'                   => 'مرتب سازی کتاب',
+    'recipe_sort_notification'      => 'کتاب با موفقیت مرتب سازی شد',
 
     // Recipemenus
     'recipemenu_create'            => 'ایجاد قفسه کتاب',

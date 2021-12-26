@@ -59,11 +59,11 @@ return [
     // Entities
     'entity_not_found' => 'Eintrag nicht gefunden',
     'recipemenu_not_found' => 'Regal nicht gefunden',
-    'book_not_found' => 'Buch nicht gefunden',
+    'recipe_not_found' => 'Buch nicht gefunden',
     'page_not_found' => 'Seite nicht gefunden',
     'chapter_not_found' => 'Kapitel nicht gefunden',
-    'selected_book_not_found' => 'Das gewählte Buch wurde nicht gefunden.',
-    'selected_book_chapter_not_found' => 'Das gewählte Buch oder Kapitel wurde nicht gefunden.',
+    'selected_recipe_not_found' => 'Das gewählte Buch wurde nicht gefunden.',
+    'selected_recipe_chapter_not_found' => 'Das gewählte Buch oder Kapitel wurde nicht gefunden.',
     'guests_cannot_save_drafts' => 'Gäste können keine Entwürfe speichern',
 
     // Users

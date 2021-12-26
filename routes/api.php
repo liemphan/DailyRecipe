@@ -2,8 +2,8 @@
 
 use DailyRecipe\Http\Controllers\Api\ApiDocsController;
 use DailyRecipe\Http\Controllers\Api\AttachmentApiController;
-use DailyRecipe\Http\Controllers\Api\BookApiController;
-use DailyRecipe\Http\Controllers\Api\BookExportApiController;
+use DailyRecipe\Http\Controllers\Api\RecipeApiController;
+use DailyRecipe\Http\Controllers\Api\RecipeExportApiController;
 use DailyRecipe\Http\Controllers\Api\RecipemenuApiController;
 use DailyRecipe\Http\Controllers\Api\ChapterApiController;
 use DailyRecipe\Http\Controllers\Api\ChapterExportApiController;
@@ -25,16 +25,16 @@ Route::get('attachments/{id}', [AttachmentApiController::class, 'read']);
 Route::put('attachments/{id}', [AttachmentApiController::class, 'update']);
 Route::delete('attachments/{id}', [AttachmentApiController::class, 'delete']);
 
-Route::get('books', [BookApiController::class, 'list']);
-Route::post('books', [BookApiController::class, 'create']);
-Route::get('books/{id}', [BookApiController::class, 'read']);
-Route::put('books/{id}', [BookApiController::class, 'update']);
-Route::delete('books/{id}', [BookApiController::class, 'delete']);
+Route::get('recipes', [RecipeApiController::class, 'list']);
+Route::post('recipes', [RecipeApiController::class, 'create']);
+Route::get('recipes/{id}', [RecipeApiController::class, 'read']);
+Route::put('recipes/{id}', [RecipeApiController::class, 'update']);
+Route::delete('recipes/{id}', [RecipeApiController::class, 'delete']);
 
-Route::get('books/{id}/export/html', [BookExportApiController::class, 'exportHtml']);
-Route::get('books/{id}/export/pdf', [BookExportApiController::class, 'exportPdf']);
-Route::get('books/{id}/export/plaintext', [BookExportApiController::class, 'exportPlainText']);
-Route::get('books/{id}/export/markdown', [BookExportApiController::class, 'exportMarkdown']);
+Route::get('recipes/{id}/export/html', [RecipeExportApiController::class, 'exportHtml']);
+Route::get('recipes/{id}/export/pdf', [RecipeExportApiController::class, 'exportPdf']);
+Route::get('recipes/{id}/export/plaintext', [RecipeExportApiController::class, 'exportPlainText']);
+Route::get('recipes/{id}/export/markdown', [RecipeExportApiController::class, 'exportMarkdown']);
 
 Route::get('chapters', [ChapterApiController::class, 'list']);
 Route::post('chapters', [ChapterApiController::class, 'create']);

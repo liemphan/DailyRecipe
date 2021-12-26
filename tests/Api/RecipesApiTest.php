@@ -2,19 +2,19 @@
 
 namespace Tests\Api;
 
-use DailyRecipe\Entities\Models\Book;
+use DailyRecipe\Entities\Models\Recipe;
 use Tests\TestCase;
 
-class BooksApiTest extends TestCase
+class RecipesApiTest extends TestCase
 {
     use TestsApi;
 
-    protected $baseEndpoint = '/api/books';
+    protected $baseEndpoint = '/api/recipes';
 
     public function test_index_endpoint_returns_expected_book()
     {
         $this->actingAsApiEditor();
-        $firstBook = Book::query()->orderBy('id', 'asc')->first();
+        $firstBook = Recipe::query()->orderBy('id', 'asc')->first();
 
         $resp = $this->getJson($this->baseEndpoint . '?count=1&sort=+id');
         $resp->assertJson(['data' => [
@@ -36,7 +36,7 @@ class BooksApiTest extends TestCase
 
         $resp = $this->postJson($this->baseEndpoint, $details);
         $resp->assertStatus(200);
-        $newItem = Book::query()->orderByDesc('id')->where('name', '=', $details['name'])->first();
+        $newItem = Recipe::query()->orderByDesc('id')->where('name', '=', $details['name'])->first();
         $resp->assertJson(array_merge($details, ['id' => $newItem->id, 'slug' => $newItem->slug]));
         $this->assertActivityExists('recipe_create', $newItem);
     }
@@ -64,7 +64,7 @@ class BooksApiTest extends TestCase
     public function test_read_endpoint()
     {
         $this->actingAsApiEditor();
-        $book = Book::visible()->first();
+        $book = Recipe::visible()->first();
 
         $resp = $this->getJson($this->baseEndpoint . "/{$book->id}");
 
@@ -87,7 +87,7 @@ class BooksApiTest extends TestCase
     public function test_update_endpoint()
     {
         $this->actingAsApiEditor();
-        $book = Book::visible()->first();
+        $book = Recipe::visible()->first();
         $details = [
             'name'        => 'My updated API book',
             'description' => 'A book created via the API',
@@ -104,7 +104,7 @@ class BooksApiTest extends TestCase
     public function test_delete_endpoint()
     {
         $this->actingAsApiEditor();
-        $book = Book::visible()->first();
+        $book = Recipe::visible()->first();
         $resp = $this->deleteJson($this->baseEndpoint . "/{$book->id}");
 
         $resp->assertStatus(204);
@@ -114,7 +114,7 @@ class BooksApiTest extends TestCase
     public function test_export_html_endpoint()
     {
         $this->actingAsApiEditor();
-        $book = Book::visible()->first();
+        $book = Recipe::visible()->first();
 
         $resp = $this->get($this->baseEndpoint . "/{$book->id}/export/html");
         $resp->assertStatus(200);
@@ -125,7 +125,7 @@ class BooksApiTest extends TestCase
     public function test_export_plain_text_endpoint()
     {
         $this->actingAsApiEditor();
-        $book = Book::visible()->first();
+        $book = Recipe::visible()->first();
 
         $resp = $this->get($this->baseEndpoint . "/{$book->id}/export/plaintext");
         $resp->assertStatus(200);
@@ -136,7 +136,7 @@ class BooksApiTest extends TestCase
     public function test_export_pdf_endpoint()
     {
         $this->actingAsApiEditor();
-        $book = Book::visible()->first();
+        $book = Recipe::visible()->first();
 
         $resp = $this->get($this->baseEndpoint . "/{$book->id}/export/pdf");
         $resp->assertStatus(200);
@@ -146,7 +146,7 @@ class BooksApiTest extends TestCase
     public function test_export_markdown_endpoint()
     {
         $this->actingAsApiEditor();
-        $book = Book::visible()->has('pages')->has('chapters')->first();
+        $book = Recipe::visible()->has('pages')->has('chapters')->first();
 
         $resp = $this->get($this->baseEndpoint . "/{$book->id}/export/markdown");
         $resp->assertStatus(200);
@@ -162,7 +162,7 @@ class BooksApiTest extends TestCase
         $this->actingAsApiEditor();
         $this->removePermissionFromUser($this->getEditor(), 'content-export');
 
-        $book = Book::visible()->first();
+        $book = Recipe::visible()->first();
         foreach ($types as $type) {
             $resp = $this->get($this->baseEndpoint . "/{$book->id}/export/{$type}");
             $this->assertPermissionError($resp);

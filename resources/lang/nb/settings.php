@@ -50,7 +50,7 @@ return [
     'content_colors' => 'Innholdsfarger',
     'content_colors_desc' => 'Angir farger for alle elementene i sideorganisasjonshierarkiet. Det anbefales å lese farger med en lignende lysstyrke som standardfargene for lesbarhet.',
     'recipemenu_color' => 'Hyllefarge',
-    'book_color' => 'Bokfarge',
+    'recipe_color' => 'Bokfarge',
     'chapter_color' => 'Kapittelfarge',
     'page_color' => 'Sidefarge',
     'page_draft_color' => 'Sideutkastsfarge',

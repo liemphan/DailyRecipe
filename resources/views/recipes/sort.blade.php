@@ -6,8 +6,8 @@
 
         <div class="my-s">
             @include('entities.breadcrumbs', ['crumbs' => [
-                $book,
-                $book->getUrl('/sort') => [
+                $recipe,
+                $recipe->getUrl('/sort') => [
                     'text' => trans('entities.recipes_sort'),
                     'icon' => 'sort',
                 ]
@@ -16,18 +16,18 @@
 
         <div class="grid left-focus gap-xl">
             <div>
-                <div book-sort class="card content-wrap">
+                <div recipe-sort class="card content-wrap">
                     <h1 class="list-heading mb-l">{{ trans('entities.recipes_sort') }}</h1>
-                    <div book-sort-boxes>
-                        @include('books.parts.sort-box', ['book' => $book, 'bookChildren' => $bookChildren])
+                    <div recipe-sort-boxes>
+                        @include('recipes.parts.sort-box', ['recipe' => $recipe, 'recipeChildren' => $recipeChildren])
                     </div>
 
-                    <form action="{{ $book->getUrl('/sort') }}" method="POST">
+                    <form action="{{ $recipe->getUrl('/sort') }}" method="POST">
                         {!! csrf_field() !!}
                         <input type="hidden" name="_method" value="PUT">
-                        <input book-sort-input type="hidden" name="sort-tree">
+                        <input recipe-sort-input type="hidden" name="sort-tree">
                         <div class="list text-right">
-                            <a href="{{ $book->getUrl() }}" class="button outline">{{ trans('common.cancel') }}</a>
+                            <a href="{{ $recipe->getUrl() }}" class="button outline">{{ trans('common.cancel') }}</a>
                             <button class="button" type="submit">{{ trans('entities.recipes_sort_save') }}</button>
                         </div>
                     </form>
@@ -38,7 +38,7 @@
                 <main class="card content-wrap">
                     <h2 class="list-heading mb-m">{{ trans('entities.recipes_sort_show_other') }}</h2>
 
-                    @include('entities.selector', ['name' => 'books_list', 'selectorSize' => 'compact', 'entityTypes' => 'book', 'entityPermission' => 'update', 'showAdd' => true])
+                    @include('entities.selector', ['name' => 'recipes_list', 'selectorSize' => 'compact', 'entityTypes' => 'recipe', 'entityPermission' => 'update', 'showAdd' => true])
 
                 </main>
             </div>

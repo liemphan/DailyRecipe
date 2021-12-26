@@ -26,14 +26,14 @@ return [
     'chapter_move'                => 'pārvietoja nodaļu',
 
     // Books
-    'book_create'                 => 'izveidoja grāmatu',
-    'book_create_notification'    => 'Grāmata Veiksmīgi Izveidota',
-    'book_update'                 => 'atjaunoja grāmatu',
-    'book_update_notification'    => 'Grāmata Veiksmīgi Atjaunota',
-    'book_delete'                 => 'izdzēsa grāmatu',
-    'book_delete_notification'    => 'Grāmata Veiksmīgi Dzēsta',
-    'book_sort'                   => 'kārtoja grāmatu',
-    'book_sort_notification'      => 'Grāmata Veiksmīgi Pārkārtota',
+    'recipe_create'                 => 'izveidoja grāmatu',
+    'recipe_create_notification'    => 'Grāmata Veiksmīgi Izveidota',
+    'recipe_update'                 => 'atjaunoja grāmatu',
+    'recipe_update_notification'    => 'Grāmata Veiksmīgi Atjaunota',
+    'recipe_delete'                 => 'izdzēsa grāmatu',
+    'recipe_delete_notification'    => 'Grāmata Veiksmīgi Dzēsta',
+    'recipe_sort'                   => 'kārtoja grāmatu',
+    'recipe_sort_notification'      => 'Grāmata Veiksmīgi Pārkārtota',
 
     // Recipemenus
     'recipemenu_create'            => 'izveidoja Plauktu',

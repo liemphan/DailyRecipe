@@ -26,14 +26,14 @@ return [
     'chapter_move'                => '已移動章節',
 
     // Books
-    'book_create'                 => '已建立書本',
-    'book_create_notification'    => '書本已建立成功',
-    'book_update'                 => '已更新書本',
-    'book_update_notification'    => '書本已更新成功',
-    'book_delete'                 => '已刪除書本',
-    'book_delete_notification'    => '書本已刪除成功',
-    'book_sort'                   => '已排序書本',
-    'book_sort_notification'      => '書本已重新排序成功',
+    'recipe_create'                 => '已建立書本',
+    'recipe_create_notification'    => '書本已建立成功',
+    'recipe_update'                 => '已更新書本',
+    'recipe_update_notification'    => '書本已更新成功',
+    'recipe_delete'                 => '已刪除書本',
+    'recipe_delete_notification'    => '書本已刪除成功',
+    'recipe_sort'                   => '已排序書本',
+    'recipe_sort_notification'      => '書本已重新排序成功',
 
     // Recipemenus
     'recipemenu_create'            => '已建立書架',

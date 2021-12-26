@@ -59,11 +59,11 @@ return [
     // Entities
     'entity_not_found' => 'Объект не найден',
     'recipemenu_not_found' => 'Полка не найдена',
-    'book_not_found' => 'Книга не найдена',
+    'recipe_not_found' => 'Книга не найдена',
     'page_not_found' => 'Страница не найдена',
     'chapter_not_found' => 'Глава не найдена',
-    'selected_book_not_found' => 'Выбранная книга не найдена',
-    'selected_book_chapter_not_found' => 'Выбранная книга или глава не найдена',
+    'selected_recipe_not_found' => 'Выбранная книга не найдена',
+    'selected_recipe_chapter_not_found' => 'Выбранная книга или глава не найдена',
     'guests_cannot_save_drafts' => 'Гости не могут сохранять черновики',
 
     // Users

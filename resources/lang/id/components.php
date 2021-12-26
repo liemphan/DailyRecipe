@@ -8,7 +8,7 @@ return [
     'image_select' => 'Pilih Gambar',
     'image_all' => 'Semua',
     'image_all_title' => 'Lihat semua gambar',
-    'image_book_title' => 'Lihat gambar yang diunggah ke buku ini',
+    'image_recipe_title' => 'Lihat gambar yang diunggah ke buku ini',
     'image_page_title' => 'Lihat gambar yang diunggah ke halaman ini',
     'image_search_hint' => 'Cari berdasarkan nama gambar',
     'image_uploaded' => 'Diunggah :uploadedDate',

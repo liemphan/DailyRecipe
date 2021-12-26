@@ -50,7 +50,7 @@ return [
     'content_colors' => '본문 색상',
     'content_colors_desc' => '페이지에 있는 모든 요소에 대한 색상 지정하세요. 가독성을 위해 기본 색상과 유사한 밝기를 가진 색상으로 추천됩니다.',
     'recipemenu_color' => '책선반 색상',
-    'book_color' => '책 색상',
+    'recipe_color' => '책 색상',
     'chapter_color' => '챕터 색상',
     'page_color' => '페이지 색상',
     'page_draft_color' => '초안 페이지 색상',
@@ -85,7 +85,7 @@ return [
     'maint_send_test_email_mail_subject' => '테스트 메일',
     'maint_send_test_email_mail_greeting' => '이메일 전송이 성공하였습니다.',
     'maint_send_test_email_mail_text' => '축하합니다! 이 메일을 받음으로 이메일 설정이 정상적으로 되었음을 확인하였습니다.',
-    'maint_recycle_bin_desc' => 'Deleted menus, books, chapters & pages are sent to the recycle bin so they can be restored or permanently deleted. Older items in the recycle bin may be automatically removed after a while depending on system configuration.',
+    'maint_recycle_bin_desc' => 'Deleted menus, recipes, chapters & pages are sent to the recycle bin so they can be restored or permanently deleted. Older items in the recycle bin may be automatically removed after a while depending on system configuration.',
     'maint_recycle_bin_open' => 'Open Recycle Bin',
 
     // Recycle Bin

@@ -59,11 +59,11 @@ return [
     // Entities
     'entity_not_found' => 'Entitet ble ikke funnet',
     'recipemenu_not_found' => 'Bokhyllen ble ikke funnet',
-    'book_not_found' => 'Boken ble ikke funnet',
+    'recipe_not_found' => 'Boken ble ikke funnet',
     'page_not_found' => 'Siden ble ikke funnet',
     'chapter_not_found' => 'Kapittel ble ikke funnet',
-    'selected_book_not_found' => 'Den valgte boken eksisterer ikke',
-    'selected_book_chapter_not_found' => 'Den valgte boken eller kapittelet eksisterer ikke',
+    'selected_recipe_not_found' => 'Den valgte boken eksisterer ikke',
+    'selected_recipe_chapter_not_found' => 'Den valgte boken eller kapittelet eksisterer ikke',
     'guests_cannot_save_drafts' => 'Gjester kan ikke lagre utkast',
 
     // Users

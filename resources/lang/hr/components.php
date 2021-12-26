@@ -8,7 +8,7 @@ return [
     'image_select' => 'Odabir slike',
     'image_all' => 'Sve',
     'image_all_title' => 'Vidi sve slike',
-    'image_book_title' => 'Vidi slike dodane ovoj knjizi',
+    'image_recipe_title' => 'Vidi slike dodane ovoj knjizi',
     'image_page_title' => 'Vidi slike dodane ovoj stranici',
     'image_search_hint' => 'Pretraži pomoću imena slike',
     'image_uploaded' => 'Učitano :uploadedDate',

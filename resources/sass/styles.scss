@@ -83,7 +83,7 @@ $loadingSize: 10px;
   }
   > div:first-child {
       left: -($loadingSize+$-xs);
-      background-color: var(--color-book);
+      background-color: var(--color-recipe);
       animation-delay: 0s;
   }
   > div:last-of-type {

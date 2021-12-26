@@ -8,7 +8,7 @@ return [
     'image_select' => 'Výběr obrázku',
     'image_all' => 'Vše',
     'image_all_title' => 'Zobrazit všechny obrázky',
-    'image_book_title' => 'Zobrazit obrázky nahrané do této knihy',
+    'image_recipe_title' => 'Zobrazit obrázky nahrané do této knihy',
     'image_page_title' => 'Zobrazit obrázky nahrané na tuto stránku',
     'image_search_hint' => 'Hledat podle názvu obrázku',
     'image_uploaded' => 'Nahráno :uploadedDate',

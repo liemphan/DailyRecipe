@@ -8,7 +8,7 @@ class EntitySelector {
 
     setup() {
         this.elem = this.$el;
-        this.entityTypes = this.$opts.entityTypes || 'page,book,chapter';
+        this.entityTypes = this.$opts.entityTypes || 'page,recipe,chapter';
         this.entityPermission = this.$opts.entityPermission || 'view';
 
         this.input = this.$refs.input;

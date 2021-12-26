@@ -27,7 +27,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 /**
  * Class Entity
- * The base class for book-like items such as pages, chapters & books.
+ * The base class for recipe-like items such as pages, chapters & recipes.
  * This is not a database model in itself but extended.
  *
  * @property int        $id
@@ -121,8 +121,8 @@ abstract class Entity extends Model implements Sluggable, Favouritable, Viewable
             return true;
         }
 
-        if (($entity instanceof BookChild) && $this instanceof Book) {
-            return $entity->book_id === $this->id;
+        if (($entity instanceof RecipeChild) && $this instanceof Recipe) {
+            return $entity->recipe_id === $this->id;
         }
 
         if ($entity instanceof Page && $this instanceof Chapter) {
@@ -210,7 +210,7 @@ abstract class Entity extends Model implements Sluggable, Favouritable, Viewable
 
     /**
      * Check if this instance or class is a certain type of entity.
-     * Examples of $type are 'page', 'book', 'chapter'.
+     * Examples of $type are 'page', 'recipe', 'chapter'.
      *
      * @deprecated Use instanceof instead.
      */
@@ -263,15 +263,15 @@ abstract class Entity extends Model implements Sluggable, Favouritable, Viewable
     /**
      * Get the parent entity if existing.
      * This is the "static" parent and does not include dynamic
-     * relations such as menus to books.
+     * relations such as menus to recipes.
      */
     public function getParent(): ?self
     {
         if ($this instanceof Page) {
-            return $this->chapter_id ? $this->chapter()->withTrashed()->first() : $this->book()->withTrashed()->first();
+            return $this->chapter_id ? $this->chapter()->withTrashed()->first() : $this->recipe()->withTrashed()->first();
         }
         if ($this instanceof Chapter) {
-            return $this->book()->withTrashed()->first();
+            return $this->recipe()->withTrashed()->first();
         }
 
         return null;

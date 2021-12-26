@@ -18,9 +18,9 @@
            class="pill text-chapter">@icon('chapter'){{ $tag->chapter_count }}</a>
     </td>
     <td width="70" class="px-xs">
-        <a href="{{ isset($tag->value) ? $tag->valueUrl() : $tag->nameUrl() . '+{type:book}' }}"
-           title="{{ trans('entities.tags_assigned_books') }}"
-           class="pill text-book">@icon('book'){{ $tag->book_count }}</a>
+        <a href="{{ isset($tag->value) ? $tag->valueUrl() : $tag->nameUrl() . '+{type:recipe}' }}"
+           title="{{ trans('entities.tags_assigned_recipes') }}"
+           class="pill text-recipe">@icon('recipe'){{ $tag->recipe_count }}</a>
     </td>
     <td width="70" class="px-xs">
         <a href="{{ isset($tag->value) ? $tag->valueUrl() : $tag->nameUrl() . '+{type:recipemenu}' }}"

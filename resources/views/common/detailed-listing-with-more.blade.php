@@ -5,7 +5,7 @@
         <main class="card content-wrap">
             <h1 class="list-heading">{{ $title }}</h1>
 
-            <div class="book-contents">
+            <div class="recipe-contents">
                 @include('entities.list', ['entities' => $entities, 'style' => 'detailed'])
             </div>
 

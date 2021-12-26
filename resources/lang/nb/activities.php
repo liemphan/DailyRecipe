@@ -27,14 +27,14 @@ return [
     ',
 
     // Books
-    'book_create'                 => 'opprettet bok',
-    'book_create_notification'    => 'Boken ble opprettet',
-    'book_update'                 => 'oppdaterte bok',
-    'book_update_notification'    => 'Boken ble oppdatert',
-    'book_delete'                 => 'slettet bok',
-    'book_delete_notification'    => 'Boken ble slettet',
-    'book_sort'                   => 'sorterte bok',
-    'book_sort_notification'      => 'Boken ble omsortert',
+    'recipe_create'                 => 'opprettet bok',
+    'recipe_create_notification'    => 'Boken ble opprettet',
+    'recipe_update'                 => 'oppdaterte bok',
+    'recipe_update_notification'    => 'Boken ble oppdatert',
+    'recipe_delete'                 => 'slettet bok',
+    'recipe_delete_notification'    => 'Boken ble slettet',
+    'recipe_sort'                   => 'sorterte bok',
+    'recipe_sort_notification'      => 'Boken ble omsortert',
 
     // Recipemenus
     'recipemenu_create'            => 'opprettet bokhylle',

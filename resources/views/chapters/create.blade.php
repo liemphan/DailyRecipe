@@ -5,8 +5,8 @@
 
         <div class="my-s">
             @include('entities.breadcrumbs', ['crumbs' => [
-                $book,
-                $book->getUrl('create-chapter') => [
+                $recipe,
+                $recipe->getUrl('create-chapter') => [
                     'text' => trans('entities.chapters_create'),
                     'icon' => 'add',
                 ]
@@ -15,7 +15,7 @@
 
         <main class="content-wrap card">
             <h1 class="list-heading">{{ trans('entities.chapters_create') }}</h1>
-            <form action="{{ $book->getUrl('/create-chapter') }}" method="POST">
+            <form action="{{ $recipe->getUrl('/create-chapter') }}" method="POST">
                 @include('chapters.parts.form')
             </form>
         </main>

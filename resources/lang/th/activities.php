@@ -26,14 +26,14 @@ return [
     'chapter_move'                => 'moved chapter',
 
     // Books
-    'book_create'                 => 'created book',
-    'book_create_notification'    => 'Book Successfully Created',
-    'book_update'                 => 'updated book',
-    'book_update_notification'    => 'Book Successfully Updated',
-    'book_delete'                 => 'deleted book',
-    'book_delete_notification'    => 'Book Successfully Deleted',
-    'book_sort'                   => 'sorted book',
-    'book_sort_notification'      => 'Book Successfully Re-sorted',
+    'recipe_create'                 => 'created recipe',
+    'recipe_create_notification'    => 'Recipe Successfully Created',
+    'recipe_update'                 => 'updated recipe',
+    'recipe_update_notification'    => 'Recipe Successfully Updated',
+    'recipe_delete'                 => 'deleted recipe',
+    'recipe_delete_notification'    => 'Recipe Successfully Deleted',
+    'recipe_sort'                   => 'sorted recipe',
+    'recipe_sort_notification'      => 'Recipe Successfully Re-sorted',
 
     // Recipemenus
     'recipemenu_create'            => 'created Recipemenu',

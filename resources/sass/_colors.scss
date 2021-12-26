@@ -63,9 +63,9 @@
   color: var(--color-recipemenu);
   fill: var(--color-recipemenu);
 }
-.text-book, .text-book:hover {
-  color: var(--color-book);
-  fill: var(--color-book);
+.text-recipe, .text-recipe:hover {
+  color: var(--color-recipe);
+  fill: var(--color-recipe);
 }
 .text-page, .text-page:hover {
   color: var(--color-page);
@@ -86,8 +86,8 @@
 .bg-white {
   background-color: #FFFFFF;
 }
-.bg-book {
-  background-color: var(--color-book);
+.bg-recipe {
+  background-color: var(--color-recipe);
 }
 .bg-chapter {
   background-color: var(--color-chapter);

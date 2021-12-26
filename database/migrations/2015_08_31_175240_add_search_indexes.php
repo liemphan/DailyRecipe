@@ -17,7 +17,7 @@ class AddSearchIndexes extends Migration
 
 //        $prefix = DB::getTablePrefix();
 //        DB::statement("ALTER TABLE {$prefix}pages ADD FULLTEXT search(name, text)");
-//        DB::statement("ALTER TABLE {$prefix}books ADD FULLTEXT search(name, description)");
+//        DB::statement("ALTER TABLE {$prefix}recipes ADD FULLTEXT search(name, description)");
 //        DB::statement("ALTER TABLE {$prefix}chapters ADD FULLTEXT search(name, description)");
     }
 

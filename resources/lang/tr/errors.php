@@ -59,11 +59,11 @@ return [
     // Entities
     'entity_not_found' => 'Öge bulunamadı',
     'recipemenu_not_found' => 'Kitaplık bulunamadı',
-    'book_not_found' => 'Kitap bulunamadı',
+    'recipe_not_found' => 'Kitap bulunamadı',
     'page_not_found' => 'Sayfa bulunamadı',
     'chapter_not_found' => 'Bölüm bulunamadı',
-    'selected_book_not_found' => 'Seçilen kitap bulunamadı',
-    'selected_book_chapter_not_found' => 'Seçilen kitap veya bölüm bulunamadı',
+    'selected_recipe_not_found' => 'Seçilen kitap bulunamadı',
+    'selected_recipe_chapter_not_found' => 'Seçilen kitap veya bölüm bulunamadı',
     'guests_cannot_save_drafts' => 'Misafirler taslak kaydedemezler',
 
     // Users

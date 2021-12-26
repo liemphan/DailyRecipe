@@ -59,11 +59,11 @@ return [
     // Entities
     'entity_not_found' => 'Innehållet hittades inte',
     'recipemenu_not_found' => 'Hyllan hittades inte',
-    'book_not_found' => 'Boken hittades inte',
+    'recipe_not_found' => 'Boken hittades inte',
     'page_not_found' => 'Sidan hittades inte',
     'chapter_not_found' => 'Kapitlet hittades inte',
-    'selected_book_not_found' => 'Den valda boken hittades inte',
-    'selected_book_chapter_not_found' => 'Den valda boken eller kapitlet hittades inte',
+    'selected_recipe_not_found' => 'Den valda boken hittades inte',
+    'selected_recipe_chapter_not_found' => 'Den valda boken eller kapitlet hittades inte',
     'guests_cannot_save_drafts' => 'Gäster kan inte spara utkast',
 
     // Users

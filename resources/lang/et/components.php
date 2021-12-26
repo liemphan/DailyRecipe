@@ -8,7 +8,7 @@ return [
     'image_select' => 'Pildifaili valik',
     'image_all' => 'Kõik',
     'image_all_title' => 'Vaata kõiki pildifaile',
-    'image_book_title' => 'Vaata sellesse raamatusse laaditud pildifaile',
+    'image_recipe_title' => 'Vaata sellesse raamatusse laaditud pildifaile',
     'image_page_title' => 'Vaata sellele lehele laaditud pildifaile',
     'image_search_hint' => 'Otsi pildifaili nime järgi',
     'image_uploaded' => 'Üles laaditud :uploadedDate',

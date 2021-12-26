@@ -8,7 +8,7 @@ return [
     'image_select' => 'تحديد صورة',
     'image_all' => 'الكل',
     'image_all_title' => 'عرض جميع الصور',
-    'image_book_title' => 'عرض الصور المرفوعة لهذا الكتاب',
+    'image_recipe_title' => 'عرض الصور المرفوعة لهذا الكتاب',
     'image_page_title' => 'عرض الصور المرفوعة لهذه الصفحة',
     'image_search_hint' => 'البحث باستخدام اسم الصورة',
     'image_uploaded' => 'وقت الرفع :uploadedDate',

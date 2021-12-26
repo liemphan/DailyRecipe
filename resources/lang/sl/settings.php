@@ -50,7 +50,7 @@ return [
     'content_colors' => 'Barve vsebine',
     'content_colors_desc' => 'Nastavi barve za vse elemente v hierarhiji. Izbor barv s podobno barvno svetlostjo je priporočljivo za osnovne barve za branje.',
     'recipemenu_color' => 'Barva police',
-    'book_color' => 'knjiga barv',
+    'recipe_color' => 'knjiga barv',
     'chapter_color' => 'barvno poglavje',
     'page_color' => 'Stran barv',
     'page_draft_color' => 'stran osnutka barv',

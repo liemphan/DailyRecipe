@@ -26,14 +26,14 @@ return [
     'chapter_move'                => 'přesunul/a kapitolu',
 
     // Books
-    'book_create'                 => 'vytvořil/a knihu',
-    'book_create_notification'    => 'Kniha byla vytvořena',
-    'book_update'                 => 'aktualizoval/a knihu',
-    'book_update_notification'    => 'Kniha byla aktualizována',
-    'book_delete'                 => 'odstranil/a knihu',
-    'book_delete_notification'    => 'Kniha byla odstraněna',
-    'book_sort'                   => 'seřadil/a knihu',
-    'book_sort_notification'      => 'Kniha byla seřazena',
+    'recipe_create'                 => 'vytvořil/a knihu',
+    'recipe_create_notification'    => 'Kniha byla vytvořena',
+    'recipe_update'                 => 'aktualizoval/a knihu',
+    'recipe_update_notification'    => 'Kniha byla aktualizována',
+    'recipe_delete'                 => 'odstranil/a knihu',
+    'recipe_delete_notification'    => 'Kniha byla odstraněna',
+    'recipe_sort'                   => 'seřadil/a knihu',
+    'recipe_sort_notification'      => 'Kniha byla seřazena',
 
     // Recipemenus
     'recipemenu_create'            => 'vytvořil/a knihovnu',

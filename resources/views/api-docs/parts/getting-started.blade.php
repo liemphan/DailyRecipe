@@ -7,9 +7,9 @@
 </p>
 <p>Authentication to use the API is primarily done using API Tokens. Once the <em>"Access System API"</em> permission has been assigned to a user, a "API Tokens" section should be visible when editing their user profile. Choose "Create Token" and enter an appropriate name and expiry date, relevant for your API usage then press "Save". A "Token ID" and "Token Secret" will be immediately displayed. These values should be used as a header in API HTTP requests in the following format:</p>
 <pre><code class="language-css">Authorization: Token &lt;token_id&gt;:&lt;token_secret&gt;</code></pre>
-<p>Here's an example of an authorized cURL request to list books in the system:</p>
+<p>Here's an example of an authorized cURL request to list recipes in the system:</p>
 <pre><code class="language-shell">curl --request GET \
-  --url https://example.com/api/books \
+  --url https://example.com/api/recipes \
   --header 'Authorization: Token C6mdvEQTGnebsmVn3sFNeeuelGEBjyQp:NOvD3VlzuSVuBPNaf1xWHmy7nIRlaj22'</code></pre>
 <p>If already logged into the system within the browser, via a user account with permission to access the API, the system will also accept an existing session meaning you can browse API endpoints directly in the browser or use the browser devtools to play with the API.</p>
 

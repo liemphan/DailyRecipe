@@ -13,7 +13,7 @@
 
     <div class="mb-m print-hidden">
         @include('entities.breadcrumbs', ['crumbs' => [
-            $page->$book,
+            $page->$recipe,
             $page->chapter,
             $page,
             $page->getUrl('/revisions') => [

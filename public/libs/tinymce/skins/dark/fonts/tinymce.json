@@ -9,7 +9,7 @@
 				"attrs": [],
 				"isMulticolor": false,
 				"tags": [
-					"books",
+					"recipes",
 					"library",
 					"archive"
 				],
@@ -22,7 +22,7 @@
 				"id": 1722,
 				"prevSize": 32,
 				"code": 59665,
-				"name": "books",
+				"name": "recipes",
 				"ligatures": ""
 			},
 			"setIdx": 2,

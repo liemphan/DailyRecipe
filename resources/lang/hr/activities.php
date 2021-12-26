@@ -26,14 +26,14 @@ return [
     'chapter_move'                => 'premiješteno poglavlje',
 
     // Books
-    'book_create'                 => 'stvorena knjiga',
-    'book_create_notification'    => 'Knjiga je uspješno stvorena',
-    'book_update'                 => 'ažurirana knjiga',
-    'book_update_notification'    => 'Knjiga je uspješno ažurirana',
-    'book_delete'                 => 'izbrisana knjiga',
-    'book_delete_notification'    => 'Knjiga je uspješno izbrisana',
-    'book_sort'                   => 'razvrstana knjiga',
-    'book_sort_notification'      => 'Knjiga je uspješno razvrstana',
+    'recipe_create'                 => 'stvorena knjiga',
+    'recipe_create_notification'    => 'Knjiga je uspješno stvorena',
+    'recipe_update'                 => 'ažurirana knjiga',
+    'recipe_update_notification'    => 'Knjiga je uspješno ažurirana',
+    'recipe_delete'                 => 'izbrisana knjiga',
+    'recipe_delete_notification'    => 'Knjiga je uspješno izbrisana',
+    'recipe_sort'                   => 'razvrstana knjiga',
+    'recipe_sort_notification'      => 'Knjiga je uspješno razvrstana',
 
     // Recipemenus
     'recipemenu_create'            => 'stvorena polica za knjige',

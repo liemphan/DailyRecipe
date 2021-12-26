@@ -100,22 +100,22 @@
                         <a href="#" permissions-table-toggle-all-in-row class="text-small text-primary">{{ trans('common.toggle_all') }}</a>
                     </td>
                     <td>
-                        @include('settings.roles.parts.checkbox', ['permission' => 'book-create-all', 'label' => trans('settings.role_all')])
+                        @include('settings.roles.parts.checkbox', ['permission' => 'recipe-create-all', 'label' => trans('settings.role_all')])
                     </td>
                     <td>
-                        @include('settings.roles.parts.checkbox', ['permission' => 'book-view-own', 'label' => trans('settings.role_own')])
+                        @include('settings.roles.parts.checkbox', ['permission' => 'recipe-view-own', 'label' => trans('settings.role_own')])
                         <br>
-                        @include('settings.roles.parts.checkbox', ['permission' => 'book-view-all', 'label' => trans('settings.role_all')])
+                        @include('settings.roles.parts.checkbox', ['permission' => 'recipe-view-all', 'label' => trans('settings.role_all')])
                     </td>
                     <td>
-                        @include('settings.roles.parts.checkbox', ['permission' => 'book-update-own', 'label' => trans('settings.role_own')])
+                        @include('settings.roles.parts.checkbox', ['permission' => 'recipe-update-own', 'label' => trans('settings.role_own')])
                         <br>
-                        @include('settings.roles.parts.checkbox', ['permission' => 'book-update-all', 'label' => trans('settings.role_all')])
+                        @include('settings.roles.parts.checkbox', ['permission' => 'recipe-update-all', 'label' => trans('settings.role_all')])
                     </td>
                     <td>
-                        @include('settings.roles.parts.checkbox', ['permission' => 'book-delete-own', 'label' => trans('settings.role_own')])
+                        @include('settings.roles.parts.checkbox', ['permission' => 'recipe-delete-own', 'label' => trans('settings.role_own')])
                         <br>
-                        @include('settings.roles.parts.checkbox', ['permission' => 'book-delete-all', 'label' => trans('settings.role_all')])
+                        @include('settings.roles.parts.checkbox', ['permission' => 'recipe-delete-all', 'label' => trans('settings.role_all')])
                     </td>
                 </tr>
                 <tr>

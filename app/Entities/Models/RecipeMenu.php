@@ -20,24 +20,24 @@ class Recipemenu extends Entity implements HasCoverImage
     protected $hidden = ['restricted', 'image_id', 'deleted_at'];
 
     /**
-     * Get the books in this menu.
+     * Get the recipes in this menu.
      * Should not be used directly since does not take into account permissions.
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
      */
-    public function books()
+    public function recipes()
     {
-        return $this->belongsToMany(Book::class, 'recipemenus_books', 'recipemenu_id', 'book_id')
+        return $this->belongsToMany(Recipe::class, 'recipemenus_recipes', 'recipemenu_id', 'recipe_id')
             ->withPivot('order')
             ->orderBy('order', 'asc');
     }
 
     /**
-     * Related books that are visible to the current user.
+     * Related recipes that are visible to the current user.
      */
-    public function visibleBooks(): BelongsToMany
+    public function visibleRecipes(): BelongsToMany
     {
-        return $this->books()->scopes('visible');
+        return $this->recipes()->scopes('visible');
     }
 
     /**
@@ -56,9 +56,9 @@ class Recipemenu extends Entity implements HasCoverImage
      *
      * @return string
      */
-    public function getBookCover($width = 440, $height = 250)
+    public function getRecipeCover($width = 440, $height = 250)
     {
-        // TODO - Make generic, focused on books right now, Perhaps set-up a better image
+        // TODO - Make generic, focused on recipes right now, Perhaps set-up a better image
         $default = 'data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==';
         if (!$this->image_id) {
             return $default;
@@ -90,29 +90,29 @@ class Recipemenu extends Entity implements HasCoverImage
     }
 
     /**
-     * Check if this menu contains the given book.
+     * Check if this menu contains the given recipe.
      *
-     * @param Book $book
+     * @param Recipe $recipe
      *
      * @return bool
      */
-    public function contains(Book $book): bool
+    public function contains(Recipe $recipe): bool
     {
-        return $this->books()->where('id', '=', $book->id)->count() > 0;
+        return $this->recipes()->where('id', '=', $recipe->id)->count() > 0;
     }
 
     /**
-     * Add a book to the end of this menu.
+     * Add a recipe to the end of this menu.
      *
-     * @param Book $book
+     * @param Recipe $recipe
      */
-    public function appendBook(Book $book)
+    public function appendRecipe(Recipe $recipe)
     {
-        if ($this->contains($book)) {
+        if ($this->contains($recipe)) {
             return;
         }
 
-        $maxOrder = $this->books()->max('order');
-        $this->books()->attach($book->id, ['order' => $maxOrder + 1]);
+        $maxOrder = $this->recipes()->max('order');
+        $this->recipes()->attach($recipe->id, ['order' => $maxOrder + 1]);
     }
 }

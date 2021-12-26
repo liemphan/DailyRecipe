@@ -2,31 +2,31 @@
 
 namespace DailyRecipe\Entities\Tools;
 
-use DailyRecipe\Entities\Models\BookChild;
+use DailyRecipe\Entities\Models\RecipeChild;
 use DailyRecipe\Entities\Models\Entity;
 use Illuminate\Support\Collection;
 
 /**
- * Finds the next or previous content of a book element (page or chapter).
+ * Finds the next or previous content of a recipe element (page or chapter).
  */
 class NextPreviousContentLocator
 {
-    protected $relativeBookItem;
+    protected $relativeRecipeItem;
     protected $flatTree;
     protected $currentIndex = null;
 
     /**
      * NextPreviousContentLocator constructor.
      */
-    public function __construct(BookChild $relativeBookItem, Collection $bookTree)
+    public function __construct(RecipeChild $relativeRecipeItem, Collection $recipeTree)
     {
-        $this->relativeBookItem = $relativeBookItem;
-        $this->flatTree = $this->treeToFlatOrderedCollection($bookTree);
+        $this->relativeRecipeItem = $relativeRecipeItem;
+        $this->flatTree = $this->treeToFlatOrderedCollection($recipeTree);
         $this->currentIndex = $this->getCurrentIndex();
     }
 
     /**
-     * Get the next logical entity within the book hierarchy.
+     * Get the next logical entity within the recipe hierarchy.
      */
     public function getNext(): ?Entity
     {
@@ -34,7 +34,7 @@ class NextPreviousContentLocator
     }
 
     /**
-     * Get the next logical entity within the book hierarchy.
+     * Get the next logical entity within the recipe hierarchy.
      */
     public function getPrevious(): ?Entity
     {
@@ -47,22 +47,22 @@ class NextPreviousContentLocator
     protected function getCurrentIndex(): ?int
     {
         $index = $this->flatTree->search(function (Entity $entity) {
-            return get_class($entity) === get_class($this->relativeBookItem)
-                && $entity->id === $this->relativeBookItem->id;
+            return get_class($entity) === get_class($this->relativeRecipeItem)
+                && $entity->id === $this->relativeRecipeItem->id;
         });
 
         return $index === false ? null : $index;
     }
 
     /**
-     * Convert a book tree collection to a flattened version
+     * Convert a recipe tree collection to a flattened version
      * where all items follow the expected order of user flow.
      */
-    protected function treeToFlatOrderedCollection(Collection $bookTree): Collection
+    protected function treeToFlatOrderedCollection(Collection $recipeTree): Collection
     {
         $flatOrdered = collect();
         /** @var Entity $item */
-        foreach ($bookTree->all() as $item) {
+        foreach ($recipeTree->all() as $item) {
             $flatOrdered->push($item);
             $childPages = $item->getAttribute('visible_pages') ?? [];
             $flatOrdered = $flatOrdered->concat($childPages);

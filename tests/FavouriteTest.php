@@ -1,7 +1,7 @@
 <?php
 
 use DailyRecipe\Actions\Favourite;
-use DailyRecipe\Entities\Models\Book;
+use DailyRecipe\Entities\Models\Recipe;
 use DailyRecipe\Entities\Models\Recipemenu;
 use DailyRecipe\Entities\Models\Chapter;
 use DailyRecipe\Entities\Models\Page;
@@ -62,7 +62,7 @@ class FavouriteTest extends TestCase
     {
         $entities = [
             Recipemenu::query()->first(),
-            Book::query()->first(),
+            Recipe::query()->first(),
             Chapter::query()->first(),
         ];
         $this->actingAs($this->getEditor());

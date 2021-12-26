@@ -8,7 +8,7 @@ return [
     'image_select' => 'Избор на изображение',
     'image_all' => 'Всички',
     'image_all_title' => 'Преглед на всички изображения',
-    'image_book_title' => 'Виж изображенията прикачени към тази книга',
+    'image_recipe_title' => 'Виж изображенията прикачени към тази книга',
     'image_page_title' => 'Виж изображенията прикачени към страницата',
     'image_search_hint' => 'Търси по име на картина',
     'image_uploaded' => 'Качено :uploadedDate',

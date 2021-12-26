@@ -50,7 +50,7 @@ table {
   --color-page: #206ea7;
   --color-page-draft: #7e50b1;
   --color-chapter: #af4d0d;
-  --color-book: #077b70;
+  --color-recipe: #077b70;
   --color-recipemenu: #a94747;
 }
 
@@ -1218,9 +1218,9 @@ html.dark-mode .text-dark {
   fill: var(--color-recipemenu);
 }
 
-.text-book, .text-book:hover {
-  color: var(--color-book);
-  fill: var(--color-book);
+.text-recipe, .text-recipe:hover {
+  color: var(--color-recipe);
+  fill: var(--color-recipe);
 }
 
 .text-page, .text-page:hover {
@@ -1245,8 +1245,8 @@ html.dark-mode .text-dark {
   background-color: #FFFFFF;
 }
 
-.bg-book {
-  background-color: var(--color-book);
+.bg-recipe {
+  background-color: var(--color-recipe);
 }
 
 .bg-chapter {
@@ -1933,7 +1933,7 @@ html.dark-mode .grid-card:hover {
   padding-top: 0;
 }
 
-.book-grid-item .grid-card-footer p.small {
+.recipe-grid-item .grid-card-footer p.small {
   font-size: 0.8em;
   margin: 0;
 }
@@ -4997,7 +4997,7 @@ body.flexbox footer {
   display: none;
 }
 
-.book-contents .entity-list-item .icon {
+.recipe-contents .entity-list-item .icon {
   width: 4px;
   border-radius: 1px;
   justify-self: stretch;
@@ -5005,16 +5005,16 @@ body.flexbox footer {
   height: auto;
   margin-inline-end: 24px;
 }
-.book-contents .entity-list-item .icon:after {
+.recipe-contents .entity-list-item .icon:after {
   opacity: 0.5;
 }
-.book-contents .entity-list-item .icon svg {
+.recipe-contents .entity-list-item .icon svg {
   display: none;
 }
-.book-contents .entity-list-item p {
+.recipe-contents .entity-list-item p {
   margin-bottom: 0;
 }
-.book-contents .entity-list-item .inner-page {
+.recipe-contents .entity-list-item .inner-page {
   padding-top: 0;
   padding-bottom: 0;
 }
@@ -5158,7 +5158,7 @@ html[dir=rtl] .sidebar-page-nav .sidebar-page-nav-bullet {
   right: -2px;
 }
 
-.book-tree .sidebar-page-list {
+.recipe-tree .sidebar-page-list {
   list-style: none;
   margin-block-start: 6px;
   margin-block-end: 0;
@@ -5168,7 +5168,7 @@ html[dir=rtl] .sidebar-page-nav .sidebar-page-nav-bullet {
   padding-inline-end: 0;
   position: relative;
 }
-.book-tree .sidebar-page-list:after, .book-tree .sidebar-page-list .sub-menu:after {
+.recipe-tree .sidebar-page-list:after, .recipe-tree .sidebar-page-list .sub-menu:after {
   content: "";
   display: block;
   position: absolute;
@@ -5178,49 +5178,49 @@ html[dir=rtl] .sidebar-page-nav .sidebar-page-nav-bullet {
   border-inline-start: 4px solid rgba(0, 0, 0, 0.1);
   z-index: 0;
 }
-html[dir=rtl] .book-tree .sidebar-page-list:after, html[dir=rtl] .book-tree .sidebar-page-list .sub-menu:after {
+html[dir=rtl] .recipe-tree .sidebar-page-list:after, html[dir=rtl] .recipe-tree .sidebar-page-list .sub-menu:after {
   left: auto;
   right: 16px;
 }
-.book-tree .sidebar-page-list ul {
+.recipe-tree .sidebar-page-list ul {
   list-style: none;
   padding-inline-start: 1rem;
   padding-inline-end: 0;
 }
-.book-tree .sidebar-page-list .entity-list-item {
+.recipe-tree .sidebar-page-list .entity-list-item {
   padding-top: 3px;
   padding-bottom: 3px;
   background-clip: content-box;
   border-radius: 0 3px 3px 0;
   padding-inline-end: 0;
 }
-.book-tree .sidebar-page-list .entity-list-item .content {
+.recipe-tree .sidebar-page-list .entity-list-item .content {
   padding-top: 6px;
   padding-bottom: 6px;
   max-width: calc(100% - 20px);
 }
-.book-tree .sidebar-page-list .entity-list-item.selected {
+.recipe-tree .sidebar-page-list .entity-list-item.selected {
   background-color: rgba(0, 0, 0, 0.08);
 }
-.book-tree .sidebar-page-list .entity-list-item.no-hover {
+.recipe-tree .sidebar-page-list .entity-list-item.no-hover {
   margin-top: -6px;
   padding-inline-end: 0;
 }
-.book-tree .sidebar-page-list .entity-list-item-name {
+.recipe-tree .sidebar-page-list .entity-list-item-name {
   font-size: 1em;
   margin: 0;
   margin-inline-end: 16px;
 }
-.book-tree .sidebar-page-list .chapter-child-menu {
+.recipe-tree .sidebar-page-list .chapter-child-menu {
   font-size: 0.8rem;
   margin-top: -0.2rem;
   margin-inline-start: -1rem;
 }
-.book-tree .sidebar-page-list [chapter-toggle] {
+.recipe-tree .sidebar-page-list [chapter-toggle] {
   padding-inline-start: 0.7rem;
   padding-bottom: 0.2rem;
 }
-.book-tree .sidebar-page-list .entity-list-item .icon {
+.recipe-tree .sidebar-page-list .entity-list-item .icon {
   z-index: 2;
   width: 4px;
   height: auto;
@@ -5229,10 +5229,10 @@ html[dir=rtl] .book-tree .sidebar-page-list:after, html[dir=rtl] .book-tree .sid
   border-radius: 1px;
   opacity: 0.6;
 }
-.book-tree .sidebar-page-list .entity-list-item .icon:after {
+.recipe-tree .sidebar-page-list .entity-list-item .icon:after {
   opacity: 1;
 }
-.book-tree .sidebar-page-list .entity-list-item .icon svg {
+.recipe-tree .sidebar-page-list .entity-list-item .icon svg {
   display: none;
 }
 
@@ -5259,7 +5259,7 @@ html[dir=rtl] .book-tree .sidebar-page-list:after, html[dir=rtl] .book-tree .sid
   content: "";
   border-radius: 4px;
   opacity: 0.5;
-  border: 2px solid var(--color-book);
+  border: 2px solid var(--color-recipe);
   display: block;
   top: 0;
   bottom: 0;
@@ -6227,7 +6227,7 @@ html.dark-mode .avatar[src$="user_avatar.png"] {
 }
 .loading-container > div:first-child {
   left: -16px;
-  background-color: var(--color-book);
+  background-color: var(--color-recipe);
   animation-delay: 0s;
 }
 .loading-container > div:last-of-type {

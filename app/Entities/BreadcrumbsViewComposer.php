@@ -2,7 +2,7 @@
 
 namespace DailyRecipe\Entities;
 
-use DailyRecipe\Entities\Models\Book;
+use DailyRecipe\Entities\Models\Recipe;
 use DailyRecipe\Entities\Tools\MenuContext;
 use Illuminate\View\View;
 
@@ -29,8 +29,8 @@ class BreadcrumbsViewComposer
     {
         $crumbs = $view->getData()['crumbs'];
         $firstCrumb = $crumbs[0] ?? null;
-        if ($firstCrumb instanceof Book) {
-            $menu = $this->entityContextManager->getContextualMenuForBook($firstCrumb);
+        if ($firstCrumb instanceof Recipe) {
+            $menu = $this->entityContextManager->getContextualMenuForRecipe($firstCrumb);
             if ($menu) {
                 array_unshift($crumbs, $menu);
                 $view->with('crumbs', $crumbs);

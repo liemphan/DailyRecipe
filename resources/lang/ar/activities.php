@@ -26,14 +26,14 @@ return [
     'chapter_move'                => 'تم نقل الفصل',
 
     // Books
-    'book_create'                 => 'تم إنشاء كتاب',
-    'book_create_notification'    => 'تم إنشاء كتاب بنجاح',
-    'book_update'                 => 'تم تحديث الكتاب',
-    'book_update_notification'    => 'تم تحديث الكتاب بنجاح',
-    'book_delete'                 => 'تم حذف الكتاب',
-    'book_delete_notification'    => 'تم حذف الكتاب بنجاح',
-    'book_sort'                   => 'تم سرد الكتاب',
-    'book_sort_notification'      => 'أُعِيدَ سرد الكتاب بنجاح',
+    'recipe_create'                 => 'تم إنشاء كتاب',
+    'recipe_create_notification'    => 'تم إنشاء كتاب بنجاح',
+    'recipe_update'                 => 'تم تحديث الكتاب',
+    'recipe_update_notification'    => 'تم تحديث الكتاب بنجاح',
+    'recipe_delete'                 => 'تم حذف الكتاب',
+    'recipe_delete_notification'    => 'تم حذف الكتاب بنجاح',
+    'recipe_sort'                   => 'تم سرد الكتاب',
+    'recipe_sort_notification'      => 'أُعِيدَ سرد الكتاب بنجاح',
 
     // Recipemenus
     'recipemenu_create'            => 'تم إنشاء رف الكتب',

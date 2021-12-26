@@ -2,7 +2,7 @@
 
 namespace DailyRecipe\Http\Controllers\Api;
 
-use DailyRecipe\Entities\Models\Book;
+use DailyRecipe\Entities\Models\Recipe;
 use DailyRecipe\Entities\Models\Chapter;
 use DailyRecipe\Entities\Repos\ChapterRepo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
@@ -14,13 +14,13 @@ class ChapterApiController extends ApiController
 
     protected $rules = [
         'create' => [
-            'book_id'     => ['required', 'integer'],
+            'recipe_id'     => ['required', 'integer'],
             'name'        => ['required', 'string', 'max:255'],
             'description' => ['string', 'max:1000'],
             'tags'        => ['array'],
         ],
         'update' => [
-            'book_id'     => ['integer'],
+            'recipe_id'     => ['integer'],
             'name'        => ['string', 'min:1', 'max:255'],
             'description' => ['string', 'max:1000'],
             'tags'        => ['array'],
@@ -43,7 +43,7 @@ class ChapterApiController extends ApiController
         $chapters = Chapter::visible();
 
         return $this->apiListingResponse($chapters, [
-            'id', 'book_id', 'name', 'slug', 'description', 'priority',
+            'id', 'recipe_id', 'name', 'slug', 'description', 'priority',
             'created_at', 'updated_at', 'created_by', 'updated_by', 'owned_by',
         ]);
     }
@@ -55,11 +55,11 @@ class ChapterApiController extends ApiController
     {
         $this->validate($request, $this->rules['create']);
 
-        $bookId = $request->get('book_id');
-        $book = Book::visible()->findOrFail($bookId);
-        $this->checkOwnablePermission('chapter-create', $book);
+        $recipeId = $request->get('recipe_id');
+        $recipe = Recipe::visible()->findOrFail($recipeId);
+        $this->checkOwnablePermission('chapter-create', $recipe);
 
-        $chapter = $this->chapterRepo->create($request->all(), $book);
+        $chapter = $this->chapterRepo->create($request->all(), $recipe);
 
         return response()->json($chapter->load(['tags']));
     }

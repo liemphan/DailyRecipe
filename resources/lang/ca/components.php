@@ -8,7 +8,7 @@ return [
     'image_select' => 'Selecciona una imatge',
     'image_all' => 'Totes',
     'image_all_title' => 'Mostra totes les imatges',
-    'image_book_title' => 'Mostra les imatges pujades a aquest llibre',
+    'image_recipe_title' => 'Mostra les imatges pujades a aquest llibre',
     'image_page_title' => 'Mostra les imatges pujades a aquesta pàgina',
     'image_search_hint' => 'Cerca per nom d\'imatge',
     'image_uploaded' => 'Pujada :uploadedDate',

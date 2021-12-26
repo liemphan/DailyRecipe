@@ -8,7 +8,7 @@ return [
     'image_select' => 'Bild auswählen',
     'image_all' => 'Alle',
     'image_all_title' => 'Alle Bilder anzeigen',
-    'image_book_title' => 'Zeige alle Bilder, die in dieses Buch hochgeladen wurden',
+    'image_recipe_title' => 'Zeige alle Bilder, die in dieses Buch hochgeladen wurden',
     'image_page_title' => 'Zeige alle Bilder, die auf diese Seite hochgeladen wurden',
     'image_search_hint' => 'Nach Bildnamen suchen',
     'image_uploaded' => 'Hochgeladen am :uploadedDate',

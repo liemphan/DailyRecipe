@@ -36,7 +36,7 @@
                         @if(userCanOnAny('view', \DailyRecipe\Entities\Models\Recipemenu::class) || userCan('recipemenu-view-all') || userCan('recipemenu-view-own'))
                             <a href="{{ url('/menus') }}">@icon('recipemenu'){{ trans('entities.menus') }}</a>
                         @endif
-                        <a href="{{ url('/books') }}">@icon('books'){{ trans('entities.recipes') }}</a>
+                        <a href="{{ url('/recipes') }}">@icon('recipes'){{ trans('entities.recipes') }}</a>
                         @if(signedInUser() && userCan('settings-manage'))
                             <a href="{{ url('/settings') }}">@icon('settings'){{ trans('settings.settings') }}</a>
                         @endif

@@ -59,11 +59,11 @@ return [
     // Entities
     'entity_not_found' => 'Entitás nem található',
     'recipemenu_not_found' => 'Könyvespolc nem található',
-    'book_not_found' => 'Könyv nem található',
+    'recipe_not_found' => 'Könyv nem található',
     'page_not_found' => 'Oldal nem található',
     'chapter_not_found' => 'Fejezet nem található',
-    'selected_book_not_found' => 'A kiválasztott könyv nem található',
-    'selected_book_chapter_not_found' => 'A kiválasztott könyv vagy fejezet nem található',
+    'selected_recipe_not_found' => 'A kiválasztott könyv nem található',
+    'selected_recipe_chapter_not_found' => 'A kiválasztott könyv vagy fejezet nem található',
     'guests_cannot_save_drafts' => 'Vendégek nem menthetnek el vázlatokat',
 
     // Users

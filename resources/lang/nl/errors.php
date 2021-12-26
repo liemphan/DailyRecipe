@@ -59,11 +59,11 @@ return [
     // Entities
     'entity_not_found' => 'Entiteit niet gevonden',
     'recipemenu_not_found' => 'Boekenplank niet gevonden',
-    'book_not_found' => 'Boek niet gevonden',
+    'recipe_not_found' => 'Boek niet gevonden',
     'page_not_found' => 'Pagina niet gevonden',
     'chapter_not_found' => 'Hoofdstuk niet gevonden',
-    'selected_book_not_found' => 'Het geselecteerde boek is niet gevonden',
-    'selected_book_chapter_not_found' => 'Het geselecteerde boek of hoofdstuk is niet gevonden',
+    'selected_recipe_not_found' => 'Het geselecteerde boek is niet gevonden',
+    'selected_recipe_chapter_not_found' => 'Het geselecteerde boek of hoofdstuk is niet gevonden',
     'guests_cannot_save_drafts' => 'Gasten kunnen geen concepten opslaan',
 
     // Users

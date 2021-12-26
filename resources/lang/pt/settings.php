@@ -50,7 +50,7 @@ return [
     'content_colors' => 'Cores do Conteúdo',
     'content_colors_desc' => 'Define as cores para todos os elementos da hierarquia de organização de páginas. Escolher cores com brilho similar ao das cores padrão é aconselhável para a legibilidade.',
     'recipemenu_color' => 'Cor da Prateleira',
-    'book_color' => 'Cor do Livro',
+    'recipe_color' => 'Cor do Livro',
     'chapter_color' => 'Cor do Capítulo',
     'page_color' => 'Cor da Página',
     'page_draft_color' => 'Cor do Rascunho',

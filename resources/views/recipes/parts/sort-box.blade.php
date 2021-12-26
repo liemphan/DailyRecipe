@@ -1,7 +1,7 @@
-<div class="sort-box" data-type="book" data-id="{{ $book->id }}">
-    <h5 class="text-book entity-list-item no-hover py-xs pl-none">
-        <span>@icon('book')</span>
-        <span>{{ $book->name }}</span>
+<div class="sort-box" data-type="recipe" data-id="{{ $recipe->id }}">
+    <h5 class="text-recipe entity-list-item no-hover py-xs pl-none">
+        <span>@icon('recipe')</span>
+        <span>{{ $recipe->name }}</span>
     </h5>
     <div class="sort-box-options pb-sm">
         <a href="#" data-sort="name" class="button outline small">{{ trans('entities.recipes_sort_name') }}</a>
@@ -12,23 +12,23 @@
     </div>
     <ul class="sortable-page-list sort-list">
 
-        @foreach($bookChildren as $bookChild)
-            <li class="text-{{ $bookChild->getType() }}"
-                data-id="{{$bookChild->id}}" data-type="{{ $bookChild->getType() }}"
-                data-name="{{ $bookChild->name }}" data-created="{{ $bookChild->created_at->timestamp }}"
-                data-updated="{{ $bookChild->updated_at->timestamp }}">
+        @foreach($recipeChildren as $recipeChild)
+            <li class="text-{{ $recipeChild->getType() }}"
+                data-id="{{$recipeChild->id}}" data-type="{{ $recipeChild->getType() }}"
+                data-name="{{ $recipeChild->name }}" data-created="{{ $recipeChild->created_at->timestamp }}"
+                data-updated="{{ $recipeChild->updated_at->timestamp }}">
                 <div class="entity-list-item">
-                    <span>@icon($bookChild->getType()) </span>
+                    <span>@icon($recipeChild->getType()) </span>
                     <div>
-                        {{ $bookChild->name }}
+                        {{ $recipeChild->name }}
                         <div>
 
                         </div>
                     </div>
                 </div>
-                @if($bookChild->isA('chapter'))
+                @if($recipeChild->isA('chapter'))
                     <ul>
-                        @foreach($bookChild->visible_pages as $page)
+                        @foreach($recipeChild->visible_pages as $page)
                             <li class="text-page"
                                 data-id="{{$page->id}}" data-type="page"
                                 data-name="{{ $page->name }}" data-created="{{ $page->created_at->timestamp }}"

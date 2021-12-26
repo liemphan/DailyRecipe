@@ -6,7 +6,7 @@
 
         <div class="my-s">
             @include('entities.breadcrumbs', ['crumbs' => [
-                ($parent->isA('chapter') ? $parent->book : null),
+                ($parent->isA('chapter') ? $parent->recipe : null),
                 $parent,
                 $parent->getUrl('/create-page') => [
                     'text' => trans('entities.pages_new'),

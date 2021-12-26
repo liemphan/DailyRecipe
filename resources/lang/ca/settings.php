@@ -50,7 +50,7 @@ return [
     'content_colors' => 'Colors del contingut',
     'content_colors_desc' => 'Defineix els colors de tots els elements de la jerarquia d\'organització de pàgines. És recomanable triar colors amb una brillantor semblant als colors per defecte per a mantenir-ne la llegibilitat.',
     'recipemenu_color' => 'Color dels prestatges',
-    'book_color' => 'Color dels llibres',
+    'recipe_color' => 'Color dels llibres',
     'chapter_color' => 'Color dels capítols',
     'page_color' => 'Color de les pàgines',
     'page_draft_color' => 'Color dels esborranys de pàgines',

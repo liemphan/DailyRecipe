@@ -8,7 +8,7 @@ return [
     'image_select' => 'Selezione Immagine',
     'image_all' => 'Tutte',
     'image_all_title' => 'Visualizza tutte le immagini',
-    'image_book_title' => 'Visualizza immagini caricate in questo libro',
+    'image_recipe_title' => 'Visualizza immagini caricate in questo libro',
     'image_page_title' => 'Visualizza immagini caricate in questa pagina',
     'image_search_hint' => 'Cerca immagine per nome',
     'image_uploaded' => 'Caricato :uploadedDate',

@@ -8,7 +8,7 @@ return [
     'image_select' => '選取圖片',
     'image_all' => '全部',
     'image_all_title' => '檢視所有圖片',
-    'image_book_title' => '檢視上傳到此書本的圖片',
+    'image_recipe_title' => '檢視上傳到此書本的圖片',
     'image_page_title' => '檢視上傳到此頁面的圖片',
     'image_search_hint' => '以圖片名稱搜尋',
     'image_uploaded' => '上傳於 :uploadedDate',

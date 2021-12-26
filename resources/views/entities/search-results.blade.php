@@ -11,5 +11,5 @@
     <div refs="entity-search@loadingBlock">
         @include('common.loading-icon')
     </div>
-    <div class="book-contents" refs="entity-search@searchResults"></div>
+    <div class="recipe-contents" refs="entity-search@searchResults"></div>
 </div>

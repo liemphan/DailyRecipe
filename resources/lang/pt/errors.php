@@ -59,11 +59,11 @@ return [
     // Entities
     'entity_not_found' => 'Entidade não encontrada',
     'recipemenu_not_found' => 'Estante de Livros não encontrada',
-    'book_not_found' => 'Livro não encontrado',
+    'recipe_not_found' => 'Livro não encontrado',
     'page_not_found' => 'Página não encontrada',
     'chapter_not_found' => 'Capítulo não encontrado',
-    'selected_book_not_found' => 'O livro selecionado não foi encontrado',
-    'selected_book_chapter_not_found' => 'O Livro ou Capítulo selecionado não foi encontrado',
+    'selected_recipe_not_found' => 'O livro selecionado não foi encontrado',
+    'selected_recipe_chapter_not_found' => 'O Livro ou Capítulo selecionado não foi encontrado',
     'guests_cannot_save_drafts' => 'Convidados não podem guardar rascunhos',
 
     // Users

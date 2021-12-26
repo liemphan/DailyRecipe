@@ -3,7 +3,7 @@
 namespace DailyRecipe\Entities\Tools;
 
 use DailyRecipe\Entities\EntityProvider;
-use DailyRecipe\Entities\Models\Book;
+use DailyRecipe\Entities\Models\Recipe;
 use DailyRecipe\Entities\Models\Recipemenu;
 use DailyRecipe\Entities\Models\Chapter;
 use DailyRecipe\Entities\Models\Page;
@@ -24,19 +24,19 @@ class SiblingFetcher
             $entities = $entity->chapter->getVisiblePages();
         }
 
-        // Page in book or chapter
+        // Page in recipe or chapter
         if (($entity instanceof Page && !$entity->chapter) || $entity instanceof Chapter) {
-            $entities = $entity->book->getDirectChildren();
+            $entities = $entity->recipe->getDirectChildren();
         }
 
-        // Book
-        // Gets just the books in a menu if menu is in context
-        if ($entity instanceof Book) {
-            $contextMenu = (new MenuContext())->getContextualMenuForBook($entity);
+        // Recipe
+        // Gets just the recipes in a menu if menu is in context
+        if ($entity instanceof Recipe) {
+            $contextMenu = (new MenuContext())->getContextualMenuForRecipe($entity);
             if ($contextMenu) {
-                $entities = $contextMenu->visibleBooks()->get();
+                $entities = $contextMenu->visibleRecipes()->get();
             } else {
-                $entities = Book::visible()->get();
+                $entities = Recipe::visible()->get();
             }
         }
 

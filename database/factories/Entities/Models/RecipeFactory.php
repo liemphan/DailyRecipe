@@ -5,14 +5,14 @@ namespace Database\Factories\Entities\Models;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
 
-class BookFactory extends Factory
+class RecipeFactory extends Factory
 {
     /**
      * The name of the factory's corresponding model.
      *
      * @var string
      */
-    protected $model = \DailyRecipe\Entities\Models\Book::class;
+    protected $model = \DailyRecipe\Entities\Models\Recipe::class;
 
     /**
      * Define the model's default state.

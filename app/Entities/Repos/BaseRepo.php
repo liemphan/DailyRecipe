@@ -76,7 +76,7 @@ class BaseRepo
     {
         if ($coverImage) {
             $this->imageRepo->destroyImage($entity->cover);
-            $image = $this->imageRepo->saveNew($coverImage, 'cover_book', $entity->id, 512, 512, true);
+            $image = $this->imageRepo->saveNew($coverImage, 'cover_recipe', $entity->id, 512, 512, true);
             $entity->cover()->associate($image);
             $entity->save();
         }

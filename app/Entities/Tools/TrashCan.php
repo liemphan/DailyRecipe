@@ -3,7 +3,7 @@
 namespace DailyRecipe\Entities\Tools;
 
 use DailyRecipe\Entities\EntityProvider;
-use DailyRecipe\Entities\Models\Book;
+use DailyRecipe\Entities\Models\Recipe;
 use DailyRecipe\Entities\Models\Recipemenu;
 use DailyRecipe\Entities\Models\Chapter;
 use DailyRecipe\Entities\Models\Deletion;
@@ -30,23 +30,23 @@ class TrashCan
     }
 
     /**
-     * Send a book to the recycle bin.
+     * Send a recipe to the recycle bin.
      *
      * @throws Exception
      */
-    public function softDestroyBook(Book $book)
+    public function softDestroyRecipe(Recipe $recipe)
     {
-        Deletion::createForEntity($book);
+        Deletion::createForEntity($recipe);
 
-        foreach ($book->pages as $page) {
+        foreach ($recipe->pages as $page) {
             $this->softDestroyPage($page, false);
         }
 
-        foreach ($book->chapters as $chapter) {
+        foreach ($recipe->chapters as $chapter) {
             $this->softDestroyChapter($chapter, false);
         }
 
-        $book->delete();
+        $recipe->delete();
     }
 
     /**
@@ -106,28 +106,28 @@ class TrashCan
     }
 
     /**
-     * Remove a book from the system.
+     * Remove a recipe from the system.
      * Destroys any child chapters and pages.
      *
      * @throws Exception
      */
-    protected function destroyBook(Book $book): int
+    protected function destroyRecipe(Recipe $recipe): int
     {
         $count = 0;
-        $pages = $book->pages()->withTrashed()->get();
+        $pages = $recipe->pages()->withTrashed()->get();
         foreach ($pages as $page) {
             $this->destroyPage($page);
             $count++;
         }
 
-        $chapters = $book->chapters()->withTrashed()->get();
+        $chapters = $recipe->chapters()->withTrashed()->get();
         foreach ($chapters as $chapter) {
             $this->destroyChapter($chapter);
             $count++;
         }
 
-        $this->destroyCommonRelations($book);
-        $book->forceDelete();
+        $this->destroyCommonRelations($recipe);
+        $recipe->forceDelete();
 
         return $count + 1;
     }
@@ -295,11 +295,11 @@ class TrashCan
             $count++;
         };
 
-        if ($entity instanceof Chapter || $entity instanceof Book) {
+        if ($entity instanceof Chapter || $entity instanceof Recipe) {
             $entity->pages()->withTrashed()->withCount('deletions')->get()->each($restoreAction);
         }
 
-        if ($entity instanceof Book) {
+        if ($entity instanceof Recipe) {
             $entity->chapters()->withTrashed()->withCount('deletions')->get()->each($restoreAction);
         }
 
@@ -319,8 +319,8 @@ class TrashCan
         if ($entity instanceof Chapter) {
             return $this->destroyChapter($entity);
         }
-        if ($entity instanceof Book) {
-            return $this->destroyBook($entity);
+        if ($entity instanceof Recipe) {
+            return $this->destroyRecipe($entity);
         }
         if ($entity instanceof Recipemenu) {
             return $this->destroyMenu($entity);

@@ -8,7 +8,7 @@ return [
     'image_select' => 'انتخاب تصویر',
     'image_all' => 'همه',
     'image_all_title' => 'نمایش تمام تصاویر',
-    'image_book_title' => 'تصاویر بارگذاری شده در این کتاب را مشاهده کنید',
+    'image_recipe_title' => 'تصاویر بارگذاری شده در این کتاب را مشاهده کنید',
     'image_page_title' => 'تصاویر بارگذاری شده در این صفحه را مشاهده کنید',
     'image_search_hint' => 'جستجو بر اساس نام تصویر',
     'image_uploaded' => 'بارگذاری شده :uploadedDate',

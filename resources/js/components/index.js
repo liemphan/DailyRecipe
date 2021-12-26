@@ -5,7 +5,7 @@ import attachments from "./attachments.js"
 import attachmentsList from "./attachments-list.js"
 import autoSuggest from "./auto-suggest.js"
 import backToTop from "./back-to-top.js"
-import bookSort from "./book-sort.js"
+import recipeSort from "./recipe-sort.js"
 import chapterToggle from "./chapter-toggle.js"
 import codeEditor from "./code-editor.js"
 import codeHighlighter from "./code-highlighter.js"
@@ -60,7 +60,7 @@ const componentMapping = {
     "attachments-list": attachmentsList,
     "auto-suggest": autoSuggest,
     "back-to-top": backToTop,
-    "book-sort": bookSort,
+    "recipe-sort": recipeSort,
     "chapter-toggle": chapterToggle,
     "code-editor": codeEditor,
     "code-highlighter": codeHighlighter,

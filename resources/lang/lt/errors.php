@@ -59,11 +59,11 @@ return [
     // Entities
     'entity_not_found' => 'Subjektas nerastas',
     'recipemenu_not_found' => 'Knygų lentyna nerasta',
-    'book_not_found' => 'Knyga nerasta',
+    'recipe_not_found' => 'Knyga nerasta',
     'page_not_found' => 'Puslapis nerastas',
     'chapter_not_found' => 'Skyrius nerastas',
-    'selected_book_not_found' => 'Pasirinkta knyga nerasta',
-    'selected_book_chapter_not_found' => 'Pasirinkta knyga ar skyrius buvo nerasti',
+    'selected_recipe_not_found' => 'Pasirinkta knyga nerasta',
+    'selected_recipe_chapter_not_found' => 'Pasirinkta knyga ar skyrius buvo nerasti',
     'guests_cannot_save_drafts' => 'Svečiai negali išsaugoti juodraščių',
 
     // Users

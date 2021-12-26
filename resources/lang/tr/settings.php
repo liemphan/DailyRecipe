@@ -50,7 +50,7 @@ return [
     'content_colors' => 'İçerik Renkleri',
     'content_colors_desc' => 'Sayfa hiyerarşisinde bulunan bütün elemanlar için renkleri ayarlar. Bu renkleri varsayılan renklerin parlaklığına yakın bir parlaklıkta seçmeniz, okunurluğun iyileştirilmesi açısından önerilir.',
     'recipemenu_color' => 'Raf Rengi',
-    'book_color' => 'Kitap Rengi',
+    'recipe_color' => 'Kitap Rengi',
     'chapter_color' => 'Bölüm Rengi',
     'page_color' => 'Sayfa Rengi',
     'page_draft_color' => 'Sayfa Taslağı Rengi',

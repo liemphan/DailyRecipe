@@ -26,23 +26,23 @@
                     'name' => trans('common.sort_name'),
                     'created_at' => trans('common.sort_created_at'),
                     'updated_at' => trans('common.sort_updated_at'),
-                ], 'order' => $order, 'sort' => $sort, 'type' => 'recipemenus_books'])
+                ], 'order' => $order, 'sort' => $sort, 'type' => 'recipemenus_recipes'])
             </div>
         </div>
 
-        <div class="book-content">
+        <div class="recipe-content">
             <p class="text-muted">{!! nl2br(e($menu->description)) !!}</p>
             @if(count($sortedVisibleMenuBooks) > 0)
                 @if($view === 'list')
                     <div class="entity-list">
-                        @foreach($sortedVisibleMenuBooks as $book)
-                            @include('books.parts.list-item', ['book' => $book])
+                        @foreach($sortedVisibleMenuBooks as $recipe)
+                            @include('recipes.parts.list-item', ['recipe' => $recipe])
                         @endforeach
                     </div>
                 @else
                     <div class="grid third">
-                        @foreach($sortedVisibleMenuBooks as $book)
-                            @include('entities.grid-item', ['entity' => $book])
+                        @foreach($sortedVisibleMenuBooks as $recipe)
+                            @include('entities.grid-item', ['entity' => $recipe])
                         @endforeach
                     </div>
                 @endif
@@ -51,8 +51,8 @@
                     <hr>
                     <p class="text-muted italic mt-xl mb-m">{{ trans('entities.menus_empty_contents') }}</p>
                     <div class="icon-list inline block">
-                        @if(userCan('book-create-all') && userCan('recipemenu-update', $menu))
-                            <a href="{{ $menu->getUrl('/create-book') }}" class="icon-list-item text-book">
+                        @if(userCan('recipe-create-all') && userCan('recipemenu-update', $menu))
+                            <a href="{{ $menu->getUrl('/create-recipe') }}" class="icon-list-item text-recipe">
                                 <span class="icon">@icon('add')</span>
                                 <span>{{ trans('entities.recipes_create') }}</span>
                             </a>
@@ -108,8 +108,8 @@
         <h5>{{ trans('common.actions') }}</h5>
         <div class="icon-list text-primary">
 
-            @if(userCan('book-create-all') && userCan('recipemenu-update', $menu))
-                <a href="{{ $menu->getUrl('/create-book') }}" class="icon-list-item">
+            @if(userCan('recipe-create-all') && userCan('recipemenu-update', $menu))
+                <a href="{{ $menu->getUrl('/create-recipe') }}" class="icon-list-item">
                     <span class="icon">@icon('add')</span>
                     <span>{{ trans('entities.recipes_new_action') }}</span>
                 </a>

@@ -26,14 +26,14 @@ return [
     'chapter_move'                => 'liigutas peatükki',
 
     // Books
-    'book_create'                 => 'lisas raamatu',
-    'book_create_notification'    => 'Raamat on lisatud',
-    'book_update'                 => 'muutis raamatut',
-    'book_update_notification'    => 'Raamat on muudetud',
-    'book_delete'                 => 'kustutas raamatu',
-    'book_delete_notification'    => 'Raamat on kustutatud',
-    'book_sort'                   => 'sorteeris raamatut',
-    'book_sort_notification'      => 'Raamat on sorteeritud',
+    'recipe_create'                 => 'lisas raamatu',
+    'recipe_create_notification'    => 'Raamat on lisatud',
+    'recipe_update'                 => 'muutis raamatut',
+    'recipe_update_notification'    => 'Raamat on muudetud',
+    'recipe_delete'                 => 'kustutas raamatu',
+    'recipe_delete_notification'    => 'Raamat on kustutatud',
+    'recipe_sort'                   => 'sorteeris raamatut',
+    'recipe_sort_notification'      => 'Raamat on sorteeritud',
 
     // Recipemenus
     'recipemenu_create'            => 'lisas riiuli',

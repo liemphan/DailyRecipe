@@ -8,7 +8,7 @@ return [
     'image_select' => 'Chọn Ảnh',
     'image_all' => 'Tất cả',
     'image_all_title' => 'Xem tất cả các ảnh',
-    'image_book_title' => 'Xem các ảnh đã được tải lên sách này',
+    'image_recipe_title' => 'Xem các ảnh đã được tải lên sách này',
     'image_page_title' => 'Xem các ảnh đã được tải lên trang này',
     'image_search_hint' => 'Tìm kiếm ảnh bằng tên',
     'image_uploaded' => 'Đã tải lên :uploadedDate',

@@ -59,11 +59,11 @@ return [
     // Entities
     'entity_not_found' => 'Emne ikke fundet',
     'recipemenu_not_found' => 'Bogreol ikke fundet',
-    'book_not_found' => 'Bog ikke fundet',
+    'recipe_not_found' => 'Bog ikke fundet',
     'page_not_found' => 'Side ikke fundet',
     'chapter_not_found' => 'Kapitel ikke fundet',
-    'selected_book_not_found' => 'Den valgte bog kunne ikke findes',
-    'selected_book_chapter_not_found' => 'Den valgte bog eller kapitel kunne ikke findes',
+    'selected_recipe_not_found' => 'Den valgte bog kunne ikke findes',
+    'selected_recipe_chapter_not_found' => 'Den valgte bog eller kapitel kunne ikke findes',
     'guests_cannot_save_drafts' => 'Gæster kan ikke gemme kladder',
 
     // Users

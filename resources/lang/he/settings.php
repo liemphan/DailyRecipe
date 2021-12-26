@@ -50,7 +50,7 @@ return [
     'content_colors' => 'צבעי התוכן',
     'content_colors_desc' => 'מגדיר צבעים לכל האלמנטים בהיררכיה הארגונית של הדף. לחווית קריאה מיטבית, מומלץ לבחור צבעים בבהירות הדומה לצבעי ברירת המחדל.',
     'recipemenu_color' => 'צבע המדף',
-    'book_color' => 'צבע הספר',
+    'recipe_color' => 'צבע הספר',
     'chapter_color' => 'צבע הפרק',
     'page_color' => 'צבע העמוד',
     'page_draft_color' => 'צבע טיוטת העמוד',

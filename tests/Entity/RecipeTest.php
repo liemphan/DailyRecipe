@@ -2,41 +2,41 @@
 
 namespace Tests\Entity;
 
-use DailyRecipe\Entities\Models\Book;
+use DailyRecipe\Entities\Models\Recipe;
 use Tests\TestCase;
 
-class BookTest extends TestCase
+class RecipeTest extends TestCase
 {
     public function test_create()
     {
-        $book = Book::factory()->make([
-            'name' => 'My First Book',
+        $book = Recipe::factory()->make([
+            'name' => 'My First Recipe',
         ]);
 
-        $resp = $this->asEditor()->get('/books');
-        $resp->assertElementContains('a[href="' . url('/create-book') . '"]', 'Create New Book');
+        $resp = $this->asEditor()->get('/recipes');
+        $resp->assertElementContains('a[href="' . url('/create-book') . '"]', 'Create New Recipe');
 
         $resp = $this->get('/create-book');
-        $resp->assertElementContains('form[action="' . url('/books') . '"][method="POST"]', 'Save Book');
+        $resp->assertElementContains('form[action="' . url('/recipes') . '"][method="POST"]', 'Save Recipe');
 
-        $resp = $this->post('/books', $book->only('name', 'description'));
-        $resp->assertRedirect('/books/my-first-book');
+        $resp = $this->post('/recipes', $book->only('name', 'description'));
+        $resp->assertRedirect('/recipes/my-first-book');
 
-        $resp = $this->get('/books/my-first-book');
+        $resp = $this->get('/recipes/my-first-book');
         $resp->assertSee($book->name);
         $resp->assertSee($book->description);
     }
 
     public function test_create_uses_different_slugs_when_name_reused()
     {
-        $book = Book::factory()->make([
-            'name' => 'My First Book',
+        $book = Recipe::factory()->make([
+            'name' => 'My First Recipe',
         ]);
 
-        $this->asEditor()->post('/books', $book->only('name', 'description'));
-        $this->asEditor()->post('/books', $book->only('name', 'description'));
+        $this->asEditor()->post('/recipes', $book->only('name', 'description'));
+        $this->asEditor()->post('/recipes', $book->only('name', 'description'));
 
-        $books = Book::query()->where('name', '=', $book->name)
+        $books = Recipe::query()->where('name', '=', $book->name)
             ->orderBy('id', 'desc')
             ->take(2)
             ->get();
@@ -47,8 +47,8 @@ class BookTest extends TestCase
 
     public function test_update()
     {
-        /** @var Book $book */
-        $book = Book::query()->first();
+        /** @var Recipe $book */
+        $book = Recipe::query()->first();
         // Cheeky initial update to refresh slug
         $this->asEditor()->put($book->getUrl(), ['name' => $book->name . '5', 'description' => $book->description]);
         $book->refresh();
@@ -59,7 +59,7 @@ class BookTest extends TestCase
         $resp = $this->get($book->getUrl('/edit'));
         $resp->assertSee($book->name);
         $resp->assertSee($book->description);
-        $resp->assertElementContains('form[action="' . $book->getUrl() . '"]', 'Save Book');
+        $resp->assertElementContains('form[action="' . $book->getUrl() . '"]', 'Save Recipe');
 
         $resp = $this->put($book->getUrl(), ['name' => $newName, 'description' => $newDesc]);
         $resp->assertRedirect($book->getUrl() . '-updated');
@@ -71,7 +71,7 @@ class BookTest extends TestCase
 
     public function test_delete()
     {
-        $book = Book::query()->whereHas('pages')->whereHas('chapters')->first();
+        $book = Recipe::query()->whereHas('pages')->whereHas('chapters')->first();
         $this->assertNull($book->deleted_at);
         $pageCount = $book->pages()->count();
         $chapterCount = $book->chapters()->count();
@@ -80,7 +80,7 @@ class BookTest extends TestCase
         $deleteViewReq->assertSeeText('Are you sure you want to delete this book?');
 
         $deleteReq = $this->delete($book->getUrl());
-        $deleteReq->assertRedirect(url('/books'));
+        $deleteReq->assertRedirect(url('/recipes'));
         $this->assertActivityExists('recipe_delete', $book);
 
         $book->refresh();
@@ -93,26 +93,26 @@ class BookTest extends TestCase
         $this->assertTrue($book->deletions()->count() === 1);
 
         $redirectReq = $this->get($deleteReq->baseResponse->headers->get('location'));
-        $redirectReq->assertNotificationContains('Book Successfully Deleted');
+        $redirectReq->assertNotificationContains('Recipe Successfully Deleted');
     }
 
     public function test_cancel_on_create_page_leads_back_to_books_listing()
     {
         $resp = $this->asEditor()->get('/create-book');
-        $resp->assertElementContains('form a[href="' . url('/books') . '"]', 'Cancel');
+        $resp->assertElementContains('form a[href="' . url('/recipes') . '"]', 'Cancel');
     }
 
     public function test_cancel_on_edit_book_page_leads_back_to_book()
     {
-        /** @var Book $book */
-        $book = Book::query()->first();
+        /** @var Recipe $book */
+        $book = Recipe::query()->first();
         $resp = $this->asEditor()->get($book->getUrl('/edit'));
         $resp->assertElementContains('form a[href="' . $book->getUrl() . '"]', 'Cancel');
     }
 
     public function test_next_previous_navigation_controls_show_within_book_content()
     {
-        $book = Book::query()->first();
+        $book = Recipe::query()->first();
         $chapter = $book->chapters->first();
 
         $resp = $this->asEditor()->get($chapter->getUrl());
@@ -127,25 +127,25 @@ class BookTest extends TestCase
 
     public function test_recently_viewed_books_updates_as_expected()
     {
-        $books = Book::all()->take(2);
+        $books = Recipe::all()->take(2);
 
-        $this->asAdmin()->get('/books')
+        $this->asAdmin()->get('/recipes')
             ->assertElementNotContains('#recents', $books[0]->name)
             ->assertElementNotContains('#recents', $books[1]->name);
 
         $this->get($books[0]->getUrl());
         $this->get($books[1]->getUrl());
 
-        $this->get('/books')
+        $this->get('/recipes')
             ->assertElementContains('#recents', $books[0]->name)
             ->assertElementContains('#recents', $books[1]->name);
     }
 
     public function test_popular_books_updates_upon_visits()
     {
-        $books = Book::all()->take(2);
+        $books = Recipe::all()->take(2);
 
-        $this->asAdmin()->get('/books')
+        $this->asAdmin()->get('/recipes')
             ->assertElementNotContains('#popular', $books[0]->name)
             ->assertElementNotContains('#popular', $books[1]->name);
 
@@ -153,30 +153,30 @@ class BookTest extends TestCase
         $this->get($books[1]->getUrl());
         $this->get($books[0]->getUrl());
 
-        $this->get('/books')
+        $this->get('/recipes')
             ->assertElementContains('#popular .book:nth-child(1)', $books[0]->name)
             ->assertElementContains('#popular .book:nth-child(2)', $books[1]->name);
     }
 
     public function test_books_view_shows_view_toggle_option()
     {
-        /** @var Book $book */
+        /** @var Recipe $book */
         $editor = $this->getEditor();
         setting()->putUser($editor, 'books_view_type', 'list');
 
-        $resp = $this->actingAs($editor)->get('/books');
-        $resp->assertElementContains('form[action$="/settings/users/' . $editor->id . '/switch-books-view"]', 'Grid View');
+        $resp = $this->actingAs($editor)->get('/recipes');
+        $resp->assertElementContains('form[action$="/settings/users/' . $editor->id . '/switch-recipes-view"]', 'Grid View');
         $resp->assertElementExists('input[name="view_type"][value="grid"]');
 
-        $resp = $this->patch("/settings/users/{$editor->id}/switch-books-view", ['view_type' => 'grid']);
+        $resp = $this->patch("/settings/users/{$editor->id}/switch-recipes-view", ['view_type' => 'grid']);
         $resp->assertRedirect();
         $this->assertEquals('grid', setting()->getUser($editor, 'books_view_type'));
 
-        $resp = $this->actingAs($editor)->get('/books');
-        $resp->assertElementContains('form[action$="/settings/users/' . $editor->id . '/switch-books-view"]', 'List View');
+        $resp = $this->actingAs($editor)->get('/recipes');
+        $resp->assertElementContains('form[action$="/settings/users/' . $editor->id . '/switch-recipes-view"]', 'List View');
         $resp->assertElementExists('input[name="view_type"][value="list"]');
 
-        $resp = $this->patch("/settings/users/{$editor->id}/switch-books-view", ['view_type' => 'list']);
+        $resp = $this->patch("/settings/users/{$editor->id}/switch-recipes-view", ['view_type' => 'list']);
         $resp->assertRedirect();
         $this->assertEquals('list', setting()->getUser($editor, 'books_view_type'));
     }

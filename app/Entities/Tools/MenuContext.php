@@ -2,7 +2,7 @@
 
 namespace DailyRecipe\Entities\Tools;
 
-use DailyRecipe\Entities\Models\Book;
+use DailyRecipe\Entities\Models\Recipe;
 use DailyRecipe\Entities\Models\Recipemenu;
 
 class MenuContext
@@ -10,9 +10,9 @@ class MenuContext
     protected $KEY_MENU_CONTEXT_ID = 'context_recipemenu_id';
 
     /**
-     * Get the current recipemenu context for the given book.
+     * Get the current recipemenu context for the given recipe.
      */
-    public function getContextualMenuForBook(Book $book): ?Recipemenu
+    public function getContextualMenuForRecipe(Recipe $recipe): ?Recipemenu
     {
         $contextRecipemenuId = session()->get($this->KEY_MENU_CONTEXT_ID, null);
 
@@ -21,9 +21,9 @@ class MenuContext
         }
 
         $menu = Recipemenu::visible()->find($contextRecipemenuId);
-        $menuContainsBook = $menu && $menu->contains($book);
+        $menuContainsRecipe = $menu && $menu->contains($recipe);
 
-        return $menuContainsBook ? $menu : null;
+        return $menuContainsRecipe ? $menu : null;
     }
 
     /**
