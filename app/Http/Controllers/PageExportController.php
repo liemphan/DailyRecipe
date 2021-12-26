@@ -30,9 +30,9 @@ class PageExportController extends Controller
      * @throws NotFoundException
      * @throws Throwable
      */
-    public function pdf(string $bookSlug, string $pageSlug)
+    public function pdf(string $recipeSlug, string $pageSlug)
     {
-        $page = $this->pageRepo->getBySlug($bookSlug, $pageSlug);
+        $page = $this->pageRepo->getBySlug($recipeSlug, $pageSlug);
         $page->html = (new PageContent($page))->render();
         $pdfContent = $this->exportFormatter->pageToPdf($page);
 
@@ -45,9 +45,9 @@ class PageExportController extends Controller
      * @throws NotFoundException
      * @throws Throwable
      */
-    public function html(string $bookSlug, string $pageSlug)
+    public function html(string $recipeSlug, string $pageSlug)
     {
-        $page = $this->pageRepo->getBySlug($bookSlug, $pageSlug);
+        $page = $this->pageRepo->getBySlug($recipeSlug, $pageSlug);
         $page->html = (new PageContent($page))->render();
         $containedHtml = $this->exportFormatter->pageToContainedHtml($page);
 
@@ -59,9 +59,9 @@ class PageExportController extends Controller
      *
      * @throws NotFoundException
      */
-    public function plainText(string $bookSlug, string $pageSlug)
+    public function plainText(string $recipeSlug, string $pageSlug)
     {
-        $page = $this->pageRepo->getBySlug($bookSlug, $pageSlug);
+        $page = $this->pageRepo->getBySlug($recipeSlug, $pageSlug);
         $pageText = $this->exportFormatter->pageToPlainText($page);
 
         return $this->downloadResponse($pageText, $pageSlug . '.txt');
@@ -72,9 +72,9 @@ class PageExportController extends Controller
      *
      * @throws NotFoundException
      */
-    public function markdown(string $bookSlug, string $pageSlug)
+    public function markdown(string $recipeSlug, string $pageSlug)
     {
-        $page = $this->pageRepo->getBySlug($bookSlug, $pageSlug);
+        $page = $this->pageRepo->getBySlug($recipeSlug, $pageSlug);
         $pageText = $this->exportFormatter->pageToMarkdown($page);
 
         return $this->downloadResponse($pageText, $pageSlug . '.md');

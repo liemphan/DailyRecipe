@@ -71,7 +71,7 @@ class RecipeSortController extends Controller
 
         // Rebuild permissions and add activity for involved recipes.
         $recipesInvolved->each(function (Recipe $recipe) {
-            Activity::addForEntity($recipe, ActivityType::BOOK_SORT);
+            Activity::addForEntity($recipe, ActivityType::RECIPE_SORT);
         });
 
         return redirect($recipe->getUrl());

@@ -24,9 +24,9 @@ class PageRevisionController extends Controller
      *
      * @throws NotFoundException
      */
-    public function index(string $bookSlug, string $pageSlug)
+    public function index(string $recipeSlug, string $pageSlug)
     {
-        $page = $this->pageRepo->getBySlug($bookSlug, $pageSlug);
+        $page = $this->pageRepo->getBySlug($recipeSlug, $pageSlug);
         $this->setPageTitle(trans('entities.pages_revisions_named', ['pageName'=>$page->getShortName()]));
 
         return view('pages.revisions', [
@@ -40,9 +40,9 @@ class PageRevisionController extends Controller
      *
      * @throws NotFoundException
      */
-    public function show(string $bookSlug, string $pageSlug, int $revisionId)
+    public function show(string $recipeSlug, string $pageSlug, int $revisionId)
     {
-        $page = $this->pageRepo->getBySlug($bookSlug, $pageSlug);
+        $page = $this->pageRepo->getBySlug($recipeSlug, $pageSlug);
         $revision = $page->revisions()->where('id', '=', $revisionId)->first();
         if ($revision === null) {
             throw new NotFoundException();
@@ -57,7 +57,7 @@ class PageRevisionController extends Controller
 
         return view('pages.revision', [
             'page'     => $page,
-            'book'     => $page->recipe,
+            'recipe'     => $page->recipe,
             'diff'     => null,
             'revision' => $revision,
         ]);
@@ -68,9 +68,9 @@ class PageRevisionController extends Controller
      *
      * @throws NotFoundException
      */
-    public function changes(string $bookSlug, string $pageSlug, int $revisionId)
+    public function changes(string $recipeSlug, string $pageSlug, int $revisionId)
     {
-        $page = $this->pageRepo->getBySlug($bookSlug, $pageSlug);
+        $page = $this->pageRepo->getBySlug($recipeSlug, $pageSlug);
         $revision = $page->revisions()->where('id', '=', $revisionId)->first();
         if ($revision === null) {
             throw new NotFoundException();
@@ -88,7 +88,7 @@ class PageRevisionController extends Controller
 
         return view('pages.revision', [
             'page'     => $page,
-            'book'     => $page->recipe,
+            'recipe'     => $page->recipe,
             'diff'     => $diff,
             'revision' => $revision,
         ]);
@@ -99,9 +99,9 @@ class PageRevisionController extends Controller
      *
      * @throws NotFoundException
      */
-    public function restore(string $bookSlug, string $pageSlug, int $revisionId)
+    public function restore(string $recipeSlug, string $pageSlug, int $revisionId)
     {
-        $page = $this->pageRepo->getBySlug($bookSlug, $pageSlug);
+        $page = $this->pageRepo->getBySlug($recipeSlug, $pageSlug);
         $this->checkOwnablePermission('page-update', $page);
 
         $page = $this->pageRepo->restoreRevision($page, $revisionId);
@@ -114,9 +114,9 @@ class PageRevisionController extends Controller
      *
      * @throws NotFoundException
      */
-    public function destroy(string $bookSlug, string $pageSlug, int $revId)
+    public function destroy(string $recipeSlug, string $pageSlug, int $revId)
     {
-        $page = $this->pageRepo->getBySlug($bookSlug, $pageSlug);
+        $page = $this->pageRepo->getBySlug($recipeSlug, $pageSlug);
         $this->checkOwnablePermission('page-delete', $page);
 
         $revision = $page->revisions()->where('id', '=', $revId)->first();

@@ -26,7 +26,7 @@ class HomeController extends Controller
                 ->where('draft', '=', true)
                 ->where('created_by', '=', user()->id)
                 ->orderBy('updated_at', 'desc')
-                ->with('book')
+                ->with('recipe')
                 ->take(6)
                 ->get();
         }
@@ -36,7 +36,7 @@ class HomeController extends Controller
             (new RecentlyViewed())->run(12 * $recentFactor, 1)
             : Recipe::visible()->orderBy('created_at', 'desc')->take(12 * $recentFactor)->get();
         $favourites = (new TopFavourites())->run(6);
-        $recentlyUpdatedPages = Page::visible()->with('book')
+        $recentlyUpdatedPages = Page::visible()->with('recipe')
             ->where('draft', false)
             ->orderBy('updated_at', 'desc')
             ->take($favourites->count() > 0 ? 5 : 10)
@@ -86,9 +86,9 @@ class HomeController extends Controller
         }
 
         if ($homepageOption === 'recipes') {
-            $bookRepo = app(RecipeRepo::class);
-            $books = $bookRepo->getAllPaginated(18, $commonData['sort'], $commonData['order']);
-            $data = array_merge($commonData, ['recipes' => $books]);
+            $recipeRepo = app(RecipeRepo::class);
+            $recipes = $recipeRepo->getAllPaginated(18, $commonData['sort'], $commonData['order']);
+            $data = array_merge($commonData, ['recipes' => $recipes]);
 
             return view('home.recipes', $data);
         }

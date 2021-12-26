@@ -34,9 +34,9 @@ class PageController extends Controller
      *
      * @throws Throwable
      */
-    public function create(string $bookSlug, string $chapterSlug = null)
+    public function create(string $recipeSlug, string $chapterSlug = null)
     {
-        $parent = $this->pageRepo->getParentFromSlugs($bookSlug, $chapterSlug);
+        $parent = $this->pageRepo->getParentFromSlugs($recipeSlug, $chapterSlug);
         $this->checkOwnablePermission('page-create', $parent);
 
         // Redirect to draft edit screen if signed in
@@ -57,13 +57,13 @@ class PageController extends Controller
      *
      * @throws ValidationException
      */
-    public function createAsGuest(Request $request, string $bookSlug, string $chapterSlug = null)
+    public function createAsGuest(Request $request, string $recipeSlug, string $chapterSlug = null)
     {
         $this->validate($request, [
             'name' => ['required', 'string', 'max:255'],
         ]);
 
-        $parent = $this->pageRepo->getParentFromSlugs($bookSlug, $chapterSlug);
+        $parent = $this->pageRepo->getParentFromSlugs($recipeSlug, $chapterSlug);
         $this->checkOwnablePermission('page-create', $parent);
 
         $page = $this->pageRepo->getNewDraftPage($parent);
@@ -80,7 +80,7 @@ class PageController extends Controller
      *
      * @throws NotFoundException
      */
-    public function editDraft(string $bookSlug, int $pageId)
+    public function editDraft(string $recipeSlug, int $pageId)
     {
         $draft = $this->pageRepo->getById($pageId);
         $this->checkOwnablePermission('page-create', $draft->getParent());
@@ -91,7 +91,7 @@ class PageController extends Controller
 
         return view('pages.edit', [
             'page'          => $draft,
-            'book'          => $draft->recipe,
+            'recipe'          => $draft->recipe,
             'isDraft'       => true,
             'draftsEnabled' => $draftsEnabled,
             'templates'     => $templates,
@@ -104,7 +104,7 @@ class PageController extends Controller
      * @throws NotFoundException
      * @throws ValidationException
      */
-    public function store(Request $request, string $bookSlug, int $pageId)
+    public function store(Request $request, string $recipeSlug, int $pageId)
     {
         $this->validate($request, [
             'name' => ['required', 'string', 'max:255'],
@@ -123,12 +123,12 @@ class PageController extends Controller
      *
      * @throws NotFoundException
      */
-    public function show(string $bookSlug, string $pageSlug)
+    public function show(string $recipeSlug, string $pageSlug)
     {
         try {
-            $page = $this->pageRepo->getBySlug($bookSlug, $pageSlug);
+            $page = $this->pageRepo->getBySlug($recipeSlug, $pageSlug);
         } catch (NotFoundException $e) {
-            $page = $this->pageRepo->getByOldSlug($bookSlug, $pageSlug);
+            $page = $this->pageRepo->getByOldSlug($recipeSlug, $pageSlug);
 
             if ($page === null) {
                 throw $e;
@@ -157,7 +157,7 @@ class PageController extends Controller
 
         return view('pages.show', [
             'page'            => $page,
-            'book'            => $page->recipe,
+            'recipe'            => $page->recipe,
             'current'         => $page,
             'sidebarTree'     => $sidebarTree,
             'commentsEnabled' => $commentsEnabled,
@@ -176,7 +176,7 @@ class PageController extends Controller
     {
         $page = $this->pageRepo->getById($pageId);
         $page->setHidden(array_diff($page->getHidden(), ['html', 'markdown']));
-        $page->makeHidden(['book']);
+        $page->makeHidden(['recipe']);
 
         return response()->json($page);
     }
@@ -186,9 +186,9 @@ class PageController extends Controller
      *
      * @throws NotFoundException
      */
-    public function edit(string $bookSlug, string $pageSlug)
+    public function edit(string $recipeSlug, string $pageSlug)
     {
-        $page = $this->pageRepo->getBySlug($bookSlug, $pageSlug);
+        $page = $this->pageRepo->getBySlug($recipeSlug, $pageSlug);
         $this->checkOwnablePermission('page-update', $page);
 
         $page->isDraft = false;
@@ -218,7 +218,7 @@ class PageController extends Controller
 
         return view('pages.edit', [
             'page'          => $page,
-            'book'          => $page->recipe,
+            'recipe'          => $page->recipe,
             'current'       => $page,
             'draftsEnabled' => $draftsEnabled,
             'templates'     => $templates,
@@ -231,12 +231,12 @@ class PageController extends Controller
      * @throws ValidationException
      * @throws NotFoundException
      */
-    public function update(Request $request, string $bookSlug, string $pageSlug)
+    public function update(Request $request, string $recipeSlug, string $pageSlug)
     {
         $this->validate($request, [
             'name' => ['required', 'string', 'max:255'],
         ]);
-        $page = $this->pageRepo->getBySlug($bookSlug, $pageSlug);
+        $page = $this->pageRepo->getBySlug($recipeSlug, $pageSlug);
         $this->checkOwnablePermission('page-update', $page);
 
         $this->pageRepo->update($page, $request->all());
@@ -286,14 +286,14 @@ class PageController extends Controller
      *
      * @throws NotFoundException
      */
-    public function showDelete(string $bookSlug, string $pageSlug)
+    public function showDelete(string $recipeSlug, string $pageSlug)
     {
-        $page = $this->pageRepo->getBySlug($bookSlug, $pageSlug);
+        $page = $this->pageRepo->getBySlug($recipeSlug, $pageSlug);
         $this->checkOwnablePermission('page-delete', $page);
         $this->setPageTitle(trans('entities.pages_delete_named', ['pageName' => $page->getShortName()]));
 
         return view('pages.delete', [
-            'book'    => $page->recipe,
+            'recipe'    => $page->recipe,
             'page'    => $page,
             'current' => $page,
         ]);
@@ -304,14 +304,14 @@ class PageController extends Controller
      *
      * @throws NotFoundException
      */
-    public function showDeleteDraft(string $bookSlug, int $pageId)
+    public function showDeleteDraft(string $recipeSlug, int $pageId)
     {
         $page = $this->pageRepo->getById($pageId);
         $this->checkOwnablePermission('page-update', $page);
         $this->setPageTitle(trans('entities.pages_delete_draft_named', ['pageName' => $page->getShortName()]));
 
         return view('pages.delete', [
-            'book'    => $page->recipe,
+            'recipe'    => $page->recipe,
             'page'    => $page,
             'current' => $page,
         ]);
@@ -323,9 +323,9 @@ class PageController extends Controller
      * @throws NotFoundException
      * @throws Throwable
      */
-    public function destroy(string $bookSlug, string $pageSlug)
+    public function destroy(string $recipeSlug, string $pageSlug)
     {
-        $page = $this->pageRepo->getBySlug($bookSlug, $pageSlug);
+        $page = $this->pageRepo->getBySlug($recipeSlug, $pageSlug);
         $this->checkOwnablePermission('page-delete', $page);
         $parent = $page->getParent();
 
@@ -340,10 +340,10 @@ class PageController extends Controller
      * @throws NotFoundException
      * @throws Throwable
      */
-    public function destroyDraft(string $bookSlug, int $pageId)
+    public function destroyDraft(string $recipeSlug, int $pageId)
     {
         $page = $this->pageRepo->getById($pageId);
-        $book = $page->recipe;
+        $recipe = $page->recipe;
         $chapter = $page->chapter;
         $this->checkOwnablePermission('page-update', $page);
 
@@ -355,7 +355,7 @@ class PageController extends Controller
             return redirect($chapter->getUrl());
         }
 
-        return redirect($book->getUrl());
+        return redirect($recipe->getUrl());
     }
 
     /**
@@ -378,14 +378,14 @@ class PageController extends Controller
      *
      * @throws NotFoundException
      */
-    public function showMove(string $bookSlug, string $pageSlug)
+    public function showMove(string $recipeSlug, string $pageSlug)
     {
-        $page = $this->pageRepo->getBySlug($bookSlug, $pageSlug);
+        $page = $this->pageRepo->getBySlug($recipeSlug, $pageSlug);
         $this->checkOwnablePermission('page-update', $page);
         $this->checkOwnablePermission('page-delete', $page);
 
         return view('pages.move', [
-            'book' => $page->recipe,
+            'recipe' => $page->recipe,
             'page' => $page,
         ]);
     }
@@ -396,9 +396,9 @@ class PageController extends Controller
      * @throws NotFoundException
      * @throws Throwable
      */
-    public function move(Request $request, string $bookSlug, string $pageSlug)
+    public function move(Request $request, string $recipeSlug, string $pageSlug)
     {
-        $page = $this->pageRepo->getBySlug($bookSlug, $pageSlug);
+        $page = $this->pageRepo->getBySlug($recipeSlug, $pageSlug);
         $this->checkOwnablePermission('page-update', $page);
         $this->checkOwnablePermission('page-delete', $page);
 
@@ -414,7 +414,7 @@ class PageController extends Controller
                 $this->showPermissionError();
             }
 
-            $this->showErrorNotification(trans('errors.selected_book_chapter_not_found'));
+            $this->showErrorNotification(trans('errors.selected_recipe_chapter_not_found'));
 
             return redirect()->back();
         }
@@ -429,14 +429,14 @@ class PageController extends Controller
      *
      * @throws NotFoundException
      */
-    public function showCopy(string $bookSlug, string $pageSlug)
+    public function showCopy(string $recipeSlug, string $pageSlug)
     {
-        $page = $this->pageRepo->getBySlug($bookSlug, $pageSlug);
+        $page = $this->pageRepo->getBySlug($recipeSlug, $pageSlug);
         $this->checkOwnablePermission('page-view', $page);
         session()->flashInput(['name' => $page->name]);
 
         return view('pages.copy', [
-            'book' => $page->recipe,
+            'recipe' => $page->recipe,
             'page' => $page,
         ]);
     }
@@ -447,9 +447,9 @@ class PageController extends Controller
      * @throws NotFoundException
      * @throws Throwable
      */
-    public function copy(Request $request, string $bookSlug, string $pageSlug)
+    public function copy(Request $request, string $recipeSlug, string $pageSlug)
     {
-        $page = $this->pageRepo->getBySlug($bookSlug, $pageSlug);
+        $page = $this->pageRepo->getBySlug($recipeSlug, $pageSlug);
         $this->checkOwnablePermission('page-view', $page);
 
         $entitySelection = $request->get('entity_selection', null) ?? null;
@@ -462,7 +462,7 @@ class PageController extends Controller
                 $this->showPermissionError();
             }
 
-            $this->showErrorNotification(trans('errors.selected_book_chapter_not_found'));
+            $this->showErrorNotification(trans('errors.selected_recipe_chapter_not_found'));
 
             return redirect()->back();
         }
@@ -477,9 +477,9 @@ class PageController extends Controller
      *
      * @throws NotFoundException
      */
-    public function showPermissions(string $bookSlug, string $pageSlug)
+    public function showPermissions(string $recipeSlug, string $pageSlug)
     {
-        $page = $this->pageRepo->getBySlug($bookSlug, $pageSlug);
+        $page = $this->pageRepo->getBySlug($recipeSlug, $pageSlug);
         $this->checkOwnablePermission('restrictions-manage', $page);
 
         return view('pages.permissions', [
@@ -493,9 +493,9 @@ class PageController extends Controller
      * @throws NotFoundException
      * @throws Throwable
      */
-    public function permissions(Request $request, PermissionsUpdater $permissionsUpdater, string $bookSlug, string $pageSlug)
+    public function permissions(Request $request, PermissionsUpdater $permissionsUpdater, string $recipeSlug, string $pageSlug)
     {
-        $page = $this->pageRepo->getBySlug($bookSlug, $pageSlug);
+        $page = $this->pageRepo->getBySlug($recipeSlug, $pageSlug);
         $this->checkOwnablePermission('restrictions-manage', $page);
 
         $permissionsUpdater->updateFromPermissionsForm($page, $request);
