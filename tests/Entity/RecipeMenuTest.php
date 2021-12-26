@@ -57,34 +57,34 @@ class RecipeMenuTest extends TestCase
         $resp->assertElementContains('a', 'New Menu');
     }
 
-    public function test_book_not_visible_in_menu_list_view_if_user_cant_view_menu()
+    public function test_recipe_not_visible_in_menu_list_view_if_user_cant_view_menu()
     {
         config()->set([
             'setting-defaults.user.recipemenus_view_type' => 'list',
         ]);
         $menu = Recipemenu::query()->first();
-        $book = $menu->books()->first();
+        $recipe = $menu->recipes()->first();
 
         $resp = $this->asEditor()->get('/menus');
-        $resp->assertSee($book->name);
-        $resp->assertSee($book->getUrl());
+        $resp->assertSee($recipe->name);
+        $resp->assertSee($recipe->getUrl());
 
-        $this->setEntityRestrictions($book, []);
+        $this->setEntityRestrictions($recipe, []);
 
         $resp = $this->asEditor()->get('/menus');
-        $resp->assertDontSee($book->name);
-        $resp->assertDontSee($book->getUrl());
+        $resp->assertDontSee($recipe->name);
+        $resp->assertDontSee($recipe->getUrl());
     }
 
     public function test_menus_create()
     {
-        $booksToInclude = Recipe::take(2)->get();
+        $recipesToInclude = Recipe::take(2)->get();
         $menuInfo = [
-            'name'        => 'My test book' . Str::random(4),
-            'description' => 'Test book description ' . Str::random(10),
+            'name'        => 'My test recipe' . Str::random(4),
+            'description' => 'Test recipe description ' . Str::random(10),
         ];
         $resp = $this->asEditor()->post('/menus', array_merge($menuInfo, [
-            'recipes' => $booksToInclude->implode('id', ','),
+            'recipes' => $recipesToInclude->implode('id', ','),
             'tags'  => [
                 [
                     'name'  => 'Test Category',
@@ -103,15 +103,15 @@ class RecipeMenuTest extends TestCase
         $menuPage->assertElementContains('.tag-item', 'Test Category');
         $menuPage->assertElementContains('.tag-item', 'Test Tag Value');
 
-        $this->assertDatabaseHas('recipemenus_books', ['recipemenu_id' => $menu->id, 'book_id' => $booksToInclude[0]->id]);
-        $this->assertDatabaseHas('recipemenus_books', ['recipemenu_id' => $menu->id, 'book_id' => $booksToInclude[1]->id]);
+        $this->assertDatabaseHas('recipemenus_recipes', ['recipemenu_id' => $menu->id, 'recipe_id' => $recipesToInclude[0]->id]);
+        $this->assertDatabaseHas('recipemenus_recipes', ['recipemenu_id' => $menu->id, 'recipe_id' => $recipesToInclude[1]->id]);
     }
 
     public function test_menus_create_sets_cover_image()
     {
         $menuInfo = [
-            'name'        => 'My test book' . Str::random(4),
-            'description' => 'Test book description ' . Str::random(10),
+            'name'        => 'My test recipe' . Str::random(4),
+            'description' => 'Test recipe description ' . Str::random(10),
         ];
 
         $imageFile = $this->getTestImage('menu-test.png');
@@ -135,8 +135,8 @@ class RecipeMenuTest extends TestCase
         $resp->assertSeeText($menu->name);
         $resp->assertSeeText($menu->description);
 
-        foreach ($menu->books as $book) {
-            $resp->assertSee($book->name);
+        foreach ($menu->recipes as $recipe) {
+            $resp->assertSee($recipe->name);
         }
     }
 
@@ -144,7 +144,7 @@ class RecipeMenuTest extends TestCase
     {
         $menu = Recipemenu::first();
         $resp = $this->asAdmin()->get($menu->getUrl());
-        $resp->assertSee($menu->getUrl('/create-book'));
+        $resp->assertSee($menu->getUrl('/create-recipe'));
         $resp->assertSee($menu->getUrl('/edit'));
         $resp->assertSee($menu->getUrl('/permissions'));
         $resp->assertSee($menu->getUrl('/delete'));
@@ -161,41 +161,41 @@ class RecipeMenuTest extends TestCase
     {
         $menu = Recipemenu::query()->first();
         $resp = $this->asAdmin()->get($menu->getUrl());
-        $resp->assertElementExists('form[action$="change-sort/menu_books"]');
-        $resp->assertElementContains('form[action$="change-sort/menu_books"] [aria-haspopup="true"]', 'Default');
+        $resp->assertElementExists('form[action$="change-sort/menu_recipes"]');
+        $resp->assertElementContains('form[action$="change-sort/menu_recipes"] [aria-haspopup="true"]', 'Default');
     }
 
     public function test_menu_view_sort_takes_action()
     {
         $menu = Recipemenu::query()->whereHas('recipes')->with('recipes')->first();
-        $books = Recipe::query()->take(3)->get(['id', 'name']);
-        $books[0]->fill(['name' => 'bsfsdfsdfsd'])->save();
-        $books[1]->fill(['name' => 'adsfsdfsdfsd'])->save();
-        $books[2]->fill(['name' => 'hdgfgdfg'])->save();
+        $recipes = Recipe::query()->take(3)->get(['id', 'name']);
+        $recipes[0]->fill(['name' => 'bsfsdfsdfsd'])->save();
+        $recipes[1]->fill(['name' => 'adsfsdfsdfsd'])->save();
+        $recipes[2]->fill(['name' => 'hdgfgdfg'])->save();
 
-        // Set book ordering
+        // Set recipe ordering
         $this->asAdmin()->put($menu->getUrl(), [
-            'recipes' => $books->implode('id', ','),
+            'recipes' => $recipes->implode('id', ','),
             'tags'  => [], 'description' => 'abc', 'name' => 'abc',
         ]);
-        $this->assertEquals(3, $menu->books()->count());
+        $this->assertEquals(3, $menu->recipes()->count());
         $menu->refresh();
 
         $resp = $this->asEditor()->get($menu->getUrl());
-        $resp->assertElementContains('.book-content a.grid-card', $books[0]->name, 1);
-        $resp->assertElementNotContains('.book-content a.grid-card', $books[0]->name, 3);
+        $resp->assertElementContains('.recipe-content a.grid-card', $recipes[0]->name, 1);
+        $resp->assertElementNotContains('.recipe-content a.grid-card', $recipes[0]->name, 3);
 
-        setting()->putUser($this->getEditor(), 'menu_books_sort_order', 'desc');
+        setting()->putUser($this->getEditor(), 'menu_recipes_sort_order', 'desc');
         $resp = $this->asEditor()->get($menu->getUrl());
-        $resp->assertElementNotContains('.book-content a.grid-card', $books[0]->name, 1);
-        $resp->assertElementContains('.book-content a.grid-card', $books[0]->name, 3);
+        $resp->assertElementNotContains('.recipe-content a.grid-card', $recipes[0]->name, 1);
+        $resp->assertElementContains('.recipe-content a.grid-card', $recipes[0]->name, 3);
 
-        setting()->putUser($this->getEditor(), 'menu_books_sort_order', 'desc');
-        setting()->putUser($this->getEditor(), 'menu_books_sort', 'name');
+        setting()->putUser($this->getEditor(), 'menu_recipes_sort_order', 'desc');
+        setting()->putUser($this->getEditor(), 'menu_recipes_sort', 'name');
         $resp = $this->asEditor()->get($menu->getUrl());
-        $resp->assertElementContains('.book-content a.grid-card', 'hdgfgdfg', 1);
-        $resp->assertElementContains('.book-content a.grid-card', 'bsfsdfsdfsd', 2);
-        $resp->assertElementContains('.book-content a.grid-card', 'adsfsdfsdfsd', 3);
+        $resp->assertElementContains('.recipe-content a.grid-card', 'hdgfgdfg', 1);
+        $resp->assertElementContains('.recipe-content a.grid-card', 'bsfsdfsdfsd', 2);
+        $resp->assertElementContains('.recipe-content a.grid-card', 'adsfsdfsdfsd', 3);
     }
 
     public function test_menu_edit()
@@ -204,14 +204,14 @@ class RecipeMenuTest extends TestCase
         $resp = $this->asEditor()->get($menu->getUrl('/edit'));
         $resp->assertSeeText('Edit Recipemenu');
 
-        $booksToInclude = Recipe::take(2)->get();
+        $recipesToInclude = Recipe::take(2)->get();
         $menuInfo = [
-            'name'        => 'My test book' . Str::random(4),
-            'description' => 'Test book description ' . Str::random(10),
+            'name'        => 'My test recipe' . Str::random(4),
+            'description' => 'Test recipe description ' . Str::random(10),
         ];
 
         $resp = $this->asEditor()->put($menu->getUrl(), array_merge($menuInfo, [
-            'recipes' => $booksToInclude->implode('id', ','),
+            'recipes' => $recipesToInclude->implode('id', ','),
             'tags'  => [
                 [
                     'name'  => 'Test Category',
@@ -232,30 +232,30 @@ class RecipeMenuTest extends TestCase
         $menuPage->assertElementContains('.tag-item', 'Test Category');
         $menuPage->assertElementContains('.tag-item', 'Test Tag Value');
 
-        $this->assertDatabaseHas('recipemenus_books', ['recipemenu_id' => $menu->id, 'book_id' => $booksToInclude[0]->id]);
-        $this->assertDatabaseHas('recipemenus_books', ['recipemenu_id' => $menu->id, 'book_id' => $booksToInclude[1]->id]);
+        $this->assertDatabaseHas('recipemenus_recipes', ['recipemenu_id' => $menu->id, 'recipe_id' => $recipesToInclude[0]->id]);
+        $this->assertDatabaseHas('recipemenus_recipes', ['recipemenu_id' => $menu->id, 'recipe_id' => $recipesToInclude[1]->id]);
     }
 
-    public function test_menu_create_new_book()
+    public function test_menu_create_new_recipe()
     {
         $menu = Recipemenu::first();
-        $resp = $this->asEditor()->get($menu->getUrl('/create-book'));
+        $resp = $this->asEditor()->get($menu->getUrl('/create-recipe'));
 
         $resp->assertSee('Create New Recipe');
         $resp->assertSee($menu->getShortName());
 
         $testName = 'Test Recipe in Menu Name';
 
-        $createBookResp = $this->asEditor()->post($menu->getUrl('/create-book'), [
+        $createRecipeResp = $this->asEditor()->post($menu->getUrl('/create-recipe'), [
             'name'        => $testName,
             'description' => 'Recipe in menu description',
         ]);
-        $createBookResp->assertRedirect();
+        $createRecipeResp->assertRedirect();
 
-        $newBook = Recipe::query()->orderBy('id', 'desc')->first();
-        $this->assertDatabaseHas('recipemenus_books', [
+        $newRecipe = Recipe::query()->orderBy('id', 'desc')->first();
+        $this->assertDatabaseHas('recipemenus_recipes', [
             'recipemenu_id' => $menu->id,
-            'book_id'      => $newBook->id,
+            'recipe_id'      => $newRecipe->id,
         ]);
 
         $resp = $this->asEditor()->get($menu->getUrl());
@@ -266,7 +266,7 @@ class RecipeMenuTest extends TestCase
     {
         $menu = Recipemenu::query()->whereHas('recipes')->first();
         $this->assertNull($menu->deleted_at);
-        $bookCount = $menu->books()->count();
+        $recipeCount = $menu->recipes()->count();
 
         $deleteViewReq = $this->asEditor()->get($menu->getUrl('/delete'));
         $deleteViewReq->assertSeeText('Are you sure you want to delete this recipemenu?');
@@ -278,7 +278,7 @@ class RecipeMenuTest extends TestCase
         $menu->refresh();
         $this->assertNotNull($menu->deleted_at);
 
-        $this->assertTrue($menu->books()->count() === $bookCount);
+        $this->assertTrue($menu->recipes()->count() === $recipeCount);
         $this->assertTrue($menu->deletions()->count() === 1);
 
         $redirectReq = $this->get($deleteReq->baseResponse->headers->get('location'));
@@ -292,18 +292,18 @@ class RecipeMenuTest extends TestCase
         $resp->assertSeeText('Copy Permissions');
         $resp->assertSee("action=\"{$menu->getUrl('/copy-permissions')}\"", false);
 
-        $child = $menu->books()->first();
+        $child = $menu->recipes()->first();
         $editorRole = $this->getEditor()->roles()->first();
-        $this->assertFalse(boolval($child->restricted), 'Child book should not be restricted by default');
-        $this->assertTrue($child->permissions()->count() === 0, 'Child book should have no permissions by default');
+        $this->assertFalse(boolval($child->restricted), 'Child recipe should not be restricted by default');
+        $this->assertTrue($child->permissions()->count() === 0, 'Child recipe should have no permissions by default');
 
         $this->setEntityRestrictions($menu, ['view', 'update'], [$editorRole]);
         $resp = $this->post($menu->getUrl('/copy-permissions'));
-        $child = $menu->books()->first();
+        $child = $menu->recipes()->first();
 
         $resp->assertRedirect($menu->getUrl());
-        $this->assertTrue(boolval($child->restricted), 'Child book should now be restricted');
-        $this->assertTrue($child->permissions()->count() === 2, 'Child book should have copied permissions');
+        $this->assertTrue(boolval($child->restricted), 'Child recipe should now be restricted');
+        $this->assertTrue($child->permissions()->count() === 2, 'Child recipe should have copied permissions');
         $this->assertDatabaseHas('entity_permissions', ['restrictable_id' => $child->id, 'action' => 'view', 'role_id' => $editorRole->id]);
         $this->assertDatabaseHas('entity_permissions', ['restrictable_id' => $child->id, 'action' => 'update', 'role_id' => $editorRole->id]);
     }
@@ -318,18 +318,18 @@ class RecipeMenuTest extends TestCase
     public function test_recipemenus_show_in_breadcrumbs_if_in_context()
     {
         $menu = Recipemenu::first();
-        $menuBook = $menu->books()->first();
-        $menuPage = $menuBook->pages()->first();
+        $menuRecipe = $menu->recipes()->first();
+        $menuPage = $menuRecipe->pages()->first();
         $this->asAdmin();
 
-        $bookVisit = $this->get($menuBook->getUrl());
-        $bookVisit->assertElementNotContains('.breadcrumbs', 'Menus');
-        $bookVisit->assertElementNotContains('.breadcrumbs', $menu->getShortName());
+        $recipeVisit = $this->get($menuRecipe->getUrl());
+        $recipeVisit->assertElementNotContains('.breadcrumbs', 'Menus');
+        $recipeVisit->assertElementNotContains('.breadcrumbs', $menu->getShortName());
 
         $this->get($menu->getUrl());
-        $bookVisit = $this->get($menuBook->getUrl());
-        $bookVisit->assertElementContains('.breadcrumbs', 'Menus');
-        $bookVisit->assertElementContains('.breadcrumbs', $menu->getShortName());
+        $recipeVisit = $this->get($menuRecipe->getUrl());
+        $recipeVisit->assertElementContains('.breadcrumbs', 'Menus');
+        $recipeVisit->assertElementContains('.breadcrumbs', $menu->getShortName());
 
         $pageVisit = $this->get($menuPage->getUrl());
         $pageVisit->assertElementContains('.breadcrumbs', 'Menus');
@@ -341,7 +341,7 @@ class RecipeMenuTest extends TestCase
         $pageVisit->assertElementNotContains('.breadcrumbs', $menu->getShortName());
     }
 
-    public function test_recipemenus_show_on_book()
+    public function test_recipemenus_show_on_recipe()
     {
         // Create menu
         $menuInfo = [
@@ -352,29 +352,29 @@ class RecipeMenuTest extends TestCase
         $this->asEditor()->post('/menus', $menuInfo);
         $menu = Recipemenu::where('name', '=', $menuInfo['name'])->first();
 
-        // Create book and add to menu
-        $this->asEditor()->post($menu->getUrl('/create-book'), [
-            'name'        => 'Test book name',
+        // Create recipe and add to menu
+        $this->asEditor()->post($menu->getUrl('/create-recipe'), [
+            'name'        => 'Test recipe name',
             'description' => 'Recipe in menu description',
         ]);
 
-        $newBook = Recipe::query()->orderBy('id', 'desc')->first();
+        $newRecipe = Recipe::query()->orderBy('id', 'desc')->first();
 
-        $resp = $this->asEditor()->get($newBook->getUrl());
+        $resp = $this->asEditor()->get($newRecipe->getUrl());
         $resp->assertElementContains('.tri-layout-left-contents', $menuInfo['name']);
 
         // Remove menu
         $this->delete($menu->getUrl());
 
-        $resp = $this->asEditor()->get($newBook->getUrl());
+        $resp = $this->asEditor()->get($newRecipe->getUrl());
         $resp->assertDontSee($menuInfo['name']);
     }
 
-    public function test_cancel_on_child_book_creation_returns_to_original_menu()
+    public function test_cancel_on_child_recipe_creation_returns_to_original_menu()
     {
         /** @var Recipemenu $menu */
         $menu = Recipemenu::query()->first();
-        $resp = $this->asEditor()->get($menu->getUrl('/create-book'));
+        $resp = $this->asEditor()->get($menu->getUrl('/create-recipe'));
         $resp->assertElementContains('form a[href="' . $menu->getUrl() . '"]', 'Cancel');
     }
 }

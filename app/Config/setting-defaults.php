@@ -17,7 +17,7 @@ return [
     'app-color'            => '#206ea7',
     'app-color-light'      => 'rgba(32,110,167,0.15)',
     'recipemenu-color'      => '#a94747',
-    'book-color'           => '#077b70',
+    'recipe-color'           => '#077b70',
     'chapter-color'        => '#af4d0d',
     'page-color'           => '#206ea7',
     'page-draft-color'     => '#7e50b1',
@@ -29,7 +29,7 @@ return [
         'dark-mode-enabled'     => env('APP_DEFAULT_DARK_MODE', false),
         'recipemenus_view_type' => env('APP_VIEWS_RECIPEMENUS', 'grid'),
         'recipemenu_view_type'   => env('APP_VIEWS_RECIPEMENU', 'grid'),
-        'books_view_type'       => env('APP_VIEWS_BOOKS', 'grid'),
+        'recipes_view_type'       => env('APP_VIEWS_RECIPES', 'grid'),
     ],
 
 ];

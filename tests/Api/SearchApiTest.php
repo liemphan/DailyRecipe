@@ -30,7 +30,7 @@ class SearchApiTest extends TestCase
 
         $resp = $this->getJson($this->baseEndpoint . '?query=' . $uniqueTerm . '&count=5&page=1');
         $resp->assertJsonCount(4, 'data');
-        $resp->assertJsonFragment(['name' => $uniqueTerm, 'type' => 'book']);
+        $resp->assertJsonFragment(['name' => $uniqueTerm, 'type' => 'recipe']);
         $resp->assertJsonFragment(['name' => $uniqueTerm, 'type' => 'chapter']);
         $resp->assertJsonFragment(['name' => $uniqueTerm, 'type' => 'page']);
         $resp->assertJsonFragment(['name' => $uniqueTerm, 'type' => 'recipemenu']);

@@ -98,16 +98,16 @@ class HomepageTest extends TestCase
         $homeVisit->assertSee($content);
     }
 
-    public function test_set_book_homepage()
+    public function test_set_recipe_homepage()
     {
         $editor = $this->getEditor();
-        setting()->putUser($editor, 'books_view_type', 'grid');
+        setting()->putUser($editor, 'recipes_view_type', 'grid');
 
         $this->setSettings(['app-homepage-type' => 'recipes']);
 
         $this->asEditor();
         $homeVisit = $this->get('/');
-        $homeVisit->assertSee('Books');
+        $homeVisit->assertSee('Recipes');
         $homeVisit->assertSee('grid-card');
         $homeVisit->assertSee('grid-card-content');
         $homeVisit->assertSee('grid-card-footer');
@@ -136,7 +136,7 @@ class HomepageTest extends TestCase
         $this->test_default_homepage_visible();
     }
 
-    public function test_menus_list_homepage_adheres_to_book_visibility_permissions()
+    public function test_menus_list_homepage_adheres_to_recipe_visibility_permissions()
     {
         $editor = $this->getEditor();
         setting()->putUser($editor, 'recipemenus_view_type', 'list');
@@ -144,25 +144,25 @@ class HomepageTest extends TestCase
         $this->asEditor();
 
         $menu = Recipemenu::query()->first();
-        $book = $menu->books()->first();
+        $recipe = $menu->recipes()->first();
 
         // Ensure initially visible
         $homeVisit = $this->get('/');
         $homeVisit->assertElementContains('.content-wrap', $menu->name);
-        $homeVisit->assertElementContains('.content-wrap', $book->name);
+        $homeVisit->assertElementContains('.content-wrap', $recipe->name);
 
-        // Ensure book no longer visible without view permission
+        // Ensure recipe no longer visible without view permission
         $editor->roles()->detach();
         $this->giveUserPermissions($editor, ['recipemenu-view-all']);
         $homeVisit = $this->get('/');
         $homeVisit->assertElementContains('.content-wrap', $menu->name);
-        $homeVisit->assertElementNotContains('.content-wrap', $book->name);
+        $homeVisit->assertElementNotContains('.content-wrap', $recipe->name);
 
         // Ensure is visible again with entity-level view permission
-        $this->setEntityRestrictions($book, ['view'], [$editor->roles()->first()]);
+        $this->setEntityRestrictions($recipe, ['view'], [$editor->roles()->first()]);
         $homeVisit = $this->get('/');
         $homeVisit->assertElementContains('.content-wrap', $menu->name);
-        $homeVisit->assertElementContains('.content-wrap', $book->name);
+        $homeVisit->assertElementContains('.content-wrap', $recipe->name);
     }
 
     public function test_new_users_dont_have_any_recently_viewed()

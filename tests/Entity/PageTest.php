@@ -55,10 +55,10 @@ class PageTest extends TestCase
     public function test_page_creation_with_markdown_content()
     {
         $this->setSettings(['app-editor' => 'markdown']);
-        $book = Recipe::query()->first();
+        $recipe = Recipe::query()->first();
 
-        $this->asEditor()->get($book->getUrl('/create-page'));
-        $draft = Page::query()->where('book_id', '=', $book->id)
+        $this->asEditor()->get($recipe->getUrl('/create-page'));
+        $draft = Page::query()->where('recipe_id', '=', $recipe->id)
             ->where('draft', '=', true)->first();
 
         $details = [
@@ -66,7 +66,7 @@ class PageTest extends TestCase
             'html'     => '<h1>a title</h1>',
             'name'     => 'my page',
         ];
-        $resp = $this->post($book->getUrl("/draft/{$draft->id}"), $details);
+        $resp = $this->post($recipe->getUrl("/draft/{$draft->id}"), $details);
         $resp->assertRedirect();
 
         $this->assertDatabaseHas('pages', [
@@ -134,20 +134,20 @@ class PageTest extends TestCase
         $page->html = '<p>This is some test content</p>';
         $page->save();
 
-        $currentBook = $page->book;
-        $newBook = Recipe::where('id', '!=', $currentBook->id)->first();
+        $currentRecipe = $page->recipe;
+        $newRecipe = Recipe::where('id', '!=', $currentRecipe->id)->first();
 
         $resp = $this->asEditor()->get($page->getUrl('/copy'));
         $resp->assertSee('Copy Page');
 
         $movePageResp = $this->post($page->getUrl('/copy'), [
-            'entity_selection' => 'book:' . $newBook->id,
+            'entity_selection' => 'recipe:' . $newRecipe->id,
             'name'             => 'My copied test page',
         ]);
         $pageCopy = Page::where('name', '=', 'My copied test page')->first();
 
         $movePageResp->assertRedirect($pageCopy->getUrl());
-        $this->assertTrue($pageCopy->book->id == $newBook->id, 'Page was copied to correct book');
+        $this->assertTrue($pageCopy->recipe->id == $newRecipe->id, 'Page was copied to correct recipe');
         $this->assertStringContainsString('This is some test content', $pageCopy->html);
     }
 
@@ -157,10 +157,10 @@ class PageTest extends TestCase
         $page->html = '<h1>This is some test content</h1>';
         $page->markdown = '# This is some test content';
         $page->save();
-        $newBook = Recipe::where('id', '!=', $page->book->id)->first();
+        $newRecipe = Recipe::where('id', '!=', $page->recipe->id)->first();
 
         $this->asEditor()->post($page->getUrl('/copy'), [
-            'entity_selection' => 'book:' . $newBook->id,
+            'entity_selection' => 'recipe:' . $newRecipe->id,
             'name'             => 'My copied test page',
         ]);
         $pageCopy = Page::where('name', '=', 'My copied test page')->first();
@@ -172,7 +172,7 @@ class PageTest extends TestCase
     public function test_page_copy_with_no_destination()
     {
         $page = Page::first();
-        $currentBook = $page->book;
+        $currentRecipe = $page->recipe;
 
         $resp = $this->asEditor()->get($page->getUrl('/copy'));
         $resp->assertSee('Copy Page');
@@ -184,30 +184,30 @@ class PageTest extends TestCase
         $pageCopy = Page::where('name', '=', 'My copied test page')->first();
 
         $movePageResp->assertRedirect($pageCopy->getUrl());
-        $this->assertTrue($pageCopy->book->id == $currentBook->id, 'Page was copied to correct book');
+        $this->assertTrue($pageCopy->recipe->id == $currentRecipe->id, 'Page was copied to correct recipe');
         $this->assertTrue($pageCopy->id !== $page->id, 'Page copy is not the same instance');
     }
 
     public function test_page_can_be_copied_without_edit_permission()
     {
         $page = Page::first();
-        $currentBook = $page->book;
-        $newBook = Recipe::where('id', '!=', $currentBook->id)->first();
+        $currentRecipe = $page->recipe;
+        $newRecipe = Recipe::where('id', '!=', $currentRecipe->id)->first();
         $viewer = $this->getViewer();
 
         $resp = $this->actingAs($viewer)->get($page->getUrl());
         $resp->assertDontSee($page->getUrl('/copy'));
 
-        $newBook->owned_by = $viewer->id;
-        $newBook->save();
+        $newRecipe->owned_by = $viewer->id;
+        $newRecipe->save();
         $this->giveUserPermissions($viewer, ['page-create-own']);
-        $this->regenEntityPermissions($newBook);
+        $this->regenEntityPermissions($newRecipe);
 
         $resp = $this->actingAs($viewer)->get($page->getUrl());
         $resp->assertSee($page->getUrl('/copy'));
 
         $movePageResp = $this->post($page->getUrl('/copy'), [
-            'entity_selection' => 'book:' . $newBook->id,
+            'entity_selection' => 'recipe:' . $newRecipe->id,
             'name'             => 'My copied test page',
         ]);
         $movePageResp->assertRedirect();
@@ -215,7 +215,7 @@ class PageTest extends TestCase
         $this->assertDatabaseHas('pages', [
             'name'       => 'My copied test page',
             'created_by' => $viewer->id,
-            'book_id'    => $newBook->id,
+            'recipe_id'    => $newRecipe->id,
         ]);
     }
 

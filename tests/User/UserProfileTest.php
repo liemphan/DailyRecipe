@@ -36,8 +36,8 @@ class UserProfileTest extends TestCase
         $resp->assertSee($content['page']->name);
         // Check the recently created chapter is shown
         $resp->assertSee($content['chapter']->name);
-        // Check the recently created book is shown
-        $resp->assertSee($content['book']->name);
+        // Check the recently created recipe is shown
+        $resp->assertSee($content['recipe']->name);
     }
 
     public function test_profile_page_shows_created_content_counts()
@@ -46,7 +46,7 @@ class UserProfileTest extends TestCase
 
         $this->asAdmin()->get('/user/' . $newUser->slug)
             ->assertSee($newUser->name)
-            ->assertElementContains('#content-counts', '0 Books')
+            ->assertElementContains('#content-counts', '0 Recipes')
             ->assertElementContains('#content-counts', '0 Chapters')
             ->assertElementContains('#content-counts', '0 Pages');
 
@@ -64,11 +64,11 @@ class UserProfileTest extends TestCase
         $newUser = User::factory()->create();
         $this->actingAs($newUser);
         $entities = $this->createEntityChainBelongingToUser($newUser, $newUser);
-        Activity::addForEntity($entities['book'], ActivityType::BOOK_UPDATE);
+        Activity::addForEntity($entities['recipe'], ActivityType::RECIPE_UPDATE);
         Activity::addForEntity($entities['page'], ActivityType::PAGE_CREATE);
 
         $this->asAdmin()->get('/user/' . $newUser->slug)
-            ->assertElementContains('#recent-user-activity', 'updated book')
+            ->assertElementContains('#recent-user-activity', 'updated recipe')
             ->assertElementContains('#recent-user-activity', 'created page')
             ->assertElementContains('#recent-user-activity', $entities['page']->name);
     }
@@ -78,7 +78,7 @@ class UserProfileTest extends TestCase
         $newUser = User::factory()->create();
         $this->actingAs($newUser);
         $entities = $this->createEntityChainBelongingToUser($newUser, $newUser);
-        Activity::addForEntity($entities['book'], ActivityType::BOOK_UPDATE);
+        Activity::addForEntity($entities['recipe'], ActivityType::RECIPE_UPDATE);
         Activity::addForEntity($entities['page'], ActivityType::PAGE_CREATE);
 
         $linkSelector = '#recent-activity a[href$="/user/' . $newUser->slug . '"]';
@@ -94,7 +94,7 @@ class UserProfileTest extends TestCase
         $expectedLinks = [
             '/search?term=%7Bcreated_by%3A' . $user->slug . '%7D+%7Btype%3Apage%7D',
             '/search?term=%7Bcreated_by%3A' . $user->slug . '%7D+%7Btype%3Achapter%7D',
-            '/search?term=%7Bcreated_by%3A' . $user->slug . '%7D+%7Btype%3Abook%7D',
+            '/search?term=%7Bcreated_by%3A' . $user->slug . '%7D+%7Btype%3Arecipe%7D',
             '/search?term=%7Bcreated_by%3A' . $user->slug . '%7D+%7Btype%3Arecipemenu%7D',
         ];
 

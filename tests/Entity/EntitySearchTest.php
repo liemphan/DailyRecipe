@@ -13,8 +13,8 @@ class EntitySearchTest extends TestCase
 {
     public function test_page_search()
     {
-        $book = Recipe::all()->first();
-        $page = $book->pages->first();
+        $recipe = Recipe::all()->first();
+        $page = $recipe->pages->first();
 
         $search = $this->asEditor()->get('/search?term=' . urlencode($page->name));
         $search->assertSee('Search Results');
@@ -57,16 +57,16 @@ class EntitySearchTest extends TestCase
         $smallSearch->assertStatus(200)->assertSee($page->name);
     }
 
-    public function test_book_search()
+    public function test_recipe_search()
     {
-        $book = Recipe::first();
-        $page = $book->pages->last();
-        $chapter = $book->chapters->last();
+        $recipe = Recipe::first();
+        $page = $recipe->pages->last();
+        $chapter = $recipe->chapters->last();
 
-        $pageTestResp = $this->asEditor()->get('/search/book/' . $book->id . '?term=' . urlencode($page->name));
+        $pageTestResp = $this->asEditor()->get('/search/recipe/' . $recipe->id . '?term=' . urlencode($page->name));
         $pageTestResp->assertSee($page->name);
 
-        $chapterTestResp = $this->asEditor()->get('/search/book/' . $book->id . '?term=' . urlencode($chapter->name));
+        $chapterTestResp = $this->asEditor()->get('/search/recipe/' . $recipe->id . '?term=' . urlencode($chapter->name));
         $chapterTestResp->assertSee($chapter->name);
     }
 
@@ -206,8 +206,8 @@ class EntitySearchTest extends TestCase
         $normalSearch = $this->get('/ajax/search/entities?term=' . urlencode($page->name));
         $normalSearch->assertSee($page->name);
 
-        $bookSearch = $this->get('/ajax/search/entities?types=book&term=' . urlencode($page->name));
-        $bookSearch->assertDontSee($page->name);
+        $recipeSearch = $this->get('/ajax/search/entities?types=recipe&term=' . urlencode($page->name));
+        $recipeSearch->assertDontSee($page->name);
 
         $defaultListTest = $this->get('/ajax/search/entities');
         $defaultListTest->assertSee($page->name);
@@ -223,11 +223,11 @@ class EntitySearchTest extends TestCase
         $pageSearch = $this->get('/ajax/search/entities?term=' . urlencode($page->name));
         $pageSearch->assertSee($page->name);
         $pageSearch->assertSee($chapter->getShortName(42));
-        $pageSearch->assertSee($page->book->getShortName(42));
+        $pageSearch->assertSee($page->recipe->getShortName(42));
 
         $chapterSearch = $this->get('/ajax/search/entities?term=' . urlencode($chapter->name));
         $chapterSearch->assertSee($chapter->name);
-        $chapterSearch->assertSee($chapter->book->getShortName(42));
+        $chapterSearch->assertSee($chapter->recipe->getShortName(42));
     }
 
     public function test_sibling_search_for_pages()
@@ -248,12 +248,12 @@ class EntitySearchTest extends TestCase
     public function test_sibling_search_for_pages_without_chapter()
     {
         $page = Page::query()->where('chapter_id', '=', 0)->firstOrFail();
-        $bookChildren = $page->recipe->getDirectChildren();
-        $this->assertGreaterThan(2, count($bookChildren), 'Ensure we\'re testing with at least 1 sibling');
+        $recipeChildren = $page->recipe->getDirectChildren();
+        $this->assertGreaterThan(2, count($recipeChildren), 'Ensure we\'re testing with at least 1 sibling');
 
         $search = $this->actingAs($this->getViewer())->get("/search/entity/siblings?entity_id={$page->id}&entity_type=page");
         $search->assertSuccessful();
-        foreach ($bookChildren as $child) {
+        foreach ($recipeChildren as $child) {
             $search->assertSee($child->name);
         }
 
@@ -263,28 +263,28 @@ class EntitySearchTest extends TestCase
     public function test_sibling_search_for_chapters()
     {
         $chapter = Chapter::query()->firstOrFail();
-        $bookChildren = $chapter->recipe->getDirectChildren();
-        $this->assertGreaterThan(2, count($bookChildren), 'Ensure we\'re testing with at least 1 sibling');
+        $recipeChildren = $chapter->recipe->getDirectChildren();
+        $this->assertGreaterThan(2, count($recipeChildren), 'Ensure we\'re testing with at least 1 sibling');
 
         $search = $this->actingAs($this->getViewer())->get("/search/entity/siblings?entity_id={$chapter->id}&entity_type=chapter");
         $search->assertSuccessful();
-        foreach ($bookChildren as $child) {
+        foreach ($recipeChildren as $child) {
             $search->assertSee($child->name);
         }
 
         $search->assertDontSee($chapter->recipe->name);
     }
 
-    public function test_sibling_search_for_books()
+    public function test_sibling_search_for_recipes()
     {
-        $books = Recipe::query()->take(10)->get();
-        $book = $books->first();
-        $this->assertGreaterThan(2, count($books), 'Ensure we\'re testing with at least 1 sibling');
+        $recipes = Recipe::query()->take(10)->get();
+        $recipe = $recipes->first();
+        $this->assertGreaterThan(2, count($recipes), 'Ensure we\'re testing with at least 1 sibling');
 
-        $search = $this->actingAs($this->getViewer())->get("/search/entity/siblings?entity_id={$book->id}&entity_type=book");
+        $search = $this->actingAs($this->getViewer())->get("/search/entity/siblings?entity_id={$recipe->id}&entity_type=recipe");
         $search->assertSuccessful();
-        foreach ($books as $expectedBook) {
-            $search->assertSee($expectedBook->name);
+        foreach ($recipes as $expectedRecipe) {
+            $search->assertSee($expectedRecipe->name);
         }
     }
 

@@ -96,11 +96,11 @@ class PageContentTest extends TestCase
         $pageResp->assertSee($content, false);
     }
 
-    public function test_page_includes_rendered_on_book_export()
+    public function test_page_includes_rendered_on_recipe_export()
     {
         $page = Page::query()->first();
         $secondPage = Page::query()
-            ->where('book_id', '!=', $page->recipe_id)
+            ->where('recipe_id', '!=', $page->recipe_id)
             ->first();
 
         $content = '<p id="bkmrk-meow">my cat is awesome and scratchy</p>';

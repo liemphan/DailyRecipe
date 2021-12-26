@@ -393,115 +393,115 @@ class RolesTest extends TestCase
         $this->get('/menus')->assertDontSee($otherMenu->name);
     }
 
-    public function test_books_create_all_permissions()
+    public function test_recipes_create_all_permissions()
     {
-        $this->checkAccessPermission('book-create-all', [
-            '/create-book',
+        $this->checkAccessPermission('recipe-create-all', [
+            '/create-recipe',
         ], [
             '/recipes' => 'Create New Recipe',
         ]);
 
         $this->post('/recipes', [
-            'name'        => 'test book',
-            'description' => 'book desc',
-        ])->assertRedirect('/recipes/test-book');
+            'name'        => 'test recipe',
+            'description' => 'recipe desc',
+        ])->assertRedirect('/recipes/test-recipe');
     }
 
-    public function test_books_edit_own_permission()
+    public function test_recipes_edit_own_permission()
     {
-        /** @var Recipe $otherBook */
-        $otherBook = Recipe::query()->take(1)->get()->first();
-        $ownBook = $this->createEntityChainBelongingToUser($this->user)['book'];
-        $this->checkAccessPermission('book-update-own', [
-            $ownBook->getUrl() . '/edit',
+        /** @var Recipe $otherRecipe */
+        $otherRecipe = Recipe::query()->take(1)->get()->first();
+        $ownRecipe = $this->createEntityChainBelongingToUser($this->user)['recipe'];
+        $this->checkAccessPermission('recipe-update-own', [
+            $ownRecipe->getUrl() . '/edit',
         ], [
-            $ownBook->getUrl() => 'Edit',
+            $ownRecipe->getUrl() => 'Edit',
         ]);
 
-        $this->get($otherBook->getUrl())->assertElementNotContains('.action-buttons', 'Edit');
-        $this->get($otherBook->getUrl('/edit'))->assertRedirect('/');
+        $this->get($otherRecipe->getUrl())->assertElementNotContains('.action-buttons', 'Edit');
+        $this->get($otherRecipe->getUrl('/edit'))->assertRedirect('/');
     }
 
-    public function test_books_edit_all_permission()
+    public function test_recipes_edit_all_permission()
     {
-        /** @var Recipe $otherBook */
-        $otherBook = Recipe::query()->take(1)->get()->first();
-        $this->checkAccessPermission('book-update-all', [
-            $otherBook->getUrl() . '/edit',
+        /** @var Recipe $otherRecipe */
+        $otherRecipe = Recipe::query()->take(1)->get()->first();
+        $this->checkAccessPermission('recipe-update-all', [
+            $otherRecipe->getUrl() . '/edit',
         ], [
-            $otherBook->getUrl() => 'Edit',
+            $otherRecipe->getUrl() => 'Edit',
         ]);
     }
 
-    public function test_books_delete_own_permission()
+    public function test_recipes_delete_own_permission()
     {
-        $this->giveUserPermissions($this->user, ['book-update-all']);
-        /** @var Recipe $otherBook */
-        $otherBook = Recipe::query()->take(1)->get()->first();
-        $ownBook = $this->createEntityChainBelongingToUser($this->user)['book'];
-        $this->checkAccessPermission('book-delete-own', [
-            $ownBook->getUrl() . '/delete',
+        $this->giveUserPermissions($this->user, ['recipe-update-all']);
+        /** @var Recipe $otherRecipe */
+        $otherRecipe = Recipe::query()->take(1)->get()->first();
+        $ownRecipe = $this->createEntityChainBelongingToUser($this->user)['recipe'];
+        $this->checkAccessPermission('recipe-delete-own', [
+            $ownRecipe->getUrl() . '/delete',
         ], [
-            $ownBook->getUrl() => 'Delete',
+            $ownRecipe->getUrl() => 'Delete',
         ]);
 
-        $this->get($otherBook->getUrl())->assertElementNotContains('.action-buttons', 'Delete');
-        $this->get($otherBook->getUrl('/delete'))->assertRedirect('/');
-        $this->get($ownBook->getUrl());
-        $this->delete($ownBook->getUrl())->assertRedirect('/recipes');
-        $this->get('/recipes')->assertDontSee($ownBook->name);
+        $this->get($otherRecipe->getUrl())->assertElementNotContains('.action-buttons', 'Delete');
+        $this->get($otherRecipe->getUrl('/delete'))->assertRedirect('/');
+        $this->get($ownRecipe->getUrl());
+        $this->delete($ownRecipe->getUrl())->assertRedirect('/recipes');
+        $this->get('/recipes')->assertDontSee($ownRecipe->name);
     }
 
-    public function test_books_delete_all_permission()
+    public function test_recipes_delete_all_permission()
     {
-        $this->giveUserPermissions($this->user, ['book-update-all']);
-        /** @var Recipe $otherBook */
-        $otherBook = Recipe::query()->take(1)->get()->first();
-        $this->checkAccessPermission('book-delete-all', [
-            $otherBook->getUrl() . '/delete',
+        $this->giveUserPermissions($this->user, ['recipe-update-all']);
+        /** @var Recipe $otherRecipe */
+        $otherRecipe = Recipe::query()->take(1)->get()->first();
+        $this->checkAccessPermission('recipe-delete-all', [
+            $otherRecipe->getUrl() . '/delete',
         ], [
-            $otherBook->getUrl() => 'Delete',
+            $otherRecipe->getUrl() => 'Delete',
         ]);
 
-        $this->get($otherBook->getUrl());
-        $this->delete($otherBook->getUrl())->assertRedirect('/recipes');
-        $this->get('/recipes')->assertDontSee($otherBook->name);
+        $this->get($otherRecipe->getUrl());
+        $this->delete($otherRecipe->getUrl())->assertRedirect('/recipes');
+        $this->get('/recipes')->assertDontSee($otherRecipe->name);
     }
 
     public function test_chapter_create_own_permissions()
     {
-        /** @var Recipe $book */
-        $book = Recipe::query()->take(1)->get()->first();
-        $ownBook = $this->createEntityChainBelongingToUser($this->user)['book'];
+        /** @var Recipe $recipe */
+        $recipe = Recipe::query()->take(1)->get()->first();
+        $ownRecipe = $this->createEntityChainBelongingToUser($this->user)['recipe'];
         $this->checkAccessPermission('chapter-create-own', [
-            $ownBook->getUrl('/create-chapter'),
+            $ownRecipe->getUrl('/create-chapter'),
         ], [
-            $ownBook->getUrl() => 'New Chapter',
+            $ownRecipe->getUrl() => 'New Chapter',
         ]);
 
-        $this->post($ownBook->getUrl('/create-chapter'), [
+        $this->post($ownRecipe->getUrl('/create-chapter'), [
             'name'        => 'test chapter',
             'description' => 'chapter desc',
-        ])->assertRedirect($ownBook->getUrl('/chapter/test-chapter'));
+        ])->assertRedirect($ownRecipe->getUrl('/chapter/test-chapter'));
 
-        $this->get($book->getUrl())->assertElementNotContains('.action-buttons', 'New Chapter');
-        $this->get($book->getUrl('/create-chapter'))->assertRedirect('/');
+        $this->get($recipe->getUrl())->assertElementNotContains('.action-buttons', 'New Chapter');
+        $this->get($recipe->getUrl('/create-chapter'))->assertRedirect('/');
     }
 
     public function test_chapter_create_all_permissions()
     {
-        /** @var Recipe $book */
-        $book = Recipe::query()->first();
+        /** @var Recipe $recipe */
+        $recipe = Recipe::query()->first();
         $this->checkAccessPermission('chapter-create-all', [
-            $book->getUrl('/create-chapter'),
+            $recipe->getUrl('/create-chapter'),
         ], [
-            $book->getUrl() => 'New Chapter',
+            $recipe->getUrl() => 'New Chapter',
         ]);
 
-        $this->post($book->getUrl('/create-chapter'), [
+        $this->post($recipe->getUrl('/create-chapter'), [
             'name'        => 'test chapter',
             'description' => 'chapter desc',
-        ])->assertRedirect($book->getUrl('/chapter/test-chapter'));
+        ])->assertRedirect($recipe->getUrl('/chapter/test-chapter'));
     }
 
     public function test_chapter_edit_own_permission()
@@ -542,12 +542,12 @@ class RolesTest extends TestCase
             $ownChapter->getUrl() => 'Delete',
         ]);
 
-        $bookUrl = $ownChapter->book->getUrl();
+        $recipeUrl = $ownChapter->recipe->getUrl();
         $this->get($otherChapter->getUrl())->assertElementNotContains('.action-buttons', 'Delete');
         $this->get($otherChapter->getUrl('/delete'))->assertRedirect('/');
         $this->get($ownChapter->getUrl());
-        $this->delete($ownChapter->getUrl())->assertRedirect($bookUrl);
-        $this->get($bookUrl)->assertElementNotContains('.book-content', $ownChapter->name);
+        $this->delete($ownChapter->getUrl())->assertRedirect($recipeUrl);
+        $this->get($recipeUrl)->assertElementNotContains('.recipe-content', $ownChapter->name);
     }
 
     public function test_chapter_delete_all_permission()
@@ -561,24 +561,24 @@ class RolesTest extends TestCase
             $otherChapter->getUrl() => 'Delete',
         ]);
 
-        $bookUrl = $otherChapter->recipe->getUrl();
+        $recipeUrl = $otherChapter->recipe->getUrl();
         $this->get($otherChapter->getUrl());
-        $this->delete($otherChapter->getUrl())->assertRedirect($bookUrl);
-        $this->get($bookUrl)->assertElementNotContains('.book-content', $otherChapter->name);
+        $this->delete($otherChapter->getUrl())->assertRedirect($recipeUrl);
+        $this->get($recipeUrl)->assertElementNotContains('.recipe-content', $otherChapter->name);
     }
 
     public function test_page_create_own_permissions()
     {
-        /** @var Recipe $book */
-        $book = Recipe::query()->first();
+        /** @var Recipe $recipe */
+        $recipe = Recipe::query()->first();
         /** @var Chapter $chapter */
         $chapter = Chapter::query()->first();
 
         $entities = $this->createEntityChainBelongingToUser($this->user);
-        $ownBook = $entities['book'];
+        $ownRecipe = $entities['recipe'];
         $ownChapter = $entities['chapter'];
 
-        $createUrl = $ownBook->getUrl('/create-page');
+        $createUrl = $ownRecipe->getUrl('/create-page');
         $createUrlChapter = $ownChapter->getUrl('/create-page');
         $accessUrls = [$createUrl, $createUrlChapter];
 
@@ -587,7 +587,7 @@ class RolesTest extends TestCase
         }
 
         $this->checkAccessPermission('page-create-own', [], [
-            $ownBook->getUrl()    => 'New Page',
+            $ownRecipe->getUrl()    => 'New Page',
             $ownChapter->getUrl() => 'New Page',
         ]);
 
@@ -605,10 +605,10 @@ class RolesTest extends TestCase
         $this->post($draft->getUrl(), [
             'name' => 'test page',
             'html' => 'page desc',
-        ])->assertRedirect($ownBook->getUrl('/page/test-page'));
+        ])->assertRedirect($ownRecipe->getUrl('/page/test-page'));
 
-        $this->get($book->getUrl())->assertElementNotContains('.action-buttons', 'New Page');
-        $this->get($book->getUrl('/create-page'))->assertRedirect('/');
+        $this->get($recipe->getUrl())->assertElementNotContains('.action-buttons', 'New Page');
+        $this->get($recipe->getUrl('/create-page'))->assertRedirect('/');
 
         $this->get($chapter->getUrl())->assertElementNotContains('.action-buttons', 'New Page');
         $this->get($chapter->getUrl('/create-page'))->assertRedirect('/');
@@ -616,11 +616,11 @@ class RolesTest extends TestCase
 
     public function test_page_create_all_permissions()
     {
-        /** @var Recipe $book */
-        $book = Recipe::query()->first();
+        /** @var Recipe $recipe */
+        $recipe = Recipe::query()->first();
         /** @var Chapter $chapter */
         $chapter = Chapter::query()->first();
-        $createUrl = $book->getUrl('/create-page');
+        $createUrl = $recipe->getUrl('/create-page');
 
         $createUrlChapter = $chapter->getUrl('/create-page');
         $accessUrls = [$createUrl, $createUrlChapter];
@@ -630,7 +630,7 @@ class RolesTest extends TestCase
         }
 
         $this->checkAccessPermission('page-create-all', [], [
-            $book->getUrl()    => 'New Page',
+            $recipe->getUrl()    => 'New Page',
             $chapter->getUrl() => 'New Page',
         ]);
 
@@ -648,7 +648,7 @@ class RolesTest extends TestCase
         $this->post($draft->getUrl(), [
             'name' => 'test page',
             'html' => 'page desc',
-        ])->assertRedirect($book->getUrl('/page/test-page'));
+        ])->assertRedirect($recipe->getUrl('/page/test-page'));
 
         $this->get($chapter->getUrl('/create-page'));
         /** @var Page $draft */
@@ -656,7 +656,7 @@ class RolesTest extends TestCase
         $this->post($draft->getUrl(), [
             'name' => 'new test page',
             'html' => 'page desc',
-        ])->assertRedirect($book->getUrl('/page/new-test-page'));
+        ])->assertRedirect($recipe->getUrl('/page/new-test-page'));
     }
 
     public function test_page_edit_own_permission()
@@ -697,12 +697,12 @@ class RolesTest extends TestCase
             $ownPage->getUrl() => 'Delete',
         ]);
 
-        $parent = $ownPage->chapter ?? $ownPage->book;
+        $parent = $ownPage->chapter ?? $ownPage->recipe;
         $this->get($otherPage->getUrl())->assertElementNotContains('.action-buttons', 'Delete');
         $this->get($otherPage->getUrl('/delete'))->assertRedirect('/');
         $this->get($ownPage->getUrl());
         $this->delete($ownPage->getUrl())->assertRedirect($parent->getUrl());
-        $this->get($parent->getUrl())->assertElementNotContains('.book-content', $ownPage->name);
+        $this->get($parent->getUrl())->assertElementNotContains('.recipe-content', $ownPage->name);
     }
 
     public function test_page_delete_all_permission()
@@ -825,18 +825,18 @@ class RolesTest extends TestCase
     {
         $admin = $this->getAdmin();
         // Recipe links
-        $book = Recipe::factory()->create(['created_by' => $admin->id, 'updated_by' => $admin->id]);
-        $this->regenEntityPermissions($book);
-        $this->actingAs($this->getViewer())->get($book->getUrl())
+        $recipe = Recipe::factory()->create(['created_by' => $admin->id, 'updated_by' => $admin->id]);
+        $this->regenEntityPermissions($recipe);
+        $this->actingAs($this->getViewer())->get($recipe->getUrl())
             ->assertDontSee('Create a new page')
             ->assertDontSee('Add a chapter');
 
         // Chapter links
-        $chapter = Chapter::factory()->create(['created_by' => $admin->id, 'updated_by' => $admin->id, 'book_id' => $book->id]);
+        $chapter = Chapter::factory()->create(['created_by' => $admin->id, 'updated_by' => $admin->id, 'recipe_id' => $recipe->id]);
         $this->regenEntityPermissions($chapter);
         $this->actingAs($this->getViewer())->get($chapter->getUrl())
             ->assertDontSee('Create a new page')
-            ->assertDontSee('Sort the current book');
+            ->assertDontSee('Sort the current recipe');
     }
 
     public function test_comment_create_permission()

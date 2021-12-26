@@ -17,9 +17,9 @@ class PublicActionTest extends TestCase
     public function test_app_not_public()
     {
         $this->setSettings(['app-public' => 'false']);
-        $book = Recipe::query()->first();
+        $recipe = Recipe::query()->first();
         $this->get('/recipes')->assertRedirect('/login');
-        $this->get($book->getUrl())->assertRedirect('/login');
+        $this->get($recipe->getUrl())->assertRedirect('/login');
 
         $page = Page::query()->first();
         $this->get($page->getUrl())->assertRedirect('/login');
@@ -44,21 +44,21 @@ class PublicActionTest extends TestCase
         $home->assertSee(url('/register'));
     }
 
-    public function test_books_viewable()
+    public function test_recipes_viewable()
     {
         $this->setSettings(['app-public' => 'true']);
-        $books = Recipe::query()->orderBy('name', 'asc')->take(10)->get();
-        $bookToVisit = $books[1];
+        $recipes = Recipe::query()->orderBy('name', 'asc')->take(10)->get();
+        $recipeToVisit = $recipes[1];
 
         // Check recipes index page is showing
         $resp = $this->get('/recipes');
         $resp->assertStatus(200);
-        $resp->assertSee($books[0]->name);
+        $resp->assertSee($recipes[0]->name);
 
-        // Check individual book page is showing and it's child contents are visible.
-        $resp = $this->get($bookToVisit->getUrl());
-        $resp->assertSee($bookToVisit->name);
-        $resp->assertSee($bookToVisit->chapters()->first()->name);
+        // Check individual recipe page is showing and it's child contents are visible.
+        $resp = $this->get($recipeToVisit->getUrl());
+        $resp->assertSee($recipeToVisit->name);
+        $resp->assertSee($recipeToVisit->chapters()->first()->name);
     }
 
     public function test_chapters_viewable()
@@ -160,29 +160,29 @@ class PublicActionTest extends TestCase
     public function test_public_view_then_login_redirects_to_previous_content()
     {
         $this->setSettings(['app-public' => 'true']);
-        /** @var Recipe $book */
-        $book = Recipe::query()->first();
-        $resp = $this->get($book->getUrl());
-        $resp->assertSee($book->name);
+        /** @var Recipe $recipe */
+        $recipe = Recipe::query()->first();
+        $resp = $this->get($recipe->getUrl());
+        $resp->assertSee($recipe->name);
 
         $this->get('/login');
         $resp = $this->post('/login', ['email' => 'admin@admin.com', 'password' => 'password']);
-        $resp->assertRedirect($book->getUrl());
+        $resp->assertRedirect($recipe->getUrl());
     }
 
     public function test_access_hidden_content_then_login_redirects_to_intended_content()
     {
         $this->setSettings(['app-public' => 'true']);
-        /** @var Recipe $book */
-        $book = Recipe::query()->first();
-        $this->setEntityRestrictions($book);
+        /** @var Recipe $recipe */
+        $recipe = Recipe::query()->first();
+        $this->setEntityRestrictions($recipe);
 
-        $resp = $this->get($book->getUrl());
+        $resp = $this->get($recipe->getUrl());
         $resp->assertSee('Recipe not found');
 
         $this->get('/login');
         $resp = $this->post('/login', ['email' => 'admin@admin.com', 'password' => 'password']);
-        $resp->assertRedirect($book->getUrl());
-        $this->followRedirects($resp)->assertSee($book->name);
+        $resp->assertRedirect($recipe->getUrl());
+        $this->followRedirects($resp)->assertSee($recipe->name);
     }
 }

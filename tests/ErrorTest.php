@@ -27,15 +27,15 @@ class ErrorTest extends TestCase
     {
         $this->actingAs($this->getViewer());
         $handler = $this->withTestLogger();
-        $book = Recipe::query()->first();
+        $recipe = Recipe::query()->first();
 
         // Ensure we're seeing errors
         Log::error('cat');
         $this->assertTrue($handler->hasErrorThatContains('cat'));
 
-        $this->get('/recipes/arandomnotfouindbook');
-        $this->get($book->getUrl('/chapter/arandomnotfouindchapter'));
-        $this->get($book->getUrl('/chapter/arandomnotfouindpages'));
+        $this->get('/recipes/arandomnotfouindrecipe');
+        $this->get($recipe->getUrl('/chapter/arandomnotfouindchapter'));
+        $this->get($recipe->getUrl('/chapter/arandomnotfouindpages'));
 
         $this->assertCount(1, $handler->getRecords());
     }

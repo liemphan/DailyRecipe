@@ -10,55 +10,55 @@ use Tests\TestCase;
 
 class SortTest extends TestCase
 {
-    protected $book;
+    protected $recipe;
 
     protected function setUp(): void
     {
         parent::setUp();
-        $this->book = Recipe::first();
+        $this->recipe = Recipe::first();
     }
 
     public function test_drafts_do_not_show_up()
     {
         $this->asAdmin();
         $pageRepo = app(PageRepo::class);
-        $draft = $pageRepo->getNewDraftPage($this->book);
+        $draft = $pageRepo->getNewDraftPage($this->recipe);
 
-        $resp = $this->get($this->book->getUrl());
+        $resp = $this->get($this->recipe->getUrl());
         $resp->assertSee($draft->name);
 
-        $resp = $this->get($this->book->getUrl() . '/sort');
+        $resp = $this->get($this->recipe->getUrl() . '/sort');
         $resp->assertDontSee($draft->name);
     }
 
-    public function test_page_move_into_book()
+    public function test_page_move_into_recipe()
     {
         $page = Page::first();
-        $currentBook = $page->book;
-        $newBook = Recipe::where('id', '!=', $currentBook->id)->first();
+        $currentRecipe = $page->recipe;
+        $newRecipe = Recipe::where('id', '!=', $currentRecipe->id)->first();
 
         $resp = $this->asEditor()->get($page->getUrl('/move'));
         $resp->assertSee('Move Page');
 
         $movePageResp = $this->put($page->getUrl('/move'), [
-            'entity_selection' => 'book:' . $newBook->id,
+            'entity_selection' => 'recipe:' . $newRecipe->id,
         ]);
         $page = Page::find($page->id);
 
         $movePageResp->assertRedirect($page->getUrl());
-        $this->assertTrue($page->book->id == $newBook->id, 'Page book is now the new book');
+        $this->assertTrue($page->recipe->id == $newRecipe->id, 'Page recipe is now the new recipe');
 
-        $newBookResp = $this->get($newBook->getUrl());
-        $newBookResp->assertSee('moved page');
-        $newBookResp->assertSee($page->name);
+        $newRecipeResp = $this->get($newRecipe->getUrl());
+        $newRecipeResp->assertSee('moved page');
+        $newRecipeResp->assertSee($page->name);
     }
 
     public function test_page_move_into_chapter()
     {
         $page = Page::first();
-        $currentBook = $page->book;
-        $newBook = Recipe::where('id', '!=', $currentBook->id)->first();
-        $newChapter = $newBook->chapters()->first();
+        $currentRecipe = $page->recipe;
+        $newRecipe = Recipe::where('id', '!=', $currentRecipe->id)->first();
+        $newChapter = $newRecipe->chapters()->first();
 
         $movePageResp = $this->actingAs($this->getEditor())->put($page->getUrl('/move'), [
             'entity_selection' => 'chapter:' . $newChapter->id,
@@ -66,68 +66,68 @@ class SortTest extends TestCase
         $page = Page::find($page->id);
 
         $movePageResp->assertRedirect($page->getUrl());
-        $this->assertTrue($page->book->id == $newBook->id, 'Page parent is now the new chapter');
+        $this->assertTrue($page->recipe->id == $newRecipe->id, 'Page parent is now the new chapter');
 
         $newChapterResp = $this->get($newChapter->getUrl());
         $newChapterResp->assertSee($page->name);
     }
 
-    public function test_page_move_from_chapter_to_book()
+    public function test_page_move_from_chapter_to_recipe()
     {
         $oldChapter = Chapter::first();
         $page = $oldChapter->pages()->first();
-        $newBook = Recipe::where('id', '!=', $oldChapter->book_id)->first();
+        $newRecipe = Recipe::where('id', '!=', $oldChapter->recipe_id)->first();
 
         $movePageResp = $this->actingAs($this->getEditor())->put($page->getUrl('/move'), [
-            'entity_selection' => 'book:' . $newBook->id,
+            'entity_selection' => 'recipe:' . $newRecipe->id,
         ]);
         $page->refresh();
 
         $movePageResp->assertRedirect($page->getUrl());
-        $this->assertTrue($page->book->id == $newBook->id, 'Page parent is now the new book');
+        $this->assertTrue($page->recipe->id == $newRecipe->id, 'Page parent is now the new recipe');
         $this->assertTrue($page->chapter === null, 'Page has no parent chapter');
 
-        $newBookResp = $this->get($newBook->getUrl());
-        $newBookResp->assertSee($page->name);
+        $newRecipeResp = $this->get($newRecipe->getUrl());
+        $newRecipeResp->assertSee($page->name);
     }
 
     public function test_page_move_requires_create_permissions_on_parent()
     {
         $page = Page::query()->first();
-        $currentBook = $page->recipe;
-        $newBook = Recipe::query()->where('id', '!=', $currentBook->id)->first();
+        $currentRecipe = $page->recipe;
+        $newRecipe = Recipe::query()->where('id', '!=', $currentRecipe->id)->first();
         $editor = $this->getEditor();
 
-        $this->setEntityRestrictions($newBook, ['view', 'update', 'delete'], $editor->roles->all());
+        $this->setEntityRestrictions($newRecipe, ['view', 'update', 'delete'], $editor->roles->all());
 
         $movePageResp = $this->actingAs($editor)->put($page->getUrl('/move'), [
-            'entity_selection' => 'book:' . $newBook->id,
+            'entity_selection' => 'recipe:' . $newRecipe->id,
         ]);
         $this->assertPermissionError($movePageResp);
 
-        $this->setEntityRestrictions($newBook, ['view', 'update', 'delete', 'create'], $editor->roles->all());
+        $this->setEntityRestrictions($newRecipe, ['view', 'update', 'delete', 'create'], $editor->roles->all());
         $movePageResp = $this->put($page->getUrl('/move'), [
-            'entity_selection' => 'book:' . $newBook->id,
+            'entity_selection' => 'recipe:' . $newRecipe->id,
         ]);
 
         $page = Page::find($page->id);
         $movePageResp->assertRedirect($page->getUrl());
 
-        $this->assertTrue($page->book->id == $newBook->id, 'Page book is now the new book');
+        $this->assertTrue($page->recipe->id == $newRecipe->id, 'Page recipe is now the new recipe');
     }
 
     public function test_page_move_requires_delete_permissions()
     {
         $page = Page::first();
-        $currentBook = $page->book;
-        $newBook = Recipe::where('id', '!=', $currentBook->id)->first();
+        $currentRecipe = $page->recipe;
+        $newRecipe = Recipe::where('id', '!=', $currentRecipe->id)->first();
         $editor = $this->getEditor();
 
-        $this->setEntityRestrictions($newBook, ['view', 'update', 'create', 'delete'], $editor->roles->all());
+        $this->setEntityRestrictions($newRecipe, ['view', 'update', 'create', 'delete'], $editor->roles->all());
         $this->setEntityRestrictions($page, ['view', 'update', 'create'], $editor->roles->all());
 
         $movePageResp = $this->actingAs($editor)->put($page->getUrl('/move'), [
-            'entity_selection' => 'book:' . $newBook->id,
+            'entity_selection' => 'recipe:' . $newRecipe->id,
         ]);
         $this->assertPermissionError($movePageResp);
         $pageView = $this->get($page->getUrl());
@@ -135,54 +135,54 @@ class SortTest extends TestCase
 
         $this->setEntityRestrictions($page, ['view', 'update', 'create', 'delete'], $editor->roles->all());
         $movePageResp = $this->put($page->getUrl('/move'), [
-            'entity_selection' => 'book:' . $newBook->id,
+            'entity_selection' => 'recipe:' . $newRecipe->id,
         ]);
 
         $page = Page::find($page->id);
         $movePageResp->assertRedirect($page->getUrl());
-        $this->assertTrue($page->book->id == $newBook->id, 'Page book is now the new book');
+        $this->assertTrue($page->recipe->id == $newRecipe->id, 'Page recipe is now the new recipe');
     }
 
     public function test_chapter_move()
     {
         $chapter = Chapter::first();
-        $currentBook = $chapter->book;
+        $currentRecipe = $chapter->recipe;
         $pageToCheck = $chapter->pages->first();
-        $newBook = Recipe::where('id', '!=', $currentBook->id)->first();
+        $newRecipe = Recipe::where('id', '!=', $currentRecipe->id)->first();
 
         $chapterMoveResp = $this->asEditor()->get($chapter->getUrl('/move'));
         $chapterMoveResp->assertSee('Move Chapter');
 
         $moveChapterResp = $this->put($chapter->getUrl('/move'), [
-            'entity_selection' => 'book:' . $newBook->id,
+            'entity_selection' => 'recipe:' . $newRecipe->id,
         ]);
 
         $chapter = Chapter::find($chapter->id);
         $moveChapterResp->assertRedirect($chapter->getUrl());
-        $this->assertTrue($chapter->book->id === $newBook->id, 'Chapter Recipe is now the new book');
+        $this->assertTrue($chapter->recipe->id === $newRecipe->id, 'Chapter Recipe is now the new recipe');
 
-        $newBookResp = $this->get($newBook->getUrl());
-        $newBookResp->assertSee('moved chapter');
-        $newBookResp->assertSee($chapter->name);
+        $newRecipeResp = $this->get($newRecipe->getUrl());
+        $newRecipeResp->assertSee('moved chapter');
+        $newRecipeResp->assertSee($chapter->name);
 
         $pageToCheck = Page::find($pageToCheck->id);
-        $this->assertTrue($pageToCheck->book_id === $newBook->id, 'Chapter child page\'s book id has changed to the new book');
+        $this->assertTrue($pageToCheck->recipe_id === $newRecipe->id, 'Chapter child page\'s recipe id has changed to the new recipe');
         $pageCheckResp = $this->get($pageToCheck->getUrl());
-        $pageCheckResp->assertSee($newBook->name);
+        $pageCheckResp->assertSee($newRecipe->name);
     }
 
     public function test_chapter_move_requires_delete_permissions()
     {
         $chapter = Chapter::first();
-        $currentBook = $chapter->book;
-        $newBook = Recipe::where('id', '!=', $currentBook->id)->first();
+        $currentRecipe = $chapter->recipe;
+        $newRecipe = Recipe::where('id', '!=', $currentRecipe->id)->first();
         $editor = $this->getEditor();
 
-        $this->setEntityRestrictions($newBook, ['view', 'update', 'create', 'delete'], $editor->roles->all());
+        $this->setEntityRestrictions($newRecipe, ['view', 'update', 'create', 'delete'], $editor->roles->all());
         $this->setEntityRestrictions($chapter, ['view', 'update', 'create'], $editor->roles->all());
 
         $moveChapterResp = $this->actingAs($editor)->put($chapter->getUrl('/move'), [
-            'entity_selection' => 'book:' . $newBook->id,
+            'entity_selection' => 'recipe:' . $newRecipe->id,
         ]);
         $this->assertPermissionError($moveChapterResp);
         $pageView = $this->get($chapter->getUrl());
@@ -190,50 +190,50 @@ class SortTest extends TestCase
 
         $this->setEntityRestrictions($chapter, ['view', 'update', 'create', 'delete'], $editor->roles->all());
         $moveChapterResp = $this->put($chapter->getUrl('/move'), [
-            'entity_selection' => 'book:' . $newBook->id,
+            'entity_selection' => 'recipe:' . $newRecipe->id,
         ]);
 
         $chapter = Chapter::find($chapter->id);
         $moveChapterResp->assertRedirect($chapter->getUrl());
-        $this->assertTrue($chapter->book->id == $newBook->id, 'Page book is now the new book');
+        $this->assertTrue($chapter->recipe->id == $newRecipe->id, 'Page recipe is now the new recipe');
     }
 
-    public function test_chapter_move_changes_book_for_deleted_pages_within()
+    public function test_chapter_move_changes_recipe_for_deleted_pages_within()
     {
         /** @var Chapter $chapter */
         $chapter = Chapter::query()->whereHas('pages')->first();
-        $currentBook = $chapter->recipe;
+        $currentRecipe = $chapter->recipe;
         $pageToCheck = $chapter->pages->first();
-        $newBook = Recipe::query()->where('id', '!=', $currentBook->id)->first();
+        $newRecipe = Recipe::query()->where('id', '!=', $currentRecipe->id)->first();
 
         $pageToCheck->delete();
 
         $this->asEditor()->put($chapter->getUrl('/move'), [
-            'entity_selection' => 'book:' . $newBook->id,
+            'entity_selection' => 'recipe:' . $newRecipe->id,
         ]);
 
         $pageToCheck->refresh();
-        $this->assertEquals($newBook->id, $pageToCheck->book_id);
+        $this->assertEquals($newRecipe->id, $pageToCheck->recipe_id);
     }
 
-    public function test_book_sort_page_shows()
+    public function test_recipe_sort_page_shows()
     {
-        /** @var Recipe $bookToSort */
-        $bookToSort = Recipe::query()->first();
+        /** @var Recipe $recipeToSort */
+        $recipeToSort = Recipe::query()->first();
 
-        $resp = $this->asAdmin()->get($bookToSort->getUrl());
-        $resp->assertElementExists('a[href="' . $bookToSort->getUrl('/sort') . '"]');
+        $resp = $this->asAdmin()->get($recipeToSort->getUrl());
+        $resp->assertElementExists('a[href="' . $recipeToSort->getUrl('/sort') . '"]');
 
-        $resp = $this->get($bookToSort->getUrl('/sort'));
+        $resp = $this->get($recipeToSort->getUrl('/sort'));
         $resp->assertStatus(200);
-        $resp->assertSee($bookToSort->name);
+        $resp->assertSee($recipeToSort->name);
     }
 
-    public function test_book_sort()
+    public function test_recipe_sort()
     {
-        $oldBook = Recipe::query()->first();
-        $chapterToMove = $this->newChapter(['name' => 'chapter to move'], $oldBook);
-        $newBook = $this->newBook(['name' => 'New sort book']);
+        $oldRecipe = Recipe::query()->first();
+        $chapterToMove = $this->newChapter(['name' => 'chapter to move'], $oldRecipe);
+        $newRecipe = $this->newRecipe(['name' => 'New sort recipe']);
         $pagesToMove = Page::query()->take(5)->get();
 
         // Create request data
@@ -243,7 +243,7 @@ class SortTest extends TestCase
                 'sort'          => 0,
                 'parentChapter' => false,
                 'type'          => 'chapter',
-                'book'          => $newBook->id,
+                'recipe'          => $newRecipe->id,
             ],
         ];
         foreach ($pagesToMove as $index => $page) {
@@ -252,58 +252,58 @@ class SortTest extends TestCase
                 'sort'          => $index,
                 'parentChapter' => $index === count($pagesToMove) - 1 ? $chapterToMove->id : false,
                 'type'          => 'page',
-                'book'          => $newBook->id,
+                'recipe'          => $newRecipe->id,
             ];
         }
 
-        $sortResp = $this->asEditor()->put($newBook->getUrl() . '/sort', ['sort-tree' => json_encode($reqData)]);
-        $sortResp->assertRedirect($newBook->getUrl());
+        $sortResp = $this->asEditor()->put($newRecipe->getUrl() . '/sort', ['sort-tree' => json_encode($reqData)]);
+        $sortResp->assertRedirect($newRecipe->getUrl());
         $sortResp->assertStatus(302);
         $this->assertDatabaseHas('chapters', [
             'id'       => $chapterToMove->id,
-            'book_id'  => $newBook->id,
+            'recipe_id'  => $newRecipe->id,
             'priority' => 0,
         ]);
-        $this->assertTrue($newBook->chapters()->count() === 1);
-        $this->assertTrue($newBook->chapters()->first()->pages()->count() === 1);
+        $this->assertTrue($newRecipe->chapters()->count() === 1);
+        $this->assertTrue($newRecipe->chapters()->first()->pages()->count() === 1);
 
         $checkPage = $pagesToMove[1];
         $checkResp = $this->get(Page::find($checkPage->id)->getUrl());
-        $checkResp->assertSee($newBook->name);
+        $checkResp->assertSee($newRecipe->name);
     }
 
-    public function test_book_sort_item_returns_book_content()
+    public function test_recipe_sort_item_returns_recipe_content()
     {
-        $books = Recipe::all();
-        $bookToSort = $books[0];
-        $firstPage = $bookToSort->pages[0];
-        $firstChapter = $bookToSort->chapters[0];
+        $recipes = Recipe::all();
+        $recipeToSort = $recipes[0];
+        $firstPage = $recipeToSort->pages[0];
+        $firstChapter = $recipeToSort->chapters[0];
 
-        $resp = $this->asAdmin()->get($bookToSort->getUrl() . '/sort-item');
+        $resp = $this->asAdmin()->get($recipeToSort->getUrl() . '/sort-item');
 
-        // Ensure book details are returned
-        $resp->assertSee($bookToSort->name);
+        // Ensure recipe details are returned
+        $resp->assertSee($recipeToSort->name);
         $resp->assertSee($firstPage->name);
         $resp->assertSee($firstChapter->name);
     }
 
-    public function test_pages_in_book_show_sorted_by_priority()
+    public function test_pages_in_recipe_show_sorted_by_priority()
     {
-        /** @var Recipe $book */
-        $book = Recipe::query()->whereHas('pages')->first();
-        $book->chapters()->forceDelete();
+        /** @var Recipe $recipe */
+        $recipe = Recipe::query()->whereHas('pages')->first();
+        $recipe->chapters()->forceDelete();
         /** @var Page[] $pages */
-        $pages = $book->pages()->where('chapter_id', '=', 0)->take(2)->get();
-        $book->pages()->whereNotIn('id', $pages->pluck('id'))->delete();
+        $pages = $recipe->pages()->where('chapter_id', '=', 0)->take(2)->get();
+        $recipe->pages()->whereNotIn('id', $pages->pluck('id'))->delete();
 
-        $resp = $this->asEditor()->get($book->getUrl());
+        $resp = $this->asEditor()->get($recipe->getUrl());
         $resp->assertElementContains('.content-wrap a.page:nth-child(1)', $pages[0]->name);
         $resp->assertElementContains('.content-wrap a.page:nth-child(2)', $pages[1]->name);
 
         $pages[0]->forceFill(['priority' => 10])->save();
         $pages[1]->forceFill(['priority' => 5])->save();
 
-        $resp = $this->asEditor()->get($book->getUrl());
+        $resp = $this->asEditor()->get($recipe->getUrl());
         $resp->assertElementContains('.content-wrap a.page:nth-child(1)', $pages[1]->name);
         $resp->assertElementContains('.content-wrap a.page:nth-child(2)', $pages[0]->name);
     }

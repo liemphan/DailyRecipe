@@ -101,139 +101,139 @@ class EntityPermissionsTest extends TestCase
             ->assertSee('Delete Recipe');
     }
 
-    public function test_book_view_restriction()
+    public function test_recipe_view_restriction()
     {
-        /** @var Recipe $book */
-        $book = Recipe::query()->first();
-        $bookPage = $book->pages->first();
-        $bookChapter = $book->chapters->first();
+        /** @var Recipe $recipe */
+        $recipe = Recipe::query()->first();
+        $recipePage = $recipe->pages->first();
+        $recipeChapter = $recipe->chapters->first();
 
-        $bookUrl = $book->getUrl();
+        $recipeUrl = $recipe->getUrl();
         $this->actingAs($this->user)
-            ->get($bookUrl)
+            ->get($recipeUrl)
             ->assertOk();
 
-        $this->setRestrictionsForTestRoles($book, []);
+        $this->setRestrictionsForTestRoles($recipe, []);
 
-        $this->followingRedirects()->get($bookUrl)
+        $this->followingRedirects()->get($recipeUrl)
             ->assertSee('Recipe not found');
-        $this->followingRedirects()->get($bookPage->getUrl())
+        $this->followingRedirects()->get($recipePage->getUrl())
             ->assertSee('Page not found');
-        $this->followingRedirects()->get($bookChapter->getUrl())
+        $this->followingRedirects()->get($recipeChapter->getUrl())
             ->assertSee('Chapter not found');
 
-        $this->setRestrictionsForTestRoles($book, ['view']);
+        $this->setRestrictionsForTestRoles($recipe, ['view']);
 
-        $this->get($bookUrl)
-            ->assertSee($book->name);
-        $this->get($bookPage->getUrl())
-            ->assertSee($bookPage->name);
-        $this->get($bookChapter->getUrl())
-            ->assertSee($bookChapter->name);
+        $this->get($recipeUrl)
+            ->assertSee($recipe->name);
+        $this->get($recipePage->getUrl())
+            ->assertSee($recipePage->name);
+        $this->get($recipeChapter->getUrl())
+            ->assertSee($recipeChapter->name);
     }
 
-    public function test_book_create_restriction()
+    public function test_recipe_create_restriction()
     {
-        /** @var Recipe $book */
-        $book = Recipe::query()->first();
+        /** @var Recipe $recipe */
+        $recipe = Recipe::query()->first();
 
-        $bookUrl = $book->getUrl();
+        $recipeUrl = $recipe->getUrl();
         $this->actingAs($this->viewer)
-            ->get($bookUrl)
+            ->get($recipeUrl)
             ->assertElementNotContains('.actions', 'New Page')
             ->assertElementNotContains('.actions', 'New Chapter');
         $this->actingAs($this->user)
-            ->get($bookUrl)
+            ->get($recipeUrl)
             ->assertElementContains('.actions', 'New Page')
             ->assertElementContains('.actions', 'New Chapter');
 
-        $this->setRestrictionsForTestRoles($book, ['view', 'delete', 'update']);
+        $this->setRestrictionsForTestRoles($recipe, ['view', 'delete', 'update']);
 
-        $this->get($bookUrl . '/create-chapter')->assertRedirect('/');
+        $this->get($recipeUrl . '/create-chapter')->assertRedirect('/');
         $this->get('/')->assertSee('You do not have permission');
 
-        $this->get($bookUrl . '/create-page')->assertRedirect('/');
+        $this->get($recipeUrl . '/create-page')->assertRedirect('/');
         $this->get('/')->assertSee('You do not have permission');
 
-        $this->get($bookUrl)
+        $this->get($recipeUrl)
             ->assertElementNotContains('.actions', 'New Page')
             ->assertElementNotContains('.actions', 'New Chapter');
 
-        $this->setRestrictionsForTestRoles($book, ['view', 'create']);
+        $this->setRestrictionsForTestRoles($recipe, ['view', 'create']);
 
-        $resp = $this->post($book->getUrl('/create-chapter'), [
+        $resp = $this->post($recipe->getUrl('/create-chapter'), [
             'name'        => 'test chapter',
             'description' => 'desc',
         ]);
-        $resp->assertRedirect($book->getUrl('/chapter/test-chapter'));
+        $resp->assertRedirect($recipe->getUrl('/chapter/test-chapter'));
 
-        $this->get($book->getUrl('/create-page'));
+        $this->get($recipe->getUrl('/create-page'));
         /** @var Page $page */
         $page = Page::query()->where('draft', '=', true)->orderBy('id', 'desc')->first();
         $resp = $this->post($page->getUrl(), [
             'name' => 'test page',
             'html' => 'test content',
         ]);
-        $resp->assertRedirect($book->getUrl('/page/test-page'));
+        $resp->assertRedirect($recipe->getUrl('/page/test-page'));
 
-        $this->get($bookUrl)
+        $this->get($recipeUrl)
             ->assertElementContains('.actions', 'New Page')
             ->assertElementContains('.actions', 'New Chapter');
     }
 
-    public function test_book_update_restriction()
+    public function test_recipe_update_restriction()
     {
-        /** @var Recipe $book */
-        $book = Recipe::query()->first();
-        $bookPage = $book->pages->first();
-        $bookChapter = $book->chapters->first();
+        /** @var Recipe $recipe */
+        $recipe = Recipe::query()->first();
+        $recipePage = $recipe->pages->first();
+        $recipeChapter = $recipe->chapters->first();
 
-        $bookUrl = $book->getUrl();
+        $recipeUrl = $recipe->getUrl();
         $this->actingAs($this->user)
-            ->get($bookUrl . '/edit')
+            ->get($recipeUrl . '/edit')
             ->assertSee('Edit Recipe');
 
-        $this->setRestrictionsForTestRoles($book, ['view', 'delete']);
+        $this->setRestrictionsForTestRoles($recipe, ['view', 'delete']);
 
-        $this->get($bookUrl . '/edit')->assertRedirect('/');
+        $this->get($recipeUrl . '/edit')->assertRedirect('/');
         $this->get('/')->assertSee('You do not have permission');
-        $this->get($bookPage->getUrl() . '/edit')->assertRedirect('/');
+        $this->get($recipePage->getUrl() . '/edit')->assertRedirect('/');
         $this->get('/')->assertSee('You do not have permission');
-        $this->get($bookChapter->getUrl() . '/edit')->assertRedirect('/');
+        $this->get($recipeChapter->getUrl() . '/edit')->assertRedirect('/');
         $this->get('/')->assertSee('You do not have permission');
 
-        $this->setRestrictionsForTestRoles($book, ['view', 'update']);
+        $this->setRestrictionsForTestRoles($recipe, ['view', 'update']);
 
-        $this->get($bookUrl . '/edit')->assertOk();
-        $this->get($bookPage->getUrl() . '/edit')->assertOk();
-        $this->get($bookChapter->getUrl() . '/edit')->assertSee('Edit Chapter');
+        $this->get($recipeUrl . '/edit')->assertOk();
+        $this->get($recipePage->getUrl() . '/edit')->assertOk();
+        $this->get($recipeChapter->getUrl() . '/edit')->assertSee('Edit Chapter');
     }
 
-    public function test_book_delete_restriction()
+    public function test_recipe_delete_restriction()
     {
-        /** @var Recipe $book */
-        $book = Recipe::query()->first();
-        $bookPage = $book->pages->first();
-        $bookChapter = $book->chapters->first();
+        /** @var Recipe $recipe */
+        $recipe = Recipe::query()->first();
+        $recipePage = $recipe->pages->first();
+        $recipeChapter = $recipe->chapters->first();
 
-        $bookUrl = $book->getUrl();
-        $this->actingAs($this->user)->get($bookUrl . '/delete')
+        $recipeUrl = $recipe->getUrl();
+        $this->actingAs($this->user)->get($recipeUrl . '/delete')
             ->assertSee('Delete Recipe');
 
-        $this->setRestrictionsForTestRoles($book, ['view', 'update']);
+        $this->setRestrictionsForTestRoles($recipe, ['view', 'update']);
 
-        $this->get($bookUrl . '/delete')->assertRedirect('/');
+        $this->get($recipeUrl . '/delete')->assertRedirect('/');
         $this->get('/')->assertSee('You do not have permission');
-        $this->get($bookPage->getUrl() . '/delete')->assertRedirect('/');
+        $this->get($recipePage->getUrl() . '/delete')->assertRedirect('/');
         $this->get('/')->assertSee('You do not have permission');
-        $this->get($bookChapter->getUrl() . '/delete')->assertRedirect('/');
+        $this->get($recipeChapter->getUrl() . '/delete')->assertRedirect('/');
         $this->get('/')->assertSee('You do not have permission');
 
-        $this->setRestrictionsForTestRoles($book, ['view', 'delete']);
+        $this->setRestrictionsForTestRoles($recipe, ['view', 'delete']);
 
-        $this->get($bookUrl . '/delete')->assertOk()->assertSee('Delete Recipe');
-        $this->get($bookPage->getUrl('/delete'))->assertOk()->assertSee('Delete Page');
-        $this->get($bookChapter->getUrl('/delete'))->assertSee('Delete Chapter');
+        $this->get($recipeUrl . '/delete')->assertOk()->assertSee('Delete Recipe');
+        $this->get($recipePage->getUrl('/delete'))->assertOk()->assertSee('Delete Page');
+        $this->get($recipeChapter->getUrl('/delete'))->assertSee('Delete Chapter');
     }
 
     public function test_chapter_view_restriction()
@@ -422,7 +422,7 @@ class EntityPermissionsTest extends TestCase
         $this->entityRestrictionFormTest(Recipemenu::class, 'Recipemenu Permissions', 'view', '2');
     }
 
-    public function test_book_restriction_form()
+    public function test_recipe_restriction_form()
     {
         $this->entityRestrictionFormTest(Recipe::class, 'Recipe Permissions', 'view', '2');
     }
@@ -437,7 +437,7 @@ class EntityPermissionsTest extends TestCase
         $this->entityRestrictionFormTest(Page::class, 'Page Permissions', 'delete', '2');
     }
 
-    public function test_restricted_pages_not_visible_in_book_navigation_on_pages()
+    public function test_restricted_pages_not_visible_in_recipe_navigation_on_pages()
     {
         /** @var Chapter $chapter */
         $chapter = Chapter::query()->first();
@@ -451,7 +451,7 @@ class EntityPermissionsTest extends TestCase
             ->assertElementNotContains('.sidebar-page-list', $page->name);
     }
 
-    public function test_restricted_pages_not_visible_in_book_navigation_on_chapters()
+    public function test_restricted_pages_not_visible_in_recipe_navigation_on_chapters()
     {
         /** @var Chapter $chapter */
         $chapter = Chapter::query()->first();
@@ -477,7 +477,7 @@ class EntityPermissionsTest extends TestCase
             ->assertDontSee($page->name);
     }
 
-    public function test_restricted_chapter_pages_not_visible_on_book_page()
+    public function test_restricted_chapter_pages_not_visible_on_recipe_page()
     {
         /** @var Chapter $chapter */
         $chapter = Chapter::query()->first();
@@ -532,209 +532,209 @@ class EntityPermissionsTest extends TestCase
         $this->get($menu->getUrl('/delete'))->assertOk()->assertSee('Delete Recipe');
     }
 
-    public function test_book_create_restriction_override()
+    public function test_recipe_create_restriction_override()
     {
-        /** @var Recipe $book */
-        $book = Recipe::query()->first();
+        /** @var Recipe $recipe */
+        $recipe = Recipe::query()->first();
 
-        $bookUrl = $book->getUrl();
+        $recipeUrl = $recipe->getUrl();
         $this->actingAs($this->viewer)
-            ->get($bookUrl)
+            ->get($recipeUrl)
             ->assertElementNotContains('.actions', 'New Page')
             ->assertElementNotContains('.actions', 'New Chapter');
 
-        $this->setRestrictionsForTestRoles($book, ['view', 'delete', 'update']);
+        $this->setRestrictionsForTestRoles($recipe, ['view', 'delete', 'update']);
 
-        $this->get($bookUrl . '/create-chapter')->assertRedirect('/');
+        $this->get($recipeUrl . '/create-chapter')->assertRedirect('/');
         $this->get('/')->assertSee('You do not have permission');
-        $this->get($bookUrl . '/create-page')->assertRedirect('/');
+        $this->get($recipeUrl . '/create-page')->assertRedirect('/');
         $this->get('/')->assertSee('You do not have permission');
-        $this->get($bookUrl)->assertElementNotContains('.actions', 'New Page')
+        $this->get($recipeUrl)->assertElementNotContains('.actions', 'New Page')
             ->assertElementNotContains('.actions', 'New Chapter');
 
-        $this->setRestrictionsForTestRoles($book, ['view', 'create']);
+        $this->setRestrictionsForTestRoles($recipe, ['view', 'create']);
 
-        $resp = $this->post($book->getUrl('/create-chapter'), [
+        $resp = $this->post($recipe->getUrl('/create-chapter'), [
             'name'        => 'test chapter',
             'description' => 'test desc',
         ]);
-        $resp->assertRedirect($book->getUrl('/chapter/test-chapter'));
+        $resp->assertRedirect($recipe->getUrl('/chapter/test-chapter'));
 
-        $this->get($book->getUrl('/create-page'));
+        $this->get($recipe->getUrl('/create-page'));
         /** @var Page $page */
         $page = Page::query()->where('draft', '=', true)->orderByDesc('id')->first();
         $resp = $this->post($page->getUrl(), [
             'name' => 'test page',
             'html' => 'test desc',
         ]);
-        $resp->assertRedirect($book->getUrl('/page/test-page'));
+        $resp->assertRedirect($recipe->getUrl('/page/test-page'));
 
-        $this->get($bookUrl)
+        $this->get($recipeUrl)
             ->assertElementContains('.actions', 'New Page')
             ->assertElementContains('.actions', 'New Chapter');
     }
 
-    public function test_book_update_restriction_override()
+    public function test_recipe_update_restriction_override()
     {
-        /** @var Recipe $book */
-        $book = Recipe::query()->first();
-        $bookPage = $book->pages->first();
-        $bookChapter = $book->chapters->first();
+        /** @var Recipe $recipe */
+        $recipe = Recipe::query()->first();
+        $recipePage = $recipe->pages->first();
+        $recipeChapter = $recipe->chapters->first();
 
-        $bookUrl = $book->getUrl();
-        $this->actingAs($this->viewer)->get($bookUrl . '/edit')
+        $recipeUrl = $recipe->getUrl();
+        $this->actingAs($this->viewer)->get($recipeUrl . '/edit')
             ->assertDontSee('Edit Recipe');
 
-        $this->setRestrictionsForTestRoles($book, ['view', 'delete']);
+        $this->setRestrictionsForTestRoles($recipe, ['view', 'delete']);
 
-        $this->get($bookUrl . '/edit')->assertRedirect('/');
+        $this->get($recipeUrl . '/edit')->assertRedirect('/');
         $this->get('/')->assertSee('You do not have permission');
-        $this->get($bookPage->getUrl() . '/edit')->assertRedirect('/');
+        $this->get($recipePage->getUrl() . '/edit')->assertRedirect('/');
         $this->get('/')->assertSee('You do not have permission');
-        $this->get($bookChapter->getUrl() . '/edit')->assertRedirect('/');
+        $this->get($recipeChapter->getUrl() . '/edit')->assertRedirect('/');
         $this->get('/')->assertSee('You do not have permission');
 
-        $this->setRestrictionsForTestRoles($book, ['view', 'update']);
+        $this->setRestrictionsForTestRoles($recipe, ['view', 'update']);
 
-        $this->get($bookUrl . '/edit')->assertOk();
-        $this->get($bookPage->getUrl() . '/edit')->assertOk();
-        $this->get($bookChapter->getUrl() . '/edit')->assertSee('Edit Chapter');
+        $this->get($recipeUrl . '/edit')->assertOk();
+        $this->get($recipePage->getUrl() . '/edit')->assertOk();
+        $this->get($recipeChapter->getUrl() . '/edit')->assertSee('Edit Chapter');
     }
 
-    public function test_book_delete_restriction_override()
+    public function test_recipe_delete_restriction_override()
     {
-        /** @var Recipe $book */
-        $book = Recipe::query()->first();
-        $bookPage = $book->pages->first();
-        $bookChapter = $book->chapters->first();
+        /** @var Recipe $recipe */
+        $recipe = Recipe::query()->first();
+        $recipePage = $recipe->pages->first();
+        $recipeChapter = $recipe->chapters->first();
 
-        $bookUrl = $book->getUrl();
+        $recipeUrl = $recipe->getUrl();
         $this->actingAs($this->viewer)
-            ->get($bookUrl . '/delete')
+            ->get($recipeUrl . '/delete')
             ->assertDontSee('Delete Recipe');
 
-        $this->setRestrictionsForTestRoles($book, ['view', 'update']);
+        $this->setRestrictionsForTestRoles($recipe, ['view', 'update']);
 
-        $this->get($bookUrl . '/delete')->assertRedirect('/');
+        $this->get($recipeUrl . '/delete')->assertRedirect('/');
         $this->get('/')->assertSee('You do not have permission');
-        $this->get($bookPage->getUrl() . '/delete')->assertRedirect('/');
+        $this->get($recipePage->getUrl() . '/delete')->assertRedirect('/');
         $this->get('/')->assertSee('You do not have permission');
-        $this->get($bookChapter->getUrl() . '/delete')->assertRedirect('/');
+        $this->get($recipeChapter->getUrl() . '/delete')->assertRedirect('/');
         $this->get('/')->assertSee('You do not have permission');
 
-        $this->setRestrictionsForTestRoles($book, ['view', 'delete']);
+        $this->setRestrictionsForTestRoles($recipe, ['view', 'delete']);
 
-        $this->get($bookUrl . '/delete')->assertOk()->assertSee('Delete Recipe');
-        $this->get($bookPage->getUrl() . '/delete')->assertOk()->assertSee('Delete Page');
-        $this->get($bookChapter->getUrl() . '/delete')->assertSee('Delete Chapter');
+        $this->get($recipeUrl . '/delete')->assertOk()->assertSee('Delete Recipe');
+        $this->get($recipePage->getUrl() . '/delete')->assertOk()->assertSee('Delete Page');
+        $this->get($recipeChapter->getUrl() . '/delete')->assertSee('Delete Chapter');
     }
 
-    public function test_page_visible_if_has_permissions_when_book_not_visible()
+    public function test_page_visible_if_has_permissions_when_recipe_not_visible()
     {
-        /** @var Recipe $book */
-        $book = Recipe::query()->first();
-        $bookChapter = $book->chapters->first();
-        $bookPage = $bookChapter->pages->first();
+        /** @var Recipe $recipe */
+        $recipe = Recipe::query()->first();
+        $recipeChapter = $recipe->chapters->first();
+        $recipePage = $recipeChapter->pages->first();
 
-        foreach ([$book, $bookChapter, $bookPage] as $entity) {
+        foreach ([$recipe, $recipeChapter, $recipePage] as $entity) {
             $entity->name = Str::random(24);
             $entity->save();
         }
 
-        $this->setRestrictionsForTestRoles($book, []);
-        $this->setRestrictionsForTestRoles($bookPage, ['view']);
+        $this->setRestrictionsForTestRoles($recipe, []);
+        $this->setRestrictionsForTestRoles($recipePage, ['view']);
 
         $this->actingAs($this->viewer);
-        $resp = $this->get($bookPage->getUrl());
+        $resp = $this->get($recipePage->getUrl());
         $resp->assertOk();
-        $resp->assertSee($bookPage->name);
-        $resp->assertDontSee(substr($book->name, 0, 15));
-        $resp->assertDontSee(substr($bookChapter->name, 0, 15));
+        $resp->assertSee($recipePage->name);
+        $resp->assertDontSee(substr($recipe->name, 0, 15));
+        $resp->assertDontSee(substr($recipeChapter->name, 0, 15));
     }
 
-    public function test_book_sort_view_permission()
+    public function test_recipe_sort_view_permission()
     {
-        /** @var Recipe $firstBook */
-        $firstBook = Recipe::query()->first();
-        /** @var Recipe $secondBook */
-        $secondBook = Recipe::query()->find(2);
+        /** @var Recipe $firstRecipe */
+        $firstRecipe = Recipe::query()->first();
+        /** @var Recipe $secondRecipe */
+        $secondRecipe = Recipe::query()->find(2);
 
-        $this->setRestrictionsForTestRoles($firstBook, ['view', 'update']);
-        $this->setRestrictionsForTestRoles($secondBook, ['view']);
+        $this->setRestrictionsForTestRoles($firstRecipe, ['view', 'update']);
+        $this->setRestrictionsForTestRoles($secondRecipe, ['view']);
 
         // Test sort page visibility
-        $this->actingAs($this->user)->get($secondBook->getUrl('/sort'))->assertRedirect('/');
+        $this->actingAs($this->user)->get($secondRecipe->getUrl('/sort'))->assertRedirect('/');
         $this->get('/')->assertSee('You do not have permission');
 
-        // Check sort page on first book
-        $this->actingAs($this->user)->get($firstBook->getUrl('/sort'));
+        // Check sort page on first recipe
+        $this->actingAs($this->user)->get($firstRecipe->getUrl('/sort'));
     }
 
-    public function test_book_sort_permission()
+    public function test_recipe_sort_permission()
     {
-        /** @var Recipe $firstBook */
-        $firstBook = Recipe::query()->first();
-        /** @var Recipe $secondBook */
-        $secondBook = Recipe::query()->find(2);
+        /** @var Recipe $firstRecipe */
+        $firstRecipe = Recipe::query()->first();
+        /** @var Recipe $secondRecipe */
+        $secondRecipe = Recipe::query()->find(2);
 
-        $this->setRestrictionsForTestRoles($firstBook, ['view', 'update']);
-        $this->setRestrictionsForTestRoles($secondBook, ['view']);
+        $this->setRestrictionsForTestRoles($firstRecipe, ['view', 'update']);
+        $this->setRestrictionsForTestRoles($secondRecipe, ['view']);
 
-        $firstBookChapter = $this->newChapter(['name' => 'first book chapter'], $firstBook);
-        $secondBookChapter = $this->newChapter(['name' => 'second book chapter'], $secondBook);
+        $firstRecipeChapter = $this->newChapter(['name' => 'first recipe chapter'], $firstRecipe);
+        $secondRecipeChapter = $this->newChapter(['name' => 'second recipe chapter'], $secondRecipe);
 
         // Create request data
         $reqData = [
             [
-                'id'            => $firstBookChapter->id,
+                'id'            => $firstRecipeChapter->id,
                 'sort'          => 0,
                 'parentChapter' => false,
                 'type'          => 'chapter',
-                'book'          => $secondBook->id,
+                'recipe'          => $secondRecipe->id,
             ],
         ];
 
-        // Move chapter from first book to a second book
-        $this->actingAs($this->user)->put($firstBook->getUrl() . '/sort', ['sort-tree' => json_encode($reqData)])
+        // Move chapter from first recipe to a second recipe
+        $this->actingAs($this->user)->put($firstRecipe->getUrl() . '/sort', ['sort-tree' => json_encode($reqData)])
             ->assertRedirect('/');
         $this->get('/')->assertSee('You do not have permission');
 
         $reqData = [
             [
-                'id'            => $secondBookChapter->id,
+                'id'            => $secondRecipeChapter->id,
                 'sort'          => 0,
                 'parentChapter' => false,
                 'type'          => 'chapter',
-                'book'          => $firstBook->id,
+                'recipe'          => $firstRecipe->id,
             ],
         ];
 
-        // Move chapter from second book to first book
-        $this->actingAs($this->user)->put($firstBook->getUrl() . '/sort', ['sort-tree' => json_encode($reqData)])
+        // Move chapter from second recipe to first recipe
+        $this->actingAs($this->user)->put($firstRecipe->getUrl() . '/sort', ['sort-tree' => json_encode($reqData)])
                 ->assertRedirect('/');
         $this->get('/')->assertSee('You do not have permission');
     }
 
-    public function test_can_create_page_if_chapter_has_permissions_when_book_not_visible()
+    public function test_can_create_page_if_chapter_has_permissions_when_recipe_not_visible()
     {
-        /** @var Recipe $book */
-        $book = Recipe::query()->first();
-        $this->setRestrictionsForTestRoles($book, []);
-        $bookChapter = $book->chapters->first();
-        $this->setRestrictionsForTestRoles($bookChapter, ['view']);
+        /** @var Recipe $recipe */
+        $recipe = Recipe::query()->first();
+        $this->setRestrictionsForTestRoles($recipe, []);
+        $recipeChapter = $recipe->chapters->first();
+        $this->setRestrictionsForTestRoles($recipeChapter, ['view']);
 
-        $this->actingAs($this->user)->get($bookChapter->getUrl())
+        $this->actingAs($this->user)->get($recipeChapter->getUrl())
             ->assertDontSee('New Page');
 
-        $this->setRestrictionsForTestRoles($bookChapter, ['view', 'create']);
+        $this->setRestrictionsForTestRoles($recipeChapter, ['view', 'create']);
 
-        $this->get($bookChapter->getUrl('/create-page'));
+        $this->get($recipeChapter->getUrl('/create-page'));
         /** @var Page $page */
         $page = Page::query()->where('draft', '=', true)->orderByDesc('id')->first();
         $resp = $this->post($page->getUrl(), [
             'name' => 'test page',
             'html' => 'test content',
         ]);
-        $resp->assertRedirect($book->getUrl('/page/test-page'));
+        $resp->assertRedirect($recipe->getUrl('/page/test-page'));
     }
 }

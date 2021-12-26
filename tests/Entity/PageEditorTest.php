@@ -55,18 +55,18 @@ class PageEditorTest extends TestCase
     public function test_empty_markdown_still_saves_without_error()
     {
         $this->setSettings(['app-editor' => 'markdown']);
-        /** @var Recipe $book */
-        $book = Recipe::query()->first();
+        /** @var Recipe $recipe */
+        $recipe = Recipe::query()->first();
 
-        $this->asEditor()->get($book->getUrl('/create-page'));
-        $draft = Page::query()->where('book_id', '=', $book->id)
+        $this->asEditor()->get($recipe->getUrl('/create-page'));
+        $draft = Page::query()->where('recipe_id', '=', $recipe->id)
             ->where('draft', '=', true)->first();
 
         $details = [
             'name'     => 'my page',
             'markdown' => '',
         ];
-        $resp = $this->post($book->getUrl("/draft/{$draft->id}"), $details);
+        $resp = $this->post($recipe->getUrl("/draft/{$draft->id}"), $details);
         $resp->assertRedirect();
 
         $this->assertDatabaseHas('pages', [
@@ -78,26 +78,26 @@ class PageEditorTest extends TestCase
 
     public function test_back_link_in_editor_has_correct_url()
     {
-        /** @var Recipe $book */
-        $book = Recipe::query()->whereHas('pages')->whereHas('chapters')->firstOrFail();
-        $this->asEditor()->get($book->getUrl('/create-page'));
+        /** @var Recipe $recipe */
+        $recipe = Recipe::query()->whereHas('pages')->whereHas('chapters')->firstOrFail();
+        $this->asEditor()->get($recipe->getUrl('/create-page'));
         /** @var Chapter $chapter */
-        $chapter = $book->chapters()->firstOrFail();
+        $chapter = $recipe->chapters()->firstOrFail();
         /** @var Page $draft */
-        $draft = $book->pages()->where('draft', '=', true)->firstOrFail();
+        $draft = $recipe->pages()->where('draft', '=', true)->firstOrFail();
 
-        // Recipe draft goes back to book
-        $resp = $this->get($book->getUrl("/draft/{$draft->id}"));
-        $resp->assertElementContains('a[href="' . $book->getUrl() . '"]', 'Back');
+        // Recipe draft goes back to recipe
+        $resp = $this->get($recipe->getUrl("/draft/{$draft->id}"));
+        $resp->assertElementContains('a[href="' . $recipe->getUrl() . '"]', 'Back');
 
         // Chapter draft goes back to chapter
         $draft->chapter_id = $chapter->id;
         $draft->save();
-        $resp = $this->get($book->getUrl("/draft/{$draft->id}"));
+        $resp = $this->get($recipe->getUrl("/draft/{$draft->id}"));
         $resp->assertElementContains('a[href="' . $chapter->getUrl() . '"]', 'Back');
 
         // Saved page goes back to page
-        $this->post($book->getUrl("/draft/{$draft->id}"), ['name' => 'Updated', 'html' => 'Updated']);
+        $this->post($recipe->getUrl("/draft/{$draft->id}"), ['name' => 'Updated', 'html' => 'Updated']);
         $draft->refresh();
         $resp = $this->get($draft->getUrl('/edit'));
         $resp->assertElementContains('a[href="' . $draft->getUrl() . '"]', 'Back');

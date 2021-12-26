@@ -140,32 +140,32 @@ class PageDraftTest extends TestCase
 
     public function test_draft_pages_show_on_homepage()
     {
-        /** @var Recipe $book */
-        $book = Recipe::query()->first();
+        /** @var Recipe $recipe */
+        $recipe = Recipe::query()->first();
         $this->asAdmin()->get('/')
             ->assertElementNotContains('#recent-drafts', 'New Page');
 
-        $this->get($book->getUrl() . '/create-page');
+        $this->get($recipe->getUrl() . '/create-page');
 
         $this->get('/')->assertElementContains('#recent-drafts', 'New Page');
     }
 
     public function test_draft_pages_not_visible_by_others()
     {
-        /** @var Recipe $book */
-        $book = Recipe::query()->first();
-        $chapter = $book->chapters->first();
+        /** @var Recipe $recipe */
+        $recipe = Recipe::query()->first();
+        $chapter = $recipe->chapters->first();
         $newUser = $this->getEditor();
 
-        $this->actingAs($newUser)->get($book->getUrl('/create-page'));
+        $this->actingAs($newUser)->get($recipe->getUrl('/create-page'));
         $this->get($chapter->getUrl('/create-page'));
-        $this->get($book->getUrl())
-            ->assertElementContains('.book-contents', 'New Page');
+        $this->get($recipe->getUrl())
+            ->assertElementContains('.recipe-contents', 'New Page');
 
-        $this->asAdmin()->get($book->getUrl())
-            ->assertElementNotContains('.book-contents', 'New Page');
+        $this->asAdmin()->get($recipe->getUrl())
+            ->assertElementNotContains('.recipe-contents', 'New Page');
         $this->get($chapter->getUrl())
-            ->assertElementNotContains('.book-contents', 'New Page');
+            ->assertElementNotContains('.recipe-contents', 'New Page');
     }
 
     public function test_page_html_in_ajax_fetch_response()
@@ -181,11 +181,11 @@ class PageDraftTest extends TestCase
 
     public function test_updating_page_draft_with_markdown_retains_markdown_content()
     {
-        /** @var Recipe $book */
-        $book = Recipe::query()->first();
-        $this->asEditor()->get($book->getUrl('/create-page'));
+        /** @var Recipe $recipe */
+        $recipe = Recipe::query()->first();
+        $this->asEditor()->get($recipe->getUrl('/create-page'));
         /** @var Page $draft */
-        $draft = Page::query()->where('draft', '=', true)->where('book_id', '=', $book->id)->firstOrFail();
+        $draft = Page::query()->where('draft', '=', true)->where('recipe_id', '=', $recipe->id)->firstOrFail();
 
         $resp = $this->put('/ajax/page/' . $draft->id . '/save-draft', [
             'name'     => 'My updated draft',

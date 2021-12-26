@@ -29,13 +29,13 @@ class EntityOwnerChangeTest extends TestCase
         $this->assertDatabaseHas('chapters', ['owned_by' => $user->id, 'id' => $chapter->id]);
     }
 
-    public function test_changing_book_owner()
+    public function test_changing_recipe_owner()
     {
-        $book = Recipe::query()->first();
-        $user = User::query()->where('id', '!=', $book->owned_by)->first();
+        $recipe = Recipe::query()->first();
+        $user = User::query()->where('id', '!=', $recipe->owned_by)->first();
 
-        $this->asAdmin()->put($book->getUrl('permissions'), ['owned_by' => $user->id]);
-        $this->assertDatabaseHas('recipes', ['owned_by' => $user->id, 'id' => $book->id]);
+        $this->asAdmin()->put($recipe->getUrl('permissions'), ['owned_by' => $user->id]);
+        $this->assertDatabaseHas('recipes', ['owned_by' => $user->id, 'id' => $recipe->id]);
     }
 
     public function test_changing_menu_owner()

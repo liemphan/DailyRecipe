@@ -114,17 +114,17 @@ class TagTest extends TestCase
         $resp->assertDontSee('OtherTestContent');
         $resp->assertElementContains('a[title="Total tag usages"]', '2');
         $resp->assertElementContains('a[title="Assigned to Pages"]', '2');
-        $resp->assertElementContains('a[title="Assigned to Books"]', '0');
+        $resp->assertElementContains('a[title="Assigned to Recipes"]', '0');
         $resp->assertElementContains('a[title="Assigned to Chapters"]', '0');
         $resp->assertElementContains('a[title="Assigned to Menus"]', '0');
         $resp->assertElementContains('a[href$="/tags?name=Category"]', '2 unique values');
 
-        /** @var Recipe $book */
-        $book = Recipe::query()->first();
-        $book->tags()->create(['name' => 'Category', 'value' => 'GreatTestContent']);
+        /** @var Recipe $recipe */
+        $recipe = Recipe::query()->first();
+        $recipe->tags()->create(['name' => 'Category', 'value' => 'GreatTestContent']);
         $resp = $this->asEditor()->get('/tags');
         $resp->assertElementContains('a[title="Total tag usages"]', '3');
-        $resp->assertElementContains('a[title="Assigned to Books"]', '1');
+        $resp->assertElementContains('a[title="Assigned to Recipes"]', '1');
         $resp->assertElementContains('a[href$="/tags?name=Category"]', '2 unique values');
     }
 

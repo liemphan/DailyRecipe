@@ -58,7 +58,7 @@ class FavouriteTest extends TestCase
         ]);
     }
 
-    public function test_book_chapter_menu_pages_contain_favourite_button()
+    public function test_recipe_chapter_menu_pages_contain_favourite_button()
     {
         $entities = [
             Recipemenu::query()->first(),

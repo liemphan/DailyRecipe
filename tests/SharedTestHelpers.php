@@ -117,9 +117,9 @@ trait SharedTestHelpers
     }
 
     /**
-     * Create and return a new book.
+     * Create and return a new recipe.
      */
-    public function newBook(array $input = ['name' => 'test book', 'description' => 'My new test book']): Recipe
+    public function newRecipe(array $input = ['name' => 'test recipe', 'description' => 'My new test recipe']): Recipe
     {
         return app(RecipeRepo::class)->create($input);
     }
@@ -127,9 +127,9 @@ trait SharedTestHelpers
     /**
      * Create and return a new test chapter.
      */
-    public function newChapter(array $input, Recipe $book): Chapter
+    public function newChapter(array $input, Recipe $recipe): Chapter
     {
-        return app(ChapterRepo::class)->create($input, $book);
+        return app(ChapterRepo::class)->create($input, $recipe);
     }
 
     /**
@@ -137,9 +137,9 @@ trait SharedTestHelpers
      */
     public function newPage(array $input = ['name' => 'test page', 'html' => 'My new test page']): Page
     {
-        $book = Recipe::query()->first();
+        $recipe = Recipe::query()->first();
         $pageRepo = app(PageRepo::class);
-        $draftPage = $pageRepo->getNewDraftPage($book);
+        $draftPage = $pageRepo->getNewDraftPage($recipe);
 
         return $pageRepo->publishDraft($draftPage, $input);
     }
@@ -219,7 +219,7 @@ trait SharedTestHelpers
     /**
      * Create a group of entities that belong to a specific user.
      *
-     * @return array{book: Recipe, chapter: Chapter, page: Page}
+     * @return array{recipe: Recipe, chapter: Chapter, page: Page}
      */
     protected function createEntityChainBelongingToUser(User $creatorUser, ?User $updaterUser = null): array
     {
@@ -228,13 +228,13 @@ trait SharedTestHelpers
         }
 
         $userAttrs = ['created_by' => $creatorUser->id, 'owned_by' => $creatorUser->id, 'updated_by' => $updaterUser->id];
-        $book = Recipe::factory()->create($userAttrs);
-        $chapter = Chapter::factory()->create(array_merge(['book_id' => $book->id], $userAttrs));
-        $page = Page::factory()->create(array_merge(['book_id' => $book->id, 'chapter_id' => $chapter->id], $userAttrs));
+        $recipe = Recipe::factory()->create($userAttrs);
+        $chapter = Chapter::factory()->create(array_merge(['recipe_id' => $recipe->id], $userAttrs));
+        $page = Page::factory()->create(array_merge(['recipe_id' => $recipe->id, 'chapter_id' => $chapter->id], $userAttrs));
         $restrictionService = $this->app[PermissionService::class];
-        $restrictionService->buildJointPermissionsForEntity($book);
+        $restrictionService->buildJointPermissionsForEntity($recipe);
 
-        return compact('book', 'chapter', 'page');
+        return compact('recipe', 'chapter', 'page');
     }
 
     /**

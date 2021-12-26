@@ -37,10 +37,10 @@ class ExportPermissionsTest extends TestCase
         }
     }
 
-    public function test_page_content_without_view_access_hidden_on_book_export()
+    public function test_page_content_without_view_access_hidden_on_recipe_export()
     {
-        $book = Recipe::query()->first();
-        $page = $book->pages()->firstOrFail();
+        $recipe = Recipe::query()->first();
+        $page = $recipe->pages()->firstOrFail();
         $pageContent = Str::random(48);
         $page->html = '<p>' . $pageContent . '</p>';
         $page->save();
@@ -49,7 +49,7 @@ class ExportPermissionsTest extends TestCase
         $formats = ['html', 'plaintext'];
 
         foreach ($formats as $format) {
-            $resp = $this->get($book->getUrl("export/{$format}"));
+            $resp = $this->get($recipe->getUrl("export/{$format}"));
             $resp->assertStatus(200);
             $resp->assertSee($page->name);
             $resp->assertSee($pageContent);
@@ -58,7 +58,7 @@ class ExportPermissionsTest extends TestCase
         $this->setEntityRestrictions($page, []);
 
         foreach ($formats as $format) {
-            $resp = $this->get($book->getUrl("export/{$format}"));
+            $resp = $this->get($recipe->getUrl("export/{$format}"));
             $resp->assertStatus(200);
             $resp->assertDontSee($page->name);
             $resp->assertDontSee($pageContent);

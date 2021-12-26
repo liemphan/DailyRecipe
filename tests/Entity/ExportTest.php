@@ -45,54 +45,54 @@ class ExportTest extends TestCase
         $resp->assertHeader('Content-Disposition', 'attachment; filename="' . $page->slug . '.html"');
     }
 
-    public function test_book_text_export()
+    public function test_recipe_text_export()
     {
         $page = Page::query()->first();
-        $book = $page->recipe;
+        $recipe = $page->recipe;
         $this->asEditor();
 
-        $resp = $this->get($book->getUrl('/export/plaintext'));
+        $resp = $this->get($recipe->getUrl('/export/plaintext'));
         $resp->assertStatus(200);
-        $resp->assertSee($book->name);
+        $resp->assertSee($recipe->name);
         $resp->assertSee($page->name);
-        $resp->assertHeader('Content-Disposition', 'attachment; filename="' . $book->slug . '.txt"');
+        $resp->assertHeader('Content-Disposition', 'attachment; filename="' . $recipe->slug . '.txt"');
     }
 
-    public function test_book_pdf_export()
+    public function test_recipe_pdf_export()
     {
         $page = Page::query()->first();
-        $book = $page->recipe;
+        $recipe = $page->recipe;
         $this->asEditor();
 
-        $resp = $this->get($book->getUrl('/export/pdf'));
+        $resp = $this->get($recipe->getUrl('/export/pdf'));
         $resp->assertStatus(200);
-        $resp->assertHeader('Content-Disposition', 'attachment; filename="' . $book->slug . '.pdf"');
+        $resp->assertHeader('Content-Disposition', 'attachment; filename="' . $recipe->slug . '.pdf"');
     }
 
-    public function test_book_html_export()
+    public function test_recipe_html_export()
     {
         $page = Page::query()->first();
-        $book = $page->recipe;
+        $recipe = $page->recipe;
         $this->asEditor();
 
-        $resp = $this->get($book->getUrl('/export/html'));
+        $resp = $this->get($recipe->getUrl('/export/html'));
         $resp->assertStatus(200);
-        $resp->assertSee($book->name);
+        $resp->assertSee($recipe->name);
         $resp->assertSee($page->name);
-        $resp->assertHeader('Content-Disposition', 'attachment; filename="' . $book->slug . '.html"');
+        $resp->assertHeader('Content-Disposition', 'attachment; filename="' . $recipe->slug . '.html"');
     }
 
-    public function test_book_html_export_shows_chapter_descriptions()
+    public function test_recipe_html_export_shows_chapter_descriptions()
     {
         $chapterDesc = 'My custom test chapter description ' . Str::random(12);
         $chapter = Chapter::query()->first();
         $chapter->description = $chapterDesc;
         $chapter->save();
 
-        $book = $chapter->recipe;
+        $recipe = $chapter->recipe;
         $this->asEditor();
 
-        $resp = $this->get($book->getUrl('/export/html'));
+        $resp = $this->get($recipe->getUrl('/export/html'));
         $resp->assertSee($chapterDesc);
     }
 
@@ -377,24 +377,24 @@ class ExportTest extends TestCase
         $resp->assertSee('# ' . $page->name);
     }
 
-    public function test_book_markdown_export()
+    public function test_recipe_markdown_export()
     {
-        $book = Recipe::query()->whereHas('pages')->whereHas('chapters')->first();
-        $chapter = $book->chapters()->first();
+        $recipe = Recipe::query()->whereHas('pages')->whereHas('chapters')->first();
+        $chapter = $recipe->chapters()->first();
         $page = $chapter->pages()->first();
-        $resp = $this->asEditor()->get($book->getUrl('/export/markdown'));
+        $resp = $this->asEditor()->get($recipe->getUrl('/export/markdown'));
 
-        $resp->assertSee('# ' . $book->name);
+        $resp->assertSee('# ' . $recipe->name);
         $resp->assertSee('# ' . $chapter->name);
         $resp->assertSee('# ' . $page->name);
     }
 
     public function test_export_option_only_visible_and_accessible_with_permission()
     {
-        $book = Recipe::query()->whereHas('pages')->whereHas('chapters')->first();
-        $chapter = $book->chapters()->first();
+        $recipe = Recipe::query()->whereHas('pages')->whereHas('chapters')->first();
+        $chapter = $recipe->chapters()->first();
         $page = $chapter->pages()->first();
-        $entities = [$book, $chapter, $page];
+        $entities = [$recipe, $chapter, $page];
         $user = $this->getViewer();
         $this->actingAs($user);
 

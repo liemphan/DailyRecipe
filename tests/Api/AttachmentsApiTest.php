@@ -13,7 +13,7 @@ class AttachmentsApiTest extends TestCase
 
     protected $baseEndpoint = '/api/attachments';
 
-    public function test_index_endpoint_returns_expected_book()
+    public function test_index_endpoint_returns_expected_recipe()
     {
         $this->actingAsApiEditor();
         $page = Page::query()->first();

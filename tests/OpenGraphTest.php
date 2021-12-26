@@ -37,24 +37,24 @@ class OpenGraphTest extends TestCase
         $this->assertEquals(Str::limit($chapter->description, 100, '...'), $tags['description']);
     }
 
-    public function test_book_tags()
+    public function test_recipe_tags()
     {
-        $book = Recipe::query()->first();
-        $resp = $this->asEditor()->get($book->getUrl());
+        $recipe = Recipe::query()->first();
+        $resp = $this->asEditor()->get($recipe->getUrl());
         $tags = $this->getOpenGraphTags($resp);
 
-        $this->assertEquals($book->getShortName() . ' | DailyRecipe', $tags['title']);
-        $this->assertEquals($book->getUrl(), $tags['url']);
-        $this->assertEquals(Str::limit($book->description, 100, '...'), $tags['description']);
+        $this->assertEquals($recipe->getShortName() . ' | DailyRecipe', $tags['title']);
+        $this->assertEquals($recipe->getUrl(), $tags['url']);
+        $this->assertEquals(Str::limit($recipe->description, 100, '...'), $tags['description']);
         $this->assertArrayNotHasKey('image', $tags);
 
         // Test image set if image has cover image
-        $bookRepo = app(RecipeRepo::class);
-        $bookRepo->updateCoverImage($book, $this->getTestImage('image.png'));
-        $resp = $this->asEditor()->get($book->getUrl());
+        $recipeRepo = app(RecipeRepo::class);
+        $recipeRepo->updateCoverImage($recipe, $this->getTestImage('image.png'));
+        $resp = $this->asEditor()->get($recipe->getUrl());
         $tags = $this->getOpenGraphTags($resp);
 
-        $this->assertEquals($book->getBookCover(), $tags['image']);
+        $this->assertEquals($recipe->getRecipeCover(), $tags['image']);
     }
 
     public function test_menu_tags()
@@ -74,7 +74,7 @@ class OpenGraphTest extends TestCase
         $resp = $this->asEditor()->get($menu->getUrl());
         $tags = $this->getOpenGraphTags($resp);
 
-        $this->assertEquals($menu->getBookCover(), $tags['image']);
+        $this->assertEquals($menu->getRecipeCover(), $tags['image']);
     }
 
     /**

@@ -30,22 +30,22 @@ class MenusApiTest extends TestCase
     public function test_create_endpoint()
     {
         $this->actingAsApiEditor();
-        $books = Recipe::query()->take(2)->get();
+        $recipes = Recipe::query()->take(2)->get();
 
         $details = [
             'name'        => 'My API menu',
             'description' => 'A menu created via the API',
         ];
 
-        $resp = $this->postJson($this->baseEndpoint, array_merge($details, ['recipes' => [$books[0]->id, $books[1]->id]]));
+        $resp = $this->postJson($this->baseEndpoint, array_merge($details, ['recipes' => [$recipes[0]->id, $recipes[1]->id]]));
         $resp->assertStatus(200);
         $newItem = Recipemenu::query()->orderByDesc('id')->where('name', '=', $details['name'])->first();
         $resp->assertJson(array_merge($details, ['id' => $newItem->id, 'slug' => $newItem->slug]));
         $this->assertActivityExists('menu_create', $newItem);
-        foreach ($books as $index => $book) {
-            $this->assertDatabaseHas('recipemenus_books', [
+        foreach ($recipes as $index => $recipe) {
+            $this->assertDatabaseHas('recipemenus_recipes', [
                 'recipemenu_id' => $newItem->id,
-                'book_id'      => $book->id,
+                'recipe_id'      => $recipe->id,
                 'order'        => $index,
             ]);
         }
@@ -111,22 +111,22 @@ class MenusApiTest extends TestCase
         $this->assertActivityExists('menu_update', $menu);
     }
 
-    public function test_update_only_assigns_books_if_param_provided()
+    public function test_update_only_assigns_recipes_if_param_provided()
     {
         $this->actingAsApiEditor();
         $menu = Recipemenu::visible()->first();
-        $this->assertTrue($menu->books()->count() > 0);
+        $this->assertTrue($menu->recipes()->count() > 0);
         $details = [
             'name' => 'My updated API menu',
         ];
 
         $resp = $this->putJson($this->baseEndpoint . "/{$menu->id}", $details);
         $resp->assertStatus(200);
-        $this->assertTrue($menu->books()->count() > 0);
+        $this->assertTrue($menu->recipes()->count() > 0);
 
         $resp = $this->putJson($this->baseEndpoint . "/{$menu->id}", ['recipes' => []]);
         $resp->assertStatus(200);
-        $this->assertTrue($menu->books()->count() === 0);
+        $this->assertTrue($menu->recipes()->count() === 0);
     }
 
     public function test_delete_endpoint()

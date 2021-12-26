@@ -57,78 +57,78 @@ class RecycleBinTest extends TestCase
     public function test_recycle_bin_view()
     {
         $page = Page::query()->first();
-        $book = Recipe::query()->whereHas('pages')->whereHas('chapters')->withCount(['pages', 'chapters'])->first();
+        $recipe = Recipe::query()->whereHas('pages')->whereHas('chapters')->withCount(['pages', 'chapters'])->first();
         $editor = $this->getEditor();
         $this->actingAs($editor)->delete($page->getUrl());
-        $this->actingAs($editor)->delete($book->getUrl());
+        $this->actingAs($editor)->delete($recipe->getUrl());
 
         $viewReq = $this->asAdmin()->get('/settings/recycle-bin');
         $viewReq->assertElementContains('table.table', $page->name);
         $viewReq->assertElementContains('table.table', $editor->name);
-        $viewReq->assertElementContains('table.table', $book->name);
-        $viewReq->assertElementContains('table.table', $book->pages_count . ' Pages');
-        $viewReq->assertElementContains('table.table', $book->chapters_count . ' Chapters');
+        $viewReq->assertElementContains('table.table', $recipe->name);
+        $viewReq->assertElementContains('table.table', $recipe->pages_count . ' Pages');
+        $viewReq->assertElementContains('table.table', $recipe->chapters_count . ' Chapters');
     }
 
     public function test_recycle_bin_empty()
     {
         $page = Page::query()->first();
-        $book = Recipe::query()->where('id', '!=', $page->recipe_id)->whereHas('pages')->whereHas('chapters')->with(['pages', 'chapters'])->firstOrFail();
+        $recipe = Recipe::query()->where('id', '!=', $page->recipe_id)->whereHas('pages')->whereHas('chapters')->with(['pages', 'chapters'])->firstOrFail();
         $editor = $this->getEditor();
         $this->actingAs($editor)->delete($page->getUrl());
-        $this->actingAs($editor)->delete($book->getUrl());
+        $this->actingAs($editor)->delete($recipe->getUrl());
 
         $this->assertTrue(Deletion::query()->count() === 2);
         $emptyReq = $this->asAdmin()->post('/settings/recycle-bin/empty');
         $emptyReq->assertRedirect('/settings/recycle-bin');
 
         $this->assertTrue(Deletion::query()->count() === 0);
-        $this->assertDatabaseMissing('recipes', ['id' => $book->id]);
+        $this->assertDatabaseMissing('recipes', ['id' => $recipe->id]);
         $this->assertDatabaseMissing('pages', ['id' => $page->id]);
-        $this->assertDatabaseMissing('pages', ['id' => $book->pages->first()->id]);
-        $this->assertDatabaseMissing('chapters', ['id' => $book->chapters->first()->id]);
+        $this->assertDatabaseMissing('pages', ['id' => $recipe->pages->first()->id]);
+        $this->assertDatabaseMissing('chapters', ['id' => $recipe->chapters->first()->id]);
 
-        $itemCount = 2 + $book->pages->count() + $book->chapters->count();
+        $itemCount = 2 + $recipe->pages->count() + $recipe->chapters->count();
         $redirectReq = $this->get('/settings/recycle-bin');
         $redirectReq->assertNotificationContains('Deleted ' . $itemCount . ' total items from the recycle bin');
     }
 
     public function test_entity_restore()
     {
-        $book = Recipe::query()->whereHas('pages')->whereHas('chapters')->with(['pages', 'chapters'])->firstOrFail();
-        $this->asEditor()->delete($book->getUrl());
+        $recipe = Recipe::query()->whereHas('pages')->whereHas('chapters')->with(['pages', 'chapters'])->firstOrFail();
+        $this->asEditor()->delete($recipe->getUrl());
         $deletion = Deletion::query()->firstOrFail();
 
-        $this->assertEquals($book->pages->count(), DB::table('pages')->where('book_id', '=', $book->id)->whereNotNull('deleted_at')->count());
-        $this->assertEquals($book->chapters->count(), DB::table('chapters')->where('book_id', '=', $book->id)->whereNotNull('deleted_at')->count());
+        $this->assertEquals($recipe->pages->count(), DB::table('pages')->where('recipe_id', '=', $recipe->id)->whereNotNull('deleted_at')->count());
+        $this->assertEquals($recipe->chapters->count(), DB::table('chapters')->where('recipe_id', '=', $recipe->id)->whereNotNull('deleted_at')->count());
 
         $restoreReq = $this->asAdmin()->post("/settings/recycle-bin/{$deletion->id}/restore");
         $restoreReq->assertRedirect('/settings/recycle-bin');
         $this->assertTrue(Deletion::query()->count() === 0);
 
-        $this->assertEquals($book->pages->count(), DB::table('pages')->where('book_id', '=', $book->id)->whereNull('deleted_at')->count());
-        $this->assertEquals($book->chapters->count(), DB::table('chapters')->where('book_id', '=', $book->id)->whereNull('deleted_at')->count());
+        $this->assertEquals($recipe->pages->count(), DB::table('pages')->where('recipe_id', '=', $recipe->id)->whereNull('deleted_at')->count());
+        $this->assertEquals($recipe->chapters->count(), DB::table('chapters')->where('recipe_id', '=', $recipe->id)->whereNull('deleted_at')->count());
 
-        $itemCount = 1 + $book->pages->count() + $book->chapters->count();
+        $itemCount = 1 + $recipe->pages->count() + $recipe->chapters->count();
         $redirectReq = $this->get('/settings/recycle-bin');
         $redirectReq->assertNotificationContains('Restored ' . $itemCount . ' total items from the recycle bin');
     }
 
     public function test_permanent_delete()
     {
-        $book = Recipe::query()->whereHas('pages')->whereHas('chapters')->with(['pages', 'chapters'])->firstOrFail();
-        $this->asEditor()->delete($book->getUrl());
+        $recipe = Recipe::query()->whereHas('pages')->whereHas('chapters')->with(['pages', 'chapters'])->firstOrFail();
+        $this->asEditor()->delete($recipe->getUrl());
         $deletion = Deletion::query()->firstOrFail();
 
         $deleteReq = $this->asAdmin()->delete("/settings/recycle-bin/{$deletion->id}");
         $deleteReq->assertRedirect('/settings/recycle-bin');
         $this->assertTrue(Deletion::query()->count() === 0);
 
-        $this->assertDatabaseMissing('recipes', ['id' => $book->id]);
-        $this->assertDatabaseMissing('pages', ['id' => $book->pages->first()->id]);
-        $this->assertDatabaseMissing('chapters', ['id' => $book->chapters->first()->id]);
+        $this->assertDatabaseMissing('recipes', ['id' => $recipe->id]);
+        $this->assertDatabaseMissing('pages', ['id' => $recipe->pages->first()->id]);
+        $this->assertDatabaseMissing('chapters', ['id' => $recipe->chapters->first()->id]);
 
-        $itemCount = 1 + $book->pages->count() + $book->chapters->count();
+        $itemCount = 1 + $recipe->pages->count() + $recipe->chapters->count();
         $redirectReq = $this->get('/settings/recycle-bin');
         $redirectReq->assertNotificationContains('Deleted ' . $itemCount . ' total items from the recycle bin');
     }
@@ -221,12 +221,12 @@ class RecycleBinTest extends TestCase
 
     public function test_restore_flow_when_restoring_nested_delete_first()
     {
-        $book = Recipe::query()->whereHas('pages')->whereHas('chapters')->with(['pages', 'chapters'])->firstOrFail();
-        $chapter = $book->chapters->first();
+        $recipe = Recipe::query()->whereHas('pages')->whereHas('chapters')->with(['pages', 'chapters'])->firstOrFail();
+        $chapter = $recipe->chapters->first();
         $this->asEditor()->delete($chapter->getUrl());
-        $this->asEditor()->delete($book->getUrl());
+        $this->asEditor()->delete($recipe->getUrl());
 
-        $bookDeletion = $book->deletions()->first();
+        $recipeDeletion = $recipe->deletions()->first();
         $chapterDeletion = $chapter->deletions()->first();
 
         $chapterRestoreView = $this->asAdmin()->get("/settings/recycle-bin/{$chapterDeletion->id}/restore");
@@ -240,30 +240,30 @@ class RecycleBinTest extends TestCase
         $chapter->refresh();
         $this->assertNotNull($chapter->deleted_at);
 
-        $bookRestoreView = $this->asAdmin()->get("/settings/recycle-bin/{$bookDeletion->id}/restore");
-        $bookRestoreView->assertStatus(200);
-        $bookRestoreView->assertSeeText($chapter->name);
+        $recipeRestoreView = $this->asAdmin()->get("/settings/recycle-bin/{$recipeDeletion->id}/restore");
+        $recipeRestoreView->assertStatus(200);
+        $recipeRestoreView->assertSeeText($chapter->name);
 
-        $this->post("/settings/recycle-bin/{$bookDeletion->id}/restore");
+        $this->post("/settings/recycle-bin/{$recipeDeletion->id}/restore");
         $chapter->refresh();
         $this->assertNull($chapter->deleted_at);
     }
 
     public function test_restore_page_shows_link_to_parent_restore_if_parent_also_deleted()
     {
-        /** @var Recipe $book */
-        $book = Recipe::query()->whereHas('pages')->whereHas('chapters')->with(['pages', 'chapters'])->firstOrFail();
-        $chapter = $book->chapters->first();
+        /** @var Recipe $recipe */
+        $recipe = Recipe::query()->whereHas('pages')->whereHas('chapters')->with(['pages', 'chapters'])->firstOrFail();
+        $chapter = $recipe->chapters->first();
         /** @var Page $page */
         $page = $chapter->pages->first();
         $this->asEditor()->delete($page->getUrl());
-        $this->asEditor()->delete($book->getUrl());
+        $this->asEditor()->delete($recipe->getUrl());
 
-        $bookDeletion = $book->deletions()->first();
+        $recipeDeletion = $recipe->deletions()->first();
         $pageDeletion = $page->deletions()->first();
 
         $pageRestoreView = $this->asAdmin()->get("/settings/recycle-bin/{$pageDeletion->id}/restore");
         $pageRestoreView->assertSee('The parent of this item has also been deleted.');
-        $pageRestoreView->assertElementContains('a[href$="/settings/recycle-bin/' . $bookDeletion->id . '/restore"]', 'Restore Parent');
+        $pageRestoreView->assertElementContains('a[href$="/settings/recycle-bin/' . $recipeDeletion->id . '/restore"]', 'Restore Parent');
     }
 }

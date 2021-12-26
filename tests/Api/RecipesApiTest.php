@@ -11,17 +11,17 @@ class RecipesApiTest extends TestCase
 
     protected $baseEndpoint = '/api/recipes';
 
-    public function test_index_endpoint_returns_expected_book()
+    public function test_index_endpoint_returns_expected_recipe()
     {
         $this->actingAsApiEditor();
-        $firstBook = Recipe::query()->orderBy('id', 'asc')->first();
+        $firstRecipe = Recipe::query()->orderBy('id', 'asc')->first();
 
         $resp = $this->getJson($this->baseEndpoint . '?count=1&sort=+id');
         $resp->assertJson(['data' => [
             [
-                'id'   => $firstBook->id,
-                'name' => $firstBook->name,
-                'slug' => $firstBook->slug,
+                'id'   => $firstRecipe->id,
+                'name' => $firstRecipe->name,
+                'slug' => $firstRecipe->slug,
             ],
         ]]);
     }
@@ -30,8 +30,8 @@ class RecipesApiTest extends TestCase
     {
         $this->actingAsApiEditor();
         $details = [
-            'name'        => 'My API book',
-            'description' => 'A book created via the API',
+            'name'        => 'My API recipe',
+            'description' => 'A recipe created via the API',
         ];
 
         $resp = $this->postJson($this->baseEndpoint, $details);
@@ -41,11 +41,11 @@ class RecipesApiTest extends TestCase
         $this->assertActivityExists('recipe_create', $newItem);
     }
 
-    public function test_book_name_needed_to_create()
+    public function test_recipe_name_needed_to_create()
     {
         $this->actingAsApiEditor();
         $details = [
-            'description' => 'A book created via the API',
+            'description' => 'A recipe created via the API',
         ];
 
         $resp = $this->postJson($this->baseEndpoint, $details);
@@ -64,22 +64,22 @@ class RecipesApiTest extends TestCase
     public function test_read_endpoint()
     {
         $this->actingAsApiEditor();
-        $book = Recipe::visible()->first();
+        $recipe = Recipe::visible()->first();
 
-        $resp = $this->getJson($this->baseEndpoint . "/{$book->id}");
+        $resp = $this->getJson($this->baseEndpoint . "/{$recipe->id}");
 
         $resp->assertStatus(200);
         $resp->assertJson([
-            'id'         => $book->id,
-            'slug'       => $book->slug,
+            'id'         => $recipe->id,
+            'slug'       => $recipe->slug,
             'created_by' => [
-                'name' => $book->createdBy->name,
+                'name' => $recipe->createdBy->name,
             ],
             'updated_by' => [
-                'name' => $book->createdBy->name,
+                'name' => $recipe->createdBy->name,
             ],
             'owned_by' => [
-                'name' => $book->ownedBy->name,
+                'name' => $recipe->ownedBy->name,
             ],
         ]);
     }
@@ -87,25 +87,25 @@ class RecipesApiTest extends TestCase
     public function test_update_endpoint()
     {
         $this->actingAsApiEditor();
-        $book = Recipe::visible()->first();
+        $recipe = Recipe::visible()->first();
         $details = [
-            'name'        => 'My updated API book',
-            'description' => 'A book created via the API',
+            'name'        => 'My updated API recipe',
+            'description' => 'A recipe created via the API',
         ];
 
-        $resp = $this->putJson($this->baseEndpoint . "/{$book->id}", $details);
-        $book->refresh();
+        $resp = $this->putJson($this->baseEndpoint . "/{$recipe->id}", $details);
+        $recipe->refresh();
 
         $resp->assertStatus(200);
-        $resp->assertJson(array_merge($details, ['id' => $book->id, 'slug' => $book->slug]));
-        $this->assertActivityExists('recipe_update', $book);
+        $resp->assertJson(array_merge($details, ['id' => $recipe->id, 'slug' => $recipe->slug]));
+        $this->assertActivityExists('recipe_update', $recipe);
     }
 
     public function test_delete_endpoint()
     {
         $this->actingAsApiEditor();
-        $book = Recipe::visible()->first();
-        $resp = $this->deleteJson($this->baseEndpoint . "/{$book->id}");
+        $recipe = Recipe::visible()->first();
+        $resp = $this->deleteJson($this->baseEndpoint . "/{$recipe->id}");
 
         $resp->assertStatus(204);
         $this->assertActivityExists('recipe_delete');
@@ -114,46 +114,46 @@ class RecipesApiTest extends TestCase
     public function test_export_html_endpoint()
     {
         $this->actingAsApiEditor();
-        $book = Recipe::visible()->first();
+        $recipe = Recipe::visible()->first();
 
-        $resp = $this->get($this->baseEndpoint . "/{$book->id}/export/html");
+        $resp = $this->get($this->baseEndpoint . "/{$recipe->id}/export/html");
         $resp->assertStatus(200);
-        $resp->assertSee($book->name);
-        $resp->assertHeader('Content-Disposition', 'attachment; filename="' . $book->slug . '.html"');
+        $resp->assertSee($recipe->name);
+        $resp->assertHeader('Content-Disposition', 'attachment; filename="' . $recipe->slug . '.html"');
     }
 
     public function test_export_plain_text_endpoint()
     {
         $this->actingAsApiEditor();
-        $book = Recipe::visible()->first();
+        $recipe = Recipe::visible()->first();
 
-        $resp = $this->get($this->baseEndpoint . "/{$book->id}/export/plaintext");
+        $resp = $this->get($this->baseEndpoint . "/{$recipe->id}/export/plaintext");
         $resp->assertStatus(200);
-        $resp->assertSee($book->name);
-        $resp->assertHeader('Content-Disposition', 'attachment; filename="' . $book->slug . '.txt"');
+        $resp->assertSee($recipe->name);
+        $resp->assertHeader('Content-Disposition', 'attachment; filename="' . $recipe->slug . '.txt"');
     }
 
     public function test_export_pdf_endpoint()
     {
         $this->actingAsApiEditor();
-        $book = Recipe::visible()->first();
+        $recipe = Recipe::visible()->first();
 
-        $resp = $this->get($this->baseEndpoint . "/{$book->id}/export/pdf");
+        $resp = $this->get($this->baseEndpoint . "/{$recipe->id}/export/pdf");
         $resp->assertStatus(200);
-        $resp->assertHeader('Content-Disposition', 'attachment; filename="' . $book->slug . '.pdf"');
+        $resp->assertHeader('Content-Disposition', 'attachment; filename="' . $recipe->slug . '.pdf"');
     }
 
     public function test_export_markdown_endpoint()
     {
         $this->actingAsApiEditor();
-        $book = Recipe::visible()->has('pages')->has('chapters')->first();
+        $recipe = Recipe::visible()->has('pages')->has('chapters')->first();
 
-        $resp = $this->get($this->baseEndpoint . "/{$book->id}/export/markdown");
+        $resp = $this->get($this->baseEndpoint . "/{$recipe->id}/export/markdown");
         $resp->assertStatus(200);
-        $resp->assertHeader('Content-Disposition', 'attachment; filename="' . $book->slug . '.md"');
-        $resp->assertSee('# ' . $book->name);
-        $resp->assertSee('# ' . $book->pages()->first()->name);
-        $resp->assertSee('# ' . $book->chapters()->first()->name);
+        $resp->assertHeader('Content-Disposition', 'attachment; filename="' . $recipe->slug . '.md"');
+        $resp->assertSee('# ' . $recipe->name);
+        $resp->assertSee('# ' . $recipe->pages()->first()->name);
+        $resp->assertSee('# ' . $recipe->chapters()->first()->name);
     }
 
     public function test_cant_export_when_not_have_permission()
@@ -162,9 +162,9 @@ class RecipesApiTest extends TestCase
         $this->actingAsApiEditor();
         $this->removePermissionFromUser($this->getEditor(), 'content-export');
 
-        $book = Recipe::visible()->first();
+        $recipe = Recipe::visible()->first();
         foreach ($types as $type) {
-            $resp = $this->get($this->baseEndpoint . "/{$book->id}/export/{$type}");
+            $resp = $this->get($this->baseEndpoint . "/{$recipe->id}/export/{$type}");
             $this->assertPermissionError($resp);
         }
     }

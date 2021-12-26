@@ -10,23 +10,23 @@ class ChapterTest extends TestCase
 {
     public function test_create()
     {
-        /** @var Recipe $book */
-        $book = Recipe::query()->first();
+        /** @var Recipe $recipe */
+        $recipe = Recipe::query()->first();
 
         $chapter = Chapter::factory()->make([
             'name' => 'My First Chapter',
         ]);
 
-        $resp = $this->asEditor()->get($book->getUrl());
-        $resp->assertElementContains('a[href="' . $book->getUrl('/create-chapter') . '"]', 'New Chapter');
+        $resp = $this->asEditor()->get($recipe->getUrl());
+        $resp->assertElementContains('a[href="' . $recipe->getUrl('/create-chapter') . '"]', 'New Chapter');
 
-        $resp = $this->get($book->getUrl('/create-chapter'));
-        $resp->assertElementContains('form[action="' . $book->getUrl('/create-chapter') . '"][method="POST"]', 'Save Chapter');
+        $resp = $this->get($recipe->getUrl('/create-chapter'));
+        $resp->assertElementContains('form[action="' . $recipe->getUrl('/create-chapter') . '"][method="POST"]', 'Save Chapter');
 
-        $resp = $this->post($book->getUrl('/create-chapter'), $chapter->only('name', 'description'));
-        $resp->assertRedirect($book->getUrl('/chapter/my-first-chapter'));
+        $resp = $this->post($recipe->getUrl('/create-chapter'), $chapter->only('name', 'description'));
+        $resp->assertRedirect($recipe->getUrl('/chapter/my-first-chapter'));
 
-        $resp = $this->get($book->getUrl('/chapter/my-first-chapter'));
+        $resp = $this->get($recipe->getUrl('/chapter/my-first-chapter'));
         $resp->assertSee($chapter->name);
         $resp->assertSee($chapter->description);
     }

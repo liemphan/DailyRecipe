@@ -23,7 +23,7 @@ class ChaptersApiTest extends TestCase
                 'id'       => $firstChapter->id,
                 'name'     => $firstChapter->name,
                 'slug'     => $firstChapter->slug,
-                'book_id'  => $firstChapter->recipe->id,
+                'recipe_id'  => $firstChapter->recipe->id,
                 'priority' => $firstChapter->priority,
             ],
         ]]);
@@ -32,11 +32,11 @@ class ChaptersApiTest extends TestCase
     public function test_create_endpoint()
     {
         $this->actingAsApiEditor();
-        $book = Recipe::query()->first();
+        $recipe = Recipe::query()->first();
         $details = [
             'name'        => 'My API chapter',
             'description' => 'A chapter created via the API',
-            'book_id'     => $book->id,
+            'recipe_id'     => $recipe->id,
             'tags'        => [
                 [
                     'name'  => 'tagname',
@@ -62,9 +62,9 @@ class ChaptersApiTest extends TestCase
     public function test_chapter_name_needed_to_create()
     {
         $this->actingAsApiEditor();
-        $book = Recipe::query()->first();
+        $recipe = Recipe::query()->first();
         $details = [
-            'book_id'     => $book->id,
+            'recipe_id'     => $recipe->id,
             'description' => 'A chapter created via the API',
         ];
 
@@ -75,7 +75,7 @@ class ChaptersApiTest extends TestCase
         ]));
     }
 
-    public function test_chapter_book_id_needed_to_create()
+    public function test_chapter_recipe_id_needed_to_create()
     {
         $this->actingAsApiEditor();
         $details = [
@@ -86,7 +86,7 @@ class ChaptersApiTest extends TestCase
         $resp = $this->postJson($this->baseEndpoint, $details);
         $resp->assertStatus(422);
         $resp->assertJson($this->validationResponse([
-            'book_id' => ['The book id field is required.'],
+            'recipe_id' => ['The recipe id field is required.'],
         ]));
     }
 
@@ -104,7 +104,7 @@ class ChaptersApiTest extends TestCase
             'created_by' => [
                 'name' => $chapter->createdBy->name,
             ],
-            'book_id'    => $chapter->recipe_id,
+            'recipe_id'    => $chapter->recipe_id,
             'updated_by' => [
                 'name' => $chapter->createdBy->name,
             ],
@@ -142,7 +142,7 @@ class ChaptersApiTest extends TestCase
 
         $resp->assertStatus(200);
         $resp->assertJson(array_merge($details, [
-            'id' => $chapter->id, 'slug' => $chapter->slug, 'book_id' => $chapter->recipe_id,
+            'id' => $chapter->id, 'slug' => $chapter->slug, 'recipe_id' => $chapter->recipe_id,
         ]));
         $this->assertActivityExists('chapter_update', $chapter);
     }

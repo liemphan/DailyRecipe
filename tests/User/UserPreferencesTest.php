@@ -19,15 +19,15 @@ class UserPreferencesTest extends TestCase
         $updateRequest->assertStatus(302);
 
         $this->assertDatabaseHas('settings', [
-            'setting_key' => 'user:' . $editor->id . ':books_sort',
+            'setting_key' => 'user:' . $editor->id . ':recipes_sort',
             'value'       => 'created_at',
         ]);
         $this->assertDatabaseHas('settings', [
-            'setting_key' => 'user:' . $editor->id . ':books_sort_order',
+            'setting_key' => 'user:' . $editor->id . ':recipes_sort_order',
             'value'       => 'desc',
         ]);
         $this->assertEquals('created_at', setting()->getForCurrentUser('recipes_sort'));
-        $this->assertEquals('desc', setting()->getForCurrentUser('books_sort_order'));
+        $this->assertEquals('desc', setting()->getForCurrentUser('recipes_sort_order'));
     }
 
     public function test_update_sort_preference_defaults()
@@ -108,20 +108,20 @@ class UserPreferencesTest extends TestCase
         $home->assertElementExists('.dark-mode');
     }
 
-    public function test_books_view_type_preferences_when_list()
+    public function test_recipes_view_type_preferences_when_list()
     {
         $editor = $this->getEditor();
-        setting()->putUser($editor, 'books_view_type', 'list');
+        setting()->putUser($editor, 'recipes_view_type', 'list');
 
         $this->actingAs($editor)->get('/recipes')
             ->assertElementNotExists('.featured-image-container')
             ->assertElementExists('.content-wrap .entity-list-item');
     }
 
-    public function test_books_view_type_preferences_when_grid()
+    public function test_recipes_view_type_preferences_when_grid()
     {
         $editor = $this->getEditor();
-        setting()->putUser($editor, 'books_view_type', 'grid');
+        setting()->putUser($editor, 'recipes_view_type', 'grid');
 
         $this->actingAs($editor)->get('/recipes')
             ->assertElementExists('.featured-image-container');

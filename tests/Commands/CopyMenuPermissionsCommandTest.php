@@ -17,19 +17,19 @@ class CopyMenuPermissionsCommandTest extends TestCase
     public function test_copy_menu_permissions_command_using_slug()
     {
         $menu = Recipemenu::first();
-        $child = $menu->books()->first();
+        $child = $menu->recipes()->first();
         $editorRole = $this->getEditor()->roles()->first();
-        $this->assertFalse(boolval($child->restricted), 'Child book should not be restricted by default');
-        $this->assertTrue($child->permissions()->count() === 0, 'Child book should have no permissions by default');
+        $this->assertFalse(boolval($child->restricted), 'Child recipe should not be restricted by default');
+        $this->assertTrue($child->permissions()->count() === 0, 'Child recipe should have no permissions by default');
 
         $this->setEntityRestrictions($menu, ['view', 'update'], [$editorRole]);
         $this->artisan('dailyrecipe:copy-menu-permissions', [
             '--slug' => $menu->slug,
         ]);
-        $child = $menu->books()->first();
+        $child = $menu->recipes()->first();
 
-        $this->assertTrue(boolval($child->restricted), 'Child book should now be restricted');
-        $this->assertTrue($child->permissions()->count() === 2, 'Child book should have copied permissions');
+        $this->assertTrue(boolval($child->restricted), 'Child recipe should now be restricted');
+        $this->assertTrue($child->permissions()->count() === 2, 'Child recipe should have copied permissions');
         $this->assertDatabaseHas('entity_permissions', ['restrictable_id' => $child->id, 'action' => 'view', 'role_id' => $editorRole->id]);
         $this->assertDatabaseHas('entity_permissions', ['restrictable_id' => $child->id, 'action' => 'update', 'role_id' => $editorRole->id]);
     }
@@ -38,18 +38,18 @@ class CopyMenuPermissionsCommandTest extends TestCase
     {
         $menu = Recipemenu::query()->first();
         Recipemenu::query()->where('id', '!=', $menu->id)->delete();
-        $child = $menu->books()->first();
+        $child = $menu->recipes()->first();
         $editorRole = $this->getEditor()->roles()->first();
-        $this->assertFalse(boolval($child->restricted), 'Child book should not be restricted by default');
-        $this->assertTrue($child->permissions()->count() === 0, 'Child book should have no permissions by default');
+        $this->assertFalse(boolval($child->restricted), 'Child recipe should not be restricted by default');
+        $this->assertTrue($child->permissions()->count() === 0, 'Child recipe should have no permissions by default');
 
         $this->setEntityRestrictions($menu, ['view', 'update'], [$editorRole]);
         $this->artisan('dailyrecipe:copy-menu-permissions --all')
-            ->expectsQuestion('Permission settings for all menus will be cascaded. Books assigned to multiple menus will receive only the permissions of it\'s last processed menu. Are you sure you want to proceed?', 'y');
-        $child = $menu->books()->first();
+            ->expectsQuestion('Permission settings for all menus will be cascaded. Recipes assigned to multiple menus will receive only the permissions of it\'s last processed menu. Are you sure you want to proceed?', 'y');
+        $child = $menu->recipes()->first();
 
-        $this->assertTrue(boolval($child->restricted), 'Child book should now be restricted');
-        $this->assertTrue($child->permissions()->count() === 2, 'Child book should have copied permissions');
+        $this->assertTrue(boolval($child->restricted), 'Child recipe should now be restricted');
+        $this->assertTrue($child->permissions()->count() === 2, 'Child recipe should have copied permissions');
         $this->assertDatabaseHas('entity_permissions', ['restrictable_id' => $child->id, 'action' => 'view', 'role_id' => $editorRole->id]);
         $this->assertDatabaseHas('entity_permissions', ['restrictable_id' => $child->id, 'action' => 'update', 'role_id' => $editorRole->id]);
     }
