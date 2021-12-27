@@ -25,7 +25,7 @@ return [
     'chapter_delete_notification' => 'فصل با موفقیت حذف شد',
     'chapter_move'                => 'انتقال فصل',
 
-    // Books
+    // Recipes
     'recipe_create'                 => 'ایجاد کتاب',
     'recipe_create_notification'    => 'کتاب با موفقیت ایجاد شد',
     'recipe_update'                 => 'به روزرسانی کتاب',

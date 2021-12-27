@@ -25,7 +25,7 @@ return [
     'chapter_delete_notification' => 'Глава успешно удалена',
     'chapter_move'                => 'переместил главу',
 
-    // Books
+    // Recipes
     'recipe_create'                 => 'создал книгу',
     'recipe_create_notification'    => 'Книга успешно создана',
     'recipe_update'                 => 'обновил книгу',

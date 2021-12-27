@@ -43,7 +43,7 @@ class RecipeSort {
         this.input = elem.querySelector('[recipe-sort-input]');
 
         const initialSortBox = elem.querySelector('.sort-box');
-        this.setupBookSortable(initialSortBox);
+        this.setupRecipeSortable(initialSortBox);
         this.setupSortPresets();
 
         window.$events.listen('entity-select-confirm', this.recipeSelect.bind(this));
@@ -97,9 +97,9 @@ class RecipeSort {
         window.$http.get(entitySortItemUrl).then(resp => {
             const wrap = document.createElement('div');
             wrap.innerHTML = resp.data;
-            const newBookContainer = wrap.children[0];
-            this.sortContainer.append(newBookContainer);
-            this.setupBookSortable(newBookContainer);
+            const newRecipeContainer = wrap.children[0];
+            this.sortContainer.append(newRecipeContainer);
+            this.setupRecipeSortable(newRecipeContainer);
         });
     }
 
@@ -107,7 +107,7 @@ class RecipeSort {
      * Setup the given recipe container element to have sortable items.
      * @param {Element} recipeContainer
      */
-    setupBookSortable(recipeContainer) {
+    setupRecipeSortable(recipeContainer) {
         const sortElems = [recipeContainer.querySelector('.sort-list')];
         sortElems.push(...recipeContainer.querySelectorAll('.entity-list-item + ul'));
 
@@ -162,7 +162,7 @@ class RecipeSort {
             const directChildren = Array.from(list.children)
                 .filter(elem => elem.matches('[data-type="page"], [data-type="chapter"]'));
             for (let i = 0; i < directChildren.length; i++) {
-                this.addBookChildToMap(directChildren[i], i, recipeId, entityMap);
+                this.addRecipeChildToMap(directChildren[i], i, recipeId, entityMap);
             }
         }
 
@@ -177,7 +177,7 @@ class RecipeSort {
      * @param {Number} recipeId
      * @param {Array} entityMap
      */
-    addBookChildToMap(childElem, index, recipeId, entityMap) {
+    addRecipeChildToMap(childElem, index, recipeId, entityMap) {
         const type = childElem.getAttribute('data-type');
         const parentChapter = false;
         const childId = childElem.getAttribute('data-id');

@@ -25,7 +25,7 @@ return [
     'chapter_delete_notification' => 'チャプターを削除しました',
     'chapter_move'                => 'がチャプターを移動:',
 
-    // Books
+    // Recipes
     'recipe_create'                 => 'がブックを作成:',
     'recipe_create_notification'    => 'ブックを作成しました',
     'recipe_update'                 => 'がブックを更新:',

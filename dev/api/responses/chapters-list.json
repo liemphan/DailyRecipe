@@ -2,7 +2,7 @@
   "data": [
     {
       "id": 1,
-      "book_id": 1,
+      "recipe_id": 1,
       "name": "Content Creation",
       "slug": "content-creation",
       "description": "How to create documentation on whatever subject you need to write about.",
@@ -15,7 +15,7 @@
     },
     {
       "id": 2,
-      "book_id": 1,
+      "recipe_id": 1,
       "name": "Managing Content",
       "slug": "managing-content",
       "description": "How to keep things organised and orderly in the system for easier navigation and better user experience.",

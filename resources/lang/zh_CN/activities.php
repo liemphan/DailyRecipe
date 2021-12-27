@@ -25,7 +25,7 @@ return [
     'chapter_delete_notification' => '章节已删除成功',
     'chapter_move'                => '移动了章节',
 
-    // Books
+    // Recipes
     'recipe_create'                 => '创建了图书',
     'recipe_create_notification'    => '图书已创建成功',
     'recipe_update'                 => '更新了图书',

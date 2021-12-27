@@ -1,7 +1,7 @@
 <?php
 /**
  * Text used for 'Entities' (Document Structure Elements) such as
- * Books, Menus, Chapters & Pages
+ * Recipes, Menus, Chapters & Pages
  */
 return [
 
@@ -105,7 +105,7 @@ return [
     'menus_copy_permissions_explain' => '這會將此書架目前的權限設定套用到所有包含的書本上。在啟用前，請確認您已儲存任何對此書架權限的變更。',
     'menus_copy_permission_success' => '已將書架的權限複製到 :count 本書上',
 
-    // Books
+    // Recipes
     'recipe' => '書本',
     'recipes' => '書本',
     'x_recipes' => ':count 本書 | :count本書',
@@ -261,7 +261,7 @@ return [
     'tags_usages' => 'Total tag usages',
     'tags_assigned_pages' => 'Assigned to Pages',
     'tags_assigned_chapters' => 'Assigned to Chapters',
-    'tags_assigned_recipes' => 'Assigned to Books',
+    'tags_assigned_recipes' => 'Assigned to Recipes',
     'tags_assigned_menus' => 'Assigned to Menus',
     'tags_x_unique_values' => ':count unique values',
     'tags_all_values' => 'All values',

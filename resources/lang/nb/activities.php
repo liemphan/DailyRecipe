@@ -26,7 +26,7 @@ return [
     'chapter_move'                => 'flyttet kapittel
     ',
 
-    // Books
+    // Recipes
     'recipe_create'                 => 'opprettet bok',
     'recipe_create_notification'    => 'Boken ble opprettet',
     'recipe_update'                 => 'oppdaterte bok',

@@ -14,10 +14,10 @@
     <div class="form-group">
         <label for="recipes">{{ trans('entities.menus_recipes') }}</label>
         <input type="hidden" id="recipes-input" name="recipes"
-               value="{{ isset($menu) ? $menu->visibleBooks->implode('id', ',') : '' }}">
+               value="{{ isset($menu) ? $menu->visibleRecipes->implode('id', ',') : '' }}">
         <div class="scroll-box" menu-sort-assigned-recipes data-instruction="{{ trans('entities.menus_drag_recipes') }}">
-            @if (count($menu->visibleBooks ?? []) > 0)
-                @foreach ($menu->visibleBooks as $recipe)
+            @if (count($menu->visibleRecipes ?? []) > 0)
+                @foreach ($menu->visibleRecipes as $recipe)
                     <div data-id="{{ $recipe->id }}" class="scroll-box-item">
                         <a href="{{ $recipe->getUrl() }}" class="text-recipe">@icon('recipe'){{ $recipe->name }}</a>
                     </div>
@@ -48,7 +48,7 @@
 
         @include('form.image-picker', [
             'defaultImage' => url('/recipe_default_cover.png'),
-            'currentImage' => (isset($menu) && $menu->cover) ? $menu->getBookCover() : url('/recipe_default_cover.png') ,
+            'currentImage' => (isset($menu) && $menu->cover) ? $menu->getRecipeCover() : url('/recipe_default_cover.png') ,
             'name' => 'image',
             'imageClass' => 'cover'
         ])

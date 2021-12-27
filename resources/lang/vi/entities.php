@@ -1,7 +1,7 @@
 <?php
 /**
  * Text used for 'Entities' (Document Structure Elements) such as
- * Books, Menus, Chapters & Pages
+ * Recipes, Menus, Chapters & Pages
  */
 return [
 
@@ -105,7 +105,7 @@ return [
     'menus_copy_permissions_explain' => 'Điều này sẽ áp dụng các cài đặt quyền của giá sách hiện tại với tất cả các cuốn sách bên trong. Trước khi kích hoạt, đảm bảo bất cứ thay đổi liên quan đến quyền của giá sách này đã được lưu.',
     'menus_copy_permission_success' => 'Các quyền của giá sách đã được sao chép tới :count quyển sách',
 
-    // Books
+    // Recipes
     'recipe' => 'Công thức nấu ăn',
     'recipes' => 'Tất cả công thức nấu ăn',
     'x_recipes' => ':count Công thức nấu ăn|:count Công thức nấu ăn',
@@ -261,7 +261,7 @@ return [
     'tags_usages' => 'Total tag usages',
     'tags_assigned_pages' => 'Assigned to Pages',
     'tags_assigned_chapters' => 'Assigned to Chapters',
-    'tags_assigned_recipes' => 'Assigned to Books',
+    'tags_assigned_recipes' => 'Assigned to Recipes',
     'tags_assigned_menus' => 'Assigned to Menus',
     'tags_x_unique_values' => ':count unique values',
     'tags_all_values' => 'All values',

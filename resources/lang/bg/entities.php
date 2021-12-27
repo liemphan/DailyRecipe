@@ -1,7 +1,7 @@
 <?php
 /**
  * Text used for 'Entities' (Document Structure Elements) such as
- * Books, Menus, Chapters & Pages
+ * Recipes, Menus, Chapters & Pages
  */
 return [
 
@@ -105,7 +105,7 @@ return [
     'menus_copy_permissions_explain' => 'Това ще приложи настоящите настройки за достъп на този рафт с книги за всички книги, съдържащи се в него. Преди да активирате, уверете се, че всички промени в настройките за достъп на този рафт са запазени.',
     'menus_copy_permission_success' => 'Настройките за достъп на рафта с книги бяха копирани върху :count recipes',
 
-    // Books
+    // Recipes
     'recipe' => 'Книга',
     'recipes' => 'Книги',
     'x_recipes' => ':count Книга|:count Книги',
@@ -261,7 +261,7 @@ return [
     'tags_usages' => 'Total tag usages',
     'tags_assigned_pages' => 'Assigned to Pages',
     'tags_assigned_chapters' => 'Assigned to Chapters',
-    'tags_assigned_recipes' => 'Assigned to Books',
+    'tags_assigned_recipes' => 'Assigned to Recipes',
     'tags_assigned_menus' => 'Assigned to Menus',
     'tags_x_unique_values' => ':count unique values',
     'tags_all_values' => 'All values',

@@ -2,7 +2,7 @@
   "id": 14,
   "name": "My menu",
   "slug": "my-menu",
-  "description": "This is my menu with some books",
+  "description": "This is my menu with some recipes",
   "created_by": {
     "id": 1,
     "name": "Admin"
@@ -28,16 +28,16 @@
   "cover": {
     "id": 501,
     "name": "anafrancisconi_Sp04AfFCPNM.jpg",
-    "url": "http://dailyrecipe.local/uploads/images/cover_book/2020-04/anafrancisconi_Sp04AfFCPNM.jpg",
+    "url": "http://dailyrecipe.local/uploads/images/cover_recipe/2020-04/anafrancisconi_Sp04AfFCPNM.jpg",
     "created_at": "2020-04-10T13:31:04.000000Z",
     "updated_at": "2020-04-10T13:31:04.000000Z",
     "created_by": 1,
     "updated_by": 1,
-    "path": "/uploads/images/cover_book/2020-04/anafrancisconi_Sp04AfFCPNM.jpg",
-    "type": "cover_book",
+    "path": "/uploads/images/cover_recipe/2020-04/anafrancisconi_Sp04AfFCPNM.jpg",
+    "type": "cover_recipe",
     "uploaded_to": 14
   },
-  "books": [
+  "recipes": [
     {
       "id": 5,
       "name": "Sint explicabo alias sunt.",

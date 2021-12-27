@@ -1,10 +1,10 @@
 {
-  "name": "My new book",
-  "description": "This is a book created via the API",
+  "name": "My new recipe",
+  "description": "This is a recipe created via the API",
   "created_by": 1,
   "updated_by": 1,
   "owned_by": 1,
-  "slug": "my-new-book",
+  "slug": "my-new-recipe",
   "updated_at": "2020-01-12T14:05:11.000000Z",
   "created_at": "2020-01-12T14:05:11.000000Z",
   "id": 15

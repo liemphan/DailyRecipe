@@ -25,7 +25,7 @@ return [
     'chapter_delete_notification' => 'Bölüm Başarıyla Silindi',
     'chapter_move'                => 'bölümü taşıdı',
 
-    // Books
+    // Recipes
     'recipe_create'                 => 'kitap oluşturdu',
     'recipe_create_notification'    => 'Kitap Başarıyla Oluşturuldu',
     'recipe_update'                 => 'kitabı güncelledi',

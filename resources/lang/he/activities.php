@@ -25,7 +25,7 @@ return [
     'chapter_delete_notification' => 'הפרק הוסר בהצלחה',
     'chapter_move'                => 'moved chapter',
 
-    // Books
+    // Recipes
     'recipe_create'                 => 'created recipe',
     'recipe_create_notification'    => 'הספר נוצר בהצלחה',
     'recipe_update'                 => 'updated recipe',

@@ -1,7 +1,7 @@
 <?php
 /**
  * Text used for 'Entities' (Document Structure Elements) such as
- * Books, Menus, Chapters & Pages
+ * Recipes, Menus, Chapters & Pages
  */
 return [
 
@@ -10,7 +10,7 @@ return [
     'recently_created_pages' => 'Recently Created Pages',
     'recently_updated_pages' => 'Recently Updated Pages',
     'recently_created_chapters' => 'Recently Created Chapters',
-    'recently_created_recipes' => 'Recently Created Books',
+    'recently_created_recipes' => 'Recently Created Recipes',
     'recently_created_menus' => 'Recently Created Menus',
     'recently_update' => 'Recently Updated',
     'recently_viewed' => 'Recently Viewed',
@@ -79,7 +79,7 @@ return [
     'menus_popular_empty' => 'The most popular menus will appear here.',
     'menus_new_empty' => 'The most recently created menus will appear here.',
     'menus_save' => 'Save Menu',
-    'menus_recipes' => 'Books on this menu',
+    'menus_recipes' => 'Recipes on this menu',
     'menus_add_recipes' => 'Add recipes to this menu',
     'menus_drag_recipes' => 'Drag recipes here to add them to this menu',
     'menus_empty_contents' => 'This menu has no recipes assigned to it',
@@ -93,19 +93,19 @@ return [
     'menus_permissions' => 'Recipemenu Permissions',
     'menus_permissions_updated' => 'Recipemenu Permissions Updated',
     'menus_permissions_active' => 'Recipemenu Permissions Active',
-    'menus_copy_permissions_to_recipes' => 'Copy Permissions to Books',
+    'menus_copy_permissions_to_recipes' => 'Copy Permissions to Recipes',
     'menus_copy_permissions' => 'Copy Permissions',
     'menus_copy_permissions_explain' => 'This will apply the current permission settings of this recipemenu to all recipes contained within. Before activating, ensure any changes to the permissions of this recipemenu have been saved.',
     'menus_copy_permission_success' => 'Recipemenu permissions copied to :count recipes',
 
-    // Books
+    // Recipes
     'recipe' => 'Recipe',
-    'recipes' => 'Books',
-    'x_recipes' => ':count Recipe|:count Books',
+    'recipes' => 'Recipes',
+    'x_recipes' => ':count Recipe|:count Recipes',
     'recipes_empty' => 'No recipes have been created',
-    'recipes_popular' => 'Popular Books',
-    'recipes_recent' => 'Recent Books',
-    'recipes_new' => 'New Books',
+    'recipes_popular' => 'Popular Recipes',
+    'recipes_recent' => 'Recent Recipes',
+    'recipes_new' => 'New Recipes',
     'recipes_new_action' => 'New Recipe',
     'recipes_popular_empty' => 'The most popular recipes will appear here.',
     'recipes_new_empty' => 'The most recently created recipes will appear here.',
@@ -134,7 +134,7 @@ return [
     'recipes_sort_updated' => 'Sort by Updated Date',
     'recipes_sort_chapters_first' => 'Chapters First',
     'recipes_sort_chapters_last' => 'Chapters Last',
-    'recipes_sort_show_other' => 'Show Other Books',
+    'recipes_sort_show_other' => 'Show Other Recipes',
     'recipes_sort_save' => 'Save New Order',
 
     // Chapters

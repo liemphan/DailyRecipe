@@ -3,7 +3,7 @@ Notice Converted by PHP-font-lib
 Comment https://github.com/PhenX/php-font-lib
 EncodingScheme FontSpecific
 FontName DejaVu Sans
-FontSubfamily Book
+FontSubfamily Recipe
 UniqueID DejaVu Sans
 FullName DejaVu Sans
 Version Version 2.37
@@ -12,7 +12,7 @@ Manufacturer DejaVu fonts team
 FontVendorURL http://dejavu.sourceforge.net
 LicenseURL http://dejavu.sourceforge.net/wiki/index.php/License
 PreferredFamily DejaVu Sans
-PreferredSubfamily Book
+PreferredSubfamily Recipe
 Weight Medium
 ItalicAngle 0
 IsFixedPitch false

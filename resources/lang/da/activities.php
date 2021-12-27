@@ -25,7 +25,7 @@ return [
     'chapter_delete_notification' => 'Kapitel blev slettet',
     'chapter_move'                => 'flyttede kapitel',
 
-    // Books
+    // Recipes
     'recipe_create'                 => 'oprettede bog',
     'recipe_create_notification'    => 'Bogen blev oprettet',
     'recipe_update'                 => 'opdaterede bog',

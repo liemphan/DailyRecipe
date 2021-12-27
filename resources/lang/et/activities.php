@@ -25,7 +25,7 @@ return [
     'chapter_delete_notification' => 'Peatükk on kustutatud',
     'chapter_move'                => 'liigutas peatükki',
 
-    // Books
+    // Recipes
     'recipe_create'                 => 'lisas raamatu',
     'recipe_create_notification'    => 'Raamat on lisatud',
     'recipe_update'                 => 'muutis raamatut',

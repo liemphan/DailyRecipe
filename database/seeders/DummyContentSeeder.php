@@ -48,14 +48,14 @@ class DummyContentSeeder extends Seeder
                 $recipe->pages()->saveMany($pages);
             });
 
-        $largeBook = \DailyRecipe\Entities\Models\Recipe::factory()->create(array_merge($byData, ['name' => 'Large recipe' . Str::random(10)]));
+        $largeRecipe = \DailyRecipe\Entities\Models\Recipe::factory()->create(array_merge($byData, ['name' => 'Large recipe' . Str::random(10)]));
         $pages = Page::factory()->count(200)->make($byData);
         $chapters = Chapter::factory()->count(50)->make($byData);
-        $largeBook->pages()->saveMany($pages);
-        $largeBook->chapters()->saveMany($chapters);
+        $largeRecipe->pages()->saveMany($pages);
+        $largeRecipe->chapters()->saveMany($chapters);
 
         $menus = Recipemenu::factory()->count(10)->create($byData);
-        $largeBook->menus()->attach($menus->pluck('id'));
+        $largeRecipe->menus()->attach($menus->pluck('id'));
 
         // Assign API permission to editor role and create an API key
         $apiPermission = RolePermission::getByName('access-api');

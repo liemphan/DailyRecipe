@@ -1,7 +1,7 @@
 <?php
 /**
  * Text used for 'Entities' (Document Structure Elements) such as
- * Books, Menus, Chapters & Pages
+ * Recipes, Menus, Chapters & Pages
  */
 return [
 
@@ -105,7 +105,7 @@ return [
     'menus_copy_permissions_explain' => 'Dette vil anvende de aktuelle tilladelsesindstillinger på denne boghylde på alle bøger indeholdt i. Før aktivering skal du sikre dig, at ændringer i tilladelserne til denne boghylde er blevet gemt.',
     'menus_copy_permission_success' => 'Reolstilladelser kopieret til :count bøger',
 
-    // Books
+    // Recipes
     'recipe' => 'Bog',
     'recipes' => 'Bøger',
     'x_recipes' => ':count bog|:count bøger',
@@ -261,7 +261,7 @@ return [
     'tags_usages' => 'Total tag usages',
     'tags_assigned_pages' => 'Assigned to Pages',
     'tags_assigned_chapters' => 'Assigned to Chapters',
-    'tags_assigned_recipes' => 'Assigned to Books',
+    'tags_assigned_recipes' => 'Assigned to Recipes',
     'tags_assigned_menus' => 'Assigned to Menus',
     'tags_x_unique_values' => ':count unique values',
     'tags_all_values' => 'All values',

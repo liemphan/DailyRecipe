@@ -1,5 +1,5 @@
 {
-  "book_id": 1,
+  "recipe_id": 1,
   "name": "My fantastic updated chapter",
   "description": "This is an updated chapter that I've altered via the API",
   "tags": [

@@ -25,7 +25,7 @@ return [
     'chapter_delete_notification' => 'Skyrius sėkmingai ištrintas',
     'chapter_move'                => 'perkeltas skyrius',
 
-    // Books
+    // Recipes
     'recipe_create'                 => 'sukurta knyga',
     'recipe_create_notification'    => 'Knyga sėkmingai sukurta',
     'recipe_update'                 => 'atnaujinta knyga',

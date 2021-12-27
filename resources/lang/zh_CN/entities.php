@@ -1,7 +1,7 @@
 <?php
 /**
  * Text used for 'Entities' (Document Structure Elements) such as
- * Books, Menus, Chapters & Pages
+ * Recipes, Menus, Chapters & Pages
  */
 return [
 
@@ -105,7 +105,7 @@ return [
     'menus_copy_permissions_explain' => '这会将此书架的当前权限设置应用于其中包含的所有图书。 在激活之前，请确保已保存对此书架权限的任何更改。',
     'menus_copy_permission_success' => '书架权限复制到图书 :count ',
 
-    // Books
+    // Recipes
     'recipe' => '图书',
     'recipes' => '图书',
     'x_recipes' => ':count 本书',

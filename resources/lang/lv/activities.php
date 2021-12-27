@@ -25,7 +25,7 @@ return [
     'chapter_delete_notification' => 'Nodaļa Veiksmīgi Dzēsta',
     'chapter_move'                => 'pārvietoja nodaļu',
 
-    // Books
+    // Recipes
     'recipe_create'                 => 'izveidoja grāmatu',
     'recipe_create_notification'    => 'Grāmata Veiksmīgi Izveidota',
     'recipe_update'                 => 'atjaunoja grāmatu',

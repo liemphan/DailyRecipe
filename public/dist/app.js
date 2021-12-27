@@ -41105,25 +41105,25 @@
           editAnchor.href = `${editHref}?content-id=${elementId}&content-text=${encodeURIComponent(queryContent)}`;
         }
       };
-      forEach('.page-content [id^="bkmrk"]', (recipeMarkElem) => {
-        onEvents(recipeMarkElem, ["mouseup", "keyup"], (event) => {
+      forEach('.page-content [id^="bkmrk"]', (bookMarkElem) => {
+        onEvents(bookMarkElem, ["mouseup", "keyup"], (event) => {
           event.stopPropagation();
           let selection = window.getSelection();
           if (selection.toString().length === 0)
             return;
-          pointerSectionId = recipeMarkElem.id;
-          updatePointerContent(recipeMarkElem);
-          recipeMarkElem.parentNode.insertBefore(pointer, recipeMarkElem);
+          pointerSectionId = bookMarkElem.id;
+          updatePointerContent(bookMarkElem);
+          bookMarkElem.parentNode.insertBefore(pointer, bookMarkElem);
           pointer.style.display = "block";
           pointerShowing = true;
           isSelection = true;
           requestAnimationFrame(() => {
-            const recipeMarkBounds = recipeMarkElem.getBoundingClientRect();
-            let pointerLeftOffset = event.pageX - recipeMarkBounds.left - 164;
+            const bookMarkBounds = bookMarkElem.getBoundingClientRect();
+            let pointerLeftOffset = event.pageX - bookMarkBounds.left - 164;
             if (pointerLeftOffset < 0) {
               pointerLeftOffset = 0;
             }
-            const pointerLeftOffsetPercent = pointerLeftOffset / recipeMarkBounds.width * 100;
+            const pointerLeftOffsetPercent = pointerLeftOffset / bookMarkBounds.width * 100;
             pointerInner.style.left = pointerLeftOffsetPercent + "%";
             setTimeout(() => {
               isSelection = false;

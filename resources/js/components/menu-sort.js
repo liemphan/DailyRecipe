@@ -5,7 +5,7 @@ class MenuSort {
     constructor(elem) {
         this.elem = elem;
         this.input = document.getElementById('recipes-input');
-        this.menuBooksList = elem.querySelector('[menu-sort-assigned-recipes]');
+        this.menuRecipesList = elem.querySelector('[menu-sort-assigned-recipes]');
 
         this.initSortable();
         this.setupListeners();
@@ -47,8 +47,8 @@ class MenuSort {
     }
 
     onChange() {
-        const menuBookElems = Array.from(this.menuBooksList.querySelectorAll('[data-id]'));
-        this.input.value = menuBookElems.map(elem => elem.getAttribute('data-id')).join(',');
+        const menuRecipeElems = Array.from(this.menuRecipesList.querySelectorAll('[data-id]'));
+        this.input.value = menuRecipeElems.map(elem => elem.getAttribute('data-id')).join(',');
     }
 
 }

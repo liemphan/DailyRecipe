@@ -1,8 +1,8 @@
 {
   "id": 16,
-  "name": "My own book",
-  "slug": "my-own-book",
-  "description": "This is my own little book",
+  "name": "My own recipe",
+  "slug": "my-own-recipe",
+  "description": "This is my own little recipe",
   "created_at": "2020-01-12T14:09:59.000000Z",
   "updated_at": "2020-01-12T14:11:51.000000Z",
   "created_by": {
@@ -28,13 +28,13 @@
   "cover": {
     "id": 452,
     "name": "sjovall_m117hUWMu40.jpg",
-    "url": "http:\/\/dailyrecipe.local\/uploads\/images\/cover_book\/2020-01\/sjovall_m117hUWMu40.jpg",
+    "url": "http:\/\/dailyrecipe.local\/uploads\/images\/cover_recipe\/2020-01\/sjovall_m117hUWMu40.jpg",
     "created_at": "2020-01-12T14:11:51.000000Z",
     "updated_at": "2020-01-12T14:11:51.000000Z",
     "created_by": 1,
     "updated_by": 1,
-    "path": "\/uploads\/images\/cover_book\/2020-01\/sjovall_m117hUWMu40.jpg",
-    "type": "cover_book",
+    "path": "\/uploads\/images\/cover_recipe\/2020-01\/sjovall_m117hUWMu40.jpg",
+    "type": "cover_recipe",
     "uploaded_to": 16
   }
 }

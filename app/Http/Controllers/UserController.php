@@ -268,7 +268,7 @@ class UserController extends Controller
     }
 
     /**
-     * Update the user's preferred book-list display setting.
+     * Update the user's preferred recipe-list display setting.
      */
     public function switchRecipesView(Request $request, int $id)
     {
@@ -284,7 +284,7 @@ class UserController extends Controller
     }
 
     /**
-     * Update the user's preferred menu-view book list display setting.
+     * Update the user's preferred menu-view recipe list display setting.
      */
     public function switchMenuView(Request $request, int $id)
     {

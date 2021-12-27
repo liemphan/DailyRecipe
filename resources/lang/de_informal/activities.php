@@ -25,7 +25,7 @@ return [
     'chapter_delete_notification' => 'Das Kapitel wurde erfolgreich gelöscht.',
     'chapter_move'                => 'verschiebt Kapitel',
 
-    // Books
+    // Recipes
     'recipe_create'                 => 'erstellt Buch',
     'recipe_create_notification'    => 'Das Buch wurde erfolgreich erstellt.',
     'recipe_update'                 => 'aktualisiert Buch',

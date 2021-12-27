@@ -1,7 +1,7 @@
 <?php
 /**
  * Text used for 'Entities' (Document Structure Elements) such as
- * Books, Menus, Chapters & Pages
+ * Recipes, Menus, Chapters & Pages
  */
 return [
 
@@ -105,7 +105,7 @@ return [
     'menus_copy_permissions_explain' => 'See rakendab raamaturiiuli praegused õigused kõigile sellel olevatele raamatutele. Enne jätkamist veendu, et raamaturiiuli õiguste muudatused oleks salvestatud.',
     'menus_copy_permission_success' => 'Raamaturiiuli õigused kopeeritud :count raamatule',
 
-    // Books
+    // Recipes
     'recipe' => 'Raamat',
     'recipes' => 'Raamatud',
     'x_recipes' => ':count raamat|:count raamatut',

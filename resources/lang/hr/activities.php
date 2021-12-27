@@ -25,7 +25,7 @@ return [
     'chapter_delete_notification' => 'Poglavlje je uspješno izbrisano',
     'chapter_move'                => 'premiješteno poglavlje',
 
-    // Books
+    // Recipes
     'recipe_create'                 => 'stvorena knjiga',
     'recipe_create_notification'    => 'Knjiga je uspješno stvorena',
     'recipe_update'                 => 'ažurirana knjiga',

@@ -25,7 +25,7 @@ return [
     'chapter_delete_notification' => 'Chương đã được xóa thành công',
     'chapter_move'                => 'đã di chuyển chương',
 
-    // Books
+    // Recipes
     'recipe_create'                 => 'đã tạo công thức nấu ăn',
     'recipe_create_notification'    => 'Công thức nấu ăn đã được tạo thành công',
     'recipe_update'                 => 'đã cập nhật công thức nấu ăn',
