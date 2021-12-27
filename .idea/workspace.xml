@@ -5,157 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="274eeb44-2be1-4c79-980b-c542185305a9" name="Changes" comment="update bookstack to dailyrecipe">
-      <change beforePath="$PROJECT_DIR$/.env" beforeDir="false" afterPath="$PROJECT_DIR$/.env" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.env.example.complete" beforeDir="false" afterPath="$PROJECT_DIR$/.env.example.complete" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Console/Commands/CopyMenuPermissions.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Console/Commands/CopyMenuPermissions.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/UserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/UserController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/seeders/DummyContentSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeders/DummyContentSeeder.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/seeders/LargeContentSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeders/LargeContentSeeder.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dev/api/requests/chapters-create.json" beforeDir="false" afterPath="$PROJECT_DIR$/dev/api/requests/chapters-create.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dev/api/requests/chapters-update.json" beforeDir="false" afterPath="$PROJECT_DIR$/dev/api/requests/chapters-update.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dev/api/requests/menus-create.json" beforeDir="false" afterPath="$PROJECT_DIR$/dev/api/requests/menus-create.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dev/api/requests/menus-update.json" beforeDir="false" afterPath="$PROJECT_DIR$/dev/api/requests/menus-update.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dev/api/requests/pages-create.json" beforeDir="false" afterPath="$PROJECT_DIR$/dev/api/requests/pages-create.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dev/api/requests/recipes-create.json" beforeDir="false" afterPath="$PROJECT_DIR$/dev/api/requests/recipes-create.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dev/api/requests/recipes-update.json" beforeDir="false" afterPath="$PROJECT_DIR$/dev/api/requests/recipes-update.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dev/api/responses/chapters-create.json" beforeDir="false" afterPath="$PROJECT_DIR$/dev/api/responses/chapters-create.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dev/api/responses/chapters-list.json" beforeDir="false" afterPath="$PROJECT_DIR$/dev/api/responses/chapters-list.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dev/api/responses/chapters-read.json" beforeDir="false" afterPath="$PROJECT_DIR$/dev/api/responses/chapters-read.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dev/api/responses/chapters-update.json" beforeDir="false" afterPath="$PROJECT_DIR$/dev/api/responses/chapters-update.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dev/api/responses/menus-create.json" beforeDir="false" afterPath="$PROJECT_DIR$/dev/api/responses/menus-create.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dev/api/responses/menus-read.json" beforeDir="false" afterPath="$PROJECT_DIR$/dev/api/responses/menus-read.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dev/api/responses/menus-update.json" beforeDir="false" afterPath="$PROJECT_DIR$/dev/api/responses/menus-update.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dev/api/responses/pages-create.json" beforeDir="false" afterPath="$PROJECT_DIR$/dev/api/responses/pages-create.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dev/api/responses/pages-list.json" beforeDir="false" afterPath="$PROJECT_DIR$/dev/api/responses/pages-list.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dev/api/responses/pages-read.json" beforeDir="false" afterPath="$PROJECT_DIR$/dev/api/responses/pages-read.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dev/api/responses/pages-update.json" beforeDir="false" afterPath="$PROJECT_DIR$/dev/api/responses/pages-update.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dev/api/responses/recipes-create.json" beforeDir="false" afterPath="$PROJECT_DIR$/dev/api/responses/recipes-create.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dev/api/responses/recipes-read.json" beforeDir="false" afterPath="$PROJECT_DIR$/dev/api/responses/recipes-read.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dev/api/responses/recipes-update.json" beforeDir="false" afterPath="$PROJECT_DIR$/dev/api/responses/recipes-update.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dev/api/responses/search-all.json" beforeDir="false" afterPath="$PROJECT_DIR$/dev/api/responses/search-all.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/codemirror/mode/mirc/mirc.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/codemirror/mode/mirc/mirc.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/dist/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/dist/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/dist/app.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/public/dist/app.js.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/readme.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/menu-sort.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/menu-sort.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/page-display.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/page-display.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/recipe-sort.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/recipe-sort.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/lang/ar/activities.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/lang/ar/activities.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/lang/ar/entities.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/lang/ar/entities.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/lang/bg/activities.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/lang/bg/activities.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/lang/bg/entities.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/lang/bg/entities.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/lang/bs/activities.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/lang/bs/activities.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/lang/bs/entities.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/lang/bs/entities.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/lang/bs/settings.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/lang/bs/settings.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/lang/ca/activities.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/lang/ca/activities.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/lang/ca/entities.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/lang/ca/entities.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/lang/cs/activities.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/lang/cs/activities.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/lang/cs/entities.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/lang/cs/entities.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/lang/da/activities.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/lang/da/activities.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/lang/da/entities.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/lang/da/entities.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/lang/de/activities.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/lang/de/activities.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/lang/de/entities.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/lang/de/entities.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/lang/de_informal/activities.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/lang/de_informal/activities.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/lang/de_informal/entities.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/lang/de_informal/entities.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/lang/en/activities.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/lang/en/activities.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/lang/en/entities.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/lang/en/entities.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/lang/en/settings.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/lang/en/settings.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/lang/es/activities.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/lang/es/activities.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/lang/es/entities.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/lang/es/entities.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/lang/es_AR/activities.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/lang/es_AR/activities.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/lang/es_AR/entities.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/lang/es_AR/entities.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/lang/et/activities.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/lang/et/activities.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/lang/et/entities.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/lang/et/entities.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/lang/fa/activities.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/lang/fa/activities.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/lang/fa/entities.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/lang/fa/entities.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/lang/fa/settings.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/lang/fa/settings.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/lang/fr/activities.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/lang/fr/activities.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/lang/fr/entities.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/lang/fr/entities.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/lang/he/activities.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/lang/he/activities.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/lang/he/entities.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/lang/he/entities.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/lang/hr/activities.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/lang/hr/activities.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/lang/hr/entities.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/lang/hr/entities.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/lang/hu/activities.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/lang/hu/activities.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/lang/hu/entities.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/lang/hu/entities.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/lang/id/activities.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/lang/id/activities.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/lang/id/entities.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/lang/id/entities.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/lang/it/activities.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/lang/it/activities.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/lang/it/entities.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/lang/it/entities.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/lang/ja/activities.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/lang/ja/activities.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/lang/ja/entities.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/lang/ja/entities.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/lang/ko/activities.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/lang/ko/activities.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/lang/ko/entities.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/lang/ko/entities.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/lang/lt/activities.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/lang/lt/activities.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/lang/lt/entities.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/lang/lt/entities.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/lang/lv/activities.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/lang/lv/activities.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/lang/lv/entities.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/lang/lv/entities.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/lang/nb/activities.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/lang/nb/activities.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/lang/nb/entities.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/lang/nb/entities.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/lang/nl/activities.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/lang/nl/activities.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/lang/nl/entities.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/lang/nl/entities.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/lang/pl/activities.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/lang/pl/activities.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/lang/pl/entities.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/lang/pl/entities.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/lang/pt/activities.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/lang/pt/activities.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/lang/pt/entities.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/lang/pt/entities.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/lang/pt_BR/activities.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/lang/pt_BR/activities.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/lang/pt_BR/entities.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/lang/pt_BR/entities.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/lang/ru/activities.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/lang/ru/activities.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/lang/ru/entities.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/lang/ru/entities.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/lang/sk/activities.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/lang/sk/activities.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/lang/sk/entities.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/lang/sk/entities.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/lang/sl/activities.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/lang/sl/activities.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/lang/sl/entities.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/lang/sl/entities.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/lang/sv/activities.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/lang/sv/activities.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/lang/sv/entities.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/lang/sv/entities.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/lang/th/activities.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/lang/th/activities.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/lang/th/entities.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/lang/th/entities.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/lang/th/settings.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/lang/th/settings.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/lang/tr/activities.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/lang/tr/activities.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/lang/tr/entities.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/lang/tr/entities.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/lang/uk/activities.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/lang/uk/activities.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/lang/uk/entities.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/lang/uk/entities.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/lang/vi/activities.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/lang/vi/activities.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/lang/vi/entities.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/lang/vi/entities.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/lang/zh_CN/activities.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/lang/zh_CN/activities.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/lang/zh_CN/entities.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/lang/zh_CN/entities.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/lang/zh_TW/activities.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/lang/zh_TW/activities.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/lang/zh_TW/entities.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/lang/zh_TW/entities.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/sass/_lists.scss" beforeDir="false" afterPath="$PROJECT_DIR$/resources/sass/_lists.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/menus/parts/form.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/menus/parts/form.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/menus/parts/list-item.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/menus/parts/list-item.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/aws/aws-crt-php/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/aws/aws-crt-php/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/aws/aws-sdk-php/src/AlexaForBusiness/AlexaForBusinessClient.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/aws/aws-sdk-php/src/AlexaForBusiness/AlexaForBusinessClient.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/vendor/aws/aws-sdk-php/src/Emr/EmrClient.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/aws/aws-sdk-php/src/Emr/EmrClient.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/vendor/aws/aws-sdk-php/src/SageMaker/SageMakerClient.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/aws/aws-sdk-php/src/SageMaker/SageMakerClient.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/aws/aws-sdk-php/src/data/alexaforbusiness/2017-11-09/api-2.json.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/aws/aws-sdk-php/src/data/alexaforbusiness/2017-11-09/api-2.json.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/aws/aws-sdk-php/src/data/alexaforbusiness/2017-11-09/paginators-1.json.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/aws/aws-sdk-php/src/data/alexaforbusiness/2017-11-09/paginators-1.json.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/vendor/aws/aws-sdk-php/src/data/elasticmapreduce/2009-03-31/api-2.json.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/aws/aws-sdk-php/src/data/elasticmapreduce/2009-03-31/api-2.json.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/vendor/aws/aws-sdk-php/src/data/elasticmapreduce/2009-03-31/paginators-1.json.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/aws/aws-sdk-php/src/data/elasticmapreduce/2009-03-31/paginators-1.json.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/aws/aws-sdk-php/src/data/honeycode/2020-03-01/api-2.json.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/aws/aws-sdk-php/src/data/honeycode/2020-03-01/api-2.json.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/aws/aws-sdk-php/src/data/opsworks/2013-02-18/api-2.json.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/aws/aws-sdk-php/src/data/opsworks/2013-02-18/api-2.json.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/vendor/aws/aws-sdk-php/src/data/sagemaker/2017-07-24/api-2.json.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/aws/aws-sdk-php/src/data/sagemaker/2017-07-24/api-2.json.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/vendor/aws/aws-sdk-php/src/data/sagemaker/2017-07-24/paginators-1.json.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/aws/aws-sdk-php/src/data/sagemaker/2017-07-24/paginators-1.json.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/vendor/aws/aws-sdk-php/src/data/sagemaker/2017-07-24/waiters-2.json.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/aws/aws-sdk-php/src/data/sagemaker/2017-07-24/waiters-2.json.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/aws/aws-sdk-php/src/data/ssm/2014-11-06/api-2.json.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/aws/aws-sdk-php/src/data/ssm/2014-11-06/api-2.json.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/aws/aws-sdk-php/src/data/workmail/2017-10-01/api-2.json.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/aws/aws-sdk-php/src/data/workmail/2017-10-01/api-2.json.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/doctrine/inflector/docs/en/index.rst" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/doctrine/inflector/docs/en/index.rst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/dompdf/dompdf/lib/fonts/DejaVuSans.ufm" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/dompdf/dompdf/lib/fonts/DejaVuSans.ufm" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/dompdf/dompdf/lib/fonts/DejaVuSansMono.ufm" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/dompdf/dompdf/lib/fonts/DejaVuSansMono.ufm" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/dompdf/dompdf/lib/fonts/DejaVuSerif.ufm" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/dompdf/dompdf/lib/fonts/DejaVuSerif.ufm" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/filp/whoops/src/Whoops/Resources/views/header.html.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/filp/whoops/src/Whoops/Resources/views/header.html.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/laravel/serializable-closure/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/laravel/serializable-closure/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/vendor/league/mime-type-detection/src/GeneratedExtensionToMimeTypeMap.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/league/mime-type-detection/src/GeneratedExtensionToMimeTypeMap.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/monolog/monolog/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/monolog/monolog/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/phpseclib/phpseclib/phpseclib/Crypt/Common/AsymmetricKey.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/phpseclib/phpseclib/phpseclib/Crypt/Common/AsymmetricKey.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/phpseclib/phpseclib/phpseclib/Crypt/Common/SymmetricKey.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/phpseclib/phpseclib/phpseclib/Crypt/Common/SymmetricKey.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/phpseclib/phpseclib/phpseclib/Crypt/EC/BaseCurves/Binary.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/phpseclib/phpseclib/phpseclib/Crypt/EC/BaseCurves/Binary.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/phpseclib/phpseclib/phpseclib/Crypt/EC/BaseCurves/Prime.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/phpseclib/phpseclib/phpseclib/Crypt/EC/BaseCurves/Prime.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/phpseclib/phpseclib/phpseclib/Crypt/RSA.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/phpseclib/phpseclib/phpseclib/Crypt/RSA.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/phpseclib/phpseclib/phpseclib/Math/BigInteger/Engines/PHP.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/phpseclib/phpseclib/phpseclib/Math/BigInteger/Engines/PHP.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/phpseclib/phpseclib/phpseclib/Net/SFTP.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/phpseclib/phpseclib/phpseclib/Net/SFTP.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/predis/predis/CONTRIBUTING.md" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/predis/predis/CONTRIBUTING.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/sabberworm/php-css-parser/Doxyfile" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/sabberworm/php-css-parser/Doxyfile" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/vendor/swiftmailer/swiftmailer/lib/mime_types.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/swiftmailer/swiftmailer/lib/mime_types.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/vendor/symfony/mime/MimeTypes.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/symfony/mime/MimeTypes.php" afterDir="false" />
     </list>
@@ -370,7 +227,7 @@
       <workItem from="1640520950904" duration="2251000" />
       <workItem from="1640526613865" duration="762000" />
       <workItem from="1640527403965" duration="47000" />
-      <workItem from="1640610344776" duration="3334000" />
+      <workItem from="1640610344776" duration="3765000" />
     </task>
     <task id="LOCAL-00001" summary="add project">
       <created>1639398042116</created>
