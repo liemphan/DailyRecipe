@@ -5,16 +5,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="274eeb44-2be1-4c79-980b-c542185305a9" name="Changes" comment="update bookstack to dailyrecipe">
-      <change beforePath="$PROJECT_DIR$/vendor/aws/aws-sdk-php/src/Emr/EmrClient.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/aws/aws-sdk-php/src/Emr/EmrClient.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/aws/aws-sdk-php/src/SageMaker/SageMakerClient.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/aws/aws-sdk-php/src/SageMaker/SageMakerClient.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/aws/aws-sdk-php/src/data/elasticmapreduce/2009-03-31/api-2.json.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/aws/aws-sdk-php/src/data/elasticmapreduce/2009-03-31/api-2.json.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/aws/aws-sdk-php/src/data/elasticmapreduce/2009-03-31/paginators-1.json.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/aws/aws-sdk-php/src/data/elasticmapreduce/2009-03-31/paginators-1.json.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/aws/aws-sdk-php/src/data/sagemaker/2017-07-24/api-2.json.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/aws/aws-sdk-php/src/data/sagemaker/2017-07-24/api-2.json.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/aws/aws-sdk-php/src/data/sagemaker/2017-07-24/paginators-1.json.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/aws/aws-sdk-php/src/data/sagemaker/2017-07-24/paginators-1.json.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/aws/aws-sdk-php/src/data/sagemaker/2017-07-24/waiters-2.json.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/aws/aws-sdk-php/src/data/sagemaker/2017-07-24/waiters-2.json.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/league/mime-type-detection/src/GeneratedExtensionToMimeTypeMap.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/league/mime-type-detection/src/GeneratedExtensionToMimeTypeMap.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/swiftmailer/swiftmailer/lib/mime_types.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/swiftmailer/swiftmailer/lib/mime_types.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/symfony/mime/MimeTypes.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/symfony/mime/MimeTypes.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/recipes/guest-create.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Entities/Models/Recipe.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Entities/Models/Recipe.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Entities/Repos/BaseRepo.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Entities/Repos/BaseRepo.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Entities/Repos/RecipeRepo.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Entities/Repos/RecipeRepo.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/PageController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/PageController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/RecipeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/RecipeController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2015_07_12_114933_create_recipes_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2015_07_12_114933_create_recipes_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2016_03_13_082138_add_page_drafts.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2016_03_13_082138_add_page_drafts.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2019_07_07_112515_add_template_support.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2019_07_07_112515_add_template_support.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/recipes/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/recipes/create.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -158,7 +160,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/database/migrations" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
@@ -166,6 +168,12 @@
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="reference.webide.settings.project.settings.php" />
     <property name="vue.rearranger.settings.migration" value="true" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\lieml\Desktop\DailyRecipe\database\migrations" />
+      <recent name="C:\Users\lieml\Desktop\DailyRecipe\resources\views\recipes" />
+    </key>
   </component>
   <component name="RunManager" selected="PHPUnit.phpunit.xml">
     <configuration name="BookStack-master" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
@@ -228,6 +236,9 @@
       <workItem from="1640526613865" duration="762000" />
       <workItem from="1640527403965" duration="47000" />
       <workItem from="1640610344776" duration="3765000" />
+      <workItem from="1640833827497" duration="14721000" />
+      <workItem from="1640853746375" duration="11000" />
+      <workItem from="1640936754156" duration="3164000" />
     </task>
     <task id="LOCAL-00001" summary="add project">
       <created>1639398042116</created>

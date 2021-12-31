@@ -19,6 +19,12 @@ class AddTemplateSupport extends Migration
             $table->index('template');
         });
 
+        Schema::table('recipes', function (Blueprint $table) {
+            $table->boolean('template')->default(false);
+            $table->index('template');
+        });
+
+
         // Create new templates-manage permission and assign to admin role
         $adminRoleId = DB::table('roles')->where('system_name', '=', 'admin')->first()->id;
         $permissionId = DB::table('role_permissions')->insertGetId([
@@ -41,6 +47,10 @@ class AddTemplateSupport extends Migration
     public function down()
     {
         Schema::table('pages', function (Blueprint $table) {
+            $table->dropColumn('template');
+        });
+
+        Schema::table('recipes', function (Blueprint $table) {
             $table->dropColumn('template');
         });
 

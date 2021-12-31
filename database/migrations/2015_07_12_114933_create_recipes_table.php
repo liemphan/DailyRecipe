@@ -17,6 +17,9 @@ class CreateRecipesTable extends Migration
             $table->string('name');
             $table->string('slug')->indexed();
             $table->text('description');
+            $table->longText('html');
+            $table->longText('text');
+            $table->integer('priority');
             $table->nullableTimestamps();
         });
     }

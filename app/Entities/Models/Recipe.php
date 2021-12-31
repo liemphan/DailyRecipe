@@ -19,6 +19,9 @@ use Illuminate\Support\Collection;
  * @property \Illuminate\Database\Eloquent\Collection $chapters
  * @property \Illuminate\Database\Eloquent\Collection $pages
  * @property \Illuminate\Database\Eloquent\Collection $directPages
+ * @property bool       $draft
+ * @property string     $text
+ * @property string     $html
  */
 class Recipe extends Entity implements HasCoverImage
 {
@@ -118,5 +121,22 @@ class Recipe extends Entity implements HasCoverImage
         $chapters = $this->chapters()->scopes('visible')->get();
 
         return $pages->concat($chapters)->sortBy('priority')->sortByDesc('draft');
+    }
+
+
+    /**
+     * Get the url of this page.
+     */
+    public function getUrlContent(string $path = ''): string
+    {
+        $parts = [
+            'recipes',
+            urlencode($this->slug ?? $this -> slug),
+            $this->draft ? 'draft' : 'page',
+            $this->draft ? $this->id : urlencode($this->slug),
+            trim($path, '/'),
+        ];
+
+        return url('/' . implode('/', $parts));
     }
 }

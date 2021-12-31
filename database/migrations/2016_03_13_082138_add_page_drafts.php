@@ -16,6 +16,10 @@ class AddPageDrafts extends Migration
             $table->boolean('draft')->default(false);
             $table->index('draft');
         });
+        Schema::table('recipes', function (Blueprint $table) {
+            $table->boolean('draft')->default(false);
+            $table->index('draft');
+        });
     }
 
     /**
@@ -26,6 +30,9 @@ class AddPageDrafts extends Migration
     public function down()
     {
         Schema::table('pages', function (Blueprint $table) {
+            $table->dropColumn('draft');
+        });
+        Schema::table('recipes', function (Blueprint $table) {
             $table->dropColumn('draft');
         });
     }

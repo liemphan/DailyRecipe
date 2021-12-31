@@ -49,7 +49,7 @@ class PageController extends Controller
         // Otherwise show the edit view if they're a guest
         $this->setPageTitle(trans('entities.pages_new'));
 
-        return view('pages.guest-create', ['parent' => $parent]);
+        return view('recipes.guest-create', ['parent' => $parent]);
     }
 
     /**

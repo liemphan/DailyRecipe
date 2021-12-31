@@ -27,7 +27,7 @@
 
         <main class="content-wrap card">
             <h1 class="list-heading">{{ trans('entities.recipes_create') }}</h1>
-            <form action="{{ isset($recipemenu) ? $recipemenu->getUrl('/create-recipe') : url('/recipes') }}" method="POST" enctype="multipart/form-data">
+            <form action="{{ isset($recipemenu) ? $recipemenu->getUrl('/create-recipe') : url('/recipestest') }}" method="POST" enctype="multipart/form-data">
                 @include('recipes.parts.form', ['returnLocation' => isset($recipemenu) ? $recipemenu->getUrl() : url('/recipes')])
             </form>
         </main>

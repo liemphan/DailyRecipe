@@ -224,4 +224,49 @@ class RecipeController extends Controller
 
         return redirect($recipe->getUrl());
     }
+
+
+    /**
+     * Store a newly created recipe in storage.
+     *
+     * @throws ImageUploadException
+     * @throws ValidationException
+     */
+    public function storetest(Request $request, string $menuSlug = null)
+    {
+        $this->checkPermission('recipe-create-all');
+        $this->validate($request, [
+            'name'        => ['required', 'string', 'max:255'],
+            'description' => ['string', 'max:1000'],
+            'image'       => array_merge(['nullable'], $this->getImageValidationRules()),
+        ]);
+
+        $recipemenu = null;
+        if ($menuSlug !== null) {
+            $recipemenu = Recipemenu::visible()->where('slug', '=', $menuSlug)->firstOrFail();
+            $this->checkOwnablePermission('recipemenu-update', $recipemenu);
+        }
+
+        $recipe = $this->recipeRepo->create($request->all());
+        $this->recipeRepo->updateCoverImage($recipe, $request->file('image', null));
+
+
+        if ($recipemenu) {
+            $recipemenu->appendRecipe($recipe);
+            Activity::addForEntity($recipemenu, ActivityType::RECIPEMENU_UPDATE);
+        }
+
+        $this->checkOwnablePermission('page-create', $recipe);
+
+        // Redirect to draft edit screen if signed in
+        if ($this->isSignedIn()) {
+            return redirect($recipe->getUrl('/create-page'));
+        }
+
+        // Otherwise show the edit view if they're a guest
+        $this->setPageTitle(trans('entities.pages_new'));
+
+        return view('recipes.guest-create', ['parent' => $recipe]);
+
+    }
 }

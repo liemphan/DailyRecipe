@@ -83,6 +83,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/recipes/{recipeSlug}/export/markdown', [RecipeExportController::class, 'markdown']);
     Route::get('/recipes/{recipeSlug}/export/zip', [RecipeExportController::class, 'zip']);
     Route::get('/recipes/{recipeSlug}/export/plaintext', [RecipeExportController::class, 'plainText']);
+    Route::post('/recipestest/', [RecipeController::class, 'storetest']);
 
     // Pages
     Route::get('/recipes/{recipeSlug}/create-page', [PageController::class, 'create']);

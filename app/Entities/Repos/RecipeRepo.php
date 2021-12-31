@@ -4,6 +4,9 @@ namespace DailyRecipe\Entities\Repos;
 
 use DailyRecipe\Actions\ActivityType;
 use DailyRecipe\Actions\TagRepo;
+use DailyRecipe\Entities\Models\Chapter;
+use DailyRecipe\Entities\Models\Entity;
+use DailyRecipe\Entities\Models\Page;
 use DailyRecipe\Entities\Models\Recipe;
 use DailyRecipe\Entities\Tools\TrashCan;
 use DailyRecipe\Exceptions\ImageUploadException;
@@ -131,4 +134,24 @@ class RecipeRepo
 
         $trashCan->autoClearOld();
     }
+
+
+    /**
+     * Get a new draft page belonging to the given parent entity.
+     */
+    public function getNewDraftPage(Entity $parent)
+    {
+        $page = (new Recipe())->forceFill([
+            'created_by' => user()->id,
+            'owned_by'   => user()->id,
+            'updated_by' => user()->id,
+            'draft'      => true,
+        ]);
+
+        $page->save();
+        $page->refresh()->rebuildPermissions();
+
+        return $page;
+    }
+
 }
