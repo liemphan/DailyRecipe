@@ -37,7 +37,7 @@
 
             </form>
 
-            @if(count($socialDrivers) > 0)
+  <!--         @if(count($socialDrivers) > 0)
                 <hr class="my-l">
                 @foreach($socialDrivers as $driver => $name)
                     <div>
@@ -47,7 +47,7 @@
                         </a>
                     </div>
                 @endforeach
-            @endif
+            @endif -->
 
         </div>
     </div>
