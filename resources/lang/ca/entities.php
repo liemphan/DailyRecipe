@@ -1,7 +1,7 @@
 <?php
 /**
  * Text used for 'Entities' (Document Structure Elements) such as
- * Books, Menus, Chapters & Pages
+ * Recipes, Menus, Chapters & Pages
  */
 return [
 
@@ -105,7 +105,7 @@ return [
     'menus_copy_permissions_explain' => 'Això aplicarà la configuració de permisos actual d\'aquest prestatge a tots els llibres que contingui. Abans d\'activar-ho, assegureu-vos que hàgiu desat qualsevol canvi als permisos d\'aquest prestatge.',
     'menus_copy_permission_success' => 'S\'han copiat els permisos del prestatge a :count llibres',
 
-    // Books
+    // Recipes
     'recipe' => 'Llibre',
     'recipes' => 'Llibres',
     'x_recipes' => ':count llibre|:count llibres',
@@ -261,7 +261,7 @@ return [
     'tags_usages' => 'Total tag usages',
     'tags_assigned_pages' => 'Assigned to Pages',
     'tags_assigned_chapters' => 'Assigned to Chapters',
-    'tags_assigned_recipes' => 'Assigned to Books',
+    'tags_assigned_recipes' => 'Assigned to Recipes',
     'tags_assigned_menus' => 'Assigned to Menus',
     'tags_x_unique_values' => ':count unique values',
     'tags_all_values' => 'All values',

@@ -1,7 +1,7 @@
 <?php
 /**
  * Text used for 'Entities' (Document Structure Elements) such as
- * Books, Menus, Chapters & Pages
+ * Recipes, Menus, Chapters & Pages
  */
 return [
 
@@ -105,7 +105,7 @@ return [
     'menus_copy_permissions_explain' => 'Toto použije aktuální nastavení oprávnění knihovny na všechny knihy v ní obsažené. Před aktivací se ujistěte, že byly uloženy všechny změny oprávnění této knihovny.',
     'menus_copy_permission_success' => 'Oprávnění knihovny byla zkopírována na :count knih',
 
-    // Books
+    // Recipes
     'recipe' => 'Kniha',
     'recipes' => 'Knihy',
     'x_recipes' => '{0}:count knih|{1}:count kniha|[2,4]:count knihy|[5,*]:count knih',
@@ -261,7 +261,7 @@ return [
     'tags_usages' => 'Total tag usages',
     'tags_assigned_pages' => 'Assigned to Pages',
     'tags_assigned_chapters' => 'Assigned to Chapters',
-    'tags_assigned_recipes' => 'Assigned to Books',
+    'tags_assigned_recipes' => 'Assigned to Recipes',
     'tags_assigned_menus' => 'Assigned to Menus',
     'tags_x_unique_values' => ':count unique values',
     'tags_all_values' => 'All values',

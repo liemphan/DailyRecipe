@@ -1,7 +1,7 @@
 <?php
 /**
  * Text used for 'Entities' (Document Structure Elements) such as
- * Books, Menus, Chapters & Pages
+ * Recipes, Menus, Chapters & Pages
  */
 return [
 
@@ -105,7 +105,7 @@ return [
     'menus_copy_permissions_explain' => 'سيؤدي هذا إلى تطبيق إعدادات الأذونات الحالية لهذا الرف على جميع الكتب المتضمنة فيه. قبل التفعيل، تأكد من حفظ أي تغييرات في أذونات هذا الرف.',
     'menus_copy_permission_success' => 'تم نسخ أذونات رف الكتب إلى :count recipes',
 
-    // Books
+    // Recipes
     'recipe' => 'كتاب',
     'recipes' => 'الكتب',
     'x_recipes' => ':count كتاب|:count كتب',
@@ -261,7 +261,7 @@ return [
     'tags_usages' => 'Total tag usages',
     'tags_assigned_pages' => 'Assigned to Pages',
     'tags_assigned_chapters' => 'Assigned to Chapters',
-    'tags_assigned_recipes' => 'Assigned to Books',
+    'tags_assigned_recipes' => 'Assigned to Recipes',
     'tags_assigned_menus' => 'Assigned to Menus',
     'tags_x_unique_values' => ':count unique values',
     'tags_all_values' => 'All values',

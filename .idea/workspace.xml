@@ -8,6 +8,16 @@
       <change beforePath="$PROJECT_DIR$/.env" beforeDir="false" afterPath="$PROJECT_DIR$/.env" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/auth/register.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/auth/register.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/aws/aws-sdk-php/src/Emr/EmrClient.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/aws/aws-sdk-php/src/Emr/EmrClient.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/aws/aws-sdk-php/src/SageMaker/SageMakerClient.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/aws/aws-sdk-php/src/SageMaker/SageMakerClient.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/aws/aws-sdk-php/src/data/elasticmapreduce/2009-03-31/api-2.json.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/aws/aws-sdk-php/src/data/elasticmapreduce/2009-03-31/api-2.json.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/aws/aws-sdk-php/src/data/elasticmapreduce/2009-03-31/paginators-1.json.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/aws/aws-sdk-php/src/data/elasticmapreduce/2009-03-31/paginators-1.json.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/aws/aws-sdk-php/src/data/sagemaker/2017-07-24/api-2.json.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/aws/aws-sdk-php/src/data/sagemaker/2017-07-24/api-2.json.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/aws/aws-sdk-php/src/data/sagemaker/2017-07-24/paginators-1.json.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/aws/aws-sdk-php/src/data/sagemaker/2017-07-24/paginators-1.json.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/aws/aws-sdk-php/src/data/sagemaker/2017-07-24/waiters-2.json.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/aws/aws-sdk-php/src/data/sagemaker/2017-07-24/waiters-2.json.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/league/mime-type-detection/src/GeneratedExtensionToMimeTypeMap.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/league/mime-type-detection/src/GeneratedExtensionToMimeTypeMap.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/swiftmailer/swiftmailer/lib/mime_types.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/swiftmailer/swiftmailer/lib/mime_types.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/symfony/mime/MimeTypes.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/symfony/mime/MimeTypes.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -224,6 +234,7 @@
       <workItem from="1640528084879" duration="307000" />
       <workItem from="1640612384142" duration="572000" />
       <workItem from="1640867594334" duration="4388000" />
+      <workItem from="1640610344776" duration="3765000" />
     </task>
     <task id="LOCAL-00001" summary="add project">
       <created>1639398042116</created>

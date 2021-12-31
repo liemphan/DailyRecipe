@@ -1,7 +1,7 @@
 <?php
 /**
  * Text used for 'Entities' (Document Structure Elements) such as
- * Books, Menus, Chapters & Pages
+ * Recipes, Menus, Chapters & Pages
  */
 return [
 
@@ -105,7 +105,7 @@ return [
     'menus_copy_permissions_explain' => 'Ini akan menerapkan setelan izin rak buku ini saat ini ke semua buku yang ada di dalamnya. Sebelum mengaktifkan, pastikan setiap perubahan pada izin rak buku ini telah disimpan.',
     'menus_copy_permission_success' => 'Izin rak buku disalin ke :count buku',
 
-    // Books
+    // Recipes
     'recipe' => 'Buku',
     'recipes' => 'Semua Buku',
     'x_recipes' => ':count Buku|:count Semua Buku',
@@ -261,7 +261,7 @@ return [
     'tags_usages' => 'Total tag usages',
     'tags_assigned_pages' => 'Assigned to Pages',
     'tags_assigned_chapters' => 'Assigned to Chapters',
-    'tags_assigned_recipes' => 'Assigned to Books',
+    'tags_assigned_recipes' => 'Assigned to Recipes',
     'tags_assigned_menus' => 'Assigned to Menus',
     'tags_x_unique_values' => ':count unique values',
     'tags_all_values' => 'All values',

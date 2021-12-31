@@ -25,7 +25,7 @@ return [
     'chapter_delete_notification' => 'Розділ успішно видалено',
     'chapter_move'                => 'перемістив розділ',
 
-    // Books
+    // Recipes
     'recipe_create'                 => 'створив книгу',
     'recipe_create_notification'    => 'Книгу успішно створено',
     'recipe_update'                 => 'оновив книгу',

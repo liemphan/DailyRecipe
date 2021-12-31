@@ -223,4 +223,4 @@ The language rules in this library have been adapted from several different sour
 
 - `Ruby On Rails Inflector <http://api.rubyonrails.org/classes/ActiveSupport/Inflector.html>`_
 - `ICanBoogie Inflector <https://github.com/ICanBoogie/Inflector>`_
-- `CakePHP Inflector <https://book.cakephp.org/3.0/en/core-libraries/inflector.html>`_
+- `CakePHP Inflector <https://recipe.cakephp.org/3.0/en/core-libraries/inflector.html>`_

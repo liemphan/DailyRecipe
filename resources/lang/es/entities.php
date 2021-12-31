@@ -1,7 +1,7 @@
 <?php
 /**
  * Text used for 'Entities' (Document Structure Elements) such as
- * Books, Menus, Chapters & Pages
+ * Recipes, Menus, Chapters & Pages
  */
 return [
 
@@ -105,7 +105,7 @@ return [
     'menus_copy_permissions_explain' => 'Esto aplicará los ajustes de permisos de este estante para todos sus libros. Antes de activarlo, asegúrese de que todos los cambios de permisos para este estante han sido guardados.',
     'menus_copy_permission_success' => 'Permisos del estante copiados a :count libros',
 
-    // Books
+    // Recipes
     'recipe' => 'Libro',
     'recipes' => 'Libros',
     'x_recipes' => ':count Libro|:count Libros',

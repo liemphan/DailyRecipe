@@ -7,7 +7,7 @@
  *
  * Supports SFTPv2/3/4/5/6. Defaults to v3.
  *
- * The API for this library is modeled after the API from PHP's {@link http://php.net/book.ftp FTP extension}.
+ * The API for this library is modeled after the API from PHP's {@link http://php.net/recipe.ftp FTP extension}.
  *
  * Here's a short example of how to use this library:
  * <code>

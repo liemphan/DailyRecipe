@@ -55,7 +55,7 @@ $ nmake test-awscrt
 Using [PHPBrew](https://github.com/phpbrew/phpbrew) to build/manage multiple versions of PHP is helpful.
 
 Note: You must use a debug build of PHP to debug native extensions. 
-See the [PHP Internals Book](https://www.phpinternalsbook.com/php7/build_system/building_php.html) for more info
+See the [PHP Internals Recipe](https://www.phpinternalsrecipe.com/php7/build_system/building_php.html) for more info
 
 ```shell
 # PHP 8 example

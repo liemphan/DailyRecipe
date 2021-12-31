@@ -25,7 +25,7 @@ return [
     'chapter_delete_notification' => 'Capítol suprimit correctament',
     'chapter_move'                => 'ha mogut el capítol',
 
-    // Books
+    // Recipes
     'recipe_create'                 => 'ha creat el llibre',
     'recipe_create_notification'    => 'Llibre creat correctament',
     'recipe_update'                 => 'ha actualitzat el llibre',

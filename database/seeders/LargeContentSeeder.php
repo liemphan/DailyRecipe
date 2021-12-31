@@ -26,16 +26,16 @@ class LargeContentSeeder extends Seeder
         $editorRole = Role::getRole('editor');
         $editorUser->attachRole($editorRole);
 
-        /** @var Recipe $largeBook */
-        $largeBook = Recipe::factory()->create(['name' => 'Large recipe' . Str::random(10), 'created_by' => $editorUser->id, 'updated_by' => $editorUser->id]);
+        /** @var Recipe $largeRecipe */
+        $largeRecipe = Recipe::factory()->create(['name' => 'Large recipe' . Str::random(10), 'created_by' => $editorUser->id, 'updated_by' => $editorUser->id]);
         $pages = Page::factory()->count(200)->make(['created_by' => $editorUser->id, 'updated_by' => $editorUser->id]);
         $chapters = Chapter::factory()->count(50)->make(['created_by' => $editorUser->id, 'updated_by' => $editorUser->id]);
 
-        $largeBook->pages()->saveMany($pages);
-        $largeBook->chapters()->saveMany($chapters);
-        $all = array_merge([$largeBook], array_values($pages->all()), array_values($chapters->all()));
+        $largeRecipe->pages()->saveMany($pages);
+        $largeRecipe->chapters()->saveMany($chapters);
+        $all = array_merge([$largeRecipe], array_values($pages->all()), array_values($chapters->all()));
 
-        app()->make(PermissionService::class)->buildJointPermissionsForEntity($largeBook);
+        app()->make(PermissionService::class)->buildJointPermissionsForEntity($largeRecipe);
         app()->make(SearchIndex::class)->indexEntities($all);
     }
 }

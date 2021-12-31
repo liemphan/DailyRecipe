@@ -25,7 +25,7 @@ return [
     'chapter_delete_notification' => 'Bab berhasil dihapus',
     'chapter_move'                => 'bab dipindahkan',
 
-    // Books
+    // Recipes
     'recipe_create'                 => 'membuat buku',
     'recipe_create_notification'    => 'Buku berhasil dibuat',
     'recipe_update'                 => 'update buku',

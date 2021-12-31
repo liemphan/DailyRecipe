@@ -25,7 +25,7 @@ return [
     'chapter_delete_notification' => 'تم حذف الفصل بنجاح',
     'chapter_move'                => 'تم نقل الفصل',
 
-    // Books
+    // Recipes
     'recipe_create'                 => 'تم إنشاء كتاب',
     'recipe_create_notification'    => 'تم إنشاء كتاب بنجاح',
     'recipe_update'                 => 'تم تحديث الكتاب',

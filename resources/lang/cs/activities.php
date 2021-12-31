@@ -25,7 +25,7 @@ return [
     'chapter_delete_notification' => 'Kapitola byla odstraněna',
     'chapter_move'                => 'přesunul/a kapitolu',
 
-    // Books
+    // Recipes
     'recipe_create'                 => 'vytvořil/a knihu',
     'recipe_create_notification'    => 'Kniha byla vytvořena',
     'recipe_update'                 => 'aktualizoval/a knihu',

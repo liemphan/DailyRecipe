@@ -1,7 +1,7 @@
 <?php
 /**
  * Text used for 'Entities' (Document Structure Elements) such as
- * Books, Menus, Chapters & Pages
+ * Recipes, Menus, Chapters & Pages
  */
 return [
 
@@ -100,12 +100,12 @@ return [
     'menus_permissions_updated' => 'Recipemenu Permissions Updated',
     'menus_permissions_active' => 'Recipemenu Permissions Active',
     'menus_permissions_cascade_warning' => 'Permissions on recipemenus do not automatically cascade to contained recipes. This is because a recipe can exist on multiple menus. Permissions can however be copied down to child recipes using the option found below.',
-    'menus_copy_permissions_to_recipes' => 'Copy Permissions to Books',
+    'menus_copy_permissions_to_recipes' => 'Copy Permissions to Recipes',
     'menus_copy_permissions' => 'Copy Permissions',
     'menus_copy_permissions_explain' => 'This will apply the current permission settings of this recipemenu to all recipes contained within. Before activating, ensure any changes to the permissions of this recipemenu have been saved.',
     'menus_copy_permission_success' => 'Recipemenu permissions copied to :count recipes',
 
-    // Books
+    // Recipes
     'recipe' => 'ブック',
     'recipes' => 'ブック',
     'x_recipes' => ':count ブック',
@@ -261,7 +261,7 @@ return [
     'tags_usages' => 'Total tag usages',
     'tags_assigned_pages' => 'Assigned to Pages',
     'tags_assigned_chapters' => 'Assigned to Chapters',
-    'tags_assigned_recipes' => 'Assigned to Books',
+    'tags_assigned_recipes' => 'Assigned to Recipes',
     'tags_assigned_menus' => 'Assigned to Menus',
     'tags_x_unique_values' => ':count unique values',
     'tags_all_values' => 'All values',

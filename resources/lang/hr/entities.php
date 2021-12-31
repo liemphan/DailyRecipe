@@ -1,7 +1,7 @@
 <?php
 /**
  * Text used for 'Entities' (Document Structure Elements) such as
- * Books, Menus, Chapters & Pages
+ * Recipes, Menus, Chapters & Pages
  */
 return [
 
@@ -105,7 +105,7 @@ return [
     'menus_copy_permissions_explain' => 'Ovo će promijeniti trenutna dopuštenja za policu i knjige u njoj. Prije aktivacije provjerite jesu li sve dopuštenja za ovu policu spremljena.',
     'menus_copy_permission_success' => 'Dopuštenja za policu kopirana za :count knjiga',
 
-    // Books
+    // Recipes
     'recipe' => 'Knjiga',
     'recipes' => 'Knjige',
     'x_recipes' => ':count knjiga|:count knjiga',
@@ -261,7 +261,7 @@ return [
     'tags_usages' => 'Total tag usages',
     'tags_assigned_pages' => 'Assigned to Pages',
     'tags_assigned_chapters' => 'Assigned to Chapters',
-    'tags_assigned_recipes' => 'Assigned to Books',
+    'tags_assigned_recipes' => 'Assigned to Recipes',
     'tags_assigned_menus' => 'Assigned to Menus',
     'tags_x_unique_values' => ':count unique values',
     'tags_all_values' => 'All values',

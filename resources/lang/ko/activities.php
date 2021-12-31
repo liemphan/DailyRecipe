@@ -25,7 +25,7 @@ return [
     'chapter_delete_notification' => '챕터 지움',
     'chapter_move'                => '챕터 이동된',
 
-    // Books
+    // Recipes
     'recipe_create'                 => '책자 만들기',
     'recipe_create_notification'    => '책자 만듦',
     'recipe_update'                 => '책자 바꾸기',

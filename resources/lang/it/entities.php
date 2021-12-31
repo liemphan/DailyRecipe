@@ -1,7 +1,7 @@
 <?php
 /**
  * Text used for 'Entities' (Document Structure Elements) such as
- * Books, Menus, Chapters & Pages
+ * Recipes, Menus, Chapters & Pages
  */
 return [
 
@@ -105,7 +105,7 @@ return [
     'menus_copy_permissions_explain' => 'Verranno applicati tutti i permessi della libreria ai libri contenuti. Prima di attivarlo, assicurati che ogni permesso di questa libreria sia salvato.',
     'menus_copy_permission_success' => 'Permessi della libreria copiati in :count libri',
 
-    // Books
+    // Recipes
     'recipe' => 'Libro',
     'recipes' => 'Libri',
     'x_recipes' => ':count Libro|:count Libri',

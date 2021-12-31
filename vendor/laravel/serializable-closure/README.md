@@ -15,7 +15,7 @@
 
 ## Introduction
 
-> This project is a fork of the excellent [opis/closure: 3.x](https://github.com/opis/closure) package. At Laravel, we decided to fork this package as the upcoming version [4.x](https://github.com/opis/closure) is a complete rewrite on top of the [FFI extension](https://www.php.net/manual/en/book.ffi.php). As Laravel is a web framework, and FFI is not enabled by default in web requests, this fork allows us to keep using the `3.x` series while adding support for new PHP versions.
+> This project is a fork of the excellent [opis/closure: 3.x](https://github.com/opis/closure) package. At Laravel, we decided to fork this package as the upcoming version [4.x](https://github.com/opis/closure) is a complete rewrite on top of the [FFI extension](https://www.php.net/manual/en/recipe.ffi.php). As Laravel is a web framework, and FFI is not enabled by default in web requests, this fork allows us to keep using the `3.x` series while adding support for new PHP versions.
 
 Laravel Serializable Closure provides an easy and secure way to **serialize closures in PHP**.
 

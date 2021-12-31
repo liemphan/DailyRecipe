@@ -51,7 +51,7 @@ Note: Listed services are not tested, vetted nor supported by the official Daily
 Below is a high-level road map view for DailyRecipe to provide a sense of direction of where the project is going. This can change at any point and does not reflect many features and improvements that will also be included as part of the journey along this road map. For more granular detail of what will be included in upcoming releases you can review the project milestones as defined in the "Release Process" section below.
 
 - **Platform REST API** *(Base Implemented, In review and roll-out)*
-    - *A REST API covering, at minimum, control of core content models (Books, Chapters, Pages) for automation and platform extension.*
+    - *A REST API covering, at minimum, control of core content models (Recipes, Chapters, Pages) for automation and platform extension.*
 - **Editor Alignment & Review**
     - *Review the page editors with goal of achieving increased interoperability & feature parity while also considering collaborative editing potential.*
 - **Permission System Review**

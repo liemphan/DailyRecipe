@@ -25,7 +25,7 @@ return [
     'chapter_delete_notification' => 'Hoofdstuk succesvol verwijderd',
     'chapter_move'                => 'verplaatste hoofdstuk',
 
-    // Books
+    // Recipes
     'recipe_create'                 => 'maakte boek',
     'recipe_create_notification'    => 'Boek succesvol aangemaakt',
     'recipe_update'                 => 'wijzigde boek',

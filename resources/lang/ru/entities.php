@@ -1,7 +1,7 @@
 <?php
 /**
  * Text used for 'Entities' (Document Structure Elements) such as
- * Books, Menus, Chapters & Pages
+ * Recipes, Menus, Chapters & Pages
  */
 return [
 
@@ -105,7 +105,7 @@ return [
     'menus_copy_permissions_explain' => 'Это применит текущие настройки доступов этой книжной полки ко всем книгам, содержащимся внутри. Перед активацией убедитесь, что все изменения в доступах этой книжной полки сохранены.',
     'menus_copy_permission_success' => 'Доступы книжной полки скопированы для :count книг',
 
-    // Books
+    // Recipes
     'recipe' => 'Книга',
     'recipes' => 'Книги',
     'x_recipes' => ':count книга|:count книги|:count книг',

@@ -1,7 +1,7 @@
 <?php
 /**
  * Text used for 'Entities' (Document Structure Elements) such as
- * Books, Menus, Chapters & Pages
+ * Recipes, Menus, Chapters & Pages
  */
 return [
 
@@ -105,7 +105,7 @@ return [
     'menus_copy_permissions_explain' => 'Hiermit werden die Berechtigungen des aktuellen Regals auf alle enthaltenen Bücher übertragen. Überprüfen Sie vor der Aktivierung, ob alle Berechtigungsänderungen am aktuellen Regal gespeichert wurden.',
     'menus_copy_permission_success' => 'Regal-Berechtigungen wurden zu :count Büchern kopiert',
 
-    // Books
+    // Recipes
     'recipe' => 'Buch',
     'recipes' => 'Bücher',
     'x_recipes' => ':count Buch|:count Bücher',
@@ -261,7 +261,7 @@ return [
     'tags_usages' => 'Total tag usages',
     'tags_assigned_pages' => 'Assigned to Pages',
     'tags_assigned_chapters' => 'Assigned to Chapters',
-    'tags_assigned_recipes' => 'Assigned to Books',
+    'tags_assigned_recipes' => 'Assigned to Recipes',
     'tags_assigned_menus' => 'Assigned to Menus',
     'tags_x_unique_values' => ':count unique values',
     'tags_all_values' => 'All values',

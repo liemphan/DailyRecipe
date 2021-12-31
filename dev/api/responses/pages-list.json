@@ -2,7 +2,7 @@
 	"data": [
 		{
 			"id": 1,
-			"book_id": 1,
+			"recipe_id": 1,
 			"chapter_id": 1,
 			"name": "How to create page content",
 			"slug": "how-to-create-page-content",
@@ -17,7 +17,7 @@
 		},
 		{
 			"id": 2,
-			"book_id": 1,
+			"recipe_id": 1,
 			"chapter_id": 1,
 			"name": "How to use images",
 			"slug": "how-to-use-images",
@@ -32,7 +32,7 @@
 		},
 		{
 			"id": 3,
-			"book_id": 1,
+			"recipe_id": 1,
 			"chapter_id": 1,
 			"name": "Drawings via draw.io",
 			"slug": "drawings-via-drawio",

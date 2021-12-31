@@ -459,7 +459,7 @@ abstract class AsymmetricKey
             'PHP' => true,
             'OpenSSL' => extension_loaded('openssl'),
             // this test can be satisfied by either of the following:
-            // http://php.net/manual/en/book.sodium.php
+            // http://php.net/manual/en/recipe.sodium.php
             // https://github.com/paragonie/sodium_compat
             'libsodium' => function_exists('sodium_crypto_sign_keypair')
         ];

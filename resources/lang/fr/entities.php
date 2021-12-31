@@ -1,7 +1,7 @@
 <?php
 /**
  * Text used for 'Entities' (Document Structure Elements) such as
- * Books, Menus, Chapters & Pages
+ * Recipes, Menus, Chapters & Pages
  */
 return [
 
@@ -105,7 +105,7 @@ return [
     'menus_copy_permissions_explain' => 'Ceci va appliquer les permissions actuelles de cette étagère à tous les livres qu\'elle contient. Avant de  continuer, assurez-vous que toutes les permissions de cette étagère ont été sauvegardées.',
     'menus_copy_permission_success' => 'Permissions de l\'étagère transférées à :count livres',
 
-    // Books
+    // Recipes
     'recipe' => 'Livre',
     'recipes' => 'Livres',
     'x_recipes' => ':count livre|:count livres',

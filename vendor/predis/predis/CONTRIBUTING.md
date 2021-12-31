@@ -39,6 +39,6 @@ and stick with the conventions used in Predis to name classes and interfaces. In
 done with 4 spaces and code should be wrapped at 100 columns (please try to stay within this limit
 even if the above mentioned official coding guidelines set the soft limit to 120 columns).
 
-Please follow these [commit guidelines](http://git-scm.com/book/ch5-2.html#Commit-Guidelines) when
+Please follow these [commit guidelines](http://git-scm.com/recipe/ch5-2.html#Commit-Guidelines) when
 committing your code to Git and always write a meaningful (not necessarily extended) description of
 your changes before opening pull requests.

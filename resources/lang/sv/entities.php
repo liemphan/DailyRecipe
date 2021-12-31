@@ -1,7 +1,7 @@
 <?php
 /**
  * Text used for 'Entities' (Document Structure Elements) such as
- * Books, Menus, Chapters & Pages
+ * Recipes, Menus, Chapters & Pages
  */
 return [
 
@@ -105,7 +105,7 @@ return [
     'menus_copy_permissions_explain' => 'Detta kommer kopiera hyllans rättigheter till alla böcker på den. Se till att du har sparat alla ändringar innan du går vidare.',
     'menus_copy_permission_success' => 'Hyllans rättigheter har kopierats till :count böcker',
 
-    // Books
+    // Recipes
     'recipe' => 'Bok',
     'recipes' => 'Böcker',
     'x_recipes' => ':count bok|:count böcker',
@@ -261,7 +261,7 @@ return [
     'tags_usages' => 'Total tag usages',
     'tags_assigned_pages' => 'Assigned to Pages',
     'tags_assigned_chapters' => 'Assigned to Chapters',
-    'tags_assigned_recipes' => 'Assigned to Books',
+    'tags_assigned_recipes' => 'Assigned to Recipes',
     'tags_assigned_menus' => 'Assigned to Menus',
     'tags_x_unique_values' => ':count unique values',
     'tags_all_values' => 'All values',

@@ -1,7 +1,7 @@
 <?php
 /**
  * Text used for 'Entities' (Document Structure Elements) such as
- * Books, Menus, Chapters & Pages
+ * Recipes, Menus, Chapters & Pages
  */
 return [
 
@@ -105,7 +105,7 @@ return [
     'menus_copy_permissions_explain' => 'Týmto sa použijú aktuálne nastavenia povolení tejto police na všetky knihy, ktoré obsahuje. Pred aktiváciou sa uistite, že všetky zmeny povolení tejto police boli uložené.',
     'menus_copy_permission_success' => 'Oprávnenia knižnice boli skopírované {0}:count kníh|{1}:count kniha|[2,3,4]:count knihy|[5,*]:count kníh',
 
-    // Books
+    // Recipes
     'recipe' => 'Kniha',
     'recipes' => 'Knihy',
     'x_recipes' => '{0}:count kníh|{1}:count kniha|[2,3,4]:count knihy|[5,*]:count kníh',

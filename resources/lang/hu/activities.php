@@ -25,7 +25,7 @@ return [
     'chapter_delete_notification' => 'Fejezet sikeresen törölve',
     'chapter_move'                => 'áthelyezte a fejezetet:',
 
-    // Books
+    // Recipes
     'recipe_create'                 => 'létrehozott egy könyvet:',
     'recipe_create_notification'    => 'Könyv sikeresen létrehozva',
     'recipe_update'                 => 'frissítette a könyvet:',

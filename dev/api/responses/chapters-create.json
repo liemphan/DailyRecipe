@@ -1,5 +1,5 @@
 {
-  "book_id": 1,
+  "recipe_id": 1,
   "priority": 6,
   "name": "My fantastic new chapter",
   "description": "This is a great new chapter that I've created via the API",
@@ -10,7 +10,7 @@
   "updated_at": "2020-05-22T22:59:55.000000Z",
   "created_at": "2020-05-22T22:59:55.000000Z",
   "id": 74,
-  "book": {
+  "recipe": {
     "id": 1,
     "name": "DailyRecipe User Guide",
     "slug": "dailyrecipe-user-guide",
