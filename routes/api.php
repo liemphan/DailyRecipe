@@ -31,6 +31,7 @@ Route::get('recipes/{id}', [RecipeApiController::class, 'read']);
 Route::put('recipes/{id}', [RecipeApiController::class, 'update']);
 Route::delete('recipes/{id}', [RecipeApiController::class, 'delete']);
 
+
 Route::get('recipes/{id}/export/html', [RecipeExportApiController::class, 'exportHtml']);
 Route::get('recipes/{id}/export/pdf', [RecipeExportApiController::class, 'exportPdf']);
 Route::get('recipes/{id}/export/plaintext', [RecipeExportApiController::class, 'exportPlainText']);

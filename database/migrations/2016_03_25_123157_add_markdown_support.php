@@ -12,7 +12,7 @@ class AddMarkdownSupport extends Migration
      */
     public function up()
     {
-        Schema::table('pages', function (Blueprint $table) {
+        Schema::table('recipes', function (Blueprint $table) {
             $table->longText('markdown')->default('');
         });
 
@@ -28,7 +28,7 @@ class AddMarkdownSupport extends Migration
      */
     public function down()
     {
-        Schema::table('pages', function (Blueprint $table) {
+        Schema::table('recipes', function (Blueprint $table) {
             $table->dropColumn('markdown');
         });
 

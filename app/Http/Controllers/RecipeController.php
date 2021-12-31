@@ -5,12 +5,15 @@ namespace DailyRecipe\Http\Controllers;
 use Activity;
 use DailyRecipe\Actions\ActivityType;
 use DailyRecipe\Actions\View;
+use DailyRecipe\Entities\Models\Recipe;
 use DailyRecipe\Entities\Models\Recipemenu;
+use DailyRecipe\Entities\Repos\PageRepo;
 use DailyRecipe\Entities\Repos\RecipeRepo;
 use DailyRecipe\Entities\Tools\RecipeContents;
 use DailyRecipe\Entities\Tools\PermissionsUpdater;
 use DailyRecipe\Entities\Tools\MenuContext;
 use DailyRecipe\Exceptions\ImageUploadException;
+use DailyRecipe\Exceptions\NotFoundException;
 use Illuminate\Http\Request;
 use Illuminate\Validation\ValidationException;
 use Throwable;
@@ -104,7 +107,7 @@ class RecipeController extends Controller
             Activity::addForEntity($recipemenu, ActivityType::RECIPEMENU_UPDATE);
         }
 
-        return redirect($recipe->getUrl());
+        return redirect($recipe->getUrl('/create-page'));
     }
 
     /**
@@ -223,5 +226,78 @@ class RecipeController extends Controller
         $this->showSuccessNotification(trans('entities.recipes_permissions_updated'));
 
         return redirect($recipe->getUrl());
+    }
+
+    public function storeTest(Request $request, string $menuSlug = null)
+    {
+        $this->checkPermission('recipe-create-all');
+        $this->validate($request, [
+            'name'        => ['required', 'string', 'max:255'],
+            'description' => ['string', 'max:1000'],
+            'image'       => array_merge(['nullable'], $this->getImageValidationRules()),
+        ]);
+
+        $recipemenu = null;
+        if ($menuSlug !== null) {
+            $recipemenu = Recipemenu::visible()->where('slug', '=', $menuSlug)->firstOrFail();
+            $this->checkOwnablePermission('recipemenu-update', $recipemenu);
+        }
+
+        $recipe = $this->recipeRepo->create($request->all());
+        $this->recipeRepo->updateCoverImage($recipe, $request->file('image', null));
+
+        if ($recipemenu) {
+            $recipemenu->appendRecipe($recipe);
+            Activity::addForEntity($recipemenu, ActivityType::RECIPEMENU_UPDATE);
+        }
+
+        // Redirect to draft edit screen if signed in
+        if ($this->isSignedIn()) {
+            return redirect($recipe->getUrlContent());
+        }
+        // Otherwise show the edit view if they're a guest
+        $this->setPageTitle(trans('entities.pages_new'));
+        return view('recipes.content', ['parent' => $recipe->slug]);
+    }
+
+    /**
+     * Show form to continue editing a draft page.
+     *
+     * @throws NotFoundException
+     */
+    public function editDraft(string $recipeSlug, int $Id)
+    {
+        $draft = $this->recipeRepo->getById($Id);
+        $this->checkOwnablePermission('page-create', $draft);
+        $this->setPageTitle(trans('entities.pages_edit_draft'));
+
+        $draftsEnabled = $this->isSignedIn();
+        $templates = $this->recipeRepo->getTemplates(10);
+
+        return view('pages.edit', [
+            'page'          => $draft,
+            'recipe'          => $draft->recipe,
+            'isDraft'       => true,
+            'draftsEnabled' => $draftsEnabled,
+            'templates'     => $templates,
+        ]);
+    }
+    /**
+     * Store a new page by changing a draft into a page.
+     *
+     * @throws NotFoundException
+     * @throws ValidationException
+     */
+    public function storeContent(Request $request, string $recipeSlug, int $pageId)
+    {
+        $this->validate($request, [
+            'name' => ['required', 'string', 'max:255'],
+        ]);
+        $draftPage = $this->recipeRepo->getById($pageId);
+        $this->checkOwnablePermission('page-create', $draftPage);
+
+        $page = $this->recipeRepo->publishDraft($draftPage, $request->all());
+
+        return redirect($page->getUrl());
     }
 }

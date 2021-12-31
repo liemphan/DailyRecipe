@@ -14,6 +14,7 @@ class AddEntityIndexes extends Migration
     {
         Schema::table('recipes', function (Blueprint $table) {
             $table->index('slug');
+            $table->index('priority');
             $table->index('created_by');
             $table->index('updated_by');
         });
@@ -26,7 +27,7 @@ class AddEntityIndexes extends Migration
             $table->index('updated_by');
         });
         Schema::table('page_revisions', function (Blueprint $table) {
-            $table->index('page_id');
+            $table->index('recipe_id');
         });
         Schema::table('chapters', function (Blueprint $table) {
             $table->index('slug');
@@ -55,8 +56,10 @@ class AddEntityIndexes extends Migration
     {
         Schema::table('recipes', function (Blueprint $table) {
             $table->dropIndex('recipes_slug_index');
+            $table->dropIndex('recipes_priority_index');
             $table->dropIndex('recipes_created_by_index');
             $table->dropIndex('recipes_updated_by_index');
+
         });
         Schema::table('pages', function (Blueprint $table) {
             $table->dropIndex('pages_slug_index');

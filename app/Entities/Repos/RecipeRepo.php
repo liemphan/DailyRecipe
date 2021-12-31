@@ -4,7 +4,13 @@ namespace DailyRecipe\Entities\Repos;
 
 use DailyRecipe\Actions\ActivityType;
 use DailyRecipe\Actions\TagRepo;
+use DailyRecipe\Entities\Models\Chapter;
+use DailyRecipe\Entities\Models\Entity;
+use DailyRecipe\Entities\Models\Page;
+use DailyRecipe\Entities\Models\PageRevision;
 use DailyRecipe\Entities\Models\Recipe;
+use DailyRecipe\Entities\Tools\PageContent;
+use DailyRecipe\Entities\Tools\RecipeContents;
 use DailyRecipe\Entities\Tools\TrashCan;
 use DailyRecipe\Exceptions\ImageUploadException;
 use DailyRecipe\Exceptions\NotFoundException;
@@ -83,6 +89,19 @@ class RecipeRepo
 
         return $recipe;
     }
+    /**
+     * Get a recipe by its slug.
+     */
+    public function getById(string $id): Recipe
+    {
+        $recipe = Recipe::visible()->where('id', '=', $id)->first();
+
+        if ($recipe === null) {
+            throw new NotFoundException(trans('errors.recipe_not_found'));
+        }
+
+        return $recipe;
+    }
 
     /**
      * Create a new recipe in the system.
@@ -130,5 +149,111 @@ class RecipeRepo
         Activity::addForEntity($recipe, ActivityType::RECIPE_DELETE);
 
         $trashCan->autoClearOld();
+    }
+
+
+
+    /**
+     * Get pages that have been marked as a template.
+     */
+    public function getTemplates(int $count = 10, int $page = 1, string $search = ''): \Illuminate\Pagination\LengthAwarePaginator
+    {
+        $query = Recipe::visible()
+            ->where('template', '=', true)
+            ->orderBy('name', 'asc')
+            ->skip(($page - 1) * $count)
+            ->take($count);
+
+        if ($search) {
+            $query->where('name', 'like', '%' . $search . '%');
+        }
+
+        $paginator = $query->paginate($count, ['*'], 'page', $page);
+        $paginator->withPath('/templates');
+
+        return $paginator;
+    }
+    /**
+     * Publish a draft page to make it a live, non-draft page.
+     */
+    public function publishDraft(Recipe $draft, array $input): Recipe
+    {
+        $this->updateTemplateStatusAndContentFromInput($draft, $input);
+        $this->baseRepo->update($draft, $input);
+
+        $draft->draft = false;
+        $draft->revision_count = 1;
+        $draft->priority = $this->getNewPriority($draft);
+        $draft->refreshSlug();
+        $draft->save();
+
+        $this->savePageRevision($draft, trans('entities.pages_initial_revision'));
+        $draft->indexForSearch();
+        $draft->refresh();
+
+        Activity::addForEntity($draft, ActivityType::PAGE_CREATE);
+
+        return $draft;
+    }
+    protected function updateTemplateStatusAndContentFromInput(Recipe $page, array $input)
+    {
+        if (isset($input['template']) && userCan('templates-manage')) {
+            $page->template = ($input['template'] === 'true');
+        }
+
+        $pageContent = new PageContent($page);
+        if (!empty($input['markdown'] ?? '')) {
+            $pageContent->setNewMarkdown($input['markdown']);
+        } elseif (isset($input['html'])) {
+            $pageContent->setNewHTML($input['html']);
+        }
+    }
+    /**
+     * Get a new priority for a page.
+     */
+    protected function getNewPriority(Recipe $page): int
+    {
+        return (new RecipeContents($page))->getLastPriority() + 1;
+    }
+    /**
+     * Saves a page revision into the system.
+     */
+    protected function savePageRevision(Recipe $page, string $summary = null): PageRevision
+    {
+        $revision = new PageRevision($page->getAttributes());
+
+        $revision->recipe_id = $page->id;
+        $revision->slug = $page->slug;
+        $revision->created_by = user()->id;
+        $revision->created_at = $page->updated_at;
+        $revision->type = 'version';
+        $revision->summary = $summary;
+        $revision->revision_number = $page->revision_count;
+        $revision->save();
+
+        $this->deleteOldRevisions($page);
+
+        return $revision;
+    }
+
+    /**
+     * Delete old revisions, for the given page, from the system.
+     */
+    protected function deleteOldRevisions(Recipe $page)
+    {
+        $revisionLimit = config('app.revision_limit');
+        if ($revisionLimit === false) {
+            return;
+        }
+
+        $revisionsToDelete = PageRevision::query()
+            ->where('recipe_id', '=', $page->id)
+            ->orderBy('created_at', 'desc')
+            ->skip(intval($revisionLimit))
+            ->take(10)
+            ->get(['id']);
+        if ($revisionsToDelete->count() > 0) {
+            PageRevision::query()->whereIn('id', $revisionsToDelete->pluck('id'))->delete();
+        }
     }
 }

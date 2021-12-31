@@ -42,7 +42,6 @@ class PageController extends Controller
         // Redirect to draft edit screen if signed in
         if ($this->isSignedIn()) {
             $draft = $this->pageRepo->getNewDraftPage($parent);
-
             return redirect($draft->getUrl());
         }
 

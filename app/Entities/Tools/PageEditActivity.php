@@ -99,7 +99,7 @@ class PageEditActivity
         $checkTime = Carbon::now()->subMinutes($withinMinutes);
         $query = PageRevision::query()
             ->where('type', '=', 'update_draft')
-            ->where('page_id', '=', $this->page->id)
+            ->where('recipe_id', '=', $this->page->id)
             ->where('updated_at', '>', $this->page->updated_at)
             ->where('created_by', '!=', user()->id)
             ->where('updated_at', '>=', $checkTime)

@@ -30,7 +30,9 @@ class BaseRepo
             'created_by' => user()->id,
             'updated_by' => user()->id,
             'owned_by'   => user()->id,
+            'draft'      => true,
         ]);
+
         $entity->refreshSlug();
         $entity->save();
 
@@ -40,6 +42,7 @@ class BaseRepo
 
         $entity->rebuildPermissions();
         $entity->indexForSearch();
+
     }
 
     /**

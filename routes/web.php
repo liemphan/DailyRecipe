@@ -84,6 +84,10 @@ Route::middleware('auth')->group(function () {
     Route::get('/recipes/{recipeSlug}/export/zip', [RecipeExportController::class, 'zip']);
     Route::get('/recipes/{recipeSlug}/export/plaintext', [RecipeExportController::class, 'plainText']);
 
+    Route::post('/recipestest/', [RecipeController::class, 'storeTest']);
+    Route::get('/recipes/{recipeSlug}/draft/{id}', [RecipeController::class, 'editDraft']);
+    Route::post('/recipes/{recipeSlug}/draft/{id}', [RecipeController::class, 'storeContent']);
+
     // Pages
     Route::get('/recipes/{recipeSlug}/create-page', [PageController::class, 'create']);
     Route::post('/recipes/{recipeSlug}/create-guest-page', [PageController::class, 'createAsGuest']);
@@ -314,3 +318,5 @@ Route::get('/password/reset/{token}', [Auth\ResetPasswordController::class, 'sho
 Route::post('/password/reset', [Auth\ResetPasswordController::class, 'reset']);
 
 Route::fallback([HomeController::class, 'notFound'])->name('fallback');
+
+

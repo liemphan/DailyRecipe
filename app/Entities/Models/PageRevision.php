@@ -10,9 +10,8 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 /**
  * Class PageRevision.
  *
- * @property int    $page_id
+ * @property int    $recipe_id
  * @property string $slug
- * @property string $recipe_slug
  * @property int    $created_by
  * @property Carbon $created_at
  * @property Carbon $updated_at
@@ -21,7 +20,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  * @property string $markdown
  * @property string $html
  * @property int    $revision_number
- * @property Page   $page
+ * @property Recipe   $page
  * @property-read ?User $createdBy
  */
 class PageRevision extends Model
@@ -41,7 +40,7 @@ class PageRevision extends Model
      */
     public function page(): BelongsTo
     {
-        return $this->belongsTo(Page::class);
+        return $this->belongsTo(Recipe::class);
     }
 
     /**
@@ -66,7 +65,7 @@ class PageRevision extends Model
      */
     public function getPrevious(): ?PageRevision
     {
-        $id = static::newQuery()->where('page_id', '=', $this->page_id)
+        $id = static::newQuery()->where('recipe_id', '=', $this->recipe_id)
             ->where('id', '<', $this->id)
             ->max('id');
 

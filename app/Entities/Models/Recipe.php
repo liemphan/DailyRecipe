@@ -2,6 +2,7 @@
 
 namespace DailyRecipe\Entities\Models;
 
+use DailyRecipe\Uploads\Attachment;
 use DailyRecipe\Uploads\Image;
 use Exception;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -19,6 +20,12 @@ use Illuminate\Support\Collection;
  * @property \Illuminate\Database\Eloquent\Collection $chapters
  * @property \Illuminate\Database\Eloquent\Collection $pages
  * @property \Illuminate\Database\Eloquent\Collection $directPages
+ * @property string     $html
+ * @property string     $markdown
+ * @property string     $text
+ * @property bool       $template
+ * @property bool       $draft
+ * @property int        $revision_count
  */
 class Recipe extends Entity implements HasCoverImage
 {
@@ -26,15 +33,37 @@ class Recipe extends Entity implements HasCoverImage
 
     public $searchFactor = 1.2;
 
-    protected $fillable = ['name', 'description'];
-    protected $hidden = ['restricted', 'pivot', 'image_id', 'deleted_at'];
+    protected $fillable = ['name', 'description','priority'];
+    protected $hidden = ['restricted', 'pivot', 'image_id', 'deleted_at','html', 'markdown', 'text',];
 
+    public $textField = 'text';
+
+    protected $casts = [
+        'draft'    => 'boolean',
+        'template' => 'boolean',
+    ];
     /**
      * Get the url for this recipe.
      */
     public function getUrl(string $path = ''): string
     {
+
         return url('/recipes/' . implode('/', [urlencode($this->slug), trim($path, '/')]));
+    }
+    /**
+     * Get the url of this page.
+     */
+    public function getUrlContent(string $path = ''): string
+    {
+        $parts = [
+            'recipes',
+            urlencode($this->slug),
+            $this->draft ? 'draft' : 'page',
+            $this->draft ? $this->id : urlencode($this->slug),
+            trim($path, '/'),
+        ];
+
+        return url('/' . implode('/', $parts));
     }
 
     /**
@@ -118,5 +147,15 @@ class Recipe extends Entity implements HasCoverImage
         $chapters = $this->chapters()->scopes('visible')->get();
 
         return $pages->concat($chapters)->sortBy('priority')->sortByDesc('draft');
+    }
+
+    /**
+     * Get the attachments assigned to this page.
+     *
+     * @return HasMany
+     */
+    public function attachments()
+    {
+        return $this->hasMany(Attachment::class, 'uploaded_to')->orderBy('order', 'asc');
     }
 }

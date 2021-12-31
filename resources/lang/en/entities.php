@@ -106,6 +106,7 @@ return [
     'menus_copy_permission_success' => 'Recipemenu permissions copied to :count recipes',
 
     // Recipes
+    'content'=>'content :recipeName',
     'recipe' => 'Recipe',
     'recipes' => 'Recipes',
     'x_recipes' => ':count Recipe|:count Recipes',
@@ -124,7 +125,7 @@ return [
     'recipes_edit' => 'Edit Recipe',
     'recipes_edit_named' => 'Edit Recipe :recipeName',
     'recipes_form_recipe_name' => 'Recipe Name',
-    'recipes_save' => 'Save Recipe',
+    'recipes_save' => 'Next',
     'recipes_permissions' => 'Recipe Permissions',
     'recipes_permissions_updated' => 'Recipe Permissions Updated',
     'recipes_empty_contents' => 'No pages or chapters have been created for this recipe.',

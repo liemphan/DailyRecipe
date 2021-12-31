@@ -14,7 +14,7 @@ class CreatePageRevisionsTable extends Migration
     {
         Schema::create('page_revisions', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('page_id')->indexed();
+            $table->integer('recipe_id')->indexed();
             $table->string('name');
             $table->longText('html');
             $table->longText('text');

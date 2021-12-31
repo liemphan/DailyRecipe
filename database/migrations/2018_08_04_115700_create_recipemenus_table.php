@@ -42,6 +42,7 @@ class CreateRecipemenusTable extends Migration
             $table->string('name', 180);
             $table->string('slug', 180);
             $table->text('description');
+            $table->longText('content');
             $table->integer('created_by')->nullable()->default(null);
             $table->integer('updated_by')->nullable()->default(null);
             $table->boolean('restricted')->default(false);

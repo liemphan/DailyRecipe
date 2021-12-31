@@ -3,6 +3,7 @@
 namespace DailyRecipe\Entities\Tools;
 
 use DailyRecipe\Entities\Models\Page;
+use DailyRecipe\Entities\Models\Recipe;
 use DailyRecipe\Entities\Tools\Markdown\CustomListItemRenderer;
 use DailyRecipe\Entities\Tools\Markdown\CustomStrikeThroughExtension;
 use DailyRecipe\Exceptions\ImageUploadException;
@@ -30,7 +31,7 @@ class PageContent
     /**
      * PageContent constructor.
      */
-    public function __construct(Page $page)
+    public function __construct(Recipe $page)
     {
         $this->page = $page;
     }
