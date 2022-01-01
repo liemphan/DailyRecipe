@@ -2,6 +2,8 @@
 
 namespace DailyRecipe\Exceptions;
 
-class LoginAttemptException extends \Exception
+use Exception;
+
+class LoginAttemptException extends Exception
 {
 }

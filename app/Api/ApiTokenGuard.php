@@ -70,7 +70,7 @@ class ApiTokenGuard implements Guard
      *
      * @throws ApiAuthException
      *
-     * @return \Illuminate\Contracts\Auth\Authenticatable
+     * @return Authenticatable
      */
     public function authenticate()
     {

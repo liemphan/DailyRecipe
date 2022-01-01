@@ -2,6 +2,8 @@
 
 namespace DailyRecipe\Auth\Access\Oidc;
 
-class OidcInvalidKeyException extends \Exception
+use Exception;
+
+class OidcInvalidKeyException extends Exception
 {
 }

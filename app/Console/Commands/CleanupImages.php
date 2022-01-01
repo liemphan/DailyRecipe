@@ -30,7 +30,7 @@ class CleanupImages extends Command
     /**
      * Create a new command instance.
      *
-     * @param \DailyRecipe\Uploads\ImageService $imageService
+     * @param ImageService $imageService
      */
     public function __construct(ImageService $imageService)
     {

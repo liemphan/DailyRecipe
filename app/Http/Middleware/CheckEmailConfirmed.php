@@ -5,6 +5,7 @@ namespace DailyRecipe\Http\Middleware;
 use DailyRecipe\Auth\Access\EmailConfirmationService;
 use DailyRecipe\Auth\User;
 use Closure;
+use Illuminate\Http\Request;
 
 /**
  * Check that the user's email address is confirmed.
@@ -29,8 +30,8 @@ class CheckEmailConfirmed
     /**
      * Handle an incoming request.
      *
-     * @param \Illuminate\Http\Request $request
-     * @param \Closure                 $next
+     * @param Request $request
+     * @param Closure $next
      *
      * @return mixed
      */

@@ -8,6 +8,7 @@ use DailyRecipe\Entities\Tools\TrashCan;
 use DailyRecipe\Uploads\Attachment;
 use DailyRecipe\Uploads\AttachmentService;
 use Illuminate\Http\UploadedFile;
+use Illuminate\Testing\TestResponse;
 use Tests\TestCase;
 
 class AttachmentTest extends TestCase
@@ -23,7 +24,7 @@ class AttachmentTest extends TestCase
     /**
      * Uploads a file with the given name.
      */
-    protected function uploadFile(string $name, int $uploadedTo = 0): \Illuminate\Testing\TestResponse
+    protected function uploadFile(string $name, int $uploadedTo = 0): TestResponse
     {
         $file = $this->getTestFile($name);
 

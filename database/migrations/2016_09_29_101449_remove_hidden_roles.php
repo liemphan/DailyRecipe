@@ -1,5 +1,6 @@
 <?php
 
+use Carbon\Carbon;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -29,8 +30,8 @@ class RemoveHiddenRoles extends Migration
             'name'            => 'Guest',
             'system_name'     => 'public',
             'email_confirmed' => true,
-            'created_at'      => \Carbon\Carbon::now(),
-            'updated_at'      => \Carbon\Carbon::now(),
+            'created_at'      => Carbon::now(),
+            'updated_at'      => Carbon::now(),
         ]);
 
         // Get the public role

@@ -29,7 +29,10 @@ use DailyRecipe\Http\Controllers\UserApiTokenController;
 use DailyRecipe\Http\Controllers\UserController;
 use DailyRecipe\Http\Controllers\UserProfileController;
 use DailyRecipe\Http\Controllers\UserSearchController;
+use DailyRecipe\Http\Middleware\VerifyCsrfToken;
+use Illuminate\Session\Middleware\StartSession;
 use Illuminate\Support\Facades\Route;
+use Illuminate\View\Middleware\ShareErrorsFromSession;
 
 Route::get('/status', [StatusController::class, 'show']);
 Route::get('/robots.txt', [HomeController::class, 'robots']);
@@ -72,7 +75,7 @@ Route::middleware('auth')->group(function () {
     Route::put('/recipes/{slug}', [RecipeController::class, 'update']);
     Route::delete('/recipes/{id}', [RecipeController::class, 'destroy']);
     Route::get('/recipes/{slug}/sort-item', [RecipeSortController::class, 'showItem']);
-    Route::get('/recipes/{slug}', [RecipeController::class, 'show']);
+    Route::get('/recipes/{slug}', [RecipeController::class, 'showContent']);
     Route::get('/recipes/{recipeSlug}/permissions', [RecipeController::class, 'showPermissions']);
     Route::put('/recipes/{recipeSlug}/permissions', [RecipeController::class, 'permissions']);
     Route::get('/recipes/{slug}/delete', [RecipeController::class, 'showDelete']);
@@ -84,21 +87,24 @@ Route::middleware('auth')->group(function () {
     Route::get('/recipes/{recipeSlug}/export/zip', [RecipeExportController::class, 'zip']);
     Route::get('/recipes/{recipeSlug}/export/plaintext', [RecipeExportController::class, 'plainText']);
 
-    Route::post('/recipestest/', [RecipeController::class, 'storeTest']);
-    Route::get('/recipes/{recipeSlug}/draft/{id}', [RecipeController::class, 'editDraft']);
-    Route::post('/recipes/{recipeSlug}/draft/{id}', [RecipeController::class, 'storeContent']);
+    Route::get('/recipes/{recipeSlug}/draft', [RecipeController::class, 'editDraft']);
+    Route::post('/recipes/{recipeSlug}/draft', [RecipeController::class, 'storeContent']);
+    Route::get('/recipes/{recipeSlug}/content', [RecipeController::class, 'showContent']);
+    Route::get('/recipes/{recipeSlug}/content/edit', [RecipeController::class, 'editContent']);
+    Route::put('/recipes/{recipeSlug}/content', [RecipeController::class, 'updateContent']);
+    Route::post('/recipes/{recipeSlug}/content-guest-page', [RecipeController::class, 'createAsGuest']);
 
     // Pages
-    Route::get('/recipes/{recipeSlug}/create-page', [PageController::class, 'create']);
-    Route::post('/recipes/{recipeSlug}/create-guest-page', [PageController::class, 'createAsGuest']);
-    Route::get('/recipes/{recipeSlug}/draft/{pageId}', [PageController::class, 'editDraft']);
-    Route::post('/recipes/{recipeSlug}/draft/{pageId}', [PageController::class, 'store']);
-    Route::get('/recipes/{recipeSlug}/page/{pageSlug}', [PageController::class, 'show']);
+   // Route::get('/recipes/{recipeSlug}/create-page', [PageController::class, 'create']);
+   // Route::post('/recipes/{recipeSlug}/create-guest-page', [PageController::class, 'createAsGuest']);
+  //  Route::get('/recipes/{recipeSlug}/draft/{pageId}', [PageController::class, 'editDraft']);
+   // Route::post('/recipes/{recipeSlug}/draft/{pageId}', [PageController::class, 'store']);
+   // Route::get('/recipes/{recipeSlug}/page/{pageSlug}', [PageController::class, 'show']);
     Route::get('/recipes/{recipeSlug}/page/{pageSlug}/export/pdf', [PageExportController::class, 'pdf']);
     Route::get('/recipes/{recipeSlug}/page/{pageSlug}/export/html', [PageExportController::class, 'html']);
     Route::get('/recipes/{recipeSlug}/page/{pageSlug}/export/markdown', [PageExportController::class, 'markdown']);
     Route::get('/recipes/{recipeSlug}/page/{pageSlug}/export/plaintext', [PageExportController::class, 'plainText']);
-    Route::get('/recipes/{recipeSlug}/page/{pageSlug}/edit', [PageController::class, 'edit']);
+ //   Route::get('/recipes/{recipeSlug}/page/{pageSlug}/edit', [PageController::class, 'edit']);
     Route::get('/recipes/{recipeSlug}/page/{pageSlug}/move', [PageController::class, 'showMove']);
     Route::put('/recipes/{recipeSlug}/page/{pageSlug}/move', [PageController::class, 'move']);
     Route::get('/recipes/{recipeSlug}/page/{pageSlug}/copy', [PageController::class, 'showCopy']);
@@ -107,7 +113,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/recipes/{recipeSlug}/draft/{pageId}/delete', [PageController::class, 'showDeleteDraft']);
     Route::get('/recipes/{recipeSlug}/page/{pageSlug}/permissions', [PageController::class, 'showPermissions']);
     Route::put('/recipes/{recipeSlug}/page/{pageSlug}/permissions', [PageController::class, 'permissions']);
-    Route::put('/recipes/{recipeSlug}/page/{pageSlug}', [PageController::class, 'update']);
+  //  Route::put('/recipes/{recipeSlug}/page/{pageSlug}', [PageController::class, 'update']);
     Route::delete('/recipes/{recipeSlug}/page/{pageSlug}', [PageController::class, 'destroy']);
     Route::delete('/recipes/{recipeSlug}/draft/{pageId}', [PageController::class, 'destroyDraft']);
 
@@ -295,9 +301,9 @@ Route::post('/saml2/logout', [Auth\Saml2Controller::class, 'logout']);
 Route::get('/saml2/metadata', [Auth\Saml2Controller::class, 'metadata']);
 Route::get('/saml2/sls', [Auth\Saml2Controller::class, 'sls']);
 Route::post('/saml2/acs', [Auth\Saml2Controller::class, 'startAcs'])->withoutMiddleware([
-    \Illuminate\Session\Middleware\StartSession::class,
-    \Illuminate\View\Middleware\ShareErrorsFromSession::class,
-    \DailyRecipe\Http\Middleware\VerifyCsrfToken::class,
+    StartSession::class,
+    ShareErrorsFromSession::class,
+    VerifyCsrfToken::class,
 ]);
 Route::get('/saml2/acs', [Auth\Saml2Controller::class, 'processAcs']);
 

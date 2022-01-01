@@ -2,6 +2,7 @@
 
 namespace DailyRecipe\Auth\Access\Oidc;
 
+use Exception;
 use phpseclib3\Crypt\Common\PublicKey;
 use phpseclib3\Crypt\PublicKeyLoader;
 use phpseclib3\Crypt\RSA;
@@ -44,7 +45,7 @@ class OidcJwtSigningKey
             $key = PublicKeyLoader::load(
                 file_get_contents($path)
             );
-        } catch (\Exception $exception) {
+        } catch (Exception $exception) {
             throw new OidcInvalidKeyException("Failed to load key from file path with error: {$exception->getMessage()}");
         }
 
@@ -87,7 +88,7 @@ class OidcJwtSigningKey
                 'e' => new BigInteger(base64_decode($jwk['e']), 256),
                 'n' => new BigInteger(base64_decode($n), 256),
             ]);
-        } catch (\Exception $exception) {
+        } catch (Exception $exception) {
             throw new OidcInvalidKeyException("Failed to load key from JWK parameters with error: {$exception->getMessage()}");
         }
 

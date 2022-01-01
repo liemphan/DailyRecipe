@@ -5,6 +5,7 @@ namespace DailyRecipe\Http\Controllers\Auth;
 use DailyRecipe\Actions\ActivityType;
 use DailyRecipe\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\SendsPasswordResetEmails;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Password;
 
@@ -37,9 +38,9 @@ class ForgotPasswordController extends Controller
     /**
      * Send a reset link to the given user.
      *
-     * @param \Illuminate\Http\Request $request
+     * @param Request $request
      *
-     * @return \Illuminate\Http\RedirectResponse
+     * @return RedirectResponse
      */
     public function sendResetLinkEmail(Request $request)
     {

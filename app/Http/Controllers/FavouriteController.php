@@ -6,7 +6,9 @@ use DailyRecipe\Entities\Models\Entity;
 use DailyRecipe\Entities\Queries\TopFavourites;
 use DailyRecipe\Interfaces\Favouritable;
 use DailyRecipe\Model;
+use Exception;
 use Illuminate\Http\Request;
+use Illuminate\Validation\ValidationException;
 
 class FavouriteController extends Controller
 {
@@ -63,8 +65,8 @@ class FavouriteController extends Controller
     }
 
     /**
-     * @throws \Illuminate\Validation\ValidationException
-     * @throws \Exception
+     * @throws ValidationException
+     * @throws Exception
      */
     protected function getValidatedModelFromRequest(Request $request): Entity
     {
@@ -74,13 +76,13 @@ class FavouriteController extends Controller
         ]);
 
         if (!class_exists($modelInfo['type'])) {
-            throw new \Exception('Model not found');
+            throw new Exception('Model not found');
         }
 
         /** @var Model $model */
         $model = new $modelInfo['type']();
         if (!$model instanceof Favouritable) {
-            throw new \Exception('Model not favouritable');
+            throw new Exception('Model not favouritable');
         }
 
         $modelInstance = $model->newQuery()
@@ -89,7 +91,7 @@ class FavouriteController extends Controller
 
         $inaccessibleEntity = ($modelInstance instanceof Entity && !userCan('view', $modelInstance));
         if (is_null($modelInstance) || $inaccessibleEntity) {
-            throw new \Exception('Model instance not found');
+            throw new Exception('Model instance not found');
         }
 
         return $modelInstance;

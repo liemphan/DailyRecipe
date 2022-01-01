@@ -5,7 +5,10 @@ namespace DailyRecipe\Http\Controllers\Auth;
 use DailyRecipe\Actions\ActivityType;
 use DailyRecipe\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ResetsPasswords;
+use Illuminate\Http\JsonResponse;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Password;
 
 class ResetPasswordController extends Controller
@@ -42,7 +45,7 @@ class ResetPasswordController extends Controller
      * @param Request $request
      * @param string  $response
      *
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     protected function sendResetResponse(Request $request, $response)
     {
@@ -57,10 +60,10 @@ class ResetPasswordController extends Controller
     /**
      * Get the response for a failed password reset.
      *
-     * @param \Illuminate\Http\Request $request
+     * @param Request $request
      * @param string                   $response
      *
-     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Http\JsonResponse
+     * @return RedirectResponse|JsonResponse
      */
     protected function sendResetFailedResponse(Request $request, $response)
     {

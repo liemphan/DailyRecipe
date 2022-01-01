@@ -6,13 +6,13 @@
 
 @section('body')
 
-    <div class="mb-m print-hidden">
-        @include('entities.breadcrumbs', ['crumbs' => [
-            $page->recipe,
-            $page->hasChapter() ? $page->chapter : null,
-            $page,
-        ]])
-    </div>
+{{--    <div class="mb-m print-hidden">--}}
+{{--        @include('entities.breadcrumbs', ['crumbs' => [--}}
+{{--            $page->recipe,--}}
+{{--            $page->hasChapter() ? $page->chapter : null,--}}
+{{--            $page,--}}
+{{--        ]])--}}
+{{--    </div>--}}
 
     <main class="content-wrap card">
         <div class="page-content clearfix" page-display="{{ $page->id }}">

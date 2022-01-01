@@ -376,8 +376,8 @@ class PageContent
             }
 
             // Find page and skip this if page not found
-            /** @var ?Page $matchedPage */
-            $matchedPage = Page::visible()->find($pageId);
+            /** @var ?Recipe $matchedPage */
+            $matchedPage = Recipe::visible()->find($pageId);
             if ($matchedPage === null) {
                 $html = str_replace($fullMatch, '', $html);
                 continue;

@@ -5,6 +5,7 @@ namespace Tests;
 use DailyRecipe\Entities\Models\Entity;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Illuminate\Foundation\Testing\TestCase as BaseTestCase;
+use Illuminate\Http\Response;
 
 abstract class TestCase extends BaseTestCase
 {
@@ -49,7 +50,7 @@ abstract class TestCase extends BaseTestCase
     /**
      * Create the test response instance from the given response.
      *
-     * @param \Illuminate\Http\Response $response
+     * @param Response $response
      *
      * @return TestResponse
      */

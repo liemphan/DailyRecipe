@@ -2,6 +2,8 @@
 
 namespace DailyRecipe\Notifications;
 
+use Illuminate\Notifications\Messages\MailMessage;
+
 class ResetPassword extends MailNotification
 {
     /**
@@ -24,7 +26,7 @@ class ResetPassword extends MailNotification
     /**
      * Build the mail representation of the notification.
      *
-     * @return \Illuminate\Notifications\Messages\MailMessage
+     * @return MailMessage
      */
     public function toMail()
     {

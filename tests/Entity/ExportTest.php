@@ -9,6 +9,7 @@ use DailyRecipe\Entities\Models\Page;
 use DailyRecipe\Entities\Tools\PdfGenerator;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
+use Mockery;
 use Tests\TestCase;
 
 class ExportTest extends TestCase
@@ -300,7 +301,7 @@ class ExportTest extends TestCase
         $pdfHtml = '';
         $mockPdfGenerator = $this->mock(PdfGenerator::class);
         $mockPdfGenerator->shouldReceive('fromHtml')
-            ->with(\Mockery::capture($pdfHtml))
+            ->with(Mockery::capture($pdfHtml))
             ->andReturn('');
 
         $this->asEditor()->get($page->getUrl('/export/pdf'));

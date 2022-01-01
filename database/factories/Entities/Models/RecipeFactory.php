@@ -2,6 +2,7 @@
 
 namespace Database\Factories\Entities\Models;
 
+use DailyRecipe\Entities\Models\Recipe;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
 
@@ -12,7 +13,7 @@ class RecipeFactory extends Factory
      *
      * @var string
      */
-    protected $model = \DailyRecipe\Entities\Models\Recipe::class;
+    protected $model = Recipe::class;
 
     /**
      * Define the model's default state.

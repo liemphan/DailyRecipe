@@ -5,6 +5,7 @@ namespace Tests\User;
 use DailyRecipe\Actions\ActivityType;
 use DailyRecipe\Api\ApiToken;
 use Carbon\Carbon;
+use Hash;
 use Tests\TestCase;
 
 class UserApiTokenTest extends TestCase
@@ -63,7 +64,7 @@ class UserApiTokenTest extends TestCase
         $this->assertDatabaseMissing('api_tokens', [
             'secret' => $secret,
         ]);
-        $this->assertTrue(\Hash::check($secret, $token->secret));
+        $this->assertTrue(Hash::check($secret, $token->secret));
 
         $this->assertTrue(strlen($token->token_id) === 32);
         $this->assertTrue(strlen($secret) === 32);

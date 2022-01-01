@@ -2,6 +2,8 @@
 
 namespace Tests;
 
+use Exception;
+
 class LanguageTest extends TestCase
 {
     protected $langs;
@@ -65,7 +67,7 @@ class LanguageTest extends TestCase
 
                 try {
                     $translations = trans(str_replace('.php', '', $file), [], $lang);
-                } catch (\Exception $e) {
+                } catch (Exception $e) {
                     $loadError = true;
                 }
                 $this->assertFalse($loadError, "Translation file {$lang}/{$file} failed to load");

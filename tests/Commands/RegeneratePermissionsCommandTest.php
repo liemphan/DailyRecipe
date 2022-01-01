@@ -2,6 +2,7 @@
 
 namespace Tests\Commands;
 
+use Artisan;
 use DailyRecipe\Auth\Permissions\JointPermission;
 use DailyRecipe\Entities\Models\Page;
 use Illuminate\Support\Facades\DB;
@@ -17,7 +18,7 @@ class RegeneratePermissionsCommandTest extends TestCase
 
         $this->assertDatabaseMissing('joint_permissions', ['entity_id' => $page->id]);
 
-        $exitCode = \Artisan::call('dailyrecipe:regenerate-permissions');
+        $exitCode = Artisan::call('dailyrecipe:regenerate-permissions');
         $this->assertTrue($exitCode === 0, 'Command executed successfully');
         DB::beginTransaction();
 

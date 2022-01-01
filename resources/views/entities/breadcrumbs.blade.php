@@ -1,5 +1,5 @@
 <nav class="breadcrumbs text-center" aria-label="{{ trans('common.breadcrumb') }}">
-    <?php $breadcrumbCount = 0; ?>
+    <?php use DailyRecipe\Entities\Models\Entity;$breadcrumbCount = 0; ?>
 
     {{-- Show top level recipes item --}}
     @if (count($crumbs) > 0 && ($crumbs[0] ?? null) instanceof  \DailyRecipe\Entities\Models\Recipe)
@@ -20,7 +20,7 @@
     @endif
 
     @foreach($crumbs as $key => $crumb)
-        <?php $isEntity = ($crumb instanceof \DailyRecipe\Entities\Models\Entity); ?>
+        <?php $isEntity = ($crumb instanceof Entity); ?>
 
         @if (is_null($crumb))
             <?php continue; ?>

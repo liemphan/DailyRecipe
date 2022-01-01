@@ -3,6 +3,7 @@
 namespace DailyRecipe\Auth\Permissions;
 
 use DailyRecipe\Model;
+use Illuminate\Database\Eloquent\Relations\MorphTo;
 
 class EntityPermission extends Model
 {
@@ -12,7 +13,7 @@ class EntityPermission extends Model
     /**
      * Get all this restriction's attached entity.
      *
-     * @return \Illuminate\Database\Eloquent\Relations\MorphTo
+     * @return MorphTo
      */
     public function restrictable()
     {

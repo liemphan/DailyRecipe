@@ -7,6 +7,7 @@ use DailyRecipe\Entities\Models\Entity;
 use DailyRecipe\Entities\Models\HasCoverImage;
 use DailyRecipe\Exceptions\ImageUploadException;
 use DailyRecipe\Uploads\ImageRepo;
+use Exception;
 use Illuminate\Http\UploadedFile;
 
 class BaseRepo
@@ -31,6 +32,29 @@ class BaseRepo
             'updated_by' => user()->id,
             'owned_by'   => user()->id,
             'draft'      => true,
+        ]);
+
+        $entity->refreshSlug();
+        $entity->save();
+
+        if (isset($input['tags'])) {
+            $this->tagRepo->saveTagsToEntity($entity, $input['tags']);
+        }
+
+        $entity->rebuildPermissions();
+        $entity->indexForSearch();
+
+    }
+    /**
+     * Create a new entity in the system.
+     */
+    public function createMenus(Entity $entity, array $input)
+    {
+        $entity->fill($input);
+        $entity->forceFill([
+            'created_by' => user()->id,
+            'updated_by' => user()->id,
+            'owned_by'   => user()->id,
         ]);
 
         $entity->refreshSlug();
@@ -73,7 +97,7 @@ class BaseRepo
      * @param Entity&HasCoverImage $entity
      *
      * @throws ImageUploadException
-     * @throws \Exception
+     * @throws Exception
      */
     public function updateCoverImage($entity, ?UploadedFile $coverImage, bool $removeImage = false)
     {

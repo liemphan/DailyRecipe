@@ -4,6 +4,7 @@ namespace DailyRecipe\Console\Commands;
 
 use DailyRecipe\Actions\Comment;
 use DailyRecipe\Actions\CommentRepo;
+use DB;
 use Illuminate\Console\Command;
 
 class RegenerateCommentContent extends Command
@@ -43,9 +44,9 @@ class RegenerateCommentContent extends Command
      */
     public function handle()
     {
-        $connection = \DB::getDefaultConnection();
+        $connection = DB::getDefaultConnection();
         if ($this->option('database') !== null) {
-            \DB::setDefaultConnection($this->option('database'));
+            DB::setDefaultConnection($this->option('database'));
         }
 
         Comment::query()->chunk(100, function ($comments) {
@@ -55,7 +56,7 @@ class RegenerateCommentContent extends Command
             }
         });
 
-        \DB::setDefaultConnection($connection);
+        DB::setDefaultConnection($connection);
         $this->comment('Comment HTML content has been regenerated');
     }
 }

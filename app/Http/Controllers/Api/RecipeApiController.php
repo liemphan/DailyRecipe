@@ -4,6 +4,7 @@ namespace DailyRecipe\Http\Controllers\Api;
 
 use DailyRecipe\Entities\Models\Recipe;
 use DailyRecipe\Entities\Repos\RecipeRepo;
+use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Validation\ValidationException;
 
@@ -86,7 +87,7 @@ class RecipeApiController extends ApiController
      * Delete a single recipe.
      * This will typically send the recipe to the recycle bin.
      *
-     * @throws \Exception
+     * @throws Exception
      */
     public function delete(string $id)
     {

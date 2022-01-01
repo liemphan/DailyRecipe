@@ -3,6 +3,7 @@
 namespace DailyRecipe\Entities\Models;
 
 use DailyRecipe\Uploads\Image;
+use Exception;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
@@ -23,7 +24,7 @@ class Recipemenu extends Entity implements HasCoverImage
      * Get the recipes in this menu.
      * Should not be used directly since does not take into account permissions.
      *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     * @return BelongsToMany
      */
     public function recipes()
     {
@@ -66,7 +67,7 @@ class Recipemenu extends Entity implements HasCoverImage
 
         try {
             $cover = $this->cover ? url($this->cover->getThumb($width, $height, false)) : $default;
-        } catch (\Exception $err) {
+        } catch (Exception $err) {
             $cover = $default;
         }
 

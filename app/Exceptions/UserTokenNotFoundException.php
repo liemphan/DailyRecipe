@@ -2,6 +2,8 @@
 
 namespace DailyRecipe\Exceptions;
 
-class UserTokenNotFoundException extends \Exception
+use Exception;
+
+class UserTokenNotFoundException extends Exception
 {
 }

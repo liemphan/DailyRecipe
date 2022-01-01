@@ -5,14 +5,15 @@ namespace DailyRecipe\Http\Middleware;
 use DailyRecipe\Facades\Theme;
 use DailyRecipe\Theming\ThemeEvents;
 use Closure;
+use Illuminate\Http\Request;
 
 class RunThemeActions
 {
     /**
      * Handle an incoming request.
      *
-     * @param \Illuminate\Http\Request $request
-     * @param \Closure                 $next
+     * @param Request $request
+     * @param Closure $next
      *
      * @return mixed
      */

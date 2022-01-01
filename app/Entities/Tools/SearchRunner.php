@@ -9,6 +9,7 @@ use DailyRecipe\Entities\Models\RecipeChild;
 use DailyRecipe\Entities\Models\Entity;
 use DailyRecipe\Entities\Models\Page;
 use DailyRecipe\Entities\Models\SearchTerm;
+use Exception;
 use Illuminate\Database\Connection;
 use Illuminate\Database\Eloquent\Builder as EloquentBuilder;
 use Illuminate\Database\Eloquent\Collection as EloquentCollection;
@@ -380,7 +381,7 @@ class SearchRunner
         try {
             $date = date_create($input);
             $query->where('updated_at', '>=', $date);
-        } catch (\Exception $e) {
+        } catch (Exception $e) {
         }
     }
 
@@ -389,7 +390,7 @@ class SearchRunner
         try {
             $date = date_create($input);
             $query->where('updated_at', '<', $date);
-        } catch (\Exception $e) {
+        } catch (Exception $e) {
         }
     }
 
@@ -398,7 +399,7 @@ class SearchRunner
         try {
             $date = date_create($input);
             $query->where('created_at', '>=', $date);
-        } catch (\Exception $e) {
+        } catch (Exception $e) {
         }
     }
 
@@ -407,7 +408,7 @@ class SearchRunner
         try {
             $date = date_create($input);
             $query->where('created_at', '<', $date);
-        } catch (\Exception $e) {
+        } catch (Exception $e) {
         }
     }
 

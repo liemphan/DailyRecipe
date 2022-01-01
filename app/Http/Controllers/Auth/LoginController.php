@@ -11,6 +11,7 @@ use DailyRecipe\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
 use Illuminate\Validation\ValidationException;
+use Symfony\Component\HttpFoundation\Response;
 
 class LoginController extends Controller
 {
@@ -93,11 +94,11 @@ class LoginController extends Controller
     /**
      * Handle a login request to the application.
      *
-     * @param \Illuminate\Http\Request $request
-     *
-     * @throws \Illuminate\Validation\ValidationException
+     * @param Request $request
      *
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Http\Response|\Illuminate\Http\JsonResponse
+     *@throws ValidationException
+     *
      */
     public function login(Request $request)
     {
@@ -139,7 +140,7 @@ class LoginController extends Controller
     /**
      * Attempt to log the user into the application.
      *
-     * @param \Illuminate\Http\Request $request
+     * @param Request $request
      *
      * @return bool
      */
@@ -155,7 +156,7 @@ class LoginController extends Controller
     /**
      * The user has been authenticated.
      *
-     * @param \Illuminate\Http\Request $request
+     * @param Request $request
      * @param mixed                    $user
      *
      * @return mixed
@@ -168,11 +169,11 @@ class LoginController extends Controller
     /**
      * Validate the user login request.
      *
-     * @param \Illuminate\Http\Request $request
-     *
-     * @throws \Illuminate\Validation\ValidationException
+     * @param Request $request
      *
      * @return void
+     * @throws ValidationException
+     *
      */
     protected function validateLogin(Request $request)
     {
@@ -211,11 +212,11 @@ class LoginController extends Controller
     /**
      * Get the failed login response instance.
      *
-     * @param \Illuminate\Http\Request $request
+     * @param Request $request
      *
-     * @throws \Illuminate\Validation\ValidationException
+     * @return Response
+     * @throws ValidationException
      *
-     * @return \Symfony\Component\HttpFoundation\Response
      */
     protected function sendFailedLoginResponse(Request $request)
     {
