@@ -4,6 +4,7 @@ namespace DailyRecipe\Uploads;
 
 use DailyRecipe\Auth\Permissions\PermissionService;
 use DailyRecipe\Entities\Models\Page;
+use DailyRecipe\Entities\Models\Recipe;
 use DailyRecipe\Exceptions\ImageUploadException;
 use Exception;
 use Illuminate\Database\Eloquent\Builder;
@@ -94,8 +95,8 @@ class ImageRepo
         int $uploadedTo = null,
         string $search = null
     ): array {
-        /** @var Page $contextPage */
-        $contextPage = Page::visible()->findOrFail($uploadedTo);
+        /** @var Recipe $contextPage */
+        $contextPage = Recipe::visible()->findOrFail($uploadedTo);
         $parentFilter = null;
 
         if ($filterType === 'recipe' || $filterType === 'page') {
@@ -103,7 +104,7 @@ class ImageRepo
                 if ($filterType === 'page') {
                     $query->where('uploaded_to', '=', $contextPage->id);
                 } elseif ($filterType === 'recipe') {
-                    $validPageIds = $contextPage->recipe->pages()
+                    $validPageIds = $contextPage->pages()
                         ->scopes('visible')
                         ->pluck('id')
                         ->toArray();

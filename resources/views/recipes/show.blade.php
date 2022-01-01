@@ -25,17 +25,6 @@
         <h1 class="break-text">{{$recipe->name}}</h1>
         <div refs="entity-search@contentView" class="recipe-content">
             <p class="text-muted">{!! nl2br(e($recipe->description)) !!}</p>
-            @if(count($recipeChildren) > 0)
-                <div class="entity-list recipe-contents">
-                    @foreach($recipeChildren as $childElement)
-                        @if($childElement->isA('chapter'))
-                            @include('chapters.parts.list-item', ['chapter' => $childElement])
-                        @else
-                            @include('pages.parts.list-item', ['page' => $childElement])
-                        @endif
-                    @endforeach
-                </div>
-            @else
                 <div class="mt-xl">
                     <hr>
                     <p class="text-muted italic mb-m mt-xl">{{ trans('entities.recipes_empty_contents') }}</p>

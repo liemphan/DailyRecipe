@@ -7,6 +7,7 @@ use DailyRecipe\Exceptions\JsonDebugException;
 use DailyRecipe\Exceptions\LdapException;
 use DailyRecipe\Uploads\UserAvatars;
 use ErrorException;
+use Exception;
 use Illuminate\Support\Facades\Log;
 
 /**
@@ -389,7 +390,7 @@ class LdapService
         try {
             $imageData = $ldapUserDetails['avatar'];
             $this->userAvatars->assignToUserFromExistingData($user, $imageData, 'jpg');
-        } catch (\Exception $exception) {
+        } catch (Exception $exception) {
             Log::info("Failed to use avatar image from LDAP data for user id {$user->id}");
         }
     }

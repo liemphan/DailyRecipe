@@ -6,6 +6,7 @@ use DailyRecipe\Auth\Access\Ldap;
 use DailyRecipe\Auth\Access\LdapService;
 use DailyRecipe\Auth\Role;
 use DailyRecipe\Auth\User;
+use Mockery;
 use Mockery\MockInterface;
 use Tests\TestCase;
 use Tests\TestResponse;
@@ -40,7 +41,7 @@ class LdapTest extends TestCase
             'services.ldap.tls_insecure'           => false,
             'services.ldap.thumbnail_attribute'    => null,
         ]);
-        $this->mockLdap = \Mockery::mock(Ldap::class);
+        $this->mockLdap = Mockery::mock(Ldap::class);
         $this->app[Ldap::class] = $this->mockLdap;
         $this->mockUser = User::factory()->make();
     }
@@ -92,7 +93,7 @@ class LdapTest extends TestCase
     {
         $this->commonLdapMocks(1, 1, 2, 4, 2);
         $this->mockLdap->shouldReceive('searchAndGetEntries')->times(2)
-            ->with($this->resourceId, config('services.ldap.base_dn'), \Mockery::type('string'), \Mockery::type('array'))
+            ->with($this->resourceId, config('services.ldap.base_dn'), Mockery::type('string'), Mockery::type('array'))
             ->andReturn(['count' => 1, 0 => [
                 'uid' => [$this->mockUser->name],
                 'cn'  => [$this->mockUser->name],
@@ -123,7 +124,7 @@ class LdapTest extends TestCase
 
         $this->commonLdapMocks(1, 1, 2, 4, 2);
         $this->mockLdap->shouldReceive('searchAndGetEntries')->times(2)
-            ->with($this->resourceId, config('services.ldap.base_dn'), \Mockery::type('string'), \Mockery::type('array'))
+            ->with($this->resourceId, config('services.ldap.base_dn'), Mockery::type('string'), Mockery::type('array'))
             ->andReturn(['count' => 1, 0 => [
                 'uid' => [$this->mockUser->name],
                 'cn'  => [$this->mockUser->name],
@@ -148,7 +149,7 @@ class LdapTest extends TestCase
 
         $this->commonLdapMocks(1, 1, 1, 2, 1);
         $this->mockLdap->shouldReceive('searchAndGetEntries')->times(1)
-            ->with($this->resourceId, config('services.ldap.base_dn'), \Mockery::type('string'), \Mockery::type('array'))
+            ->with($this->resourceId, config('services.ldap.base_dn'), Mockery::type('string'), Mockery::type('array'))
             ->andReturn(['count' => 1, 0 => [
                 'cn'   => [$this->mockUser->name],
                 'dn'   => $ldapDn,
@@ -168,7 +169,7 @@ class LdapTest extends TestCase
         $this->commonLdapMocks(1, 1, 1, 2, 1);
         $ldapDn = 'cn=test-user,dc=test' . config('services.ldap.base_dn');
         $this->mockLdap->shouldReceive('searchAndGetEntries')->times(1)
-            ->with($this->resourceId, config('services.ldap.base_dn'), \Mockery::type('string'), \Mockery::type('array'))
+            ->with($this->resourceId, config('services.ldap.base_dn'), Mockery::type('string'), Mockery::type('array'))
             ->andReturn(['count' => 1, 0 => [
                 'cn'           => [$this->mockUser->name],
                 'dn'           => $ldapDn,
@@ -186,7 +187,7 @@ class LdapTest extends TestCase
     {
         $this->commonLdapMocks(1, 1, 1, 0, 1);
         $this->mockLdap->shouldReceive('searchAndGetEntries')->times(1)
-            ->with($this->resourceId, config('services.ldap.base_dn'), \Mockery::type('string'), \Mockery::type('array'))
+            ->with($this->resourceId, config('services.ldap.base_dn'), Mockery::type('string'), Mockery::type('array'))
             ->andReturn(['count' => 1, 0 => [
                 'uid' => [$this->mockUser->name],
                 'cn'  => [$this->mockUser->name],
@@ -204,7 +205,7 @@ class LdapTest extends TestCase
     {
         $this->commonLdapMocks(1, 1, 1, 1, 1);
         $this->mockLdap->shouldReceive('searchAndGetEntries')->times(1)
-            ->with($this->resourceId, config('services.ldap.base_dn'), \Mockery::type('string'), \Mockery::type('array'))
+            ->with($this->resourceId, config('services.ldap.base_dn'), Mockery::type('string'), Mockery::type('array'))
             ->andReturn(['count' => 0]);
 
         $resp = $this->mockUserLogin();
@@ -278,7 +279,7 @@ class LdapTest extends TestCase
 
         $this->commonLdapMocks(1, 1, 4, 5, 4, 6);
         $this->mockLdap->shouldReceive('searchAndGetEntries')->times(4)
-            ->with($this->resourceId, config('services.ldap.base_dn'), \Mockery::type('string'), \Mockery::type('array'))
+            ->with($this->resourceId, config('services.ldap.base_dn'), Mockery::type('string'), Mockery::type('array'))
             ->andReturn(['count' => 1, 0 => [
                 'uid'      => [$this->mockUser->name],
                 'cn'       => [$this->mockUser->name],
@@ -323,7 +324,7 @@ class LdapTest extends TestCase
 
         $this->commonLdapMocks(1, 1, 3, 4, 3, 2);
         $this->mockLdap->shouldReceive('searchAndGetEntries')->times(3)
-            ->with($this->resourceId, config('services.ldap.base_dn'), \Mockery::type('string'), \Mockery::type('array'))
+            ->with($this->resourceId, config('services.ldap.base_dn'), Mockery::type('string'), Mockery::type('array'))
             ->andReturn(['count' => 1, 0 => [
                 'uid'      => [$this->mockUser->name],
                 'cn'       => [$this->mockUser->name],
@@ -368,7 +369,7 @@ class LdapTest extends TestCase
 
         $this->commonLdapMocks(1, 1, 3, 4, 3, 2);
         $this->mockLdap->shouldReceive('searchAndGetEntries')->times(3)
-            ->with($this->resourceId, config('services.ldap.base_dn'), \Mockery::type('string'), \Mockery::type('array'))
+            ->with($this->resourceId, config('services.ldap.base_dn'), Mockery::type('string'), Mockery::type('array'))
             ->andReturn(['count' => 1, 0 => [
                 'uid'      => [$this->mockUser->name],
                 'cn'       => [$this->mockUser->name],
@@ -409,7 +410,7 @@ class LdapTest extends TestCase
 
         $this->commonLdapMocks(1, 1, 4, 5, 4, 6);
         $this->mockLdap->shouldReceive('searchAndGetEntries')->times(4)
-            ->with($this->resourceId, config('services.ldap.base_dn'), \Mockery::type('string'), \Mockery::type('array'))
+            ->with($this->resourceId, config('services.ldap.base_dn'), Mockery::type('string'), Mockery::type('array'))
             ->andReturn(['count' => 1, 0 => [
                 'uid'      => [$this->mockUser->name],
                 'cn'       => [$this->mockUser->name],
@@ -443,7 +444,7 @@ class LdapTest extends TestCase
 
         $this->commonLdapMocks(1, 1, 2, 4, 2);
         $this->mockLdap->shouldReceive('searchAndGetEntries')->times(2)
-            ->with($this->resourceId, config('services.ldap.base_dn'), \Mockery::type('string'), \Mockery::type('array'))
+            ->with($this->resourceId, config('services.ldap.base_dn'), Mockery::type('string'), Mockery::type('array'))
             ->andReturn(['count' => 1, 0 => [
                 'uid'         => [$this->mockUser->name],
                 'cn'          => [$this->mockUser->name],
@@ -468,7 +469,7 @@ class LdapTest extends TestCase
 
         $this->commonLdapMocks(1, 1, 2, 4, 2);
         $this->mockLdap->shouldReceive('searchAndGetEntries')->times(2)
-            ->with($this->resourceId, config('services.ldap.base_dn'), \Mockery::type('string'), \Mockery::type('array'))
+            ->with($this->resourceId, config('services.ldap.base_dn'), Mockery::type('string'), Mockery::type('array'))
             ->andReturn(['count' => 1, 0 => [
                 'uid' => [$this->mockUser->name],
                 'cn'  => [$this->mockUser->name],
@@ -563,7 +564,7 @@ class LdapTest extends TestCase
 
         $this->commonLdapMocks(1, 1, 1, 1, 1);
         $this->mockLdap->shouldReceive('searchAndGetEntries')->times(1)
-            ->with($this->resourceId, config('services.ldap.base_dn'), \Mockery::type('string'), \Mockery::type('array'))
+            ->with($this->resourceId, config('services.ldap.base_dn'), Mockery::type('string'), Mockery::type('array'))
             ->andReturn(['count' => 1, 0 => [
                 'uid' => [$this->mockUser->name],
                 'cn'  => [$this->mockUser->name],
@@ -602,7 +603,7 @@ class LdapTest extends TestCase
         $ldapService = app()->make(LdapService::class);
         $this->commonLdapMocks(1, 1, 1, 1, 1);
         $this->mockLdap->shouldReceive('searchAndGetEntries')->times(1)
-            ->with($this->resourceId, config('services.ldap.base_dn'), \Mockery::type('string'), ['cn', 'dn', 'uid', 'mail', 'cn'])
+            ->with($this->resourceId, config('services.ldap.base_dn'), Mockery::type('string'), ['cn', 'dn', 'uid', 'mail', 'cn'])
             ->andReturn(['count' => 1, 0 => [
                 'uid' => [hex2bin('FFF8F7')],
                 'cn'  => [$this->mockUser->name],
@@ -617,7 +618,7 @@ class LdapTest extends TestCase
     {
         $this->commonLdapMocks(1, 1, 2, 4, 2);
         $this->mockLdap->shouldReceive('searchAndGetEntries')->times(2)
-            ->with($this->resourceId, config('services.ldap.base_dn'), \Mockery::type('string'), \Mockery::type('array'))
+            ->with($this->resourceId, config('services.ldap.base_dn'), Mockery::type('string'), Mockery::type('array'))
             ->andReturn(['count' => 1, 0 => [
                 'uid'  => [$this->mockUser->name],
                 'cn'   => [$this->mockUser->name],
@@ -702,7 +703,7 @@ class LdapTest extends TestCase
         $this->commonLdapMocks(1, 1, 1, 2, 1);
         $ldapDn = 'cn=test-user,dc=test' . config('services.ldap.base_dn');
         $this->mockLdap->shouldReceive('searchAndGetEntries')->times(1)
-            ->with($this->resourceId, config('services.ldap.base_dn'), \Mockery::type('string'), \Mockery::type('array'))
+            ->with($this->resourceId, config('services.ldap.base_dn'), Mockery::type('string'), Mockery::type('array'))
             ->andReturn(['count' => 1, 0 => [
                 'cn'        => [$this->mockUser->name],
                 'dn'        => $ldapDn,

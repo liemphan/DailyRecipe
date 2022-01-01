@@ -38,13 +38,6 @@ class TrashCan
     {
         Deletion::createForEntity($recipe);
 
-        foreach ($recipe->pages as $page) {
-            $this->softDestroyPage($page, false);
-        }
-
-        foreach ($recipe->chapters as $chapter) {
-            $this->softDestroyChapter($chapter, false);
-        }
 
         $recipe->delete();
     }

@@ -2,7 +2,9 @@
 
 namespace DailyRecipe\Exceptions;
 
-class UserTokenExpiredException extends \Exception
+use Exception;
+
+class UserTokenExpiredException extends Exception
 {
     public $userId;
 

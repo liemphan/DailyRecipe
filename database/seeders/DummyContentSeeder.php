@@ -7,6 +7,7 @@ use DailyRecipe\Auth\Permissions\PermissionService;
 use DailyRecipe\Auth\Permissions\RolePermission;
 use DailyRecipe\Auth\Role;
 use DailyRecipe\Auth\User;
+use DailyRecipe\Entities\Models\Recipe;
 use DailyRecipe\Entities\Models\Recipemenu;
 use DailyRecipe\Entities\Models\Chapter;
 use DailyRecipe\Entities\Models\Page;
@@ -36,7 +37,7 @@ class DummyContentSeeder extends Seeder
 
         $byData = ['created_by' => $editorUser->id, 'updated_by' => $editorUser->id, 'owned_by' => $editorUser->id];
 
-        \DailyRecipe\Entities\Models\Recipe::factory()->count(5)->create($byData)
+        Recipe::factory()->count(5)->create($byData)
             ->each(function ($recipe) use ($byData) {
                 $chapters = Chapter::factory()->count(3)->create($byData)
                     ->each(function ($chapter) use ($recipe, $byData) {
@@ -48,7 +49,7 @@ class DummyContentSeeder extends Seeder
                 $recipe->pages()->saveMany($pages);
             });
 
-        $largeRecipe = \DailyRecipe\Entities\Models\Recipe::factory()->create(array_merge($byData, ['name' => 'Large recipe' . Str::random(10)]));
+        $largeRecipe = Recipe::factory()->create(array_merge($byData, ['name' => 'Large recipe' . Str::random(10)]));
         $pages = Page::factory()->count(200)->make($byData);
         $chapters = Chapter::factory()->count(50)->make($byData);
         $largeRecipe->pages()->saveMany($pages);

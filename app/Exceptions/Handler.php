@@ -7,6 +7,7 @@ use Illuminate\Auth\AuthenticationException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 use Illuminate\Validation\ValidationException;
 use Symfony\Component\HttpKernel\Exception\HttpException;
 use Throwable;
@@ -36,11 +37,11 @@ class Handler extends ExceptionHandler
     /**
      * Report or log an exception.
      *
-     * @param \Throwable $exception
-     *
-     * @throws \Throwable
+     * @param Throwable $exception
      *
      * @return void
+     *@throws Throwable
+     *
      */
     public function report(Throwable $exception)
     {
@@ -50,10 +51,10 @@ class Handler extends ExceptionHandler
     /**
      * Render an exception into an HTTP response.
      *
-     * @param \Illuminate\Http\Request $request
+     * @param Request $request
      * @param Exception                $e
      *
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function render($request, Throwable $e)
     {
@@ -103,10 +104,10 @@ class Handler extends ExceptionHandler
     /**
      * Convert an authentication exception into an unauthenticated response.
      *
-     * @param \Illuminate\Http\Request                 $request
-     * @param \Illuminate\Auth\AuthenticationException $exception
+     * @param Request $request
+     * @param AuthenticationException $exception
      *
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     protected function unauthenticated($request, AuthenticationException $exception)
     {
@@ -120,10 +121,10 @@ class Handler extends ExceptionHandler
     /**
      * Convert a validation exception into a JSON response.
      *
-     * @param \Illuminate\Http\Request                   $request
-     * @param \Illuminate\Validation\ValidationException $exception
+     * @param Request $request
+     * @param ValidationException $exception
      *
-     * @return \Illuminate\Http\JsonResponse
+     * @return JsonResponse
      */
     protected function invalidJson($request, ValidationException $exception)
     {

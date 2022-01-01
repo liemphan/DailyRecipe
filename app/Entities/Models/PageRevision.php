@@ -20,7 +20,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  * @property string $markdown
  * @property string $html
  * @property int    $revision_number
- * @property Recipe   $page
+ * @property Recipe   $recipe
  * @property-read ?User $createdBy
  */
 class PageRevision extends Model
