@@ -3,7 +3,6 @@
 namespace DailyRecipe\Entities\Models;
 
 use DailyRecipe\Model;
-use Illuminate\Database\Eloquent\Relations\MorphTo;
 
 class SearchTerm extends Model
 {
@@ -13,7 +12,7 @@ class SearchTerm extends Model
     /**
      * Get the entity that this term belongs to.
      *
-     * @return MorphTo
+     * @return \Illuminate\Database\Eloquent\Relations\MorphTo
      */
     public function entity()
     {

@@ -3,7 +3,6 @@
 namespace Tests\Uploads;
 
 use DailyRecipe\Entities\Models\Page;
-use Illuminate\Foundation\Testing\TestResponse;
 use Illuminate\Http\UploadedFile;
 
 trait UsesImages
@@ -69,7 +68,7 @@ trait UsesImages
      * @param int    $uploadedTo
      * @param string $contentType
      *
-     * @return TestResponse
+     * @return \Illuminate\Foundation\Testing\TestResponse
      */
     protected function uploadImage($name, $uploadedTo = 0, $contentType = 'image/png', ?string $testDataFileName = null)
     {

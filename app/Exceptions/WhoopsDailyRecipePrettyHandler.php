@@ -2,7 +2,6 @@
 
 namespace DailyRecipe\Exceptions;
 
-use Exception;
 use Whoops\Handler\Handler;
 
 class WhoopsDailyRecipePrettyHandler extends Handler
@@ -28,7 +27,7 @@ class WhoopsDailyRecipePrettyHandler extends Handler
     {
         try {
             return $callback();
-        } catch (Exception $e) {
+        } catch (\Exception $e) {
             return $default;
         }
     }

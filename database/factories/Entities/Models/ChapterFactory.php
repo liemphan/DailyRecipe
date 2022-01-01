@@ -2,7 +2,6 @@
 
 namespace Database\Factories\Entities\Models;
 
-use DailyRecipe\Entities\Models\Chapter;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
 
@@ -13,7 +12,7 @@ class ChapterFactory extends Factory
      *
      * @var string
      */
-    protected $model = Chapter::class;
+    protected $model = \DailyRecipe\Entities\Models\Chapter::class;
 
     /**
      * Define the model's default state.

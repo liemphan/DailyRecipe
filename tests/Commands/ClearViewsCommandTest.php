@@ -2,7 +2,6 @@
 
 namespace Tests\Commands;
 
-use Artisan;
 use DailyRecipe\Entities\Models\Page;
 use Illuminate\Support\Facades\DB;
 use Tests\TestCase;
@@ -23,7 +22,7 @@ class ClearViewsCommandTest extends TestCase
         ]);
 
         DB::rollBack();
-        $exitCode = Artisan::call('dailyrecipe:clear-views');
+        $exitCode = \Artisan::call('dailyrecipe:clear-views');
         DB::beginTransaction();
         $this->assertTrue($exitCode === 0, 'Command executed successfully');
 

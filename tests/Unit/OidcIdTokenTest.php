@@ -4,7 +4,6 @@ namespace Tests\Unit;
 
 use DailyRecipe\Auth\Access\Oidc\OidcIdToken;
 use DailyRecipe\Auth\Access\Oidc\OidcInvalidTokenException;
-use Exception;
 use Tests\Helpers\OidcJwtHelper;
 use Tests\TestCase;
 
@@ -58,7 +57,7 @@ class OidcIdTokenTest extends TestCase
 
             try {
                 $token->validate('abc');
-            } catch (Exception $exception) {
+            } catch (\Exception $exception) {
                 $err = $exception;
             }
 
@@ -143,7 +142,7 @@ class OidcIdTokenTest extends TestCase
 
             try {
                 $token->validate('xxyyzz.aaa.bbccdd.123');
-            } catch (Exception $exception) {
+            } catch (\Exception $exception) {
                 $err = $exception;
             }
 

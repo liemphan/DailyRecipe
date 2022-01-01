@@ -5,7 +5,6 @@ namespace DailyRecipe\Entities\Tools;
 use DailyRecipe\Entities\Models\Page;
 use DailyRecipe\Entities\Models\PageRevision;
 use Carbon\Carbon;
-use DailyRecipe\Entities\Models\Recipe;
 use Illuminate\Database\Eloquent\Builder;
 
 class PageEditActivity
@@ -15,7 +14,7 @@ class PageEditActivity
     /**
      * PageEditActivity constructor.
      */
-    public function __construct(Recipe $page)
+    public function __construct(Page $page)
     {
         $this->page = $page;
     }
@@ -51,7 +50,7 @@ class PageEditActivity
     /**
      * Get any editor clash warning messages to show for the given draft revision.
      *
-     * @param PageRevision|Recipe $draft
+     * @param PageRevision|Page $draft
      *
      * @return string[]
      */

@@ -3,7 +3,6 @@
 namespace Tests;
 
 use DailyRecipe\Notifications\TestEmail;
-use Exception;
 use Illuminate\Contracts\Notifications\Dispatcher;
 use Illuminate\Support\Facades\Notification;
 
@@ -34,7 +33,7 @@ class TestEmailTest extends TestCase
         $mockDispatcher = $this->mock(Dispatcher::class);
         $this->app[Dispatcher::class] = $mockDispatcher;
 
-        $exception = new Exception('A random error occurred when testing an email');
+        $exception = new \Exception('A random error occurred when testing an email');
         $mockDispatcher->shouldReceive('send')->andThrow($exception);
 
         $admin = $this->getAdmin();

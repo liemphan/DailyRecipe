@@ -6,7 +6,6 @@ use DailyRecipe\Actions\ActivityType;
 use DailyRecipe\Entities\Models\Deletion;
 use DailyRecipe\Entities\Models\Entity;
 use DailyRecipe\Entities\Tools\TrashCan;
-use Exception;
 
 class RecycleBinController extends Controller
 {
@@ -72,7 +71,7 @@ class RecycleBinController extends Controller
     /**
      * Restore the element attached to the given deletion.
      *
-     * @throws Exception
+     * @throws \Exception
      */
     public function restore(string $id)
     {
@@ -102,7 +101,7 @@ class RecycleBinController extends Controller
     /**
      * Permanently delete the content associated with the given deletion.
      *
-     * @throws Exception
+     * @throws \Exception
      */
     public function destroy(string $id)
     {
@@ -119,7 +118,7 @@ class RecycleBinController extends Controller
     /**
      * Empty out the recycle bin.
      *
-     * @throws Exception
+     * @throws \Exception
      */
     public function empty()
     {

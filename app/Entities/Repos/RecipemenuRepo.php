@@ -88,7 +88,7 @@ class RecipemenuRepo
     public function create(array $input, array $recipeIds): Recipemenu
     {
         $menu = new Recipemenu();
-        $this->baseRepo->createMenus($menu, $input);
+        $this->baseRepo->create($menu, $input);
         $this->updateRecipes($menu, $recipeIds);
         Activity::addForEntity($menu, ActivityType::RECIPEMENU_CREATE);
 

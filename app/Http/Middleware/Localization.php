@@ -4,7 +4,6 @@ namespace DailyRecipe\Http\Middleware;
 
 use Carbon\Carbon;
 use Closure;
-use Exception;
 use Illuminate\Http\Request;
 
 class Localization
@@ -58,8 +57,8 @@ class Localization
     /**
      * Handle an incoming request.
      *
-     * @param Request $request
-     * @param Closure $next
+     * @param \Illuminate\Http\Request $request
+     * @param \Closure                 $next
      *
      * @return mixed
      */
@@ -90,7 +89,7 @@ class Localization
     {
         try {
             $user = user();
-        } catch (Exception $exception) {
+        } catch (\Exception $exception) {
             return $default;
         }
 

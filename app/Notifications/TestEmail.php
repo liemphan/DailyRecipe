@@ -2,8 +2,6 @@
 
 namespace DailyRecipe\Notifications;
 
-use Illuminate\Notifications\Messages\MailMessage;
-
 class TestEmail extends MailNotification
 {
     /**
@@ -11,7 +9,7 @@ class TestEmail extends MailNotification
      *
      * @param mixed $notifiable
      *
-     * @return MailMessage
+     * @return \Illuminate\Notifications\Messages\MailMessage
      */
     public function toMail($notifiable)
     {

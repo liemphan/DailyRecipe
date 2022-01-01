@@ -1,6 +1,5 @@
 <?php
 
-use Carbon\Carbon;
 use Illuminate\Database\Migrations\Migration;
 
 class UpdatePermissionsAndRoles extends Migration
@@ -31,8 +30,8 @@ class UpdatePermissionsAndRoles extends Migration
             $permissionId = DB::table('permissions')->insertGetId([
                 'name'         => $name,
                 'display_name' => $displayName,
-                'created_at'   => Carbon::now()->toDateTimeString(),
-                'updated_at'   => Carbon::now()->toDateTimeString(),
+                'created_at'   => \Carbon\Carbon::now()->toDateTimeString(),
+                'updated_at'   => \Carbon\Carbon::now()->toDateTimeString(),
             ]);
             DB::table('permission_role')->insert([
                 'role_id'       => $adminRoleId,
@@ -48,8 +47,8 @@ class UpdatePermissionsAndRoles extends Migration
                 $permissionId = DB::table('permissions')->insertGetId([
                     'name'         => strtolower($entity) . '-' . strtolower(str_replace(' ', '-', $op)),
                     'display_name' => $op . ' ' . $entity . 's',
-                    'created_at'   => Carbon::now()->toDateTimeString(),
-                    'updated_at'   => Carbon::now()->toDateTimeString(),
+                    'created_at'   => \Carbon\Carbon::now()->toDateTimeString(),
+                    'updated_at'   => \Carbon\Carbon::now()->toDateTimeString(),
                 ]);
                 DB::table('permission_role')->insert([
                     'role_id'       => $adminRoleId,
@@ -86,8 +85,8 @@ class UpdatePermissionsAndRoles extends Migration
                 $permissionId = DB::table('permissions')->insertGetId([
                     'name'         => strtolower($entity) . '-' . strtolower($op),
                     'display_name' => $op . ' ' . $entity . 's',
-                    'created_at'   => Carbon::now()->toDateTimeString(),
-                    'updated_at'   => Carbon::now()->toDateTimeString(),
+                    'created_at'   => \Carbon\Carbon::now()->toDateTimeString(),
+                    'updated_at'   => \Carbon\Carbon::now()->toDateTimeString(),
                 ]);
                 DB::table('permission_role')->insert([
                     'role_id'       => $adminRoleId,
@@ -104,8 +103,8 @@ class UpdatePermissionsAndRoles extends Migration
                 $permissionId = DB::table('permissions')->insertGetId([
                     'name'         => strtolower($entity) . '-' . strtolower($op),
                     'display_name' => $op . ' ' . $entity,
-                    'created_at'   => Carbon::now()->toDateTimeString(),
-                    'updated_at'   => Carbon::now()->toDateTimeString(),
+                    'created_at'   => \Carbon\Carbon::now()->toDateTimeString(),
+                    'updated_at'   => \Carbon\Carbon::now()->toDateTimeString(),
                 ]);
                 DB::table('permission_role')->insert([
                     'role_id'       => $adminRoleId,

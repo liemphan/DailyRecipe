@@ -1,6 +1,5 @@
 <?php
 
-use Carbon\Carbon;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\DB;
@@ -43,6 +42,7 @@ class CreateRecipemenusTable extends Migration
             $table->string('name', 180);
             $table->string('slug', 180);
             $table->text('description');
+            $table->longText('content');
             $table->integer('created_by')->nullable()->default(null);
             $table->integer('updated_by')->nullable()->default(null);
             $table->boolean('restricted')->default(false);
@@ -84,8 +84,8 @@ class CreateRecipemenusTable extends Migration
             $permId = DB::table('role_permissions')->insertGetId([
                 'name'         => 'recipemenu-' . $dbOpName,
                 'display_name' => $op . ' ' . 'RecipeMenus',
-                'created_at'   => Carbon::now()->toDateTimeString(),
-                'updated_at'   => Carbon::now()->toDateTimeString(),
+                'created_at'   => \Carbon\Carbon::now()->toDateTimeString(),
+                'updated_at'   => \Carbon\Carbon::now()->toDateTimeString(),
             ]);
 
             $rowsToInsert = $roleIdsWithRecipePermission->filter(function ($roleId) {

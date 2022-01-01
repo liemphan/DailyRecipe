@@ -18,7 +18,6 @@ use DailyRecipe\Facades\Activity;
 use DailyRecipe\Uploads\ImageRepo;
 use Exception;
 use Illuminate\Contracts\Pagination\LengthAwarePaginator;
-use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Collection;
 
@@ -90,13 +89,12 @@ class RecipeRepo
 
         return $recipe;
     }
-
     /**
      * Get a recipe by its slug.
      */
-    public function getById(string $recipeId): Recipe
+    public function getById(string $id): Recipe
     {
-        $recipe = Recipe::visible()->where('id', '=', $recipeId)->first();
+        $recipe = Recipe::visible()->where('id', '=', $id)->first();
 
         if ($recipe === null) {
             throw new NotFoundException(trans('errors.recipe_not_found'));
@@ -104,25 +102,7 @@ class RecipeRepo
 
         return $recipe;
     }
-    /**
-     * Get a page by its old slug but checking the revisions table
-     * for the last revision that matched the given page and recipe slug.
-     */
-    public function getByOldSlug(string $recipeSlug): ?Recipe
-    {
-        /** @var ?PageRevision $revision */
-        $revision = PageRevision::query()
-            ->whereHas('page', function (Builder $query) {
-                $query->scopes('visible');
-            })
-            ->where('slug', '=', $recipeSlug)
-            ->where('type', '=', 'version')
-            ->orderBy('created_at', 'desc')
-            ->with('page')
-            ->first();
 
-        return $revision->recipe ?? null;
-    }
     /**
      * Create a new recipe in the system.
      */
@@ -276,24 +256,4 @@ class RecipeRepo
             PageRevision::query()->whereIn('id', $revisionsToDelete->pluck('id'))->delete();
         }
     }
-    /**
-     * Get the draft copy of the given page for the current user.
-     */
-    public function getUserDraft(Recipe $page): ?PageRevision
-    {
-        $revision = $this->getUserDraftQuery($page)->first();
-
-        return $revision;
-    }
-    /**
-     * Get the query to find the user's draft copies of the given page.
-     */
-    protected function getUserDraftQuery(Recipe $page)
-    {
-        return PageRevision::query()->where('created_by', '=', user()->id)
-            ->where('type', 'update_draft')
-            ->where('id', '=', $page->id)
-            ->orderBy('created_at', 'desc');
-    }
-
 }

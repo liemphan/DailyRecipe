@@ -1,5 +1,5 @@
 @php
- $isFavourite = $entity->isFavourite()
+ $isFavourite = $entity->isFavourite();
 @endphp
 <form action="{{ url('/favourites/' . ($isFavourite ? 'remove' : 'add')) }}" method="POST">
     {{ csrf_field() }}
