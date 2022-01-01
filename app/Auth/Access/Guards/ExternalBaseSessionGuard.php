@@ -32,14 +32,14 @@ class ExternalBaseSessionGuard implements StatefulGuard
     /**
      * The user we last attempted to retrieve.
      *
-     * @var AuthenticatableContract
+     * @var \Illuminate\Contracts\Auth\Authenticatable
      */
     protected $lastAttempted;
 
     /**
      * The session used by the guard.
      *
-     * @var Session
+     * @var \Illuminate\Contracts\Session\Session
      */
     protected $session;
 
@@ -73,7 +73,7 @@ class ExternalBaseSessionGuard implements StatefulGuard
     /**
      * Get the currently authenticated user.
      *
-     * @return AuthenticatableContract|null
+     * @return \Illuminate\Contracts\Auth\Authenticatable|null
      */
     public function user()
     {
@@ -138,7 +138,7 @@ class ExternalBaseSessionGuard implements StatefulGuard
      *
      * @param mixed $id
      *
-     * @return AuthenticatableContract|false
+     * @return \Illuminate\Contracts\Auth\Authenticatable|false
      */
     public function onceUsingId($id)
     {
@@ -182,7 +182,7 @@ class ExternalBaseSessionGuard implements StatefulGuard
      * @param mixed $id
      * @param bool  $remember
      *
-     * @return AuthenticatableContract|false
+     * @return \Illuminate\Contracts\Auth\Authenticatable|false
      */
     public function loginUsingId($id, $remember = false)
     {
@@ -194,7 +194,7 @@ class ExternalBaseSessionGuard implements StatefulGuard
     /**
      * Log a user into the application.
      *
-     * @param AuthenticatableContract $user
+     * @param \Illuminate\Contracts\Auth\Authenticatable $user
      * @param bool                                       $remember
      *
      * @return void
@@ -250,7 +250,7 @@ class ExternalBaseSessionGuard implements StatefulGuard
     /**
      * Get the last user we attempted to authenticate.
      *
-     * @return AuthenticatableContract
+     * @return \Illuminate\Contracts\Auth\Authenticatable
      */
     public function getLastAttempted()
     {
@@ -280,7 +280,7 @@ class ExternalBaseSessionGuard implements StatefulGuard
     /**
      * Return the currently cached user.
      *
-     * @return AuthenticatableContract|null
+     * @return \Illuminate\Contracts\Auth\Authenticatable|null
      */
     public function getUser()
     {
@@ -290,7 +290,7 @@ class ExternalBaseSessionGuard implements StatefulGuard
     /**
      * Set the current user.
      *
-     * @param AuthenticatableContract $user
+     * @param \Illuminate\Contracts\Auth\Authenticatable $user
      *
      * @return $this
      */

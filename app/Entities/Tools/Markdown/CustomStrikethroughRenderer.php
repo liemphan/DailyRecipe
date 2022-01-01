@@ -2,7 +2,6 @@
 
 namespace DailyRecipe\Entities\Tools\Markdown;
 
-use InvalidArgumentException;
 use League\CommonMark\ElementRendererInterface;
 use League\CommonMark\Extension\Strikethrough\Strikethrough;
 use League\CommonMark\HtmlElement;
@@ -19,7 +18,7 @@ class CustomStrikethroughRenderer implements InlineRendererInterface
     public function render(AbstractInline $inline, ElementRendererInterface $htmlRenderer)
     {
         if (!($inline instanceof Strikethrough)) {
-            throw new InvalidArgumentException('Incompatible inline type: ' . get_class($inline));
+            throw new \InvalidArgumentException('Incompatible inline type: ' . get_class($inline));
         }
 
         return new HtmlElement('s', $inline->getData('attributes', []), $htmlRenderer->renderInlines($inline->children()));

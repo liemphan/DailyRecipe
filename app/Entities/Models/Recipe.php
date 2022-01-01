@@ -17,6 +17,9 @@ use Illuminate\Support\Collection;
  * @property string                                   $description
  * @property int                                      $image_id
  * @property Image|null                               $cover
+ * @property \Illuminate\Database\Eloquent\Collection $chapters
+ * @property \Illuminate\Database\Eloquent\Collection $pages
+ * @property \Illuminate\Database\Eloquent\Collection $directPages
  * @property string     $html
  * @property string     $markdown
  * @property string     $text
@@ -27,7 +30,6 @@ use Illuminate\Support\Collection;
 class Recipe extends Entity implements HasCoverImage
 {
     use HasFactory;
-
 
     public $searchFactor = 1.2;
 
@@ -55,8 +57,9 @@ class Recipe extends Entity implements HasCoverImage
     {
         $parts = [
             'recipes',
-            urlencode($this->slug ),
-            $this->draft ? 'draft' : 'content',
+            urlencode($this->slug),
+            $this->draft ? 'draft' : 'page',
+            $this->draft ? $this->id : urlencode($this->slug),
             trim($path, '/'),
         ];
 
@@ -103,29 +106,29 @@ class Recipe extends Entity implements HasCoverImage
         return 'cover_recipe';
     }
 
-//    /**
-//     * Get all pages within this recipe.
-//     */
-//    public function pages(): HasMany
-//    {
-//        return $this->hasMany(Page::class);
-//    }
+    /**
+     * Get all pages within this recipe.
+     */
+    public function pages(): HasMany
+    {
+        return $this->hasMany(Page::class);
+    }
 
     /**
      * Get the direct child pages of this recipe.
      */
-//    public function directPages(): HasMany
-//    {
-//        return $this->pages()->where('chapter_id', '=', '0');
-//    }
+    public function directPages(): HasMany
+    {
+        return $this->pages()->where('chapter_id', '=', '0');
+    }
 
-//    /**
-//     * Get all chapters within this recipe.
-//     */
-//    public function chapters(): HasMany
-//    {
-//        return $this->hasMany(Chapter::class);
-//    }
+    /**
+     * Get all chapters within this recipe.
+     */
+    public function chapters(): HasMany
+    {
+        return $this->hasMany(Chapter::class);
+    }
 
     /**
      * Get the menus this recipe is contained within.
@@ -135,16 +138,16 @@ class Recipe extends Entity implements HasCoverImage
         return $this->belongsToMany(Recipemenu::class, 'recipemenus_recipes', 'recipe_id', 'recipemenu_id');
     }
 
-//    /**
-//     * Get the direct child items within this recipe.
-//     */
-//    public function getDirectChildren(): Collection
-//    {
-////        $pages = $this->directPages()->scopes('visible')->get();
-////        $chapters = $this->chapters()->scopes('visible')->get();
-//
-//        return $pages->concat($chapters)->sortBy('priority')->sortByDesc('draft');
-//    }
+    /**
+     * Get the direct child items within this recipe.
+     */
+    public function getDirectChildren(): Collection
+    {
+        $pages = $this->directPages()->scopes('visible')->get();
+        $chapters = $this->chapters()->scopes('visible')->get();
+
+        return $pages->concat($chapters)->sortBy('priority')->sortByDesc('draft');
+    }
 
     /**
      * Get the attachments assigned to this page.

@@ -5,7 +5,6 @@ namespace DailyRecipe\Uploads;
 use DailyRecipe\Entities\Models\Page;
 use DailyRecipe\Model;
 use DailyRecipe\Traits\HasCreatorAndUpdater;
-use Exception;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 /**
@@ -29,7 +28,7 @@ class Image extends Model
     /**
      * Get a thumbnail for this image.
      *
-     * @throws Exception
+     * @throws \Exception
      */
     public function getThumb(int $width, int $height, bool $keepRatio = false): string
     {

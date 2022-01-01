@@ -2,7 +2,6 @@
 
 namespace Database\Factories\Actions;
 
-use DailyRecipe\Actions\Tag;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class TagFactory extends Factory
@@ -12,7 +11,7 @@ class TagFactory extends Factory
      *
      * @var string
      */
-    protected $model = Tag::class;
+    protected $model = \DailyRecipe\Actions\Tag::class;
 
     /**
      * Define the model's default state.

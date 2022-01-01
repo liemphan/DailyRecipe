@@ -5,7 +5,6 @@ namespace DailyRecipe\Http\Middleware;
 use DailyRecipe\Auth\Access\LoginService;
 use DailyRecipe\Auth\Access\Mfa\MfaSession;
 use Closure;
-use Illuminate\Http\Request;
 
 class AuthenticatedOrPendingMfa
 {
@@ -21,8 +20,8 @@ class AuthenticatedOrPendingMfa
     /**
      * Handle an incoming request.
      *
-     * @param Request $request
-     * @param Closure $next
+     * @param \Illuminate\Http\Request $request
+     * @param \Closure                 $next
      *
      * @return mixed
      */

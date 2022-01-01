@@ -2,7 +2,6 @@
 
 namespace DailyRecipe\Entities\Tools;
 
-use DailyRecipe\Entities\Models\Recipe;
 use DailyRecipe\Entities\Models\RecipeChild;
 use DailyRecipe\Entities\Models\Entity;
 use Illuminate\Support\Collection;
@@ -19,10 +18,10 @@ class NextPreviousContentLocator
     /**
      * NextPreviousContentLocator constructor.
      */
-    public function __construct(Recipe $relativeRecipeItem)
+    public function __construct(RecipeChild $relativeRecipeItem, Collection $recipeTree)
     {
         $this->relativeRecipeItem = $relativeRecipeItem;
-//        $this->flatTree = $this->treeToFlatOrderedCollection($recipeTree);
+        $this->flatTree = $this->treeToFlatOrderedCollection($recipeTree);
         $this->currentIndex = $this->getCurrentIndex();
     }
 
@@ -55,20 +54,20 @@ class NextPreviousContentLocator
         return $index === false ? null : $index;
     }
 
-//    /**
-//     * Convert a recipe tree collection to a flattened version
-//     * where all items follow the expected order of user flow.
-//     */
-//    protected function treeToFlatOrderedCollection(Collection $recipeTree): Collection
-//    {
-//        $flatOrdered = collect();
-//        /** @var Entity $item */
-//        foreach ($recipeTree->all() as $item) {
-//            $flatOrdered->push($item);
-//            $childPages = $item->getAttribute('visible_pages') ?? [];
-//            $flatOrdered = $flatOrdered->concat($childPages);
-//        }
-//
-//        return $flatOrdered;
-//    }
+    /**
+     * Convert a recipe tree collection to a flattened version
+     * where all items follow the expected order of user flow.
+     */
+    protected function treeToFlatOrderedCollection(Collection $recipeTree): Collection
+    {
+        $flatOrdered = collect();
+        /** @var Entity $item */
+        foreach ($recipeTree->all() as $item) {
+            $flatOrdered->push($item);
+            $childPages = $item->getAttribute('visible_pages') ?? [];
+            $flatOrdered = $flatOrdered->concat($childPages);
+        }
+
+        return $flatOrdered;
+    }
 }

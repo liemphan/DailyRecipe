@@ -2,8 +2,6 @@
 
 namespace DailyRecipe\Auth\Access\Oidc;
 
-use Exception;
-
-class OidcIssuerDiscoveryException extends Exception
+class OidcIssuerDiscoveryException extends \Exception
 {
 }

@@ -2,7 +2,6 @@
 
 namespace Tests\Commands;
 
-use Artisan;
 use DailyRecipe\Actions\Comment;
 use Tests\TestCase;
 
@@ -19,7 +18,7 @@ class RegenerateCommentContentCommandTest extends TestCase
             'html' => 'some_old_content',
         ]);
 
-        $exitCode = Artisan::call('dailyrecipe:regenerate-comment-content');
+        $exitCode = \Artisan::call('dailyrecipe:regenerate-comment-content');
         $this->assertTrue($exitCode === 0, 'Command executed successfully');
 
         $this->assertDatabaseMissing('comments', [

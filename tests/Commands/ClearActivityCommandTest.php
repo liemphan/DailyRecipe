@@ -2,8 +2,6 @@
 
 namespace Tests\Commands;
 
-use Activity;
-use Artisan;
 use DailyRecipe\Actions\ActivityType;
 use DailyRecipe\Entities\Models\Page;
 use Illuminate\Support\Facades\DB;
@@ -15,7 +13,7 @@ class ClearActivityCommandTest extends TestCase
     {
         $this->asEditor();
         $page = Page::first();
-        Activity::addForEntity($page, ActivityType::PAGE_UPDATE);
+        \Activity::addForEntity($page, ActivityType::PAGE_UPDATE);
 
         $this->assertDatabaseHas('activities', [
             'type'      => 'page_update',
@@ -24,7 +22,7 @@ class ClearActivityCommandTest extends TestCase
         ]);
 
         DB::rollBack();
-        $exitCode = Artisan::call('dailyrecipe:clear-activity');
+        $exitCode = \Artisan::call('dailyrecipe:clear-activity');
         DB::beginTransaction();
         $this->assertTrue($exitCode === 0, 'Command executed successfully');
 

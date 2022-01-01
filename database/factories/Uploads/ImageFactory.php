@@ -2,7 +2,6 @@
 
 namespace Database\Factories\Uploads;
 
-use DailyRecipe\Uploads\Image;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class ImageFactory extends Factory
@@ -12,7 +11,7 @@ class ImageFactory extends Factory
      *
      * @var string
      */
-    protected $model = Image::class;
+    protected $model = \DailyRecipe\Uploads\Image::class;
 
     /**
      * Define the model's default state.

@@ -2,8 +2,6 @@
 
 namespace DailyRecipe\Notifications;
 
-use Illuminate\Notifications\Messages\MailMessage;
-
 class ConfirmEmail extends MailNotification
 {
     public $token;
@@ -23,7 +21,7 @@ class ConfirmEmail extends MailNotification
      *
      * @param mixed $notifiable
      *
-     * @return MailMessage
+     * @return \Illuminate\Notifications\Messages\MailMessage
      */
     public function toMail($notifiable)
     {

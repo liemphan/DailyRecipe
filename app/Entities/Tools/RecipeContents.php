@@ -9,7 +9,6 @@ use DailyRecipe\Entities\Models\Entity;
 use DailyRecipe\Entities\Models\Page;
 use DailyRecipe\Exceptions\SortOperationException;
 use Illuminate\Support\Collection;
-use stdClass;
 
 class RecipeContents
 {
@@ -41,40 +40,40 @@ class RecipeContents
         return max($maxChapter, $maxPage, 1);
     }
 
-//    /**
-//     * Get the contents as a sorted collection tree.
-//     */
-//    public function getTree(bool $showDrafts = false, bool $renderPages = false): Collection
-//    {
-//        $pages = $this->getPages($showDrafts, $renderPages);
-//        $chapters = Chapter::visible()->where('recipe_id', '=', $this->recipe->id)->get();
-//        $all = collect()->concat($pages)->concat($chapters);
-//        $chapterMap = $chapters->keyBy('id');
-//        $lonePages = collect();
-//
-//        $pages->groupBy('chapter_id')->each(function ($pages, $chapter_id) use ($chapterMap, &$lonePages) {
-//            $chapter = $chapterMap->get($chapter_id);
-//            if ($chapter) {
-//                $chapter->setAttribute('visible_pages', collect($pages)->sortBy($this->recipeChildSortFunc()));
-//            } else {
-//                $lonePages = $lonePages->concat($pages);
-//            }
-//        });
-//
-//        $chapters->whereNull('visible_pages')->each(function (Chapter $chapter) {
-//            $chapter->setAttribute('visible_pages', collect([]));
-//        });
-//
-//        $all->each(function (Entity $entity) use ($renderPages) {
-//            $entity->setRelation('recipe', $this->recipe);
-//
-//            if ($renderPages && $entity instanceof Page) {
-//                $entity->html = (new PageContent($entity))->render();
-//            }
-//        });
-//
-//        return collect($chapters)->concat($lonePages)->sortBy($this->recipeChildSortFunc());
-//    }
+    /**
+     * Get the contents as a sorted collection tree.
+     */
+    public function getTree(bool $showDrafts = false, bool $renderPages = false): Collection
+    {
+        $pages = $this->getPages($showDrafts, $renderPages);
+        $chapters = Chapter::visible()->where('recipe_id', '=', $this->recipe->id)->get();
+        $all = collect()->concat($pages)->concat($chapters);
+        $chapterMap = $chapters->keyBy('id');
+        $lonePages = collect();
+
+        $pages->groupBy('chapter_id')->each(function ($pages, $chapter_id) use ($chapterMap, &$lonePages) {
+            $chapter = $chapterMap->get($chapter_id);
+            if ($chapter) {
+                $chapter->setAttribute('visible_pages', collect($pages)->sortBy($this->recipeChildSortFunc()));
+            } else {
+                $lonePages = $lonePages->concat($pages);
+            }
+        });
+
+        $chapters->whereNull('visible_pages')->each(function (Chapter $chapter) {
+            $chapter->setAttribute('visible_pages', collect([]));
+        });
+
+        $all->each(function (Entity $entity) use ($renderPages) {
+            $entity->setRelation('recipe', $this->recipe);
+
+            if ($renderPages && $entity instanceof Page) {
+                $entity->html = (new PageContent($entity))->render();
+            }
+        });
+
+        return collect($chapters)->concat($lonePages)->sortBy($this->recipeChildSortFunc());
+    }
 
     /**
      * Function for providing a sorting score for an entity in relation to the
@@ -145,7 +144,7 @@ class RecipeContents
      * Using the given sort map item, detect changes for the related model
      * and update it if required.
      */
-    protected function applySortUpdates(stdClass $sortMapItem)
+    protected function applySortUpdates(\stdClass $sortMapItem)
     {
         /** @var RecipeChild $model */
         $model = $sortMapItem->model;
@@ -174,7 +173,7 @@ class RecipeContents
      */
     protected function loadModelsIntoSortMap(Collection $sortMap): void
     {
-        $keyMap = $sortMap->keyBy(function (stdClass $sortMapItem) {
+        $keyMap = $sortMap->keyBy(function (\stdClass $sortMapItem) {
             return  $sortMapItem->type . ':' . $sortMapItem->id;
         });
         $pageIds = $sortMap->where('type', '=', 'page')->pluck('id');

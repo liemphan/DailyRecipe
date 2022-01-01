@@ -1,6 +1,5 @@
 <?php
 
-use Carbon\Carbon;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Str;
@@ -49,8 +48,8 @@ class CreateJointPermissionsTable extends Migration
             'description'  => 'The role given to public visitors if allowed',
             'system_name'  => 'public',
             'hidden'       => true,
-            'created_at'   => Carbon::now()->toDateTimeString(),
-            'updated_at'   => Carbon::now()->toDateTimeString(),
+            'created_at'   => \Carbon\Carbon::now()->toDateTimeString(),
+            'updated_at'   => \Carbon\Carbon::now()->toDateTimeString(),
         ];
 
         // Ensure unique name
