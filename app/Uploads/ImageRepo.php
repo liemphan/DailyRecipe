@@ -75,7 +75,7 @@ class ImageRepo
         }
 
         // Filter by page access
-        $imageQuery = $this->restrictionService->filterRelatedEntity(Page::class, $imageQuery, 'images', 'uploaded_to');
+        $imageQuery = $this->restrictionService->filterRelatedEntity(Recipe::class, $imageQuery, 'images', 'uploaded_to');
 
         if ($whereClause !== null) {
             $imageQuery = $imageQuery->where($whereClause);

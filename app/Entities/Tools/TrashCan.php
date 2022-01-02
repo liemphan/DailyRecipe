@@ -38,6 +38,13 @@ class TrashCan
     {
         Deletion::createForEntity($recipe);
 
+        foreach ($recipe->pages as $page) {
+            $this->softDestroyPage($page, false);
+        }
+
+        foreach ($recipe->chapters as $chapter) {
+            $this->softDestroyChapter($chapter, false);
+        }
 
         $recipe->delete();
     }
@@ -67,7 +74,7 @@ class TrashCan
      *
      * @throws Exception
      */
-    public function softDestroyPage(Page $page, bool $recordDelete = true)
+    public function softDestroyPage(Recipe $page, bool $recordDelete = true)
     {
         if ($recordDelete) {
             Deletion::createForEntity($page);
@@ -77,7 +84,7 @@ class TrashCan
         $customHome = setting('app-homepage', '0:');
         if (intval($page->id) === intval(explode(':', $customHome)[0])) {
             if (setting('app-homepage-type') === 'page') {
-                throw new NotifyException(trans('errors.page_custom_home_deletion'), $page->getUrl());
+                throw new NotifyException(trans('errors.page_custom_home_deletion'), $page->getUrlContent());
             }
             setting()->remove('app-homepage');
         }

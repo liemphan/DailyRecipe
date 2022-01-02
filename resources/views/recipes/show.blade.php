@@ -29,20 +29,20 @@
                     <hr>
                     <p class="text-muted italic mb-m mt-xl">{{ trans('entities.recipes_empty_contents') }}</p>
 
-                    <div class="icon-list block inline">
-                        @if(userCan('page-create', $recipe))
-                            <a href="{{ $recipe->getUrl('/create-page') }}" class="icon-list-item text-page">
-                                <span class="icon">@icon('page')</span>
-                                <span>{{ trans('entities.recipes_empty_create_page') }}</span>
-                            </a>
-                        @endif
-                        @if(userCan('chapter-create', $recipe))
-                            <a href="{{ $recipe->getUrl('/create-chapter') }}" class="icon-list-item text-chapter">
-                                <span class="icon">@icon('chapter')</span>
-                                <span>{{ trans('entities.recipes_empty_add_chapter') }}</span>
-                            </a>
-                        @endif
-                    </div>
+{{--                    <div class="icon-list block inline">--}}
+{{--                        @if(userCan('page-create', $recipe))--}}
+{{--                            <a href="{{ $recipe->getUrl('/create-page') }}" class="icon-list-item text-page">--}}
+{{--                                <span class="icon">@icon('page')</span>--}}
+{{--                                <span>{{ trans('entities.recipes_empty_create_page') }}</span>--}}
+{{--                            </a>--}}
+{{--                        @endif--}}
+{{--                        @if(userCan('chapter-create', $recipe))--}}
+{{--                            <a href="{{ $recipe->getUrl('/create-chapter') }}" class="icon-list-item text-chapter">--}}
+{{--                                <span class="icon">@icon('chapter')</span>--}}
+{{--                                <span>{{ trans('entities.recipes_empty_add_chapter') }}</span>--}}
+{{--                            </a>--}}
+{{--                        @endif--}}
+{{--                    </div>--}}
 
                 </div>
             @endif
@@ -74,18 +74,18 @@
         <h5>{{ trans('common.actions') }}</h5>
         <div class="icon-list text-primary">
 
-            @if(userCan('page-create', $recipe))
-                <a href="{{ $recipe->getUrl('/create-page') }}" class="icon-list-item">
-                    <span>@icon('add')</span>
-                    <span>{{ trans('entities.pages_new') }}</span>
-                </a>
-            @endif
-            @if(userCan('chapter-create', $recipe))
-                <a href="{{ $recipe->getUrl('/create-chapter') }}" class="icon-list-item">
-                    <span>@icon('add')</span>
-                    <span>{{ trans('entities.chapters_new') }}</span>
-                </a>
-            @endif
+{{--            @if(userCan('page-create', $recipe))--}}
+{{--                <a href="{{ $recipe->getUrl('/create-page') }}" class="icon-list-item">--}}
+{{--                    <span>@icon('add')</span>--}}
+{{--                    <span>{{ trans('entities.pages_new') }}</span>--}}
+{{--                </a>--}}
+{{--            @endif--}}
+{{--            @if(userCan('chapter-create', $recipe))--}}
+{{--                <a href="{{ $recipe->getUrl('/create-chapter') }}" class="icon-list-item">--}}
+{{--                    <span>@icon('add')</span>--}}
+{{--                    <span>{{ trans('entities.chapters_new') }}</span>--}}
+{{--                </a>--}}
+{{--            @endif--}}
 
             <hr class="primary-background">
 

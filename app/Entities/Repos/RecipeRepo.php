@@ -292,8 +292,85 @@ class RecipeRepo
     {
         return PageRevision::query()->where('created_by', '=', user()->id)
             ->where('type', 'update_draft')
-            ->where('id', '=', $page->id)
+            ->where('recipe_id', '=', $page->id)
             ->orderBy('created_at', 'desc');
+    }
+    /**
+     * Save a page update draft.
+     */
+    public function updatePageDraft(Recipe $page, array $input)
+    {
+        // If the page itself is a draft simply update that
+        if ($page->draft) {
+            $this->updateTemplateStatusAndContentFromInput($page, $input);
+            $page->fill($input);
+            $page->save();
+
+            return $page;
+        }
+
+        // Otherwise save the data to a revision
+        $draft = $this->getPageRevisionToUpdate($page);
+        $draft->fill($input);
+        if (setting('app-editor') !== 'markdown') {
+            $draft->markdown = '';
+        }
+
+        $draft->save();
+
+        return $draft;
+    }
+    /**
+     * Get a page revision to update for the given page.
+     * Checks for an existing revisions before providing a fresh one.
+     */
+    protected function getPageRevisionToUpdate(Recipe $page): PageRevision
+    {
+        $drafts = $this->getUserDraftQuery($page)->get();
+        if ($drafts->count() > 0) {
+            return $drafts->first();
+        }
+
+        $draft = new PageRevision();
+        $draft->slug = $page->slug;
+        $draft->created_by = user()->id;
+        $draft->type = 'update_draft';
+
+        return $draft;
+    }
+
+    /**
+     * Update a page in the system.
+     */
+    public function updateContent(Recipe $page, array $input): Recipe
+    {
+        // Hold the old details to compare later
+        $oldHtml = $page->html;
+        $oldName = $page->name;
+        $oldMarkdown = $page->markdown;
+
+        $this->updateTemplateStatusAndContentFromInput($page, $input);
+        $this->baseRepo->update($page, $input);
+
+        // Update with new details
+        $page->revision_count++;
+        $page->save();
+
+        // Remove all update drafts for this user & page.
+        $this->getUserDraftQuery($page)->delete();
+
+        // Save a revision after updating
+        $summary = trim($input['summary'] ?? '');
+        $htmlChanged = isset($input['html']) && $input['html'] !== $oldHtml;
+        $nameChanged = isset($input['name']) && $input['name'] !== $oldName;
+        $markdownChanged = isset($input['markdown']) && $input['markdown'] !== $oldMarkdown;
+        if ($htmlChanged || $nameChanged || $markdownChanged || $summary) {
+            $this->savePageRevision($page, $summary);
+        }
+
+        Activity::addForEntity($page, ActivityType::PAGE_UPDATE);
+
+        return $page;
     }
 
 }

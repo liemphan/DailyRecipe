@@ -70,7 +70,7 @@
     {{--Title input--}}
     <div class="title-input page-title clearfix">
         <div refs="page-editor@titleContainer" class="input">
-            @include('form.text', ['name' => 'name', 'model' => $model, 'placeholder' => trans('entities.pages_title')])
+            @include('form.text-onlyread', ['name' => 'name', 'model' => $model, 'placeholder' => trans('entities.pages_title')])
         </div>
     </div>
 

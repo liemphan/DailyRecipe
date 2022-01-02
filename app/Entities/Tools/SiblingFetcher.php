@@ -19,15 +19,15 @@ class SiblingFetcher
         $entity = (new EntityProvider())->get($entityType)->visible()->findOrFail($entityId);
         $entities = [];
 
-    //        // Page in chapter
-    //        if ($entity instanceof Page && $entity->chapter) {
-    //            $entities = $entity->chapter->getVisiblePages();
-    //        }
-//
-//        // Page in recipe or chapter
-//        if (($entity instanceof Page && !$entity->chapter) || $entity instanceof Chapter) {
-//            $entities = $entity->recipe->getDirectChildren();
-//        }
+            // Page in chapter
+            if ($entity instanceof Page && $entity->chapter) {
+                $entities = $entity->chapter->getVisiblePages();
+            }
+
+        // Page in recipe or chapter
+        if (($entity instanceof Page && !$entity->chapter) || $entity instanceof Chapter) {
+            $entities = $entity->recipe->getDirectChildren();
+        }
 
         // Recipe
         // Gets just the recipes in a menu if menu is in context

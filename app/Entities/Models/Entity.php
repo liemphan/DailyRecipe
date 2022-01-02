@@ -122,7 +122,7 @@ abstract class Entity extends Model implements Sluggable, Favouritable, Viewable
         }
 
         if (($entity instanceof RecipeChild) && $this instanceof Recipe) {
-            return $entity->recipe_id === $this->id;
+            return $entity->id === $this->id;
         }
 
         if ($entity instanceof Page && $this instanceof Chapter) {
@@ -260,22 +260,22 @@ abstract class Entity extends Model implements Sluggable, Favouritable, Viewable
      */
     abstract public function getUrl(string $path = '/'): string;
 
-    /**
-     * Get the parent entity if existing.
-     * This is the "static" parent and does not include dynamic
-     * relations such as menus to recipes.
-     */
-    public function getParent(): ?self
-    {
-        if ($this instanceof Page) {
-            return $this->chapter_id ? $this->chapter()->withTrashed()->first() : $this->recipe()->withTrashed()->first();
-        }
-        if ($this instanceof Chapter) {
-            return $this->recipe()->withTrashed()->first();
-        }
-
-        return null;
-    }
+//    /**
+//     * Get the parent entity if existing.
+//     * This is the "static" parent and does not include dynamic
+//     * relations such as menus to recipes.
+//     */
+//    public function getParent(): ?self
+//    {
+//        if ($this instanceof Page) {
+//            return $this->chapter_id ? $this->chapter()->withTrashed()->first() : $this->recipe()->withTrashed()->first();
+//        }
+//        if ($this instanceof Chapter) {
+//            return $this->recipe()->withTrashed()->first();
+//        }
+//
+//        return null;
+//    }
 
     /**
      * Rebuild the permissions for this entity.

@@ -168,8 +168,8 @@ Route::middleware('auth')->group(function () {
     Route::delete('/attachments/{id}', [AttachmentController::class, 'delete']);
 
     // AJAX routes
-    Route::put('/ajax/page/{id}/save-draft', [PageController::class, 'saveDraft']);
-    Route::get('/ajax/page/{id}', [PageController::class, 'getPageAjax']);
+    Route::put('/ajax/content/{id}/save-draft', [RecipeController::class, 'saveDraft']);
+    Route::get('/ajax/content/{id}', [RecipeController::class, 'getPageAjax']);
     Route::delete('/ajax/page/{id}', [PageController::class, 'ajaxDestroy']);
 
     // Tag routes

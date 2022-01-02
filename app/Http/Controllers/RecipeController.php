@@ -82,38 +82,13 @@ class RecipeController extends Controller
     }
 
 
-//    public function store(Request $request, string $menuSlug = null)
-//    {
-//        $this->checkPermission('recipe-create-all');
-//        $this->validate($request, [
-//            'name'        => ['required', 'string', 'max:255'],
-//            'description' => ['string', 'max:1000'],
-//            'image'       => array_merge(['nullable'], $this->getImageValidationRules()),
-//        ]);
-//
-//        $recipemenu = null;
-//        if ($menuSlug !== null) {
-//            $recipemenu = Recipemenu::visible()->where('slug', '=', $menuSlug)->firstOrFail();
-//            $this->checkOwnablePermission('recipemenu-update', $recipemenu);
-//        }
-//
-//        $recipe = $this->recipeRepo->create($request->all());
-//        $this->recipeRepo->updateCoverImage($recipe, $request->file('image', null));
-//
-//        if ($recipemenu) {
-//            $recipemenu->appendRecipe($recipe);
-//            Activity::addForEntity($recipemenu, ActivityType::RECIPEMENU_UPDATE);
-//        }
-//
-//        return redirect($recipe->getUrl('/create-page'));
-//    }
-
     /**
      * Display the specified recipe.
      */
     public function show(Request $request, string $slug)
     {
         $recipe = $this->recipeRepo->getBySlug($slug);
+        $recipeChildren = (new RecipeContents($recipe))->getTree(true);
         $recipeParentMenus = $recipe->menus()->scopes('visible')->get();
 
         View::incrementFor($recipe);
@@ -126,6 +101,7 @@ class RecipeController extends Controller
         return view('recipes.show', [
             'recipe' => $recipe,
             'current' => $recipe,
+            'recipeChildren' => $recipeChildren,
             'recipeParentMenus' => $recipeParentMenus,
             'activity' => Activity::entityActivity($recipe, 20, 1),
         ]);
@@ -164,7 +140,7 @@ class RecipeController extends Controller
         $resetCover = $request->has('image_reset');
         $this->recipeRepo->updateCoverImage($recipe, $request->file('image', null), $resetCover);
 
-        return redirect($recipe->getUrl());
+        return redirect($recipe->getUrlContent('/edit'));
     }
 
     /**
@@ -328,7 +304,7 @@ class RecipeController extends Controller
 
         $pageContent = (new PageContent($page));
         $page->html = $pageContent->render();
-
+        $sidebarTree = (new RecipeContents($page))->getTree();
         $pageNav = $pageContent->getNavigation($page->html);
 
         // Check if page comments are enabled
@@ -337,7 +313,7 @@ class RecipeController extends Controller
             $page->load(['comments.createdBy']);
         }
 
-        $nextPreviousLocator = new NextPreviousContentLocator($page);
+        $nextPreviousLocator = new NextPreviousContentLocator($page, $sidebarTree);
 
         View::incrementFor($page);
         $this->setPageTitle($page->getShortName());
@@ -346,6 +322,7 @@ class RecipeController extends Controller
             'page' => $page,
             'recipe' => $page,
             'current' => $page,
+            'sidebarTree' => $sidebarTree,
             'commentsEnabled' => $commentsEnabled,
             'pageNav' => $pageNav,
             'next' => $nextPreviousLocator->getNext(),
@@ -413,10 +390,10 @@ class RecipeController extends Controller
         $page = $this->recipeRepo->getBySlug($recipeSlug);
         $this->checkOwnablePermission('page-update', $page);
 
-        $this->recipeRepo->update($page, $request->all());
+        $this->recipeRepo->updateContent($page, $request->all());
 
 
-        return redirect($page->getUrl());
+        return redirect($page->getUrlContent());
     }
 
     /**
@@ -440,5 +417,42 @@ class RecipeController extends Controller
         ]);
 
         return redirect($recipe->getUrlContent('/edit'));
+    }
+    /**
+     * Save a draft update as a revision.
+     *
+     * @throws NotFoundException
+     */
+    public function saveDraft(Request $request, int $pageId)
+    {
+        $page = $this->recipeRepo->getById($pageId);
+        $this->checkOwnablePermission('page-update', $page);
+
+        if (!$this->isSignedIn()) {
+            return $this->jsonError(trans('errors.guests_cannot_save_drafts'), 500);
+        }
+
+        $draft = $this->recipeRepo->updatePageDraft($page, $request->only(['name', 'html', 'markdown']));
+        $warnings = (new PageEditActivity($page))->getWarningMessagesForDraft($draft);
+
+        return response()->json([
+            'status'    => 'success',
+            'message'   => trans('entities.pages_edit_draft_save_at'),
+            'warning'   => implode("\n", $warnings),
+            'timestamp' => $draft->updated_at->timestamp,
+        ]);
+    }
+    /**
+     * Get page from an ajax request.
+     *
+     * @throws NotFoundException
+     */
+    public function getPageAjax(int $pageId)
+    {
+        $page = $this->recipeRepo->getById($pageId);
+        $page->setHidden(array_diff($page->getHidden(), ['html', 'markdown']));
+        $page->makeHidden(['recipe']);
+
+        return response()->json($page);
     }
 }

@@ -75,7 +75,7 @@ class PageEditActivity
      */
     protected function hasPageBeenUpdatedSinceDraftCreated(PageRevision $draft): bool
     {
-        return $draft->page->updated_at->timestamp > $draft->created_at->timestamp;
+        return $draft->recipe->updated_at->timestamp > $draft->created_at->timestamp;
     }
 
     /**
@@ -84,7 +84,7 @@ class PageEditActivity
     public function getEditingActiveDraftMessage(PageRevision $draft): string
     {
         $message = trans('entities.pages_editing_draft_notification', ['timeDiff' => $draft->updated_at->diffForHumans()]);
-        if ($draft->page->updated_at->timestamp <= $draft->updated_at->timestamp) {
+        if ($draft->recipe->updated_at->timestamp <= $draft->updated_at->timestamp) {
             return $message;
         }
 

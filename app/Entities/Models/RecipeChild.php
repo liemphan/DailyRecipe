@@ -9,7 +9,6 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  * Class RecipeChild.
  *
  * @property int    $recipe_id
- * @property int    $priority
  * @property string $recipe_slug
  * @property Recipe   $recipe
  *
