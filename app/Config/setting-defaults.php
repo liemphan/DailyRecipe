@@ -10,26 +10,26 @@
 
 return [
 
-    'app-name'             => 'DailyRecipe',
-    'app-logo'             => '',
-    'app-name-header'      => true,
-    'app-editor'           => 'wysiwyg',
-    'app-color'            => '#206ea7',
-    'app-color-light'      => 'rgba(32,110,167,0.15)',
-    'recipemenu-color'      => '#a94747',
-    'recipe-color'           => '#077b70',
-    'chapter-color'        => '#af4d0d',
-    'page-color'           => '#206ea7',
-    'page-draft-color'     => '#7e50b1',
-    'app-custom-head'      => false,
+    'app-name' => 'DailyRecipe',
+    'app-logo' => '',
+    'app-name-header' => true,
+    'app-editor' => 'wysiwyg',
+    'app-color' => '#206ea7',
+    'app-color-light' => 'rgba(32,110,167,0.15)',
+    'recipemenu-color' => '#a94747',
+    'recipe-color' => '#077b70',
+    'chapter-color' => '#af4d0d',
+    'page-color' => '#206ea7',
+    'page-draft-color' => '#7e50b1',
+    'app-custom-head' => false,
     'registration-enabled' => false,
 
     // User-level default settings
     'user' => [
-        'dark-mode-enabled'     => env('APP_DEFAULT_DARK_MODE', false),
+        'dark-mode-enabled' => env('APP_DEFAULT_DARK_MODE', false),
         'recipemenus_view_type' => env('APP_VIEWS_RECIPEMENUS', 'grid'),
-        'recipemenu_view_type'   => env('APP_VIEWS_RECIPEMENU', 'grid'),
-        'recipes_view_type'       => env('APP_VIEWS_RECIPES', 'grid'),
+        'recipemenu_view_type' => env('APP_VIEWS_RECIPEMENU', 'grid'),
+        'recipes_view_type' => env('APP_VIEWS_RECIPES', 'grid'),
     ],
 
 ];

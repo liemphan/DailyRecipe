@@ -19,9 +19,7 @@
             <form action="{{ $recipe->getUrl()  }}" method="POST" enctype="multipart/form-data">
                 <input type="hidden" name="_method" value="PUT">
                 @include('recipes.parts.form', ['model' => $recipe, 'returnLocation' => $recipe->getUrl()])
-                @php
-                echo $recipe->getUrl();
-                @endphp
+
                </form>
         </main>
     </div>

@@ -52,7 +52,7 @@ class Recipemenu extends Entity implements HasCoverImage
     /**
      * Returns RecipeMenu cover image, if cover does not exists return default cover image.
      *
-     * @param int $width  - Width of the image
+     * @param int $width - Width of the image
      * @param int $height - Height of the image
      *
      * @return string

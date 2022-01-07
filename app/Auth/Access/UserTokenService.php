@@ -45,10 +45,10 @@ class UserTokenService
      *
      * @param string $token
      *
-     * @throws UserTokenNotFoundException
+     * @return int
      * @throws UserTokenExpiredException
      *
-     * @return int
+     * @throws UserTokenNotFoundException
      */
     public function checkTokenAndGetUserId(string $token): int
     {
@@ -91,8 +91,8 @@ class UserTokenService
     {
         $token = $this->generateToken();
         DB::table($this->tokenTable)->insert([
-            'user_id'    => $user->id,
-            'token'      => $token,
+            'user_id' => $user->id,
+            'token' => $token,
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now(),
         ]);

@@ -12,7 +12,7 @@ class CheckUserHasPermission
      *
      * @param Request $request
      * @param Closure $next
-     * @param string                   $permission
+     * @param string $permission
      *
      * @return mixed
      */

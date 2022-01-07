@@ -56,7 +56,7 @@ class ApiAuthenticate
     {
         return response()->json([
             'error' => [
-                'code'    => $code,
+                'code' => $code,
                 'message' => $message,
             ],
         ], $code);

@@ -74,11 +74,11 @@ class Kernel extends HttpKernel
      * @var array
      */
     protected $routeMiddleware = [
-        'auth'       => Authenticate::class,
-        'can'        => CheckUserHasPermission::class,
-        'guest'      => RedirectIfAuthenticated::class,
-        'throttle'   => ThrottleRequests::class,
-        'guard'      => CheckGuard::class,
-        'mfa-setup'  => AuthenticatedOrPendingMfa::class,
+        'auth' => Authenticate::class,
+        'can' => CheckUserHasPermission::class,
+        'guest' => RedirectIfAuthenticated::class,
+        'throttle' => ThrottleRequests::class,
+        'guard' => CheckGuard::class,
+        'mfa-setup' => AuthenticatedOrPendingMfa::class,
     ];
 }

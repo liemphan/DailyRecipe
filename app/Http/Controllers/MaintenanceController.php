@@ -26,7 +26,7 @@ class MaintenanceController extends Controller
         $recycleStats = (new TrashCan())->getTrashedCounts();
 
         return view('settings.maintenance', [
-            'version'      => $version,
+            'version' => $version,
             'recycleStats' => $recycleStats,
         ]);
     }

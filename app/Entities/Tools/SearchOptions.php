@@ -87,14 +87,14 @@ class SearchOptions
     {
         $terms = [
             'searches' => [],
-            'exacts'   => [],
-            'tags'     => [],
-            'filters'  => [],
+            'exacts' => [],
+            'tags' => [],
+            'filters' => [],
         ];
 
         $patterns = [
-            'exacts'  => '/"(.*?)"/',
-            'tags'    => '/\[(.*?)\]/',
+            'exacts' => '/"(.*?)"/',
+            'tags' => '/\[(.*?)\]/',
             'filters' => '/\{(.*?)\}/',
         ];
 
@@ -135,7 +135,7 @@ class SearchOptions
         $terms = explode(' ', $termString);
         $indexDelimiters = SearchIndex::$delimiters;
         $parsed = [
-            'terms'  => [],
+            'terms' => [],
             'exacts' => [],
         ];
 

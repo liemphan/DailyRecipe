@@ -294,7 +294,7 @@ class ExportTest extends TestCase
     public function test_page_pdf_export_converts_iframes_to_links()
     {
         $page = Page::query()->first()->forceFill([
-            'html'     => '<iframe width="560" height="315" src="//www.youtube.com/embed/ShqUjt33uOs"></iframe>',
+            'html' => '<iframe width="560" height="315" src="//www.youtube.com/embed/ShqUjt33uOs"></iframe>',
         ]);
         $page->save();
 
@@ -323,7 +323,7 @@ class ExportTest extends TestCase
     {
         $page = Page::query()->first()->forceFill([
             'markdown' => '# A header',
-            'html'     => '<h1>Dogcat</h1>',
+            'html' => '<h1>Dogcat</h1>',
         ]);
         $page->save();
 
@@ -336,7 +336,7 @@ class ExportTest extends TestCase
     {
         $page = Page::query()->first()->forceFill([
             'markdown' => '',
-            'html'     => '<h1>Dogcat</h1><p>Some <strong>bold</strong> text</p>',
+            'html' => '<h1>Dogcat</h1><p>Some <strong>bold</strong> text</p>',
         ]);
         $page->save();
 
@@ -348,7 +348,7 @@ class ExportTest extends TestCase
     {
         $page = Page::query()->first()->forceFill([
             'markdown' => '',
-            'html'     => '<h1>Dogcat</h1><p class="callout info">Some callout text</p><p>Another line</p>',
+            'html' => '<h1>Dogcat</h1><p class="callout info">Some callout text</p><p>Another line</p>',
         ]);
         $page->save();
 
@@ -360,7 +360,7 @@ class ExportTest extends TestCase
     {
         $page = Page::query()->first()->forceFill([
             'markdown' => '',
-            'html'     => '<h1>Dogcat</h1>' . "\r\n" . '<pre id="bkmrk-var-a-%3D-%27cat%27%3B"><code class="language-JavaScript">var a = \'cat\';</code></pre><p>Another line</p>',
+            'html' => '<h1>Dogcat</h1>' . "\r\n" . '<pre id="bkmrk-var-a-%3D-%27cat%27%3B"><code class="language-JavaScript">var a = \'cat\';</code></pre><p>Another line</p>',
         ]);
         $page->save();
 

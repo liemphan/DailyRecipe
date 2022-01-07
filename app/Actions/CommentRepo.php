@@ -77,8 +77,8 @@ class CommentRepo
     public function commentToHtml(string $commentText): string
     {
         $converter = new CommonMarkConverter([
-            'html_input'         => 'strip',
-            'max_nesting_level'  => 10,
+            'html_input' => 'strip',
+            'max_nesting_level' => 10,
             'allow_unsafe_links' => false,
         ]);
 

@@ -145,13 +145,13 @@ class ApiDocsGenerator
             $shortName = $baseModelName . '-' . $controllerMethod;
 
             return [
-                'name'                    => $shortName,
-                'uri'                     => $route->uri,
-                'method'                  => $route->methods[0],
-                'controller'              => $controller,
-                'controller_method'       => $controllerMethod,
+                'name' => $shortName,
+                'uri' => $route->uri,
+                'method' => $route->methods[0],
+                'controller' => $controller,
+                'controller_method' => $controllerMethod,
                 'controller_method_kebab' => Str::kebab($controllerMethod),
-                'base_model'              => $baseModelName,
+                'base_model' => $baseModelName,
             ];
         });
     }

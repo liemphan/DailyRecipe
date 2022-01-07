@@ -30,8 +30,8 @@ class BaseRepo
         $entity->forceFill([
             'created_by' => user()->id,
             'updated_by' => user()->id,
-            'owned_by'   => user()->id,
-            'draft'      => true,
+            'owned_by' => user()->id,
+            'draft' => true,
         ]);
 
         $entity->refreshSlug();
@@ -45,6 +45,7 @@ class BaseRepo
         $entity->indexForSearch();
 
     }
+
     /**
      * Create a new entity in the system.
      */
@@ -54,7 +55,7 @@ class BaseRepo
         $entity->forceFill([
             'created_by' => user()->id,
             'updated_by' => user()->id,
-            'owned_by'   => user()->id,
+            'owned_by' => user()->id,
         ]);
 
         $entity->refreshSlug();

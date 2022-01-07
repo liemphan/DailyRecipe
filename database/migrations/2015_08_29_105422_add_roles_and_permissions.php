@@ -90,7 +90,7 @@ class AddRolesAndPermissions extends Migration
         ]);
 
         // Create default CRUD permissions and allocate to admins and editors
-        $entities = ['Recipe', 'Page', 'Chapter', 'Image'];
+        $entities = ['Recipe',  'Image'];
         $ops = ['Create', 'Update', 'Delete'];
         foreach ($entities as $entity) {
             foreach ($ops as $op) {

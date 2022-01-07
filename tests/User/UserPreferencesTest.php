@@ -13,18 +13,18 @@ class UserPreferencesTest extends TestCase
         $this->actingAs($editor);
 
         $updateRequest = $this->patch('/settings/users/' . $editor->id . '/change-sort/recipes', [
-            'sort'  => 'created_at',
+            'sort' => 'created_at',
             'order' => 'desc',
         ]);
         $updateRequest->assertStatus(302);
 
         $this->assertDatabaseHas('settings', [
             'setting_key' => 'user:' . $editor->id . ':recipes_sort',
-            'value'       => 'created_at',
+            'value' => 'created_at',
         ]);
         $this->assertDatabaseHas('settings', [
             'setting_key' => 'user:' . $editor->id . ':recipes_sort_order',
-            'value'       => 'desc',
+            'value' => 'desc',
         ]);
         $this->assertEquals('created_at', setting()->getForCurrentUser('recipes_sort'));
         $this->assertEquals('desc', setting()->getForCurrentUser('recipes_sort_order'));
@@ -36,7 +36,7 @@ class UserPreferencesTest extends TestCase
         $this->actingAs($editor);
 
         $updateRequest = $this->patch('/settings/users/' . $editor->id . '/change-sort/recipemenus', [
-            'sort'  => 'cat',
+            'sort' => 'cat',
             'order' => 'dog',
         ]);
         $updateRequest->assertStatus(302);
@@ -51,7 +51,7 @@ class UserPreferencesTest extends TestCase
         $this->actingAs($editor);
 
         $updateRequest = $this->patch('/settings/users/' . $editor->id . '/change-sort/dogs', [
-            'sort'  => 'name',
+            'sort' => 'name',
             'order' => 'asc',
         ]);
         $updateRequest->assertStatus(500);
@@ -70,7 +70,7 @@ class UserPreferencesTest extends TestCase
 
         $this->assertDatabaseHas('settings', [
             'setting_key' => 'user:' . $editor->id . ':section_expansion#home-details',
-            'value'       => 'true',
+            'value' => 'true',
         ]);
         $this->assertEquals(true, setting()->getForCurrentUser('section_expansion#home-details'));
 

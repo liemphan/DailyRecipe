@@ -111,7 +111,7 @@ class PageRevisionTest extends TestCase
         $this->put($page->getUrl() . '/revisions/' . $revToRestore->id . '/restore');
         $page->refresh();
 
-        $this->assertDatabaseHas('page_revisions', [
+        $this->assertDatabaseHas('recipe_revisions', [
             'page_id' => $page->id,
             'text'    => 'new contente def456',
             'type'    => 'version',

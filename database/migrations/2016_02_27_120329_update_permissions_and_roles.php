@@ -41,7 +41,7 @@ class UpdatePermissionsAndRoles extends Migration
         }
 
         // Create & attach new entity permissions
-        $entities = ['Recipe', 'Page', 'Chapter', 'Image'];
+        $entities = ['Recipe','Image'];
         $ops = ['Create All', 'Create Own', 'Update All', 'Update Own', 'Delete All', 'Delete Own'];
         foreach ($entities as $entity) {
             foreach ($ops as $op) {
@@ -79,7 +79,7 @@ class UpdatePermissionsAndRoles extends Migration
         $permissions = DB::table('permissions')->delete();
 
         // Create default CRUD permissions and allocate to admins and editors
-        $entities = ['Recipe', 'Page', 'Chapter', 'Image'];
+        $entities = ['Recipe', 'Image'];
         $ops = ['Create', 'Update', 'Delete'];
         foreach ($entities as $entity) {
             foreach ($ops as $op) {

@@ -25,7 +25,7 @@ return [
     // Global "From" address & name
     'from' => [
         'address' => env('MAIL_FROM', 'mail@dailyrecipeapp.com'),
-        'name'    => env('MAIL_FROM_NAME', 'DailyRecipe'),
+        'name' => env('MAIL_FROM_NAME', 'DailyRecipe'),
     ],
 
     // Email encryption protocol

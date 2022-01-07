@@ -78,9 +78,9 @@ class UserInviteController extends Controller
     /**
      * Check and validate the exception thrown when checking an invite token.
      *
+     * @return RedirectResponse|Redirector
      * @throws Exception
      *
-     * @return RedirectResponse|Redirector
      */
     protected function handleTokenException(Exception $exception)
     {

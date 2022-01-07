@@ -15,9 +15,9 @@ class WhoopsDailyRecipePrettyHandler extends Handler
         $exception = $this->getException();
 
         echo view('errors.debug', [
-            'error'       => $exception->getMessage(),
-            'errorClass'  => get_class($exception),
-            'trace'       => $exception->getTraceAsString(),
+            'error' => $exception->getMessage(),
+            'errorClass' => get_class($exception),
+            'trace' => $exception->getTraceAsString(),
             'environment' => $this->getEnvironment(),
         ])->render();
 
@@ -36,15 +36,15 @@ class WhoopsDailyRecipePrettyHandler extends Handler
     protected function getEnvironment(): array
     {
         return [
-            'PHP Version'       => phpversion(),
+            'PHP Version' => phpversion(),
             'DailyRecipe Version' => $this->safeReturn(function () {
                 $versionFile = base_path('version');
 
                 return trim(file_get_contents($versionFile));
             }, 'unknown'),
             'Theme Configured' => $this->safeReturn(function () {
-                return config('view.theme');
-            }) ?? 'None',
+                    return config('view.theme');
+                }) ?? 'None',
         ];
     }
 }

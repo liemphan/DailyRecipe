@@ -14,7 +14,7 @@
     <div class="mb-m print-hidden">
         @include('entities.breadcrumbs', ['crumbs' => [
             $page->$recipe,
-            $page->chapter,
+           // $page->chapter,
             $page,
             $page->getUrl('/revisions') => [
                 'text' => trans('entities.pages_revisions'),

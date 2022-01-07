@@ -20,10 +20,10 @@ class ChaptersApiTest extends TestCase
         $resp = $this->getJson($this->baseEndpoint . '?count=1&sort=+id');
         $resp->assertJson(['data' => [
             [
-                'id'       => $firstChapter->id,
-                'name'     => $firstChapter->name,
-                'slug'     => $firstChapter->slug,
-                'recipe_id'  => $firstChapter->recipe->id,
+                'id' => $firstChapter->id,
+                'name' => $firstChapter->name,
+                'slug' => $firstChapter->slug,
+                'recipe_id' => $firstChapter->recipe->id,
                 'priority' => $firstChapter->priority,
             ],
         ]]);
@@ -34,12 +34,12 @@ class ChaptersApiTest extends TestCase
         $this->actingAsApiEditor();
         $recipe = Recipe::query()->first();
         $details = [
-            'name'        => 'My API chapter',
+            'name' => 'My API chapter',
             'description' => 'A chapter created via the API',
-            'recipe_id'     => $recipe->id,
-            'tags'        => [
+            'recipe_id' => $recipe->id,
+            'tags' => [
                 [
-                    'name'  => 'tagname',
+                    'name' => 'tagname',
                     'value' => 'tagvalue',
                 ],
             ],
@@ -50,10 +50,10 @@ class ChaptersApiTest extends TestCase
         $newItem = Chapter::query()->orderByDesc('id')->where('name', '=', $details['name'])->first();
         $resp->assertJson(array_merge($details, ['id' => $newItem->id, 'slug' => $newItem->slug]));
         $this->assertDatabaseHas('tags', [
-            'entity_id'   => $newItem->id,
+            'entity_id' => $newItem->id,
             'entity_type' => $newItem->getMorphClass(),
-            'name'        => 'tagname',
-            'value'       => 'tagvalue',
+            'name' => 'tagname',
+            'value' => 'tagvalue',
         ]);
         $resp->assertJsonMissing(['pages' => []]);
         $this->assertActivityExists('chapter_create', $newItem);
@@ -64,7 +64,7 @@ class ChaptersApiTest extends TestCase
         $this->actingAsApiEditor();
         $recipe = Recipe::query()->first();
         $details = [
-            'recipe_id'     => $recipe->id,
+            'recipe_id' => $recipe->id,
             'description' => 'A chapter created via the API',
         ];
 
@@ -79,7 +79,7 @@ class ChaptersApiTest extends TestCase
     {
         $this->actingAsApiEditor();
         $details = [
-            'name'        => 'My api chapter',
+            'name' => 'My api chapter',
             'description' => 'A chapter created via the API',
         ];
 
@@ -99,12 +99,12 @@ class ChaptersApiTest extends TestCase
         $resp = $this->getJson($this->baseEndpoint . "/{$chapter->id}");
         $resp->assertStatus(200);
         $resp->assertJson([
-            'id'         => $chapter->id,
-            'slug'       => $chapter->slug,
+            'id' => $chapter->id,
+            'slug' => $chapter->slug,
             'created_by' => [
                 'name' => $chapter->createdBy->name,
             ],
-            'recipe_id'    => $chapter->recipe_id,
+            'recipe_id' => $chapter->recipe_id,
             'updated_by' => [
                 'name' => $chapter->createdBy->name,
             ],
@@ -113,7 +113,7 @@ class ChaptersApiTest extends TestCase
             ],
             'pages' => [
                 [
-                    'id'   => $page->id,
+                    'id' => $page->id,
                     'slug' => $page->slug,
                     'name' => $page->name,
                 ],
@@ -127,11 +127,11 @@ class ChaptersApiTest extends TestCase
         $this->actingAsApiEditor();
         $chapter = Chapter::visible()->first();
         $details = [
-            'name'        => 'My updated API chapter',
+            'name' => 'My updated API chapter',
             'description' => 'A chapter created via the API',
-            'tags'        => [
+            'tags' => [
                 [
-                    'name'  => 'freshtag',
+                    'name' => 'freshtag',
                     'value' => 'freshtagval',
                 ],
             ],

@@ -7,7 +7,7 @@
         <div class="my-s">
             @include('entities.breadcrumbs', ['crumbs' => [
                 $page->recipe,
-                $page->chapter,
+               // $page->chapter,
                 $page,
                 $page->getUrl('/copy') => [
                     'text' => trans('entities.pages_copy'),
@@ -33,7 +33,7 @@
                         <label for="entity_selection">{{ trans('entities.pages_copy_desination') }}</label>
                     </button>
                     <div class="collapse-content" collapsible-content>
-                        @include('entities.selector', ['name' => 'entity_selection', 'selectorSize' => 'large', 'entityTypes' => 'recipe,chapter', 'entityPermission' => 'page-create'])
+                        @include('entities.selector', ['name' => 'entity_selection', 'selectorSize' => 'large', 'entityTypes' => 'recipe', 'entityPermission' => 'page-create'])
                     </div>
                 </div>
 

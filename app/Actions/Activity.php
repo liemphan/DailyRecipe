@@ -11,12 +11,12 @@ use Illuminate\Support\Str;
 
 /**
  * @property string $type
- * @property User   $user
+ * @property User $user
  * @property Entity $entity
  * @property string $detail
  * @property string $entity_type
- * @property int    $entity_id
- * @property int    $user_id
+ * @property int $entity_id
+ * @property int $user_id
  */
 class Activity extends Model
 {

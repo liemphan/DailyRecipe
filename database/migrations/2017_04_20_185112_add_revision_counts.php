@@ -16,14 +16,14 @@ class AddRevisionCounts extends Migration
         Schema::table('recipes', function (Blueprint $table) {
             $table->integer('revision_count');
         });
-        Schema::table('page_revisions', function (Blueprint $table) {
+        Schema::table('recipe_revisions', function (Blueprint $table) {
             $table->integer('revision_number');
             $table->index('revision_number');
         });
 
         // Update revision count
         $pTable = DB::getTablePrefix() . 'recipes';
-        $rTable = DB::getTablePrefix() . 'page_revisions';
+        $rTable = DB::getTablePrefix() . 'recipe_revisions';
         DB::statement("UPDATE ${pTable} SET ${pTable}.revision_count=(SELECT count(*) FROM ${rTable} WHERE ${rTable}.recipe_id=${pTable}.id)");
     }
 
@@ -37,7 +37,7 @@ class AddRevisionCounts extends Migration
         Schema::table('recipes', function (Blueprint $table) {
             $table->dropColumn('revision_count');
         });
-        Schema::table('page_revisions', function (Blueprint $table) {
+        Schema::table('recipe_revisions', function (Blueprint $table) {
             $table->dropColumn('revision_number');
         });
     }

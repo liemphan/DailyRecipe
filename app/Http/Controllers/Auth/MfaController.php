@@ -64,8 +64,8 @@ class MfaController extends Controller
         })->all();
 
         return view('mfa.verify', [
-            'userMethods'  => $userMethods,
-            'method'       => $method,
+            'userMethods' => $userMethods,
+            'method' => $method,
             'otherMethods' => $otherMethods,
         ]);
     }

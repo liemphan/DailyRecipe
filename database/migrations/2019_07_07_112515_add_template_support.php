@@ -14,10 +14,7 @@ class AddTemplateSupport extends Migration
      */
     public function up()
     {
-        Schema::table('pages', function (Blueprint $table) {
-            $table->boolean('template')->default(false);
-            $table->index('template');
-        });
+
         Schema::table('recipes', function (Blueprint $table) {
             $table->boolean('template')->default(false);
             $table->index('template');
@@ -44,9 +41,7 @@ class AddTemplateSupport extends Migration
      */
     public function down()
     {
-        Schema::table('pages', function (Blueprint $table) {
-            $table->dropColumn('template');
-        });
+
         Schema::table('recipes', function (Blueprint $table) {
             $table->dropColumn('template');
         });

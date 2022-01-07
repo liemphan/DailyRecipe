@@ -8,22 +8,22 @@ use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 /**
- * Class PageRevision.
+ * Class RecipeRevision.
  *
- * @property int    $recipe_id
+ * @property int $recipe_id
  * @property string $slug
- * @property int    $created_by
+ * @property int $created_by
  * @property Carbon $created_at
  * @property Carbon $updated_at
  * @property string $type
  * @property string $summary
  * @property string $markdown
  * @property string $html
- * @property int    $revision_number
- * @property Recipe   $recipe
+ * @property int $revision_number
+ * @property Recipe $recipe
  * @property-read ?User $createdBy
  */
-class PageRevision extends Model
+class RecipeRevision extends Model
 {
     protected $fillable = ['name', 'html', 'text', 'markdown', 'summary'];
 
@@ -52,7 +52,7 @@ class PageRevision extends Model
      */
     public function getUrl($path = null)
     {
-        $url = $this->page->getUrl() . '/revisions/' . $this->id;
+        $url = $this->recipe->getUrl() . '/revisions/' . $this->id;
         if ($path) {
             return $url . '/' . trim($path, '/');
         }
@@ -63,7 +63,7 @@ class PageRevision extends Model
     /**
      * Get the previous revision for the same page if existing.
      */
-    public function getPrevious(): ?PageRevision
+    public function getPrevious(): ?RecipeRevision
     {
         $id = static::newQuery()->where('recipe_id', '=', $this->recipe_id)
             ->where('id', '<', $this->id)

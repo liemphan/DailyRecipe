@@ -9,8 +9,7 @@ use DailyRecipe\Auth\Role;
 use DailyRecipe\Auth\User;
 use DailyRecipe\Entities\Models\Recipe;
 use DailyRecipe\Entities\Models\Recipemenu;
-use DailyRecipe\Entities\Models\Chapter;
-use DailyRecipe\Entities\Models\Page;
+
 use DailyRecipe\Entities\Tools\SearchIndex;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;

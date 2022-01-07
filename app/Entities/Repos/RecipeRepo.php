@@ -4,12 +4,9 @@ namespace DailyRecipe\Entities\Repos;
 
 use DailyRecipe\Actions\ActivityType;
 use DailyRecipe\Actions\TagRepo;
-use DailyRecipe\Entities\Models\Chapter;
-use DailyRecipe\Entities\Models\Entity;
-use DailyRecipe\Entities\Models\Page;
-use DailyRecipe\Entities\Models\PageRevision;
+
+use DailyRecipe\Entities\Models\RecipeRevision;
 use DailyRecipe\Entities\Models\Recipe;
-use DailyRecipe\Entities\Tools\PageContent;
 use DailyRecipe\Entities\Tools\RecipeContents;
 use DailyRecipe\Entities\Tools\TrashCan;
 use DailyRecipe\Exceptions\ImageUploadException;
@@ -104,14 +101,15 @@ class RecipeRepo
 
         return $recipe;
     }
+
     /**
      * Get a page by its old slug but checking the revisions table
      * for the last revision that matched the given page and recipe slug.
      */
     public function getByOldSlug(string $recipeSlug): ?Recipe
     {
-        /** @var ?PageRevision $revision */
-        $revision = PageRevision::query()
+        /** @var ?RecipeRevision $revision */
+        $revision = RecipeRevision::query()
             ->whereHas('page', function (Builder $query) {
                 $query->scopes('visible');
             })
@@ -123,6 +121,7 @@ class RecipeRepo
 
         return $revision->recipe ?? null;
     }
+
     /**
      * Create a new recipe in the system.
      */
@@ -172,7 +171,6 @@ class RecipeRepo
     }
 
 
-
     /**
      * Get pages that have been marked as a template.
      */
@@ -193,6 +191,7 @@ class RecipeRepo
 
         return $paginator;
     }
+
     /**
      * Publish a draft page to make it a live, non-draft page.
      */
@@ -215,19 +214,21 @@ class RecipeRepo
 
         return $draft;
     }
+
     protected function updateTemplateStatusAndContentFromInput(Recipe $page, array $input)
     {
         if (isset($input['template']) && userCan('templates-manage')) {
             $page->template = ($input['template'] === 'true');
         }
 
-        $pageContent = new PageContent($page);
+        $pageContent = new RecipeContents($page);
         if (!empty($input['markdown'] ?? '')) {
             $pageContent->setNewMarkdown($input['markdown']);
         } elseif (isset($input['html'])) {
             $pageContent->setNewHTML($input['html']);
         }
     }
+
     /**
      * Get a new priority for a page.
      */
@@ -235,12 +236,13 @@ class RecipeRepo
     {
         return (new RecipeContents($page))->getLastPriority() + 1;
     }
+
     /**
      * Saves a page revision into the system.
      */
-    protected function savePageRevision(Recipe $page, string $summary = null): PageRevision
+    protected function savePageRevision(Recipe $page, string $summary = null): RecipeRevision
     {
-        $revision = new PageRevision($page->getAttributes());
+        $revision = new RecipeRevision($page->getAttributes());
 
         $revision->recipe_id = $page->id;
         $revision->slug = $page->slug;
@@ -266,35 +268,38 @@ class RecipeRepo
             return;
         }
 
-        $revisionsToDelete = PageRevision::query()
+        $revisionsToDelete = RecipeRevision::query()
             ->where('recipe_id', '=', $page->id)
             ->orderBy('created_at', 'desc')
             ->skip(intval($revisionLimit))
             ->take(10)
             ->get(['id']);
         if ($revisionsToDelete->count() > 0) {
-            PageRevision::query()->whereIn('id', $revisionsToDelete->pluck('id'))->delete();
+            RecipeRevision::query()->whereIn('id', $revisionsToDelete->pluck('id'))->delete();
         }
     }
+
     /**
      * Get the draft copy of the given page for the current user.
      */
-    public function getUserDraft(Recipe $page): ?PageRevision
+    public function getUserDraft(Recipe $page): ?RecipeRevision
     {
         $revision = $this->getUserDraftQuery($page)->first();
 
         return $revision;
     }
+
     /**
      * Get the query to find the user's draft copies of the given page.
      */
     protected function getUserDraftQuery(Recipe $page)
     {
-        return PageRevision::query()->where('created_by', '=', user()->id)
+        return RecipeRevision::query()->where('created_by', '=', user()->id)
             ->where('type', 'update_draft')
             ->where('recipe_id', '=', $page->id)
             ->orderBy('created_at', 'desc');
     }
+
     /**
      * Save a page update draft.
      */
@@ -320,18 +325,19 @@ class RecipeRepo
 
         return $draft;
     }
+
     /**
      * Get a page revision to update for the given page.
      * Checks for an existing revisions before providing a fresh one.
      */
-    protected function getPageRevisionToUpdate(Recipe $page): PageRevision
+    protected function getPageRevisionToUpdate(Recipe $page): RecipeRevision
     {
         $drafts = $this->getUserDraftQuery($page)->get();
         if ($drafts->count() > 0) {
             return $drafts->first();
         }
 
-        $draft = new PageRevision();
+        $draft = new RecipeRevision();
         $draft->slug = $page->slug;
         $draft->created_by = user()->id;
         $draft->type = 'update_draft';
@@ -369,6 +375,38 @@ class RecipeRepo
         }
 
         Activity::addForEntity($page, ActivityType::PAGE_UPDATE);
+
+        return $page;
+    }
+
+    /**
+     * Restores a revision's content back into a page.
+     */
+    public function restoreRevision(Recipe $page, int $revisionId): Recipe
+    {
+        $page->revision_count++;
+
+        /** @var RecipeRevision $revision */
+        $revision = $page->revisions()->where('id', '=', $revisionId)->first();
+
+        $page->fill($revision->toArray());
+        $content = new RecipeContents($page);
+
+        if (!empty($revision->markdown)) {
+            $content->setNewMarkdown($revision->markdown);
+        } else {
+            $content->setNewHTML($revision->html);
+        }
+
+        $page->updated_by = user()->id;
+        $page->refreshSlug();
+        $page->save();
+        $page->indexForSearch();
+
+        $summary = trans('entities.pages_revision_restored_from', ['id' => strval($revisionId), 'summary' => $revision->summary]);
+        $this->savePageRevision($page, $summary);
+
+        Activity::addForEntity($page, ActivityType::PAGE_RESTORE);
 
         return $page;
     }

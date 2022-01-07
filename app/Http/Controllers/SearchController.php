@@ -35,12 +35,12 @@ class SearchController extends Controller
         $formatter->format($results['results']->all(), $searchOpts);
 
         return view('search.all', [
-            'entities'     => $results['results'],
+            'entities' => $results['results'],
             'totalResults' => $results['total'],
-            'searchTerm'   => $fullSearchString,
-            'hasNextPage'  => $results['has_more'],
+            'searchTerm' => $fullSearchString,
+            'hasNextPage' => $results['has_more'],
             'nextPageLink' => $nextPageLink,
-            'options'      => $searchOpts,
+            'options' => $searchOpts,
         ]);
     }
 
@@ -55,16 +55,16 @@ class SearchController extends Controller
         return view('entities.list', ['entities' => $results]);
     }
 
-    /**
-     * Searches all entities within a chapter.
-     */
-    public function searchChapter(Request $request, int $chapterId)
-    {
-        $term = $request->get('term', '');
-        $results = $this->searchRunner->searchChapter($chapterId, $term);
-
-        return view('entities.list', ['entities' => $results]);
-    }
+//    /**
+//     * Searches all entities within a chapter.
+//     */
+//    public function searchChapter(Request $request, int $chapterId)
+//    {
+//        $term = $request->get('term', '');
+//        $results = $this->searchRunner->searchChapter($chapterId, $term);
+//
+//        return view('entities.list', ['entities' => $results]);
+//    }
 
     /**
      * Search for a list of entities and return a partial HTML response of matching entities.

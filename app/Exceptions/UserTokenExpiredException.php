@@ -12,7 +12,7 @@ class UserTokenExpiredException extends Exception
      * UserTokenExpiredException constructor.
      *
      * @param string $message
-     * @param int    $userId
+     * @param int $userId
      */
     public function __construct(string $message, int $userId)
     {

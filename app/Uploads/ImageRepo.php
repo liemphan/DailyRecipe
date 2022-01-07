@@ -47,7 +47,7 @@ class ImageRepo
         });
 
         return [
-            'images'   => $returnImages,
+            'images' => $returnImages,
             'has_more' => $hasMore,
         ];
     }
@@ -57,13 +57,14 @@ class ImageRepo
      * Can be filtered by uploaded to and also by name.
      */
     public function getPaginatedByType(
-        string $type,
-        int $page = 0,
-        int $pageSize = 24,
-        int $uploadedTo = null,
-        string $search = null,
+        string   $type,
+        int      $page = 0,
+        int      $pageSize = 24,
+        int      $uploadedTo = null,
+        string   $search = null,
         callable $whereClause = null
-    ): array {
+    ): array
+    {
         $imageQuery = Image::query()->where('type', '=', strtolower($type));
 
         if ($uploadedTo !== null) {
@@ -90,11 +91,12 @@ class ImageRepo
     public function getEntityFiltered(
         string $type,
         string $filterType = null,
-        int $page = 0,
-        int $pageSize = 24,
-        int $uploadedTo = null,
+        int    $page = 0,
+        int    $pageSize = 24,
+        int    $uploadedTo = null,
         string $search = null
-    ): array {
+    ): array
+    {
         /** @var Recipe $contextPage */
         $contextPage = Recipe::visible()->findOrFail($uploadedTo);
         $parentFilter = null;
@@ -235,10 +237,10 @@ class ImageRepo
      */
     public function getPagesUsingImage(Image $image): array
     {
-        $pages = Page::visible()
+        $pages = Recipe::visible()
             ->where('html', 'like', '%' . $image->url . '%')
-            ->get(['id', 'name', 'slug', 'recipe_id']);
-
+            ->get(['id', 'name', 'slug']);
+//        , 'recipe_id'
         foreach ($pages as $page) {
             $page->setAttribute('url', $page->getUrl());
         }

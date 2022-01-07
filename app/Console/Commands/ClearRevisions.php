@@ -2,7 +2,7 @@
 
 namespace DailyRecipe\Console\Commands;
 
-use DailyRecipe\Entities\Models\PageRevision;
+use DailyRecipe\Entities\Models\RecipeRevision;
 use Illuminate\Console\Command;
 
 class ClearRevisions extends Command
@@ -28,9 +28,9 @@ class ClearRevisions extends Command
     /**
      * Create a new command instance.
      *
-     * @param PageRevision $pageRevision
+     * @param RecipeRevision $pageRevision
      */
-    public function __construct(PageRevision $pageRevision)
+    public function __construct(RecipeRevision $pageRevision)
     {
         $this->pageRevision = $pageRevision;
         parent::__construct();

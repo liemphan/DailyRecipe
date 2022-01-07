@@ -27,9 +27,9 @@ class PrettyException extends Exception implements Responsable
         $code = ($this->getCode() === 0) ? 500 : $this->getCode();
 
         return response()->view('errors.' . $code, [
-            'message'  => $this->getMessage(),
+            'message' => $this->getMessage(),
             'subtitle' => $this->subtitle,
-            'details'  => $this->details,
+            'details' => $this->details,
         ], $code);
     }
 

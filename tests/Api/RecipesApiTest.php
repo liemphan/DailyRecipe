@@ -19,7 +19,7 @@ class RecipesApiTest extends TestCase
         $resp = $this->getJson($this->baseEndpoint . '?count=1&sort=+id');
         $resp->assertJson(['data' => [
             [
-                'id'   => $firstRecipe->id,
+                'id' => $firstRecipe->id,
                 'name' => $firstRecipe->name,
                 'slug' => $firstRecipe->slug,
             ],
@@ -30,7 +30,7 @@ class RecipesApiTest extends TestCase
     {
         $this->actingAsApiEditor();
         $details = [
-            'name'        => 'My API recipe',
+            'name' => 'My API recipe',
             'description' => 'A recipe created via the API',
         ];
 
@@ -52,7 +52,7 @@ class RecipesApiTest extends TestCase
         $resp->assertStatus(422);
         $resp->assertJson([
             'error' => [
-                'message'    => 'The given data was invalid.',
+                'message' => 'The given data was invalid.',
                 'validation' => [
                     'name' => ['The name field is required.'],
                 ],
@@ -70,8 +70,8 @@ class RecipesApiTest extends TestCase
 
         $resp->assertStatus(200);
         $resp->assertJson([
-            'id'         => $recipe->id,
-            'slug'       => $recipe->slug,
+            'id' => $recipe->id,
+            'slug' => $recipe->slug,
             'created_by' => [
                 'name' => $recipe->createdBy->name,
             ],
@@ -89,7 +89,7 @@ class RecipesApiTest extends TestCase
         $this->actingAsApiEditor();
         $recipe = Recipe::visible()->first();
         $details = [
-            'name'        => 'My updated API recipe',
+            'name' => 'My updated API recipe',
             'description' => 'A recipe created via the API',
         ];
 

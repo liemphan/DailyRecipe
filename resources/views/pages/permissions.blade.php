@@ -7,7 +7,7 @@
         <div class="my-s">
             @include('entities.breadcrumbs', ['crumbs' => [
                 $page->recipe,
-                $page->chapter,
+              //  $page->chapter,
                 $page,
                 $page->getUrl('/permissions') => [
                     'text' => trans('entities.pages_permissions'),

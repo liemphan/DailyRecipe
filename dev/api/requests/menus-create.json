@@ -1,5 +1,9 @@
 {
   "name": "My menu",
   "description": "This is my menu with some recipes",
-  "recipes": [5,1,3]
+  "recipes": [
+    5,
+    1,
+    3
+  ]
 }

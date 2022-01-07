@@ -3,17 +3,17 @@
 namespace DailyRecipe\Entities\Tools;
 
 use DailyRecipe\Entities\Models\Page;
-use DailyRecipe\Entities\Models\PageRevision;
+use DailyRecipe\Entities\Models\RecipeRevision;
 use Carbon\Carbon;
 use DailyRecipe\Entities\Models\Recipe;
 use Illuminate\Database\Eloquent\Builder;
 
-class PageEditActivity
+class ContentEditActivity
 {
     protected $page;
 
     /**
-     * PageEditActivity constructor.
+     * ContentEditActivity constructor.
      */
     public function __construct(Recipe $page)
     {
@@ -38,12 +38,12 @@ class PageEditActivity
 
         $userMessage = trans('entities.pages_draft_edit_active.start_a', ['count' => $count]);
         if ($count === 1) {
-            /** @var PageRevision $firstDraft */
+            /** @var RecipeRevision $firstDraft */
             $firstDraft = $pageDraftEdits->first();
             $userMessage = trans('entities.pages_draft_edit_active.start_b', ['userName' => $firstDraft->createdBy->name ?? '']);
         }
 
-        $timeMessage = trans('entities.pages_draft_edit_active.time_b', ['minCount'=> 60]);
+        $timeMessage = trans('entities.pages_draft_edit_active.time_b', ['minCount' => 60]);
 
         return trans('entities.pages_draft_edit_active.message', ['start' => $userMessage, 'time' => $timeMessage]);
     }
@@ -51,7 +51,7 @@ class PageEditActivity
     /**
      * Get any editor clash warning messages to show for the given draft revision.
      *
-     * @param PageRevision|Recipe $draft
+     * @param RecipeRevision|Recipe $draft
      *
      * @return string[]
      */
@@ -63,7 +63,7 @@ class PageEditActivity
             $warnings[] = $this->activeEditingMessage();
         }
 
-        if ($draft instanceof PageRevision && $this->hasPageBeenUpdatedSinceDraftCreated($draft)) {
+        if ($draft instanceof RecipeRevision && $this->hasPageBeenUpdatedSinceDraftCreated($draft)) {
             $warnings[] = trans('entities.pages_draft_page_changed_since_creation');
         }
 
@@ -73,7 +73,7 @@ class PageEditActivity
     /**
      * Check if the page has been updated since the draft has been saved.
      */
-    protected function hasPageBeenUpdatedSinceDraftCreated(PageRevision $draft): bool
+    protected function hasPageBeenUpdatedSinceDraftCreated(RecipeRevision $draft): bool
     {
         return $draft->recipe->updated_at->timestamp > $draft->created_at->timestamp;
     }
@@ -81,7 +81,7 @@ class PageEditActivity
     /**
      * Get the message to show when the user will be editing one of their drafts.
      */
-    public function getEditingActiveDraftMessage(PageRevision $draft): string
+    public function getEditingActiveDraftMessage(RecipeRevision $draft): string
     {
         $message = trans('entities.pages_editing_draft_notification', ['timeDiff' => $draft->updated_at->diffForHumans()]);
         if ($draft->recipe->updated_at->timestamp <= $draft->updated_at->timestamp) {
@@ -98,7 +98,7 @@ class PageEditActivity
     protected function activePageEditingQuery(int $withinMinutes): Builder
     {
         $checkTime = Carbon::now()->subMinutes($withinMinutes);
-        $query = PageRevision::query()
+        $query = RecipeRevision::query()
             ->where('type', '=', 'update_draft')
             ->where('recipe_id', '=', $this->page->id)
             ->where('updated_at', '>', $this->page->updated_at)

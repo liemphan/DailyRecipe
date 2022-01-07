@@ -16,20 +16,20 @@ class PageApiController extends ApiController
 
     protected $rules = [
         'create' => [
-            'recipe_id'    => ['required_without:chapter_id', 'integer'],
+            'recipe_id' => ['required_without:chapter_id', 'integer'],
             'chapter_id' => ['required_without:recipe_id', 'integer'],
-            'name'       => ['required', 'string', 'max:255'],
-            'html'       => ['required_without:markdown', 'string'],
-            'markdown'   => ['required_without:html', 'string'],
-            'tags'       => ['array'],
+            'name' => ['required', 'string', 'max:255'],
+            'html' => ['required_without:markdown', 'string'],
+            'markdown' => ['required_without:html', 'string'],
+            'tags' => ['array'],
         ],
         'update' => [
-            'recipe_id'    => ['required', 'integer'],
+            'recipe_id' => ['required', 'integer'],
             'chapter_id' => ['required', 'integer'],
-            'name'       => ['string', 'min:1', 'max:255'],
-            'html'       => ['string'],
-            'markdown'   => ['string'],
-            'tags'       => ['array'],
+            'name' => ['string', 'min:1', 'max:255'],
+            'html' => ['string'],
+            'markdown' => ['string'],
+            'tags' => ['array'],
         ],
     ];
 
@@ -68,11 +68,11 @@ class PageApiController extends ApiController
     {
         $this->validate($request, $this->rules['create']);
 
-        if ($request->has('chapter_id')) {
-            $parent = Chapter::visible()->findOrFail($request->get('chapter_id'));
-        } else {
+//        if ($request->has('chapter_id')) {
+//            $parent = Chapter::visible()->findOrFail($request->get('chapter_id'));
+//        } else {
             $parent = Recipe::visible()->findOrFail($request->get('recipe_id'));
-        }
+
         $this->checkOwnablePermission('page-create', $parent);
 
         $draft = $this->pageRepo->getNewDraftPage($parent);
@@ -119,7 +119,7 @@ class PageApiController extends ApiController
             try {
                 $this->pageRepo->move($page, $parent->getType() . ':' . $parent->id);
             } catch (Exception $exception) {
-                if ($exception instanceof  PermissionsException) {
+                if ($exception instanceof PermissionsException) {
                     $this->showPermissionError();
                 }
 

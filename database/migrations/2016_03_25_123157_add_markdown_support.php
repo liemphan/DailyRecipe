@@ -16,7 +16,7 @@ class AddMarkdownSupport extends Migration
             $table->longText('markdown')->default('');
         });
 
-        Schema::table('page_revisions', function (Blueprint $table) {
+        Schema::table('recipe_revisions', function (Blueprint $table) {
             $table->longText('markdown')->default('');
         });
     }
@@ -32,7 +32,7 @@ class AddMarkdownSupport extends Migration
             $table->dropColumn('markdown');
         });
 
-        Schema::table('page_revisions', function (Blueprint $table) {
+        Schema::table('recipe_revisions', function (Blueprint $table) {
             $table->dropColumn('markdown');
         });
     }

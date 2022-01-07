@@ -258,9 +258,9 @@ class SocialAuthService
     public function newSocialAccount(string $socialDriver, SocialUser $socialUser): SocialAccount
     {
         return new SocialAccount([
-            'driver'    => $socialDriver,
+            'driver' => $socialDriver,
             'driver_id' => $socialUser->getId(),
-            'avatar'    => $socialUser->getAvatar(),
+            'avatar' => $socialUser->getAvatar(),
         ]);
     }
 
@@ -298,11 +298,12 @@ class SocialAuthService
      * Handler should be a Class@method handler to the SocialiteWasCalled event.
      */
     public function addSocialDriver(
-        string $driverName,
-        array $config,
-        string $socialiteHandler,
+        string   $driverName,
+        array    $config,
+        string   $socialiteHandler,
         callable $configureForRedirect = null
-    ) {
+    )
+    {
         $this->validSocialDrivers[] = $driverName;
         config()->set('services.' . $driverName, $config);
         config()->set('services.' . $driverName . '.redirect', url('/login/service/' . $driverName . '/callback'));

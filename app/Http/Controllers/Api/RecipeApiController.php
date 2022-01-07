@@ -14,14 +14,14 @@ class RecipeApiController extends ApiController
 
     protected $rules = [
         'create' => [
-            'name'        => ['required', 'string', 'max:255'],
+            'name' => ['required', 'string', 'max:255'],
             'description' => ['string', 'max:1000'],
-            'tags'        => ['array'],
+            'tags' => ['array'],
         ],
         'update' => [
-            'name'        => ['string', 'min:1', 'max:255'],
+            'name' => ['string', 'min:1', 'max:255'],
             'description' => ['string', 'max:1000'],
-            'tags'        => ['array'],
+            'tags' => ['array'],
         ],
     ];
 

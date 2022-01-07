@@ -36,9 +36,9 @@ class Deletion extends Model implements Loggable
     public static function createForEntity(Entity $entity): self
     {
         $record = (new self())->forceFill([
-            'deleted_by'     => user()->id,
+            'deleted_by' => user()->id,
             'deletable_type' => $entity->getMorphClass(),
-            'deletable_id'   => $entity->id,
+            'deletable_id' => $entity->id,
         ]);
         $record->save();
 

@@ -24,10 +24,11 @@ class SocialController extends Controller
      * SocialController constructor.
      */
     public function __construct(
-        SocialAuthService $socialAuthService,
+        SocialAuthService   $socialAuthService,
         RegistrationService $registrationService,
-        LoginService $loginService
-    ) {
+        LoginService        $loginService
+    )
+    {
         $this->middleware('guest')->only(['getRegister', 'postRegister']);
         $this->socialAuthService = $socialAuthService;
         $this->registrationService = $registrationService;
@@ -77,7 +78,7 @@ class SocialController extends Controller
         if ($request->has('error') && $request->has('error_description')) {
             throw new SocialSignInException(trans('errors.social_login_bad_response', [
                 'socialAccount' => $socialDriver,
-                'error'         => $request->get('error_description'),
+                'error' => $request->get('error_description'),
             ]), '/login');
         }
 
@@ -128,8 +129,8 @@ class SocialController extends Controller
 
         // Create an array of the user data to create a new user instance
         $userData = [
-            'name'     => $socialUser->getName(),
-            'email'    => $socialUser->getEmail(),
+            'name' => $socialUser->getName(),
+            'email' => $socialUser->getEmail(),
             'password' => Str::random(32),
         ];
 

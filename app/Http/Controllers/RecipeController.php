@@ -5,13 +5,10 @@ namespace DailyRecipe\Http\Controllers;
 use Activity;
 use DailyRecipe\Actions\ActivityType;
 use DailyRecipe\Actions\View;
-use DailyRecipe\Entities\Models\Recipe;
 use DailyRecipe\Entities\Models\Recipemenu;
-use DailyRecipe\Entities\Repos\PageRepo;
 use DailyRecipe\Entities\Repos\RecipeRepo;
 use DailyRecipe\Entities\Tools\NextPreviousContentLocator;
-use DailyRecipe\Entities\Tools\PageContent;
-use DailyRecipe\Entities\Tools\PageEditActivity;
+use DailyRecipe\Entities\Tools\ContentEditActivity;
 use DailyRecipe\Entities\Tools\RecipeContents;
 use DailyRecipe\Entities\Tools\PermissionsUpdater;
 use DailyRecipe\Entities\Tools\MenuContext;
@@ -302,7 +299,7 @@ class RecipeController extends Controller
 
         $this->checkOwnablePermission('page-view', $page);
 
-        $pageContent = (new PageContent($page));
+        $pageContent = (new RecipeContents($page));
         $page->html = $pageContent->render();
         $sidebarTree = (new RecipeContents($page))->getTree();
         $pageNav = $pageContent->getNavigation($page->html);
@@ -341,7 +338,7 @@ class RecipeController extends Controller
         $this->checkOwnablePermission('page-update', $page);
 
         $page->isDraft = false;
-        $editActivity = new PageEditActivity($page);
+        $editActivity = new ContentEditActivity($page);
 
         // Check for active editing
         $warnings = [];
@@ -418,6 +415,7 @@ class RecipeController extends Controller
 
         return redirect($recipe->getUrlContent('/edit'));
     }
+
     /**
      * Save a draft update as a revision.
      *
@@ -433,15 +431,16 @@ class RecipeController extends Controller
         }
 
         $draft = $this->recipeRepo->updatePageDraft($page, $request->only(['name', 'html', 'markdown']));
-        $warnings = (new PageEditActivity($page))->getWarningMessagesForDraft($draft);
+        $warnings = (new ContentEditActivity($page))->getWarningMessagesForDraft($draft);
 
         return response()->json([
-            'status'    => 'success',
-            'message'   => trans('entities.pages_edit_draft_save_at'),
-            'warning'   => implode("\n", $warnings),
+            'status' => 'success',
+            'message' => trans('entities.pages_edit_draft_save_at'),
+            'warning' => implode("\n", $warnings),
             'timestamp' => $draft->updated_at->timestamp,
         ]);
     }
+
     /**
      * Get page from an ajax request.
      *
@@ -454,5 +453,66 @@ class RecipeController extends Controller
         $page->makeHidden(['recipe']);
 
         return response()->json($page);
+    }
+    /**
+     * Redirect from a special link url which uses the page id rather than the name.
+     *
+     * @throws NotFoundException
+     */
+    public function redirectFromLink(int $pageId)
+    {
+        $page = $this->recipeRepo->getById($pageId);
+
+        return redirect($page->getUrl());
+    }
+    /**
+     * Remove the specified draft page from storage.
+     *
+     * @throws NotFoundException
+     * @throws Throwable
+     */
+    public function destroyDraft(string $recipeSlug, int $pageId)
+    {
+        $page = $this->recipeRepo->getById($pageId);
+
+        $this->checkOwnablePermission('page-update', $page);
+
+        $this->recipeRepo->destroy($page);
+
+        $this->showSuccessNotification(trans('entities.pages_delete_draft_success'));
+
+
+        return redirect($page->getUrlContent());
+    }
+    /**
+     * Show the Permissions view.
+     *
+     * @throws NotFoundException
+     */
+    public function showPermissionsContent(string $recipeSlug)
+    {
+        $page = $this->recipeRepo->getBySlug($recipeSlug);
+        $this->checkOwnablePermission('restrictions-manage', $page);
+
+        return view('pages.permissions', [
+            'page' => $page,
+        ]);
+    }
+    /**
+     * Set the permissions for this page.
+     *
+     * @throws NotFoundException
+     * @throws Throwable
+     */
+    public function permissionsContent(Request $request, PermissionsUpdater $permissionsUpdater, string $recipeSlug)
+    {
+        $page = $this->recipeRepo->getBySlug($recipeSlug);
+        $this->checkOwnablePermission('restrictions-manage', $page);
+
+        $permissionsUpdater->updateFromPermissionsForm($page, $request);
+
+        $this->showSuccessNotification(trans('entities.pages_permissions_success'));
+
+        return redirect($page->getUrlContent());
     }
 }

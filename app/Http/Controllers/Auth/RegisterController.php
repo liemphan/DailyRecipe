@@ -45,10 +45,11 @@ class RegisterController extends Controller
      * Create a new controller instance.
      */
     public function __construct(
-        SocialAuthService $socialAuthService,
+        SocialAuthService   $socialAuthService,
         RegistrationService $registrationService,
-        LoginService $loginService
-    ) {
+        LoginService        $loginService
+    )
+    {
         $this->middleware('guest');
         $this->middleware('guard:standard');
 
@@ -68,8 +69,8 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'name'     => ['required', 'min:2', 'max:255'],
-            'email'    => ['required', 'email', 'max:255', 'unique:users'],
+            'name' => ['required', 'min:2', 'max:255'],
+            'email' => ['required', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'min:8'],
         ]);
     }
@@ -127,8 +128,8 @@ class RegisterController extends Controller
     protected function create(array $data)
     {
         return User::create([
-            'name'     => $data['name'],
-            'email'    => $data['email'],
+            'name' => $data['name'],
+            'email' => $data['email'],
             'password' => Hash::make($data['password']),
         ]);
     }

@@ -5,7 +5,7 @@ namespace DailyRecipe\Actions;
 use DailyRecipe\Auth\Permissions\PermissionService;
 use DailyRecipe\Auth\User;
 use DailyRecipe\Entities\Models\Recipe;
-use DailyRecipe\Entities\Models\Chapter;
+
 use DailyRecipe\Entities\Models\Entity;
 use DailyRecipe\Entities\Models\Page;
 use DailyRecipe\Interfaces\Loggable;
@@ -59,9 +59,9 @@ class ActivityService
         $ip = request()->ip() ?? '';
 
         return $this->activity->newInstance()->forceFill([
-            'type'     => strtolower($type),
-            'user_id'  => user()->id,
-            'ip'       => config('app.env') === 'demo' ? '127.0.0.1' : $ip,
+            'type' => strtolower($type),
+            'user_id' => user()->id,
+            'ip' => config('app.env') === 'demo' ? '127.0.0.1' : $ip,
         ]);
     }
 
@@ -73,9 +73,9 @@ class ActivityService
     public function removeEntity(Entity $entity)
     {
         $entity->activity()->update([
-            'detail'       => $entity->name,
-            'entity_id'    => null,
-            'entity_type'  => null,
+            'detail' => $entity->name,
+            'entity_id' => null,
+            'entity_type' => null,
         ]);
     }
 
@@ -104,10 +104,10 @@ class ActivityService
         /** @var array<string, int[]> $queryIds */
         $queryIds = [$entity->getMorphClass() => [$entity->id]];
 
-        if ($entity instanceof Recipe) {
-            $queryIds[(new Chapter())->getMorphClass()] = $entity->chapters()->scopes('visible')->pluck('id');
-        }
-        if ($entity instanceof Recipe || $entity instanceof Chapter) {
+//        if ($entity instanceof Recipe) {
+//            $queryIds[(new Chapter())->getMorphClass()] = $entity->chapters()->scopes('visible')->pluck('id');
+//        }
+        if ($entity instanceof Recipe ) {
             $queryIds[(new Page())->getMorphClass()] = $entity->pages()->scopes('visible')->pluck('id');
         }
 

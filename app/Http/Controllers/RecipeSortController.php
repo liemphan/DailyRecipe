@@ -29,7 +29,7 @@ class RecipeSortController extends Controller
 
         $recipeChildren = (new RecipeContents($recipe))->getTree(false);
 
-        $this->setPageTitle(trans('entities.recipes_sort_named', ['recipeName'=>$recipe->getShortName()]));
+        $this->setPageTitle(trans('entities.recipes_sort_named', ['recipeName' => $recipe->getShortName()]));
 
         return view('recipes.sort', ['recipe' => $recipe, 'current' => $recipe, 'recipeChildren' => $recipeChildren]);
     }

@@ -3,16 +3,16 @@
 namespace DailyRecipe\Http\Controllers;
 
 use DailyRecipe\Entities\Repos\PageRepo;
-use DailyRecipe\Entities\Tools\PageContent;
+use DailyRecipe\Entities\Tools\RecipeContents;
 use DailyRecipe\Exceptions\NotFoundException;
 use Ssddanbrown\HtmlDiff\Diff;
 
-class PageRevisionController extends Controller
+class RecipeRevisionController extends Controller
 {
     protected $pageRepo;
 
     /**
-     * PageRevisionController constructor.
+     * RecipeRevisionController constructor.
      */
     public function __construct(PageRepo $pageRepo)
     {
@@ -27,10 +27,10 @@ class PageRevisionController extends Controller
     public function index(string $recipeSlug, string $pageSlug)
     {
         $page = $this->pageRepo->getBySlug($recipeSlug, $pageSlug);
-        $this->setPageTitle(trans('entities.pages_revisions_named', ['pageName'=>$page->getShortName()]));
+        $this->setPageTitle(trans('entities.pages_revisions_named', ['pageName' => $page->getShortName()]));
 
         return view('pages.revisions', [
-            'page'    => $page,
+            'page' => $page,
             'current' => $page,
         ]);
     }
@@ -49,16 +49,16 @@ class PageRevisionController extends Controller
         }
 
         $page->fill($revision->toArray());
-        // TODO - Refactor PageContent so we don't need to juggle this
+        // TODO - Refactor recipeContent so we don't need to juggle this
         $page->html = $revision->html;
-        $page->html = (new PageContent($page))->render();
+        $page->html = (new RecipeContents($page))->render();
 
         $this->setPageTitle(trans('entities.pages_revision_named', ['pageName' => $page->getShortName()]));
 
         return view('pages.revision', [
-            'page'     => $page,
-            'recipe'     => $page->recipe,
-            'diff'     => null,
+            'page' => $page,
+            'recipe' => $page->recipe,
+            'diff' => null,
             'revision' => $revision,
         ]);
     }
@@ -81,15 +81,15 @@ class PageRevisionController extends Controller
         $diff = Diff::excecute($prevContent, $revision->html);
 
         $page->fill($revision->toArray());
-        // TODO - Refactor PageContent so we don't need to juggle this
+        // TODO - Refactor RecipeContents so we don't need to juggle this
         $page->html = $revision->html;
-        $page->html = (new PageContent($page))->render();
-        $this->setPageTitle(trans('entities.pages_revision_named', ['pageName'=>$page->getShortName()]));
+        $page->html = (new RecipeContents($page))->render();
+        $this->setPageTitle(trans('entities.pages_revision_named', ['pageName' => $page->getShortName()]));
 
         return view('pages.revision', [
-            'page'     => $page,
-            'recipe'     => $page->recipe,
-            'diff'     => $diff,
+            'page' => $page,
+            'recipe' => $page->recipe,
+            'diff' => $diff,
             'revision' => $revision,
         ]);
     }

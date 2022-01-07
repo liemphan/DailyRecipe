@@ -24,8 +24,8 @@ class FavouriteController extends Controller
         $hasMoreLink = ($favourites->count() > $viewCount) ? url('/favourites?page=' . ($page + 1)) : null;
 
         return view('common.detailed-listing-with-more', [
-            'title'       => trans('entities.my_favourites'),
-            'entities'    => $favourites->slice(0, $viewCount),
+            'title' => trans('entities.my_favourites'),
+            'entities' => $favourites->slice(0, $viewCount),
             'hasMoreLink' => $hasMoreLink,
         ]);
     }
@@ -72,7 +72,7 @@ class FavouriteController extends Controller
     {
         $modelInfo = $this->validate($request, [
             'type' => ['required', 'string'],
-            'id'   => ['required', 'integer'],
+            'id' => ['required', 'integer'],
         ]);
 
         if (!class_exists($modelInfo['type'])) {

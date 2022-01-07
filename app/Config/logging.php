@@ -30,59 +30,59 @@ return [
     //                    "custom", "stack"
     'channels' => [
         'stack' => [
-            'driver'            => 'stack',
-            'channels'          => ['daily'],
+            'driver' => 'stack',
+            'channels' => ['daily'],
             'ignore_exceptions' => false,
         ],
 
         'single' => [
             'driver' => 'single',
-            'path'   => storage_path('logs/laravel.log'),
-            'level'  => 'debug',
-            'days'   => 14,
+            'path' => storage_path('logs/laravel.log'),
+            'level' => 'debug',
+            'days' => 14,
         ],
 
         'daily' => [
             'driver' => 'daily',
-            'path'   => storage_path('logs/laravel.log'),
-            'level'  => 'debug',
-            'days'   => 7,
+            'path' => storage_path('logs/laravel.log'),
+            'level' => 'debug',
+            'days' => 7,
         ],
 
         'stderr' => [
-            'driver'  => 'monolog',
-            'level'   => 'debug',
+            'driver' => 'monolog',
+            'level' => 'debug',
             'handler' => StreamHandler::class,
-            'with'    => [
+            'with' => [
                 'stream' => 'php://stderr',
             ],
         ],
 
         'syslog' => [
             'driver' => 'syslog',
-            'level'  => 'debug',
+            'level' => 'debug',
         ],
 
         'errorlog' => [
             'driver' => 'errorlog',
-            'level'  => 'debug',
+            'level' => 'debug',
         ],
 
         // Custom errorlog implementation that logs out a plain,
         // non-formatted message intended for the webserver log.
         'errorlog_plain_webserver' => [
-            'driver'         => 'monolog',
-            'level'          => 'debug',
-            'handler'        => ErrorLogHandler::class,
-            'handler_with'   => [4],
-            'formatter'      => LineFormatter::class,
+            'driver' => 'monolog',
+            'level' => 'debug',
+            'handler' => ErrorLogHandler::class,
+            'handler_with' => [4],
+            'formatter' => LineFormatter::class,
             'formatter_with' => [
                 'format' => '%message%',
             ],
         ],
 
         'null' => [
-            'driver'  => 'monolog',
+            'driver' => 'monolog',
             'handler' => NullHandler::class,
         ],
 

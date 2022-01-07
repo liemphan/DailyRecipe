@@ -77,7 +77,7 @@ class LoginController extends Controller
 
         if ($request->has('email')) {
             session()->flashInput([
-                'email'    => $request->get('email'),
+                'email' => $request->get('email'),
                 'password' => (config('app.env') === 'demo') ? $request->get('password', '') : '',
             ]);
         }
@@ -87,7 +87,7 @@ class LoginController extends Controller
 
         return view('auth.login', [
             'socialDrivers' => $socialDrivers,
-            'authMethod'    => $authMethod,
+            'authMethod' => $authMethod,
         ]);
     }
 
@@ -97,7 +97,7 @@ class LoginController extends Controller
      * @param Request $request
      *
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Http\Response|\Illuminate\Http\JsonResponse
-     *@throws ValidationException
+     * @throws ValidationException
      *
      */
     public function login(Request $request)
@@ -157,7 +157,7 @@ class LoginController extends Controller
      * The user has been authenticated.
      *
      * @param Request $request
-     * @param mixed                    $user
+     * @param mixed $user
      *
      * @return mixed
      */

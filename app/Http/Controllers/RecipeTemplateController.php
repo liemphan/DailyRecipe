@@ -3,17 +3,18 @@
 namespace DailyRecipe\Http\Controllers;
 
 use DailyRecipe\Entities\Repos\PageRepo;
+use DailyRecipe\Entities\Repos\RecipeRepo;
 use DailyRecipe\Exceptions\NotFoundException;
 use Illuminate\Http\Request;
 
-class PageTemplateController extends Controller
+class RecipeTemplateController extends Controller
 {
     protected $pageRepo;
 
     /**
-     * PageTemplateController constructor.
+     * RecipeTemplateController constructor.
      */
-    public function __construct(PageRepo $pageRepo)
+    public function __construct(RecipeRepo $pageRepo)
     {
         $this->pageRepo = $pageRepo;
     }
@@ -50,7 +51,7 @@ class PageTemplateController extends Controller
         }
 
         return response()->json([
-            'html'     => $page->html,
+            'html' => $page->html,
             'markdown' => $page->markdown,
         ]);
     }

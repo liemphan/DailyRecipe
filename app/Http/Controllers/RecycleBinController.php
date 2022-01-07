@@ -64,7 +64,7 @@ class RecycleBinController extends Controller
         $parentDeletion = ($currentDeletable === $deletion->deletable) ? null : $currentDeletable->deletions()->first();
 
         return view('settings.recycle-bin.restore', [
-            'deletion'       => $deletion,
+            'deletion' => $deletion,
             'parentDeletion' => $parentDeletion,
         ]);
     }

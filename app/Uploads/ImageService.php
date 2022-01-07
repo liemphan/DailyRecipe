@@ -95,18 +95,19 @@ class ImageService
     /**
      * Saves a new image from an upload.
      *
+     * @return mixed
      * @throws ImageUploadException
      *
-     * @return mixed
      */
     public function saveNewFromUpload(
         UploadedFile $uploadedFile,
-        string $type,
-        int $uploadedTo = 0,
-        int $resizeWidth = null,
-        int $resizeHeight = null,
-        bool $keepRatio = true
-    ) {
+        string       $type,
+        int          $uploadedTo = 0,
+        int          $resizeWidth = null,
+        int          $resizeHeight = null,
+        bool         $keepRatio = true
+    )
+    {
         $imageName = $uploadedFile->getClientOriginalName();
         $imageData = file_get_contents($uploadedFile->getRealPath());
 
@@ -164,10 +165,10 @@ class ImageService
         }
 
         $imageDetails = [
-            'name'        => $imageName,
-            'path'        => $fullPath,
-            'url'         => $this->getPublicUrl($fullPath),
-            'type'        => $type,
+            'name' => $imageName,
+            'path' => $fullPath,
+            'url' => $this->getPublicUrl($fullPath),
+            'type' => $type,
             'uploaded_to' => $uploadedTo,
         ];
 
@@ -272,7 +273,7 @@ class ImageService
     {
         try {
             $thumb = $this->imageTool->make($imageData);
-        } catch (ErrorException|NotSupportedException $e) {
+        } catch (ErrorException | NotSupportedException $e) {
             throw new ImageUploadException(trans('errors.cannot_create_thumbs'));
         }
 
@@ -285,7 +286,7 @@ class ImageService
             $thumb->fit($width, $height);
         }
 
-        $thumbData = (string) $thumb->encode();
+        $thumbData = (string)$thumb->encode();
 
         // Use original image data if we're keeping the ratio
         // and the resizing does not save any space.
@@ -376,12 +377,12 @@ class ImageService
             ->chunk(1000, function ($images) use ($checkRevisions, &$deletedPaths, $dryRun) {
                 foreach ($images as $image) {
                     $searchQuery = '%' . basename($image->path) . '%';
-                    $inPage = DB::table('pages')
+                    $inPage = DB::table('recipes')
                             ->where('html', 'like', $searchQuery)->count() > 0;
 
                     $inRevision = false;
                     if ($checkRevisions) {
-                        $inRevision = DB::table('page_revisions')
+                        $inRevision = DB::table('recipe_revisions')
                                 ->where('html', 'like', $searchQuery)->count() > 0;
                     }
 

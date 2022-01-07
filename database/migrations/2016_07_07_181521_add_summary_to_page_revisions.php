@@ -11,7 +11,7 @@ class AddSummaryToPageRevisions extends Migration
      */
     public function up()
     {
-        Schema::table('page_revisions', function ($table) {
+        Schema::table('recipe_revisions', function ($table) {
             $table->string('summary')->nullable();
         });
     }
@@ -23,7 +23,7 @@ class AddSummaryToPageRevisions extends Migration
      */
     public function down()
     {
-        Schema::table('page_revisions', function ($table) {
+        Schema::table('recipe_revisions', function ($table) {
             $table->dropColumn('summary');
         });
     }

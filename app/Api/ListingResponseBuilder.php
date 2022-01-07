@@ -13,12 +13,12 @@ class ListingResponseBuilder
     protected $fields;
 
     protected $filterOperators = [
-        'eq'   => '=',
-        'ne'   => '!=',
-        'gt'   => '>',
-        'lt'   => '<',
-        'gte'  => '>=',
-        'lte'  => '<=',
+        'eq' => '=',
+        'ne' => '!=',
+        'gt' => '>',
+        'lt' => '<',
+        'gte' => '>=',
+        'lte' => '<=',
         'like' => 'like',
     ];
 
@@ -43,7 +43,7 @@ class ListingResponseBuilder
         $data = $this->fetchData($filteredQuery);
 
         return response()->json([
-            'data'  => $data,
+            'data' => $data,
             'total' => $total,
         ]);
     }

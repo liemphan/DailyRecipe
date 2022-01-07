@@ -3,8 +3,7 @@
 namespace DailyRecipe\Entities\Tools;
 
 use DailyRecipe\Entities\Models\Recipe;
-use DailyRecipe\Entities\Models\Chapter;
-use DailyRecipe\Entities\Models\Page;
+
 use DailyRecipe\Entities\Tools\Markdown\HtmlToMarkdown;
 use DailyRecipe\Uploads\ImageService;
 use DOMDocument;
@@ -37,7 +36,7 @@ class ExportFormatter
     {
         $page->html = (new PageContent($page))->render();
         $pageHtml = view('pages.export', [
-            'page'   => $page,
+            'page' => $page,
             'format' => 'html',
         ])->render();
 
@@ -57,8 +56,8 @@ class ExportFormatter
         });
         $html = view('chapters.export', [
             'chapter' => $chapter,
-            'pages'   => $pages,
-            'format'  => 'html',
+            'pages' => $pages,
+            'format' => 'html',
         ])->render();
 
         return $this->containHtml($html);
@@ -73,9 +72,9 @@ class ExportFormatter
     {
         $recipeTree = (new RecipeContents($recipe))->getTree(false, true);
         $html = view('recipes.export', [
-            'recipe'         => $recipe,
+            'recipe' => $recipe,
             'recipeChildren' => $recipeTree,
-            'format'       => 'html',
+            'format' => 'html',
         ])->render();
 
         return $this->containHtml($html);
@@ -90,7 +89,7 @@ class ExportFormatter
     {
         $page->html = (new PageContent($page))->render();
         $html = view('pages.export', [
-            'page'   => $page,
+            'page' => $page,
             'format' => 'pdf',
         ])->render();
 
@@ -111,8 +110,8 @@ class ExportFormatter
 
         $html = view('chapters.export', [
             'chapter' => $chapter,
-            'pages'   => $pages,
-            'format'  => 'pdf',
+            'pages' => $pages,
+            'format' => 'pdf',
         ])->render();
 
         return $this->htmlToPdf($html);
@@ -127,9 +126,9 @@ class ExportFormatter
     {
         $recipeTree = (new RecipeContents($recipe))->getTree(false, true);
         $html = view('recipes.export', [
-            'recipe'         => $recipe,
+            'recipe' => $recipe,
             'recipeChildren' => $recipeTree,
-            'format'       => 'pdf',
+            'format' => 'pdf',
         ])->render();
 
         return $this->htmlToPdf($html);

@@ -167,7 +167,7 @@ class ExternalBaseSessionGuard implements StatefulGuard
      * Attempt to authenticate a user using the given credentials.
      *
      * @param array $credentials
-     * @param bool  $remember
+     * @param bool $remember
      *
      * @return bool
      */
@@ -180,7 +180,7 @@ class ExternalBaseSessionGuard implements StatefulGuard
      * Log the given user ID into the application.
      *
      * @param mixed $id
-     * @param bool  $remember
+     * @param bool $remember
      *
      * @return AuthenticatableContract|false
      */
@@ -195,7 +195,7 @@ class ExternalBaseSessionGuard implements StatefulGuard
      * Log a user into the application.
      *
      * @param AuthenticatableContract $user
-     * @param bool                                       $remember
+     * @param bool $remember
      *
      * @return void
      */

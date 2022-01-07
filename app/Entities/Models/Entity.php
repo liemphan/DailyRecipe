@@ -30,14 +30,14 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * The base class for recipe-like items such as pages, chapters & recipes.
  * This is not a database model in itself but extended.
  *
- * @property int        $id
- * @property string     $name
- * @property string     $slug
- * @property Carbon     $created_at
- * @property Carbon     $updated_at
- * @property int        $created_by
- * @property int        $updated_by
- * @property bool       $restricted
+ * @property int $id
+ * @property string $name
+ * @property string $slug
+ * @property Carbon $created_at
+ * @property Carbon $updated_at
+ * @property int $created_by
+ * @property int $updated_by
+ * @property bool $restricted
  * @property Collection $tags
  *
  * @method static Entity|Builder visible()
@@ -125,9 +125,9 @@ abstract class Entity extends Model implements Sluggable, Favouritable, Viewable
             return $entity->id === $this->id;
         }
 
-        if ($entity instanceof Page && $this instanceof Chapter) {
-            return $entity->chapter_id === $this->id;
-        }
+//        if ($entity instanceof Page && $this instanceof Chapter) {
+//            return $entity->chapter_id === $this->id;
+//        }
 
         return false;
     }
@@ -189,7 +189,7 @@ abstract class Entity extends Model implements Sluggable, Favouritable, Viewable
     public function hasRestriction(int $role_id, string $action): bool
     {
         return $this->permissions()->where('role_id', '=', $role_id)
-            ->where('action', '=', $action)->count() > 0;
+                ->where('action', '=', $action)->count() > 0;
     }
 
     /**

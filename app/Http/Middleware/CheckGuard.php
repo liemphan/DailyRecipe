@@ -12,7 +12,7 @@ class CheckGuard
      *
      * @param Request $request
      * @param Closure $next
-     * @param string                   $allowedGuards
+     * @param string $allowedGuards
      *
      * @return mixed
      */

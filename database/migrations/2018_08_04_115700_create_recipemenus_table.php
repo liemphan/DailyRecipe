@@ -22,8 +22,6 @@ class CreateRecipemenusTable extends Migration
         // like foreign key references.
         try {
             $prefix = DB::getTablePrefix();
-            DB::statement("ALTER TABLE {$prefix}pages ENGINE = InnoDB;");
-            DB::statement("ALTER TABLE {$prefix}chapters ENGINE = InnoDB;");
             DB::statement("ALTER TABLE {$prefix}recipes ENGINE = InnoDB;");
         } catch (Exception $exception) {
         }

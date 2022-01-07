@@ -11,12 +11,12 @@ use Illuminate\Support\Carbon;
 /**
  * Class ApiToken.
  *
- * @property int    $id
+ * @property int $id
  * @property string $token_id
  * @property string $secret
  * @property string $name
  * @property Carbon $expires_at
- * @property User   $user
+ * @property User $user
  */
 class ApiToken extends Model implements Loggable
 {

@@ -82,7 +82,7 @@ return [
 
             // Usually x509cert and privateKey of the SP are provided by files placed at
             // the certs folder. But we can also provide them with the following parameters
-            'x509cert'   => $SAML2_SP_x509 ?: '',
+            'x509cert' => $SAML2_SP_x509 ?: '',
             'privateKey' => env('SAML2_SP_x509_KEY', ''),
         ],
         // Identity Provider Data that we want connect with our SP
@@ -150,10 +150,10 @@ return [
             // SAML2_IDP_AUTHNCONTEXT="urn:federation:authentication:windows urn:oasis:names:tc:SAML:2.0:ac:classes:PasswordProtectedTransport"
             'requestedAuthnContext' => is_string($SAML2_IDP_AUTHNCONTEXT) ? explode(' ', $SAML2_IDP_AUTHNCONTEXT) : $SAML2_IDP_AUTHNCONTEXT,
             // Sign requests and responses if a certificate is in use
-            'logoutRequestSigned'   => (bool) $SAML2_SP_x509,
-            'logoutResponseSigned'  => (bool) $SAML2_SP_x509,
-            'authnRequestsSigned'   => (bool) $SAML2_SP_x509,
-            'lowercaseUrlencoding'  => false,
+            'logoutRequestSigned' => (bool)$SAML2_SP_x509,
+            'logoutResponseSigned' => (bool)$SAML2_SP_x509,
+            'authnRequestsSigned' => (bool)$SAML2_SP_x509,
+            'lowercaseUrlencoding' => false,
         ],
     ],
 

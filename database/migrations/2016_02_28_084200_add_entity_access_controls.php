@@ -22,15 +22,6 @@ class AddEntityAccessControls extends Migration
             $table->index('restricted');
         });
 
-        Schema::table('chapters', function (Blueprint $table) {
-            $table->boolean('restricted')->default(false);
-            $table->index('restricted');
-        });
-
-        Schema::table('pages', function (Blueprint $table) {
-            $table->boolean('restricted')->default(false);
-            $table->index('restricted');
-        });
 
         Schema::create('restrictions', function (Blueprint $table) {
             $table->increments('id');
@@ -56,14 +47,6 @@ class AddEntityAccessControls extends Migration
         });
 
         Schema::table('recipes', function (Blueprint $table) {
-            $table->dropColumn('restricted');
-        });
-
-        Schema::table('chapters', function (Blueprint $table) {
-            $table->dropColumn('restricted');
-        });
-
-        Schema::table('pages', function (Blueprint $table) {
             $table->dropColumn('restricted');
         });
 

@@ -68,9 +68,9 @@ class ApiTokenGuard implements Guard
     /**
      * Determine if current user is authenticated. If not, throw an exception.
      *
+     * @return Authenticatable
      * @throws ApiAuthException
      *
-     * @return Authenticatable
      */
     public function authenticate()
     {

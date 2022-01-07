@@ -36,7 +36,7 @@ class UserApiTokenController extends Controller
         $this->checkPermissionOrCurrentUser('users-manage', $userId);
 
         $this->validate($request, [
-            'name'       => ['required', 'max:250'],
+            'name' => ['required', 'max:250'],
             'expires_at' => ['date_format:Y-m-d'],
         ]);
 
@@ -44,10 +44,10 @@ class UserApiTokenController extends Controller
         $secret = Str::random(32);
 
         $token = (new ApiToken())->forceFill([
-            'name'       => $request->get('name'),
-            'token_id'   => Str::random(32),
-            'secret'     => Hash::make($secret),
-            'user_id'    => $user->id,
+            'name' => $request->get('name'),
+            'token_id' => Str::random(32),
+            'secret' => Hash::make($secret),
+            'user_id' => $user->id,
             'expires_at' => $request->get('expires_at') ?: ApiToken::defaultExpiry(),
         ]);
 
@@ -73,9 +73,9 @@ class UserApiTokenController extends Controller
         $secret = session()->pull('api-token-secret:' . $token->id, null);
 
         return view('users.api-tokens.edit', [
-            'user'   => $user,
-            'token'  => $token,
-            'model'  => $token,
+            'user' => $user,
+            'token' => $token,
+            'model' => $token,
             'secret' => $secret,
         ]);
     }
@@ -86,13 +86,13 @@ class UserApiTokenController extends Controller
     public function update(Request $request, int $userId, int $tokenId)
     {
         $this->validate($request, [
-            'name'       => ['required', 'max:250'],
+            'name' => ['required', 'max:250'],
             'expires_at' => ['date_format:Y-m-d'],
         ]);
 
         [$user, $token] = $this->checkPermissionAndFetchUserToken($userId, $tokenId);
         $token->fill([
-            'name'       => $request->get('name'),
+            'name' => $request->get('name'),
             'expires_at' => $request->get('expires_at') ?: ApiToken::defaultExpiry(),
         ])->save();
 
@@ -110,7 +110,7 @@ class UserApiTokenController extends Controller
         [$user, $token] = $this->checkPermissionAndFetchUserToken($userId, $tokenId);
 
         return view('users.api-tokens.delete', [
-            'user'  => $user,
+            'user' => $user,
             'token' => $token,
         ]);
     }

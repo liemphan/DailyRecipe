@@ -188,7 +188,7 @@ final class Versions
   'symfony/dom-crawler' => 'v5.3.7@c7eef3a60ccfdd8eafe07f81652e769ac9c7146c',
   'symfony/filesystem' => 'v5.3.4@343f4fe324383ca46792cae728a3b6e2f708fb32',
   'theseer/tokenizer' => '1.2.1@34a41e998c2183e22995f158c581e7b5e755ab9e',
-  'dailyrecipeapp/dailyrecipe' => 'dev-main@b2f07df633892a4d220e21122b97ecddd0448229',
+  'dailyrecipeapp/dailyrecipe' => 'dev-main@95eb2d46463287a0e15150c9e6c528752aa1777e',
 );
 
     private function __construct()

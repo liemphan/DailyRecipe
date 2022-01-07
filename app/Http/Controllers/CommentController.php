@@ -3,7 +3,8 @@
 namespace DailyRecipe\Http\Controllers;
 
 use DailyRecipe\Actions\CommentRepo;
-use DailyRecipe\Entities\Models\Page;
+
+use DailyRecipe\Entities\Models\Recipe;
 use Illuminate\Http\Request;
 use Illuminate\Validation\ValidationException;
 
@@ -24,11 +25,11 @@ class CommentController extends Controller
     public function savePageComment(Request $request, int $pageId)
     {
         $this->validate($request, [
-            'text'      => ['required', 'string'],
+            'text' => ['required', 'string'],
             'parent_id' => ['nullable', 'integer'],
         ]);
 
-        $page = Page::visible()->find($pageId);
+        $page = Recipe::visible()->find($pageId);
         if ($page === null) {
             return response('Not found', 404);
         }

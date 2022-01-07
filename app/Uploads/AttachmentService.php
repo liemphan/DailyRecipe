@@ -86,13 +86,13 @@ class AttachmentService
 
         /** @var Attachment $attachment */
         $attachment = Attachment::query()->forceCreate([
-            'name'        => $attachmentName,
-            'path'        => $attachmentPath,
-            'extension'   => $uploadedFile->getClientOriginalExtension(),
+            'name' => $attachmentName,
+            'path' => $attachmentPath,
+            'extension' => $uploadedFile->getClientOriginalExtension(),
             'uploaded_to' => $pageId,
-            'created_by'  => user()->id,
-            'updated_by'  => user()->id,
-            'order'       => $largestExistingOrder + 1,
+            'created_by' => user()->id,
+            'updated_by' => user()->id,
+            'order' => $largestExistingOrder + 1,
         ]);
 
         return $attachment;
@@ -130,14 +130,14 @@ class AttachmentService
         $largestExistingOrder = Attachment::where('uploaded_to', '=', $page_id)->max('order');
 
         return Attachment::forceCreate([
-            'name'        => $name,
-            'path'        => $link,
-            'external'    => true,
-            'extension'   => '',
+            'name' => $name,
+            'path' => $link,
+            'external' => true,
+            'extension' => '',
             'uploaded_to' => $page_id,
-            'created_by'  => user()->id,
-            'updated_by'  => user()->id,
-            'order'       => $largestExistingOrder + 1,
+            'created_by' => user()->id,
+            'updated_by' => user()->id,
+            'order' => $largestExistingOrder + 1,
         ]);
     }
 

@@ -33,7 +33,7 @@ class ApiDocsTest extends TestCase
         $resp->assertJson([
             'docs' => [[
                 'name' => 'docs-display',
-                'uri'  => 'api/docs',
+                'uri' => 'api/docs',
             ]],
         ]);
     }

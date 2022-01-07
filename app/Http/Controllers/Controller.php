@@ -117,8 +117,8 @@ abstract class Controller extends BaseController
     protected function downloadResponse(string $content, string $fileName): Response
     {
         return response()->make($content, 200, [
-            'Content-Type'           => 'application/octet-stream',
-            'Content-Disposition'    => 'attachment; filename="' . $fileName . '"',
+            'Content-Type' => 'application/octet-stream',
+            'Content-Disposition' => 'attachment; filename="' . $fileName . '"',
             'X-Content-Type-Options' => 'nosniff',
         ]);
     }
@@ -132,8 +132,8 @@ abstract class Controller extends BaseController
         $mime = (new WebSafeMimeSniffer())->sniff($content);
 
         return response()->make($content, 200, [
-            'Content-Type'           => $mime,
-            'Content-Disposition'    => 'inline; filename="' . $fileName . '"',
+            'Content-Type' => $mime,
+            'Content-Disposition' => 'inline; filename="' . $fileName . '"',
             'X-Content-Type-Options' => 'nosniff',
         ]);
     }

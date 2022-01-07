@@ -30,8 +30,6 @@
             <form action="{{ isset($recipemenu) ? $recipemenu->getUrl('/create-recipe') : url('/recipes') }}" method="POST" enctype="multipart/form-data">
                 @include('recipes.parts.form', ['returnLocation' => isset($recipemenu) ? $recipemenu->getUrl() : url('/recipes')])
             </form>
-            @php echo isset($recipemenu) ? $recipemenu->getUrl('/create-recipe') : url('/recipes')
-            @endphp
         </main>
     </div>
 

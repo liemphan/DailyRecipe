@@ -43,7 +43,7 @@ class ResetPasswordController extends Controller
      * Get the response for a successful password reset.
      *
      * @param Request $request
-     * @param string  $response
+     * @param string $response
      *
      * @return Response
      */
@@ -61,7 +61,7 @@ class ResetPasswordController extends Controller
      * Get the response for a failed password reset.
      *
      * @param Request $request
-     * @param string                   $response
+     * @param string $response
      *
      * @return RedirectResponse|JsonResponse
      */

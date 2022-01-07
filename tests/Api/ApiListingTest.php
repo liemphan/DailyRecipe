@@ -40,9 +40,9 @@ class ApiListingTest extends TestCase
         $this->actingAsApiEditor();
 
         $sortChecks = [
-            '-id'   => Recipe::visible()->orderBy('id', 'desc')->first(),
+            '-id' => Recipe::visible()->orderBy('id', 'desc')->first(),
             '+name' => Recipe::visible()->orderBy('name', 'asc')->first(),
-            'name'  => Recipe::visible()->orderBy('name', 'asc')->first(),
+            'name' => Recipe::visible()->orderBy('name', 'asc')->first(),
             '-name' => Recipe::visible()->orderBy('name', 'desc')->first(),
         ];
 
@@ -50,7 +50,7 @@ class ApiListingTest extends TestCase
             $resp = $this->get($this->endpoint . '?count=1&sort=' . $sortOption);
             $resp->assertJson(['data' => [
                 [
-                    'id'   => $result->id,
+                    'id' => $result->id,
                     'name' => $result->name,
                 ],
             ]]);
@@ -66,11 +66,11 @@ class ApiListingTest extends TestCase
 
         $filterChecks = [
             // Test different types of filter
-            "filter[id]={$recipe->id}"                  => 1,
-            "filter[id:ne]={$recipe->id}"               => Recipe::visible()->where('id', '!=', $recipe->id)->count(),
-            "filter[id:gt]={$recipe->id}"               => Recipe::visible()->where('id', '>', $recipe->id)->count(),
-            "filter[id:gte]={$recipe->id}"              => Recipe::visible()->where('id', '>=', $recipe->id)->count(),
-            "filter[id:lt]={$recipe->id}"               => Recipe::visible()->where('id', '<', $recipe->id)->count(),
+            "filter[id]={$recipe->id}" => 1,
+            "filter[id:ne]={$recipe->id}" => Recipe::visible()->where('id', '!=', $recipe->id)->count(),
+            "filter[id:gt]={$recipe->id}" => Recipe::visible()->where('id', '>', $recipe->id)->count(),
+            "filter[id:gte]={$recipe->id}" => Recipe::visible()->where('id', '>=', $recipe->id)->count(),
+            "filter[id:lt]={$recipe->id}" => Recipe::visible()->where('id', '<', $recipe->id)->count(),
             "filter[name:like]={$encodedNameSubstr}%" => Recipe::visible()->where('name', 'like', $nameSubstr . '%')->count(),
 
             // Test mulitple filters 'and' together

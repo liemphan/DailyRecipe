@@ -31,7 +31,7 @@ class DrawioImageController extends Controller
         $imgData = $this->imageRepo->getEntityFiltered('drawio', $parentTypeFilter, $page, 24, $uploadedToFilter, $searchTerm);
 
         return view('pages.parts.image-manager-list', [
-            'images'  => $imgData['images'],
+            'images' => $imgData['images'],
             'hasMore' => $imgData['has_more'],
         ]);
     }
@@ -44,7 +44,7 @@ class DrawioImageController extends Controller
     public function create(Request $request)
     {
         $this->validate($request, [
-            'image'       => ['required', 'string'],
+            'image' => ['required', 'string'],
             'uploaded_to' => ['required', 'integer'],
         ]);
 

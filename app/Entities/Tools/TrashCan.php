@@ -5,14 +5,13 @@ namespace DailyRecipe\Entities\Tools;
 use DailyRecipe\Entities\EntityProvider;
 use DailyRecipe\Entities\Models\Recipe;
 use DailyRecipe\Entities\Models\Recipemenu;
-use DailyRecipe\Entities\Models\Chapter;
+
 use DailyRecipe\Entities\Models\Deletion;
 use DailyRecipe\Entities\Models\Entity;
 use DailyRecipe\Entities\Models\HasCoverImage;
-use DailyRecipe\Entities\Models\Page;
-use DailyRecipe\Exceptions\NotifyException;
+
 use DailyRecipe\Facades\Activity;
-use DailyRecipe\Uploads\AttachmentService;
+
 use DailyRecipe\Uploads\ImageService;
 use Exception;
 use Illuminate\Database\Eloquent\Builder;
@@ -38,59 +37,55 @@ class TrashCan
     {
         Deletion::createForEntity($recipe);
 
-        foreach ($recipe->pages as $page) {
-            $this->softDestroyPage($page, false);
-        }
-
-        foreach ($recipe->chapters as $chapter) {
-            $this->softDestroyChapter($chapter, false);
-        }
+//        foreach ($recipe as $page) {
+//            $this->softDestroyPage($page, false);
+//        }
 
         $recipe->delete();
     }
 
-    /**
-     * Send a chapter to the recycle bin.
-     *
-     * @throws Exception
-     */
-    public function softDestroyChapter(Chapter $chapter, bool $recordDelete = true)
-    {
-        if ($recordDelete) {
-            Deletion::createForEntity($chapter);
-        }
+//    /**
+//     * Send a chapter to the recycle bin.
+//     *
+//     * @throws Exception
+//     */
+//    public function softDestroyChapter(Chapter $chapter, bool $recordDelete = true)
+//    {
+//        if ($recordDelete) {
+//            Deletion::createForEntity($chapter);
+//        }
+//
+//        if (count($chapter->pages) > 0) {
+//            foreach ($chapter->pages as $page) {
+//                $this->softDestroyPage($page, false);
+//            }
+//        }
+//
+//        $chapter->delete();
+//    }
 
-        if (count($chapter->pages) > 0) {
-            foreach ($chapter->pages as $page) {
-                $this->softDestroyPage($page, false);
-            }
-        }
-
-        $chapter->delete();
-    }
-
-    /**
-     * Send a page to the recycle bin.
-     *
-     * @throws Exception
-     */
-    public function softDestroyPage(Recipe $page, bool $recordDelete = true)
-    {
-        if ($recordDelete) {
-            Deletion::createForEntity($page);
-        }
-
-        // Check if set as custom homepage & remove setting if not used or throw error if active
-        $customHome = setting('app-homepage', '0:');
-        if (intval($page->id) === intval(explode(':', $customHome)[0])) {
-            if (setting('app-homepage-type') === 'page') {
-                throw new NotifyException(trans('errors.page_custom_home_deletion'), $page->getUrlContent());
-            }
-            setting()->remove('app-homepage');
-        }
-
-        $page->delete();
-    }
+//    /**
+//     * Send a page to the recycle bin.
+//     *
+//     * @throws Exception
+//     */
+//    public function softDestroyPage(Recipe $page, bool $recordDelete = true)
+//    {
+//        if ($recordDelete) {
+//            Deletion::createForEntity($page);
+//        }
+//
+//        // Check if set as custom homepage & remove setting if not used or throw error if active
+//        $customHome = setting('app-homepage', '0:');
+//        if (intval($page->id) === intval(explode(':', $customHome)[0])) {
+//            if (setting('app-homepage-type') === 'page') {
+//                throw new NotifyException(trans('errors.page_custom_home_deletion'), $page->getUrlContent());
+//            }
+//            setting()->remove('app-homepage');
+//        }
+//
+//        $page->delete();
+//    }
 
     /**
      * Remove a recipemenu from the system.
@@ -138,41 +133,41 @@ class TrashCan
      *
      * @throws Exception
      */
-    protected function destroyChapter(Chapter $chapter): int
-    {
-        $count = 0;
-        $pages = $chapter->pages()->withTrashed()->get();
-        foreach ($pages as $page) {
-            $this->destroyPage($page);
-            $count++;
-        }
+//    protected function destroyChapter(Chapter $chapter): int
+//    {
+//        $count = 0;
+//        $pages = $chapter->pages()->withTrashed()->get();
+//        foreach ($pages as $page) {
+//            $this->destroyPage($page);
+//            $count++;
+//        }
+//
+//        $this->destroyCommonRelations($chapter);
+//        $chapter->forceDelete();
+//
+//        return $count + 1;
+//    }
 
-        $this->destroyCommonRelations($chapter);
-        $chapter->forceDelete();
-
-        return $count + 1;
-    }
-
-    /**
-     * Remove a page from the system.
-     *
-     * @throws Exception
-     */
-    protected function destroyPage(Page $page): int
-    {
-        $this->destroyCommonRelations($page);
-        $page->allRevisions()->delete();
-
-        // Delete Attached Files
-        $attachmentService = app(AttachmentService::class);
-        foreach ($page->attachments as $attachment) {
-            $attachmentService->deleteFile($attachment);
-        }
-
-        $page->forceDelete();
-
-        return 1;
-    }
+//    /**
+//     * Remove a page from the system.
+//     *
+//     * @throws Exception
+//     */
+//    protected function destroyPage(Page $page): int
+//    {
+//        $this->destroyCommonRelations($page);
+//        $page->allRevisions()->delete();
+//
+//        // Delete Attached Files
+//        $attachmentService = app(AttachmentService::class);
+//        foreach ($page->attachments as $attachment) {
+//            $attachmentService->deleteFile($attachment);
+//        }
+//
+//        $page->forceDelete();
+//
+//        return 1;
+//    }
 
     /**
      * Get the total counts of those that have been trashed
@@ -295,9 +290,9 @@ class TrashCan
             $count++;
         };
 
-        if ($entity instanceof Chapter || $entity instanceof Recipe) {
-            $entity->pages()->withTrashed()->withCount('deletions')->get()->each($restoreAction);
-        }
+//        if ($entity instanceof Chapter || $entity instanceof Recipe) {
+//            $entity->pages()->withTrashed()->withCount('deletions')->get()->each($restoreAction);
+//        }
 
         if ($entity instanceof Recipe) {
             $entity->chapters()->withTrashed()->withCount('deletions')->get()->each($restoreAction);
@@ -313,12 +308,12 @@ class TrashCan
      */
     protected function destroyEntity(Entity $entity): int
     {
-        if ($entity instanceof Page) {
-            return $this->destroyPage($entity);
-        }
-        if ($entity instanceof Chapter) {
-            return $this->destroyChapter($entity);
-        }
+//        if ($entity instanceof Page) {
+//            return $this->destroyPage($entity);
+//        }
+//        if ($entity instanceof Chapter) {
+//            return $this->destroyChapter($entity);
+//        }
         if ($entity instanceof Recipe) {
             return $this->destroyRecipe($entity);
         }
