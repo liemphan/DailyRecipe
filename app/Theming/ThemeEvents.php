@@ -2,6 +2,12 @@
 
 namespace DailyRecipe\Theming;
 
+use DailyRecipe\Application;
+use DailyRecipe\Auth\User;
+use Illuminate\Http\Request;
+use Illuminate\Http\Response;
+use League\CommonMark\ConfigurableEnvironmentInterface;
+
 /**
  * The ThemeEvents used within DailyRecipe.
  *
@@ -19,7 +25,7 @@ class ThemeEvents
      * Application boot-up.
      * After main services are registered.
      *
-     * @param \DailyRecipe\Application $app
+     * @param Application $app
      */
     const APP_BOOT = 'app_boot';
 
@@ -30,8 +36,8 @@ class ThemeEvents
      * Provides the original request to use.
      * Return values, if provided, will be used as a new response to use.
      *
-     * @param \Illuminate\Http\Request $request
-     * @returns \Illuminate\Http\Response|null
+     * @param Request $request
+     * @returns Response|null
      */
     const WEB_MIDDLEWARE_BEFORE = 'web_middleware_before';
 
@@ -41,9 +47,9 @@ class ThemeEvents
      * Provides both the original request and the currently resolved response.
      * Return values, if provided, will be used as a new response to use.
      *
-     * @param \Illuminate\Http\Request                                                      $request
-     * @param \Illuminate\Http\Response|Symfony\Component\HttpFoundation\BinaryFileResponse $response
-     * @returns \Illuminate\Http\Response|null
+     * @param Request $request
+     * @param Response|Symfony\Component\HttpFoundation\BinaryFileResponse $response
+     * @returns Response|null
      */
     const WEB_MIDDLEWARE_AFTER = 'web_middleware_after';
 
@@ -53,8 +59,8 @@ class ThemeEvents
      * system as a standard app user. This includes a user becoming logged in
      * after registration. This is not emitted upon API usage.
      *
-     * @param string               $authSystem
-     * @param \DailyRecipe\Auth\User $user
+     * @param string $authSystem
+     * @param User $user
      */
     const AUTH_LOGIN = 'auth_login';
 
@@ -64,8 +70,8 @@ class ThemeEvents
      * system as a standard app user. This includes auto-registration systems used
      * by LDAP, SAML and social systems. It only includes self-registrations.
      *
-     * @param string               $authSystem
-     * @param \DailyRecipe\Auth\User $user
+     * @param string $authSystem
+     * @param User $user
      */
     const AUTH_REGISTER = 'auth_register';
 
@@ -75,8 +81,8 @@ class ThemeEvents
      * before its used to render markdown content.
      * If the listener returns a non-null value, that will be used as an environment instead.
      *
-     * @param \League\CommonMark\ConfigurableEnvironmentInterface $environment
-     * @returns \League\CommonMark\ConfigurableEnvironmentInterface|null
+     * @param ConfigurableEnvironmentInterface $environment
+     * @returns ConfigurableEnvironmentInterface|null
      */
     const COMMONMARK_ENVIRONMENT_CONFIGURE = 'commonmark_environment_configure';
 }

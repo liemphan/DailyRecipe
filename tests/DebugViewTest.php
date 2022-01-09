@@ -3,13 +3,15 @@
 namespace Tests;
 
 use DailyRecipe\Auth\Access\SocialAuthService;
+use Exception;
+use InvalidArgumentException;
 
 class DebugViewTest extends TestCase
 {
     public function test_debug_view_shows_expected_details()
     {
         config()->set('app.debug', true);
-        $resp = $this->getDebugViewForException(new \InvalidArgumentException('An error occurred during testing'));
+        $resp = $this->getDebugViewForException(new InvalidArgumentException('An error occurred during testing'));
 
         // Error message
         $resp->assertSeeText('An error occurred during testing');
@@ -32,17 +34,17 @@ class DebugViewTest extends TestCase
     public function test_debug_view_only_shows_when_debug_mode_is_enabled()
     {
         config()->set('app.debug', true);
-        $resp = $this->getDebugViewForException(new \InvalidArgumentException('An error occurred during testing'));
+        $resp = $this->getDebugViewForException(new InvalidArgumentException('An error occurred during testing'));
         $resp->assertSeeText('Stack Trace');
         $resp->assertDontSeeText('An unknown error occurred');
 
         config()->set('app.debug', false);
-        $resp = $this->getDebugViewForException(new \InvalidArgumentException('An error occurred during testing'));
+        $resp = $this->getDebugViewForException(new InvalidArgumentException('An error occurred during testing'));
         $resp->assertDontSeeText('Stack Trace');
         $resp->assertSeeText('An unknown error occurred');
     }
 
-    protected function getDebugViewForException(\Exception $exception): TestResponse
+    protected function getDebugViewForException(Exception $exception): TestResponse
     {
         // Fake an error via social auth service used on login page
         $mockService = $this->mock(SocialAuthService::class);

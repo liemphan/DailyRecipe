@@ -2,7 +2,30 @@
 
 namespace DailyRecipe\Http;
 
+use DailyRecipe\Http\Middleware\ApiAuthenticate;
+use DailyRecipe\Http\Middleware\ApplyCspRules;
+use DailyRecipe\Http\Middleware\Authenticate;
+use DailyRecipe\Http\Middleware\AuthenticatedOrPendingMfa;
+use DailyRecipe\Http\Middleware\CheckEmailConfirmed;
+use DailyRecipe\Http\Middleware\CheckGuard;
+use DailyRecipe\Http\Middleware\CheckUserHasPermission;
+use DailyRecipe\Http\Middleware\EncryptCookies;
+use DailyRecipe\Http\Middleware\Localization;
+use DailyRecipe\Http\Middleware\PreventAuthenticatedResponseCaching;
+use DailyRecipe\Http\Middleware\PreventRequestsDuringMaintenance;
+use DailyRecipe\Http\Middleware\RedirectIfAuthenticated;
+use DailyRecipe\Http\Middleware\RunThemeActions;
+use DailyRecipe\Http\Middleware\StartSessionIfCookieExists;
+use DailyRecipe\Http\Middleware\ThrottleApiRequests;
+use DailyRecipe\Http\Middleware\TrimStrings;
+use DailyRecipe\Http\Middleware\TrustProxies;
+use DailyRecipe\Http\Middleware\VerifyCsrfToken;
+use Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse;
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
+use Illuminate\Foundation\Http\Middleware\ValidatePostSize;
+use Illuminate\Routing\Middleware\ThrottleRequests;
+use Illuminate\Session\Middleware\StartSession;
+use Illuminate\View\Middleware\ShareErrorsFromSession;
 
 class Kernel extends HttpKernel
 {
@@ -11,10 +34,10 @@ class Kernel extends HttpKernel
      * These middleware are run during every request to your application.
      */
     protected $middleware = [
-        \DailyRecipe\Http\Middleware\PreventRequestsDuringMaintenance::class,
-        \Illuminate\Foundation\Http\Middleware\ValidatePostSize::class,
-        \DailyRecipe\Http\Middleware\TrimStrings::class,
-        \DailyRecipe\Http\Middleware\TrustProxies::class,
+        PreventRequestsDuringMaintenance::class,
+        ValidatePostSize::class,
+        TrimStrings::class,
+        TrustProxies::class,
     ];
 
     /**
@@ -24,24 +47,24 @@ class Kernel extends HttpKernel
      */
     protected $middlewareGroups = [
         'web' => [
-            \DailyRecipe\Http\Middleware\ApplyCspRules::class,
-            \DailyRecipe\Http\Middleware\EncryptCookies::class,
-            \Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse::class,
-            \Illuminate\Session\Middleware\StartSession::class,
-            \Illuminate\View\Middleware\ShareErrorsFromSession::class,
-            \DailyRecipe\Http\Middleware\VerifyCsrfToken::class,
-            \DailyRecipe\Http\Middleware\PreventAuthenticatedResponseCaching::class,
-            \DailyRecipe\Http\Middleware\CheckEmailConfirmed::class,
-            \DailyRecipe\Http\Middleware\RunThemeActions::class,
-            \DailyRecipe\Http\Middleware\Localization::class,
+            ApplyCspRules::class,
+            EncryptCookies::class,
+            AddQueuedCookiesToResponse::class,
+            StartSession::class,
+            ShareErrorsFromSession::class,
+            VerifyCsrfToken::class,
+            PreventAuthenticatedResponseCaching::class,
+            CheckEmailConfirmed::class,
+            RunThemeActions::class,
+            Localization::class,
         ],
         'api' => [
-            \DailyRecipe\Http\Middleware\ThrottleApiRequests::class,
-            \DailyRecipe\Http\Middleware\EncryptCookies::class,
-            \DailyRecipe\Http\Middleware\StartSessionIfCookieExists::class,
-            \DailyRecipe\Http\Middleware\ApiAuthenticate::class,
-            \DailyRecipe\Http\Middleware\PreventAuthenticatedResponseCaching::class,
-            \DailyRecipe\Http\Middleware\CheckEmailConfirmed::class,
+            ThrottleApiRequests::class,
+            EncryptCookies::class,
+            StartSessionIfCookieExists::class,
+            ApiAuthenticate::class,
+            PreventAuthenticatedResponseCaching::class,
+            CheckEmailConfirmed::class,
         ],
     ];
 
@@ -51,11 +74,11 @@ class Kernel extends HttpKernel
      * @var array
      */
     protected $routeMiddleware = [
-        'auth'       => \DailyRecipe\Http\Middleware\Authenticate::class,
-        'can'        => \DailyRecipe\Http\Middleware\CheckUserHasPermission::class,
-        'guest'      => \DailyRecipe\Http\Middleware\RedirectIfAuthenticated::class,
-        'throttle'   => \Illuminate\Routing\Middleware\ThrottleRequests::class,
-        'guard'      => \DailyRecipe\Http\Middleware\CheckGuard::class,
-        'mfa-setup'  => \DailyRecipe\Http\Middleware\AuthenticatedOrPendingMfa::class,
+        'auth' => Authenticate::class,
+        'can' => CheckUserHasPermission::class,
+        'guest' => RedirectIfAuthenticated::class,
+        'throttle' => ThrottleRequests::class,
+        'guard' => CheckGuard::class,
+        'mfa-setup' => AuthenticatedOrPendingMfa::class,
     ];
 }

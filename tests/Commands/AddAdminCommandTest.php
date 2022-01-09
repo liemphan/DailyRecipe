@@ -2,6 +2,8 @@
 
 namespace Tests\Commands;
 
+use Artisan;
+use Auth;
 use DailyRecipe\Auth\User;
 use Tests\TestCase;
 
@@ -9,7 +11,7 @@ class AddAdminCommandTest extends TestCase
 {
     public function test_add_admin_command()
     {
-        $exitCode = \Artisan::call('dailyrecipe:create-admin', [
+        $exitCode = Artisan::call('dailyrecipe:create-admin', [
             '--email'    => 'admintest@example.com',
             '--name'     => 'Admin Test',
             '--password' => 'testing-4',
@@ -22,6 +24,6 @@ class AddAdminCommandTest extends TestCase
         ]);
 
         $this->assertTrue(User::query()->where('email', '=', 'admintest@example.com')->first()->hasSystemRole('admin'), 'User has admin role as expected');
-        $this->assertTrue(\Auth::attempt(['email' => 'admintest@example.com', 'password' => 'testing-4']), 'Password stored as expected');
+        $this->assertTrue(Auth::attempt(['email' => 'admintest@example.com', 'password' => 'testing-4']), 'Password stored as expected');
     }
 }

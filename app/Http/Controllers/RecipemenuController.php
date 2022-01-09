@@ -37,7 +37,7 @@ class RecipemenuController extends Controller
         $sort = setting()->getForCurrentUser('recipemenus_sort', 'name');
         $order = setting()->getForCurrentUser('recipemenus_sort_order', 'asc');
         $sortOptions = [
-            'name'       => trans('common.sort_name'),
+            'name' => trans('common.sort_name'),
             'created_at' => trans('common.sort_created_at'),
             'updated_at' => trans('common.sort_updated_at'),
         ];
@@ -51,13 +51,13 @@ class RecipemenuController extends Controller
         $this->setPageTitle(trans('entities.menus'));
 
         return view('menus.index', [
-            'menus'     => $menus,
-            'recents'     => $recents,
-            'popular'     => $popular,
-            'new'         => $new,
-            'view'        => $view,
-            'sort'        => $sort,
-            'order'       => $order,
+            'menus' => $menus,
+            'recents' => $recents,
+            'popular' => $popular,
+            'new' => $new,
+            'view' => $view,
+            'sort' => $sort,
+            'order' => $order,
             'sortOptions' => $sortOptions,
         ]);
     }
@@ -84,9 +84,9 @@ class RecipemenuController extends Controller
     {
         $this->checkPermission('recipemenu-create-all');
         $this->validate($request, [
-            'name'        => ['required', 'string', 'max:255'],
+            'name' => ['required', 'string', 'max:255'],
             'description' => ['string', 'max:1000'],
-            'image'       => array_merge(['nullable'], $this->getImageValidationRules()),
+            'image' => array_merge(['nullable'], $this->getImageValidationRules()),
         ]);
 
         $recipeIds = explode(',', $request->get('recipes', ''));
@@ -121,12 +121,12 @@ class RecipemenuController extends Controller
         $this->setPageTitle($menu->getShortName());
 
         return view('menus.show', [
-            'menu'                   => $menu,
+            'menu' => $menu,
             'sortedVisibleMenuRecipes' => $sortedVisibleMenuRecipes,
-            'view'                    => $view,
-            'activity'                => Activity::entityActivity($menu, 20, 1),
-            'order'                   => $order,
-            'sort'                    => $sort,
+            'view' => $view,
+            'activity' => Activity::entityActivity($menu, 20, 1),
+            'order' => $order,
+            'sort' => $sort,
         ]);
     }
 
@@ -161,9 +161,9 @@ class RecipemenuController extends Controller
         $menu = $this->recipemenuRepo->getBySlug($slug);
         $this->checkOwnablePermission('recipemenu-update', $menu);
         $this->validate($request, [
-            'name'        => ['required', 'string', 'max:255'],
+            'name' => ['required', 'string', 'max:255'],
             'description' => ['string', 'max:1000'],
-            'image'       => array_merge(['nullable'], $this->getImageValidationRules()),
+            'image' => array_merge(['nullable'], $this->getImageValidationRules()),
         ]);
 
         $recipeIds = explode(',', $request->get('recipes', ''));

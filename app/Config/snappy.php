@@ -11,18 +11,18 @@
 return [
     'pdf' => [
         'enabled' => true,
-        'binary'  => file_exists(base_path('wkhtmltopdf')) ? base_path('wkhtmltopdf') : env('WKHTMLTOPDF', false),
+        'binary' => file_exists(base_path('wkhtmltopdf')) ? base_path('wkhtmltopdf') : env('WKHTMLTOPDF', false),
         'timeout' => false,
         'options' => [
             'outline' => true,
         ],
-        'env'     => [],
+        'env' => [],
     ],
     'image' => [
         'enabled' => false,
-        'binary'  => '/usr/local/bin/wkhtmltoimage',
+        'binary' => '/usr/local/bin/wkhtmltoimage',
         'timeout' => false,
         'options' => [],
-        'env'     => [],
+        'env' => [],
     ],
 ];

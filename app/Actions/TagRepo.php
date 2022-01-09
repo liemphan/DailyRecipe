@@ -29,7 +29,7 @@ class TagRepo
                 ($searchTerm || $nameFilter) ? 'value' : DB::raw('COUNT(distinct value) as `values`'),
                 DB::raw('COUNT(id) as usages'),
                 DB::raw('SUM(IF(entity_type = \'DailyRecipe\\\\Page\', 1, 0)) as page_count'),
-                DB::raw('SUM(IF(entity_type = \'DailyRecipe\\\\Chapter\', 1, 0)) as chapter_count'),
+                // DB::raw('SUM(IF(entity_type = \'DailyRecipe\\\\Chapter\', 1, 0)) as chapter_count'),
                 DB::raw('SUM(IF(entity_type = \'DailyRecipe\\\\Recipe\', 1, 0)) as recipe_count'),
                 DB::raw('SUM(IF(entity_type = \'DailyRecipe\\\\RecipeMenu\', 1, 0)) as menu_count'),
             ])
@@ -124,7 +124,7 @@ class TagRepo
     protected function newInstanceFromInput(array $input): Tag
     {
         return new Tag([
-            'name'  => trim($input['name']),
+            'name' => trim($input['name']),
             'value' => trim($input['value'] ?? ''),
         ]);
     }

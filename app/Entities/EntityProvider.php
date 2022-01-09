@@ -4,10 +4,10 @@ namespace DailyRecipe\Entities;
 
 use DailyRecipe\Entities\Models\Recipe;
 use DailyRecipe\Entities\Models\Recipemenu;
-use DailyRecipe\Entities\Models\Chapter;
+
 use DailyRecipe\Entities\Models\Entity;
 use DailyRecipe\Entities\Models\Page;
-use DailyRecipe\Entities\Models\PageRevision;
+use DailyRecipe\Entities\Models\RecipeRevision;
 
 /**
  * Class EntityProvider.
@@ -28,18 +28,9 @@ class EntityProvider
      */
     public $recipe;
 
-    /**
-     * @var Chapter
-     */
-    public $chapter;
 
     /**
-     * @var Page
-     */
-    public $page;
-
-    /**
-     * @var PageRevision
+     * @var RecipeRevision
      */
     public $pageRevision;
 
@@ -47,9 +38,7 @@ class EntityProvider
     {
         $this->recipemenu = new Recipemenu();
         $this->recipe = new Recipe();
-        $this->chapter = new Chapter();
-        $this->page = new Page();
-        $this->pageRevision = new PageRevision();
+        $this->pageRevision = new RecipeRevision();
     }
 
     /**
@@ -62,9 +51,8 @@ class EntityProvider
     {
         return [
             'recipemenu' => $this->recipemenu,
-            'recipe'      => $this->recipe,
-            'chapter'   => $this->chapter,
-            'page'      => $this->page,
+            'recipe' => $this->recipe,
+            //'page' => $this->recipe,
         ];
     }
 

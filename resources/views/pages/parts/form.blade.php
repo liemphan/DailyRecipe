@@ -20,7 +20,7 @@
         <div class="grid third no-break v-center">
 
             <div class="action-buttons text-left px-m py-xs">
-                <a href="{{ $page->draft ? $page->getParent()->getUrl() : $page->getUrl() }}"
+                <a href="{{ $page->draft ? $page->getUrlContent() : $page->getUrl() }}"
                    class="text-button text-primary">@icon('back')<span class="hide-under-l">{{ trans('common.back') }}</span></a>
             </div>
 
@@ -70,7 +70,7 @@
     {{--Title input--}}
     <div class="title-input page-title clearfix">
         <div refs="page-editor@titleContainer" class="input">
-            @include('form.text', ['name' => 'name', 'model' => $model, 'placeholder' => trans('entities.pages_title')])
+            @include('form.text-onlyread', ['name' => 'name', 'model' => $model, 'placeholder' => trans('entities.pages_title')])
         </div>
     </div>
 

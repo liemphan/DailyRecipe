@@ -7,9 +7,7 @@ use DailyRecipe\Auth\User;
 use DailyRecipe\Entities\Models\Recipe;
 use DailyRecipe\Entities\Models\RecipeChild;
 use DailyRecipe\Entities\Models\Recipemenu;
-use DailyRecipe\Entities\Models\Chapter;
 use DailyRecipe\Entities\Models\Entity;
-use DailyRecipe\Entities\Models\Page;
 use DailyRecipe\Model;
 use DailyRecipe\Traits\HasCreatorAndUpdater;
 use DailyRecipe\Traits\HasOwner;
@@ -87,19 +85,19 @@ class PermissionService
         return Recipe::query()->withTrashed()->find($recipeId);
     }
 
-    /**
-     * Get a chapter via ID, Checks local cache.
-     */
-    protected function getChapter(int $chapterId): ?Chapter
-    {
-        if (isset($this->entityCache[Chapter::class]) && $this->entityCache[Chapter::class]->has($chapterId)) {
-            return $this->entityCache[Chapter::class]->get($chapterId);
-        }
-
-        return Chapter::query()
-            ->withTrashed()
-            ->find($chapterId);
-    }
+//    /**
+//     * Get a chapter via ID, Checks local cache.
+//     */
+//    protected function getChapter(int $chapterId): ?Chapter
+//    {
+//        if (isset($this->entityCache[Chapter::class]) && $this->entityCache[Chapter::class]->has($chapterId)) {
+//            return $this->entityCache[Chapter::class]->get($chapterId);
+//        }
+//
+//        return Chapter::query()
+//            ->withTrashed()
+//            ->find($chapterId);
+//    }
 
     /**
      * Get the roles for the current logged in user.
@@ -149,12 +147,12 @@ class PermissionService
     {
         return Recipe::query()->withTrashed()
             ->select(['id', 'restricted', 'owned_by'])->with([
-                'chapters' => function ($query) {
-                    $query->withTrashed()->select(['id', 'restricted', 'owned_by', 'recipe_id']);
-                },
-                'pages' => function ($query) {
-                    $query->withTrashed()->select(['id', 'restricted', 'owned_by', 'recipe_id', 'chapter_id']);
-                },
+//                'chapters' => function ($query) {
+//                    $query->withTrashed()->select(['id', 'restricted', 'owned_by', 'recipe_id']);
+//                },
+//                'pages' => function ($query) {
+//                    $query->withTrashed()->select(['id', 'restricted', 'owned_by', 'recipe_id', 'chapter_id']);
+//                },
             ]);
     }
 
@@ -182,12 +180,12 @@ class PermissionService
 
         /** @var Recipe $recipe */
         foreach ($recipes->all() as $recipe) {
-            foreach ($recipe->getRelation('chapters') as $chapter) {
-                $entities->push($chapter);
-            }
-            foreach ($recipe->getRelation('pages') as $page) {
-                $entities->push($page);
-            }
+//            foreach ($recipe->getRelation('chapters') as $chapter) {
+//                $entities->push($chapter);
+//            }
+//            foreach ($recipe->getRelation('pages') as $page) {
+//                $entities->push($page);
+//            }
         }
 
         if ($deleteOld) {
@@ -216,15 +214,15 @@ class PermissionService
             $entities[] = $entity->recipe;
         }
 
-        if ($entity instanceof Page && $entity->chapter_id) {
-            $entities[] = $entity->chapter;
-        }
+//        if ($entity instanceof Page && $entity->chapter_id) {
+//            $entities[] = $entity->chapter;
+//        }
 
-        if ($entity instanceof Chapter) {
-            foreach ($entity->pages as $page) {
-                $entities[] = $page;
-            }
-        }
+//        if ($entity instanceof Chapter) {
+//            foreach ($entity->pages as $page) {
+//                $entities[] = $page;
+//            }
+//        }
 
         $this->buildJointPermissionsForEntities($entities);
     }
@@ -325,7 +323,7 @@ class PermissionService
      * Create & Save entity jointPermissions for many entities and roles.
      *
      * @param Entity[] $entities
-     * @param Role[]   $roles
+     * @param Role[] $roles
      *
      * @throws Throwable
      */
@@ -383,12 +381,12 @@ class PermissionService
     protected function getActions(Entity $entity): array
     {
         $baseActions = ['view', 'update', 'delete'];
-        if ($entity instanceof Chapter || $entity instanceof Recipe) {
+        if ( $entity instanceof Recipe) {
             $baseActions[] = 'page-create';
         }
-        if ($entity instanceof Recipe) {
-            $baseActions[] = 'chapter-create';
-        }
+//        if ($entity instanceof Recipe) {
+//            $baseActions[] = 'chapter-create';
+//        }
 
         return $baseActions;
     }
@@ -425,13 +423,13 @@ class PermissionService
         $hasPermissiveAccessToParents = !$recipe->restricted;
 
         // For pages with a chapter, Check if explicit permissions are set on the Chapter
-        if ($entity instanceof Page && intval($entity->chapter_id) !== 0) {
-            $chapter = $this->getChapter($entity->chapter_id);
-            $hasPermissiveAccessToParents = $hasPermissiveAccessToParents && !$chapter->restricted;
-            if ($chapter->restricted) {
-                $hasExplicitAccessToParents = $this->mapHasActiveRestriction($permissionMap, $chapter, $role, $restrictionAction);
-            }
-        }
+//        if ($entity instanceof Page && intval($entity->chapter_id) !== 0) {
+//            $chapter = $this->getChapter($entity->chapter_id);
+//            $hasPermissiveAccessToParents = $hasPermissiveAccessToParents && !$chapter->restricted;
+//            if ($chapter->restricted) {
+//                $hasExplicitAccessToParents = $this->mapHasActiveRestriction($permissionMap, $chapter, $role, $restrictionAction);
+//            }
+//        }
 
         return $this->createJointPermissionDataArray(
             $entity,
@@ -459,13 +457,13 @@ class PermissionService
     protected function createJointPermissionDataArray(Entity $entity, Role $role, string $action, bool $permissionAll, bool $permissionOwn): array
     {
         return [
-            'role_id'            => $role->getRawAttribute('id'),
-            'entity_id'          => $entity->getRawAttribute('id'),
-            'entity_type'        => $entity->getMorphClass(),
-            'action'             => $action,
-            'has_permission'     => $permissionAll,
+            'role_id' => $role->getRawAttribute('id'),
+            'entity_id' => $entity->getRawAttribute('id'),
+            'entity_type' => $entity->getMorphClass(),
+            'action' => $action,
+            'has_permission' => $permissionAll,
             'has_permission_own' => $permissionOwn,
-            'owned_by'           => $entity->getRawAttribute('owned_by'),
+            'owned_by' => $entity->getRawAttribute('owned_by'),
         ];
     }
 
@@ -592,7 +590,7 @@ class PermissionService
      */
     public function enforceEntityRestrictions(Entity $entity, Builder $query, string $action = 'view'): Builder
     {
-        if ($entity instanceof Page) {
+        if ($entity instanceof Recipe) {
             // Prevent drafts being visible to others.
             $this->enforceDraftVisibilityOnQuery($query);
         }

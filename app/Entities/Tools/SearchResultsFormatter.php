@@ -32,7 +32,7 @@ class SearchResultsFormatter
         $terms = array_merge($options->exacts, $options->searches);
 
         $originalContentByNewAttribute = [
-            'preview_name'    => $entity->name,
+            'preview_name' => $entity->name,
             'preview_content' => $textContent,
         ];
 
@@ -51,7 +51,7 @@ class SearchResultsFormatter
     /**
      * Highlight tags which match the given terms.
      *
-     * @param Tag[]    $tags
+     * @param Tag[] $tags
      * @param string[] $terms
      */
     protected function highlightTagsContainingTerms(array $tags, array $terms): void

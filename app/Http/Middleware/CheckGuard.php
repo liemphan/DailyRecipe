@@ -3,15 +3,16 @@
 namespace DailyRecipe\Http\Middleware;
 
 use Closure;
+use Illuminate\Http\Request;
 
 class CheckGuard
 {
     /**
      * Handle an incoming request.
      *
-     * @param \Illuminate\Http\Request $request
-     * @param \Closure                 $next
-     * @param string                   $allowedGuards
+     * @param Request $request
+     * @param Closure $next
+     * @param string $allowedGuards
      *
      * @return mixed
      */

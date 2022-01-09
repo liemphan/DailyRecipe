@@ -13,22 +13,22 @@ class Saml2Test extends TestCase
         parent::setUp();
         // Set default config for SAML2
         config()->set([
-            'auth.method'                                   => 'saml2',
-            'auth.defaults.guard'                           => 'saml2',
-            'saml2.name'                                    => 'SingleSignOn-Testing',
-            'saml2.email_attribute'                         => 'email',
-            'saml2.display_name_attributes'                 => ['first_name', 'last_name'],
-            'saml2.external_id_attribute'                   => 'uid',
-            'saml2.user_to_groups'                          => false,
-            'saml2.group_attribute'                         => 'user_groups',
-            'saml2.remove_from_groups'                      => false,
-            'saml2.onelogin_overrides'                      => null,
-            'saml2.onelogin.idp.entityId'                   => 'http://saml.local/saml2/idp/metadata.php',
-            'saml2.onelogin.idp.singleSignOnService.url'    => 'http://saml.local/saml2/idp/SSOService.php',
-            'saml2.onelogin.idp.singleLogoutService.url'    => 'http://saml.local/saml2/idp/SingleLogoutService.php',
-            'saml2.autoload_from_metadata'                  => false,
-            'saml2.onelogin.idp.x509cert'                   => $this->testCert,
-            'saml2.onelogin.debug'                          => false,
+            'auth.method' => 'saml2',
+            'auth.defaults.guard' => 'saml2',
+            'saml2.name' => 'SingleSignOn-Testing',
+            'saml2.email_attribute' => 'email',
+            'saml2.display_name_attributes' => ['first_name', 'last_name'],
+            'saml2.external_id_attribute' => 'uid',
+            'saml2.user_to_groups' => false,
+            'saml2.group_attribute' => 'user_groups',
+            'saml2.remove_from_groups' => false,
+            'saml2.onelogin_overrides' => null,
+            'saml2.onelogin.idp.entityId' => 'http://saml.local/saml2/idp/metadata.php',
+            'saml2.onelogin.idp.singleSignOnService.url' => 'http://saml.local/saml2/idp/SSOService.php',
+            'saml2.onelogin.idp.singleLogoutService.url' => 'http://saml.local/saml2/idp/SingleLogoutService.php',
+            'saml2.autoload_from_metadata' => false,
+            'saml2.onelogin.idp.x509cert' => $this->testCert,
+            'saml2.onelogin.debug' => false,
             'saml2.onelogin.security.requestedAuthnContext' => true,
         ]);
     }
@@ -82,10 +82,10 @@ class Saml2Test extends TestCase
 
         $this->assertTrue($this->isAuthenticated());
         $this->assertDatabaseHas('users', [
-            'email'            => 'user@example.com',
+            'email' => 'user@example.com',
             'external_auth_id' => 'user',
-            'email_confirmed'  => false,
-            'name'             => 'Barry Scott',
+            'email_confirmed' => false,
+            'name' => 'Barry Scott',
         ]);
     }
 
@@ -114,8 +114,8 @@ class Saml2Test extends TestCase
     public function test_group_role_sync_on_login()
     {
         config()->set([
-            'saml2.onelogin.strict'    => false,
-            'saml2.user_to_groups'     => true,
+            'saml2.onelogin.strict' => false,
+            'saml2.user_to_groups' => true,
             'saml2.remove_from_groups' => false,
         ]);
 
@@ -133,8 +133,8 @@ class Saml2Test extends TestCase
     public function test_group_role_sync_removal_option_works_as_expected()
     {
         config()->set([
-            'saml2.onelogin.strict'    => false,
-            'saml2.user_to_groups'     => true,
+            'saml2.onelogin.strict' => false,
+            'saml2.user_to_groups' => true,
             'saml2.remove_from_groups' => true,
         ]);
 
@@ -185,7 +185,7 @@ class Saml2Test extends TestCase
     public function test_logout_sls_flow_when_sls_not_configured()
     {
         config()->set([
-            'saml2.onelogin.strict'                      => false,
+            'saml2.onelogin.strict' => false,
             'saml2.onelogin.idp.singleLogoutService.url' => null,
         ]);
 
@@ -200,14 +200,14 @@ class Saml2Test extends TestCase
     public function test_dump_user_details_option_works()
     {
         config()->set([
-            'saml2.onelogin.strict'   => false,
+            'saml2.onelogin.strict' => false,
             'saml2.dump_user_details' => true,
         ]);
 
         $acsPost = $this->followingRedirects()->post('/saml2/acs', ['SAMLResponse' => $this->acsPostData]);
         $acsPost->assertJsonStructure([
             'id_from_idp',
-            'attrs_from_idp'      => [],
+            'attrs_from_idp' => [],
             'attrs_after_parsing' => [],
         ]);
     }
@@ -289,8 +289,8 @@ class Saml2Test extends TestCase
     {
         setting()->put('registration-confirmation', 'true');
         config()->set([
-            'saml2.onelogin.strict'    => false,
-            'saml2.user_to_groups'     => true,
+            'saml2.onelogin.strict' => false,
+            'saml2.user_to_groups' => true,
             'saml2.remove_from_groups' => false,
         ]);
 
@@ -321,16 +321,16 @@ class Saml2Test extends TestCase
 
         // Make the user pre-existing in DB with different auth_id
         User::query()->forceCreate([
-            'email'            => 'user@example.com',
+            'email' => 'user@example.com',
             'external_auth_id' => 'old_system_user_id',
-            'email_confirmed'  => false,
-            'name'             => 'Barry Scott',
+            'email_confirmed' => false,
+            'name' => 'Barry Scott',
         ]);
 
         $acsPost = $this->followingRedirects()->post('/saml2/acs', ['SAMLResponse' => $this->acsPostData]);
         $this->assertFalse($this->isAuthenticated());
         $this->assertDatabaseHas('users', [
-            'email'            => 'user@example.com',
+            'email' => 'user@example.com',
             'external_auth_id' => 'old_system_user_id',
         ]);
 

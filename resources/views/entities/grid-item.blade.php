@@ -8,6 +8,7 @@
     <div class="grid-card-content">
         <h2 class="text-limit-lines-2">{{ $entity->name }}</h2>
         <p class="text-muted">{{ $entity->getExcerpt(130)   }}</p>
+
     </div>
     <div class="grid-card-footer text-muted ">
         <p>@icon('star')<span title="{{ $entity->created_at->toDayDateTimeString() }}">{{ trans('entities.meta_created', ['timeLength' => $entity->created_at->diffForHumans()]) }}</span></p>

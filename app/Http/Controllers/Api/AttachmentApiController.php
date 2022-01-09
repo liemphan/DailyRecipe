@@ -3,6 +3,7 @@
 namespace DailyRecipe\Http\Controllers\Api;
 
 use DailyRecipe\Entities\Models\Page;
+use DailyRecipe\Entities\Models\Recipe;
 use DailyRecipe\Exceptions\FileUploadException;
 use DailyRecipe\Uploads\Attachment;
 use DailyRecipe\Uploads\AttachmentService;
@@ -49,7 +50,7 @@ class AttachmentApiController extends ApiController
         $requestData = $this->validate($request, $this->rules()['create']);
 
         $pageId = $request->get('uploaded_to');
-        $page = Page::visible()->findOrFail($pageId);
+        $page = Recipe::visible()->findOrFail($pageId);
         $this->checkOwnablePermission('page-update', $page);
 
         if ($request->hasFile('file')) {
@@ -83,7 +84,7 @@ class AttachmentApiController extends ApiController
             ->findOrFail($id);
 
         $attachment->setAttribute('links', [
-            'html'     => $attachment->htmlLink(),
+            'html' => $attachment->htmlLink(),
             'markdown' => $attachment->markdownLink(),
         ]);
 
@@ -114,7 +115,7 @@ class AttachmentApiController extends ApiController
         $page = $attachment->page;
         if ($requestData['uploaded_to'] ?? false) {
             $pageId = $request->get('uploaded_to');
-            $page = Page::visible()->findOrFail($pageId);
+            $page = Recipe::visible()->findOrFail($pageId);
             $attachment->uploaded_to = $requestData['uploaded_to'];
         }
 
@@ -152,16 +153,16 @@ class AttachmentApiController extends ApiController
     {
         return [
             'create' => [
-                'name'        => ['required', 'min:1', 'max:255', 'string'],
+                'name' => ['required', 'min:1', 'max:255', 'string'],
                 'uploaded_to' => ['required', 'integer', 'exists:pages,id'],
-                'file'        => array_merge(['required_without:link'], $this->attachmentService->getFileValidationRules()),
-                'link'        => ['required_without:file', 'min:1', 'max:255', 'safe_url'],
+                'file' => array_merge(['required_without:link'], $this->attachmentService->getFileValidationRules()),
+                'link' => ['required_without:file', 'min:1', 'max:255', 'safe_url'],
             ],
             'update' => [
-                'name'        => ['min:1', 'max:255', 'string'],
+                'name' => ['min:1', 'max:255', 'string'],
                 'uploaded_to' => ['integer', 'exists:pages,id'],
-                'file'        => $this->attachmentService->getFileValidationRules(),
-                'link'        => ['min:1', 'max:255', 'safe_url'],
+                'file' => $this->attachmentService->getFileValidationRules(),
+                'link' => ['min:1', 'max:255', 'safe_url'],
             ],
         ];
     }

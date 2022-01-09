@@ -65,9 +65,9 @@ class RegistrationService
 
         if (is_null($user)) {
             $userData = [
-                'name'             => $name,
-                'email'            => $email,
-                'password'         => Str::random(32),
+                'name' => $name,
+                'email' => $email,
+                'password' => Str::random(32),
                 'external_auth_id' => $externalId,
             ];
 

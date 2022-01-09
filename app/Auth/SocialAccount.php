@@ -9,7 +9,7 @@ use DailyRecipe\Model;
  * Class SocialAccount.
  *
  * @property string $driver
- * @property User   $user
+ * @property User $user
  */
 class SocialAccount extends Model implements Loggable
 {

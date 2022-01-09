@@ -11,8 +11,8 @@ class FileLoader extends BaseLoader
      * Extends Laravel's translation FileLoader to look in multiple directories
      * so that we can load in translation overrides from the theme file if wanted.
      *
-     * @param string      $locale
-     * @param string      $group
+     * @param string $locale
+     * @param string $group
      * @param string|null $namespace
      *
      * @return array

@@ -5,6 +5,7 @@ namespace DailyRecipe\Http\Controllers\Auth;
 use DailyRecipe\Actions\ActivityType;
 use DailyRecipe\Auth\Access\Mfa\MfaValue;
 use DailyRecipe\Http\Controllers\Controller;
+use Exception;
 use Illuminate\Http\Request;
 
 class MfaController extends Controller
@@ -29,7 +30,7 @@ class MfaController extends Controller
     /**
      * Remove an MFA method for the current user.
      *
-     * @throws \Exception
+     * @throws Exception
      */
     public function remove(string $method)
     {
@@ -63,8 +64,8 @@ class MfaController extends Controller
         })->all();
 
         return view('mfa.verify', [
-            'userMethods'  => $userMethods,
-            'method'       => $method,
+            'userMethods' => $userMethods,
+            'method' => $method,
             'otherMethods' => $otherMethods,
         ]);
     }

@@ -123,9 +123,9 @@ function theme_path(string $path = ''): ?string
 function icon(string $name, array $attrs = []): string
 {
     $attrs = array_merge([
-        'class'     => 'svg-icon',
+        'class' => 'svg-icon',
         'data-icon' => $name,
-        'role'      => 'presentation',
+        'role' => 'presentation',
     ], $attrs);
     $attrString = ' ';
     foreach ($attrs as $attrName => $attr) {
@@ -143,7 +143,7 @@ function icon(string $name, array $attrs = []): string
 
     $fileContents = file_get_contents($iconPath);
 
-    return  str_replace('<svg', '<svg' . $attrString, $fileContents);
+    return str_replace('<svg', '<svg' . $attrString, $fileContents);
 }
 
 /**

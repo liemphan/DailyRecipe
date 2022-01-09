@@ -4,6 +4,7 @@ namespace DailyRecipe\Uploads;
 
 use DailyRecipe\Auth\Permissions\PermissionService;
 use DailyRecipe\Entities\Models\Page;
+use DailyRecipe\Entities\Models\Recipe;
 use DailyRecipe\Exceptions\ImageUploadException;
 use Exception;
 use Illuminate\Database\Eloquent\Builder;
@@ -46,7 +47,7 @@ class ImageRepo
         });
 
         return [
-            'images'   => $returnImages,
+            'images' => $returnImages,
             'has_more' => $hasMore,
         ];
     }
@@ -56,13 +57,14 @@ class ImageRepo
      * Can be filtered by uploaded to and also by name.
      */
     public function getPaginatedByType(
-        string $type,
-        int $page = 0,
-        int $pageSize = 24,
-        int $uploadedTo = null,
-        string $search = null,
+        string   $type,
+        int      $page = 0,
+        int      $pageSize = 24,
+        int      $uploadedTo = null,
+        string   $search = null,
         callable $whereClause = null
-    ): array {
+    ): array
+    {
         $imageQuery = Image::query()->where('type', '=', strtolower($type));
 
         if ($uploadedTo !== null) {
@@ -74,7 +76,7 @@ class ImageRepo
         }
 
         // Filter by page access
-        $imageQuery = $this->restrictionService->filterRelatedEntity(Page::class, $imageQuery, 'images', 'uploaded_to');
+        $imageQuery = $this->restrictionService->filterRelatedEntity(Recipe::class, $imageQuery, 'images', 'uploaded_to');
 
         if ($whereClause !== null) {
             $imageQuery = $imageQuery->where($whereClause);
@@ -89,13 +91,14 @@ class ImageRepo
     public function getEntityFiltered(
         string $type,
         string $filterType = null,
-        int $page = 0,
-        int $pageSize = 24,
-        int $uploadedTo = null,
+        int    $page = 0,
+        int    $pageSize = 24,
+        int    $uploadedTo = null,
         string $search = null
-    ): array {
-        /** @var Page $contextPage */
-        $contextPage = Page::visible()->findOrFail($uploadedTo);
+    ): array
+    {
+        /** @var Recipe $contextPage */
+        $contextPage = Recipe::visible()->findOrFail($uploadedTo);
         $parentFilter = null;
 
         if ($filterType === 'recipe' || $filterType === 'page') {
@@ -103,7 +106,7 @@ class ImageRepo
                 if ($filterType === 'page') {
                     $query->where('uploaded_to', '=', $contextPage->id);
                 } elseif ($filterType === 'recipe') {
-                    $validPageIds = $contextPage->recipe->pages()
+                    $validPageIds = $contextPage->pages()
                         ->scopes('visible')
                         ->pluck('id')
                         ->toArray();
@@ -234,10 +237,10 @@ class ImageRepo
      */
     public function getPagesUsingImage(Image $image): array
     {
-        $pages = Page::visible()
+        $pages = Recipe::visible()
             ->where('html', 'like', '%' . $image->url . '%')
-            ->get(['id', 'name', 'slug', 'recipe_id']);
-
+            ->get(['id', 'name', 'slug']);
+//        , 'recipe_id'
         foreach ($pages as $page) {
             $page->setAttribute('url', $page->getUrl());
         }

@@ -21,10 +21,10 @@ class PagesApiTest extends TestCase
         $resp = $this->getJson($this->baseEndpoint . '?count=1&sort=+id');
         $resp->assertJson(['data' => [
             [
-                'id'       => $firstPage->id,
-                'name'     => $firstPage->name,
-                'slug'     => $firstPage->slug,
-                'recipe_id'  => $firstPage->recipe->id,
+                'id' => $firstPage->id,
+                'name' => $firstPage->name,
+                'slug' => $firstPage->slug,
+                'recipe_id' => $firstPage->recipe->id,
                 'priority' => $firstPage->priority,
             ],
         ]]);
@@ -35,12 +35,12 @@ class PagesApiTest extends TestCase
         $this->actingAsApiEditor();
         $recipe = Recipe::query()->first();
         $details = [
-            'name'    => 'My API page',
+            'name' => 'My API page',
             'recipe_id' => $recipe->id,
-            'html'    => '<p>My new page content</p>',
-            'tags'    => [
+            'html' => '<p>My new page content</p>',
+            'tags' => [
                 [
-                    'name'  => 'tagname',
+                    'name' => 'tagname',
                     'value' => 'tagvalue',
                 ],
             ],
@@ -52,10 +52,10 @@ class PagesApiTest extends TestCase
         $newItem = Page::query()->orderByDesc('id')->where('name', '=', $details['name'])->first();
         $resp->assertJson(array_merge($details, ['id' => $newItem->id, 'slug' => $newItem->slug]));
         $this->assertDatabaseHas('tags', [
-            'entity_id'   => $newItem->id,
+            'entity_id' => $newItem->id,
             'entity_type' => $newItem->getMorphClass(),
-            'name'        => 'tagname',
-            'value'       => 'tagvalue',
+            'name' => 'tagname',
+            'value' => 'tagvalue',
         ]);
         $resp->assertSeeText('My new page content');
         $resp->assertJsonMissing(['recipe' => []]);
@@ -68,7 +68,7 @@ class PagesApiTest extends TestCase
         $recipe = Recipe::query()->first();
         $details = [
             'recipe_id' => $recipe->id,
-            'html'    => '<p>A page created via the API</p>',
+            'html' => '<p>A page created via the API</p>',
         ];
 
         $resp = $this->postJson($this->baseEndpoint, $details);
@@ -89,7 +89,7 @@ class PagesApiTest extends TestCase
         $resp = $this->postJson($this->baseEndpoint, $details);
         $resp->assertStatus(422);
         $resp->assertJson($this->validationResponse([
-            'recipe_id'    => ['The recipe id field is required when chapter id is not present.'],
+            'recipe_id' => ['The recipe id field is required when chapter id is not present.'],
             'chapter_id' => ['The chapter id field is required when recipe id is not present.'],
         ]));
 
@@ -107,8 +107,8 @@ class PagesApiTest extends TestCase
         $this->actingAsApiEditor();
         $recipe = Recipe::visible()->first();
         $details = [
-            'recipe_id'  => $recipe->id,
-            'name'     => 'My api page',
+            'recipe_id' => $recipe->id,
+            'name' => 'My api page',
             'markdown' => "# A new API page \n[link](https://example.com)",
         ];
 
@@ -129,12 +129,12 @@ class PagesApiTest extends TestCase
         $resp = $this->getJson($this->baseEndpoint . "/{$page->id}");
         $resp->assertStatus(200);
         $resp->assertJson([
-            'id'         => $page->id,
-            'slug'       => $page->slug,
+            'id' => $page->id,
+            'slug' => $page->slug,
             'created_by' => [
                 'name' => $page->createdBy->name,
             ],
-            'recipe_id'    => $page->recipe_id,
+            'recipe_id' => $page->recipe_id,
             'updated_by' => [
                 'name' => $page->createdBy->name,
             ],
@@ -167,7 +167,7 @@ class PagesApiTest extends TestCase
             'html' => '<p>A page created via the API</p>',
             'tags' => [
                 [
-                    'name'  => 'freshtag',
+                    'name' => 'freshtag',
                     'value' => 'freshtagval',
                 ],
             ],
@@ -190,16 +190,16 @@ class PagesApiTest extends TestCase
         $page = Page::visible()->first();
         $chapter = Chapter::visible()->where('recipe_id', '!=', $page->recipe_id)->first();
         $details = [
-            'name'       => 'My updated API page',
+            'name' => 'My updated API page',
             'chapter_id' => $chapter->id,
-            'html'       => '<p>A page created via the API</p>',
+            'html' => '<p>A page created via the API</p>',
         ];
 
         $resp = $this->putJson($this->baseEndpoint . "/{$page->id}", $details);
         $resp->assertStatus(200);
         $resp->assertJson([
             'chapter_id' => $chapter->id,
-            'recipe_id'    => $chapter->recipe_id,
+            'recipe_id' => $chapter->recipe_id,
         ]);
     }
 
@@ -210,9 +210,9 @@ class PagesApiTest extends TestCase
         $chapter = Chapter::visible()->where('recipe_id', '!=', $page->recipe_id)->first();
         $this->setEntityRestrictions($chapter, ['view'], [$this->getEditor()->roles()->first()]);
         $details = [
-            'name'       => 'My updated API page',
+            'name' => 'My updated API page',
             'chapter_id' => $chapter->id,
-            'html'       => '<p>A page created via the API</p>',
+            'html' => '<p>A page created via the API</p>',
         ];
 
         $resp = $this->putJson($this->baseEndpoint . "/{$page->id}", $details);
@@ -228,7 +228,7 @@ class PagesApiTest extends TestCase
             'name' => 'My updated API page',
             'tags' => [
                 [
-                    'name'  => 'freshtag',
+                    'name' => 'freshtag',
                     'value' => 'freshtagval',
                 ],
             ],

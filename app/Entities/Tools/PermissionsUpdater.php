@@ -61,7 +61,7 @@ class PermissionsUpdater
             return collect($restrictions)->keys()->map(function ($action) use ($roleId) {
                 return [
                     'role_id' => $roleId,
-                    'action'  => strtolower($action),
+                    'action' => strtolower($action),
                 ];
             });
         });

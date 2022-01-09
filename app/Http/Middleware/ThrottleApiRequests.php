@@ -11,6 +11,6 @@ class ThrottleApiRequests extends Middleware
      */
     protected function resolveMaxAttempts($request, $maxAttempts)
     {
-        return (int) config('api.requests_per_minute');
+        return (int)config('api.requests_per_minute');
     }
 }

@@ -1,5 +1,6 @@
 <?php
 
+use Carbon\Carbon;
 use Illuminate\Database\Migrations\Migration;
 
 class AddViewPermissionsToRoles extends Migration
@@ -14,15 +15,15 @@ class AddViewPermissionsToRoles extends Migration
         $currentRoles = DB::table('roles')->get();
 
         // Create new view permission
-        $entities = ['Recipe', 'Page', 'Chapter'];
+        $entities = ['Recipe'];
         $ops = ['View All', 'View Own'];
         foreach ($entities as $entity) {
             foreach ($ops as $op) {
                 $permId = DB::table('permissions')->insertGetId([
                     'name'         => strtolower($entity) . '-' . strtolower(str_replace(' ', '-', $op)),
                     'display_name' => $op . ' ' . $entity . 's',
-                    'created_at'   => \Carbon\Carbon::now()->toDateTimeString(),
-                    'updated_at'   => \Carbon\Carbon::now()->toDateTimeString(),
+                    'created_at'   => Carbon::now()->toDateTimeString(),
+                    'updated_at'   => Carbon::now()->toDateTimeString(),
                 ]);
                 // Assign view permission to all current roles
                 foreach ($currentRoles as $role) {
@@ -43,7 +44,7 @@ class AddViewPermissionsToRoles extends Migration
     public function down()
     {
         // Delete the new view permission
-        $entities = ['Recipe', 'Page', 'Chapter'];
+        $entities = ['Recipe'];
         $ops = ['View All', 'View Own'];
         foreach ($entities as $entity) {
             foreach ($ops as $op) {

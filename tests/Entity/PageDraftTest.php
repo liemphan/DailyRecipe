@@ -4,7 +4,7 @@ namespace Tests\Entity;
 
 use DailyRecipe\Entities\Models\Recipe;
 use DailyRecipe\Entities\Models\Page;
-use DailyRecipe\Entities\Models\PageRevision;
+use DailyRecipe\Entities\Models\RecipeRevision;
 use DailyRecipe\Entities\Repos\PageRepo;
 use Tests\TestCase;
 
@@ -93,7 +93,7 @@ class PageDraftTest extends TestCase
             'html' => '<p>updated draft</p>',
         ]);
 
-        /** @var PageRevision $draft */
+        /** @var RecipeRevision $draft */
         $draft = $page->allRevisions()
             ->where('type', '=', 'update_draft')
             ->where('created_by', '=', $editor->id)
@@ -188,16 +188,16 @@ class PageDraftTest extends TestCase
         $draft = Page::query()->where('draft', '=', true)->where('recipe_id', '=', $recipe->id)->firstOrFail();
 
         $resp = $this->put('/ajax/page/' . $draft->id . '/save-draft', [
-            'name'     => 'My updated draft',
+            'name' => 'My updated draft',
             'markdown' => "# My markdown page\n\n[A link](https://example.com)",
-            'html'     => '<p>checking markdown takes priority over this</p>',
+            'html' => '<p>checking markdown takes priority over this</p>',
         ]);
         $resp->assertOk();
 
         $this->assertDatabaseHas('pages', [
-            'id'       => $draft->id,
-            'draft'    => true,
-            'name'     => 'My updated draft',
+            'id' => $draft->id,
+            'draft' => true,
+            'name' => 'My updated draft',
             'markdown' => "# My markdown page\n\n[A link](https://example.com)",
         ]);
 

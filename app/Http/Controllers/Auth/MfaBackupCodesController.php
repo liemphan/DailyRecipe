@@ -30,7 +30,7 @@ class MfaBackupCodesController extends Controller
         $downloadUrl = 'data:application/octet-stream;base64,' . base64_encode(implode("\n\n", $codes));
 
         return view('mfa.backup-codes-generate', [
-            'codes'       => $codes,
+            'codes' => $codes,
             'downloadUrl' => $downloadUrl,
         ]);
     }

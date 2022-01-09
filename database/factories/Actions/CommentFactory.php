@@ -2,6 +2,7 @@
 
 namespace Database\Factories\Actions;
 
+use DailyRecipe\Actions\Comment;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class CommentFactory extends Factory
@@ -11,7 +12,7 @@ class CommentFactory extends Factory
      *
      * @var string
      */
-    protected $model = \DailyRecipe\Actions\Comment::class;
+    protected $model = Comment::class;
 
     /**
      * Define the model's default state.

@@ -20,8 +20,8 @@ class UserInviteTest extends TestCase
 
         $email = Str::random(16) . '@example.com';
         $resp = $this->actingAs($admin)->post('/settings/users/create', [
-            'name'        => 'Barry',
-            'email'       => $email,
+            'name' => 'Barry',
+            'email' => $email,
             'send_invite' => 'true',
         ]);
         $resp->assertRedirect('/settings/users');
@@ -54,7 +54,7 @@ class UserInviteTest extends TestCase
         ]);
         $setPasswordResp->assertSee('Password set, you should now be able to login using your set password to access DailyRecipe!');
         $newPasswordValid = auth()->validate([
-            'email'    => $user->email,
+            'email' => $user->email,
             'password' => 'my test password',
         ]);
         $this->assertTrue($newPasswordValid);

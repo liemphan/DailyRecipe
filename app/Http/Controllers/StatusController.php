@@ -2,6 +2,7 @@
 
 namespace DailyRecipe\Http\Controllers;
 
+use Exception;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
@@ -44,7 +45,7 @@ class StatusController extends Controller
     {
         try {
             return $test() === true;
-        } catch (\Exception $e) {
+        } catch (Exception $e) {
             return false;
         }
     }

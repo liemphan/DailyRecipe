@@ -31,21 +31,22 @@ Route::get('recipes/{id}', [RecipeApiController::class, 'read']);
 Route::put('recipes/{id}', [RecipeApiController::class, 'update']);
 Route::delete('recipes/{id}', [RecipeApiController::class, 'delete']);
 
+
 Route::get('recipes/{id}/export/html', [RecipeExportApiController::class, 'exportHtml']);
 Route::get('recipes/{id}/export/pdf', [RecipeExportApiController::class, 'exportPdf']);
 Route::get('recipes/{id}/export/plaintext', [RecipeExportApiController::class, 'exportPlainText']);
 Route::get('recipes/{id}/export/markdown', [RecipeExportApiController::class, 'exportMarkdown']);
 
-Route::get('chapters', [ChapterApiController::class, 'list']);
-Route::post('chapters', [ChapterApiController::class, 'create']);
-Route::get('chapters/{id}', [ChapterApiController::class, 'read']);
-Route::put('chapters/{id}', [ChapterApiController::class, 'update']);
-Route::delete('chapters/{id}', [ChapterApiController::class, 'delete']);
+//Route::get('chapters', [ChapterApiController::class, 'list']);
+//Route::post('chapters', [ChapterApiController::class, 'create']);
+//Route::get('chapters/{id}', [ChapterApiController::class, 'read']);
+//Route::put('chapters/{id}', [ChapterApiController::class, 'update']);
+//Route::delete('chapters/{id}', [ChapterApiController::class, 'delete']);
 
-Route::get('chapters/{id}/export/html', [ChapterExportApiController::class, 'exportHtml']);
-Route::get('chapters/{id}/export/pdf', [ChapterExportApiController::class, 'exportPdf']);
-Route::get('chapters/{id}/export/plaintext', [ChapterExportApiController::class, 'exportPlainText']);
-Route::get('chapters/{id}/export/markdown', [ChapterExportApiController::class, 'exportMarkdown']);
+//Route::get('chapters/{id}/export/html', [ChapterExportApiController::class, 'exportHtml']);
+//Route::get('chapters/{id}/export/pdf', [ChapterExportApiController::class, 'exportPdf']);
+//Route::get('chapters/{id}/export/plaintext', [ChapterExportApiController::class, 'exportPlainText']);
+//Route::get('chapters/{id}/export/markdown', [ChapterExportApiController::class, 'exportMarkdown']);
 
 Route::get('pages', [PageApiController::class, 'list']);
 Route::post('pages', [PageApiController::class, 'create']);

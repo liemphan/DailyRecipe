@@ -6,7 +6,7 @@ namespace DailyRecipe\Interfaces;
  * Assigned to models that can have slugs.
  * Must have the below properties.
  *
- * @property int    $id
+ * @property int $id
  * @property string $name
  */
 interface Sluggable

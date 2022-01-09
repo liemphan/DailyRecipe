@@ -50,7 +50,7 @@ class ExternalBaseUserProvider implements UserProvider
     /**
      * Retrieve a user by their unique identifier and "remember me" token.
      *
-     * @param mixed  $identifier
+     * @param mixed $identifier
      * @param string $token
      *
      * @return Authenticatable|null
@@ -64,7 +64,7 @@ class ExternalBaseUserProvider implements UserProvider
      * Update the "remember me" token for the given user in storage.
      *
      * @param Authenticatable $user
-     * @param string          $token
+     * @param string $token
      *
      * @return void
      */
@@ -94,7 +94,7 @@ class ExternalBaseUserProvider implements UserProvider
      * Validate a user against the given credentials.
      *
      * @param Authenticatable $user
-     * @param array           $credentials
+     * @param array $credentials
      *
      * @return bool
      */

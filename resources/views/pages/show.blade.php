@@ -6,16 +6,17 @@
 
 @section('body')
 
-    <div class="mb-m print-hidden">
-        @include('entities.breadcrumbs', ['crumbs' => [
-            $page->recipe,
-            $page->hasChapter() ? $page->chapter : null,
-            $page,
-        ]])
-    </div>
+{{--    <div class="mb-m print-hidden">--}}
+{{--        @include('entities.breadcrumbs', ['crumbs' => [--}}
+{{--            $page->recipe,--}}
+{{--            $page->hasChapter() ? $page->chapter : null,--}}
+{{--            $page,--}}
+{{--        ]])--}}
+{{--    </div>--}}
 
     <main class="content-wrap card">
         <div class="page-content clearfix" page-display="{{ $page->id }}">
+
             @include('pages.parts.pointer', ['page' => $page])
             @include('pages.parts.page-display')
         </div>
@@ -89,15 +90,15 @@
                 </div>
             @endif
 
-            @if($page->chapter && $page->chapter->restricted)
-                <div class="active-restriction">
-                    @if(userCan('restrictions-manage', $page->chapter))
-                        <a href="{{ $page->chapter->getUrl('/permissions') }}">@icon('lock'){{ trans('entities.chapters_permissions_active') }}</a>
-                    @else
-                        @icon('lock'){{ trans('entities.chapters_permissions_active') }}
-                    @endif
-                </div>
-            @endif
+{{--            @if($page->chapter && $page->chapter->restricted)--}}
+{{--                <div class="active-restriction">--}}
+{{--                    @if(userCan('restrictions-manage', $page->chapter))--}}
+{{--                        <a href="{{ $page->chapter->getUrl('/permissions') }}">@icon('lock'){{ trans('entities.chapters_permissions_active') }}</a>--}}
+{{--                    @else--}}
+{{--                        @icon('lock'){{ trans('entities.chapters_permissions_active') }}--}}
+{{--                    @endif--}}
+{{--                </div>--}}
+{{--            @endif--}}
 
             @if($page->restricted)
                 <div class="active-restriction">

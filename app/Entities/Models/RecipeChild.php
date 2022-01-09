@@ -4,14 +4,14 @@ namespace DailyRecipe\Entities\Models;
 
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 /**
  * Class RecipeChild.
  *
- * @property int    $recipe_id
- * @property int    $priority
+ * @property int $recipe_id
  * @property string $recipe_slug
- * @property Recipe   $recipe
+ * @property Recipe $recipe
  *
  * @method Builder whereSlugs(string $recipeSlug, string $childSlug)
  */
@@ -63,12 +63,22 @@ abstract class RecipeChild extends Entity
         $this->refresh();
 
         // Update all child pages if a chapter
-        if ($this instanceof Chapter) {
-            foreach ($this->pages()->withTrashed()->get() as $page) {
-                $page->changeRecipe($newRecipeId);
-            }
+
+        foreach ($this->pages()->withTrashed()->get() as $page) {
+            $page->changeRecipe($newRecipeId);
         }
 
+
         return $this;
+    }
+
+    /**
+     * Get the pages that this chapter contains.
+     *
+     * @return HasMany<Recipe>
+     */
+    public function pages(string $dir = 'ASC'): HasMany
+    {
+        return $this->hasMany(Recipe::class)->orderBy('priority', $dir);
     }
 }

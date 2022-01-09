@@ -40,9 +40,9 @@ class UserController extends Controller
     {
         $this->checkPermission('users-manage');
         $listDetails = [
-            'order'  => $request->get('order', 'asc'),
+            'order' => $request->get('order', 'asc'),
             'search' => $request->get('search', ''),
-            'sort'   => $request->get('sort', 'name'),
+            'sort' => $request->get('sort', 'name'),
         ];
         $users = $this->userRepo->getAllUsersPaginatedAndSorted(20, $listDetails);
 
@@ -74,7 +74,7 @@ class UserController extends Controller
     {
         $this->checkPermission('users-manage');
         $validationRules = [
-            'name'  => ['required'],
+            'name' => ['required'],
             'email' => ['required', 'email', 'unique:users,email'],
         ];
 
@@ -134,11 +134,11 @@ class UserController extends Controller
         $roles = $this->userRepo->getAllRoles();
 
         return view('users.edit', [
-            'user'                => $user,
+            'user' => $user,
             'activeSocialDrivers' => $activeSocialDrivers,
-            'mfaMethods'          => $mfaMethods,
-            'authMethod'          => $authMethod,
-            'roles'               => $roles,
+            'mfaMethods' => $mfaMethods,
+            'authMethod' => $authMethod,
+            'roles' => $roles,
         ]);
     }
 
@@ -155,12 +155,12 @@ class UserController extends Controller
         $this->checkPermissionOrCurrentUser('users-manage', $id);
 
         $this->validate($request, [
-            'name'             => 'min:2',
-            'email'            => ['min:2', 'email', 'unique:users,email,' . $id],
-            'password'         => ['min:6', 'required_with:password_confirm'],
+            'name' => 'min:2',
+            'email' => ['min:2', 'email', 'unique:users,email,' . $id],
+            'password' => ['min:6', 'required_with:password_confirm'],
             'password-confirm' => ['same:password', 'required_with:password'],
-            'setting'          => 'array',
-            'profile_image'    => array_merge(['nullable'], $this->getImageValidationRules()),
+            'setting' => 'array',
+            'profile_image' => array_merge(['nullable'], $this->getImageValidationRules()),
         ]);
 
         $user = $this->userRepo->getById($id);

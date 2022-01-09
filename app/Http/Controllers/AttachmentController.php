@@ -37,7 +37,7 @@ class AttachmentController extends Controller
     {
         $this->validate($request, [
             'uploaded_to' => ['required', 'integer', 'exists:pages,id'],
-            'file'        => array_merge(['required'], $this->attachmentService->getFileValidationRules()),
+            'file' => array_merge(['required'], $this->attachmentService->getFileValidationRules()),
         ]);
 
         $pageId = $request->get('uploaded_to');
@@ -112,12 +112,12 @@ class AttachmentController extends Controller
         try {
             $this->validate($request, [
                 'attachment_edit_name' => ['required', 'string', 'min:1', 'max:255'],
-                'attachment_edit_url'  => ['string', 'min:1', 'max:255', 'safe_url'],
+                'attachment_edit_url' => ['string', 'min:1', 'max:255', 'safe_url'],
             ]);
         } catch (ValidationException $exception) {
             return response()->view('attachments.manager-edit-form', array_merge($request->only(['attachment_edit_name', 'attachment_edit_url']), [
                 'attachment' => $attachment,
-                'errors'     => new MessageBag($exception->errors()),
+                'errors' => new MessageBag($exception->errors()),
             ]), 422);
         }
 
@@ -147,8 +147,8 @@ class AttachmentController extends Controller
         try {
             $this->validate($request, [
                 'attachment_link_uploaded_to' => ['required', 'integer', 'exists:pages,id'],
-                'attachment_link_name'        => ['required', 'string', 'min:1', 'max:255'],
-                'attachment_link_url'         => ['required', 'string', 'min:1', 'max:255', 'safe_url'],
+                'attachment_link_name' => ['required', 'string', 'min:1', 'max:255'],
+                'attachment_link_url' => ['required', 'string', 'min:1', 'max:255', 'safe_url'],
             ]);
         } catch (ValidationException $exception) {
             return response()->view('attachments.manager-link-form', array_merge($request->only(['attachment_link_name', 'attachment_link_url']), [

@@ -3,6 +3,7 @@
 namespace DailyRecipe\Console\Commands;
 
 use DailyRecipe\Auth\UserRepo;
+use DailyRecipe\Exceptions\NotFoundException;
 use Illuminate\Console\Command;
 use Symfony\Component\Console\Command\Command as SymfonyCommand;
 
@@ -40,7 +41,7 @@ class CreateAdmin extends Command
      * Execute the console command.
      *
      * @return mixed
-     * @throws \DailyRecipe\Exceptions\NotFoundException
+     * @throws NotFoundException
      *
      */
     public function handle()

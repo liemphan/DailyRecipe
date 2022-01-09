@@ -14,7 +14,8 @@ class AddTemplateSupport extends Migration
      */
     public function up()
     {
-        Schema::table('pages', function (Blueprint $table) {
+
+        Schema::table('recipes', function (Blueprint $table) {
             $table->boolean('template')->default(false);
             $table->index('template');
         });
@@ -40,10 +41,10 @@ class AddTemplateSupport extends Migration
      */
     public function down()
     {
-        Schema::table('pages', function (Blueprint $table) {
+
+        Schema::table('recipes', function (Blueprint $table) {
             $table->dropColumn('template');
         });
-
         // Remove templates-manage permission
         $templatesManagePermission = DB::table('role_permissions')
             ->where('name', '=', 'templates-manage')->first();

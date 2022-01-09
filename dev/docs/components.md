@@ -1,6 +1,7 @@
 # JavaScript Components
 
-This document details the format for JavaScript components in DailyRecipe. This is a really simple class-based setup with a few helpers provided.
+This document details the format for JavaScript components in DailyRecipe. This is a really simple class-based setup
+with a few helpers provided.
 
 #### Defining a Component in JS
 
@@ -15,7 +16,8 @@ class Dropdown {
 }
 ```
 
-All usage of $refs, $manyRefs and $opts should be done at the top of the `setup` function so any requirements can be easily seen.
+All usage of $refs, $manyRefs and $opts should be done at the top of the `setup` function so any requirements can be
+easily seen.
 
 #### Using a Component in HTML
 
@@ -29,7 +31,8 @@ A component is used like so:
 <div components="dropdown image-picker"></div>
 ```
 
-The names will be parsed and new component instance will be created if a matching name is found in the `components/index.js` componentMapping. 
+The names will be parsed and new component instance will be created if a matching name is found in
+the `components/index.js` componentMapping.
 
 #### Element References
 

@@ -26,7 +26,8 @@ class LdapSessionGuard extends ExternalBaseSessionGuard
         Session $session,
         LdapService $ldapService,
         RegistrationService $registrationService
-    ) {
+    )
+    {
         $this->ldapService = $ldapService;
         parent::__construct($name, $provider, $session, $registrationService);
     }
@@ -36,9 +37,9 @@ class LdapSessionGuard extends ExternalBaseSessionGuard
      *
      * @param array $credentials
      *
+     * @return bool
      * @throws LdapException
      *
-     * @return bool
      */
     public function validate(array $credentials = [])
     {
@@ -57,12 +58,12 @@ class LdapSessionGuard extends ExternalBaseSessionGuard
      * Attempt to authenticate a user using the given credentials.
      *
      * @param array $credentials
-     * @param bool  $remember
-     *
-     * @throws LoginAttemptException
-     * @throws LdapException
+     * @param bool $remember
      *
      * @return bool
+     * @throws LdapException
+     *
+     * @throws LoginAttemptException
      */
     public function attempt(array $credentials = [], $remember = false)
     {
@@ -119,10 +120,10 @@ class LdapSessionGuard extends ExternalBaseSessionGuard
         }
 
         $details = [
-            'name'             => $ldapUserDetails['name'],
-            'email'            => $ldapUserDetails['email'] ?: $credentials['email'],
+            'name' => $ldapUserDetails['name'],
+            'email' => $ldapUserDetails['email'] ?: $credentials['email'],
             'external_auth_id' => $ldapUserDetails['uid'],
-            'password'         => Str::random(32),
+            'password' => Str::random(32),
         ];
 
         $user = $this->registrationService->registerUser($details, null, false);

@@ -2,6 +2,7 @@
 
 namespace Database\Factories\Auth;
 
+use DailyRecipe\Auth\Role;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class RoleFactory extends Factory
@@ -11,7 +12,7 @@ class RoleFactory extends Factory
      *
      * @var string
      */
-    protected $model = \DailyRecipe\Auth\Role::class;
+    protected $model = Role::class;
 
     /**
      * Define the model's default state.

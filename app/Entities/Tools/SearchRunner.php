@@ -9,6 +9,7 @@ use DailyRecipe\Entities\Models\RecipeChild;
 use DailyRecipe\Entities\Models\Entity;
 use DailyRecipe\Entities\Models\Page;
 use DailyRecipe\Entities\Models\SearchTerm;
+use Exception;
 use Illuminate\Database\Connection;
 use Illuminate\Database\Eloquent\Builder as EloquentBuilder;
 use Illuminate\Database\Eloquent\Collection as EloquentCollection;
@@ -94,10 +95,10 @@ class SearchRunner
         }
 
         return [
-            'total'    => $total,
-            'count'    => count($results),
+            'total' => $total,
+            'count' => count($results),
             'has_more' => $hasMore,
-            'results'  => $results->sortByDesc('score')->values(),
+            'results' => $results->sortByDesc('score')->values(),
         ];
     }
 
@@ -253,13 +254,13 @@ class SearchRunner
         $ifChain = '0';
         $bindings = [];
         foreach ($scoredTerms as $term => $score) {
-            $ifChain = 'IF(term like ?, score * ' . (float) $score . ', ' . $ifChain . ')';
+            $ifChain = 'IF(term like ?, score * ' . (float)$score . ', ' . $ifChain . ')';
             $bindings[] = $term . '%';
         }
 
         return [
             'statement' => 'SUM(' . $ifChain . ') as score',
-            'bindings'  => array_reverse($bindings),
+            'bindings' => array_reverse($bindings),
         ];
     }
 
@@ -359,7 +360,7 @@ class SearchRunner
                     // on the tag values. We ensure it has a numeric value and then cast it just to be sure.
                     /** @var Connection $connection */
                     $connection = $query->getConnection();
-                    $tagValue = (float) trim($connection->getPdo()->quote($tagValue), "'");
+                    $tagValue = (float)trim($connection->getPdo()->quote($tagValue), "'");
                     $query->whereRaw("value ${tagOperator} ${tagValue}");
                 } else {
                     $query->where('value', $tagOperator, $tagValue);
@@ -380,7 +381,7 @@ class SearchRunner
         try {
             $date = date_create($input);
             $query->where('updated_at', '>=', $date);
-        } catch (\Exception $e) {
+        } catch (Exception $e) {
         }
     }
 
@@ -389,7 +390,7 @@ class SearchRunner
         try {
             $date = date_create($input);
             $query->where('updated_at', '<', $date);
-        } catch (\Exception $e) {
+        } catch (Exception $e) {
         }
     }
 
@@ -398,7 +399,7 @@ class SearchRunner
         try {
             $date = date_create($input);
             $query->where('created_at', '>=', $date);
-        } catch (\Exception $e) {
+        } catch (Exception $e) {
         }
     }
 
@@ -407,7 +408,7 @@ class SearchRunner
         try {
             $date = date_create($input);
             $query->where('created_at', '<', $date);
-        } catch (\Exception $e) {
+        } catch (Exception $e) {
         }
     }
 

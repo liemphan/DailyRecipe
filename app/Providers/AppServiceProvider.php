@@ -54,9 +54,9 @@ class AppServiceProvider extends ServiceProvider
         // Set morph-map due to namespace changes
         Relation::morphMap([
             'DailyRecipe\\Recipemenu' => Recipemenu::class,
-            'DailyRecipe\\Recipe'      => Recipe::class,
-            'DailyRecipe\\Chapter'   => Chapter::class,
-            'DailyRecipe\\Page'      => Page::class,
+            'DailyRecipe\\Recipe' => Recipe::class,
+            'DailyRecipe\\Chapter' => Chapter::class,
+            'DailyRecipe\\Page' => Page::class,
         ]);
 
         // View Composers

@@ -149,7 +149,7 @@ class MfaVerificationTest extends TestCase
 
         /** @var TestResponse $mfaView */
         $mfaView = $this->followingRedirects()->post('/login', [
-            'email'    => $user->email,
+            'email' => $user->email,
             'password' => 'password',
         ]);
 
@@ -179,7 +179,7 @@ class MfaVerificationTest extends TestCase
 
         /** @var TestResponse $resp */
         $resp = $this->followingRedirects()->post('/login', [
-            'email'    => $user->email,
+            'email' => $user->email,
             'password' => 'password',
         ]);
 
@@ -197,7 +197,7 @@ class MfaVerificationTest extends TestCase
         $resp->assertSeeText('Multi-factor method configured, Please now login again using the configured method.');
 
         $resp = $this->followingRedirects()->post('/login', [
-            'email'    => $user->email,
+            'email' => $user->email,
             'password' => 'password',
         ]);
         $resp->assertSeeText('Enter one of your remaining backup codes below:');
@@ -252,7 +252,7 @@ class MfaVerificationTest extends TestCase
         $user->save();
         MfaValue::upsertWithValue($user, MfaValue::METHOD_TOTP, $secret);
         $loginResp = $this->post('/login', [
-            'email'    => $user->email,
+            'email' => $user->email,
             'password' => 'password',
         ]);
 
@@ -269,7 +269,7 @@ class MfaVerificationTest extends TestCase
         $user->save();
         MfaValue::upsertWithValue($user, MfaValue::METHOD_BACKUP_CODES, json_encode($codes));
         $loginResp = $this->post('/login', [
-            'email'    => $user->email,
+            'email' => $user->email,
             'password' => 'password',
         ]);
 

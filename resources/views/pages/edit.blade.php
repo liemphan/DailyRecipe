@@ -9,7 +9,7 @@
 @section('content')
 
     <div id="main-content" class="flex-fill flex fill-height">
-        <form action="{{ $page->getUrl() }}" autocomplete="off" data-page-id="{{ $page->id }}" method="POST" class="flex flex-fill">
+        <form action="{{ $page->getUrlContent() }}" autocomplete="off" data-page-id="{{ $page->id }}" method="POST" class="flex flex-fill">
             {{ csrf_field() }}
 
             @if(!isset($isDraft))

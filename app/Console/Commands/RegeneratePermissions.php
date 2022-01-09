@@ -3,6 +3,7 @@
 namespace DailyRecipe\Console\Commands;
 
 use DailyRecipe\Auth\Permissions\PermissionService;
+use DB;
 use Illuminate\Console\Command;
 
 class RegeneratePermissions extends Command
@@ -44,15 +45,15 @@ class RegeneratePermissions extends Command
      */
     public function handle()
     {
-        $connection = \DB::getDefaultConnection();
+        $connection = DB::getDefaultConnection();
         if ($this->option('database') !== null) {
-            \DB::setDefaultConnection($this->option('database'));
-            $this->permissionService->setConnection(\DB::connection($this->option('database')));
+            DB::setDefaultConnection($this->option('database'));
+            $this->permissionService->setConnection(DB::connection($this->option('database')));
         }
 
         $this->permissionService->buildJointPermissions();
 
-        \DB::setDefaultConnection($connection);
+        DB::setDefaultConnection($connection);
         $this->comment('Permissions regenerated');
     }
 }

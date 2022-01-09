@@ -28,7 +28,7 @@ class AsyncExternalBaseSessionGuard extends ExternalBaseSessionGuard
      * Attempt to authenticate a user using the given credentials.
      *
      * @param array $credentials
-     * @param bool  $remember
+     * @param bool $remember
      *
      * @return bool
      */

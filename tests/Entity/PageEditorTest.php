@@ -63,7 +63,7 @@ class PageEditorTest extends TestCase
             ->where('draft', '=', true)->first();
 
         $details = [
-            'name'     => 'my page',
+            'name' => 'my page',
             'markdown' => '',
         ];
         $resp = $this->post($recipe->getUrl("/draft/{$draft->id}"), $details);
@@ -71,8 +71,8 @@ class PageEditorTest extends TestCase
 
         $this->assertDatabaseHas('pages', [
             'markdown' => $details['markdown'],
-            'id'       => $draft->id,
-            'draft'    => false,
+            'id' => $draft->id,
+            'draft' => false,
         ]);
     }
 

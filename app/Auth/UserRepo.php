@@ -6,7 +6,7 @@ use Activity;
 use DailyRecipe\Entities\EntityProvider;
 use DailyRecipe\Entities\Models\Recipe;
 use DailyRecipe\Entities\Models\Recipemenu;
-use DailyRecipe\Entities\Models\Chapter;
+
 use DailyRecipe\Entities\Models\Page;
 use DailyRecipe\Exceptions\NotFoundException;
 use DailyRecipe\Exceptions\UserUpdateException;
@@ -164,10 +164,10 @@ class UserRepo
     public function create(array $data, bool $emailConfirmed = false): User
     {
         $details = [
-            'name'             => $data['name'],
-            'email'            => $data['email'],
-            'password'         => bcrypt($data['password']),
-            'email_confirmed'  => $emailConfirmed,
+            'name' => $data['name'],
+            'email' => $data['email'],
+            'password' => bcrypt($data['password']),
+            'email_confirmed' => $emailConfirmed,
             'external_auth_id' => $data['external_auth_id'] ?? '',
         ];
 
@@ -236,10 +236,9 @@ class UserRepo
         };
 
         return [
-            'pages'    => $query(Page::visible()->where('draft', '=', false)),
-            'chapters' => $query(Chapter::visible()),
-            'recipes'    => $query(Recipe::visible()),
-            'menus'  => $query(Recipemenu::visible()),
+            'pages' => $query(Recipe::visible()->where('draft', '=', false)),
+            'recipes' => $query(Recipe::visible()),
+            'menus' => $query(Recipemenu::visible()),
         ];
     }
 
@@ -251,10 +250,9 @@ class UserRepo
         $createdBy = ['created_by' => $user->id];
 
         return [
-            'pages'       => Page::visible()->where($createdBy)->count(),
-            'chapters'    => Chapter::visible()->where($createdBy)->count(),
-            'recipes'       => Recipe::visible()->where($createdBy)->count(),
-            'menus'     => Recipemenu::visible()->where($createdBy)->count(),
+            'pages' => Recipe::visible()->where($createdBy)->count(),
+            'recipes' => Recipe::visible()->where($createdBy)->count(),
+            'menus' => Recipemenu::visible()->where($createdBy)->count(),
         ];
     }
 

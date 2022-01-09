@@ -1,5 +1,6 @@
 <?php
 
+use Carbon\Carbon;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\DB;
@@ -21,8 +22,6 @@ class CreateRecipemenusTable extends Migration
         // like foreign key references.
         try {
             $prefix = DB::getTablePrefix();
-            DB::statement("ALTER TABLE {$prefix}pages ENGINE = InnoDB;");
-            DB::statement("ALTER TABLE {$prefix}chapters ENGINE = InnoDB;");
             DB::statement("ALTER TABLE {$prefix}recipes ENGINE = InnoDB;");
         } catch (Exception $exception) {
         }
@@ -83,8 +82,8 @@ class CreateRecipemenusTable extends Migration
             $permId = DB::table('role_permissions')->insertGetId([
                 'name'         => 'recipemenu-' . $dbOpName,
                 'display_name' => $op . ' ' . 'RecipeMenus',
-                'created_at'   => \Carbon\Carbon::now()->toDateTimeString(),
-                'updated_at'   => \Carbon\Carbon::now()->toDateTimeString(),
+                'created_at'   => Carbon::now()->toDateTimeString(),
+                'updated_at'   => Carbon::now()->toDateTimeString(),
             ]);
 
             $rowsToInsert = $roleIdsWithRecipePermission->filter(function ($roleId) {

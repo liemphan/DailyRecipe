@@ -14,12 +14,12 @@ class AuditLogController extends Controller
         $this->checkPermission('users-manage');
 
         $listDetails = [
-            'order'     => $request->get('order', 'desc'),
-            'event'     => $request->get('event', ''),
-            'sort'      => $request->get('sort', 'created_at'),
+            'order' => $request->get('order', 'desc'),
+            'event' => $request->get('event', ''),
+            'sort' => $request->get('sort', 'created_at'),
             'date_from' => $request->get('date_from', ''),
-            'date_to'   => $request->get('date_to', ''),
-            'user'      => $request->get('user', ''),
+            'date_to' => $request->get('date_to', ''),
+            'user' => $request->get('user', ''),
         ];
 
         $query = Activity::query()
@@ -52,8 +52,8 @@ class AuditLogController extends Controller
         $this->setPageTitle(trans('settings.audit'));
 
         return view('settings.audit', [
-            'activities'    => $activities,
-            'listDetails'   => $listDetails,
+            'activities' => $activities,
+            'listDetails' => $listDetails,
             'activityTypes' => $types,
         ]);
     }

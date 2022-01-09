@@ -3,7 +3,13 @@
   "name": "My fantastic new chapter",
   "description": "This is a great new chapter that I've created via the API",
   "tags": [
-    {"name": "Category", "value": "Top Content"},
-    {"name": "Rating", "value": "Highest"}
+    {
+      "name": "Category",
+      "value": "Top Content"
+    },
+    {
+      "name": "Rating",
+      "value": "Highest"
+    }
   ]
 }

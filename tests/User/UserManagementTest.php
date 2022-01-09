@@ -25,10 +25,10 @@ class UserManagementTest extends TestCase
             ->assertElementContains('form[action="' . url('/settings/users/create') . '"]', 'Save');
 
         $resp = $this->post('/settings/users/create', [
-            'name'                          => $user->name,
-            'email'                         => $user->email,
-            'password'                      => $user->password,
-            'password-confirm'              => $user->password,
+            'name' => $user->name,
+            'email' => $user->email,
+            'password' => $user->password,
+            'password-confirm' => $user->password,
             'roles[' . $adminRole->id . ']' => 'true',
         ]);
         $resp->assertRedirect('/settings/users');
@@ -74,7 +74,7 @@ class UserManagementTest extends TestCase
         $this->get($userProfilePage)->assertSee('Password confirmation required');
 
         $this->put($userProfilePage, [
-            'password'         => 'newpassword',
+            'password' => 'newpassword',
             'password-confirm' => 'newpassword',
         ])->assertRedirect('/settings/users');
 
@@ -138,7 +138,7 @@ class UserManagementTest extends TestCase
 
         $this->asAdmin()->delete("settings/users/{$owner->id}", ['new_owner_id' => $newOwner->id]);
         $this->assertDatabaseHas('pages', [
-            'id'       => $page->id,
+            'id' => $page->id,
             'owned_by' => $newOwner->id,
         ]);
     }

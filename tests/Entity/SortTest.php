@@ -239,20 +239,20 @@ class SortTest extends TestCase
         // Create request data
         $reqData = [
             [
-                'id'            => $chapterToMove->id,
-                'sort'          => 0,
+                'id' => $chapterToMove->id,
+                'sort' => 0,
                 'parentChapter' => false,
-                'type'          => 'chapter',
-                'recipe'          => $newRecipe->id,
+                'type' => 'chapter',
+                'recipe' => $newRecipe->id,
             ],
         ];
         foreach ($pagesToMove as $index => $page) {
             $reqData[] = [
-                'id'            => $page->id,
-                'sort'          => $index,
+                'id' => $page->id,
+                'sort' => $index,
                 'parentChapter' => $index === count($pagesToMove) - 1 ? $chapterToMove->id : false,
-                'type'          => 'page',
-                'recipe'          => $newRecipe->id,
+                'type' => 'page',
+                'recipe' => $newRecipe->id,
             ];
         }
 
@@ -260,8 +260,8 @@ class SortTest extends TestCase
         $sortResp->assertRedirect($newRecipe->getUrl());
         $sortResp->assertStatus(302);
         $this->assertDatabaseHas('chapters', [
-            'id'       => $chapterToMove->id,
-            'recipe_id'  => $newRecipe->id,
+            'id' => $chapterToMove->id,
+            'recipe_id' => $newRecipe->id,
             'priority' => 0,
         ]);
         $this->assertTrue($newRecipe->chapters()->count() === 1);

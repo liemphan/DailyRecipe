@@ -2,6 +2,8 @@
 
 namespace DailyRecipe\Notifications;
 
+use Illuminate\Notifications\Messages\MailMessage;
+
 class UserInvite extends MailNotification
 {
     public $token;
@@ -21,16 +23,16 @@ class UserInvite extends MailNotification
      *
      * @param mixed $notifiable
      *
-     * @return \Illuminate\Notifications\Messages\MailMessage
+     * @return MailMessage
      */
     public function toMail($notifiable)
     {
         $appName = ['appName' => setting('app-name')];
 
         return $this->newMailMessage()
-                ->subject(trans('auth.user_invite_email_subject', $appName))
-                ->greeting(trans('auth.user_invite_email_greeting', $appName))
-                ->line(trans('auth.user_invite_email_text'))
-                ->action(trans('auth.user_invite_email_action'), url('/register/invite/' . $this->token));
+            ->subject(trans('auth.user_invite_email_subject', $appName))
+            ->greeting(trans('auth.user_invite_email_greeting', $appName))
+            ->line(trans('auth.user_invite_email_text'))
+            ->action(trans('auth.user_invite_email_action'), url('/register/invite/' . $this->token));
     }
 }

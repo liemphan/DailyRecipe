@@ -5,12 +5,13 @@ namespace Tests\User;
 use DailyRecipe\Actions\ActivityType;
 use DailyRecipe\Api\ApiToken;
 use Carbon\Carbon;
+use Hash;
 use Tests\TestCase;
 
 class UserApiTokenTest extends TestCase
 {
     protected $testTokenData = [
-        'name'       => 'My test API token',
+        'name' => 'My test API token',
         'expires_at' => '2050-04-01',
     ];
 
@@ -52,8 +53,8 @@ class UserApiTokenTest extends TestCase
         $token = ApiToken::query()->latest()->first();
         $resp->assertRedirect($editor->getEditUrl('/api-tokens/' . $token->id));
         $this->assertDatabaseHas('api_tokens', [
-            'user_id'    => $editor->id,
-            'name'       => $this->testTokenData['name'],
+            'user_id' => $editor->id,
+            'name' => $this->testTokenData['name'],
             'expires_at' => $this->testTokenData['expires_at'],
         ]);
 
@@ -63,7 +64,7 @@ class UserApiTokenTest extends TestCase
         $this->assertDatabaseMissing('api_tokens', [
             'secret' => $secret,
         ]);
-        $this->assertTrue(\Hash::check($secret, $token->secret));
+        $this->assertTrue(Hash::check($secret, $token->secret));
 
         $this->assertTrue(strlen($token->token_id) === 32);
         $this->assertTrue(strlen($secret) === 32);
@@ -118,7 +119,7 @@ class UserApiTokenTest extends TestCase
         $this->asAdmin()->post($editor->getEditUrl('/create-api-token'), $this->testTokenData);
         $token = ApiToken::query()->latest()->first();
         $updateData = [
-            'name'       => 'My updated token',
+            'name' => 'My updated token',
             'expires_at' => '2011-01-01',
         ];
 
@@ -137,7 +138,7 @@ class UserApiTokenTest extends TestCase
         $token = ApiToken::query()->latest()->first();
 
         $resp = $this->put($editor->getEditUrl('/api-tokens/' . $token->id), [
-            'name'       => 'My updated token',
+            'name' => 'My updated token',
             'expires_at' => '',
         ]);
         $token->refresh();

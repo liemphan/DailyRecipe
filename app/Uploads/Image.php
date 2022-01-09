@@ -5,17 +5,18 @@ namespace DailyRecipe\Uploads;
 use DailyRecipe\Entities\Models\Page;
 use DailyRecipe\Model;
 use DailyRecipe\Traits\HasCreatorAndUpdater;
+use Exception;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 /**
- * @property int    $id
+ * @property int $id
  * @property string $name
  * @property string $url
  * @property string $path
  * @property string $type
- * @property int    $uploaded_to
- * @property int    $created_by
- * @property int    $updated_by
+ * @property int $uploaded_to
+ * @property int $created_by
+ * @property int $updated_by
  */
 class Image extends Model
 {
@@ -28,7 +29,7 @@ class Image extends Model
     /**
      * Get a thumbnail for this image.
      *
-     * @throws \Exception
+     * @throws Exception
      */
     public function getThumb(int $width, int $height, bool $keepRatio = false): string
     {

@@ -45,7 +45,7 @@ class SocialAuthTest extends TestCase
         config([
             'GOOGLE_APP_ID' => 'abc123', 'GOOGLE_APP_SECRET' => '123abc',
             'GITHUB_APP_ID' => 'abc123', 'GITHUB_APP_SECRET' => '123abc',
-            'APP_URL'       => 'http://localhost',
+            'APP_URL' => 'http://localhost',
         ]);
 
         $mockSocialite = $this->mock(Factory::class);
@@ -77,8 +77,8 @@ class SocialAuthTest extends TestCase
 
         // Test social callback with matching social account
         DB::table('social_accounts')->insert([
-            'user_id'   => $this->getAdmin()->id,
-            'driver'    => 'github',
+            'user_id' => $this->getAdmin()->id,
+            'driver' => 'github',
             'driver_id' => 'logintest123',
         ]);
         $resp = $this->followingRedirects()->get('/login/service/github/callback');
@@ -91,12 +91,12 @@ class SocialAuthTest extends TestCase
         $editor = $this->getEditor();
         config([
             'GITHUB_APP_ID' => 'abc123', 'GITHUB_APP_SECRET' => '123abc',
-            'APP_URL'       => 'http://localhost',
+            'APP_URL' => 'http://localhost',
         ]);
 
         $socialAccount = SocialAccount::query()->forceCreate([
-            'user_id'   => $editor->id,
-            'driver'    => 'github',
+            'user_id' => $editor->id,
+            'driver' => 'github',
             'driver_id' => 'logintest123',
         ]);
 
@@ -115,7 +115,7 @@ class SocialAuthTest extends TestCase
     {
         config([
             'services.google.client_id' => 'abc123', 'services.google.client_secret' => '123abc',
-            'APP_URL'                   => 'http://localhost',
+            'APP_URL' => 'http://localhost',
         ]);
 
         $user = User::factory()->make();
@@ -153,7 +153,7 @@ class SocialAuthTest extends TestCase
     {
         config([
             'services.google.client_id' => 'abc123', 'services.google.client_secret' => '123abc',
-            'APP_URL'                   => 'http://localhost', 'services.google.auto_register' => true, 'services.google.auto_confirm' => true,
+            'APP_URL' => 'http://localhost', 'services.google.auto_register' => true, 'services.google.auto_confirm' => true,
         ]);
 
         $user = User::factory()->make();

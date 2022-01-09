@@ -2,7 +2,9 @@
 
 namespace DailyRecipe\Exceptions;
 
-class UserTokenExpiredException extends \Exception
+use Exception;
+
+class UserTokenExpiredException extends Exception
 {
     public $userId;
 
@@ -10,7 +12,7 @@ class UserTokenExpiredException extends \Exception
      * UserTokenExpiredException constructor.
      *
      * @param string $message
-     * @param int    $userId
+     * @param int $userId
      */
     public function __construct(string $message, int $userId)
     {

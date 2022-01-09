@@ -23,7 +23,7 @@ class Ldap
      * Set the value of a LDAP option for the given connection.
      *
      * @param resource $ldapConnection
-     * @param mixed    $value
+     * @param mixed $value
      */
     public function setOption($ldapConnection, int $option, $value): bool
     {
@@ -51,9 +51,9 @@ class Ldap
     /**
      * Search LDAP tree using the provided filter.
      *
-     * @param resource   $ldapConnection
-     * @param string     $baseDn
-     * @param string     $filter
+     * @param resource $ldapConnection
+     * @param string $baseDn
+     * @param string $filter
      * @param array|null $attributes
      *
      * @return resource
@@ -79,9 +79,9 @@ class Ldap
     /**
      * Search and get entries immediately.
      *
-     * @param resource   $ldapConnection
-     * @param string     $baseDn
-     * @param string     $filter
+     * @param resource $ldapConnection
+     * @param string $baseDn
+     * @param string $filter
      * @param array|null $attributes
      *
      * @return resource
@@ -97,8 +97,8 @@ class Ldap
      * Bind to LDAP directory.
      *
      * @param resource $ldapConnection
-     * @param string   $bindRdn
-     * @param string   $bindPassword
+     * @param string $bindRdn
+     * @param string $bindPassword
      *
      * @return bool
      */
@@ -111,7 +111,7 @@ class Ldap
      * Explode a LDAP dn string into an array of components.
      *
      * @param string $dn
-     * @param int    $withAttrib
+     * @param int $withAttrib
      *
      * @return array
      */
@@ -125,7 +125,7 @@ class Ldap
      *
      * @param string $value
      * @param string $ignore
-     * @param int    $flags
+     * @param int $flags
      *
      * @return string
      */

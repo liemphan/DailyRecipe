@@ -7,6 +7,7 @@ use DailyRecipe\Exceptions\JsonDebugException;
 use DailyRecipe\Exceptions\LdapException;
 use DailyRecipe\Uploads\UserAvatars;
 use ErrorException;
+use Exception;
 use Illuminate\Support\Facades\Log;
 
 /**
@@ -96,16 +97,16 @@ class LdapService
 
         $userCn = $this->getUserResponseProperty($user, 'cn', null);
         $formatted = [
-            'uid'   => $this->getUserResponseProperty($user, $idAttr, $user['dn']),
-            'name'  => $this->getUserResponseProperty($user, $displayNameAttr, $userCn),
-            'dn'    => $user['dn'],
+            'uid' => $this->getUserResponseProperty($user, $idAttr, $user['dn']),
+            'name' => $this->getUserResponseProperty($user, $displayNameAttr, $userCn),
+            'dn' => $user['dn'],
             'email' => $this->getUserResponseProperty($user, $emailAttr, null),
-            'avatar'=> $thumbnailAttr ? $this->getUserResponseProperty($user, $thumbnailAttr, null) : null,
+            'avatar' => $thumbnailAttr ? $this->getUserResponseProperty($user, $thumbnailAttr, null) : null,
         ];
 
         if ($this->config['dump_user_details']) {
             throw new JsonDebugException([
-                'details_from_ldap'        => $user,
+                'details_from_ldap' => $user,
                 'details_dailyrecipe_parsed' => $formatted,
             ]);
         }
@@ -190,9 +191,9 @@ class LdapService
      * Get the connection to the LDAP server.
      * Creates a new connection if one does not exist.
      *
+     * @return resource
      * @throws LdapException
      *
-     * @return resource
      */
     protected function getConnection()
     {
@@ -352,7 +353,7 @@ class LdapService
         $count = 0;
 
         if (isset($userGroupSearchResponse[$groupsAttr]['count'])) {
-            $count = (int) $userGroupSearchResponse[$groupsAttr]['count'];
+            $count = (int)$userGroupSearchResponse[$groupsAttr]['count'];
         }
 
         for ($i = 0; $i < $count; $i++) {
@@ -389,7 +390,7 @@ class LdapService
         try {
             $imageData = $ldapUserDetails['avatar'];
             $this->userAvatars->assignToUserFromExistingData($user, $imageData, 'jpg');
-        } catch (\Exception $exception) {
+        } catch (Exception $exception) {
             Log::info("Failed to use avatar image from LDAP data for user id {$user->id}");
         }
     }

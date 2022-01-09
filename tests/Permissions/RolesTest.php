@@ -69,7 +69,7 @@ class RolesTest extends TestCase
 
         $resp = $this->post('/settings/roles/new', [
             'display_name' => $testRoleName,
-            'description'  => $testRoleDesc,
+            'description' => $testRoleDesc,
         ]);
         $resp->assertRedirect('/settings/roles');
 
@@ -78,7 +78,7 @@ class RolesTest extends TestCase
         $resp->assertSee($testRoleDesc);
         $this->assertDatabaseHas('roles', [
             'display_name' => $testRoleName,
-            'description'  => $testRoleDesc,
+            'description' => $testRoleDesc,
             'mfa_enforced' => false,
         ]);
 
@@ -93,13 +93,13 @@ class RolesTest extends TestCase
 
         $resp = $this->put('/settings/roles/' . $role->id, [
             'display_name' => $testRoleUpdateName,
-            'description'  => $testRoleDesc,
+            'description' => $testRoleDesc,
             'mfa_enforced' => 'true',
         ]);
         $resp->assertRedirect('/settings/roles');
         $this->assertDatabaseHas('roles', [
             'display_name' => $testRoleUpdateName,
-            'description'  => $testRoleDesc,
+            'description' => $testRoleDesc,
             'mfa_enforced' => true,
         ]);
 
@@ -129,7 +129,7 @@ class RolesTest extends TestCase
 
         $editUrl = '/settings/users/' . $adminUser->id;
         $resp = $this->actingAs($adminUser)->put($editUrl, [
-            'name'  => $adminUser->name,
+            'name' => $adminUser->name,
             'email' => $adminUser->email,
             'roles' => [
                 'viewer' => strval($viewerRole->id),
@@ -190,13 +190,13 @@ class RolesTest extends TestCase
             ->assertOk()
             ->assertElementExists('input[name=email][disabled]');
         $this->put($userProfileUrl, [
-            'name'  => 'my_new_name',
+            'name' => 'my_new_name',
             'email' => 'new_email@example.com',
         ]);
         $this->assertDatabaseHas('users', [
-            'id'    => $this->user->id,
+            'id' => $this->user->id,
             'email' => $originalEmail,
-            'name'  => 'my_new_name',
+            'name' => 'my_new_name',
         ]);
 
         $this->giveUserPermissions($this->user, ['users-manage']);
@@ -206,14 +206,14 @@ class RolesTest extends TestCase
             ->assertElementNotExists('input[name=email][disabled]')
             ->assertElementExists('input[name=email]');
         $this->put($userProfileUrl, [
-            'name'  => 'my_new_name_2',
+            'name' => 'my_new_name_2',
             'email' => 'new_email@example.com',
         ]);
 
         $this->assertDatabaseHas('users', [
-            'id'    => $this->user->id,
+            'id' => $this->user->id,
             'email' => 'new_email@example.com',
-            'name'  => 'my_new_name_2',
+            'name' => 'my_new_name_2',
         ]);
     }
 
@@ -264,7 +264,8 @@ class RolesTest extends TestCase
 
         // Set a different creator on the page we're checking to ensure
         // that the owner fields are checked
-        $page = $content['page']; /** @var Page $page */
+        $page = $content['page'];
+        /** @var Page $page */
         $page->created_by = $otherUsersPage->id;
         $page->owned_by = $this->user->id;
         $page->save();
@@ -321,7 +322,7 @@ class RolesTest extends TestCase
         ]);
 
         $this->post('/menus', [
-            'name'        => 'test menu',
+            'name' => 'test menu',
             'description' => 'menu desc',
         ])->assertRedirect('/menus/test-menu');
     }
@@ -402,7 +403,7 @@ class RolesTest extends TestCase
         ]);
 
         $this->post('/recipes', [
-            'name'        => 'test recipe',
+            'name' => 'test recipe',
             'description' => 'recipe desc',
         ])->assertRedirect('/recipes/test-recipe');
     }
@@ -480,7 +481,7 @@ class RolesTest extends TestCase
         ]);
 
         $this->post($ownRecipe->getUrl('/create-chapter'), [
-            'name'        => 'test chapter',
+            'name' => 'test chapter',
             'description' => 'chapter desc',
         ])->assertRedirect($ownRecipe->getUrl('/chapter/test-chapter'));
 
@@ -499,7 +500,7 @@ class RolesTest extends TestCase
         ]);
 
         $this->post($recipe->getUrl('/create-chapter'), [
-            'name'        => 'test chapter',
+            'name' => 'test chapter',
             'description' => 'chapter desc',
         ])->assertRedirect($recipe->getUrl('/chapter/test-chapter'));
     }
@@ -587,7 +588,7 @@ class RolesTest extends TestCase
         }
 
         $this->checkAccessPermission('page-create-own', [], [
-            $ownRecipe->getUrl()    => 'New Page',
+            $ownRecipe->getUrl() => 'New Page',
             $ownChapter->getUrl() => 'New Page',
         ]);
 
@@ -630,7 +631,7 @@ class RolesTest extends TestCase
         }
 
         $this->checkAccessPermission('page-create-all', [], [
-            $recipe->getUrl()    => 'New Page',
+            $recipe->getUrl() => 'New Page',
             $chapter->getUrl() => 'New Page',
         ]);
 
@@ -771,8 +772,8 @@ class RolesTest extends TestCase
         $page = Page::query()->first();
         $image = Image::factory()->create([
             'uploaded_to' => $page->id,
-            'created_by'  => $this->user->id,
-            'updated_by'  => $this->user->id,
+            'created_by' => $this->user->id,
+            'updated_by' => $this->user->id,
         ]);
 
         $this->actingAs($this->user)->json('delete', '/images/' . $image->id)->assertStatus(403);
@@ -814,8 +815,8 @@ class RolesTest extends TestCase
 
         $this->asAdmin()->put('/settings/roles/' . $viewerRole->id, [
             'display_name' => $viewerRole->display_name,
-            'description'  => $viewerRole->description,
-            'permission'   => [],
+            'description' => $viewerRole->description,
+            'permission' => [],
         ])->assertStatus(302);
 
         $this->actingAs($viewer)->get($page->getUrl())->assertStatus(404);

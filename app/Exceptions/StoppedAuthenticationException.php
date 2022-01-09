@@ -4,10 +4,11 @@ namespace DailyRecipe\Exceptions;
 
 use DailyRecipe\Auth\Access\LoginService;
 use DailyRecipe\Auth\User;
+use Exception;
 use Illuminate\Contracts\Support\Responsable;
 use Illuminate\Http\Request;
 
-class StoppedAuthenticationException extends \Exception implements Responsable
+class StoppedAuthenticationException extends Exception implements Responsable
 {
     protected $user;
     protected $loginService;
@@ -49,7 +50,7 @@ class StoppedAuthenticationException extends \Exception implements Responsable
         if ($request->wantsJson()) {
             return response()->json([
                 'error' => [
-                    'code'    => 401,
+                    'code' => 401,
                     'message' => trans('errors.email_confirmation_awaiting'),
                 ],
             ], 401);

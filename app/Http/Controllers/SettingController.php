@@ -31,7 +31,7 @@ class SettingController extends Controller
         $version = trim(file_get_contents(base_path('version')));
 
         return view('settings.index', [
-            'version'   => $version,
+            'version' => $version,
             'guestUser' => User::getDefault(),
         ]);
     }

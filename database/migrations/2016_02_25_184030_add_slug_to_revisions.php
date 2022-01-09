@@ -12,11 +12,10 @@ class AddSlugToRevisions extends Migration
      */
     public function up()
     {
-        Schema::table('page_revisions', function (Blueprint $table) {
+        Schema::table('recipe_revisions', function (Blueprint $table) {
             $table->string('slug');
             $table->index('slug');
-            $table->string('recipe_slug');
-            $table->index('recipe_slug');
+
         });
     }
 
@@ -27,9 +26,8 @@ class AddSlugToRevisions extends Migration
      */
     public function down()
     {
-        Schema::table('page_revisions', function (Blueprint $table) {
+        Schema::table('recipe_revisions', function (Blueprint $table) {
             $table->dropColumn('slug');
-            $table->dropColumn('recipe_slug');
         });
     }
 }

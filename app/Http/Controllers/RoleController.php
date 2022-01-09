@@ -49,7 +49,7 @@ class RoleController extends Controller
         $this->checkPermission('user-roles-manage');
         $this->validate($request, [
             'display_name' => ['required', 'min:3', 'max:180'],
-            'description'  => 'max:180',
+            'description' => 'max:180',
         ]);
 
         $this->permissionsRepo->saveNewRole($request->all());
@@ -84,7 +84,7 @@ class RoleController extends Controller
         $this->checkPermission('user-roles-manage');
         $this->validate($request, [
             'display_name' => ['required', 'min:3', 'max:180'],
-            'description'  => 'max:180',
+            'description' => 'max:180',
         ]);
 
         $this->permissionsRepo->updateRole($id, $request->all());

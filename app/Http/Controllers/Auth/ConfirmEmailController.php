@@ -23,9 +23,10 @@ class ConfirmEmailController extends Controller
      */
     public function __construct(
         EmailConfirmationService $emailConfirmationService,
-        LoginService $loginService,
-        UserRepo $userRepo
-    ) {
+        LoginService             $loginService,
+        UserRepo                 $userRepo
+    )
+    {
         $this->emailConfirmationService = $emailConfirmationService;
         $this->loginService = $loginService;
         $this->userRepo = $userRepo;

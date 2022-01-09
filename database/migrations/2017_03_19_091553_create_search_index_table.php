@@ -27,16 +27,9 @@ class CreateSearchIndexTable extends Migration
         });
 
         $sm = Schema::getConnection()->getDoctrineSchemaManager();
-        $pages = $sm->listTableDetails('pages');
-        $recipes = $sm->listTableDetails('recipes');
-        $chapters = $sm->listTableDetails('chapters');
 
-        if ($pages->hasIndex('search')) {
-            Schema::table('pages', function (Blueprint $table) {
-                $table->dropIndex('search');
-                $table->dropIndex('name_search');
-            });
-        }
+        $recipes = $sm->listTableDetails('recipes');
+
 
         if ($recipes->hasIndex('search')) {
             Schema::table('recipes', function (Blueprint $table) {
@@ -45,12 +38,7 @@ class CreateSearchIndexTable extends Migration
             });
         }
 
-        if ($chapters->hasIndex('search')) {
-            Schema::table('chapters', function (Blueprint $table) {
-                $table->dropIndex('search');
-                $table->dropIndex('name_search');
-            });
-        }
+
     }
 
     /**

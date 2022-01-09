@@ -6,6 +6,7 @@ use DailyRecipe\Actions\ActivityType;
 use DailyRecipe\Entities\Tools\TrashCan;
 use DailyRecipe\Notifications\TestEmail;
 use DailyRecipe\Uploads\ImageService;
+use Exception;
 use Illuminate\Http\Request;
 
 class MaintenanceController extends Controller
@@ -25,7 +26,7 @@ class MaintenanceController extends Controller
         $recycleStats = (new TrashCan())->getTrashedCounts();
 
         return view('settings.maintenance', [
-            'version'      => $version,
+            'version' => $version,
             'recycleStats' => $recycleStats,
         ]);
     }
@@ -69,7 +70,7 @@ class MaintenanceController extends Controller
         try {
             user()->notify(new TestEmail());
             $this->showSuccessNotification(trans('settings.maint_send_test_email_success', ['address' => user()->email]));
-        } catch (\Exception $exception) {
+        } catch (Exception $exception) {
             $errorMessage = trans('errors.maintenance_test_email_failure') . "\n" . $exception->getMessage();
             $this->showErrorNotification($errorMessage);
         }

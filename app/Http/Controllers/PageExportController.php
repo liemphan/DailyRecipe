@@ -5,6 +5,7 @@ namespace DailyRecipe\Http\Controllers;
 use DailyRecipe\Entities\Repos\PageRepo;
 use DailyRecipe\Entities\Tools\ExportFormatter;
 use DailyRecipe\Entities\Tools\PageContent;
+use DailyRecipe\Entities\Tools\RecipeContents;
 use DailyRecipe\Exceptions\NotFoundException;
 use Throwable;
 
@@ -33,7 +34,7 @@ class PageExportController extends Controller
     public function pdf(string $recipeSlug, string $pageSlug)
     {
         $page = $this->pageRepo->getBySlug($recipeSlug, $pageSlug);
-        $page->html = (new PageContent($page))->render();
+        $page->html = (new RecipeContents($page))->render();
         $pdfContent = $this->exportFormatter->pageToPdf($page);
 
         return $this->downloadResponse($pdfContent, $pageSlug . '.pdf');

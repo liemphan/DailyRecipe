@@ -4,6 +4,7 @@ namespace DailyRecipe\Http\Middleware;
 
 use Carbon\Carbon;
 use Closure;
+use Exception;
 use Illuminate\Http\Request;
 
 class Localization
@@ -18,47 +19,47 @@ class Localization
      * Locales can often be found by running `locale -a` on a linux system.
      */
     protected $localeMap = [
-        'ar'          => 'ar',
-        'bg'          => 'bg_BG',
-        'bs'          => 'bs_BA',
-        'ca'          => 'ca',
-        'da'          => 'da_DK',
-        'de'          => 'de_DE',
+        'ar' => 'ar',
+        'bg' => 'bg_BG',
+        'bs' => 'bs_BA',
+        'ca' => 'ca',
+        'da' => 'da_DK',
+        'de' => 'de_DE',
         'de_informal' => 'de_DE',
-        'en'          => 'en_GB',
-        'es'          => 'es_ES',
-        'es_AR'       => 'es_AR',
-        'et'          => 'et_EE',
-        'fr'          => 'fr_FR',
-        'he'          => 'he_IL',
-        'hr'          => 'hr_HR',
-        'id'          => 'id_ID',
-        'it'          => 'it_IT',
-        'ja'          => 'ja',
-        'ko'          => 'ko_KR',
-        'lt'          => 'lt_LT',
-        'lv'          => 'lv_LV',
-        'nl'          => 'nl_NL',
-        'nb'          => 'nb_NO',
-        'pl'          => 'pl_PL',
-        'pt'          => 'pt_PT',
-        'pt_BR'       => 'pt_BR',
-        'ru'          => 'ru',
-        'sk'          => 'sk_SK',
-        'sl'          => 'sl_SI',
-        'sv'          => 'sv_SE',
-        'uk'          => 'uk_UA',
-        'vi'          => 'vi_VN',
-        'zh_CN'       => 'zh_CN',
-        'zh_TW'       => 'zh_TW',
-        'tr'          => 'tr_TR',
+        'en' => 'en_GB',
+        'es' => 'es_ES',
+        'es_AR' => 'es_AR',
+        'et' => 'et_EE',
+        'fr' => 'fr_FR',
+        'he' => 'he_IL',
+        'hr' => 'hr_HR',
+        'id' => 'id_ID',
+        'it' => 'it_IT',
+        'ja' => 'ja',
+        'ko' => 'ko_KR',
+        'lt' => 'lt_LT',
+        'lv' => 'lv_LV',
+        'nl' => 'nl_NL',
+        'nb' => 'nb_NO',
+        'pl' => 'pl_PL',
+        'pt' => 'pt_PT',
+        'pt_BR' => 'pt_BR',
+        'ru' => 'ru',
+        'sk' => 'sk_SK',
+        'sl' => 'sl_SI',
+        'sv' => 'sv_SE',
+        'uk' => 'uk_UA',
+        'vi' => 'vi_VN',
+        'zh_CN' => 'zh_CN',
+        'zh_TW' => 'zh_TW',
+        'tr' => 'tr_TR',
     ];
 
     /**
      * Handle an incoming request.
      *
-     * @param \Illuminate\Http\Request $request
-     * @param \Closure                 $next
+     * @param Request $request
+     * @param Closure $next
      *
      * @return mixed
      */
@@ -89,7 +90,7 @@ class Localization
     {
         try {
             $user = user();
-        } catch (\Exception $exception) {
+        } catch (Exception $exception) {
             return $default;
         }
 

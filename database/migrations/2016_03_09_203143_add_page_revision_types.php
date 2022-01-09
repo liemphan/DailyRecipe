@@ -12,7 +12,7 @@ class AddPageRevisionTypes extends Migration
      */
     public function up()
     {
-        Schema::table('page_revisions', function (Blueprint $table) {
+        Schema::table('recipe_revisions', function (Blueprint $table) {
             $table->string('type')->default('version');
             $table->index('type');
         });
@@ -25,7 +25,7 @@ class AddPageRevisionTypes extends Migration
      */
     public function down()
     {
-        Schema::table('page_revisions', function (Blueprint $table) {
+        Schema::table('recipe_revisions', function (Blueprint $table) {
             $table->dropColumn('type');
         });
     }

@@ -4,12 +4,11 @@ namespace DailyRecipe\Http\Controllers;
 
 use Activity;
 use DailyRecipe\Entities\Models\Recipe;
-use DailyRecipe\Entities\Models\Page;
 use DailyRecipe\Entities\Queries\RecentlyViewed;
 use DailyRecipe\Entities\Queries\TopFavourites;
 use DailyRecipe\Entities\Repos\RecipeRepo;
 use DailyRecipe\Entities\Repos\RecipemenuRepo;
-use DailyRecipe\Entities\Tools\PageContent;
+use DailyRecipe\Entities\Tools\RecipeContents;
 
 class HomeController extends Controller
 {
@@ -22,11 +21,11 @@ class HomeController extends Controller
         $draftPages = [];
 
         if ($this->isSignedIn()) {
-            $draftPages = Page::visible()
+            $draftPages = Recipe::visible()
                 ->where('draft', '=', true)
                 ->where('created_by', '=', user()->id)
                 ->orderBy('updated_at', 'desc')
-                ->with('recipe')
+                //->with('recipe')
                 ->take(6)
                 ->get();
         }
@@ -36,25 +35,25 @@ class HomeController extends Controller
             (new RecentlyViewed())->run(12 * $recentFactor, 1)
             : Recipe::visible()->orderBy('created_at', 'desc')->take(12 * $recentFactor)->get();
         $favourites = (new TopFavourites())->run(6);
-        $recentlyUpdatedPages = Page::visible()->with('recipe')
-            ->where('draft', false)
+        $recentlyUpdatedPages = Recipe::visible()/*->with('recipe')*/
+        ->where('draft', false)
             ->orderBy('updated_at', 'desc')
             ->take($favourites->count() > 0 ? 5 : 10)
-            ->select(Page::$listAttributes)
+            ->select(Recipe::$listAttributes)
             ->get();
 
-        $homepageOptions = ['default', 'recipes', 'recipemenus', 'page'];
+        $homepageOptions = ['default', 'recipes', 'recipemenus', 'content'];
         $homepageOption = setting('app-homepage-type', 'default');
         if (!in_array($homepageOption, $homepageOptions)) {
             $homepageOption = 'default';
         }
 
         $commonData = [
-            'activity'             => $activity,
-            'recents'              => $recents,
+            'activity' => $activity,
+            'recents' => $recents,
             'recentlyUpdatedPages' => $recentlyUpdatedPages,
-            'draftPages'           => $draftPages,
-            'favourites'           => $favourites,
+            'draftPages' => $draftPages,
+            'favourites' => $favourites,
         ];
 
         // Add required list ordering & sorting for recipes & menus views.
@@ -65,15 +64,15 @@ class HomeController extends Controller
             $order = setting()->getForCurrentUser($key . '_sort_order', 'asc');
 
             $sortOptions = [
-                'name'       => trans('common.sort_name'),
+                'name' => trans('common.sort_name'),
                 'created_at' => trans('common.sort_created_at'),
                 'updated_at' => trans('common.sort_updated_at'),
             ];
 
             $commonData = array_merge($commonData, [
-                'view'        => $view,
-                'sort'        => $sort,
-                'order'       => $order,
+                'view' => $view,
+                'sort' => $sort,
+                'order' => $order,
                 'sortOptions' => $sortOptions,
             ]);
         }
@@ -93,13 +92,13 @@ class HomeController extends Controller
             return view('home.recipes', $data);
         }
 
-        if ($homepageOption === 'page') {
+        if ($homepageOption === 'content') {
             $homepageSetting = setting('app-homepage', '0:');
             $id = intval(explode(':', $homepageSetting)[0]);
-            /** @var Page $customHomepage */
-            $customHomepage = Page::query()->where('draft', '=', false)->findOrFail($id);
-            $pageContent = new PageContent($customHomepage);
-            $customHomepage->html = $pageContent->render(false);
+            /** @var Recipe $customHomepage */
+            $customHomepage = Recipe::query()->where('draft', '=', false)->findOrFail($id);
+            $recipeContent = new RecipeContents($customHomepage);
+            $customHomepage->html = $recipeContent->render(false);
 
             return view('home.specific-page', array_merge($commonData, ['customHomepage' => $customHomepage]));
         }

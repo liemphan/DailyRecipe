@@ -2,6 +2,7 @@
 
 namespace DailyRecipe\Entities\Models;
 
+use DailyRecipe\Uploads\Attachment;
 use DailyRecipe\Uploads\Image;
 use Exception;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -13,34 +14,64 @@ use Illuminate\Support\Collection;
 /**
  * Class Recipe.
  *
- * @property string                                   $description
- * @property int                                      $image_id
- * @property Image|null                               $cover
- * @property \Illuminate\Database\Eloquent\Collection $chapters
- * @property \Illuminate\Database\Eloquent\Collection $pages
- * @property \Illuminate\Database\Eloquent\Collection $directPages
+ * @property string $description
+ * @property int $image_id
+ * @property Image|null $cover
+ * @property int $priority
+ * @property string $html
+ * @property string $markdown
+ * @property string $text
+ * @property bool $template
+ * @property bool $draft
+ * @property int $revision_count
  */
 class Recipe extends Entity implements HasCoverImage
 {
     use HasFactory;
 
+    public static $listAttributes = ['name', 'id', 'slug', 'draft', 'template', 'text', 'created_at', 'updated_at', 'priority'];
+    public static $contentAttributes = ['name', 'id', 'slug', 'draft', 'template', 'html', 'text', 'created_at', 'updated_at', 'priority'];
+
     public $searchFactor = 1.2;
 
-    protected $fillable = ['name', 'description'];
-    protected $hidden = ['restricted', 'pivot', 'image_id', 'deleted_at'];
+    protected $fillable = ['name', 'description', 'priority'];
+    protected $hidden = ['restricted', 'pivot', 'image_id', 'deleted_at', 'html', 'markdown', 'text',];
+
+    public $textField = 'text';
+
+    protected $casts = [
+        'draft' => 'boolean',
+        'template' => 'boolean',
+    ];
 
     /**
      * Get the url for this recipe.
      */
     public function getUrl(string $path = ''): string
     {
+
         return url('/recipes/' . implode('/', [urlencode($this->slug), trim($path, '/')]));
+    }
+
+    /**
+     * Get the url of this page.
+     */
+    public function getUrlContent(string $path = ''): string
+    {
+        $parts = [
+            'recipes',
+            urlencode($this->slug),
+            $this->draft ? 'draft' : 'content',
+            trim($path, '/'),
+        ];
+
+        return url('/' . implode('/', $parts));
     }
 
     /**
      * Returns recipe cover image, if recipe cover not exists return default cover image.
      *
-     * @param int $width  - Width of the image
+     * @param int $width - Width of the image
      * @param int $height - Height of the image
      *
      * @return string
@@ -77,29 +108,29 @@ class Recipe extends Entity implements HasCoverImage
         return 'cover_recipe';
     }
 
-    /**
-     * Get all pages within this recipe.
-     */
-    public function pages(): HasMany
-    {
-        return $this->hasMany(Page::class);
-    }
-
-    /**
-     * Get the direct child pages of this recipe.
-     */
-    public function directPages(): HasMany
-    {
-        return $this->pages()->where('chapter_id', '=', '0');
-    }
-
-    /**
-     * Get all chapters within this recipe.
-     */
-    public function chapters(): HasMany
-    {
-        return $this->hasMany(Chapter::class);
-    }
+//    /**
+//     * Get all pages within this recipe.
+//     */
+//    public function pages(): HasMany
+//    {
+//        return $this->hasMany(Recipe::class);
+//    }
+//
+//    /**
+//     * Get the direct child pages of this recipe.
+//     */
+//    public function directPages(): HasMany
+//    {
+//        return $this->pages()->where('chapter_id', '=', '0');
+//    }
+//
+//    /**
+//     * Get all chapters within this recipe.
+//     */
+//    public function chapters(): HasMany
+//    {
+//        return $this->hasMany(Chapter::class);
+//    }
 
     /**
      * Get the menus this recipe is contained within.
@@ -109,14 +140,36 @@ class Recipe extends Entity implements HasCoverImage
         return $this->belongsToMany(Recipemenu::class, 'recipemenus_recipes', 'recipe_id', 'recipemenu_id');
     }
 
-    /**
-     * Get the direct child items within this recipe.
-     */
-    public function getDirectChildren(): Collection
-    {
-        $pages = $this->directPages()->scopes('visible')->get();
-        $chapters = $this->chapters()->scopes('visible')->get();
+//    /**
+//     * Get the direct child items within this recipe.
+//     */
+//    public function getDirectChildren(): Collection
+//    {
+//        $pages = $this->directPages()->scopes('visible')->get();
+//        $chapters = $this->chapters()->scopes('visible')->get();
+//
+//        return $pages->concat($chapters)->sortBy('priority')->sortByDesc('draft');
+//    }
 
-        return $pages->concat($chapters)->sortBy('priority')->sortByDesc('draft');
+    /**
+     * Get the attachments assigned to this page.
+     *
+     * @return HasMany
+     */
+    public function attachments()
+    {
+        return $this->hasMany(Attachment::class, 'uploaded_to')->orderBy('order', 'asc');
+    }
+
+    /**
+     * Get the associated page revisions, ordered by created date.
+     * Only provides actual saved page revision instances, Not drafts.
+     */
+    public function revisions(): HasMany
+    {
+        return $this->allRevisions()
+            ->where('type', '=', 'version')
+            ->orderBy('created_at', 'desc')
+            ->orderBy('id', 'desc');
     }
 }

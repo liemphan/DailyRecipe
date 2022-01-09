@@ -77,8 +77,8 @@ class UserAvatars
         $email = strtolower(trim($user->email));
 
         $replacements = [
-            '${hash}'  => md5($email),
-            '${size}'  => $size,
+            '${hash}' => md5($email),
+            '${size}' => $size,
             '${email}' => urlencode($email),
         ];
 

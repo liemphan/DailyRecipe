@@ -50,7 +50,7 @@ class OidcService
         $provider = $this->getProvider($settings);
 
         return [
-            'url'   => $provider->getAuthorizationUrl(),
+            'url' => $provider->getAuthorizationUrl(),
             'state' => $provider->getState(),
         ];
     }
@@ -85,12 +85,12 @@ class OidcService
     {
         $config = $this->config();
         $settings = new OidcProviderSettings([
-            'issuer'                => $config['issuer'],
-            'clientId'              => $config['client_id'],
-            'clientSecret'          => $config['client_secret'],
-            'redirectUri'           => url('/oidc/callback'),
+            'issuer' => $config['issuer'],
+            'clientId' => $config['client_id'],
+            'clientSecret' => $config['client_secret'],
+            'redirectUri' => url('/oidc/callback'),
             'authorizationEndpoint' => $config['authorization_endpoint'],
-            'tokenEndpoint'         => $config['token_endpoint'],
+            'tokenEndpoint' => $config['token_endpoint'],
         ]);
 
         // Use keys if configured
@@ -114,7 +114,7 @@ class OidcService
     protected function getProvider(OidcProviderSettings $settings): OidcOAuthProvider
     {
         return new OidcOAuthProvider($settings->arrayForProvider(), [
-            'httpClient'     => $this->httpClient,
+            'httpClient' => $this->httpClient,
             'optionProvider' => new HttpBasicAuthOptionProvider(),
         ]);
     }
@@ -152,8 +152,8 @@ class OidcService
 
         return [
             'external_id' => $id,
-            'email'       => $token->getClaim('email'),
-            'name'        => $this->getUserDisplayName($token, $id),
+            'email' => $token->getClaim('email'),
+            'name' => $this->getUserDisplayName($token, $id),
         ];
     }
 

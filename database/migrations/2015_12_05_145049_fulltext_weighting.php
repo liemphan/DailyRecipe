@@ -29,15 +29,8 @@ class FulltextWeighting extends Migration
     public function down()
     {
         $sm = Schema::getConnection()->getDoctrineSchemaManager();
-        $pages = $sm->listTableDetails('pages');
         $recipes = $sm->listTableDetails('recipes');
-        $chapters = $sm->listTableDetails('chapters');
 
-        if ($pages->hasIndex('name_search')) {
-            Schema::table('pages', function (Blueprint $table) {
-                $table->dropIndex('name_search');
-            });
-        }
 
         if ($recipes->hasIndex('name_search')) {
             Schema::table('recipes', function (Blueprint $table) {
@@ -45,10 +38,5 @@ class FulltextWeighting extends Migration
             });
         }
 
-        if ($chapters->hasIndex('name_search')) {
-            Schema::table('chapters', function (Blueprint $table) {
-                $table->dropIndex('name_search');
-            });
-        }
     }
 }

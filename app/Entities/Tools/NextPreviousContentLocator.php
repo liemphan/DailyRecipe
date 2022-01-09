@@ -2,6 +2,7 @@
 
 namespace DailyRecipe\Entities\Tools;
 
+use DailyRecipe\Entities\Models\Recipe;
 use DailyRecipe\Entities\Models\RecipeChild;
 use DailyRecipe\Entities\Models\Entity;
 use Illuminate\Support\Collection;
@@ -18,7 +19,7 @@ class NextPreviousContentLocator
     /**
      * NextPreviousContentLocator constructor.
      */
-    public function __construct(RecipeChild $relativeRecipeItem, Collection $recipeTree)
+    public function __construct(Recipe $relativeRecipeItem, Collection $recipeTree)
     {
         $this->relativeRecipeItem = $relativeRecipeItem;
         $this->flatTree = $this->treeToFlatOrderedCollection($recipeTree);

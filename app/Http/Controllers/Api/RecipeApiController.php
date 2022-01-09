@@ -4,6 +4,7 @@ namespace DailyRecipe\Http\Controllers\Api;
 
 use DailyRecipe\Entities\Models\Recipe;
 use DailyRecipe\Entities\Repos\RecipeRepo;
+use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Validation\ValidationException;
 
@@ -13,14 +14,14 @@ class RecipeApiController extends ApiController
 
     protected $rules = [
         'create' => [
-            'name'        => ['required', 'string', 'max:255'],
+            'name' => ['required', 'string', 'max:255'],
             'description' => ['string', 'max:1000'],
-            'tags'        => ['array'],
+            'tags' => ['array'],
         ],
         'update' => [
-            'name'        => ['string', 'min:1', 'max:255'],
+            'name' => ['string', 'min:1', 'max:255'],
             'description' => ['string', 'max:1000'],
-            'tags'        => ['array'],
+            'tags' => ['array'],
         ],
     ];
 
@@ -86,7 +87,7 @@ class RecipeApiController extends ApiController
      * Delete a single recipe.
      * This will typically send the recipe to the recycle bin.
      *
-     * @throws \Exception
+     * @throws Exception
      */
     public function delete(string $id)
     {

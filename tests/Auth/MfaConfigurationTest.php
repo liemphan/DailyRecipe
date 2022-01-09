@@ -56,7 +56,7 @@ class MfaConfigurationTest extends TestCase
 
         $this->assertDatabaseHas('mfa_values', [
             'user_id' => $editor->id,
-            'method'  => 'totp',
+            'method' => 'totp',
         ]);
         $this->assertFalse(session()->has('mfa-setup-totp-secret'));
         $value = MfaValue::query()->where('user_id', '=', $editor->id)
@@ -96,7 +96,7 @@ class MfaConfigurationTest extends TestCase
 
         $this->assertDatabaseHas('mfa_values', [
             'user_id' => $editor->id,
-            'method'  => 'backup_codes',
+            'method' => 'backup_codes',
         ]);
         $this->assertFalse(session()->has('mfa-setup-backup-codes'));
         $value = MfaValue::query()->where('user_id', '=', $editor->id)

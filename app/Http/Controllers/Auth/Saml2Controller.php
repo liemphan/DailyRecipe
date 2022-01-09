@@ -4,6 +4,7 @@ namespace DailyRecipe\Http\Controllers\Auth;
 
 use DailyRecipe\Auth\Access\Saml2Service;
 use DailyRecipe\Http\Controllers\Controller;
+use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 
@@ -106,7 +107,7 @@ class Saml2Controller extends Controller
 
         try {
             $samlResponse = decrypt(cache()->pull($cacheKey));
-        } catch (\Exception $exception) {
+        } catch (Exception $exception) {
         }
         $requestId = session()->pull('saml2_request_id', null);
 

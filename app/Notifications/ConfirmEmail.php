@@ -2,6 +2,8 @@
 
 namespace DailyRecipe\Notifications;
 
+use Illuminate\Notifications\Messages\MailMessage;
+
 class ConfirmEmail extends MailNotification
 {
     public $token;
@@ -21,16 +23,16 @@ class ConfirmEmail extends MailNotification
      *
      * @param mixed $notifiable
      *
-     * @return \Illuminate\Notifications\Messages\MailMessage
+     * @return MailMessage
      */
     public function toMail($notifiable)
     {
         $appName = ['appName' => setting('app-name')];
 
         return $this->newMailMessage()
-                ->subject(trans('auth.email_confirm_subject', $appName))
-                ->greeting(trans('auth.email_confirm_greeting', $appName))
-                ->line(trans('auth.email_confirm_text'))
-                ->action(trans('auth.email_confirm_action'), url('/register/confirm/' . $this->token));
+            ->subject(trans('auth.email_confirm_subject', $appName))
+            ->greeting(trans('auth.email_confirm_greeting', $appName))
+            ->line(trans('auth.email_confirm_text'))
+            ->action(trans('auth.email_confirm_action'), url('/register/confirm/' . $this->token));
     }
 }

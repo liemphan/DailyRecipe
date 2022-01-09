@@ -20,7 +20,7 @@ class MenusApiTest extends TestCase
         $resp = $this->getJson($this->baseEndpoint . '?count=1&sort=+id');
         $resp->assertJson(['data' => [
             [
-                'id'   => $firstRecipemenu->id,
+                'id' => $firstRecipemenu->id,
                 'name' => $firstRecipemenu->name,
                 'slug' => $firstRecipemenu->slug,
             ],
@@ -33,7 +33,7 @@ class MenusApiTest extends TestCase
         $recipes = Recipe::query()->take(2)->get();
 
         $details = [
-            'name'        => 'My API menu',
+            'name' => 'My API menu',
             'description' => 'A menu created via the API',
         ];
 
@@ -45,8 +45,8 @@ class MenusApiTest extends TestCase
         foreach ($recipes as $index => $recipe) {
             $this->assertDatabaseHas('recipemenus_recipes', [
                 'recipemenu_id' => $newItem->id,
-                'recipe_id'      => $recipe->id,
-                'order'        => $index,
+                'recipe_id' => $recipe->id,
+                'order' => $index,
             ]);
         }
     }
@@ -62,7 +62,7 @@ class MenusApiTest extends TestCase
         $resp->assertStatus(422);
         $resp->assertJson([
             'error' => [
-                'message'    => 'The given data was invalid.',
+                'message' => 'The given data was invalid.',
                 'validation' => [
                     'name' => ['The name field is required.'],
                 ],
@@ -80,8 +80,8 @@ class MenusApiTest extends TestCase
 
         $resp->assertStatus(200);
         $resp->assertJson([
-            'id'         => $menu->id,
-            'slug'       => $menu->slug,
+            'id' => $menu->id,
+            'slug' => $menu->slug,
             'created_by' => [
                 'name' => $menu->createdBy->name,
             ],
@@ -99,7 +99,7 @@ class MenusApiTest extends TestCase
         $this->actingAsApiEditor();
         $menu = Recipemenu::visible()->first();
         $details = [
-            'name'        => 'My updated API menu',
+            'name' => 'My updated API menu',
             'description' => 'A menu created via the API',
         ];
 

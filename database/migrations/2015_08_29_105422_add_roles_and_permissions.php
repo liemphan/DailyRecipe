@@ -1,5 +1,6 @@
 <?php
 
+use Carbon\Carbon;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 
@@ -70,34 +71,34 @@ class AddRolesAndPermissions extends Migration
             'name'         => 'admin',
             'display_name' => 'Admin',
             'description'  => 'Administrator of the whole application',
-            'created_at'   => \Carbon\Carbon::now()->toDateTimeString(),
-            'updated_at'   => \Carbon\Carbon::now()->toDateTimeString(),
+            'created_at'   => Carbon::now()->toDateTimeString(),
+            'updated_at'   => Carbon::now()->toDateTimeString(),
         ]);
         $editorId = DB::table('roles')->insertGetId([
             'name'         => 'editor',
             'display_name' => 'Editor',
             'description'  => 'User can edit Recipes, Chapters & Pages',
-            'created_at'   => \Carbon\Carbon::now()->toDateTimeString(),
-            'updated_at'   => \Carbon\Carbon::now()->toDateTimeString(),
+            'created_at'   => Carbon::now()->toDateTimeString(),
+            'updated_at'   => Carbon::now()->toDateTimeString(),
         ]);
         $viewerId = DB::table('roles')->insertGetId([
             'name'         => 'viewer',
             'display_name' => 'Viewer',
             'description'  => 'User can view recipes & their content behind authentication',
-            'created_at'   => \Carbon\Carbon::now()->toDateTimeString(),
-            'updated_at'   => \Carbon\Carbon::now()->toDateTimeString(),
+            'created_at'   => Carbon::now()->toDateTimeString(),
+            'updated_at'   => Carbon::now()->toDateTimeString(),
         ]);
 
         // Create default CRUD permissions and allocate to admins and editors
-        $entities = ['Recipe', 'Page', 'Chapter', 'Image'];
+        $entities = ['Recipe',  'Image'];
         $ops = ['Create', 'Update', 'Delete'];
         foreach ($entities as $entity) {
             foreach ($ops as $op) {
                 $newPermId = DB::table('permissions')->insertGetId([
                     'name'         => strtolower($entity) . '-' . strtolower($op),
                     'display_name' => $op . ' ' . $entity . 's',
-                    'created_at'   => \Carbon\Carbon::now()->toDateTimeString(),
-                    'updated_at'   => \Carbon\Carbon::now()->toDateTimeString(),
+                    'created_at'   => Carbon::now()->toDateTimeString(),
+                    'updated_at'   => Carbon::now()->toDateTimeString(),
                 ]);
                 DB::table('permission_role')->insert([
                     ['permission_id' => $newPermId, 'role_id' => $adminId],
@@ -114,8 +115,8 @@ class AddRolesAndPermissions extends Migration
                 $newPermId = DB::table('permissions')->insertGetId([
                     'name'         => strtolower($entity) . '-' . strtolower($op),
                     'display_name' => $op . ' ' . $entity,
-                    'created_at'   => \Carbon\Carbon::now()->toDateTimeString(),
-                    'updated_at'   => \Carbon\Carbon::now()->toDateTimeString(),
+                    'created_at'   => Carbon::now()->toDateTimeString(),
+                    'updated_at'   => Carbon::now()->toDateTimeString(),
                 ]);
                 DB::table('permission_role')->insert([
                     'permission_id' => $newPermId,

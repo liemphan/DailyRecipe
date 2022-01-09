@@ -59,10 +59,10 @@ class UpdateUrl extends Command
 
         $columnsToUpdateByTable = [
             'attachments' => ['path'],
-            'pages'       => ['html', 'text', 'markdown'],
-            'images'      => ['url'],
-            'settings'    => ['value'],
-            'comments'    => ['html', 'text'],
+            'pages' => ['html', 'text', 'markdown'],
+            'images' => ['url'],
+            'settings' => ['value'],
+            'comments' => ['html', 'text'],
         ];
 
         foreach ($columnsToUpdateByTable as $table => $columns) {

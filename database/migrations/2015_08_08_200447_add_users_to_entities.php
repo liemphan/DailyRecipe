@@ -12,14 +12,7 @@ class AddUsersToEntities extends Migration
      */
     public function up()
     {
-        Schema::table('pages', function (Blueprint $table) {
-            $table->integer('created_by');
-            $table->integer('updated_by');
-        });
-        Schema::table('chapters', function (Blueprint $table) {
-            $table->integer('created_by');
-            $table->integer('updated_by');
-        });
+
         Schema::table('images', function (Blueprint $table) {
             $table->integer('created_by');
             $table->integer('updated_by');
@@ -37,14 +30,8 @@ class AddUsersToEntities extends Migration
      */
     public function down()
     {
-        Schema::table('pages', function (Blueprint $table) {
-            $table->dropColumn('created_by');
-            $table->dropColumn('updated_by');
-        });
-        Schema::table('chapters', function (Blueprint $table) {
-            $table->dropColumn('created_by');
-            $table->dropColumn('updated_by');
-        });
+
+
         Schema::table('images', function (Blueprint $table) {
             $table->dropColumn('created_by');
             $table->dropColumn('updated_by');

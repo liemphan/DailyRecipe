@@ -18,10 +18,10 @@ class UserProfileController extends Controller
         $assetCounts = $repo->getAssetCounts($user);
 
         return view('users.profile', [
-            'user'            => $user,
-            'activity'        => $userActivity,
+            'user' => $user,
+            'activity' => $userActivity,
             'recentlyCreated' => $recentlyCreated,
-            'assetCounts'     => $assetCounts,
+            'assetCounts' => $assetCounts,
         ]);
     }
 }

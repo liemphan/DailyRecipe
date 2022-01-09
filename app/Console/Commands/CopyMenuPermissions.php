@@ -61,8 +61,8 @@ class CopyMenuPermissions extends Command
         if ($cascadeAll) {
             $continue = $this->confirm(
                 'Permission settings for all menus will be cascaded. ' .
-                        'Recipes assigned to multiple menus will receive only the permissions of it\'s last processed menu. ' .
-                        'Are you sure you want to proceed?'
+                'Recipes assigned to multiple menus will receive only the permissions of it\'s last processed menu. ' .
+                'Are you sure you want to proceed?'
             );
 
             if (!$continue && !$this->hasOption('no-interaction')) {

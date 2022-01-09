@@ -8,6 +8,8 @@ use DailyRecipe\Entities\Models\Chapter;
 use DailyRecipe\Entities\Models\Page;
 use DailyRecipe\Entities\Repos\RecipeRepo;
 use DailyRecipe\Entities\Repos\RecipemenuRepo;
+use DOMDocument;
+use DOMElement;
 use Illuminate\Support\Str;
 use Tests\Uploads\UsesImages;
 
@@ -85,10 +87,10 @@ class OpenGraphTest extends TestCase
         $tags = [];
 
         libxml_use_internal_errors(true);
-        $doc = new \DOMDocument();
+        $doc = new DOMDocument();
         $doc->loadHTML($resp->getContent());
         $metaElems = $doc->getElementsByTagName('meta');
-        /** @var \DOMElement $elem */
+        /** @var DOMElement $elem */
         foreach ($metaElems as $elem) {
             $prop = $elem->getAttribute('property');
             $name = explode(':', $prop)[1] ?? null;

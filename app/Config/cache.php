@@ -40,33 +40,33 @@ return [
         ],
 
         'array' => [
-            'driver'    => 'array',
+            'driver' => 'array',
             'serialize' => false,
         ],
 
         'database' => [
-            'driver'          => 'database',
-            'table'           => 'cache',
-            'connection'      => null,
+            'driver' => 'database',
+            'table' => 'cache',
+            'connection' => null,
             'lock_connection' => null,
         ],
 
         'file' => [
             'driver' => 'file',
-            'path'   => storage_path('framework/cache'),
+            'path' => storage_path('framework/cache'),
         ],
 
         'memcached' => [
-            'driver'        => 'memcached',
-            'options'       => [
+            'driver' => 'memcached',
+            'options' => [
                 // Memcached::OPT_CONNECT_TIMEOUT => 2000,
             ],
             'servers' => $memcachedServers ?? [],
         ],
 
         'redis' => [
-            'driver'          => 'redis',
-            'connection'      => 'default',
+            'driver' => 'redis',
+            'connection' => 'default',
             'lock_connection' => 'default',
         ],
 

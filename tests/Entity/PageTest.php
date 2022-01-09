@@ -63,17 +63,17 @@ class PageTest extends TestCase
 
         $details = [
             'markdown' => '# a title',
-            'html'     => '<h1>a title</h1>',
-            'name'     => 'my page',
+            'html' => '<h1>a title</h1>',
+            'name' => 'my page',
         ];
         $resp = $this->post($recipe->getUrl("/draft/{$draft->id}"), $details);
         $resp->assertRedirect();
 
         $this->assertDatabaseHas('pages', [
             'markdown' => $details['markdown'],
-            'name'     => $details['name'],
-            'id'       => $draft->id,
-            'draft'    => false,
+            'name' => $details['name'],
+            'id' => $draft->id,
+            'draft' => false,
         ]);
 
         $draft->refresh();
@@ -116,14 +116,14 @@ class PageTest extends TestCase
             'type' => 'revision',
         ]);
 
-        $this->assertDatabaseHas('page_revisions', [
+        $this->assertDatabaseHas('recipe_revisions', [
             'page_id' => $page->id,
         ]);
 
         $this->asEditor()->delete($page->getUrl());
         $this->asAdmin()->post('/settings/recycle-bin/empty');
 
-        $this->assertDatabaseMissing('page_revisions', [
+        $this->assertDatabaseMissing('recipe_revisions', [
             'page_id' => $page->id,
         ]);
     }
@@ -142,7 +142,7 @@ class PageTest extends TestCase
 
         $movePageResp = $this->post($page->getUrl('/copy'), [
             'entity_selection' => 'recipe:' . $newRecipe->id,
-            'name'             => 'My copied test page',
+            'name' => 'My copied test page',
         ]);
         $pageCopy = Page::where('name', '=', 'My copied test page')->first();
 
@@ -161,7 +161,7 @@ class PageTest extends TestCase
 
         $this->asEditor()->post($page->getUrl('/copy'), [
             'entity_selection' => 'recipe:' . $newRecipe->id,
-            'name'             => 'My copied test page',
+            'name' => 'My copied test page',
         ]);
         $pageCopy = Page::where('name', '=', 'My copied test page')->first();
 
@@ -208,14 +208,14 @@ class PageTest extends TestCase
 
         $movePageResp = $this->post($page->getUrl('/copy'), [
             'entity_selection' => 'recipe:' . $newRecipe->id,
-            'name'             => 'My copied test page',
+            'name' => 'My copied test page',
         ]);
         $movePageResp->assertRedirect();
 
         $this->assertDatabaseHas('pages', [
-            'name'       => 'My copied test page',
+            'name' => 'My copied test page',
             'created_by' => $viewer->id,
-            'recipe_id'    => $newRecipe->id,
+            'recipe_id' => $newRecipe->id,
         ]);
     }
 

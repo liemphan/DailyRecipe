@@ -25,35 +25,24 @@
         <h1 class="break-text">{{$recipe->name}}</h1>
         <div refs="entity-search@contentView" class="recipe-content">
             <p class="text-muted">{!! nl2br(e($recipe->description)) !!}</p>
-            @if(count($recipeChildren) > 0)
-                <div class="entity-list recipe-contents">
-                    @foreach($recipeChildren as $childElement)
-                        @if($childElement->isA('chapter'))
-                            @include('chapters.parts.list-item', ['chapter' => $childElement])
-                        @else
-                            @include('pages.parts.list-item', ['page' => $childElement])
-                        @endif
-                    @endforeach
-                </div>
-            @else
                 <div class="mt-xl">
                     <hr>
                     <p class="text-muted italic mb-m mt-xl">{{ trans('entities.recipes_empty_contents') }}</p>
 
-                    <div class="icon-list block inline">
-                        @if(userCan('page-create', $recipe))
-                            <a href="{{ $recipe->getUrl('/create-page') }}" class="icon-list-item text-page">
-                                <span class="icon">@icon('page')</span>
-                                <span>{{ trans('entities.recipes_empty_create_page') }}</span>
-                            </a>
-                        @endif
-                        @if(userCan('chapter-create', $recipe))
-                            <a href="{{ $recipe->getUrl('/create-chapter') }}" class="icon-list-item text-chapter">
-                                <span class="icon">@icon('chapter')</span>
-                                <span>{{ trans('entities.recipes_empty_add_chapter') }}</span>
-                            </a>
-                        @endif
-                    </div>
+{{--                    <div class="icon-list block inline">--}}
+{{--                        @if(userCan('page-create', $recipe))--}}
+{{--                            <a href="{{ $recipe->getUrl('/create-page') }}" class="icon-list-item text-page">--}}
+{{--                                <span class="icon">@icon('page')</span>--}}
+{{--                                <span>{{ trans('entities.recipes_empty_create_page') }}</span>--}}
+{{--                            </a>--}}
+{{--                        @endif--}}
+{{--                        @if(userCan('chapter-create', $recipe))--}}
+{{--                            <a href="{{ $recipe->getUrl('/create-chapter') }}" class="icon-list-item text-chapter">--}}
+{{--                                <span class="icon">@icon('chapter')</span>--}}
+{{--                                <span>{{ trans('entities.recipes_empty_add_chapter') }}</span>--}}
+{{--                            </a>--}}
+{{--                        @endif--}}
+{{--                    </div>--}}
 
                 </div>
             @endif
@@ -85,18 +74,18 @@
         <h5>{{ trans('common.actions') }}</h5>
         <div class="icon-list text-primary">
 
-            @if(userCan('page-create', $recipe))
-                <a href="{{ $recipe->getUrl('/create-page') }}" class="icon-list-item">
-                    <span>@icon('add')</span>
-                    <span>{{ trans('entities.pages_new') }}</span>
-                </a>
-            @endif
-            @if(userCan('chapter-create', $recipe))
-                <a href="{{ $recipe->getUrl('/create-chapter') }}" class="icon-list-item">
-                    <span>@icon('add')</span>
-                    <span>{{ trans('entities.chapters_new') }}</span>
-                </a>
-            @endif
+{{--            @if(userCan('page-create', $recipe))--}}
+{{--                <a href="{{ $recipe->getUrl('/create-page') }}" class="icon-list-item">--}}
+{{--                    <span>@icon('add')</span>--}}
+{{--                    <span>{{ trans('entities.pages_new') }}</span>--}}
+{{--                </a>--}}
+{{--            @endif--}}
+{{--            @if(userCan('chapter-create', $recipe))--}}
+{{--                <a href="{{ $recipe->getUrl('/create-chapter') }}" class="icon-list-item">--}}
+{{--                    <span>@icon('add')</span>--}}
+{{--                    <span>{{ trans('entities.chapters_new') }}</span>--}}
+{{--                </a>--}}
+{{--            @endif--}}
 
             <hr class="primary-background">
 

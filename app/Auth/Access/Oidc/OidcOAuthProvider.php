@@ -78,11 +78,11 @@ class OidcOAuthProvider extends AbstractProvider
      * Checks a provider response for errors.
      *
      * @param ResponseInterface $response
-     * @param array|string      $data     Parsed response data
-     *
-     * @throws IdentityProviderException
+     * @param array|string $data Parsed response data
      *
      * @return void
+     * @throws IdentityProviderException
+     *
      */
     protected function checkResponse(ResponseInterface $response, $data)
     {
@@ -90,7 +90,7 @@ class OidcOAuthProvider extends AbstractProvider
             throw new IdentityProviderException(
                 $data['error'] ?? $response->getReasonPhrase(),
                 $response->getStatusCode(),
-                (string) $response->getBody()
+                (string)$response->getBody()
             );
         }
     }
@@ -99,7 +99,7 @@ class OidcOAuthProvider extends AbstractProvider
      * Generates a resource owner object from a successful resource owner
      * details request.
      *
-     * @param array       $response
+     * @param array $response
      * @param AccessToken $token
      *
      * @return ResourceOwnerInterface
@@ -115,7 +115,7 @@ class OidcOAuthProvider extends AbstractProvider
      * The grant that was used to fetch the response can be used to provide
      * additional context.
      *
-     * @param array         $response
+     * @param array $response
      * @param AbstractGrant $grant
      *
      * @return OidcAccessToken
