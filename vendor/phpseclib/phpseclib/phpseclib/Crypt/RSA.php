@@ -392,7 +392,7 @@ abstract class RSA extends AsymmetricKey
 
                 $temp = $primes[$i]->subtract(self::$one);
 
-                // textrecipe RSA implementations use Euler's totient function instead of the least common multiple.
+                // textbook RSA implementations use Euler's totient function instead of the least common multiple.
                 // see http://en.wikipedia.org/wiki/Euler%27s_totient_function
                 $lcm['top'] = $lcm['top']->multiply($temp);
                 $lcm['bottom'] = $lcm['bottom'] === false ? $temp : $lcm['bottom']->gcd($temp);

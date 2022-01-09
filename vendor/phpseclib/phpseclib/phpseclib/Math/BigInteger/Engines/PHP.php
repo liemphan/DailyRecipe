@@ -48,7 +48,7 @@ abstract class PHP extends Engine
     /**
      * Karatsuba Cutoff
      *
-     * At what point do we switch between Karatsuba multiplication and schoolrecipe long multiplication?
+     * At what point do we switch between Karatsuba multiplication and schoolbook long multiplication?
      *
      * @access private
      */

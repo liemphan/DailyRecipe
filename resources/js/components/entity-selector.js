@@ -112,7 +112,7 @@ class EntitySelector {
         this.input.value = '';
         const url = `${this.searchUrl()}&term=${encodeURIComponent(searchTerm)}`;
         window.$http.get(url).then(resp => {
-            this.resultsContainer.innerHTML = resp.data;
+            this.resultsContainer.inRnerHTML = resp.data;
             this.hideLoading();
         });
     }
