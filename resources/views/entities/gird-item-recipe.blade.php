@@ -7,7 +7,7 @@
     </div>
     <div class="grid-card-content">
         <h2 class="text-limit-lines-2">{{ $entity->name }}</h2>
-        <p class="text-muted">{{ $entity->getExcerpt(130)   }}</p>
+{{--        <p class="text-muted">{{ $entity->getExcerpt(130)   }}</p>--}}
         <p class="text-muted">{!! nl2br(e($entity->description)) !!}</p>
     </div>
     <div class="grid-card-footer text-muted ">

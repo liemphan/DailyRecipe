@@ -56,6 +56,7 @@ final class Versions
   'guzzlehttp/promises' => '1.5.1@fe752aedc9fd8fcca3fe7ad05d419d32998a06da',
   'guzzlehttp/psr7' => '2.1.0@089edd38f5b8abba6cb01567c2a8aaa47cec4c72',
   'intervention/image' => '2.7.0@9a8cc99d30415ec0b3f7649e1647d03a55698545',
+  'itsgoingd/clockwork' => 'v5.1.3@e03f8a7f4bcd99ec67e56428e4fc7424de4cefa8',
   'knplabs/knp-snappy' => 'v1.3.1@349c2e872bbeb15dff825a17dd92ea9c6ae4120e',
   'laravel/framework' => 'v8.70.2@dec9524cd0f9fa35a6eb8e25d0b40f8bbc8ec225',
   'laravel/serializable-closure' => 'v1.0.3@6cfc678735f22ccedad761b8cae2bab14c3d8e5b',
@@ -137,7 +138,7 @@ final class Versions
   'vlucas/phpdotenv' => 'v5.4.0@d4394d044ed69a8f244f3445bcedf8a0d7fe2403',
   'voku/portable-ascii' => '1.5.6@80953678b19901e5165c56752d087fc11526017c',
   'webmozart/assert' => '1.10.0@6964c76c7804814a842473e0c8fd15bab0f18e25',
-  'dailyrecipeapp/dailyrecipe' => 'dev-main@f821ac9ba438ab34dedf3a0541c70167232ff7a1',
+  'dailyrecipeapp/dailyrecipe' => 'dev-main@df268b4e18f7fe67826aa1764fc6c3d25f4272b0',
 );
 
     private function __construct()

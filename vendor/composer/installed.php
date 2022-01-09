@@ -5,7 +5,7 @@
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'reference' => 'f821ac9ba438ab34dedf3a0541c70167232ff7a1',
+        'reference' => 'df268b4e18f7fe67826aa1764fc6c3d25f4272b0',
         'name' => 'dailyrecipeapp/dailyrecipe',
         'dev' => false,
     ),
@@ -79,7 +79,7 @@
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
-            'reference' => 'f821ac9ba438ab34dedf3a0541c70167232ff7a1',
+            'reference' => 'df268b4e18f7fe67826aa1764fc6c3d25f4272b0',
             'dev_requirement' => false,
         ),
         'dasprid/enum' => array(
@@ -410,6 +410,15 @@
             'install_path' => __DIR__ . '/../intervention/image',
             'aliases' => array(),
             'reference' => '9a8cc99d30415ec0b3f7649e1647d03a55698545',
+            'dev_requirement' => false,
+        ),
+        'itsgoingd/clockwork' => array(
+            'pretty_version' => 'v5.1.3',
+            'version' => '5.1.3.0',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../itsgoingd/clockwork',
+            'aliases' => array(),
+            'reference' => 'e03f8a7f4bcd99ec67e56428e4fc7424de4cefa8',
             'dev_requirement' => false,
         ),
         'knplabs/knp-snappy' => array(

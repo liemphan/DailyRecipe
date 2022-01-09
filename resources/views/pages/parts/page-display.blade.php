@@ -1,7 +1,7 @@
 <div dir="auto">
 
-    <h1 class="break-text" id="bkmrk-page-title">{{$page->name}}</h1>
-    <p class="text-muted">{!! nl2br(e($recipe->description)) !!}</p>
+    <h1 class="break-text" id="bkmrk-page-title"><b>{{$page->name}}</b></h1>
+    <h5 class="text-muted"><b>{!! nl2br(e($recipe->description)) !!}</b></h5>
     <div style="clear:left;"></div>
 
     @if (isset($diff) && $diff)
