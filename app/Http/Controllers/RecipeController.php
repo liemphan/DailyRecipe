@@ -5,6 +5,8 @@ namespace DailyRecipe\Http\Controllers;
 use Activity;
 use DailyRecipe\Actions\ActivityType;
 use DailyRecipe\Actions\View;
+use DailyRecipe\Entities\Models\Page;
+use DailyRecipe\Entities\Models\Recipe;
 use DailyRecipe\Entities\Models\Recipemenu;
 use DailyRecipe\Entities\Repos\RecipeRepo;
 use DailyRecipe\Entities\Tools\NextPreviousContentLocator;
@@ -514,5 +516,19 @@ class RecipeController extends Controller
         $this->showSuccessNotification(trans('entities.pages_permissions_success'));
 
         return redirect($page->getUrlContent());
+    }
+    /**
+     * Show a listing of recently created pages.
+     */
+    public function showRecentlyUpdated()
+    {
+        $pages = Recipe::visible()->orderBy('updated_at', 'desc')
+            ->paginate(20)
+            ->setPath(url('/pages/recently-updated'));
+
+        return view('common.detailed-listing-paginated', [
+            'title'    => trans('entities.recently_updated_pages'),
+            'entities' => $pages,
+        ]);
     }
 }

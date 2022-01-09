@@ -47,7 +47,7 @@ Route::middleware('auth')->group(function () {
     Route::redirect('/api', '/api/docs');
     Route::get('/api/docs', [Api\ApiDocsController::class, 'display']);
 
-    Route::get('/pages/recently-updated', [PageController::class, 'showRecentlyUpdated']);
+    Route::get('/pages/recently-updated', [RecipeController::class, 'showRecentlyUpdated']);
 
     // Menus
     Route::get('/create-menu', [RecipemenuController::class, 'create']);

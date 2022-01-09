@@ -21,7 +21,7 @@
         @else
              <div class="grid third">
                 @foreach($recipes as $key => $recipe)
-                    @include('entities.grid-item', ['entity' => $recipe])
+                    @include('entities.gird-item-recipe', ['entity' => $recipe])
                 @endforeach
              </div>
         @endif
