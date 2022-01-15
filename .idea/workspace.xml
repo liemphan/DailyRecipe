@@ -5,15 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="274eeb44-2be1-4c79-980b-c542185305a9" name="Changes" comment="update bookstack to dailyrecipe">
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Entities/Models/Recipe.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Entities/Models/Recipe.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Entities/Models/RecipeChild.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Entities/Models/RecipeChild.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/recipe-sort.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/recipe-sort.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/entities/recipe-tree.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/entities/recipe-tree.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/recipes/export.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/recipes/export.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/recipes/parts/sort-box.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/recipes/parts/sort-box.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/settings/maintenance.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/settings/maintenance.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/users/profile.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/users/profile.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -234,7 +227,8 @@
       <workItem from="1641651143186" duration="1379000" />
       <workItem from="1641695032878" duration="3556000" />
       <workItem from="1642163238748" duration="824000" />
-      <workItem from="1642233982851" duration="937000" />
+      <workItem from="1642233982851" duration="2397000" />
+      <workItem from="1642255132490" duration="395000" />
     </task>
     <task id="LOCAL-00001" summary="add project">
       <created>1639398042116</created>
