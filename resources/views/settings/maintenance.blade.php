@@ -15,8 +15,8 @@
                 <div class="grid half no-gap mb-m">
                     <p class="mb-xs text-recipemenu">@icon('recipemenu'){{ trans('entities.menus') }}: {{ $recycleStats['recipemenu'] }}</p>
                     <p class="mb-xs text-recipe">@icon('recipe'){{ trans('entities.recipes') }}: {{ $recycleStats['recipe'] }}</p>
-                    <p class="mb-xs text-chapter">@icon('chapter'){{ trans('entities.chapters') }}: {{ $recycleStats['chapter'] }}</p>
-                    <p class="mb-xs text-page">@icon('page'){{ trans('entities.pages') }}: {{ $recycleStats['page'] }}</p>
+{{--                    <p class="mb-xs text-chapter">@icon('chapter'){{ trans('entities.chapters') }}: {{ $recycleStats['chapter'] }}</p>--}}
+{{--                    <p class="mb-xs text-page">@icon('page'){{ trans('entities.pages') }}: {{ $recycleStats['page'] }}</p>--}}
                 </div>
                 <a href="{{ url('/settings/recycle-bin') }}" class="button outline">{{ trans('settings.maint_recycle_bin_open') }}</a>
             </div>

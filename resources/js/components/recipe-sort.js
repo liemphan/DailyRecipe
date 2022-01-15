@@ -17,22 +17,22 @@ const sortOperations = {
         const bTime = Number(b.getAttribute('data-updated'));
         return bTime - aTime;
     },
-    chaptersFirst: function(a, b) {
-        const aType = a.getAttribute('data-type');
-        const bType = b.getAttribute('data-type');
-        if (aType === bType) {
-            return 0;
-        }
-        return (aType === 'chapter' ? -1 : 1);
-    },
-    chaptersLast: function(a, b) {
-        const aType = a.getAttribute('data-type');
-        const bType = b.getAttribute('data-type');
-        if (aType === bType) {
-            return 0;
-        }
-        return (aType === 'chapter' ? 1 : -1);
-    },
+    // chaptersFirst: function(a, b) {
+    //     const aType = a.getAttribute('data-type');
+    //     const bType = b.getAttribute('data-type');
+    //     if (aType === bType) {
+    //         return 0;
+    //     }
+    //     return (aType === 'chapter' ? -1 : 1);
+    // },
+    // chaptersLast: function(a, b) {
+    //     const aType = a.getAttribute('data-type');
+    //     const bType = b.getAttribute('data-type');
+    //     if (aType === bType) {
+    //         return 0;
+    //     }
+    //     return (aType === 'chapter' ? 1 : -1);
+    // },
 };
 
 class RecipeSort {

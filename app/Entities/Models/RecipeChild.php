@@ -62,8 +62,6 @@ abstract class RecipeChild extends Entity
         $this->save();
         $this->refresh();
 
-        // Update all child pages if a chapter
-
         foreach ($this->pages()->withTrashed()->get() as $page) {
             $page->changeRecipe($newRecipeId);
         }
