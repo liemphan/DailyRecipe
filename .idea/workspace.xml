@@ -4,10 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
+<<<<<<< Updated upstream
     <list default="true" id="274eeb44-2be1-4c79-980b-c542185305a9" name="Changes" comment="update bookstack to dailyrecipe">
       <change beforePath="$PROJECT_DIR$/.env" beforeDir="false" afterPath="$PROJECT_DIR$/.env" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
+=======
+    <list default="true" id="274eeb44-2be1-4c79-980b-c542185305a9" name="Changes" comment="update bookstack to dailyrecipe" />
+>>>>>>> Stashed changes
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -215,6 +219,7 @@
       <workItem from="1640268551232" duration="2257000" />
       <workItem from="1640317445675" duration="674000" />
       <workItem from="1640434224263" duration="254000" />
+<<<<<<< Updated upstream
       <workItem from="1640867081475" duration="1258000" />
       <workItem from="1640870636802" duration="243000" />
       <workItem from="1640871082215" duration="794000" />
@@ -222,6 +227,16 @@
       <workItem from="1640927426151" duration="707000" />
       <workItem from="1640936361369" duration="713000" />
       <workItem from="1640947330495" duration="602000" />
+=======
+      <workItem from="1640435445829" duration="1006000" />
+      <workItem from="1640520950904" duration="2251000" />
+      <workItem from="1640526613865" duration="762000" />
+      <workItem from="1640527403965" duration="47000" />
+      <workItem from="1640610344776" duration="3765000" />
+      <workItem from="1641651143186" duration="1379000" />
+      <workItem from="1641695032878" duration="3556000" />
+      <workItem from="1641742809705" duration="18000" />
+>>>>>>> Stashed changes
     </task>
     <task id="LOCAL-00001" summary="add project">
       <created>1639398042116</created>

@@ -9,7 +9,7 @@
  * Uses Jacobian Coordinates for speed if able:
  *
  * https://en.wikipedia.org/wiki/Jacobian_curve
- * https://en.wikirecipes.org/wiki/Cryptography/Prime_Curve/Jacobian_Coordinates
+ * https://en.wikibooks.org/wiki/Cryptography/Prime_Curve/Jacobian_Coordinates
  *
  * PHP version 5 and 7
  *

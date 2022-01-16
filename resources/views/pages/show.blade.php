@@ -18,6 +18,9 @@
         <div class="page-content clearfix" page-display="{{ $page->id }}">
             @include('pages.parts.pointer', ['page' => $page])
             @include('pages.parts.page-display')
+            <a href="https://www.facebook.com/sharer/sharer.php?u=example.org" target="_blank">
+                Share on Facebook
+            </a>
         </div>
     </main>
 

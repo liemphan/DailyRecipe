@@ -9,7 +9,7 @@
  * Uses Jacobian Coordinates for speed if able:
  *
  * https://en.wikipedia.org/wiki/Jacobian_curve
- * https://en.wikirecipes.org/wiki/Cryptography/Prime_Curve/Jacobian_Coordinates
+ * https://en.wikibooks.org/wiki/Cryptography/Prime_Curve/Jacobian_Coordinates
  *
  * PHP version 5 and 7
  *
@@ -278,7 +278,7 @@ class Binary extends Base
      *
      * Not supported because it is covered by patents.
      * Quoting https://www.openssl.org/docs/man1.1.0/apps/ecparam.html ,
-     * 
+     *
      * "Due to patent issues the compressed option is disabled by default for binary curves
      *  and can be enabled by defining the preprocessor macro OPENSSL_EC_BIN_PT_COMP at
      *  compile time."
@@ -370,7 +370,7 @@ class Binary extends Base
         if (isset($p[2])) {
             return $p;
         }
- 
+
         $p[2] = clone $this->one;
         $p['fresh'] = true;
         return $p;

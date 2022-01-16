@@ -68,16 +68,16 @@ abstract class SymmetricKey
      */
     const MODE_CTR = -1;
     /**
-     * Encrypt / decrypt using the Electronic Code Recipe mode.
+     * Encrypt / decrypt using the Electronic Code Book mode.
      *
-     * @link http://en.wikipedia.org/wiki/Block_cipher_modes_of_operation#Electronic_coderecipe_.28ECB.29
+     * @link http://en.wikipedia.org/wiki/Block_cipher_modes_of_operation#Electronic_codebook_.28ECB.29
      * @access public
      * @see \phpseclib3\Crypt\Common\SymmetricKey::encrypt()
      * @see \phpseclib3\Crypt\Common\SymmetricKey::decrypt()
      */
     const MODE_ECB = 1;
     /**
-     * Encrypt / decrypt using the Code Recipe Chaining mode.
+     * Encrypt / decrypt using the Code Book Chaining mode.
      *
      * @link http://en.wikipedia.org/wiki/Block_cipher_modes_of_operation#Cipher-block_chaining_.28CBC.29
      * @access public
@@ -3287,5 +3287,18 @@ abstract class SymmetricKey
         $r = $a->toBigInteger()->add($s->toBigInteger());
         $mask = "\xFF\xFF\xFF\xFF\xFF\xFF\xFF\xFF\xFF\xFF\xFF\xFF\xFF\xFF\xFF\xFF";
         return strrev($r->toBytes()) & $mask;
+    }
+
+    /**
+     * Return the mode
+     *
+     * You can do $obj instanceof AES or whatever to get the cipher but you can't do that to get the mode
+     *
+     * @access public
+     * @return string
+     */
+    public function getMode()
+    {
+        return array_flip(self::MODE_MAP)[$this->mode];
     }
 }
