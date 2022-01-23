@@ -34,7 +34,7 @@ class EntityOwnerChangeTest extends TestCase
         $recipe = Recipe::query()->first();
         $user = User::query()->where('id', '!=', $recipe->owned_by)->first();
 
-        $this->asAdmin()->put($recipe->getUrl('permissions'), ['owned_by' => $user->id]);
+        $this->asAdmin()->put($recipe->getUrlContent('permissions'), ['owned_by' => $user->id]);
         $this->assertDatabaseHas('recipes', ['owned_by' => $user->id, 'id' => $recipe->id]);
     }
 
@@ -43,7 +43,7 @@ class EntityOwnerChangeTest extends TestCase
         $menu = Recipemenu::query()->first();
         $user = User::query()->where('id', '!=', $menu->owned_by)->first();
 
-        $this->asAdmin()->put($menu->getUrl('permissions'), ['owned_by' => $user->id]);
+        $this->asAdmin()->put($menu->getUrlContent('permissions'), ['owned_by' => $user->id]);
         $this->assertDatabaseHas('recipemenus', ['owned_by' => $user->id, 'id' => $menu->id]);
     }
 }

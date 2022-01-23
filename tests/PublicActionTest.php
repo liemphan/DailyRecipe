@@ -19,7 +19,7 @@ class PublicActionTest extends TestCase
         $this->setSettings(['app-public' => 'false']);
         $recipe = Recipe::query()->first();
         $this->get('/recipes')->assertRedirect('/login');
-        $this->get($recipe->getUrl())->assertRedirect('/login');
+        $this->get($recipe->getUrlContent())->assertRedirect('/login');
 
         $page = Page::query()->first();
         $this->get($page->getUrl())->assertRedirect('/login');

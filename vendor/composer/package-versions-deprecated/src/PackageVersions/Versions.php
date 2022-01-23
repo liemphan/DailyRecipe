@@ -138,7 +138,7 @@ final class Versions
   'vlucas/phpdotenv' => 'v5.4.0@d4394d044ed69a8f244f3445bcedf8a0d7fe2403',
   'voku/portable-ascii' => '1.5.6@80953678b19901e5165c56752d087fc11526017c',
   'webmozart/assert' => '1.10.0@6964c76c7804814a842473e0c8fd15bab0f18e25',
-  'dailyrecipeapp/dailyrecipe' => 'dev-main@df268b4e18f7fe67826aa1764fc6c3d25f4272b0',
+  'dailyrecipeapp/dailyrecipe' => 'dev-main@cf03a35735645c7b72000705505b1edba2b17f3b',
 );
 
     private function __construct()

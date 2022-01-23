@@ -76,10 +76,10 @@ class RecipeTest extends TestCase
         $pageCount = $recipe->pages()->count();
         $chapterCount = $recipe->chapters()->count();
 
-        $deleteViewReq = $this->asEditor()->get($recipe->getUrl('/delete'));
+        $deleteViewReq = $this->asEditor()->get($recipe->getUrlContent('/delete'));
         $deleteViewReq->assertSeeText('Are you sure you want to delete this recipe?');
 
-        $deleteReq = $this->delete($recipe->getUrl());
+        $deleteReq = $this->delete($recipe->getUrlContent());
         $deleteReq->assertRedirect(url('/recipes'));
         $this->assertActivityExists('recipe_delete', $recipe);
 
@@ -115,7 +115,7 @@ class RecipeTest extends TestCase
         $recipe = Recipe::query()->first();
         $chapter = $recipe->chapters->first();
 
-        $resp = $this->asEditor()->get($chapter->getUrl());
+        $resp = $this->asEditor()->get($chapter->getUrlContent());
         $resp->assertElementContains('#sibling-navigation', 'Next');
         $resp->assertElementContains('#sibling-navigation', substr($chapter->pages[0]->name, 0, 20));
 

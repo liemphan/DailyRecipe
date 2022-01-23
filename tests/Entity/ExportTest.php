@@ -383,7 +383,7 @@ class ExportTest extends TestCase
         $recipe = Recipe::query()->whereHas('pages')->whereHas('chapters')->first();
         $chapter = $recipe->chapters()->first();
         $page = $chapter->pages()->first();
-        $resp = $this->asEditor()->get($recipe->getUrl('/export/markdown'));
+        $resp = $this->asEditor()->get($recipe->getUrlContent('/export/markdown'));
 
         $resp->assertSee('# ' . $recipe->name);
         $resp->assertSee('# ' . $chapter->name);

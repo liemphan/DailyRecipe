@@ -32,13 +32,13 @@ class EntityProvider
     /**
      * @var RecipeRevision
      */
-    public $pageRevision;
+    public $recipeRevision;
 
     public function __construct()
     {
         $this->recipemenu = new Recipemenu();
         $this->recipe = new Recipe();
-        $this->pageRevision = new RecipeRevision();
+        $this->recipeRevision = new RecipeRevision();
     }
 
     /**

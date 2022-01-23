@@ -828,7 +828,7 @@ class RolesTest extends TestCase
         // Recipe links
         $recipe = Recipe::factory()->create(['created_by' => $admin->id, 'updated_by' => $admin->id]);
         $this->regenEntityPermissions($recipe);
-        $this->actingAs($this->getViewer())->get($recipe->getUrl())
+        $this->actingAs($this->getViewer())->get($recipe->getUrlContent())
             ->assertDontSee('Create a new page')
             ->assertDontSee('Add a chapter');
 

@@ -137,4 +137,22 @@ class Recipe extends Entity implements HasCoverImage
             ->orderBy('created_at', 'desc')
             ->orderBy('id', 'desc');
     }
+    /**
+     * Get all revision instances assigned to this page.
+     * Includes all types of revisions.
+     */
+    public function allRevisions(): HasMany
+    {
+        return $this->hasMany(RecipeRevision::class);
+    }
+
+    /**
+     * Get the current revision for the page if existing.
+     *
+     * @return PageRevision|null
+     */
+    public function getCurrentRevision()
+    {
+        return $this->revisions()->first();
+    }
 }

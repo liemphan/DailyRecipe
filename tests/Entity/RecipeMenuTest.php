@@ -160,7 +160,7 @@ class RecipeMenuTest extends TestCase
     public function test_menu_view_has_sort_control_that_defaults_to_default()
     {
         $menu = Recipemenu::query()->first();
-        $resp = $this->asAdmin()->get($menu->getUrl());
+        $resp = $this->asAdmin()->get($menu->getUrlContent());
         $resp->assertElementExists('form[action$="change-sort/menu_recipes"]');
         $resp->assertElementContains('form[action$="change-sort/menu_recipes"] [aria-haspopup="true"]', 'Default');
     }
@@ -174,25 +174,25 @@ class RecipeMenuTest extends TestCase
         $recipes[2]->fill(['name' => 'hdgfgdfg'])->save();
 
         // Set recipe ordering
-        $this->asAdmin()->put($menu->getUrl(), [
+        $this->asAdmin()->put($menu->getUrlContent(), [
             'recipes' => $recipes->implode('id', ','),
             'tags'  => [], 'description' => 'abc', 'name' => 'abc',
         ]);
         $this->assertEquals(3, $menu->recipes()->count());
         $menu->refresh();
 
-        $resp = $this->asEditor()->get($menu->getUrl());
+        $resp = $this->asEditor()->get($menu->getUrlContent());
         $resp->assertElementContains('.recipe-content a.grid-card', $recipes[0]->name, 1);
         $resp->assertElementNotContains('.recipe-content a.grid-card', $recipes[0]->name, 3);
 
         setting()->putUser($this->getEditor(), 'menu_recipes_sort_order', 'desc');
-        $resp = $this->asEditor()->get($menu->getUrl());
+        $resp = $this->asEditor()->get($menu->getUrlContent());
         $resp->assertElementNotContains('.recipe-content a.grid-card', $recipes[0]->name, 1);
         $resp->assertElementContains('.recipe-content a.grid-card', $recipes[0]->name, 3);
 
         setting()->putUser($this->getEditor(), 'menu_recipes_sort_order', 'desc');
         setting()->putUser($this->getEditor(), 'menu_recipes_sort', 'name');
-        $resp = $this->asEditor()->get($menu->getUrl());
+        $resp = $this->asEditor()->get($menu->getUrlContent());
         $resp->assertElementContains('.recipe-content a.grid-card', 'hdgfgdfg', 1);
         $resp->assertElementContains('.recipe-content a.grid-card', 'bsfsdfsdfsd', 2);
         $resp->assertElementContains('.recipe-content a.grid-card', 'adsfsdfsdfsd', 3);
@@ -268,10 +268,10 @@ class RecipeMenuTest extends TestCase
         $this->assertNull($menu->deleted_at);
         $recipeCount = $menu->recipes()->count();
 
-        $deleteViewReq = $this->asEditor()->get($menu->getUrl('/delete'));
+        $deleteViewReq = $this->asEditor()->get($menu->getUrlContent('/delete'));
         $deleteViewReq->assertSeeText('Are you sure you want to delete this recipemenu?');
 
-        $deleteReq = $this->delete($menu->getUrl());
+        $deleteReq = $this->delete($menu->getUrlContent());
         $deleteReq->assertRedirect(url('/menus'));
         $this->assertActivityExists('menu_delete', $menu);
 
@@ -360,13 +360,13 @@ class RecipeMenuTest extends TestCase
 
         $newRecipe = Recipe::query()->orderBy('id', 'desc')->first();
 
-        $resp = $this->asEditor()->get($newRecipe->getUrl());
+        $resp = $this->asEditor()->get($newRecipe->getUrlContent());
         $resp->assertElementContains('.tri-layout-left-contents', $menuInfo['name']);
 
         // Remove menu
         $this->delete($menu->getUrl());
 
-        $resp = $this->asEditor()->get($newRecipe->getUrl());
+        $resp = $this->asEditor()->get($newRecipe->getUrlContent());
         $resp->assertDontSee($menuInfo['name']);
     }
 

@@ -60,7 +60,7 @@ class RecycleBinTest extends TestCase
         $recipe = Recipe::query()->whereHas('pages')->whereHas('chapters')->withCount(['pages', 'chapters'])->first();
         $editor = $this->getEditor();
         $this->actingAs($editor)->delete($page->getUrl());
-        $this->actingAs($editor)->delete($recipe->getUrl());
+        $this->actingAs($editor)->delete($recipe->getUrlContent());
 
         $viewReq = $this->asAdmin()->get('/settings/recycle-bin');
         $viewReq->assertElementContains('table.table', $page->name);
@@ -76,7 +76,7 @@ class RecycleBinTest extends TestCase
         $recipe = Recipe::query()->where('id', '!=', $page->recipe_id)->whereHas('pages')->whereHas('chapters')->with(['pages', 'chapters'])->firstOrFail();
         $editor = $this->getEditor();
         $this->actingAs($editor)->delete($page->getUrl());
-        $this->actingAs($editor)->delete($recipe->getUrl());
+        $this->actingAs($editor)->delete($recipe->getUrlContent());
 
         $this->assertTrue(Deletion::query()->count() === 2);
         $emptyReq = $this->asAdmin()->post('/settings/recycle-bin/empty');
@@ -96,7 +96,7 @@ class RecycleBinTest extends TestCase
     public function test_entity_restore()
     {
         $recipe = Recipe::query()->whereHas('pages')->whereHas('chapters')->with(['pages', 'chapters'])->firstOrFail();
-        $this->asEditor()->delete($recipe->getUrl());
+        $this->asEditor()->delete($recipe->getUrlContent());
         $deletion = Deletion::query()->firstOrFail();
 
         $this->assertEquals($recipe->pages->count(), DB::table('pages')->where('recipe_id', '=', $recipe->id)->whereNotNull('deleted_at')->count());
@@ -117,7 +117,7 @@ class RecycleBinTest extends TestCase
     public function test_permanent_delete()
     {
         $recipe = Recipe::query()->whereHas('pages')->whereHas('chapters')->with(['pages', 'chapters'])->firstOrFail();
-        $this->asEditor()->delete($recipe->getUrl());
+        $this->asEditor()->delete($recipe->getUrlContent());
         $deletion = Deletion::query()->firstOrFail();
 
         $deleteReq = $this->asAdmin()->delete("/settings/recycle-bin/{$deletion->id}");
@@ -138,7 +138,7 @@ class RecycleBinTest extends TestCase
         /** @var Entity $entity */
         foreach ([new Recipemenu(), new Recipe(), new Chapter(), new Page()] as $entity) {
             $entity = $entity->newQuery()->first();
-            $this->asEditor()->delete($entity->getUrl());
+            $this->asEditor()->delete($entity->getUrlContent());
             $deletion = Deletion::query()->orderBy('id', 'desc')->firstOrFail();
 
             $deleteReq = $this->asAdmin()->delete("/settings/recycle-bin/{$deletion->id}");
@@ -223,8 +223,8 @@ class RecycleBinTest extends TestCase
     {
         $recipe = Recipe::query()->whereHas('pages')->whereHas('chapters')->with(['pages', 'chapters'])->firstOrFail();
         $chapter = $recipe->chapters->first();
-        $this->asEditor()->delete($chapter->getUrl());
-        $this->asEditor()->delete($recipe->getUrl());
+        $this->asEditor()->delete($chapter->getUrlContent());
+        $this->asEditor()->delete($recipe->getUrlContent());
 
         $recipeDeletion = $recipe->deletions()->first();
         $chapterDeletion = $chapter->deletions()->first();

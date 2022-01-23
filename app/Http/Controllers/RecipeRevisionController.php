@@ -2,21 +2,21 @@
 
 namespace DailyRecipe\Http\Controllers;
 
-use DailyRecipe\Entities\Repos\PageRepo;
+use DailyRecipe\Entities\Repos\RecipeRepo;
 use DailyRecipe\Entities\Tools\RecipeContents;
 use DailyRecipe\Exceptions\NotFoundException;
 use Ssddanbrown\HtmlDiff\Diff;
 
 class RecipeRevisionController extends Controller
 {
-    protected $pageRepo;
+    protected $recipeRepo;
 
     /**
      * RecipeRevisionController constructor.
      */
-    public function __construct(PageRepo $pageRepo)
+    public function __construct(RecipeRepo $recipeRepo)
     {
-        $this->pageRepo = $pageRepo;
+        $this->recipeRepo = $recipeRepo;
     }
 
     /**
@@ -24,14 +24,14 @@ class RecipeRevisionController extends Controller
      *
      * @throws NotFoundException
      */
-    public function index(string $recipeSlug, string $pageSlug)
+    public function index(string $recipeSlug)
     {
-        $page = $this->pageRepo->getBySlug($recipeSlug, $pageSlug);
-        $this->setPageTitle(trans('entities.pages_revisions_named', ['pageName' => $page->getShortName()]));
+        $recipe = $this->recipeRepo->getBySlug($recipeSlug);
+        $this->setPageTitle(trans('entities.pages_revisions_named', ['pageName' => $recipe->getShortName()]));
 
         return view('pages.revisions', [
-            'page' => $page,
-            'current' => $page,
+            'recipe' => $recipe,
+            'current' => $recipe,
         ]);
     }
 
@@ -40,24 +40,23 @@ class RecipeRevisionController extends Controller
      *
      * @throws NotFoundException
      */
-    public function show(string $recipeSlug, string $pageSlug, int $revisionId)
+    public function show(string $recipeSlug, int $revisionId)
     {
-        $page = $this->pageRepo->getBySlug($recipeSlug, $pageSlug);
-        $revision = $page->revisions()->where('id', '=', $revisionId)->first();
+        $recipe = $this->recipeRepo->getBySlug($recipeSlug);
+        $revision = $recipe->revisions()->where('id', '=', $revisionId)->first();
         if ($revision === null) {
             throw new NotFoundException();
         }
 
-        $page->fill($revision->toArray());
+        $recipe->fill($revision->toArray());
         // TODO - Refactor recipeContent so we don't need to juggle this
-        $page->html = $revision->html;
-        $page->html = (new RecipeContents($page))->render();
+        $recipe->html = $revision->html;
+        $recipe->html = (new RecipeContents($recipe))->render();
 
-        $this->setPageTitle(trans('entities.pages_revision_named', ['pageName' => $page->getShortName()]));
+        $this->setPageTitle(trans('entities.pages_revision_named', ['pageName' => $recipe->getShortName()]));
 
         return view('pages.revision', [
-            'page' => $page,
-            'recipe' => $page->recipe,
+            'recipe' => $recipe,
             'diff' => null,
             'revision' => $revision,
         ]);
@@ -68,10 +67,10 @@ class RecipeRevisionController extends Controller
      *
      * @throws NotFoundException
      */
-    public function changes(string $recipeSlug, string $pageSlug, int $revisionId)
+    public function changes(string $recipeSlug, int $revisionId)
     {
-        $page = $this->pageRepo->getBySlug($recipeSlug, $pageSlug);
-        $revision = $page->revisions()->where('id', '=', $revisionId)->first();
+        $recipe = $this->recipeRepo->getBySlug($recipeSlug);
+        $revision = $recipe->revisions()->where('id', '=', $revisionId)->first();
         if ($revision === null) {
             throw new NotFoundException();
         }
@@ -80,15 +79,14 @@ class RecipeRevisionController extends Controller
         $prevContent = $prev->html ?? '';
         $diff = Diff::excecute($prevContent, $revision->html);
 
-        $page->fill($revision->toArray());
+        $recipe->fill($revision->toArray());
         // TODO - Refactor RecipeContents so we don't need to juggle this
-        $page->html = $revision->html;
-        $page->html = (new RecipeContents($page))->render();
-        $this->setPageTitle(trans('entities.pages_revision_named', ['pageName' => $page->getShortName()]));
+        $recipe->html = $revision->html;
+        $recipe->html = (new RecipeContents($recipe))->render();
+        $this->setPageTitle(trans('entities.pages_revision_named', ['pageName' => $recipe->getShortName()]));
 
         return view('pages.revision', [
-            'page' => $page,
-            'recipe' => $page->recipe,
+            'recipe' => $recipe,
             'diff' => $diff,
             'revision' => $revision,
         ]);
@@ -99,14 +97,14 @@ class RecipeRevisionController extends Controller
      *
      * @throws NotFoundException
      */
-    public function restore(string $recipeSlug, string $pageSlug, int $revisionId)
+    public function restore(string $recipeSlug, int $revisionId)
     {
-        $page = $this->pageRepo->getBySlug($recipeSlug, $pageSlug);
-        $this->checkOwnablePermission('page-update', $page);
+        $recipe = $this->recipeRepo->getBySlug($recipeSlug);
+        $this->checkOwnablePermission('page-update', $recipe);
 
-        $page = $this->pageRepo->restoreRevision($page, $revisionId);
+        $recipe = $this->recipeRepo->restoreRevision($recipe, $revisionId);
 
-        return redirect($page->getUrl());
+        return redirect($recipe->getUrl());
     }
 
     /**
@@ -114,29 +112,29 @@ class RecipeRevisionController extends Controller
      *
      * @throws NotFoundException
      */
-    public function destroy(string $recipeSlug, string $pageSlug, int $revId)
+    public function destroy(string $recipeSlug, int $revId)
     {
-        $page = $this->pageRepo->getBySlug($recipeSlug, $pageSlug);
-        $this->checkOwnablePermission('page-delete', $page);
+        $recipe = $this->recipeRepo->getBySlug($recipeSlug);
+        $this->checkOwnablePermission('page-delete', $recipe);
 
-        $revision = $page->revisions()->where('id', '=', $revId)->first();
+        $revision = $recipe->revisions()->where('id', '=', $revId)->first();
         if ($revision === null) {
             throw new NotFoundException("Revision #{$revId} not found");
         }
 
         // Get the current revision for the page
-        $currentRevision = $page->getCurrentRevision();
+        $currentRevision = $recipe->getCurrentRevision();
 
         // Check if its the latest revision, cannot delete latest revision.
         if (intval($currentRevision->id) === intval($revId)) {
             $this->showErrorNotification(trans('entities.revision_cannot_delete_latest'));
 
-            return redirect($page->getUrl('/revisions'));
+            return redirect($recipe->getUrl('/revisions'));
         }
 
         $revision->delete();
         $this->showSuccessNotification(trans('entities.revision_delete_success'));
 
-        return redirect($page->getUrl('/revisions'));
+        return redirect($recipe->getUrl('/revisions'));
     }
 }

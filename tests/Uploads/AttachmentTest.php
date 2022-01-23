@@ -318,7 +318,7 @@ class AttachmentTest extends TestCase
         $upload->assertStatus(200);
         $attachment = Attachment::query()->orderBy('id', 'desc')->take(1)->first();
 
-        $attachmentGet = $this->get($attachment->getUrl(true));
+        $attachmentGet = $this->get($attachment->getUrlContent(true));
         // http-foundation/Response does some 'fixing' of responses to add charsets to text responses.
         $attachmentGet->assertHeader('Content-Type', 'text/plain; charset=UTF-8');
         $attachmentGet->assertHeader('Content-Disposition', 'inline; filename="upload_test_file.txt"');

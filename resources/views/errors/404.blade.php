@@ -25,9 +25,9 @@
         <div class="grid third gap-xxl">
             <div>
                 <div class="card mb-xl">
-                    <h3 class="card-title">{{ trans('entities.pages_popular') }}</h3>
+                    <h3 class="card-title">{{ trans('entities.recipes_popular') }}</h3>
                     <div class="px-m">
-                        @include('entities.list', ['entities' => (new \DailyRecipe\Entities\Queries\Popular)->run(10, 0, ['page']), 'style' => 'compact'])
+                        @include('entities.list', ['entities' => (new \DailyRecipe\Entities\Queries\Popular)->run(10, 0, ['recipe']), 'style' => 'compact'])
                     </div>
                 </div>
             </div>
@@ -40,12 +40,12 @@
                 </div>
             </div>
             <div>
-                <div class="card mb-xl">
-                    <h3 class="card-title">{{ trans('entities.chapters_popular') }}</h3>
-                    <div class="px-m">
-                        @include('entities.list', ['entities' => (new \DailyRecipe\Entities\Queries\Popular)->run(10, 0, ['chapter']), 'style' => 'compact'])
-                    </div>
-                </div>
+{{--                <div class="card mb-xl">--}}
+{{--                    <h3 class="card-title">{{ trans('entities.chapters_popular') }}</h3>--}}
+{{--                    <div class="px-m">--}}
+{{--                        @include('entities.list', ['entities' => (new \DailyRecipe\Entities\Queries\Popular)->run(10, 0, ['chapter']), 'style' => 'compact'])--}}
+{{--                    </div>--}}
+{{--                </div>--}}
             </div>
         </div>
     @endif

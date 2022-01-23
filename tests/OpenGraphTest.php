@@ -42,18 +42,18 @@ class OpenGraphTest extends TestCase
     public function test_recipe_tags()
     {
         $recipe = Recipe::query()->first();
-        $resp = $this->asEditor()->get($recipe->getUrl());
+        $resp = $this->asEditor()->get($recipe->getUrlContent());
         $tags = $this->getOpenGraphTags($resp);
 
         $this->assertEquals($recipe->getShortName() . ' | DailyRecipe', $tags['title']);
-        $this->assertEquals($recipe->getUrl(), $tags['url']);
+        $this->assertEquals($recipe->getUrlContent(), $tags['url']);
         $this->assertEquals(Str::limit($recipe->description, 100, '...'), $tags['description']);
         $this->assertArrayNotHasKey('image', $tags);
 
         // Test image set if image has cover image
         $recipeRepo = app(RecipeRepo::class);
         $recipeRepo->updateCoverImage($recipe, $this->getTestImage('image.png'));
-        $resp = $this->asEditor()->get($recipe->getUrl());
+        $resp = $this->asEditor()->get($recipe->getUrlContent());
         $tags = $this->getOpenGraphTags($resp);
 
         $this->assertEquals($recipe->getRecipeCover(), $tags['image']);
@@ -62,18 +62,18 @@ class OpenGraphTest extends TestCase
     public function test_menu_tags()
     {
         $menu = Recipemenu::query()->first();
-        $resp = $this->asEditor()->get($menu->getUrl());
+        $resp = $this->asEditor()->get($menu->getUrlContent());
         $tags = $this->getOpenGraphTags($resp);
 
         $this->assertEquals($menu->getShortName() . ' | DailyRecipe', $tags['title']);
-        $this->assertEquals($menu->getUrl(), $tags['url']);
+        $this->assertEquals($menu->getUrlContent(), $tags['url']);
         $this->assertEquals(Str::limit($menu->description, 100, '...'), $tags['description']);
         $this->assertArrayNotHasKey('image', $tags);
 
         // Test image set if image has cover image
         $menuRepo = app(RecipemenuRepo::class);
         $menuRepo->updateCoverImage($menu, $this->getTestImage('image.png'));
-        $resp = $this->asEditor()->get($menu->getUrl());
+        $resp = $this->asEditor()->get($menu->getUrlContent());
         $tags = $this->getOpenGraphTags($resp);
 
         $this->assertEquals($menu->getRecipeCover(), $tags['image']);

@@ -38,7 +38,7 @@ class RecipeRevision extends Model
     /**
      * Get the page this revision originates from.
      */
-    public function page(): BelongsTo
+    public function recipe(): BelongsTo
     {
         return $this->belongsTo(Recipe::class);
     }
@@ -52,7 +52,7 @@ class RecipeRevision extends Model
      */
     public function getUrl($path = null)
     {
-        $url = $this->recipe->getUrl() . '/revisions/' . $this->id;
+        $url = $this->recipe->getUrlContent() . '/revisions/' . $this->id;
         if ($path) {
             return $url . '/' . trim($path, '/');
         }

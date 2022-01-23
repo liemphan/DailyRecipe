@@ -13,10 +13,10 @@
 
     <div class="mb-m print-hidden">
         @include('entities.breadcrumbs', ['crumbs' => [
-            $page->$recipe,
+            $recipe->$recipe,
            // $page->chapter,
-            $page,
-            $page->getUrl('/revisions') => [
+            $recipe,
+            $recipe->getUrl('/revisions') => [
                 'text' => trans('entities.pages_revisions'),
                 'icon' => 'history',
             ],

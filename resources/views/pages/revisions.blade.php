@@ -5,10 +5,10 @@
 
         <div class="my-s">
             @include('entities.breadcrumbs', ['crumbs' => [
-                $page->recipe,
-                $page->chapter,
-                $page,
-                $page->getUrl('/revisions') => [
+        //        $recipe->recipe,
+       //         $recipe->chapter,
+                $recipe,
+                $recipe->getUrl('/revisions') => [
                     'text' => trans('entities.pages_revisions'),
                     'icon' => 'history',
                 ]
@@ -17,7 +17,7 @@
 
         <main class="card content-wrap">
             <h1 class="list-heading">{{ trans('entities.pages_revisions') }}</h1>
-            @if(count($page->revisions) > 0)
+            @if(count($recipe->revisions) > 0)
 
                 <table class="table">
                     <tr>
@@ -28,7 +28,7 @@
                         <th width="25%">{{ trans('entities.pages_revisions_changelog') }}</th>
                         <th width="20%">{{ trans('common.actions') }}</th>
                     </tr>
-                    @foreach($page->revisions as $index => $revision)
+                    @foreach($recipe->revisions as $index => $revision)
                         <tr>
                             <td>{{ $revision->revision_number == 0 ? '' : $revision->revision_number }}</td>
                             <td>{{ $revision->name }}</td>
@@ -46,7 +46,7 @@
 
 
                                 @if ($index === 0)
-                                    <a target="_blank" rel="noopener" href="{{ $page->getUrl() }}"><i>{{ trans('entities.pages_revisions_current') }}</i></a>
+                                    <a target="_blank" rel="noopener" href="{{ $recipe->getUrl() }}"><i>{{ trans('entities.pages_revisions_current') }}</i></a>
                                 @else
                                     <a href="{{ $revision->getUrl() }}" target="_blank" rel="noopener">{{ trans('entities.pages_revisions_preview') }}</a>
                                     <span class="text-muted">&nbsp;|&nbsp;</span>

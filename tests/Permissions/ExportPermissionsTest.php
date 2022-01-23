@@ -49,7 +49,7 @@ class ExportPermissionsTest extends TestCase
         $formats = ['html', 'plaintext'];
 
         foreach ($formats as $format) {
-            $resp = $this->get($recipe->getUrl("export/{$format}"));
+            $resp = $this->get($recipe->getUrlContent("export/{$format}"));
             $resp->assertStatus(200);
             $resp->assertSee($page->name);
             $resp->assertSee($pageContent);
@@ -58,7 +58,7 @@ class ExportPermissionsTest extends TestCase
         $this->setEntityRestrictions($page, []);
 
         foreach ($formats as $format) {
-            $resp = $this->get($recipe->getUrl("export/{$format}"));
+            $resp = $this->get($recipe->getUrlContent("export/{$format}"));
             $resp->assertStatus(200);
             $resp->assertDontSee($page->name);
             $resp->assertDontSee($pageContent);

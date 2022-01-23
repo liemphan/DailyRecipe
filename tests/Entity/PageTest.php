@@ -57,7 +57,7 @@ class PageTest extends TestCase
         $this->setSettings(['app-editor' => 'markdown']);
         $recipe = Recipe::query()->first();
 
-        $this->asEditor()->get($recipe->getUrl('/create-page'));
+        $this->asEditor()->get($recipe->getUrlContent('/create-page'));
         $draft = Page::query()->where('recipe_id', '=', $recipe->id)
             ->where('draft', '=', true)->first();
 
@@ -66,7 +66,7 @@ class PageTest extends TestCase
             'html' => '<h1>a title</h1>',
             'name' => 'my page',
         ];
-        $resp = $this->post($recipe->getUrl("/draft/{$draft->id}"), $details);
+        $resp = $this->post($recipe->getUrlContent("/draft/{$draft->id}"), $details);
         $resp->assertRedirect();
 
         $this->assertDatabaseHas('pages', [

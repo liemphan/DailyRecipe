@@ -119,11 +119,11 @@ Route::middleware('auth')->group(function () {
     Route::delete('/recipes/{recipeSlug}/draft/{pageId}', [RecipeController::class, 'destroyDraft']);
 
     // Revisions
-    Route::get('/recipes/{recipeSlug}/page/{pageSlug}/revisions', [RecipeRevisionController::class, 'index']);
-    Route::get('/recipes/{recipeSlug}/page/{pageSlug}/revisions/{revId}', [RecipeRevisionController::class, 'show']);
-    Route::get('/recipes/{recipeSlug}/page/{pageSlug}/revisions/{revId}/changes', [RecipeRevisionController::class, 'changes']);
-    Route::put('/recipes/{recipeSlug}/page/{pageSlug}/revisions/{revId}/restore', [RecipeRevisionController::class, 'restore']);
-    Route::delete('/recipes/{recipeSlug}/page/{pageSlug}/revisions/{revId}/delete', [RecipeRevisionController::class, 'destroy']);
+    Route::get('/recipes/{recipeSlug}/revisions', [RecipeRevisionController::class, 'index']);
+    Route::get('/recipes/{recipeSlug}/content/revisions/{revId}', [RecipeRevisionController::class, 'show']);
+    Route::get('/recipes/{recipeSlug}/content/revisions/{revId}/changes', [RecipeRevisionController::class, 'changes']);
+    Route::put('/recipes/{recipeSlug}/content/revisions/{revId}/restore', [RecipeRevisionController::class, 'restore']);
+    Route::delete('/recipes/{recipeSlug}/content/revisions/{revId}/delete', [RecipeRevisionController::class, 'destroy']);
 //
 //    // Chapters
 //    Route::get('/recipes/{recipeSlug}/chapter/{chapterSlug}/create-page', [PageController::class, 'create']);

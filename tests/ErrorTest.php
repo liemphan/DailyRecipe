@@ -34,8 +34,8 @@ class ErrorTest extends TestCase
         $this->assertTrue($handler->hasErrorThatContains('cat'));
 
         $this->get('/recipes/arandomnotfouindrecipe');
-        $this->get($recipe->getUrl('/chapter/arandomnotfouindchapter'));
-        $this->get($recipe->getUrl('/chapter/arandomnotfouindpages'));
+        $this->get($recipe->getUrlContent('/chapter/arandomnotfouindchapter'));
+        $this->get($recipe->getUrlContent('/chapter/arandomnotfouindpages'));
 
         $this->assertCount(1, $handler->getRecords());
     }
