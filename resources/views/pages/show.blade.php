@@ -130,19 +130,19 @@
                     <span>{{ trans('common.edit') }}</span>
                 </a>
             @endif
-            @if(userCanOnAny('page-create'))
-                <a href="{{ $page->getUrl('/copy') }}" class="icon-list-item">
-                    <span>@icon('copy')</span>
-                    <span>{{ trans('common.copy') }}</span>
-                </a>
-            @endif
+{{--            @if(userCanOnAny('page-create'))--}}
+{{--                <a href="{{ $page->getUrl('/copy') }}" class="icon-list-item">--}}
+{{--                    <span>@icon('copy')</span>--}}
+{{--                    <span>{{ trans('common.copy') }}</span>--}}
+{{--                </a>--}}
+{{--            @endif--}}
             @if(userCan('page-update', $page))
-                @if(userCan('page-delete', $page))
-	                <a href="{{ $page->getUrl('/move') }}" class="icon-list-item">
-	                    <span>@icon('folder')</span>
-	                    <span>{{ trans('common.move') }}</span>
-	                </a>
-                @endif
+{{--                @if(userCan('page-delete', $page))--}}
+{{--	                <a href="{{ $page->getUrl('/move') }}" class="icon-list-item">--}}
+{{--	                    <span>@icon('folder')</span>--}}
+{{--	                    <span>{{ trans('common.move') }}</span>--}}
+{{--	                </a>--}}
+{{--                @endif--}}
                 <a href="{{ $page->getUrl('/revisions') }}" class="icon-list-item">
                     <span>@icon('history')</span>
                     <span>{{ trans('entities.revisions') }}</span>

@@ -109,17 +109,17 @@ class TrashCan
     protected function destroyRecipe(Recipe $recipe): int
     {
         $count = 0;
-        $pages = $recipe->pages()->withTrashed()->get();
-        foreach ($pages as $page) {
-            $this->destroyPage($page);
-            $count++;
-        }
+//        $pages = $recipe->pages()->withTrashed()->get();
+//        foreach ($pages as $page) {
+//            $this->destroyPage($page);
+//            $count++;
+//        }
 
-        $chapters = $recipe->chapters()->withTrashed()->get();
-        foreach ($chapters as $chapter) {
-            $this->destroyChapter($chapter);
-            $count++;
-        }
+//        $chapters = $recipe->chapters()->withTrashed()->get();
+//        foreach ($chapters as $chapter) {
+//            $this->destroyChapter($chapter);
+//            $count++;
+//        }
 
         $this->destroyCommonRelations($recipe);
         $recipe->forceDelete();
@@ -232,10 +232,10 @@ class TrashCan
         $restoreCount = 0;
 
         if ($deletion->deletable instanceof Entity) {
-            $parent = $deletion->deletable->getParent();
-            if ($parent && $parent->trashed()) {
-                $shouldRestore = false;
-            }
+//            $parent = $deletion->deletable->getParent();
+//            if ($parent && $parent->trashed()) {
+//                $shouldRestore = false;
+//            }
         }
 
         if ($deletion->deletable instanceof Entity && $shouldRestore) {
@@ -294,9 +294,9 @@ class TrashCan
 //            $entity->pages()->withTrashed()->withCount('deletions')->get()->each($restoreAction);
 //        }
 
-        if ($entity instanceof Recipe) {
-            $entity->chapters()->withTrashed()->withCount('deletions')->get()->each($restoreAction);
-        }
+//        if ($entity instanceof Recipe) {
+//            $entity->chapters()->withTrashed()->withCount('deletions')->get()->each($restoreAction);
+//        }
 
         return $count;
     }

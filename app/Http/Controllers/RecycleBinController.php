@@ -52,12 +52,12 @@ class RecycleBinController extends Controller
         $currentDeletable = $deletion->deletable;
         $searching = true;
         while ($searching && $currentDeletable instanceof Entity) {
-            $parent = $currentDeletable->getParent();
-            if ($parent && $parent->trashed()) {
-                $currentDeletable = $parent;
-            } else {
+//            $parent = $currentDeletable->getParent();
+//            if ($parent && $parent->trashed()) {
+//                $currentDeletable = $parent;
+//            } else {
                 $searching = false;
-            }
+//            }
         }
 
         /** @var ?Deletion $parentDeletion */

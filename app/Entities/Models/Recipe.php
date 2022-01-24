@@ -29,7 +29,7 @@ class Recipe extends Entity implements HasCoverImage
 {
     use HasFactory;
 
-    public static $listAttributes = ['name', 'id', 'slug', 'draft', 'template', 'text', 'created_at', 'updated_at', 'priority'];
+    public static $listAttributes = ['name', 'id', 'slug', 'draft', 'template','html', 'text', 'created_at', 'updated_at', 'priority'];
     public static $contentAttributes = ['name', 'id', 'slug', 'draft', 'template', 'html', 'text', 'created_at', 'updated_at', 'priority'];
 
     public $searchFactor = 1.2;

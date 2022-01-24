@@ -62,9 +62,9 @@ abstract class RecipeChild extends Entity
         $this->save();
         $this->refresh();
 
-        foreach ($this->pages()->withTrashed()->get() as $page) {
-            $page->changeRecipe($newRecipeId);
-        }
+//        foreach ($this->pages()->withTrashed()->get() as $page) {
+//            $page->changeRecipe($newRecipeId);
+//        }
 
 
         return $this;

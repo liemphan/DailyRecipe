@@ -13,7 +13,7 @@
     @foreach($menu->visibleRecipes as $recipe)
         <div>
             <a href="{{ $recipe->getUrl('?menu=' . $menu->id) }}" class="entity-chip text-recipe">
-                @icon('recipe')
+                @https('recipe')
                 {{ $recipe->name }}
             </a>
         </div>

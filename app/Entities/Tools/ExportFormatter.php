@@ -225,9 +225,9 @@ class ExportFormatter
      * Converts the page contents into simple plain text.
      * This method filters any bad looking content to provide a nice final output.
      */
-    public function pageToPlainText(Page $page): string
+    public function pageToPlainText(Recipe $page): string
     {
-        $html = (new PageContent($page))->render();
+        $html = (new RecipeContents($page))->render();
         $text = strip_tags($html);
         // Replace multiple spaces with single spaces
         $text = preg_replace('/\ {2,}/', ' ', $text);
@@ -275,7 +275,7 @@ class ExportFormatter
     /**
      * Convert a page to a Markdown file.
      */
-    public function pageToMarkdown(Page $page): string
+    public function pageToMarkdown(Recipe $page): string
     {
         if ($page->markdown) {
             return '# ' . $page->name . "\n\n" . $page->markdown;
@@ -306,11 +306,11 @@ class ExportFormatter
         $recipeTree = (new RecipeContents($recipe))->getTree(false, true);
         $text = '# ' . $recipe->name . "\n\n";
         foreach ($recipeTree as $recipeChild) {
-            if ($recipeChild instanceof Chapter) {
-                $text .= $this->chapterToMarkdown($recipeChild);
-            } else {
+//            if ($recipeChild instanceof Chapter) {
+//                $text .= $this->chapterToMarkdown($recipeChild);
+//            } else {
                 $text .= $this->pageToMarkdown($recipeChild);
-            }
+//            }
         }
 
         return $text;

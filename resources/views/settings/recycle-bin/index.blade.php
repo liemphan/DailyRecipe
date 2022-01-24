@@ -61,34 +61,34 @@
                                 {{ $deletion->deletable->name }}
                             </div>
                         </div>
-                        @if($deletion->deletable instanceof \DailyRecipe\Entities\Models\Recipe || $deletion->deletable instanceof \DailyRecipe\Entities\Models\Chapter)
-                            <div class="mb-m"></div>
-                        @endif
-                        @if($deletion->deletable instanceof \DailyRecipe\Entities\Models\Recipe)
-                            <div class="pl-xl block inline">
-                                <div class="text-chapter">
-                                    @icon('chapter') {{ trans_choice('entities.x_chapters', $deletion->deletable->chapters()->withTrashed()->count()) }}
-                                </div>
-                            </div>
-                        @endif
-                        @if($deletion->deletable instanceof \DailyRecipe\Entities\Models\Recipe || $deletion->deletable instanceof \DailyRecipe\Entities\Models\Chapter)
-                        <div class="pl-xl block inline">
-                            <div class="text-page">
-                                @icon('page') {{ trans_choice('entities.x_pages', $deletion->deletable->pages()->withTrashed()->count()) }}
-                            </div>
-                        </div>
-                        @endif
+{{--                        @if($deletion->deletable instanceof \DailyRecipe\Entities\Models\Recipe || $deletion->deletable instanceof \DailyRecipe\Entities\Models\Chapter)--}}
+{{--                            <div class="mb-m"></div>--}}
+{{--                        @endif--}}
+{{--                        @if($deletion->deletable instanceof \DailyRecipe\Entities\Models\Recipe)--}}
+{{--                            <div class="pl-xl block inline">--}}
+{{--                                <div class="text-chapter">--}}
+{{--                                    @icon('chapter') {{ trans_choice('entities.x_chapters', $deletion->deletable->chapters()->withTrashed()->count()) }}--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
+{{--                        @endif--}}
+{{--                        @if($deletion->deletable instanceof \DailyRecipe\Entities\Models\Recipe || $deletion->deletable instanceof \DailyRecipe\Entities\Models\Chapter)--}}
+{{--                        <div class="pl-xl block inline">--}}
+{{--                            <div class="text-page">--}}
+{{--                                @icon('page') {{ trans_choice('entities.x_pages', $deletion->deletable->pages()->withTrashed()->count()) }}--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
+{{--                        @endif--}}
                     </td>
-                    <td>
-                        @if($deletion->deletable->getParent())
-                        <div class="table-entity-item">
-                            <span role="presentation" class="icon text-{{$deletion->deletable->getParent()->getType()}}">@icon($deletion->deletable->getParent()->getType())</span>
-                            <div class="text-{{ $deletion->deletable->getParent()->getType() }}">
-                                {{ $deletion->deletable->getParent()->name }}
-                            </div>
-                        </div>
-                        @endif
-                    </td>
+{{--                    <td>--}}
+{{--                        @if($deletion->deletable->getParent())--}}
+{{--                        <div class="table-entity-item">--}}
+{{--                            <span role="presentation" class="icon text-{{$deletion->deletable->getParent()->getType()}}">@icon($deletion->deletable->getParent()->getType())</span>--}}
+{{--                            <div class="text-{{ $deletion->deletable->getParent()->getType() }}">--}}
+{{--                                {{ $deletion->deletable->getParent()->name }}--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
+{{--                        @endif--}}
+{{--                    </td>--}}
                     <td>@include('settings.parts.table-user', ['user' => $deletion->deleter, 'user_id' => $deletion->deleted_by])</td>
                     <td width="200">{{ $deletion->created_at }}</td>
                     <td width="150" class="text-right">
