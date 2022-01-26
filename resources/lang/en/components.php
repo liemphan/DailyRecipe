@@ -6,7 +6,7 @@ return [
 
     // Image Manager
     'image_select' => 'Image Select',
-    'image_all' => 'All',
+    'image_all' => 'All Images',
     'image_all_title' => 'View all images',
     'image_recipe_title' => 'View images uploaded to this recipe',
     'image_page_title' => 'View images uploaded to this page',

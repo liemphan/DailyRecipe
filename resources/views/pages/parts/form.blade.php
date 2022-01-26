@@ -25,25 +25,25 @@
             </div>
 
             <div class="text-center px-m py-xs">
-                <div component="dropdown"
-                     option:dropdown:move-menu="true"
-                     class="dropdown-container draft-display text {{ $draftsEnabled ? '' : 'hidden' }}">
-                    <button type="button" refs="dropdown@toggle" aria-haspopup="true" aria-expanded="false" title="{{ trans('entities.pages_edit_draft_options') }}" class="text-primary text-button"><span refs="page-editor@draftDisplay" class="faded-text"></span>&nbsp; @icon('more')</button>
-                    @icon('check-circle', ['class' => 'text-pos draft-notification svg-icon', 'refs' => 'page-editor@draftDisplayIcon'])
-                    <ul refs="dropdown@menu" class="dropdown-menu" role="menu">
-                        <li>
-                            <button refs="page-editor@saveDraft" type="button" class="text-pos">@icon('save'){{ trans('entities.pages_edit_save_draft') }}</button>
-                        </li>
-                        @if ($model->draft)
-                        <li>
-                            <a href="{{ $model->getUrl('/delete') }}" class="text-neg">@icon('delete'){{ trans('entities.pages_edit_delete_draft') }}</a>
-                        </li>
-                        @endif
-                        <li refs="page-editor@discardDraftWrap" class="{{ ($model->isDraft ?? false) ? '' : 'hidden' }}">
-                            <button refs="page-editor@discardDraft" type="button" class="text-neg">@icon('cancel'){{ trans('entities.pages_edit_discard_draft') }}</button>
-                        </li>
-                    </ul>
-                </div>
+{{--                <div component="dropdown"--}}
+{{--                     option:dropdown:move-menu="true"--}}
+{{--                     class="dropdown-container draft-display text {{ $draftsEnabled ? '' : 'hidden' }}">--}}
+{{--                    <button type="button" refs="dropdown@toggle" aria-haspopup="true" aria-expanded="false" title="{{ trans('entities.pages_edit_draft_options') }}" class="text-primary text-button"><span refs="page-editor@draftDisplay" class="faded-text"></span>&nbsp; @icon('more')</button>--}}
+{{--                    @icon('check-circle', ['class' => 'text-pos draft-notification svg-icon', 'refs' => 'page-editor@draftDisplayIcon'])--}}
+{{--                    <ul refs="dropdown@menu" class="dropdown-menu" role="menu">--}}
+{{--                        <li>--}}
+{{--                            <button refs="page-editor@saveDraft" type="button" class="text-pos">@icon('save'){{ trans('entities.pages_edit_save_draft') }}</button>--}}
+{{--                        </li>--}}
+{{--                        @if ($model->draft)--}}
+{{--                        <li>--}}
+{{--                            <a href="{{ $model->getUrl('/delete') }}" class="text-neg">@icon('delete'){{ trans('entities.pages_edit_delete_draft') }}</a>--}}
+{{--                        </li>--}}
+{{--                        @endif--}}
+{{--                        <li refs="page-editor@discardDraftWrap" class="{{ ($model->isDraft ?? false) ? '' : 'hidden' }}">--}}
+{{--                            <button refs="page-editor@discardDraft" type="button" class="text-neg">@icon('cancel'){{ trans('entities.pages_edit_discard_draft') }}</button>--}}
+{{--                        </li>--}}
+{{--                    </ul>--}}
+{{--                </div>--}}
             </div>
 
             <div class="action-buttons px-m py-xs">

@@ -16,15 +16,15 @@
 
                 <div class="image-manager-content">
                     <div class="image-manager-header primary-background-light nav-tabs grid third no-gap">
-                        <button refs="image-manager@filterTabs"
-                                data-filter="all"
-                                type="button" class="tab-item selected" title="{{ trans('components.image_all_title') }}">@icon('images') {{ trans('components.image_all') }}</button>
-                        <button refs="image-manager@filterTabs"
-                                data-filter="recipe"
-                                type="button" class="tab-item" title="{{ trans('components.image_recipe_title') }}">@icon('recipe', ['class' => 'text-recipe svg-icon']) {{ trans('entities.recipe') }}</button>
-                        <button refs="image-manager@filterTabs"
-                                data-filter="page"
-                                type="button" class="tab-item" title="{{ trans('components.image_page_title') }}">@icon('page', ['class' => 'text-page svg-icon']) {{ trans('entities.page') }}</button>
+                        <p refs="image-manager@filterTabs"
+                                data-filter="all" onclick=""
+                                class="tab-item selected" title="{{ trans('components.image_all_title') }}">@icon('images') {{ trans('components.image_all') }}</p>
+{{--                        <button refs="image-manager@filterTabs"--}}
+{{--                                data-filter="recipe"--}}
+{{--                                type="button" class="tab-item" title="{{ trans('components.image_recipe_title') }}">@icon('recipe', ['class' => 'text-recipe svg-icon']) {{ trans('entities.recipe') }}</button>--}}
+{{--                        <button refs="image-manager@filterTabs"--}}
+{{--                                data-filter="page"--}}
+{{--                                type="button" class="tab-item" title="{{ trans('components.image_page_title') }}">@icon('page', ['class' => 'text-page svg-icon']) {{ trans('entities.page') }}</button>--}}
                     </div>
                     <div>
                         <form refs="image-manager@searchForm" class="contained-search-box">

@@ -6,7 +6,7 @@ return [
 
     // Image Manager
     'image_select' => 'Chọn Ảnh',
-    'image_all' => 'Tất cả',
+    'image_all' => 'Tất cả ảnh',
     'image_all_title' => 'Xem tất cả các ảnh',
     'image_recipe_title' => 'Xem các ảnh đã được tải lên sách này',
     'image_page_title' => 'Xem các ảnh đã được tải lên trang này',
