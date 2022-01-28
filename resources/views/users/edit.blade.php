@@ -50,13 +50,14 @@
                             </select>
                         </div>
                     </div>
-
+{{--                    cái section mới ở dưới--}}
                     <div class="grid half gap-xl">
                         <div>
-                            <label for="user-avatar" class="setting-list-label">{{ trans('settings.users_editor_request') }}</label>
+                            <label class="setting-list-label">{{ trans('settings.users_editor_request') }}</label>
                             <p class="small">{{ trans('settings.users_editor_request_desc') }}</p>
                         </div>
                         <div>
+{{--                            ô đổi url trong thẻ a là cho nó send request đc--}}
                             <a href="{{ url('/mfa/setup')  }}" class="button outline">{{ trans('settings.users_editor_request_send') }}</a>
                         </div>
                     </div>
