@@ -212,6 +212,11 @@ return [
     'users_mfa_x_methods' => ':count method configured|:count methods configured',
     'users_mfa_configure' => 'Configure Methods',
 
+    'users_editor_request' => 'Trở thành editor',
+    'users_editor_request_desc' => 'Nếu bạn muốn trở thành một editor, hãy nhấn nút ở bên phải. Bạn có thể tùy ý chỉnh sửa các thực đơn và món ăn khi trở thành editor.',
+    'users_editor_request_send' => 'Gửi yêu cầu trở thành editor',
+    'users_editor_request_send_success' => 'Yêu cầu được gửi thành công',
+
     // API Tokens
     'user_api_token_create' => 'Tạo Token API',
     'user_api_token_name' => 'Tên',

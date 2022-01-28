@@ -233,6 +233,12 @@ return [
     'user_api_token_delete_confirm' => 'Are you sure you want to delete this API token?',
     'user_api_token_delete_success' => 'API token successfully deleted',
 
+    'users_editor_request' => 'Becoming Editor Request',
+    'users_editor_request_desc' => 'If you want to become an editor, click on the button in the right. You can freely edit menus and recipes when you became an editor.',
+    'users_editor_request_send' => 'Send Editor Request',
+    'users_editor_request_send_success' => 'Send request successfully',
+
+
     //! If editing translations files directly please ignore this in all
     //! languages apart from en. Content will be auto-copied from en.
     //!////////////////////////////////
