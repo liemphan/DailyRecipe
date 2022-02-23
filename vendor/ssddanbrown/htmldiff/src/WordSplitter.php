@@ -8,8 +8,10 @@ class WordSplitter
     /**
      * Converts Html text into a list of words
      * @throws Exception
+     * @param string[] $blockExpressions
+     * @return string[]
      */
-    public static function convertHtmlToListOfWords(string $text, array $blockExpressions)
+    public static function convertHtmlToListOfWords(string $text, array $blockExpressions): array
     {
         $mode = Mode::CHARACTER;
         $currentWord = "";
@@ -21,9 +23,28 @@ class WordSplitter
         $groupingUntil = -1;
 
         $length = strlen($text);
+        $mbCharLength = 0;
+        $character = "";
         for ($index = 0; $index < $length; $index++)
         {
-            $character = substr($text, $index, 1);
+            $currentCharacter = substr($text, $index, 1);
+
+            // Join multibyte characters together if we're in one
+            if ($mbCharLength > 1) {
+                $mbCharLength--;
+                $character .= $currentCharacter;
+                if ($mbCharLength !== 1) {
+                    continue;
+                }
+            } else {
+                // Check if we're in a multibyte character
+                $currentCharVal = ord($currentCharacter);
+                $character = $currentCharacter;
+                if ($currentCharVal >= 192) {
+                    $mbCharLength = ($currentCharVal >= 240) ? 4 : (($currentCharVal >= 224) ? 3 : 2);
+                    continue;
+                }
+            }
 
             // Don't bother executing block checks if we don't have any blocks to check for!
             if ($isBlockCheckRequired) {
@@ -178,10 +199,12 @@ class WordSplitter
 
     /**
      * Finds any blocks that need to be grouped.
+     * @param string[]|null $blockExpressions
+     * @return array<int, int>
      */
     private static function findBlocks(string $text, array $blockExpressions = null): array
     {
-        /** @var int[] $blockLocations */
+        /** @var array<int, int> $blockLocations */
         $blockLocations = [];
 
         if (is_null($blockExpressions)) {
@@ -193,6 +216,7 @@ class WordSplitter
             preg_match_all($exp, $text, $matches, PREG_OFFSET_CAPTURE);
             foreach ($matches[0] as $matchAndOffset) {
                 $match = $matchAndOffset[0];
+                /** @var int $offset */
                 $offset = $matchAndOffset[1];
                 if (isset($blockLocations[$offset])) {
                     throw new Exception("One or more block expressions result in a text sequence that overlaps. Current expression: {$exp}");

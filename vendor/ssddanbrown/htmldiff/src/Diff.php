@@ -1,5 +1,10 @@
 <?php namespace Ssddanbrown\HtmlDiff;
 
+use Generator;
+
+/**
+ * @psalm-consistent-constructor
+ */
 class Diff
 {
 
@@ -10,10 +15,24 @@ class Diff
      */
     private $matchGranularityMaximum = 4;
 
+    /**
+     * @var string
+     */
     private $content = "";
-    private $newText = "";
-    private $oldText = "";
 
+    /**
+     * @var string
+     */
+    private $newText;
+
+    /**
+     * @var string
+     */
+    private $oldText;
+
+    /**
+     * @var array<string, int>
+     */
     private static $specialCaseClosingTags = [
         '</strong>' => 0,
         '</em>' => 0,
@@ -28,6 +47,9 @@ class Diff
         '</s>' => 0,
     ];
 
+    /**
+     * @var string
+     */
     private static $specialCaseOpeningTagRegex = '/<((strong)|(b)|(i)|(em)|(big)|(small)|(u)|(sub)|(sup)|(strike)|(s))[\>\s]+/i';
 
     /**
@@ -37,9 +59,24 @@ class Diff
      */
     private $specialTagDiffStack = [];
 
+    /**
+     * @var string[]
+     */
     private $newWords = [];
+
+    /**
+     * @var string[]
+     */
     private $oldWords = [];
+
+    /**
+     * @var int
+     */
     private $matchGranularity = 1;
+
+    /**
+     * @var string[]
+     */
     private $blockExpressions = [];
 
     /**
@@ -79,7 +116,7 @@ class Diff
 
     public static function excecute(string $oldText, string $newText): string
     {
-        return (new static($oldText, $newText))->build();
+        return (new self($oldText, $newText))->build();
     }
 
     /**
@@ -152,7 +189,7 @@ class Diff
 
     private function processInsertOperation(Operation $operation, string $cssClass): void
     {
-        $text = array_values(array_filter($this->newWords, function($s, $pos) use ($operation) {
+        $text = array_values(array_filter($this->newWords, function(string $s, int $pos) use ($operation) {
             return $pos >= $operation->startInNew && $pos < $operation->endInNew;
         }, ARRAY_FILTER_USE_BOTH));
         $this->insertTag("ins", $cssClass, $text);
@@ -160,7 +197,7 @@ class Diff
 
     private function processDeleteOperation(Operation $operation, string $cssClass): void
     {
-        $text = array_values(array_filter($this->oldWords, function($s, $pos) use ($operation) {
+        $text = array_values(array_filter($this->oldWords, function(string $s, int $pos) use ($operation) {
             return $pos >= $operation->startInOld && $pos < $operation->endInOld;
         }, ARRAY_FILTER_USE_BOTH));
         $this->insertTag("del", $cssClass, $text);
@@ -168,7 +205,7 @@ class Diff
 
     private function processEqualOperation(Operation $operation): void
     {
-        $result = array_values(array_filter($this->newWords, function($s, $pos) use ($operation) {
+        $result = array_values(array_filter($this->newWords, function(string $s, int $pos) use ($operation) {
             return $pos >= $operation->startInNew && $pos < $operation->endInNew;
         }, ARRAY_FILTER_USE_BOTH));
         $this->content .= implode('', $result);
@@ -181,6 +218,7 @@ class Diff
      * (hint: think about diffing a text containing ins or del tags), but handles correctly more cases
      * than the earlier version.
      * P.S.: Spare a thought for people who write HTML browsers. They live in this ... every day.
+     * @param string[] $words
      */
     private function insertTag(string $tag, string $cssClass, array $words): void
     {
@@ -189,8 +227,8 @@ class Diff
                 break;
             }
 
-            $nonTags = $this->extractConsecutiveWords($words, function($x) {
-                return is_null($x) || !Utils::isTag($x);
+            $nonTags = $this->extractConsecutiveWords($words, function(string $x) {
+                return !Utils::isTag($x);
             });
 
             $specialCaseTagInjection = "";
@@ -238,7 +276,7 @@ class Diff
                 break;
             }
 
-            $isTagCallback = function($string) {
+            $isTagCallback = function(string $string): bool {
                 return Utils::isTag($string);
             };
             if ($specialCaseTagInjectionIsBefore) {
@@ -249,6 +287,11 @@ class Diff
         }
     }
 
+    /**
+     * @param string[] $words
+     * @param callable(string):bool $condition
+     * @return string[]
+     */
     private function extractConsecutiveWords(array &$words, callable $condition): array
     {
         $indexOfFirstTag = null;
@@ -267,7 +310,7 @@ class Diff
         }
 
         if (!is_null($indexOfFirstTag)) {
-            $items = array_values(array_filter($words, function($s, $pos) use ($indexOfFirstTag) {
+            $items = array_values(array_filter($words, function(string $s, int $pos) use ($indexOfFirstTag) {
                 return $pos >= 0 && $pos < $indexOfFirstTag;
             }, ARRAY_FILTER_USE_BOTH));
             if ($indexOfFirstTag > 0) {
@@ -275,7 +318,7 @@ class Diff
             }
             return $items;
         } else {
-            $items = array_values(array_filter($words, function($s, $pos) use ($words) {
+            $items = array_values(array_filter($words, function(string $s, int $pos) use ($words) {
                 return $pos >= 0 && $pos <= count($words);
             }, ARRAY_FILTER_USE_BOTH));
             array_splice($words, 0, count($words));
@@ -283,6 +326,9 @@ class Diff
         }
     }
 
+    /**
+     * @return Operation[]
+     */
     private function operations(): array
     {
         $positionInOld = 0;
@@ -328,20 +374,15 @@ class Diff
         return $operations;
     }
 
-    private function removeOrphans(array $matches)
+    /**
+     * @param DiffMatch[] $matches
+     */
+    private function removeOrphans(array $matches): Generator
     {
-        /** @var ?DiffMatch $prev */
-        $prev = null;
-        /** @var ?DiffMatch $curr */
-        $curr = null;
-        /** @var DiffMatch $next */
-        foreach ($matches as $next) {
-            if (is_null($curr)) {
-                $prev = new DiffMatch(0, 0, 0);
-                $curr = $next;
-                continue;
-            }
+        $prev = new DiffMatch(0, 0, 0);
+        $curr = $matches[0] ?? new DiffMatch(0, 0, 0);
 
+        foreach (array_slice($matches, 1) as $index => $next) {
             // if match has no diff on the left or on the right
             if ($prev->getEndInOld() === $curr->startInOld && $prev->getEndInNew() === $curr->startInNew
                 || $curr->getEndInOld() === $next->startInOld && $curr->getEndInNew() === $next->startInNew
@@ -372,13 +413,20 @@ class Diff
         yield $curr; //assume that the last match is always vital
     }
 
+    /**
+     * @return DiffMatch[]
+     */
     private function matchingBlocks(): array
     {
         $matchingBlocks = [];
         $this->findMatchingBlocks(0, count($this->oldWords), 0, count($this->newWords), $matchingBlocks);
+        /** @var DiffMatch[] $matchingBlocks */
         return $matchingBlocks;
     }
 
+    /**
+     * @param DiffMatch[] $matchingBlocks
+     */
     private function findMatchingBlocks(int $startInOld, int $endInOld, int $startInNew, int $endInNew, array &$matchingBlocks): void
     {
         $match = $this->findMatch($startInOld, $endInOld, $startInNew, $endInNew);
@@ -401,11 +449,7 @@ class Diff
         // For large texts it is more likely that there is a Match of size bigger than maximum granularity.
         // If not then go down and try to find it with smaller granularity.
         for ($i = $this->matchGranularity; $i > 0; $i--) {
-            $options = new MatchOptions();
-            $options->blockSize = $i;
-            $options->repeatingWordsAccuracy = $this->repeatingWordsAccuracy;
-            $options->ignoreWhitespaceDifferences = $this->ignoreWhitespaceDifferences;
-
+            $options = new MatchOptions($i, $this->repeatingWordsAccuracy, $this->ignoreWhitespaceDifferences);
             $finder = new MatchFinder($this->oldWords, $this->newWords, $startInOld, $endInOld, $startInNew, $endInNew, $options);
             $match = $finder->findMatch();
             if (!is_null($match)) {

@@ -25,10 +25,11 @@ class DiffMatch
 
     /**
      * @codeCoverageIgnore
+     * @param string[] $oldWords
      */
     public function debug_printWordsFromOld(array $oldWords): void
     {
-        $filtered = array_values(array_filter($oldWords, function($v, $i) {
+        $filtered = array_values(array_filter($oldWords, function(string $v, int $i) {
             return $i >= $this->startInOld && $i < $this->getEndInOld();
         }, ARRAY_FILTER_USE_BOTH));
         $text = implode('', $filtered);
@@ -37,10 +38,11 @@ class DiffMatch
 
     /**
      * @codeCoverageIgnore
+     * @param string[] $newWords
      */
     public function debug_printWordsFromNew(array $newWords): void
     {
-        $filtered = array_values(array_filter($newWords, function($v, $i) {
+        $filtered = array_values(array_filter($newWords, function(string $v, int $i) {
             return $i >= $this->startInNew && $i < $this->getEndInNew();
         }, ARRAY_FILTER_USE_BOTH));
         $text = implode('', $filtered);
