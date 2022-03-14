@@ -19,9 +19,9 @@
                             $types = explode('|', $options->filters['type'] ?? '');
                             $hasTypes = $types[0] !== '';
                             ?>
-                            @include('search.parts.type-filter', ['checked' => !$hasTypes || in_array('page', $types), 'entity' => 'page', 'transKey' => 'page'])
-                            @include('search.parts.type-filter', ['checked' => !$hasTypes || in_array('chapter', $types), 'entity' => 'chapter', 'transKey' => 'chapter'])
-                            <br>
+{{--                            @include('search.parts.type-filter', ['checked' => !$hasTypes || in_array('page', $types), 'entity' => 'page', 'transKey' => 'page'])--}}
+{{--                            @include('search.parts.type-filter', ['checked' => !$hasTypes || in_array('chapter', $types), 'entity' => 'chapter', 'transKey' => 'chapter'])--}}
+{{--                            <br>--}}
                                 @include('search.parts.type-filter', ['checked' => !$hasTypes || in_array('recipe', $types), 'entity' => 'recipe', 'transKey' => 'recipe'])
                                 @include('search.parts.type-filter', ['checked' => !$hasTypes || in_array('recipemenu', $types), 'entity' => 'recipemenu', 'transKey' => 'menu'])
                         </div>

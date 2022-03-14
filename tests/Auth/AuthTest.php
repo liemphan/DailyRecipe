@@ -37,7 +37,7 @@ class AuthTest extends TestCase
         // Ensure registration form is showing
         $this->setSettings(['registration-enabled' => 'true']);
         $this->get('/login')
-            ->assertElementContains('a[href="' . url('/register') . '"]', 'Sign up');
+            ->assertElementContains('a[href="' . url('/register') . '"]', 'Register');
     }
 
     public function test_normal_registration()
@@ -48,7 +48,7 @@ class AuthTest extends TestCase
 
         // Test form and ensure user is created
         $this->get('/register')
-            ->assertSee('Sign Up')
+            ->assertSee('Register')
             ->assertElementContains('form[action="' . url('/register') . '"]', 'Create Account');
 
         $resp = $this->post('/register', $user->only('password', 'name', 'email'));
@@ -88,11 +88,11 @@ class AuthTest extends TestCase
 
     public function test_sign_up_link_on_login()
     {
-        $this->get('/login')->assertDontSee('Sign up');
+        $this->get('/login')->assertDontSee('Register');
 
         $this->setSettings(['registration-enabled' => 'true']);
 
-        $this->get('/login')->assertSee('Sign up');
+        $this->get('/login')->assertSee('Register');
     }
 
     public function test_confirmed_registration()
@@ -279,7 +279,7 @@ class AuthTest extends TestCase
         $this->setSettings(['registration-enabled' => 'true']);
         $this->get('/password/email')
             ->assertElementContains('a', 'Log in')
-            ->assertElementContains('a', 'Sign up');
+            ->assertElementContains('a', 'Register');
     }
 
     public function test_reset_password_request_is_throttled()

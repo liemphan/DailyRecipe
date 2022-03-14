@@ -26,6 +26,11 @@
                     @include('form.password', ['name' => 'password', 'placeholder' => trans('auth.password_hint')])
                 </div>
 
+                <div class="form-group">
+                    <label for="password-confirm">{{ trans('auth.password_confirm') }}</label>
+                    @include('form.password', ['name' => 'password-confirm','placeholder' =>trans('auth.password_confirm')])
+                </div>
+
                 <div class="grid half collapse-xs gap-xl v-center mt-m">
                     <div class="text-small">
                         <a href="{{ url('/login') }}">{{ trans('auth.already_have_account') }}</a>
@@ -37,17 +42,17 @@
 
             </form>
 
-{{--            @if(count($socialDrivers) > 0)--}}
-{{--                <hr class="my-l">--}}
-{{--                @foreach($socialDrivers as $driver => $name)--}}
-{{--                    <div>--}}
-{{--                        <a id="social-register-{{$driver}}" class="button outline svg" href="{{ url("/register/service/" . $driver) }}">--}}
-{{--                            @icon('auth/' . $driver)--}}
-{{--                            <span>{{ trans('auth.sign_up_with', ['socialDriver' => $name]) }}</span>--}}
-{{--                        </a>--}}
-{{--                    </div>--}}
-{{--                @endforeach--}}
-{{--            @endif--}}
+            {{--            @if(count($socialDrivers) > 0)--}}
+            {{--                <hr class="my-l">--}}
+            {{--                @foreach($socialDrivers as $driver => $name)--}}
+            {{--                    <div>--}}
+            {{--                        <a id="social-register-{{$driver}}" class="button outline svg" href="{{ url("/register/service/" . $driver) }}">--}}
+            {{--                            @icon('auth/' . $driver)--}}
+            {{--                            <span>{{ trans('auth.sign_up_with', ['socialDriver' => $name]) }}</span>--}}
+            {{--                        </a>--}}
+            {{--                    </div>--}}
+            {{--                @endforeach--}}
+            {{--            @endif--}}
 
         </div>
     </div>
