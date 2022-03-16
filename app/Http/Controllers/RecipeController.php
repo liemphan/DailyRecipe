@@ -245,7 +245,7 @@ class RecipeController extends Controller
     public function editDraft(string $recipeSlug)
     {
         $draft = $this->recipeRepo->getBySlug($recipeSlug);
-        $this->checkOwnablePermission('page-create', $draft);
+//        $this->checkOwnablePermission('page-create', $draft);
         $this->setPageTitle(trans('entities.pages_edit_draft'));
 
         $draftsEnabled = $this->isSignedIn();
@@ -272,7 +272,7 @@ class RecipeController extends Controller
             'name' => ['required', 'string', 'max:255'],
         ]);
         $draftPage = $this->recipeRepo->getBySlug($recipeSlug);
-        $this->checkOwnablePermission('page-create', $draftPage);
+//        $this->checkOwnablePermission('page-create', $draftPage);
 
         $page = $this->recipeRepo->publishDraft($draftPage, $request->all());
 
