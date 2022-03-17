@@ -129,6 +129,7 @@ class RecipeRepo
     {
         $recipe = new Recipe();
         $this->baseRepo->create($recipe, $input);
+
         Activity::addForEntity($recipe, ActivityType::RECIPE_CREATE);
 
         return $recipe;
@@ -207,6 +208,22 @@ class RecipeRepo
         $draft->save();
 
         $this->savePageRevision($draft, trans('entities.pages_initial_revision'));
+        $draft->indexForSearch();
+        $draft->refresh();
+
+        Activity::addForEntity($draft, ActivityType::PAGE_CREATE);
+
+        return $draft;
+    }
+
+    public function publishDraftNew(Recipe $draft): Recipe
+    {
+
+        $draft->draft = false;
+
+        $draft->refreshSlug();
+        $draft->save();
+
         $draft->indexForSearch();
         $draft->refresh();
 

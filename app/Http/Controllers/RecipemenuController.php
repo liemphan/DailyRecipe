@@ -106,8 +106,8 @@ class RecipemenuController extends Controller
         $menu = $this->recipemenuRepo->getBySlug($slug);
         $this->checkOwnablePermission('recipe-view', $menu);
 
-        $sort = setting()->getForCurrentUser('menu_recipes_sort', 'default');
-        $order = setting()->getForCurrentUser('menu_recipes_sort_order', 'asc');
+        $sort = setting()->getForCurrentUser('recipemenus_recipes_sort', 'default');
+        $order = setting()->getForCurrentUser('recipemenus_recipes_sort_order', 'asc');
 
         $sortedVisibleMenuRecipes = $menu->visibleRecipes()->get()
             ->sortBy($sort === 'default' ? 'pivot.order' : $sort, SORT_REGULAR, $order === 'desc')

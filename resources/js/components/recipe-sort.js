@@ -111,19 +111,19 @@ class RecipeSort {
         const sortElems = [recipeContainer.querySelector('.sort-list')];
         sortElems.push(...recipeContainer.querySelectorAll('.entity-list-item + ul'));
 
-        const recipeGroupConfig = {
-            name: 'recipe',
-            pull: ['recipe', 'chapter'],
-            put: ['recipe', 'chapter'],
-        };
+        // const recipeGroupConfig = {
+        //     name: 'recipe',
+        //     pull: ['recipe', 'chapter'],
+        //     put: ['recipe', 'chapter'],
+        // };
 
-        const chapterGroupConfig = {
-            name: 'chapter',
-            pull: ['recipe', 'chapter'],
-            put: function(toList, fromList, draggedElem) {
-                return draggedElem.getAttribute('data-type') === 'page';
-            }
-        };
+        // const chapterGroupConfig = {
+        //     name: 'chapter',
+        //     pull: ['recipe', 'chapter'],
+        //     put: function(toList, fromList, draggedElem) {
+        //         return draggedElem.getAttribute('data-type') === 'page';
+        //     }
+        // };
 
         for (let sortElem of sortElems) {
             new Sortable(sortElem, {
@@ -159,8 +159,8 @@ class RecipeSort {
 
         for (let list of lists) {
             const recipeId = list.closest('[data-type="recipe"]').getAttribute('data-id');
-            const directChildren = Array.from(list.children)
-                .filter(elem => elem.matches('[data-type="page"], [data-type="chapter"]'));
+            // const directChildren = Array.from(list.children)
+            //     .filter(elem => elem.matches('[data-type="page"], [data-type="chapter"]'));
             for (let i = 0; i < directChildren.length; i++) {
                 this.addRecipeChildToMap(directChildren[i], i, recipeId, entityMap);
             }
@@ -190,16 +190,16 @@ class RecipeSort {
             recipe: recipeId
         });
 
-        const subPages = childElem.querySelectorAll('[data-type="page"]');
-        for (let i = 0; i < subPages.length; i++) {
-            entityMap.push({
-                id: subPages[i].getAttribute('data-id'),
-                sort: i,
-                parentChapter: childId,
-                type: 'page',
-                recipe: recipeId
-            });
-        }
+        // const subPages = childElem.querySelectorAll('[data-type="page"]');
+        // for (let i = 0; i < subPages.length; i++) {
+        //     entityMap.push({
+        //         id: subPages[i].getAttribute('data-id'),
+        //         sort: i,
+        //         parentChapter: childId,
+        //         type: 'page',
+        //         recipe: recipeId
+        //     });
+        // }
     }
 
 }

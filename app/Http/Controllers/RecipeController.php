@@ -287,10 +287,13 @@ class RecipeController extends Controller
     {
         $draft = $this->recipeRepo->getBySlug($recipeSlug);
         $this->checkOwnablePermission('page-create', $draft);
+
         $this->setPageTitle(trans('entities.pages_edit_draft'));
 
         $draftsEnabled = $this->isSignedIn();
         $templates = $this->recipeRepo->getTemplates(10);
+
+         $this->recipeRepo->publishDraftNew($draft);
 
         return view('pages.edit', [
             'page' => $draft,
@@ -381,6 +384,7 @@ class RecipeController extends Controller
         $this->checkOwnablePermission('page-update', $page);
 
         $page->isDraft = false;
+
         $editActivity = new ContentEditActivity($page);
 
         // Check for active editing
@@ -430,6 +434,7 @@ class RecipeController extends Controller
         $page = $this->recipeRepo->getBySlug($recipeSlug);
         $this->checkOwnablePermission('page-update', $page);
 
+
         $this->recipeRepo->updateContent($page, $request->all());
 
 
@@ -449,7 +454,7 @@ class RecipeController extends Controller
 
         $parent = $this->recipeRepo->getBySlug($recipeSlug);
         $this->checkOwnablePermission('page-create', $parent);
-
+        $this->checkPermission('recipe-create-all');
         $recipe = $this->recipeRepo->create($request->all());
         $this->recipeRepo->publishDraft($recipe, [
             'name' => $request->get('name'),
@@ -519,7 +524,6 @@ class RecipeController extends Controller
         $page = $this->recipeRepo->getById($pageId);
 
         $this->checkOwnablePermission('page-update', $page);
-
         $this->recipeRepo->destroy($page);
 
         $this->showSuccessNotification(trans('entities.pages_delete_draft_success'));
