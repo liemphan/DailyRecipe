@@ -118,58 +118,58 @@
                         @include('settings.roles.parts.checkbox', ['permission' => 'recipe-delete-all', 'label' => trans('settings.role_all')])
                     </td>
                 </tr>
-                <tr>
-                    <td>
-                        <div>{{ trans('entities.chapters') }}</div>
-                        <a href="#" permissions-table-toggle-all-in-row class="text-small text-primary">{{ trans('common.toggle_all') }}</a>
-                    </td>
-                    <td>
-                        @include('settings.roles.parts.checkbox', ['permission' => 'chapter-create-own', 'label' => trans('settings.role_own')])
-                        <br>
-                        @include('settings.roles.parts.checkbox', ['permission' => 'chapter-create-all', 'label' => trans('settings.role_all')])
-                    </td>
-                    <td>
-                        @include('settings.roles.parts.checkbox', ['permission' => 'chapter-view-own', 'label' => trans('settings.role_own')])
-                        <br>
-                        @include('settings.roles.parts.checkbox', ['permission' => 'chapter-view-all', 'label' => trans('settings.role_all')])
-                    </td>
-                    <td>
-                        @include('settings.roles.parts.checkbox', ['permission' => 'chapter-update-own', 'label' => trans('settings.role_own')])
-                        <br>
-                        @include('settings.roles.parts.checkbox', ['permission' => 'chapter-update-all', 'label' => trans('settings.role_all')])
-                    </td>
-                    <td>
-                        @include('settings.roles.parts.checkbox', ['permission' => 'chapter-delete-own', 'label' => trans('settings.role_own')])
-                        <br>
-                        @include('settings.roles.parts.checkbox', ['permission' => 'chapter-delete-all', 'label' => trans('settings.role_all')])
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <div>{{ trans('entities.pages') }}</div>
-                        <a href="#" permissions-table-toggle-all-in-row class="text-small text-primary">{{ trans('common.toggle_all') }}</a>
-                    </td>
-                    <td>
-                        @include('settings.roles.parts.checkbox', ['permission' => 'page-create-own', 'label' => trans('settings.role_own')])
-                        <br>
-                        @include('settings.roles.parts.checkbox', ['permission' => 'page-create-all', 'label' => trans('settings.role_all')])
-                    </td>
-                    <td>
-                        @include('settings.roles.parts.checkbox', ['permission' => 'page-view-own', 'label' => trans('settings.role_own')])
-                        <br>
-                        @include('settings.roles.parts.checkbox', ['permission' => 'page-view-all', 'label' => trans('settings.role_all')])
-                    </td>
-                    <td>
-                        @include('settings.roles.parts.checkbox', ['permission' => 'page-update-own', 'label' => trans('settings.role_own')])
-                        <br>
-                        @include('settings.roles.parts.checkbox', ['permission' => 'page-update-all', 'label' => trans('settings.role_all')])
-                    </td>
-                    <td>
-                        @include('settings.roles.parts.checkbox', ['permission' => 'page-delete-own', 'label' => trans('settings.role_own')])
-                        <br>
-                        @include('settings.roles.parts.checkbox', ['permission' => 'page-delete-all', 'label' => trans('settings.role_all')])
-                    </td>
-                </tr>
+{{--                <tr>--}}
+{{--                    <td>--}}
+{{--                        <div>{{ trans('entities.chapters') }}</div>--}}
+{{--                        <a href="#" permissions-table-toggle-all-in-row class="text-small text-primary">{{ trans('common.toggle_all') }}</a>--}}
+{{--                    </td>--}}
+{{--                    <td>--}}
+{{--                        @include('settings.roles.parts.checkbox', ['permission' => 'chapter-create-own', 'label' => trans('settings.role_own')])--}}
+{{--                        <br>--}}
+{{--                        @include('settings.roles.parts.checkbox', ['permission' => 'chapter-create-all', 'label' => trans('settings.role_all')])--}}
+{{--                    </td>--}}
+{{--                    <td>--}}
+{{--                        @include('settings.roles.parts.checkbox', ['permission' => 'chapter-view-own', 'label' => trans('settings.role_own')])--}}
+{{--                        <br>--}}
+{{--                        @include('settings.roles.parts.checkbox', ['permission' => 'chapter-view-all', 'label' => trans('settings.role_all')])--}}
+{{--                    </td>--}}
+{{--                    <td>--}}
+{{--                        @include('settings.roles.parts.checkbox', ['permission' => 'chapter-update-own', 'label' => trans('settings.role_own')])--}}
+{{--                        <br>--}}
+{{--                        @include('settings.roles.parts.checkbox', ['permission' => 'chapter-update-all', 'label' => trans('settings.role_all')])--}}
+{{--                    </td>--}}
+{{--                    <td>--}}
+{{--                        @include('settings.roles.parts.checkbox', ['permission' => 'chapter-delete-own', 'label' => trans('settings.role_own')])--}}
+{{--                        <br>--}}
+{{--                        @include('settings.roles.parts.checkbox', ['permission' => 'chapter-delete-all', 'label' => trans('settings.role_all')])--}}
+{{--                    </td>--}}
+{{--                </tr>--}}
+{{--                <tr>--}}
+{{--                    <td>--}}
+{{--                        <div>{{ trans('entities.pages') }}</div>--}}
+{{--                        <a href="#" permissions-table-toggle-all-in-row class="text-small text-primary">{{ trans('common.toggle_all') }}</a>--}}
+{{--                    </td>--}}
+{{--                    <td>--}}
+{{--                        @include('settings.roles.parts.checkbox', ['permission' => 'page-create-own', 'label' => trans('settings.role_own')])--}}
+{{--                        <br>--}}
+{{--                        @include('settings.roles.parts.checkbox', ['permission' => 'page-create-all', 'label' => trans('settings.role_all')])--}}
+{{--                    </td>--}}
+{{--                    <td>--}}
+{{--                        @include('settings.roles.parts.checkbox', ['permission' => 'page-view-own', 'label' => trans('settings.role_own')])--}}
+{{--                        <br>--}}
+{{--                        @include('settings.roles.parts.checkbox', ['permission' => 'page-view-all', 'label' => trans('settings.role_all')])--}}
+{{--                    </td>--}}
+{{--                    <td>--}}
+{{--                        @include('settings.roles.parts.checkbox', ['permission' => 'page-update-own', 'label' => trans('settings.role_own')])--}}
+{{--                        <br>--}}
+{{--                        @include('settings.roles.parts.checkbox', ['permission' => 'page-update-all', 'label' => trans('settings.role_all')])--}}
+{{--                    </td>--}}
+{{--                    <td>--}}
+{{--                        @include('settings.roles.parts.checkbox', ['permission' => 'page-delete-own', 'label' => trans('settings.role_own')])--}}
+{{--                        <br>--}}
+{{--                        @include('settings.roles.parts.checkbox', ['permission' => 'page-delete-all', 'label' => trans('settings.role_all')])--}}
+{{--                    </td>--}}
+{{--                </tr>--}}
                 <tr>
                     <td>
                         <div>{{ trans('entities.images') }}</div>
