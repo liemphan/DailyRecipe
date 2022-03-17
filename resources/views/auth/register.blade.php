@@ -26,6 +26,11 @@
                     @include('form.password', ['name' => 'password', 'placeholder' => trans('auth.password_hint')])
                 </div>
 
+                <div class="form-group">
+                    <label for="password-confirm">{{ trans('auth.password_confirm') }}</label>
+                    @include('form.password', ['name' => 'password-confirm','placeholder' =>trans('auth.password_confirm')])
+                </div>
+
                 <div class="grid half collapse-xs gap-xl v-center mt-m">
                     <div class="text-small">
                         <a href="{{ url('/login') }}">{{ trans('auth.already_have_account') }}</a>

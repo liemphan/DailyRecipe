@@ -10,10 +10,10 @@ return [
     'throttle' => 'Too many login attempts. Please try again in :seconds seconds.',
 
     // Login & Register
-    'sign_up' => 'Sign up',
+    'sign_up' => 'Register',
     'log_in' => 'Log in',
     'log_in_with' => 'Login with :socialDriver',
-    'sign_up_with' => 'Sign up with :socialDriver',
+    'sign_up_with' => 'Register with :socialDriver',
     'logout' => 'Logout',
 
     'name' => 'Name',
