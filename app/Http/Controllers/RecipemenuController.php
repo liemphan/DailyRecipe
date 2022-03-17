@@ -116,7 +116,7 @@ class RecipemenuController extends Controller
 
         View::incrementFor($menu);
         $this->entityContextManager->setMenuContext($menu->id);
-        $view = setting()->getForCurrentUser('recipemenus_recipes_view_type');
+        $view = setting()->getForCurrentUser('recipemenu_view_type');
 
         $this->setPageTitle($menu->getShortName());
 
