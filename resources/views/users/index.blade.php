@@ -34,10 +34,17 @@
                         <a href="{{ sortUrl('/settings/users', $listDetails, ['sort' => 'email']) }}">{{ trans('auth.email') }}</a>
                     </th>
                     <th>{{ trans('settings.role_user_roles') }}</th>
+
                     <th class="text-right">
                         <a href="{{ sortUrl('/settings/users', $listDetails, ['sort' => 'last_activity_at']) }}">{{ trans('settings.users_latest_activity') }}</a>
                     </th>
+
+{{--                    Request--}}
+                    <th class="text-center">
+                        <a href="{{url('/settings/users')}}"> {{trans('auth.request')}} </a>
+                    </th>
                 </tr>
+
                 @foreach($users as $user)
                     <tr>
                         <td class="text-center" style="line-height: 0;"><img class="avatar med" src="{{ $user->getAvatar(40)}}" alt="{{ $user->name }}"></td>
@@ -61,6 +68,14 @@
                                 <small title="{{ $user->last_activity_at->format('Y-m-d H:i:s') }}">{{ $user->last_activity_at->diffForHumans() }}</small>
                             @endif
                         </td>
+
+{{--                        Request--}}
+                        <td class="text-right text-muted">
+                            <a href="{{url('/settings/users')}}"> {{trans('auth.accept')}} </a>
+                            |
+                            <a href="{{url('/settings/users')}}"> {{trans('auth.reject')}} </a>
+                        </td>
+
                     </tr>
                 @endforeach
             </table>
