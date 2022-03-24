@@ -179,14 +179,14 @@ class PermissionService
         $entities = clone $recipes;
 
         /** @var Recipe $recipe */
-        foreach ($recipes->all() as $recipe) {
-//            foreach ($recipe->getRelation('chapters') as $chapter) {
-//                $entities->push($chapter);
-//            }
-//            foreach ($recipe->getRelation('pages') as $page) {
-//                $entities->push($page);
-//            }
-        }
+//        foreach ($recipes->all() as $recipe) {
+////            foreach ($recipe->getRelation('chapters') as $chapter) {
+////                $entities->push($chapter);
+////            }
+////            foreach ($recipe->getRelation('pages') as $page) {
+////                $entities->push($page);
+////            }
+//        }
 
         if ($deleteOld) {
             $this->deleteManyJointPermissionsForEntities($entities->all());
