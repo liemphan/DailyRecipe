@@ -42,7 +42,7 @@ class HomeController extends Controller
             ->select(Recipe::$listAttributes)
             ->get();
 
-        $homepageOptions = ['default', 'recipes', 'recipemenus', 'content'];
+        $homepageOptions = ['default', 'recipes', 'recipemenus', 'content', 'identified'];
         $homepageOption = setting('app-homepage-type', 'default');
         if (!in_array($homepageOption, $homepageOptions)) {
             $homepageOption = 'default';
@@ -101,6 +101,13 @@ class HomeController extends Controller
             $customHomepage->html = $recipeContent->render(false);
 
             return view('home.specific-page', array_merge($commonData, ['customHomepage' => $customHomepage]));
+        }
+
+        if ($homepageOption === 'identified') {
+            $menus = app(RecipemenuRepo::class)->getAllPaginated(18, $commonData['sort'], $commonData['order']);
+            $data = array_merge($commonData, ['menus' => $menus]);
+
+            return view('search.identified.webcam', $data);
         }
 
         return view('home.default', $commonData);

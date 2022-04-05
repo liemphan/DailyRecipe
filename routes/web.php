@@ -32,6 +32,7 @@ use DailyRecipe\Http\Middleware\VerifyCsrfToken;
 use Illuminate\Session\Middleware\StartSession;
 use Illuminate\Support\Facades\Route;
 use Illuminate\View\Middleware\ShareErrorsFromSession;
+use DailyRecipe\Http\Controllers\IdentifiedIngredientsController;
 
 Route::get('/status', [StatusController::class, 'show']);
 Route::get('/robots.txt', [HomeController::class, 'robots']);
@@ -327,3 +328,4 @@ Route::post('/password/reset', [Auth\ResetPasswordController::class, 'reset']);
 Route::fallback([HomeController::class, 'notFound'])->name('fallback');
 
 
+Route::get('/search/identified/ingredients', [IdentifiedIngredientsController::class, 'index']);
