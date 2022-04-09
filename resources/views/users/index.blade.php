@@ -37,6 +37,10 @@
                     <th class="text-right">
                         <a href="{{ sortUrl('/settings/users', $listDetails, ['sort' => 'last_activity_at']) }}">{{ trans('settings.users_latest_activity') }}</a>
                     </th>
+
+                    <th class="text-center">
+                        <a href="{{url('/settings/users')}}"> Request </a>
+                    </th>
                 </tr>
                 @foreach($users as $user)
                     <tr>
@@ -61,6 +65,14 @@
                                 <small title="{{ $user->last_activity_at->format('Y-m-d H:i:s') }}">{{ $user->last_activity_at->diffForHumans() }}</small>
                             @endif
                         </td>
+
+                        {{--                        Request--}}
+                        <td class="text-center text-muted">
+                            <small><a href="{{url('/settings/users')}}"> Accept </a>
+                            |
+                            <a href="{{url('/settings/users')}}"> Reject </a></small>
+                        </td>
+
                     </tr>
                 @endforeach
             </table>
