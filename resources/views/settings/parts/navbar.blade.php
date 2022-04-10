@@ -13,4 +13,7 @@
     @if(userCan('user-roles-manage'))
         <a href="{{ url('/settings/roles') }}" @if($selected == 'roles') class="active" @endif>@icon('lock-open'){{ trans('settings.roles') }}</a>
     @endif
+     @if(userCan('settings-manage') && userCan('users-manage'))
+      <a href="{{ url('/settings/reportlist') }}" @if($selected == 'audit') class="active" @endif>@icon('check')Report List</a>
+      @endif
 </nav>

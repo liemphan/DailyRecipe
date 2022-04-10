@@ -232,6 +232,9 @@ Route::middleware('auth')->group(function () {
     // Audit Log
     Route::get('/settings/audit', [AuditLogController::class, 'index']);
 
+    //Report List
+    Route::get('/settings/reportlist', [AuditLogController::class, 'reportList']);
+
     // Users
     Route::get('/settings/users', [UserController::class, 'index']);
     Route::get('/settings/users/create', [UserController::class, 'create']);
