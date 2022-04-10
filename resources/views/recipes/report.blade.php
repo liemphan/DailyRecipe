@@ -1,4 +1,7 @@
+@extends('layouts.tri')
+@section('body')
 
+    <main class="content-wrap mt-m card">
 {{ csrf_field() }}
 <h1 class="list-heading">Report</h1>
 <label class="setting-list-label">In this form, you will report a post that you see it illegal or spam. The report will be send to admin to consider keep or delete the reported post.</label>
@@ -14,6 +17,8 @@
 </div>
 
 <div class="form-group text-right">
-    <a href="{{ $returnLocation }}" class="button outline">{{ trans('common.cancel') }}</a>
-    <button type="submit" class="button">Submit</button>
+{{--    <a href="{{ $returnLocation }}" class="button outline">{{ trans('common.cancel') }}</a>--}}
+    <a type="submit" href="{{ $recipe -> getUrl('storeReport') }}" class="button">Submit</a>
 </div>
+    </main>
+    @stop

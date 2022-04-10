@@ -168,6 +168,16 @@ abstract class Entity extends Model implements Sluggable, Favouritable, Viewable
     }
 
     /**
+     * Get the comments for an entity.
+     */
+    public function reports(bool $orderByCreated = true): MorphMany
+    {
+        $query = $this->morphMany(Report::class, 'entity');
+
+        return $orderByCreated ? $query->orderBy('created_at', 'asc') : $query;
+    }
+
+    /**
      * Get the related search terms.
      */
     public function searchTerms(): MorphMany

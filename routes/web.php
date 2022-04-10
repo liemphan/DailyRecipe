@@ -15,6 +15,7 @@ use DailyRecipe\Http\Controllers\HomeController;
 use DailyRecipe\Http\Controllers\Images;
 use DailyRecipe\Http\Controllers\MaintenanceController;
 use DailyRecipe\Http\Controllers\PageController;
+use DailyRecipe\Http\Controllers\ReportController;
 use DailyRecipe\Http\Controllers\PageExportController;
 use DailyRecipe\Http\Controllers\RecipeRevisionController;
 use DailyRecipe\Http\Controllers\RecipeTemplateController;
@@ -77,6 +78,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/recipes/{slug}/sort-item', [RecipeSortController::class, 'showItem']);
     Route::get('/recipes/{slug}', [RecipeController::class, 'showContent']);
     Route::get('/recipes/{recipeSlug}/permissions', [RecipeController::class, 'showPermissions']);
+
     Route::put('/recipes/{recipeSlug}/permissions', [RecipeController::class, 'permissions']);
     Route::get('/recipes/{slug}/delete', [RecipeController::class, 'showDelete']);
     Route::get('/recipes/{recipeSlug}/sort', [RecipeSortController::class, 'show']);
@@ -86,6 +88,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/recipes/{recipeSlug}/export/markdown', [RecipeExportController::class, 'markdown']);
     Route::get('/recipes/{recipeSlug}/export/zip', [RecipeExportController::class, 'zip']);
     Route::get('/recipes/{recipeSlug}/export/plaintext', [RecipeExportController::class, 'plainText']);
+
 
     Route::get('/recipes/{recipeSlug}/draft', [RecipeController::class, 'editDraft']);
     Route::post('/recipes/{recipeSlug}/draft', [RecipeController::class, 'storeContent']);
@@ -329,3 +332,7 @@ Route::fallback([HomeController::class, 'notFound'])->name('fallback');
 
 
 Route::get('/search/identified/ingredients', [IdentifiedIngredientsController::class, 'index']);
+
+// Report
+Route::get('/recipes/{recipeSlug}/report', [ReportController::class, 'showReport']);
+Route::get('/recipes/{recipeSlug}/storeReport', [ReportController::class, 'store']);

@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 /**
  * @property int $created_by
  * @property int $updated_by
+ * * @property int $user_id
  */
 trait HasCreatorAndUpdater
 {
@@ -17,6 +18,14 @@ trait HasCreatorAndUpdater
     public function createdBy(): BelongsTo
     {
         return $this->belongsTo(User::class, 'created_by');
+    }
+
+    /**
+     * Relation for the user that created this entity.
+     */
+    public function userId(): BelongsTo
+    {
+        return $this->belongsTo(User::class, 'user_id');
     }
 
     /**
