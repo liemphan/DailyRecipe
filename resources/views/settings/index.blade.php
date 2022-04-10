@@ -170,7 +170,8 @@
                                 <option @if(setting('app-homepage-type') === 'default') selected @endif value="default">{{ trans('common.default') }}</option>
                                 <option @if(setting('app-homepage-type') === 'recipes') selected @endif value="recipes">{{ trans('entities.recipes') }}</option>
                                 <option @if(setting('app-homepage-type') === 'recipemenus') selected @endif value="recipemenus">{{ trans('entities.menus') }}</option>
-                                <option @if(setting('app-homepage-type') === 'page') selected @endif value="page">{{ trans('entities.pages_specific') }}</option>
+{{--                                <option @if(setting('app-homepage-type') === 'page') selected @endif value="page">{{ trans('entities.pages_specific') }}</option>--}}
+                                <option @if(setting('app-homepage-type') === 'identified') selected @endif value="identified">{{ trans('entities.menus') }}</option>
                             </select>
 
                             <div page-picker-container style="display: none;" class="mt-m">

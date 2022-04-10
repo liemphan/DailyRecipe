@@ -32,6 +32,7 @@
             <nav refs="header-mobile-toggle@menu" class="header-links">
                 <div class="links text-center">
                     @if (hasAppAccess())
+                        <a href="{{ url('/search/identified/ingredients') }}">@icon('recipes')Identified</a>
                         <a class="hide-over-l" href="{{ url('/search') }}">@icon('search'){{ trans('common.search') }}</a>
                         @if(userCanOnAny('view', \DailyRecipe\Entities\Models\Recipemenu::class) || userCan('recipemenu-view-all') || userCan('recipemenu-view-own'))
                             <a href="{{ url('/menus') }}">@icon('recipemenu'){{ trans('entities.menus') }}</a>

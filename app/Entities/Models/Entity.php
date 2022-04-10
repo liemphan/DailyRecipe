@@ -27,7 +27,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 /**
  * Class Entity
- * The base class for recipe-like items such as pages, chapters & recipes.
+ * The base class for recipe-like items such as recipes.
  * This is not a database model in itself but extended.
  *
  * @property int $id

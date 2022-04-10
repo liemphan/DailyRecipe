@@ -230,7 +230,47 @@ class RecipeController extends Controller
 
         // Redirect to draft edit screen if signed in
         if ($this->isSignedIn()) {
-            return redirect($recipe->getUrlContent());
+            //return redirect($recipe->getUrlContent());
+            $recipe->getUrlContent();
+            $this->validate($request, [
+                'name' => ['required', 'string', 'max:255'],
+            ]);
+
+            $page = $this->recipeRepo->publishDraft($recipe, $request->all());
+
+            $page->getUrlContent();
+            $this->checkOwnablePermission('page-update', $page);
+
+            $page->isDraft = false;
+            $editActivity = new ContentEditActivity($page);
+
+            // Check for active editing
+            $warnings = [];
+            if ($editActivity->hasActiveEditing()) {
+                $warnings[] = $editActivity->activeEditingMessage();
+            }
+            // Check for a current draft version for this user
+            $userDraft = $this->recipeRepo->getUserDraft($page);
+            if ($userDraft !== null) {
+                $page->forceFill($userDraft->only(['name', 'html', 'markdown']));
+                $page->isDraft = true;
+                $warnings[] = $editActivity->getEditingActiveDraftMessage($userDraft);
+            }
+
+            if (count($warnings) > 0) {
+                $this->showWarningNotification(implode("\n", $warnings));
+            }
+
+            $templates = $this->recipeRepo->getTemplates(10);
+            $draftsEnabled = $this->isSignedIn();
+            $this->setPageTitle(trans('entities.pages_editing_named', ['pageName' => $page->getShortName()]));
+            return view('pages.edit', [
+                'page' => $page,
+                'recipe' => $page,
+                'current' => $page,
+                'draftsEnabled' => $draftsEnabled,
+                'templates' => $templates,
+            ]);
         }
         // Otherwise show the edit view if they're a guest
         $this->setPageTitle(trans('entities.pages_new'));
