@@ -2,9 +2,11 @@
 
 namespace DailyRecipe\Entities\Models;
 
+use Carbon\Carbon;
 use DailyRecipe\Actions\Activity;
 use DailyRecipe\Actions\Comment;
 use DailyRecipe\Actions\Favourite;
+use DailyRecipe\Actions\Report;
 use DailyRecipe\Actions\Tag;
 use DailyRecipe\Actions\View;
 use DailyRecipe\Auth\Permissions\EntityPermission;
@@ -19,7 +21,6 @@ use DailyRecipe\Interfaces\Viewable;
 use DailyRecipe\Model;
 use DailyRecipe\Traits\HasCreatorAndUpdater;
 use DailyRecipe\Traits\HasOwner;
-use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Relations\MorphMany;

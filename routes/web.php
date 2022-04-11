@@ -335,4 +335,4 @@ Route::get('/search/identified/ingredients', [IdentifiedIngredientsController::c
 
 // Report
 Route::get('/recipes/{recipeSlug}/report', [ReportController::class, 'showReport']);
-Route::get('/recipes/{recipeSlug}/storeReport', [ReportController::class, 'store']);
+Route::post('/recipes/{recipeSlug}/storeReport/', [ReportController::class, 'store']);

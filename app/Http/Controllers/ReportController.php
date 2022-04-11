@@ -2,6 +2,7 @@
 
 namespace DailyRecipe\Http\Controllers;
 
+use DailyRecipe\Actions\Report;
 use DailyRecipe\Entities\Models\Recipe;
 use Illuminate\Http\Request;
 use DailyRecipe\Actions\ReportRepo;
@@ -32,20 +33,18 @@ class ReportController extends Controller
     /**
      * Set the restrictions for this recipe.
      *
-     * @throws Throwable
      */
-    public function store(Request $request, string $recipeSlug)
+    public function store(Request $request, string $recipeSlug=null)
     {
-        $page = Recipe::visible()->find($recipeSlug);
+
         $recipe = $this->recipeRepo->getBySlug($recipeSlug);
-        //$this->checkOwnablePermission('restrictions-manage', $recipe);
+        $page = Recipe::visible()->find($recipe->id);
 
-
-        $report = $this->reportRepo->create($recipe, $request->get('name'), $request->get('description'));
-
+        if ($page === null) {
+            return response('Not found', 404);
+        }
+        $report = $this->reportRepo->create($request->get('name'), $request->get('description'),$page);
         $this->showSuccessNotification(trans('entities.recipes_reports'));
-
-        //return redirect($recipe->getUrl());
-        return redirect($report->getUrlContent());;
+        return redirect($recipe->getUrl());
     }
 }
