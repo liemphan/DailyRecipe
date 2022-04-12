@@ -10,4 +10,4 @@
         <span>@icon('flag')</span>
         <span>{{ trans('entities.report') }}</span>
     </a>
-</form>
+{{--</form>--}}

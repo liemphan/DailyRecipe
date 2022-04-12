@@ -2,13 +2,11 @@
 
 namespace DailyRecipe\Actions;
 
-use DailyRecipe\Auth\Permissions\PermissionService;
 use DailyRecipe\Entities\Models\Entity;
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Support\Collection;
-use Illuminate\Support\Facades\DB;
+use DailyRecipe\Entities\Models\Recipe;
+use DailyRecipe\Entities\Repos\BaseRepo;
 use DailyRecipe\Facades\Activity as ActivityService;
-use League\CommonMark\CommonMarkConverter;
+
 class ReportRepo
 {
     protected $report;
@@ -27,7 +25,7 @@ class ReportRepo
     /**
      * Create a new report on an entity.
      */
-    public function create(Entity $entity, string $content, string $description): Report
+    public function create(string $content, string $description,Entity $entity): Report
     {
         $userId = user()->id;
         $report = $this->report->newInstance();
@@ -35,7 +33,7 @@ class ReportRepo
         $report->content = $content;
         $report->description = $description;
         $report->user_id = $userId;
-
+        $report->status = 1;
         $entity->reports()->save($report);
         ActivityService::addForEntity($entity, ActivityType::REPORT_RECIPE);
 
