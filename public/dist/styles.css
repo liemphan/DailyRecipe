@@ -6670,6 +6670,10 @@ table.table .table-entity-item {
   margin-left: 3px;
 }
 
+.margin-settings{
+  margin-top: 70px;
+}
+
 .med-avatar{
   width: 25px;
   height: 25px;
