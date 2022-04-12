@@ -1,14 +1,31 @@
+5.1.5
+
+- removed support for psr/log
+- fixed some typos (implemented by fridzema, thanks!)
+
+*BREAKING*
+
+- `Clockwork\Request\Log` no longer implements the PSR log interface, it is unlikely you are using this class directly
+
+5.1.4
+
+- added Laravel 9 support
+- added support for manually registering Clockwork middleware in Laravel
+- fixed some failing tests might not been collected in Laravel (reported by ajcastro, thanks!)
+- fixed not respecting the collect tests setting in Laravel (reported by SimBig, thanks!)
+- fixed some deprecation warnings on PHP 8.1 (implemented by usernotnull, thanks!)
+
 5.1.3
 
 - added PSR to the default filtered namespaces from stack traces in the Laravel integration
 - fixed not being able to log non-string values when using psr/log >=2.0 (reported by Wit3, thanks!)
-- fixed some depecation warnings on PHP 8.1 (reported by Pinnokkio, thanks!)
+- fixed some deprecation warnings on PHP 8.1 (reported by Pinnokkio, thanks!)
 - fixed wrong redirect when accessing web ui with an url including a trailing slash (implemented by ssnepenthe, thanks!)
 - fixed update-token could be leaked via the Clockwork rest api (implemented by ssnepenthe, thanks!)
 
 5.1.2
 
-- fixed some depecation warnings on PHP 8.1 (reported by Codomic, thanks!)
+- fixed some deprecation warnings on PHP 8.1 (reported by Codomic, thanks!)
 
 5.1.1
 
@@ -16,7 +33,7 @@
 - improved timeline api event run method to return the return value of passed closure
 - improved collecting Laravel database queries to not quote integers (implemented by thisiskj, thanks!)
 - improved toolbar details link to always be absolute and work with subdirectories (reported by superDuperCyberTechno, thanks!)
-- fixed some depecation warnings on PHP 8.1 (implemented by gharlan, thanks!)
+- fixed some deprecation warnings on PHP 8.1 (implemented by gharlan, thanks!)
 - fixed collecting Laravel database queries to produce correct queries when bindings contain question marks (reported by woshixiaobai, thanks!)
 - fixed filtering collected and recorded requests by closure (implemented by ssnepenthe, thanks!)
 - fixed some inconsistencies in the Clockwork metadata api
@@ -125,7 +142,7 @@
 - improved Clockwork rest api with only/except filters
 - improved handling of corrupted index records in file storage
 - improved cleaned up the code-base, added and improved comments, use modern php features
-- removed Laravel total, initalization, boot and run timeline events
+- removed Laravel total, initialization, boot and run timeline events
 - removed legacy clockwork.controller events
 - removed duplicate file/line information from collected metadata
 - fixed authentication route not being registered when web ui is disabled
@@ -201,7 +218,7 @@
 - improved Laravel events data source to include Laravel namespace in the default ignored events
 - improved Laravel views data source to strip view data prefixed with __
 - improved PHP data source to not set request time for cli commands
-- improved serializer to ommit data below depth limit, support debugInfo, jsonSerialize and toArray methods (partially implemented by mahagr, thanks!)
+- improved serializer to omit data below depth limit, support debugInfo, jsonSerialize and toArray methods (partially implemented by mahagr, thanks!)
 - improved log to allow overriding serializer settings via context, no longer enabled toString by default
 - improved Request class now has pre-populated request time on creation
 - improved StackTrace helper with limit option, last method, fixed filter output keys
@@ -349,7 +366,7 @@
 
 - added new integration for vanilla PHP (thanks martbean)
 - added support for collecting authenticated user info
-- added bunch of helper methods for adding data like databse queries or events to Clockwork
+- added bunch of helper methods for adding data like database queries or events to Clockwork
 - added serializer options to the config files
 - updated web UI to match latest Chrome version
 - improved collecting of exceptions
@@ -482,7 +499,7 @@ UPGRADING
 
 - update the required Clockwork version to ^2.0 in your composer.json
 - PHP 5.3 - no longer supported, you can continue using the latest 1.x version
-- CodeIgniter - no longer supported, you can continue using the lastest 1.x version
+- CodeIgniter - no longer supported, you can continue using the latest 1.x version
 - Slim 2 - update the imported namespace from Clockwork\Support\Slim to Clockwork\Support\Slim\Legacy
 - ability to register additional data sources via Clockwork config was removed, please call app('clockwork')->addDataSource(...) in your own service provider
 
@@ -615,7 +632,7 @@ UPGRADING
 - added support for collecting emails and views data from Laravel
 - added --age argument to Laravel artisan clockwork::clean command, specifies how old the request data must be to be deleted (in hours)
 - improved Laravel service provider
-- fixed compatibilty with latest Laravel 4.1
+- fixed compatibility with latest Laravel 4.1
 
 1.3
 NOTE: Clockwork\Request\Log::log method arguments have been changed from log($message, $level) to log($level, $message), levels are now specified via Psr\Log\LogLevel class, it's recommended to use shortcut methods for various levels (emergency, alert, critical,  error, warning, notice, info and debug($message))

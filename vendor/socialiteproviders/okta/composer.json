@@ -1,6 +1,13 @@
 {
     "name": "socialiteproviders/okta",
     "description": "Okta OAuth2 Provider for Laravel Socialite",
+    "keywords": [
+        "laravel",
+        "oauth",
+        "okta",
+        "provider",
+        "socialite"
+    ],
     "license": "MIT",
     "authors": [
         {
@@ -17,5 +24,10 @@
         "psr-4": {
             "SocialiteProviders\\Okta\\": ""
         }
+    },
+    "support": {
+        "issues": "https://github.com/socialiteproviders/providers/issues",
+        "source": "https://github.com/socialiteproviders/providers",
+        "docs": "https://socialiteproviders.com/okta"
     }
 }

@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 /*
  * This file is part of Composer.
@@ -26,14 +26,14 @@ abstract class BaseExcludeFilter
     protected $sourcePath;
 
     /**
-     * @var array<array{0: string, 1: bool, 2: bool}> array of [$pattern, $negate, $stripLeadingSlash] arrays
+     * @var array<array{0: non-empty-string, 1: bool, 2: bool}> array of [$pattern, $negate, $stripLeadingSlash] arrays
      */
     protected $excludePatterns;
 
     /**
      * @param string $sourcePath Directory containing sources to be filtered
      */
-    public function __construct($sourcePath)
+    public function __construct(string $sourcePath)
     {
         $this->sourcePath = $sourcePath;
         $this->excludePatterns = array();
@@ -49,7 +49,7 @@ abstract class BaseExcludeFilter
      *
      * @return bool Whether the file should be excluded
      */
-    public function filter($relativePath, $exclude)
+    public function filter(string $relativePath, bool $exclude): bool
     {
         foreach ($this->excludePatterns as $patternData) {
             list($pattern, $negate, $stripLeadingSlash) = $patternData;
@@ -78,9 +78,9 @@ abstract class BaseExcludeFilter
      * @param string[] $lines A set of lines to be parsed
      * @param callable $lineParser The parser to be used on each line
      *
-     * @return array<array{0: string, 1: bool, 2: bool}> Exclude patterns to be used in filter()
+     * @return array<array{0: non-empty-string, 1: bool, 2: bool}> Exclude patterns to be used in filter()
      */
-    protected function parseLines(array $lines, $lineParser)
+    protected function parseLines(array $lines, callable $lineParser): array
     {
         return array_filter(
             array_map(
@@ -95,7 +95,7 @@ abstract class BaseExcludeFilter
                 },
                 $lines
             ),
-            function ($pattern) {
+            function ($pattern): bool {
                 return $pattern !== null;
             }
         );
@@ -106,9 +106,9 @@ abstract class BaseExcludeFilter
      *
      * @param string[] $rules A list of exclude rules in gitignore syntax
      *
-     * @return array<int, array{0: string, 1: bool, 2: bool}> Exclude patterns
+     * @return array<int, array{0: non-empty-string, 1: bool, 2: bool}> Exclude patterns
      */
-    protected function generatePatterns($rules)
+    protected function generatePatterns(array $rules): array
     {
         $patterns = array();
         foreach ($rules as $rule) {
@@ -123,9 +123,9 @@ abstract class BaseExcludeFilter
      *
      * @param string $rule An exclude rule in gitignore syntax
      *
-     * @return array{0: string, 1: bool, 2: bool} An exclude pattern
+     * @return array{0: non-empty-string, 1: bool, 2: bool} An exclude pattern
      */
-    protected function generatePattern($rule)
+    protected function generatePattern(string $rule): array
     {
         $negate = false;
         $pattern = '';

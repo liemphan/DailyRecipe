@@ -41,6 +41,20 @@ class Provider extends AbstractProvider
     }
 
     /**
+     * Return the logout endpoint with post_logout_redirect_uri query parameter.
+     *
+     * @param string $redirectUri
+     *
+     * @return string
+     */
+    public function getLogoutUrl(string $redirectUri)
+    {
+        return $this->getBaseUrl()
+            .'/oauth2/logout?'
+            .http_build_query(['post_logout_redirect_uri' => $redirectUri], '', '&', $this->encodingType);
+    }
+
+    /**
      * {@inheritdoc}
      */
     protected function getTokenUrl()
@@ -69,6 +83,7 @@ class Provider extends AbstractProvider
                 'Accept'        => 'application/json',
                 'Authorization' => 'Bearer '.$token,
             ],
+            RequestOptions::PROXY       => $this->getConfig('proxy'),
         ]);
 
         return json_decode((string) $response->getBody(), true);
@@ -119,6 +134,6 @@ class Provider extends AbstractProvider
      */
     public static function additionalConfigKeys()
     {
-        return ['tenant', 'logout_url', 'proxy'];
+        return ['tenant', 'proxy'];
     }
 }

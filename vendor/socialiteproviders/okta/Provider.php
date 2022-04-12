@@ -2,6 +2,7 @@
 
 namespace SocialiteProviders\Okta;
 
+use GuzzleHttp\RequestOptions;
 use Illuminate\Support\Arr;
 use SocialiteProviders\Manager\OAuth2\AbstractProvider;
 use SocialiteProviders\Manager\OAuth2\User;
@@ -51,13 +52,19 @@ class Provider extends AbstractProvider
      */
     protected function getAuthServerId()
     {
-        $auth_server_id = $this->getConfig('auth_server_id', null);
+        $authServerId = (string) $this->getConfig('auth_server_id');
 
-        if ($auth_server_id) {
-            return $auth_server_id.'/';
-        }
+        return $authServerId === '' ? $authServerId : $authServerId.'/';
+    }
 
-        return '';
+    /**
+     * Get the Okta sever URL.
+     *
+     * @return string
+     */
+    protected function getOktaServerUrl(): string
+    {
+        return $this->getOktaUrl().'/oauth2/'.$this->getAuthServerId();
     }
 
     /**
@@ -73,7 +80,7 @@ class Provider extends AbstractProvider
      */
     protected function getAuthUrl($state)
     {
-        return $this->buildAuthUrlFromBase($this->getOktaUrl().'/oauth2/'.$this->getAuthServerId().'v1/authorize', $state);
+        return $this->buildAuthUrlFromBase($this->getOktaServerUrl().'v1/authorize', $state);
     }
 
     /**
@@ -81,7 +88,7 @@ class Provider extends AbstractProvider
      */
     protected function getTokenUrl()
     {
-        return $this->getOktaUrl().'/oauth2/'.$this->getAuthServerId().'/v1/token';
+        return $this->getOktaServerUrl().'v1/token';
     }
 
     /**
@@ -89,13 +96,35 @@ class Provider extends AbstractProvider
      */
     protected function getUserByToken($token)
     {
-        $response = $this->getHttpClient()->get($this->getOktaUrl().'/oauth2/'.$this->getAuthServerId().'v1/userinfo', [
-            'headers' => [
+        $response = $this->getHttpClient()->get($this->getOktaServerUrl().'v1/userinfo', [
+            RequestOptions::HEADERS => [
                 'Authorization' => 'Bearer '.$token,
             ],
         ]);
 
-        return json_decode($response->getBody(), true);
+        return json_decode((string) $response->getBody(), true);
+    }
+
+    /**
+     * Get the client access token response.
+     *
+     * @param array|string $scopes
+     *
+     * @return array
+     */
+    public function getClientAccessTokenResponse($scopes = null)
+    {
+        $scopes = $scopes ?? $this->getScopes();
+        $response = $this->getHttpClient()->post($this->getTokenUrl(), [
+            RequestOptions::AUTH        => [$this->clientId, $this->clientSecret],
+            RequestOptions::HEADERS     => ['Cache-Control' => 'no-cache'],
+            RequestOptions::FORM_PARAMS => [
+                'grant_type' => 'client_credentials',
+                'scope'      => $this->formatScopes((array) $scopes, $this->scopeSeparator),
+            ],
+        ]);
+
+        return json_decode((string) $response->getBody(), true);
     }
 
     /**
@@ -114,6 +143,7 @@ class Provider extends AbstractProvider
             'profileUrl'     => Arr::get($user, 'profile'),
             'address'        => Arr::get($user, 'address'),
             'phone'          => Arr::get($user, 'phone'),
+            'id_token'       => $this->credentialsResponseBody['id_token'] ?? null,
         ]);
     }
 
@@ -125,5 +155,25 @@ class Provider extends AbstractProvider
         return array_merge(parent::getTokenFields($code), [
             'grant_type' => 'authorization_code',
         ]);
+    }
+
+    /**
+     * @param string      $idToken
+     * @param string|null $redirectUri
+     * @param string|null $state
+     *
+     * @return string
+     */
+    public function getLogoutUrl(string $idToken, string $redirectUri = null, string $state = null)
+    {
+        $url = $this->getOktaServerUrl().'v1/logout';
+
+        $params = http_build_query(array_filter([
+            'id_token_hint'            => $idToken,
+            'post_logout_redirect_uri' => $redirectUri,
+            'state'                    => $state,
+        ]));
+
+        return "$url?$params";
     }
 }
