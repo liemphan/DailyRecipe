@@ -332,4 +332,15 @@ abstract class Entity extends Model implements Sluggable, Favouritable, Viewable
             ->where('user_id', '=', user()->id)
             ->exists();
     }
+
+
+    /**
+     * Get the comments for an entity.
+     */
+    public function requests(bool $orderByCreated = true): MorphMany
+    {
+        $query = $this->morphMany(Requests::class, 'entity');
+
+        return $orderByCreated ? $query->orderBy('created_at', 'asc') : $query;
+    }
 }
