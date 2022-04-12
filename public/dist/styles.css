@@ -5731,9 +5731,10 @@ html.dark-mode .entity-list-item-image .svg-icon {
 .dropup-content a {
   color: black;
   padding: 8px 10px;
-  text-decoration: none;
+  /*text-decoration: none;*/
   display: block;
   float: left;
+  border: none;
 }
 .dropup-content button {
   color: black;
@@ -6665,3 +6666,4 @@ table.table .table-entity-item {
 .white-content{
   color: #ffffff;
 }
+
