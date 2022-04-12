@@ -4,7 +4,7 @@ namespace DailyRecipe\Entities\Tools;
 
 use DailyRecipe\Entities\EntityProvider;
 use DailyRecipe\Entities\Models\Recipe;
-use DailyRecipe\Entities\Models\Recipemenu;
+use DailyRecipe\Entities\Models\RecipeMenu;
 
 use Illuminate\Support\Collection;
 
@@ -40,8 +40,8 @@ class SiblingFetcher
         }
 
         // Menu
-        if ($entity instanceof Recipemenu) {
-            $entities = Recipemenu::visible()->get();
+        if ($entity instanceof RecipeMenu) {
+            $entities = RecipeMenu::visible()->get();
         }
 
         return $entities;

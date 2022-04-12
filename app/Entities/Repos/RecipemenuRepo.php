@@ -4,7 +4,7 @@ namespace DailyRecipe\Entities\Repos;
 
 use DailyRecipe\Actions\ActivityType;
 use DailyRecipe\Entities\Models\Recipe;
-use DailyRecipe\Entities\Models\Recipemenu;
+use DailyRecipe\Entities\Models\RecipeMenu;
 use DailyRecipe\Entities\Tools\TrashCan;
 use DailyRecipe\Exceptions\ImageUploadException;
 use DailyRecipe\Exceptions\NotFoundException;
@@ -31,7 +31,7 @@ class RecipemenuRepo
      */
     public function getAllPaginated(int $count = 20, string $sort = 'name', string $order = 'asc'): LengthAwarePaginator
     {
-        return Recipemenu::visible()
+        return RecipeMenu::visible()
             ->with(['visibleRecipes', 'cover'])
             ->orderBy($sort, $order)
             ->paginate($count);
@@ -42,7 +42,7 @@ class RecipemenuRepo
      */
     public function getRecentlyViewed(int $count = 20): Collection
     {
-        return Recipemenu::visible()->withLastView()
+        return RecipeMenu::visible()->withLastView()
             ->having('last_viewed_at', '>', 0)
             ->orderBy('last_viewed_at', 'desc')
             ->take($count)->get();
@@ -53,7 +53,7 @@ class RecipemenuRepo
      */
     public function getPopular(int $count = 20): Collection
     {
-        return Recipemenu::visible()->withViewCount()
+        return RecipeMenu::visible()->withViewCount()
             ->having('view_count', '>', 0)
             ->orderBy('view_count', 'desc')
             ->take($count)->get();
@@ -64,16 +64,16 @@ class RecipemenuRepo
      */
     public function getRecentlyCreated(int $count = 20): Collection
     {
-        return Recipemenu::visible()->orderBy('created_at', 'desc')
+        return RecipeMenu::visible()->orderBy('created_at', 'desc')
             ->take($count)->get();
     }
 
     /**
      * Get a menu by its slug.
      */
-    public function getBySlug(string $slug): Recipemenu
+    public function getBySlug(string $slug): RecipeMenu
     {
-        $menu = Recipemenu::visible()->where('slug', '=', $slug)->first();
+        $menu = RecipeMenu::visible()->where('slug', '=', $slug)->first();
 
         if ($menu === null) {
             throw new NotFoundException(trans('errors.recipemenu_not_found'));
@@ -85,9 +85,9 @@ class RecipemenuRepo
     /**
      * Create a new menu in the system.
      */
-    public function create(array $input, array $recipeIds): Recipemenu
+    public function create(array $input, array $recipeIds): RecipeMenu
     {
-        $menu = new Recipemenu();
+        $menu = new RecipeMenu();
         $this->baseRepo->createMenus($menu, $input);
         $this->updateRecipes($menu, $recipeIds);
         Activity::addForEntity($menu, ActivityType::RECIPEMENU_CREATE);
@@ -98,7 +98,7 @@ class RecipemenuRepo
     /**
      * Update an existing menu in the system using the given input.
      */
-    public function update(Recipemenu $menu, array $input, ?array $recipeIds): Recipemenu
+    public function update(RecipeMenu $menu, array $input, ?array $recipeIds): Recipemenu
     {
         $this->baseRepo->update($menu, $input);
 
@@ -116,7 +116,7 @@ class RecipemenuRepo
      * syncing the given recipe ids.
      * Function ensures the recipes are visible to the current user and existing.
      */
-    protected function updateRecipes(Recipemenu $menu, array $recipeIds)
+    protected function updateRecipes(RecipeMenu $menu, array $recipeIds)
     {
         $numericIDs = collect($recipeIds)->map(function ($id) {
             return intval($id);
@@ -138,7 +138,7 @@ class RecipemenuRepo
      * @throws ImageUploadException
      * @throws Exception
      */
-    public function updateCoverImage(Recipemenu $menu, ?UploadedFile $coverImage, bool $removeImage = false)
+    public function updateCoverImage(RecipeMenu $menu, ?UploadedFile $coverImage, bool $removeImage = false)
     {
         $this->baseRepo->updateCoverImage($menu, $coverImage, $removeImage);
     }
@@ -146,7 +146,7 @@ class RecipemenuRepo
     /**
      * Copy down the permissions of the given menu to all child recipes.
      */
-    public function copyDownPermissions(Recipemenu $menu, $checkUserPermissions = true): int
+    public function copyDownPermissions(RecipeMenu $menu, $checkUserPermissions = true): int
     {
         $menuPermissions = $menu->permissions()->get(['role_id', 'action'])->toArray();
         $menuRecipes = $menu->recipes()->get(['id', 'restricted']);
@@ -173,7 +173,7 @@ class RecipemenuRepo
      *
      * @throws Exception
      */
-    public function destroy(Recipemenu $menu)
+    public function destroy(RecipeMenu $menu)
     {
         $trashCan = new TrashCan();
         $trashCan->softDestroyMenu($menu);

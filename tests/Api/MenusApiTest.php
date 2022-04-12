@@ -3,7 +3,7 @@
 namespace Tests\Api;
 
 use DailyRecipe\Entities\Models\Recipe;
-use DailyRecipe\Entities\Models\Recipemenu;
+use DailyRecipe\Entities\Models\RecipeMenu;
 use Tests\TestCase;
 
 class MenusApiTest extends TestCase

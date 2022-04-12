@@ -3,7 +3,7 @@
 namespace DailyRecipe\Entities\Tools;
 
 use DailyRecipe\Entities\Models\Recipe;
-use DailyRecipe\Entities\Models\Recipemenu;
+use DailyRecipe\Entities\Models\RecipeMenu;
 
 class MenuContext
 {
@@ -12,7 +12,7 @@ class MenuContext
     /**
      * Get the current recipemenu context for the given recipe.
      */
-    public function getContextualMenuForRecipe(Recipe $recipe): ?Recipemenu
+    public function getContextualMenuForRecipe(Recipe $recipe): ?RecipeMenu
     {
         $contextRecipemenuId = session()->get($this->KEY_MENU_CONTEXT_ID, null);
 
@@ -20,7 +20,7 @@ class MenuContext
             return null;
         }
 
-        $menu = Recipemenu::visible()->find($contextRecipemenuId);
+        $menu = RecipeMenu::visible()->find($contextRecipemenuId);
         $menuContainsRecipe = $menu && $menu->contains($recipe);
 
         return $menuContainsRecipe ? $menu : null;

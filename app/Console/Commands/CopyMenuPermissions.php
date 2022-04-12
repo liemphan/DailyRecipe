@@ -2,7 +2,7 @@
 
 namespace DailyRecipe\Console\Commands;
 
-use DailyRecipe\Entities\Models\Recipemenu;
+use DailyRecipe\Entities\Models\RecipeMenu;
 use DailyRecipe\Entities\Repos\RecipemenuRepo;
 use Illuminate\Console\Command;
 
@@ -69,11 +69,11 @@ class CopyMenuPermissions extends Command
                 return;
             }
 
-            $menus = Recipemenu::query()->get(['id', 'restricted']);
+            $menus = RecipeMenu::query()->get(['id', 'restricted']);
         }
 
         if ($menuSlug) {
-            $menus = Recipemenu::query()->where('slug', '=', $menuSlug)->get(['id', 'restricted']);
+            $menus = RecipeMenu::query()->where('slug', '=', $menuSlug)->get(['id', 'restricted']);
             if ($menus->count() === 0) {
                 $this->info('No menus found with the given slug.');
             }

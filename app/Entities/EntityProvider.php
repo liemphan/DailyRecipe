@@ -3,10 +3,10 @@
 namespace DailyRecipe\Entities;
 
 use DailyRecipe\Entities\Models\Recipe;
-use DailyRecipe\Entities\Models\Recipemenu;
+use DailyRecipe\Entities\Models\RecipeMenu;
 
 use DailyRecipe\Entities\Models\Entity;
-use DailyRecipe\Entities\Models\Page;
+
 use DailyRecipe\Entities\Models\RecipeRevision;
 
 /**
@@ -36,7 +36,7 @@ class EntityProvider
 
     public function __construct()
     {
-        $this->recipemenu = new Recipemenu();
+        $this->recipemenu = new RecipeMenu();
         $this->recipe = new Recipe();
         $this->recipeRevision = new RecipeRevision();
     }

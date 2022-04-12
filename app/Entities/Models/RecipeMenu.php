@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
-class Recipemenu extends Entity implements HasCoverImage
+class RecipeMenu extends Entity implements HasCoverImage
 {
     use HasFactory;
 

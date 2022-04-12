@@ -2,7 +2,7 @@
 
 namespace DailyRecipe\Http\Controllers\Api;
 
-use DailyRecipe\Entities\Models\Recipemenu;
+use DailyRecipe\Entities\Models\RecipeMenu;
 use DailyRecipe\Entities\Repos\RecipemenuRepo;
 use Exception;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
@@ -42,7 +42,7 @@ class RecipemenuApiController extends ApiController
      */
     public function list()
     {
-        $menus = Recipemenu::visible();
+        $menus = RecipeMenu::visible();
 
         return $this->apiListingResponse($menus, [
             'id', 'name', 'slug', 'description', 'created_at', 'updated_at', 'created_by', 'updated_by', 'owned_by', 'image_id',
@@ -72,7 +72,7 @@ class RecipemenuApiController extends ApiController
      */
     public function read(string $id)
     {
-        $menu = Recipemenu::visible()->with([
+        $menu = RecipeMenu::visible()->with([
             'tags', 'cover', 'createdBy', 'updatedBy', 'ownedBy',
             'recipes' => function (BelongsToMany $query) {
                 $query->scopes('visible')->get(['id', 'name', 'slug']);
@@ -92,7 +92,7 @@ class RecipemenuApiController extends ApiController
      */
     public function update(Request $request, string $id)
     {
-        $menu = Recipemenu::visible()->findOrFail($id);
+        $menu = RecipeMenu::visible()->findOrFail($id);
         $this->checkOwnablePermission('recipemenu-update', $menu);
 
         $requestData = $this->validate($request, $this->rules['update']);
@@ -111,7 +111,7 @@ class RecipemenuApiController extends ApiController
      */
     public function delete(string $id)
     {
-        $menu = Recipemenu::visible()->findOrFail($id);
+        $menu = RecipeMenu::visible()->findOrFail($id);
         $this->checkOwnablePermission('recipemenu-delete', $menu);
 
         $this->recipemenuRepo->destroy($menu);

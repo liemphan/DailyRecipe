@@ -4,7 +4,7 @@ namespace DailyRecipe\Entities\Tools;
 
 use DailyRecipe\Entities\EntityProvider;
 use DailyRecipe\Entities\Models\Recipe;
-use DailyRecipe\Entities\Models\Recipemenu;
+use DailyRecipe\Entities\Models\RecipeMenu;
 
 use DailyRecipe\Entities\Models\Deletion;
 use DailyRecipe\Entities\Models\Entity;
@@ -22,7 +22,7 @@ class TrashCan
     /**
      * Send a menu to the recycle bin.
      */
-    public function softDestroyMenu(Recipemenu $menu)
+    public function softDestroyMenu(RecipeMenu $menu)
     {
         Deletion::createForEntity($menu);
         $menu->delete();
@@ -92,7 +92,7 @@ class TrashCan
      *
      * @throws Exception
      */
-    protected function destroyMenu(Recipemenu $menu): int
+    protected function destroyMenu(RecipeMenu $menu): int
     {
         $this->destroyCommonRelations($menu);
         $menu->forceDelete();
@@ -317,7 +317,7 @@ class TrashCan
         if ($entity instanceof Recipe) {
             return $this->destroyRecipe($entity);
         }
-        if ($entity instanceof Recipemenu) {
+        if ($entity instanceof RecipeMenu) {
             return $this->destroyMenu($entity);
         }
 
