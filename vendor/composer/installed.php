@@ -5,7 +5,7 @@
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'reference' => '6d0001a6c8137da8c1061989cc4f4b8638741deb',
+        'reference' => 'b98c4329280c604740080e7c5440b8c75f552ff7',
         'name' => 'dailyrecipeapp/dailyrecipe',
         'dev' => true,
     ),
@@ -139,7 +139,7 @@
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
-            'reference' => '6d0001a6c8137da8c1061989cc4f4b8638741deb',
+            'reference' => 'b98c4329280c604740080e7c5440b8c75f552ff7',
             'dev_requirement' => false,
         ),
         'dasprid/enum' => array(
@@ -1036,8 +1036,8 @@
         'psr/log-implementation' => array(
             'dev_requirement' => false,
             'provided' => array(
-                0 => '1.0|2.0',
-                1 => '1.0.0 || 2.0.0 || 3.0.0',
+                0 => '1.0.0 || 2.0.0 || 3.0.0',
+                1 => '1.0|2.0',
             ),
         ),
         'psr/simple-cache' => array(
