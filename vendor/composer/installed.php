@@ -5,7 +5,7 @@
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'reference' => 'b98c4329280c604740080e7c5440b8c75f552ff7',
+        'reference' => '61030c9cc770f7f1addda0c338f447bacb9ddb4e',
         'name' => 'dailyrecipeapp/dailyrecipe',
         'dev' => true,
     ),
@@ -139,7 +139,7 @@
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
-            'reference' => 'b98c4329280c604740080e7c5440b8c75f552ff7',
+            'reference' => '61030c9cc770f7f1addda0c338f447bacb9ddb4e',
             'dev_requirement' => false,
         ),
         'dasprid/enum' => array(
