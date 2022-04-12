@@ -22,21 +22,21 @@
 {{--    <button class=button id=btnScreenshot>Chụp hình</button>--}}
 {{--    <button class=button id=btnChangeCamera style="padding: 6px 10px;">Đổi camera</button>--}}
 {{--</div>--}}
-    <div class=items-center>
+    <div class="items-center big-video">
 <div class=video-screenshot>
-    <video autoplay id=video></video>
-    <div>
-        <div id=screenshotsContainer>
-            <canvas id=canvas class=is-hidden></canvas>
-        </div>
-    </div>
+    <video class="big-video" autoplay id=video></video>
+{{--    <div>--}}
+{{--        <div id=screenshotsContainer>--}}
+{{--            <canvas id=canvas class=is-hidden></canvas>--}}
+{{--        </div>--}}
+{{--    </div>--}}
 </div>
 
 <div class="btns" >
-    <button class="button is-hidden" id=btnPlay1>Play Camera</button>
-    <button class="button" id=btnPause1>Stop Camera</button>
-    <button class=button id=btnScreenshot1>Take a Photo</button>
-    <button class=button id=btnChangeCamera1>Change Camera</button>
+{{--    <button class="button is-hidden" id=btnPlay1>Play Camera</button>--}}
+{{--    <button class="button" id=btnPause1>Stop Camera</button>--}}
+    <button class=flex-svg id=btnScreenshot1>@icon('shutter')</button>
+{{--    <button class=button id=btnChangeCamera1>Change Camera</button>--}}
 </div>
 <div>
 
@@ -59,10 +59,10 @@
     <div class="actions mb-xl">
         <h5>{{ trans('common.actions') }}</h5>
         <div class="icon-list text-primary">
-            <a class="icon-list-item is-hidden" id=btnPlay>Play Camera</a>
-            <a class=icon-list-item id=btnPause>Stop Camera</a>
+{{--            <a class="icon-list-item is-hidden" id=btnPlay>Play Camera</a>--}}
+{{--            <a class=icon-list-item id=btnPause>Stop Camera</a>--}}
             <a class=icon-list-item id=btnScreenshot>Take a Photo</a>
-            <a class=icon-list-item id=btnChangeCamera>Change Camera</a>
+{{--            <a class=icon-list-item id=btnChangeCamera>Change Camera</a>--}}
 {{--            @if(user()->can('recipemenu-create-all'))--}}
 {{--                <a href="{{ url("/create-menu") }}" class="icon-list-item">--}}
 {{--                    <span>@icon('add')</span>--}}
