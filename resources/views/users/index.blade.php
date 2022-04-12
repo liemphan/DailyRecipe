@@ -68,9 +68,24 @@
 
                         {{--                        Request--}}
                         <td class="text-center text-muted">
-                            <small><a href="{{url('/settings/users')}}"> Accept </a>
-                            |
-                            <a href="{{url('/settings/users')}}"> Reject </a></small>
+                            <small>
+                            @foreach($requests as $request)
+                                @if($request->created_by == $user->id)
+                                    @if($request->status == 1)
+                                        <a style="color: green" href="{{url("/settings/users/{$user->id}/acceptRequest")}}"> Accept </a>
+                                        |
+                                        <a style="color: red" href="{{url("/settings/users/{$user->id}/rejectRequest")}}"> Reject </a>
+                                            @break
+                                        @elseif($request->status == 2)
+                                        <p style="color: green">Accepted</p>
+                                            @break
+                                        @elseif($request->status == 3)
+                                            <p style="color: red">Rejected</p>
+                                        @break
+                                    @endif
+                                @endif
+                            @endforeach
+                            </small>
                         </td>
 
                     </tr>
