@@ -8,7 +8,7 @@ class EntitySelector {
 
     setup() {
         this.elem = this.$el;
-        this.entityTypes = this.$opts.entityTypes || 'page,recipe';
+        this.entityTypes = this.$opts.entityTypes || 'recipe';
         this.entityPermission = this.$opts.entityPermission || 'view';
 
         this.input = this.$refs.input;
@@ -112,7 +112,7 @@ class EntitySelector {
         this.input.value = '';
         const url = `${this.searchUrl()}&term=${encodeURIComponent(searchTerm)}`;
         window.$http.get(url).then(resp => {
-            this.resultsContainer.inRnerHTML = resp.data;
+            this.resultsContainer.innerHTML = resp.data;
             this.hideLoading();
         });
     }
