@@ -2,7 +2,7 @@
 
 @section('body')
 
-    <div class="container pt-xl">
+    <div class="container pt-xl margin-settings">
 
         <div class="grid right-focus reverse-collapse">
 

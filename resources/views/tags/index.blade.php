@@ -1,7 +1,7 @@
 @extends('layouts.simple')
 
 @section('body')
-    <div class="container small">
+    <div style="margin-top: 80px" class="container small">
 
         <main class="card content-wrap mt-xxl">
 

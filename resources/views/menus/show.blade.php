@@ -9,7 +9,7 @@
 
 @section('body')
 
-    <div class="mb-s">
+    <div class="mb-s mt-m">
         @include('entities.breadcrumbs', ['crumbs' => [
             $menu,
         ]])

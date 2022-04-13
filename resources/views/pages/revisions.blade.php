@@ -1,7 +1,7 @@
 @extends('layouts.simple')
 
 @section('body')
-    <div class="container">
+    <div class="container margin-settings">
 
         <div class="my-s">
             @include('entities.breadcrumbs', ['crumbs' => [

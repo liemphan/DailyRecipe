@@ -2,9 +2,9 @@
 
 @section('body')
 
-    <div class="container small">
+    <div class="container small margin-settings">
 
-        <div class="my-s">
+        <div class="my-s ma">
             @include('entities.breadcrumbs', ['crumbs' => [
                 $recipe,
                 $recipe->getUrl('/delete') => [

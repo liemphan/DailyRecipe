@@ -2,7 +2,7 @@
 
 @section('body')
 
-    <div class="container small">
+    <div class="container small margin-settings">
 
         <div class="my-s">
             @include('entities.breadcrumbs', ['crumbs' => [

@@ -1,7 +1,7 @@
 @extends('layouts.simple')
 
 @section('body')
-    <div class="container small pt-xl">
+    <div class="container small pt-xl margin-settings">
         <main class="card content-wrap">
             <h1 class="list-heading">{{ $title }}</h1>
 

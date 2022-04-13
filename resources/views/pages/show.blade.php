@@ -14,7 +14,7 @@
 {{--        ]])--}}
 {{--    </div>--}}
 
-    <main class="content-wrap card">
+    <main class="content-wrap card margin-32">
         <div class="page-content clearfix" page-display="{{ $page->id }}">
 
             @include('pages.parts.pointer', ['page' => $page])

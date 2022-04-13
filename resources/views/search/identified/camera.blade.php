@@ -12,7 +12,7 @@
 {{--</head>--}}
 {{--<body>--}}
 
-<main class="content-wrap mt-m card">
+<main class="content-wrap card margin-32">
 <h1 class="list-heading">Identify cooking ingredients</h1><br>
 {{--<a href=https://anonystick.com/blog-developer/su-dung-javascript-truy-cap-camera-sau-truoc-va-chup-man-minh-thiet-bi-di-dong-2020061162339379>&#8592;--}}
 {{--    Trở về với bài viết</a><br>--}}

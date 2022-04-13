@@ -17,7 +17,7 @@
             ]])
         </div>
 
-        <main class="card content-wrap">
+        <main class="card content-wrap margin-32">
             <h1 class="list-heading">{{ trans('entities.menus_create') }}</h1>
             <form action="{{ url("/menus") }}" method="POST" enctype="multipart/form-data">
                 @include('menus.parts.form', ['menu' => null, 'recipes' => $recipes])

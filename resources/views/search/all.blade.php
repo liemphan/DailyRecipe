@@ -3,7 +3,7 @@
 @section('body')
     <div class="container mt-xl" id="search-system">
 
-        <div class="grid right-focus reverse-collapse gap-xl">
+        <div class="grid right-focus reverse-collapse gap-xl margin-settings">
             <div>
                 <div>
                     <h5>{{ trans('entities.search_advanced') }}</h5>
