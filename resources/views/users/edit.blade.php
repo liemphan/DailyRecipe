@@ -84,10 +84,10 @@
 
                         @elseif($requests->status == 3)
                             <div>
-                                <p style="color: red; font-size: 15px">Your request had been rejected</p>
+                                <p style="color: red; font-size: 15px">Your request had been rejected.</p>
                             </div>
                             <div class="text-m-right">
-                                <span>You can ask support by contact us via email <a href="mailto:dailyrecipefpt@gmail.com">dailyrecipefpt@gmail.com</a>. </span>
+                                <span>You can ask for supporting by contact us via email <a href="mailto:dailyrecipefpt@gmail.com">dailyrecipefpt@gmail.com</a>. </span>
                             </div>
                         @endif
                     @endif

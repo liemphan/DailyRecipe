@@ -4,7 +4,7 @@ namespace DailyRecipe\Actions;
 
 use DailyRecipe\Entities\Models\Entity;
 use DailyRecipe\Entities\Models\Recipe;
-use DailyRecipe\Entities\Repos\BaseRepo;
+use DailyRecipe\Facades\Activity;
 use DailyRecipe\Facades\Activity as ActivityService;
 
 class ReportRepo
@@ -36,6 +36,18 @@ class ReportRepo
         $report->status = 1;
         $entity->reports()->save($report);
         ActivityService::addForEntity($entity, ActivityType::REPORT_RECIPE);
+
+        return $report;
+    }
+    /**
+     * Update the given recipe.
+     */
+    public function update(Report $report): Report
+    {
+        $report->status = 0;
+
+        $this->report->update($report);
+        Activity::addForEntity($report, ActivityType::REPORT_UPDATE);
 
         return $report;
     }
