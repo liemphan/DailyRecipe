@@ -1,182 +1,30 @@
 @extends('search.identified.camera')
 @section('scripts')
-    <script>
-        window.onload = async function () {
-            if (
-                !"mediaDevices" in navigator ||
-                !"getUserMedia" in navigator.mediaDevices
-            ) {
-                document.write('Not support API camera')
-                return;
+
+        <script>
+            $('#upload').on('click', function() {
+            var file_data = $('#sortpicture').prop('files')[0];
+            var form_data = new FormData();
+            form_data.append('file', file_data);
+            //alert(form_data);
+            $.ajax({
+            url: 'http://10.66.171.232:8080/upload', // point to server-side PHP script
+            //dataType: 'text', // what to expect, back from the PHP script, if anything
+            cache: false,
+            contentType: false,
+            processData: false,
+            data: form_data,
+            type: 'post',
+            success: function(api_resp){
+                    alert('Tấn ảnh nay là :'+ api_resp); // display response from the PHP script, if any
+            },
+            error: function(err) {
+                alert(err.responseText);
             }
-
-            const video = document.querySelector("#video");
-            const canvas = document.querySelector("#canvas");
-            const screenshotsContainer = document.querySelector("#screenshotsContainer");
-            let videoStream = null
-            let useFrontCamera = true; //camera trước
-            const constraints = {
-                video: {
-                    width: {
-                        min: 1280,
-                        ideal: 1920,
-                        max: 2560,
-                    },
-                    height: {
-                        min: 720,
-                        ideal: 1080,
-                        max: 1440,
-                    }
-                },
-            };
-
-            // play
-            btnPlay.addEventListener("click", function () {
-                video.play();
-                btnPlay.classList.add("is-hidden");
-                btnPause.classList.remove("is-hidden");
-
-                btnPlay1.classList.add("is-hidden");
-                btnPause1.classList.remove("is-hidden");
+        });
             });
-
-            // pause
-            btnPause.addEventListener("click", function () {
-                video.pause();
-                btnPause.classList.add("is-hidden");
-                btnPlay.classList.remove("is-hidden");
-
-                btnPause1.classList.add("is-hidden");
-                btnPlay1.classList.remove("is-hidden");
-            });
-
-
-            btnChangeCamera.addEventListener("click", function () {
-                useFrontCamera = !useFrontCamera;
-                init();
-            });
-
-
-            // play
-            btnPlay1.addEventListener("click", function () {
-                video.play();
-                btnPlay1.classList.add("is-hidden");
-                btnPause1.classList.remove("is-hidden");
-
-                btnPlay.classList.add("is-hidden");
-                btnPause.classList.remove("is-hidden");
-            });
-
-            // pause
-            btnPause1.addEventListener("click", function () {
-                video.pause();
-                btnPause1.classList.add("is-hidden");
-                btnPlay1.classList.remove("is-hidden");
-
-                btnPause.classList.add("is-hidden");
-                btnPlay.classList.remove("is-hidden");
-            });
-
-
-            btnChangeCamera1.addEventListener("click", function () {
-                useFrontCamera = !useFrontCamera;
-                init();
-            });
-
-            function stopVideoStream() {
-                if (videoStream) {
-                    videoStream.getTracks().forEach((track) => {
-                        track.stop();
-                    });
-                }
-            }
-
-            btnScreenshot.addEventListener("click", function () {
-                let img = document.getElementById('screenshot');
-                if (!img) {
-                    img = document.createElement("img");
-                    img.id = 'screenshot';
-                    img.style.width = '100%';
-                }
-                canvas.width = video.videoWidth;
-                canvas.height = video.videoHeight;
-                canvas.getContext("2d").drawImage(video, 0, 0);
-                img.src = canvas.toDataURL("image/png");
-                screenshotsContainer.prepend(img);
-            });
-
-
-            btnScreenshot1.addEventListener("click", function () {
-                let img = document.getElementById('screenshot');
-                if (!img) {
-                    img = document.createElement("img");
-                    img.id = 'screenshot';
-                    img.style.width = '100%';
-                }
-                canvas.width = video.videoWidth;
-                canvas.height = video.videoHeight;
-                canvas.getContext("2d").drawImage(video, 0, 0);
-                img.src = canvas.toDataURL("image/png");
-                screenshotsContainer.prepend(img);
-            });
-            async function init() {
-                stopVideoStream();
-                constraints.video.facingMode = useFrontCamera ? "user" : "environment";
-                try {
-                    videoStream = await navigator.mediaDevices.getUserMedia(constraints);
-                    video.srcObject = videoStream;
-                } catch (error) {
-                    console.log(error)
-                }
-            }
-
-            init();
-        }
-
-        function gtag() {
-            dataLayer.push(arguments)
-        }
-
-        window.dataLayer = window.dataLayer || [], gtag("js", new Date), gtag("config", "UA-111717926-1")
     </script>
 @stop
 @section('style')
-    <style>
-        #video {
-            width: 100%;
-        }
 
-        .is-hidden {
-            display: none;
-        }
-
-        .iconfont {
-            font-size: 24px;
-        }
-
-        .btns {
-            margin-top: 50px;
-            margin-bottom: auto;
-            text-align: center;
-
-        }
-
-        buttons-couple {
-            font-size: 22px;
-            padding: 8px 10px;
-            border: 2px solid #ccc;
-            border-radius: 10px;
-        }
-
-        .video-screenshot {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            grid-column-gap: 10px;
-        }
-
-        /*footer {*/
-        /*    margin: 20px 0;*/
-        /*    font-size: 16px;*/
-        /*}*/
-    </style>
 @stop

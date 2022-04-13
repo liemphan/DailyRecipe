@@ -22,32 +22,16 @@
 {{--    <button class=button id=btnScreenshot>Chụp hình</button>--}}
 {{--    <button class=button id=btnChangeCamera style="padding: 6px 10px;">Đổi camera</button>--}}
 {{--</div>--}}
-    <div class=items-center>
-<div class=video-screenshot>
-    <video autoplay id=video></video>
-    <div>
-        <div id=screenshotsContainer>
-            <canvas id=canvas class=is-hidden></canvas>
-        </div>
-    </div>
-</div>
 
-<div class="btns" >
-    <button class="button is-hidden" id=btnPlay1>Play Camera</button>
-    <button class="button" id=btnPause1>Stop Camera</button>
-    <button class=button id=btnScreenshot1>Take a Photo</button>
-    <button class=button id=btnChangeCamera1>Change Camera</button>
-</div>
-<div>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    ch1>Demo file upload to Deep Learning API</hl>
+    <input id="sortpicture" type="file" name="sortpic" />
+    <button id="upload">Upload</button>
 
-{{--    @yield('scripts1')--}}
 
-    <ins class=adsbygoogle style="display:block; text-align:center;" data-ad-layout=in-article data-ad-format=fluid
-         data-ad-client=ca-pub-1121308659421064 data-ad-slot=8232164616></ins>
-    <script>(adsbygoogle = window.adsbygoogle || []).push({})</script>
-    <div></div>
-</div>
-    </div>
+
+
+
 </main>
 @stop
 

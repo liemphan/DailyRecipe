@@ -5,7 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="274eeb44-2be1-4c79-980b-c542185305a9" name="Changes" comment="update bookstack to dailyrecipe">
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/RecipemenuController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/RecipemenuController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.env" beforeDir="false" afterPath="$PROJECT_DIR$/.env" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Entities/Models/RecipeMenu.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Entities/Models/Recipemenu.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/common/header.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/common/header.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/search/identified/camera.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/search/identified/camera.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/search/identified/webcam.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/search/identified/webcam.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/composer/autoload_classmap.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/autoload_classmap.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/composer/autoload_files.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/autoload_files.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/composer/autoload_psr4.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/autoload_psr4.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/composer/autoload_static.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/autoload_static.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -15,6 +24,13 @@
   <component name="ComposerSettings" doNotAsk="true" synchronizationState="SYNCHRONIZE">
     <pharConfigPath>$PROJECT_DIR$/composer.json</pharConfigPath>
     <execution />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
@@ -205,16 +221,43 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../Fruits_Vegetables_Classifier_WebApp-master" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="reference.webide.settings.project.settings.php" />
+    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\DailyRecipe\Python" />
+    </key>
+  </component>
   <component name="RunManager" selected="PHPUnit.phpunit.xml">
+    <configuration default="true" type="PythonConfigurationType" factoryName="Python">
+      <module name="DailyRecipe" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="true" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="BookStack-master" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
       <TestRunner configuration_file="$PROJECT_DIR$/phpunit.xml" directory="$PROJECT_DIR$" />
       <method v="2" />
@@ -225,7 +268,6 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="PHPUnit.BookStack-master" />
         <item itemvalue="PHPUnit.BookStack-master" />
       </list>
     </recent_temporary>
@@ -314,6 +356,11 @@
       <workItem from="1647511128143" duration="2980000" />
       <workItem from="1647514295515" duration="19000" />
       <workItem from="1647514653812" duration="80000" />
+      <workItem from="1649727975653" duration="2054000" />
+      <workItem from="1649730208930" duration="709000" />
+      <workItem from="1649731075957" duration="312000" />
+      <workItem from="1649797867832" duration="2762000" />
+      <workItem from="1649812946043" duration="280000" />
     </task>
     <task id="LOCAL-00001" summary="add project">
       <created>1639398042116</created>
@@ -334,6 +381,16 @@
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.History.Properties">
+    <option name="COLUMN_ID_ORDER">
+      <list>
+        <option value="Default.Root" />
+        <option value="Default.Author" />
+        <option value="Default.Date" />
+        <option value="Default.Subject" />
+      </list>
+    </option>
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
@@ -375,6 +432,7 @@
         <entry key="c31dfc9d-d606-40da-b389-3a0a8c94a909" value="TOOL_WINDOW" />
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="add project" />
