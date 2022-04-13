@@ -23,21 +23,50 @@
 {{--    <button class=button id=btnChangeCamera style="padding: 6px 10px;">Đổi camera</button>--}}
 {{--</div>--}}
     <div class=items-center>
-<div class=video-screenshot>
-    <video autoplay id=video></video>
-    <div>
-        <div id=screenshotsContainer>
-            <canvas id=canvas class=is-hidden></canvas>
-        </div>
-    </div>
-</div>
+{{--<div class=video-screenshot>--}}
+{{--    <video autoplay id=video></video>--}}
+{{--    <div>--}}
+{{--        <div id=screenshotsContainer>--}}
+{{--            <canvas id=canvas class=is-hidden></canvas>--}}
+{{--        </div>--}}
+{{--    </div>--}}
+{{--</div>--}}
 
-<div class="btns" >
-    <button class="button is-hidden" id=btnPlay1>Play Camera</button>
-    <button class="button" id=btnPause1>Stop Camera</button>
-    <button class=button id=btnScreenshot1>Take a Photo</button>
-    <button class=button id=btnChangeCamera1>Change Camera</button>
-</div>
+{{--<div class="btns" >--}}
+{{--    <button class="button is-hidden" id=btnPlay1>Play Camera</button>--}}
+{{--    <button class="button" id=btnPause1>Stop Camera</button>--}}
+{{--    <button class=button id=btnScreenshot1>Take a Photo</button>--}}
+{{--    <button class=button id=btnChangeCamera1>Change Camera</button>--}}
+{{--</div>--}}
+
+        <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+        <input id="sortpicture" type="file" name="sortpic" />
+        <button id="upload">Upload</button>
+
+        <script>
+            $('#upload').on('click', function() {
+                var file_data = $('#sortpicture').prop('files')[0];
+                var form_data = new FormData();
+                form_data.append('file', file_data);
+                //alert(form_data);
+                $.ajax({
+                    url: 'http://localhost:8080/upload', // point to server-side PHP script
+                    //dataType: 'text',  // what to expect back from the PHP script, if anything
+                    cache: false,
+                    contentType: false,
+                    processData: false,
+                    data: form_data,
+                    type: 'post',
+                    success: function(api_resp){
+                        alert('This image is: ' + api_resp); // display response from the PHP script, if any
+                    },
+                    error: function(err){
+                        alert( err.responseText);
+                    }
+                });
+            });
+        </script>
+
 <div>
 
 {{--    @yield('scripts1')--}}
