@@ -45,7 +45,7 @@
     @include('common.footer')
     <div class="text-right">
 {{--        <nav style="background-color: {{ setting('app-color') }};" refs="header-mobile-toggle@menu" class="header-links hide-over-l main-menu nav-tabs tri-layout-mobile-tab">--}}
-        <nav  refs="header-mobile-toggle@menu" class="header-links hide-over-l main-menu nav-tabs tri-layout-mobile-tab primary-background">
+        <nav id="nav" refs="header-mobile-toggle@menu" class="hide-over-l main-menu nav-tabs tri-layout-mobile-tab primary-background">
         <div class="links text-center">
             @if (hasAppAccess())
                 @if(userCanOnAny('view', \DailyRecipe\Entities\Models\Recipemenu::class) || userCan('recipemenu-view-all') || userCan('recipemenu-view-own'))
