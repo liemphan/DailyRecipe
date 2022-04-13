@@ -5,7 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="274eeb44-2be1-4c79-980b-c542185305a9" name="Changes" comment="update bookstack to dailyrecipe">
+      <change beforePath="$PROJECT_DIR$/.idea/DailyRecipe.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/DailyRecipe.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/.package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/search/identified/camera.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/search/identified/camera.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/search/identified/webcam.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/search/identified/webcam.blade.php" afterDir="false" />
     </list>
