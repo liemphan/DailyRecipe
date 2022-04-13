@@ -235,9 +235,6 @@ Route::middleware('auth')->group(function () {
     // Audit Log
     Route::get('/settings/audit', [AuditLogController::class, 'index']);
 
-    //Report List
-    Route::get('/settings/reportlist', [AuditLogController::class, 'reportList']);
-
     // Users
     Route::get('/settings/users', [UserController::class, 'index']);
     Route::get('/settings/users/create', [UserController::class, 'create']);
@@ -339,3 +336,8 @@ Route::get('/search/identified/ingredients', [IdentifiedIngredientsController::c
 // Report
 Route::get('/recipes/{recipeSlug}/report', [ReportController::class, 'showReport']);
 Route::post('/recipes/{recipeSlug}/storeReport/', [ReportController::class, 'store']);
+
+//Report List
+Route::get('/settings/reportlist', [ReportController::class, 'reportList']);
+Route::get('/recipes/{slug}/{id}/deactive', [ReportController::class, 'showDelete']);
+//Route::post('/recipes/{slug}/deactive', [ReportController::class, 'showDelete']);

@@ -3,9 +3,7 @@
 {{--    <input type="hidden" name="type" value="{{ get_class($entity) }}">--}}
 {{--    <input type="hidden" name="id" value="{{ $entity->id }}">--}}
 {{--    <button type="submit" class="icon-list-item text-primary">--}}
-<form action="{{url('https://www.facebook.com/sharer/sharer.php?u='). $recipe->getUrl() }}" method="POST">
-    <button class="button">
+    <a href="{{ url('https://www.facebook.com/sharer/sharer.php?u='). $recipe->getUrl() }}" class="icon-list-item">
         <span>@icon('auth/facebook')</span>
         <span>{{ trans('entities.share_facebook') }}</span>
-    </button>
-</form>
+</a>
