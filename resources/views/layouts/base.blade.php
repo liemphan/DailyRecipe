@@ -45,7 +45,7 @@
     @include('common.footer')
     <div class="text-right">
 {{--        <nav style="background-color: {{ setting('app-color') }};" refs="header-mobile-toggle@menu" class="header-links hide-over-l main-menu nav-tabs tri-layout-mobile-tab">--}}
-        <nav  refs="header-mobile-toggle@menu" class="header-links hide-over-l main-menu nav-tabs tri-layout-mobile-tab primary-background">
+        <nav id="nav" refs="header-mobile-toggle@menu" class="hide-over-l main-menu nav-tabs tri-layout-mobile-tab primary-background">
         <div class="links text-center">
             @if (hasAppAccess())
                 @if(userCanOnAny('view', \DailyRecipe\Entities\Models\Recipemenu::class) || userCan('recipemenu-view-all') || userCan('recipemenu-view-own'))
@@ -57,7 +57,7 @@
                     <a class="items-center normal"  href="{{ url('/recipes') }}"><span class="white-content">@icon('recipes')</span></a>
 
 {{--                <a href="{{ url('/search/identified/ingredients') }}">@icon('recipes')<br>Identified</a>--}}
-                <a class="items-center big-svg"  href="{{ url('/search/identified/ingredients') }}"><span class="white-content">@icon('camera')</span></a>
+                <a class="items-center big-svg border"  href="{{ url('/search/identified/ingredients') }}">@icon('camera')</a>
 
 {{--                @if(signedInUser() && userCan('settings-manage'))--}}
 {{--                    <a href="{{ url('/settings') }}">@icon('settings')<br>{{ trans('settings.settings') }}</a>--}}
@@ -75,7 +75,7 @@
                     @if(setting('registration-enabled') && config('auth.method') === 'standard')
                             <div class="dropup">
                                 <a class="dropbtn">
-                                    <span class="normal white-content">@icon('login')</span><br>
+                                    <span class="normal white-content">@icon('person')</span><br>
                                     {{--                            <span class="name">{{ $currentUser->getShortName(9) }}</span>--}}</a>
                                 <div class="dropup-content">
                         <a href="{{ url('/register') }}">@icon('new-user'){{ trans('auth.sign_up') }}</a>

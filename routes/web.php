@@ -34,6 +34,7 @@ use Illuminate\Session\Middleware\StartSession;
 use Illuminate\Support\Facades\Route;
 use Illuminate\View\Middleware\ShareErrorsFromSession;
 use DailyRecipe\Http\Controllers\IdentifiedIngredientsController;
+use DailyRecipe\Http\Controllers\RequestController;
 
 Route::get('/status', [StatusController::class, 'show']);
 Route::get('/robots.txt', [HomeController::class, 'robots']);
@@ -341,3 +342,9 @@ Route::post('/recipes/{recipeSlug}/storeReport/', [ReportController::class, 'sto
 Route::get('/settings/reportlist', [ReportController::class, 'reportList']);
 Route::get('/recipes/{slug}/{id}/deactive', [ReportController::class, 'showDelete']);
 //Route::post('/recipes/{slug}/deactive', [ReportController::class, 'showDelete']);
+
+// Requests
+Route::get('/settings/users/{id}/sendRequest', [RequestController::class, 'sendRequest']);
+Route::get('/settings/users/{id}/acceptRequest', [RequestController::class, 'acceptRequest']);
+Route::get('/settings/users/{id}/rejectRequest', [RequestController::class, 'rejectRequest']);
+

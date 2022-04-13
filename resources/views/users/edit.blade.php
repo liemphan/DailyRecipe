@@ -62,7 +62,38 @@
                 </div>
             </form>
         </section>
+        @if(user()->hasRole(3))
+            <section  class="card content-wrap auto-height">
+                <h2 class="list-heading">Request Editor</h2>
+                <p>This option will send to the admin a request to become an editor to create recipes and menus.</p>
 
+                <div class="grid half gap-xl v-center pb-s">
+
+                    @if($user->id === user()->id)
+                        @if( !isset($requests) && is_null($requests) )
+                            <div></div>
+                            <div class="text-m-right">
+                                <a href="{{ $user->getEditUrl('sendRequest') }}" class="button outline">Send Request</a>
+                            </div>
+
+                        @elseif($requests->status == 1)
+                            <div></div>
+                            <div class="text-m-right">
+                                <p>Waiting for admin approval</p>
+                            </div>
+
+                        @elseif($requests->status == 3)
+                            <div>
+                                <p style="color: red; font-size: 15px">Your request had been rejected.</p>
+                            </div>
+                            <div class="text-m-right">
+                                <span>You can ask for supporting by contact us via email <a href="mailto:dailyrecipefpt@gmail.com">dailyrecipefpt@gmail.com</a>. </span>
+                            </div>
+                        @endif
+                    @endif
+                </div>
+            </section>
+        @endif
         <section class="card content-wrap auto-height">
             <h2 class="list-heading">{{ trans('settings.users_mfa') }}</h2>
             <p>{{ trans('settings.users_mfa_desc') }}</p>

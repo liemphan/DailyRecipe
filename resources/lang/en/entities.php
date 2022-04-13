@@ -147,6 +147,7 @@ return [
     'recipes_sort_show_other' => 'Show Other Recipes',
     'recipes_sort_save' => 'Save New Order',
 
+
     // Chapters
     'chapter' => 'Chapter',
     'chapters' => 'Chapters',
@@ -311,6 +312,7 @@ return [
     'profile_not_created_chapters' => ':userName has not created any chapters',
     'profile_not_created_recipes' => ':userName has not created any recipes',
     'profile_not_created_menus' => ':userName has not created any menus',
+    'request_editor_success' => 'Send request success',
 
     // Comments
     'comment' => 'Comment',

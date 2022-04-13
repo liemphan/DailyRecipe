@@ -3,6 +3,7 @@
 namespace DailyRecipe\Http\Controllers;
 
 use DailyRecipe\Actions\ActivityType;
+use DailyRecipe\Actions\RequestRepo;
 use DailyRecipe\Auth\Access\SocialAuthService;
 use DailyRecipe\Auth\Access\UserInviteService;
 use DailyRecipe\Auth\User;
@@ -21,16 +22,18 @@ class UserController extends Controller
     protected $userRepo;
     protected $inviteService;
     protected $imageRepo;
+    protected $requestRepo;
 
     /**
      * UserController constructor.
      */
-    public function __construct(User $user, UserRepo $userRepo, UserInviteService $inviteService, ImageRepo $imageRepo)
+    public function __construct(User $user, UserRepo $userRepo, UserInviteService $inviteService, ImageRepo $imageRepo, RequestRepo $requestRepo)
     {
         $this->user = $user;
         $this->userRepo = $userRepo;
         $this->inviteService = $inviteService;
         $this->imageRepo = $imageRepo;
+        $this->requestRepo = $requestRepo;
     }
 
     /**
@@ -45,11 +48,10 @@ class UserController extends Controller
             'sort' => $request->get('sort', 'name'),
         ];
         $users = $this->userRepo->getAllUsersPaginatedAndSorted(20, $listDetails);
-
         $this->setPageTitle(trans('settings.users'));
         $users->appends($listDetails);
-
-        return view('users.index', ['users' => $users, 'listDetails' => $listDetails]);
+        $requests = $this->requestRepo->getAllRequests();
+        return view('users.index', ['users' => $users, 'listDetails' => $listDetails, 'requests' => $requests]);
     }
 
     /**
@@ -132,13 +134,14 @@ class UserController extends Controller
         $mfaMethods = $user->mfaValues->groupBy('method');
         $this->setPageTitle(trans('settings.user_profile'));
         $roles = $this->userRepo->getAllRoles();
-
+        $requests = $this->requestRepo->getFirstByCreateBy($user->id);
         return view('users.edit', [
             'user' => $user,
             'activeSocialDrivers' => $activeSocialDrivers,
             'mfaMethods' => $mfaMethods,
             'authMethod' => $authMethod,
             'roles' => $roles,
+            'requests' => $requests,
         ]);
     }
 

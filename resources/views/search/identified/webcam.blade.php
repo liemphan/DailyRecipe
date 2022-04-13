@@ -29,59 +29,59 @@
                     }
                 },
             };
-
-            // play
-            btnPlay.addEventListener("click", function () {
-                video.play();
-                btnPlay.classList.add("is-hidden");
-                btnPause.classList.remove("is-hidden");
-
-                btnPlay1.classList.add("is-hidden");
-                btnPause1.classList.remove("is-hidden");
-            });
-
-            // pause
-            btnPause.addEventListener("click", function () {
-                video.pause();
-                btnPause.classList.add("is-hidden");
-                btnPlay.classList.remove("is-hidden");
-
-                btnPause1.classList.add("is-hidden");
-                btnPlay1.classList.remove("is-hidden");
-            });
-
-
-            btnChangeCamera.addEventListener("click", function () {
-                useFrontCamera = !useFrontCamera;
-                init();
-            });
-
-
-            // play
-            btnPlay1.addEventListener("click", function () {
-                video.play();
-                btnPlay1.classList.add("is-hidden");
-                btnPause1.classList.remove("is-hidden");
-
-                btnPlay.classList.add("is-hidden");
-                btnPause.classList.remove("is-hidden");
-            });
-
-            // pause
-            btnPause1.addEventListener("click", function () {
-                video.pause();
-                btnPause1.classList.add("is-hidden");
-                btnPlay1.classList.remove("is-hidden");
-
-                btnPause.classList.add("is-hidden");
-                btnPlay.classList.remove("is-hidden");
-            });
-
-
-            btnChangeCamera1.addEventListener("click", function () {
-                useFrontCamera = !useFrontCamera;
-                init();
-            });
+            //
+            // // play
+            // btnPlay.addEventListener("click", function () {
+            //     video.play();
+            //     btnPlay.classList.add("is-hidden");
+            //     btnPause.classList.remove("is-hidden");
+            //
+            //     btnPlay1.classList.add("is-hidden");
+            //     btnPause1.classList.remove("is-hidden");
+            // });
+            //
+            // // pause
+            // btnPause.addEventListener("click", function () {
+            //     video.pause();
+            //     btnPause.classList.add("is-hidden");
+            //     btnPlay.classList.remove("is-hidden");
+            //
+            //     btnPause1.classList.add("is-hidden");
+            //     btnPlay1.classList.remove("is-hidden");
+            // });
+            //
+            //
+            // btnChangeCamera.addEventListener("click", function () {
+            //     useFrontCamera = !useFrontCamera;
+            //     init();
+            // });
+            //
+            //
+            // // play
+            // btnPlay1.addEventListener("click", function () {
+            //     video.play();
+            //     btnPlay1.classList.add("is-hidden");
+            //     btnPause1.classList.remove("is-hidden");
+            //
+            //     btnPlay.classList.add("is-hidden");
+            //     btnPause.classList.remove("is-hidden");
+            // });
+            //
+            // // pause
+            // btnPause1.addEventListener("click", function () {
+            //     video.pause();
+            //     btnPause1.classList.add("is-hidden");
+            //     btnPlay1.classList.remove("is-hidden");
+            //
+            //     btnPause.classList.add("is-hidden");
+            //     btnPlay.classList.remove("is-hidden");
+            // });
+            //
+            //
+            // btnChangeCamera1.addEventListener("click", function () {
+            //     useFrontCamera = !useFrontCamera;
+            //     init();
+            // });
 
             function stopVideoStream() {
                 if (videoStream) {

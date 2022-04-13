@@ -54,4 +54,6 @@ class ActivityType
 
     const MFA_SETUP_METHOD = 'mfa_setup_method';
     const MFA_REMOVE_METHOD = 'mfa_remove_method';
+
+    const REQUEST_EDITOR = 'request_editor';
 }

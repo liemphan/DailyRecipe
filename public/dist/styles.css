@@ -1653,6 +1653,7 @@ body.flexbox #content {
   grid-template-columns: 1fr 4fr 1fr;
   grid-template-areas: "a b c";
   grid-column-gap: 48px;
+  margin-top: 50px;
 }
 .tri-layout-container .tri-layout-right {
   grid-area: c;
@@ -1664,7 +1665,6 @@ body.flexbox #content {
 }
 .tri-layout-container .tri-layout-middle {
   grid-area: b;
-  padding-top: 16px;
   min-width: 0;
 }
 
@@ -1679,13 +1679,13 @@ body.flexbox #content {
 @media screen and (min-width: 1000px) and (max-width: 1400px) {
   .tri-layout-left {
     position: sticky;
-    top: 16px;
+    top: 0px;
   }
 }
 @media screen and (min-width: 1400px) {
   .tri-layout-left-contents, .tri-layout-right-contents {
     padding: 16px;
-    position: sticky;
+    position: relative;
     top: 16px;
     max-height: 100vh;
     min-height: 50vh;
@@ -4909,7 +4909,7 @@ html[dir=rtl] .mobile-menu-toggle {
 }
 .tri-layout-mobile-tabs {
   position: sticky;
-  top: 0;
+  top: 60px;
   z-index: 5;
   background-color: #FFF;
   border-bottom: 1px solid #DDD;
@@ -5731,9 +5731,10 @@ html.dark-mode .entity-list-item-image .svg-icon {
 .dropup-content a {
   color: black;
   padding: 8px 10px;
-  text-decoration: none;
+  /*text-decoration: none;*/
   display: block;
   float: left;
+  border: none;
 }
 .dropup-content button {
   color: black;
@@ -6653,6 +6654,27 @@ table.table .table-entity-item {
   height: 25px;
 }
 
+.flex-svg svg{
+  width: 35px;
+  height: 35px;
+}
+
+
+.border{
+  color: #045856 !important;
+  background: #ffffff;
+  border: #ffffff solid 2px;
+  border-radius: 50px;
+  margin-left: -5px;
+}
+.border svg{
+  margin-left: 3px;
+}
+
+.margin-settings{
+  margin-top: 70px;
+}
+
 .med-avatar{
   width: 25px;
   height: 25px;
@@ -6665,3 +6687,9 @@ table.table .table-entity-item {
 .white-content{
   color: #ffffff;
 }
+
+.big-video video{
+  width: 200%;
+  height: 100%;
+}
+
