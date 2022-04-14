@@ -233,6 +233,8 @@ return [
     'user_api_token_delete_confirm' => 'Are you sure you want to delete this API token?',
     'user_api_token_delete_success' => 'API token successfully deleted',
 
+    //Report
+    'reportlist' => 'Report',
     //! If editing translations files directly please ignore this in all
     //! languages apart from en. Content will be auto-copied from en.
     //!////////////////////////////////

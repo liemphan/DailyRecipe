@@ -10,6 +10,7 @@ class ActivityType
     const PAGE_RESTORE = 'page_restore';
     const PAGE_MOVE = 'page_move';
     const REPORT_RECIPE = 'recipe_report';
+    const REPORT_UPDATE = 'report_update';
     const CHAPTER_CREATE = 'chapter_create';
     const CHAPTER_UPDATE = 'chapter_update';
     const CHAPTER_DELETE = 'chapter_delete';

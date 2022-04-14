@@ -5,7 +5,7 @@
 
         <div class="grid left-focus v-center no-row-gap">
             <div class="py-m">
-                @include('settings.parts.navbar', ['selected' => 'audit'])
+                @include('settings.parts.navbar', ['selected' => 'reportlist'])
             </div>
         </div>
 
@@ -14,18 +14,18 @@
             <p class="text-muted">Below is the list of reported recipe(s), You will decide it should be keep or not</p>
 
             <div class="flex-container-row">
-                <div component="dropdown" class="list-sort-type dropdown-container mr-m">
-                    <label for="">{{ trans('settings.audit_event_filter') }}</label>
-                    <button refs="dropdown@toggle" aria-haspopup="true" aria-expanded="false" aria-label="{{ trans('common.sort_options') }}" class="input-base text-left">{{ $listDetails['event'] ?: trans('settings.audit_event_filter_no_filter') }}</button>
-                    <ul refs="dropdown@menu" class="dropdown-menu">
-                        <li @if($listDetails['event'] === '') class="active" @endif><a href="{{ sortUrl('/settings/audit', $listDetails, ['event' => '']) }}">{{ trans('settings.audit_event_filter_no_filter') }}</a></li>
-                        @foreach($activityTypes as $type)
-                            <li @if($type === $listDetails['event']) class="active" @endif><a href="{{ sortUrl('/settings/audit', $listDetails, ['event' => $type]) }}">{{ $type }}</a></li>
-                        @endforeach
-                    </ul>
-                </div>
+{{--                <div component="dropdown" class="list-sort-type dropdown-container mr-m">--}}
+{{--                    <label for="">{{ trans('settings.audit_event_filter') }}</label>--}}
+{{--                    <button refs="dropdown@toggle" aria-haspopup="true" aria-expanded="false" aria-label="{{ trans('common.sort_options') }}" class="input-base text-left">{{ $listDetails['event'] ?: trans('settings.audit_event_filter_no_filter') }}</button>--}}
+{{--                    <ul refs="dropdown@menu" class="dropdown-menu">--}}
+{{--                        <li @if($listDetails['event'] === '') class="active" @endif><a href="{{ sortUrl('/settings/audit', $listDetails, ['event' => '']) }}">{{ trans('settings.audit_event_filter_no_filter') }}</a></li>--}}
+{{--                        @foreach($activityTypes as $type)--}}
+{{--                            <li @if($type === $listDetails['event']) class="active" @endif><a href="{{ sortUrl('/settings/audit', $listDetails, ['event' => $type]) }}">{{ $type }}</a></li>--}}
+{{--                        @endforeach--}}
+{{--                    </ul>--}}
+{{--                </div>--}}
 
-                <form action="{{ url('/settings/audit') }}" method="get" class="flex-container-row mr-m">
+                <form action="{{ url('/settings/reportlist') }}" method="get" class="flex-container-row mr-m">
                     @if(!empty($listDetails['event']))
                         <input type="hidden" name="event" value="{{ $listDetails['event'] }}">
                     @endif
@@ -41,38 +41,70 @@
                         </div>
                     @endforeach
 
-                    <div class="form-group ml-auto"
+                    <div class="form-group ml-auto" style="margin-right: 12px"
                          component="submit-on-change"
                          option:submit-on-change:filter='[name="user"]'>
                         <label for="owner">{{ trans('settings.audit_table_user') }}</label>
                         @include('form.user-select', ['user' => $listDetails['user'] ? \DailyRecipe\Auth\User::query()->find($listDetails['user']) : null, 'name' => 'user', 'compact' =>  true])
                     </div>
+                    <div class="form-group ml-auto" style="margin-right: 12px; margin-top: -5px;">
+                        <label for="owner">Sort by date</label><a class="button" href="{{ sortUrl('/settings/reportlist', $listDetails, ['sort' => 'created_at']) }}">Sort by created date</a>
+                    </div>
+                        <div class="form-group mr-m " style="margin-top: -5px;"> <label for="owner">Sort by recipe</label><a class="button" href="{{ sortUrl('/settings/reportlist', $listDetails, ['sort' => 'entity_id']) }}">Sort by recipe</a>
+                    </div>
                 </form>
-            </div>
 
+            </div>
             <hr class="mt-l mb-s">
 
-            {{ $activities->links() }}
+            {{ $reports->links() }}
 
             <table class="table">
                 <tbody>
                 <tr>
                     <th>Recipe</th>
+                    <th>Status</th>
                     <th>Title</th>
                     <th>Content</th>
                     <th>Created by</th>
-                    <th>
-                        <a href="{{ sortUrl('/settings/audit', $listDetails, ['sort' => 'created_at']) }}">Created Date</a></th>
+                    <th>Created Date</th>
+                    <th>Active/Deactive</th>
                 </tr>
-{{--                @foreach()--}}
+                @foreach($reports as $report)
+                    @if($report->entity && is_null($report->entity->deleted_at))
+                    <tr>
+                        <td width="40%">
+                            <a href="{{ $report->entity->getUrl() }}" class="table-entity-item">
+                                <span role="presentation" class="icon text-{{$report->entity->getType()}}">@icon($report->entity->getType())</span>
+                                <div class="text-{{ $report->entity->getType() }}">
+                                    {{ $report->entity->name }}
+                                </div>
+                            </a>
+                        </td>
+                        <td class="text-center">{{ $report->status ? 'Active' : 'Deactive' }}</td>
+                        <td>{{ $report->content }}</td>
+                        <td class="text-center">{{ $report->description }}</td>
+                        <td>
+                            @include('settings.parts.table-user', ['user' => $report->user, 'user_id' => $report->user_id])
+                        </td>
+                        <td>{{ $report->created_at }}</td>
+                        <td class="text-center text-muted">
+{{--                            <a href="{{url($report->entity->getUrl().'/restore')}}" style="color:forestgreen"> Active </a>--}}
+{{--                                |--}}
+                                <a href="{{url($report->entity->getUrl().'/'.$report->id.'/deactive')}}" style="color:red"> Deactive </a>
+                        </td>
+                {{--                @foreach()--}}
 {{--                    <tr>--}}
 {{--                        --}}
 {{--                    </tr>--}}
 {{--                @endforeach--}}
+                    </tr>
+                    @endif
+                @endforeach
                 </tbody>
             </table>
 
-            {{ $activities->links() }}
+            {{ $reports->links() }}
         </div>
 
     </div>
