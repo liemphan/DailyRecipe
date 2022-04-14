@@ -1,182 +1,175 @@
 @extends('search.identified.camera')
 @section('scripts')
     <script>
-        window.onload = async function () {
-            if (
-                !"mediaDevices" in navigator ||
-                !"getUserMedia" in navigator.mediaDevices
-            ) {
-                document.write('Not support API camera')
-                return;
-            }
-
-            const video = document.querySelector("#video");
-            const canvas = document.querySelector("#canvas");
-            const screenshotsContainer = document.querySelector("#screenshotsContainer");
-            let videoStream = null
-            let useFrontCamera = true; //camera trước
-            const constraints = {
-                video: {
-                    width: {
-                        min: 1280,
-                        ideal: 1920,
-                        max: 2560,
+        $(document).ready(function() {
+            $('#search').on('click', function () {
+                var file_data = $('#image_uploads').prop('files')[0];
+                var form_data = new FormData();
+                form_data.append('file', file_data);
+                var text = document.getElementById("lala")
+                //alert(form_data);
+                $.ajax({
+                    url: 'http://10.66.161.144:8080/upload', // point to server-side PHP script
+                    //dataType: 'text', // what to expect, back from the PHP script, if anything
+                    cache: false,
+                    contentType: false,
+                    processData: false,
+                    data: form_data,
+                    type: 'post',
+                    success: function (api_resp) {
+                        alert('Tấm ảnh này là :' + api_resp); // display response from the PHP script, if any
                     },
-                    height: {
-                        min: 720,
-                        ideal: 1080,
-                        max: 1440,
+                    error: function (err) {
+                        text.setAttribute('value', "canh");
+                        text.setAttribute('text', "canh");
+                        {{--text.innerHTML="Search".link({{url('/search')}})--}}
+                        // text.value=err.responseText;
+                        // alert(err.responseText);
+
                     }
-                },
+                });
+            });
+        });
+</script>
+@stop
+@section('scripts1')
+    <script>
+            const input = document.querySelector('input');
+            const preview = document.querySelector('.preview');
+
+            input.style.opacity = 0;
+
+            input.addEventListener('change', updateImageDisplay);
+
+            function updateImageDisplay() {
+                while(preview.firstChild) {
+                    preview.removeChild(preview.firstChild);
+                }
+
+                const curFiles = input.files;
+                if(curFiles.length === 0) {
+                    const para = document.createElement('p');
+                    para.textContent = 'No files currently selected for upload';
+                    preview.appendChild(para);
+                } else {
+                    const list = document.createElement('ol');
+                    preview.appendChild(list);
+
+                    for(const file of curFiles) {
+                        const listItem = document.createElement('li');
+                        const para = document.createElement('p');
+
+                        if(validFileType(file)) {
+                            para.textContent = `File name ${file.name}, file size ${returnFileSize(file.size)}.`;
+                            const image = document.createElement('img');
+                            image.src = URL.createObjectURL(file);
+
+                            listItem.appendChild(image);
+                            listItem.appendChild(para);
+                        } else {
+                            para.textContent = `File name ${file.name}: Not a valid file type. Update your selection.`;
+                            listItem.appendChild(para);
+                        }
+
+                        list.appendChild(listItem);
+                    }
+                }
+            }
+
+            // https://developer.mozilla.org/en-US/docs/Web/Media/Formats/Image_types
+            const fileTypes = [
+                'image/apng',
+                'image/bmp',
+                'image/gif',
+                'image/jpeg',
+                'image/pjpeg',
+                'image/png',
+                'image/svg+xml',
+                'image/tiff',
+                'image/webp',
+                `image/x-icon`
+            ];
+
+            function validFileType(file) {
+                return fileTypes.includes(file.type);
+            }
+
+            function returnFileSize(number) {
+                if(number < 1024) {
+                    return number + 'bytes';
+                } else if(number > 1024 && number < 1048576) {
+                    return (number/1024).toFixed(1) + 'KB';
+                } else if(number > 1048576) {
+                    return (number/1048576).toFixed(1) + 'MB';
+                }
             };
-            //
-            // // play
-            // btnPlay.addEventListener("click", function () {
-            //     video.play();
-            //     btnPlay.classList.add("is-hidden");
-            //     btnPause.classList.remove("is-hidden");
-            //
-            //     btnPlay1.classList.add("is-hidden");
-            //     btnPause1.classList.remove("is-hidden");
-            // });
-            //
-            // // pause
-            // btnPause.addEventListener("click", function () {
-            //     video.pause();
-            //     btnPause.classList.add("is-hidden");
-            //     btnPlay.classList.remove("is-hidden");
-            //
-            //     btnPause1.classList.add("is-hidden");
-            //     btnPlay1.classList.remove("is-hidden");
-            // });
-            //
-            //
-            // btnChangeCamera.addEventListener("click", function () {
-            //     useFrontCamera = !useFrontCamera;
-            //     init();
-            // });
-            //
-            //
-            // // play
-            // btnPlay1.addEventListener("click", function () {
-            //     video.play();
-            //     btnPlay1.classList.add("is-hidden");
-            //     btnPause1.classList.remove("is-hidden");
-            //
-            //     btnPlay.classList.add("is-hidden");
-            //     btnPause.classList.remove("is-hidden");
-            // });
-            //
-            // // pause
-            // btnPause1.addEventListener("click", function () {
-            //     video.pause();
-            //     btnPause1.classList.add("is-hidden");
-            //     btnPlay1.classList.remove("is-hidden");
-            //
-            //     btnPause.classList.add("is-hidden");
-            //     btnPlay.classList.remove("is-hidden");
-            // });
-            //
-            //
-            // btnChangeCamera1.addEventListener("click", function () {
-            //     useFrontCamera = !useFrontCamera;
-            //     init();
-            // });
-
-            function stopVideoStream() {
-                if (videoStream) {
-                    videoStream.getTracks().forEach((track) => {
-                        track.stop();
-                    });
-                }
-            }
-
-            btnScreenshot.addEventListener("click", function () {
-                let img = document.getElementById('screenshot');
-                if (!img) {
-                    img = document.createElement("img");
-                    img.id = 'screenshot';
-                    img.style.width = '100%';
-                }
-                canvas.width = video.videoWidth;
-                canvas.height = video.videoHeight;
-                canvas.getContext("2d").drawImage(video, 0, 0);
-                img.src = canvas.toDataURL("image/png");
-                screenshotsContainer.prepend(img);
-            });
 
 
-            btnScreenshot1.addEventListener("click", function () {
-                let img = document.getElementById('screenshot');
-                if (!img) {
-                    img = document.createElement("img");
-                    img.id = 'screenshot';
-                    img.style.width = '100%';
-                }
-                canvas.width = video.videoWidth;
-                canvas.height = video.videoHeight;
-                canvas.getContext("2d").drawImage(video, 0, 0);
-                img.src = canvas.toDataURL("image/png");
-                screenshotsContainer.prepend(img);
-            });
-            async function init() {
-                stopVideoStream();
-                constraints.video.facingMode = useFrontCamera ? "user" : "environment";
-                try {
-                    videoStream = await navigator.mediaDevices.getUserMedia(constraints);
-                    video.srcObject = videoStream;
-                } catch (error) {
-                    console.log(error)
-                }
-            }
-
-            init();
-        }
-
-        function gtag() {
-            dataLayer.push(arguments)
-        }
-
-        window.dataLayer = window.dataLayer || [], gtag("js", new Date), gtag("config", "UA-111717926-1")
     </script>
 @stop
+
 @section('style')
     <style>
-        #video {
-            width: 100%;
+        html {
+            font-family: sans-serif;
         }
 
-        .is-hidden {
-            display: none;
+        form ol {
+            padding-left: 0;
         }
 
-        .iconfont {
-            font-size: 24px;
+        form li, div > p {
+            background: #eee;
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+            list-style-type: none;
+            border: 1px solid black;
         }
 
-        .btns {
-            margin-top: 50px;
-            margin-bottom: auto;
+        form img {
+            height: 64px;
+            order: 1;
+        }
+
+        form p {
+            line-height: 32px;
+            padding-left: 10px;
+        }
+
+        form label, form button {
+            background-color: #7F9CCB;
+            padding: 5px 10px;
+            border-radius: 5px;
+            border: 1px ridge black;
+            font-size: 0.8rem;
+            height: auto;
+        }
+
+        form label:hover, form button:hover {
+            background-color: #2D5BA3;
+            color: white;
+        }
+
+        form label:active, form button:active {
+            background-color: #0D3F8F;
+            color: white;
+        }
+        .button {
+            background-color: #4CAF50; /* Green */
+            border: none;
+            color: white;
+            padding: 15px 32px;
             text-align: center;
-
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            -ms-transform: translate(-50%, -50%);
+            border-radius: 5px;
         }
-
-        buttons-couple {
-            font-size: 22px;
-            padding: 8px 10px;
-            border: 2px solid #ccc;
-            border-radius: 10px;
-        }
-
-        .video-screenshot {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            grid-column-gap: 10px;
-        }
-
-        /*footer {*/
-        /*    margin: 20px 0;*/
-        /*    font-size: 16px;*/
-        /*}*/
     </style>
 @stop
