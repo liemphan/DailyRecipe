@@ -7,6 +7,7 @@ use DailyRecipe\Entities\Models\Recipe;
 use DailyRecipe\Entities\Models\Recipemenu;
 
 use DailyRecipe\Entities\Models\Deletion;
+
 use DailyRecipe\Entities\Models\Entity;
 use DailyRecipe\Entities\Models\HasCoverImage;
 
@@ -16,7 +17,7 @@ use DailyRecipe\Uploads\ImageService;
 use Exception;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Carbon;
-
+use DailyRecipe\Entities\Models\Report;
 class TrashCan
 {
     /**

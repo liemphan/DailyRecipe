@@ -8,7 +8,7 @@
 
 @section('content')
 
-    <div id="main-content" class="flex-fill flex fill-height">
+    <div id="main-content" class="flex-fill flex fill-height mar-top">
         <form action="{{ $page->getUrlContent() }}" autocomplete="off" data-page-id="{{ $page->id }}" method="POST" class="flex flex-fill">
             {{ csrf_field() }}
 

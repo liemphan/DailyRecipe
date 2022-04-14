@@ -14,7 +14,7 @@
             ]])
         </div>
 
-        <div class="card content-wrap auto-height">
+        <div class="card content-wrap auto-height margin-settings">
             <h1 class="list-heading">{{ trans('entities.menus_permissions') }}</h1>
             @include('form.entity-permissions', ['model' => $menu])
         </div>

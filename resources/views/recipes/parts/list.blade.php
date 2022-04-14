@@ -1,4 +1,4 @@
-<main class="content-wrap mt-m card">
+<main style="margin-top: 32px;" class="content-wrap card">
     <div class="grid half v-center no-row-gap">
         <h1 class="list-heading">{{ trans('entities.recipes') }}</h1>
         <div class="text-m-right my-m">

@@ -1,5 +1,5 @@
 
-<nav class="active-link-list">
+<nav class="active-link-list margin-settings">
     @if(userCan('settings-manage'))
         <a href="{{ url('/settings') }}" @if($selected == 'settings') class="active" @endif>@icon('settings'){{ trans('settings.settings') }}</a>
         <a href="{{ url('/settings/maintenance') }}" @if($selected == 'maintenance') class="active" @endif>@icon('spanner'){{ trans('settings.maint') }}</a>
@@ -14,6 +14,6 @@
         <a href="{{ url('/settings/roles') }}" @if($selected == 'roles') class="active" @endif>@icon('lock-open'){{ trans('settings.roles') }}</a>
     @endif
      @if(userCan('settings-manage') && userCan('users-manage'))
-      <a href="{{ url('/settings/reportlist') }}" @if($selected == 'audit') class="active" @endif>@icon('check')Report List</a>
+      <a href="{{ url('/settings/reportlist') }}" @if($selected == 'reportlist') class="active" @endif>@icon('check')Report List</a>
       @endif
 </nav>

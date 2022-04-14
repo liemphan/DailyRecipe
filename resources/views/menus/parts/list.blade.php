@@ -1,5 +1,5 @@
 
-<main class="content-wrap mt-m card">
+<main class="content-wrap card margin-32">
 
     <div class="grid half v-center">
         <h1 class="list-heading">{{ trans('entities.menus') }}</h1>

@@ -1,28 +1,29 @@
 <?php
 
-namespace DailyRecipe\Actions;
+namespace DailyRecipe\Entities\Models;
 
-use DailyRecipe\Auth\User;
+use Carbon\Carbon;
 use DailyRecipe\Model;
 use DailyRecipe\Traits\HasCreatorAndUpdater;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\MorphTo;
 
+
 /**
- * @property User $user
+ * Class RecipeRevision.
+ *
  * @property int $id
- * @property string $content
- * @property string $description
- * @property int $status
+ * @property int user_id
+ * @property int status
+ * @property int $created_by
+ * @property Carbon $created_at
+ * @property Carbon $updated_at
+ *
  */
-class Report extends Model
+class Requests extends Model
 {
     use HasFactory;
     use HasCreatorAndUpdater;
-
-    protected $fillable = ['content', 'description', 'status' , 'user_id'];
-    protected $hidden = ['id', 'entity_id', 'entity_type', 'created_at', 'updated_at'];
 
     /**
      * Get the entity that this tag belongs to.
@@ -31,7 +32,6 @@ class Report extends Model
     {
         return $this->morphTo('entity');
     }
-
 
     /**
      * Get created date as a relative diff.
@@ -42,11 +42,5 @@ class Report extends Model
     {
         return $this->created_at->diffForHumans();
     }
-    /**
-     * Get the user this activity relates to.
-     */
-    public function user(): BelongsTo
-    {
-        return $this->belongsTo(User::class);
-    }
+
 }

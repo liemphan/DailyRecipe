@@ -14,7 +14,7 @@
             ]])
         </div>
 
-        <main class="card content-wrap">
+        <main class="card content-wrap margin-settings">
             <h1 class="list-heading">{{ trans('entities.recipes_permissions') }}</h1>
             @include('form.entity-permissions', ['model' => $recipe])
         </main>
