@@ -4922,7 +4922,7 @@ html.dark-mode .tri-layout-mobile-tabs {
 
 .tri-layout-mobile-tab {
   text-align: center;
-  border-bottom: 3px solid #BBB;
+  /*border-bottom: 3px solid #BBB;*/
   cursor: pointer;
   margin: 0;
   background-color: #FFF;
@@ -5720,7 +5720,8 @@ html.dark-mode .entity-list-item-image .svg-icon {
 .dropup-content {
   display: none;
   position: absolute;
-  bottom: 50px;
+  bottom: 60px;
+  left: -70px;
   background-color: #f1f1f1;
   min-width: 160px;
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
@@ -6405,7 +6406,7 @@ html.dark-mode .avatar[src$="user_avatar.png"] {
   border-radius: 40px;
   transition: all ease-in-out 180ms;
   opacity: 0;
-  z-index: 999;
+  z-index: 10;
   overflow: hidden;
 }
 [back-to-top] svg {
@@ -6663,16 +6664,20 @@ table.table .table-entity-item {
 .border{
   color: #045856 !important;
   background: #ffffff;
-  border: #ffffff solid 2px;
   border-radius: 50px;
   margin-left: -5px;
 }
 .border svg{
-  margin-left: 3px;
+  margin-inline-start: 2px;
+  margin-inline-end: 0.5px;
+  margin-bottom: -3px;
 }
 
 .margin-settings{
   margin-top: 70px;
+}
+.mar-top{
+  margin-top: 60px;
 }
 
 .med-avatar{
@@ -6691,5 +6696,18 @@ table.table .table-entity-item {
 .big-video video{
   width: 200%;
   height: 100%;
+}
+
+.margin-32{
+  margin-top: 32px;
+}
+
+.filter-background{
+  filter: saturate(0.8) brightness(0.8);
+}
+.fixed-top{
+  position: fixed;
+  top: 0;
+  width: 100%;
 }
 
