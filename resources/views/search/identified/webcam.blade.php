@@ -1,110 +1,75 @@
 @extends('search.identified.camera')
-
-
 @section('scripts')
     <script>
-    $(document).ready(function(){
+        const fileSelected = document.getElementById("fileSelect");
+        const   fileElem = document.getElementById("image_uploads");
+        const  fileList = document.getElementById("fileList");
 
-        $('#search').on('click', function() {
-            var file_data = $('#image_uploads').prop('files')[0];
-            var form_data = new FormData();
-            form_data.append('file', file_data);
-            //alert(form_data);
-            $.ajax({
-                url: 'http://10.66.164.112:8080/upload', // point to server-side PHP script
-                //dataType: 'text', // what to expect, back from the PHP script, if anything
-                cache: false,
-                contentType: false,
-                processData: false,
-                data: form_data,
-                type: 'post',
-                success: function(api_resp){
-                        var element = document.getElementById('id_image');
-                        element.setAttribute('value',api_resp);
-
-                },
-                error: function(err) {
-                    alert(err.responseText);
-                }
-            });
-        });
-
-
-
-        const input = document.querySelector('input');
-        const preview = document.querySelector('.preview');
-
-        input.style.opacity = 0;
-
-        input.addEventListener('change', updateImageDisplay);
-
-        function updateImageDisplay() {
-            while(preview.firstChild) {
-                preview.removeChild(preview.firstChild);
+        fileSelected.addEventListener("click", function (e) {
+            if (fileElem) {
+                fileElem.click();
             }
+            e.preventDefault(); // prevent navigation to "#"
+        }, false);
 
-            const curFiles = input.files;
-            if(curFiles.length === 0) {
-                const para = document.createElement('p');
-                para.textContent = 'No files currently selected for upload';
-                preview.appendChild(para);
+        fileElem.addEventListener("change", handleFiles, false);
+
+        function handleFiles() {
+            if (!this.files.length) {
+                fileList.innerHTML = "<p>No files selected!</p>";
             } else {
-                const list = document.createElement('ol');
-                preview.appendChild(list);
+                $(document).ready(function() {
 
-                for(const file of curFiles) {
-                    const listItem = document.createElement('li');
-                    const para = document.createElement('p');
+                    var file_data = $('#image_uploads').prop('files')[0];
+                    var form_data = new FormData();
+                    form_data.append('file', file_data);
+                    //alert(form_data);
+                    $.ajax({
+                        url: 'http://10.66.164.112:8080/upload', // point to server-side PHP script
+                        //dataType: 'text', // what to expect, back from the PHP script, if anything
+                        cache: false,
+                        contentType: false,
+                        processData: false,
+                        data: form_data,
+                        type: 'post',
+                        success: function (api_resp) {
+                            var element = document.getElementById('id_image');
+                            element.setAttribute('value', api_resp);
+                        },
+                        error: function (err) {
+                            alert(err.responseText);
+                        }
+                    });
 
-                    if(validFileType(file)) {
-                        para.textContent = `File name ${file.name}, file size ${returnFileSize(file.size)}.`;
-                        const image = document.createElement('img');
-                        image.src = URL.createObjectURL(file);
+                });
 
-                        listItem.appendChild(image);
-                        listItem.appendChild(para);
-                    } else {
-                        para.textContent = `File name ${file.name}: Not a valid file type. Update your selection.`;
-                        listItem.appendChild(para);
+                fileList.innerHTML = "";
+                const list = document.createElement("ul");
+                fileList.appendChild(list);
+                for (let i = 0; i < this.files.length; i++) {
+                    const li = document.createElement("li");
+                    list.appendChild(li);
+
+                    const img = document.createElement("img");
+                    img.src = URL.createObjectURL(this.files[i]);
+                    img.height = 60;
+                    img.onload = function() {
+                        URL.revokeObjectURL(this.src);
                     }
-
-                    list.appendChild(listItem);
+                    li.appendChild(img);
+                    const info = document.createElement("span");
+                    info.innerHTML = this.files[i].name + ": " + this.files[i].size + " bytes";
+                    li.appendChild(info);
                 }
+
             }
+
+
         }
 
-        // https://developer.mozilla.org/en-US/docs/Web/Media/Formats/Image_types
-        const fileTypes = [
-            'image/apng',
-            'image/bmp',
-            'image/gif',
-            'image/jpeg',
-            'image/pjpeg',
-            'image/png',
-            'image/svg+xml',
-            'image/tiff',
-            'image/webp',
-            `image/x-icon`
-        ];
-
-        function validFileType(file) {
-            return fileTypes.includes(file.type);
-        }
-
-        function returnFileSize(number) {
-            if(number < 1024) {
-                return number + 'bytes';
-            } else if(number > 1024 && number < 1048576) {
-                return (number/1024).toFixed(1) + 'KB';
-            } else if(number > 1048576) {
-                return (number/1048576).toFixed(1) + 'MB';
-            }
-        }
-    });
-
-        </script>
+    </script>
 @stop
-@section('style')
+@section('styles')
     <style>
         html {
             font-family: sans-serif;
@@ -172,4 +137,3 @@
         }
     </style>
 @stop
-
