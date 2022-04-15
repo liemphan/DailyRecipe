@@ -1,14 +1,17 @@
 @extends('search.identified.camera')
+
+
 @section('scripts')
     <script>
     $(document).ready(function(){
+
         $('#search').on('click', function() {
             var file_data = $('#image_uploads').prop('files')[0];
             var form_data = new FormData();
             form_data.append('file', file_data);
             //alert(form_data);
             $.ajax({
-                url: 'http://10.66.171.232:8080/upload', // point to server-side PHP script
+                url: 'http://10.66.164.112:8080/upload', // point to server-side PHP script
                 //dataType: 'text', // what to expect, back from the PHP script, if anything
                 cache: false,
                 contentType: false,
@@ -16,13 +19,17 @@
                 data: form_data,
                 type: 'post',
                 success: function(api_resp){
-                    alert('Tấm ảnh này là :'+ api_resp); // display response from the PHP script, if any
+                        var element = document.getElementById('id_image');
+                        element.setAttribute('value',api_resp);
+
                 },
                 error: function(err) {
                     alert(err.responseText);
                 }
             });
         });
+
+
 
         const input = document.querySelector('input');
         const preview = document.querySelector('.preview');
@@ -93,13 +100,10 @@
                 return (number/1048576).toFixed(1) + 'MB';
             }
         }
-
-         });
-
+    });
 
         </script>
 @stop
-
 @section('style')
     <style>
         html {
@@ -163,5 +167,9 @@
             -ms-transform: translate(-50%, -50%);
             border-radius: 5px;
         }
+        .img_uploads{
+            opacity: 0
+        }
     </style>
 @stop
+
