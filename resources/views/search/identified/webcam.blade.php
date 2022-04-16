@@ -1,9 +1,12 @@
 @extends('search.identified.camera')
 @section('scripts')
     <script>
+        // import {block} from "../../../../public/dist/app";
+
         const fileSelected = document.getElementById("fileSelect");
         const   fileElem = document.getElementById("image_uploads");
         const  fileList = document.getElementById("fileList");
+        const btnSearch = document.getElementById("search");
 
         fileSelected.addEventListener("click", function (e) {
             if (fileElem) {
@@ -18,6 +21,7 @@
             if (!this.files.length) {
                 fileList.innerHTML = "<p>No files selected!</p>";
             } else {
+                btnSearch.style.display="block";
                 $(document).ready(function() {
 
                     var file_data = $('#image_uploads').prop('files')[0];
@@ -37,29 +41,36 @@
                             element.setAttribute('value', api_resp);
                         },
                         error: function (err) {
-                            alert(err.responseText);
+
+                            var element = document.getElementById('id_image');
+                            element.setAttribute('value', 'canh');
+                            // alert(err.responseText);
                         }
                     });
 
                 });
 
+                // fileList.innerHTML = "<img>No files selected!</img>";
                 fileList.innerHTML = "";
-                const list = document.createElement("ul");
-                fileList.appendChild(list);
+                // const list = document.createElement("ul");
                 for (let i = 0; i < this.files.length; i++) {
-                    const li = document.createElement("li");
-                    list.appendChild(li);
+                //     const li = document.createElement("li");
+                //     list.appendChild(li);
 
                     const img = document.createElement("img");
+                    // img.className="cover"
                     img.src = URL.createObjectURL(this.files[i]);
-                    img.height = 60;
+                    // img.height = 1000;
+                    img.height =664;
                     img.onload = function() {
                         URL.revokeObjectURL(this.src);
                     }
-                    li.appendChild(img);
-                    const info = document.createElement("span");
-                    info.innerHTML = this.files[i].name + ": " + this.files[i].size + " bytes";
-                    li.appendChild(info);
+                    fileList.appendChild(img);
+                    // document.querySelector('.container').appendChild(img)
+                    // li.appendChild(img);
+                    // const info = document.createElement("span");
+                    // info.innerHTML = this.files[i].name + ": " + this.files[i].size + " bytes";
+                    // li.appendChild(info);
                 }
 
             }
@@ -69,6 +80,7 @@
 
     </script>
 @stop
+
 @section('styles')
     <style>
         html {
@@ -89,7 +101,8 @@
         }
 
         form img {
-            height: 64px;
+            height: auto;
+            width: auto;
             order: 1;
         }
 
