@@ -14,7 +14,7 @@
             ]])
         </div>
 
-        <div class="card content-wrap auto-height">
+        <div class="card content-wrap auto-height margin-32">
             <h1 class="list-heading">{{ trans('entities.menus_delete') }}</h1>
             <p>{{ trans('entities.menus_delete_explain', ['name' => $menu->name]) }}</p>
 

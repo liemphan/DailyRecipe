@@ -45,19 +45,19 @@
     @include('common.footer')
     <div class="text-right">
 {{--        <nav style="background-color: {{ setting('app-color') }};" refs="header-mobile-toggle@menu" class="header-links hide-over-l main-menu nav-tabs tri-layout-mobile-tab">--}}
-        <nav id="nav" refs="header-mobile-toggle@menu" class="hide-over-l main-menu nav-tabs tri-layout-mobile-tab primary-background">
+        <nav id="nav" refs="header-mobile-toggle@menu" class="hide-over-l main-menu nav-tabs tri-layout-mobile-tab primary-background filter-background">
         <div class="links text-center">
             @if (hasAppAccess())
                 @if(userCanOnAny('view', \DailyRecipe\Entities\Models\Recipemenu::class) || userCan('recipemenu-view-all') || userCan('recipemenu-view-own'))
 {{--                    <a href="{{ url('/menus') }}">@icon('recipemenu')<br>{{ trans('entities.menus') }}</a>--}}
-                    <a class="items-center normal" href="{{ url('/menus') }}"><span class="white-content">@icon('recipemenu')</span></a>
+                    <a style="border-left: 1px solid rgba(0, 0, 0, 0.1)" class="items-center normal" href="{{ url('/menus') }}"><span class="white-content">@icon('recipemenu')</span></a>
                 @endif
 
 {{--                <a href="{{ url('/recipes') }}">@icon('recipes')<br>{{ trans('entities.recipes') }}</a>--}}
                     <a class="items-center normal"  href="{{ url('/recipes') }}"><span class="white-content">@icon('recipes')</span></a>
 
 {{--                <a href="{{ url('/search/identified/ingredients') }}">@icon('recipes')<br>Identified</a>--}}
-                <a class="items-center big-svg border"  href="{{ url('/search/identified/ingredients') }}">@icon('camera')</a>
+                <a class="items-center big-svg border big-svg-icon"  href="{{ url('/search/identified/ingredients') }}">@icon('camera')</a>
 
 {{--                @if(signedInUser() && userCan('settings-manage'))--}}
 {{--                    <a href="{{ url('/settings') }}">@icon('settings')<br>{{ trans('settings.settings') }}</a>--}}

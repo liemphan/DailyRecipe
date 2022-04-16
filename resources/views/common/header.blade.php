@@ -1,4 +1,4 @@
-<header style="position: fixed; top: 0; width: 100%;" id="header" component="header-mobile-toggle" class="primary-background">
+<header id="header" component="header-mobile-toggle" class="primary-background fixed-top">
     <div class="grid mx-l">
 
         <div>
