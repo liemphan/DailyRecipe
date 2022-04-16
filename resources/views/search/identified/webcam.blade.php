@@ -7,6 +7,7 @@
         const   fileElem = document.getElementById("image_uploads");
         const  fileList = document.getElementById("fileList");
         const btnSearch = document.getElementById("search");
+        const btnIngredient= document.getElementById("id_image");
 
         fileSelected.addEventListener("click", function (e) {
             if (fileElem) {
@@ -21,15 +22,16 @@
             if (!this.files.length) {
                 fileList.innerHTML = "<p>No files selected!</p>";
             } else {
-                btnSearch.style.display="block";
-                $(document).ready(function() {
+                btnIngredient.style.display="block";
+                fileSelected.style.display="none";
 
+                $(document).ready(function() {
                     var file_data = $('#image_uploads').prop('files')[0];
                     var form_data = new FormData();
                     form_data.append('file', file_data);
                     //alert(form_data);
                     $.ajax({
-                        url: 'http://10.66.164.112:8080/upload', // point to server-side PHP script
+                        url: 'http://192.168.1.238:8080/upload', // point to server-side PHP script
                         //dataType: 'text', // what to expect, back from the PHP script, if anything
                         cache: false,
                         contentType: false,
@@ -39,16 +41,18 @@
                         success: function (api_resp) {
                             var element = document.getElementById('id_image');
                             element.setAttribute('value', api_resp);
+                            btnSearch.style.display="block"
                         },
                         error: function (err) {
-
-                            var element = document.getElementById('id_image');
-                            element.setAttribute('value', 'canh');
-                            // alert(err.responseText);
+                            alert(err.responseText);
                         }
                     });
 
                 });
+
+
+
+
 
                 // fileList.innerHTML = "<img>No files selected!</img>";
                 fileList.innerHTML = "";
@@ -100,9 +104,11 @@
             border: 1px solid black;
         }
 
-        form img {
-            height: auto;
+         div img{
+            max-width: 100%;
             width: auto;
+            height: auto;
+             max-height:100%;
             order: 1;
         }
 
@@ -130,9 +136,9 @@
             color: white;
         }
         .button {
-            background-color: #4CAF50; /* Green */
+            background-color: #dff0d8; /* Green */
             border: none;
-            color: white;
+            color: black;
             padding: 15px 32px;
             text-align: center;
             text-decoration: none;
@@ -145,8 +151,24 @@
             -ms-transform: translate(-50%, -50%);
             border-radius: 5px;
         }
-        .img_uploads{
-            opacity: 0
+
+        .identify{
+            background-color: #58257b;
+            border: none;
+            color: white;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            position: absolute;
+            left: 50%;
+            bottom:25%;
+            margin: 4px 2px;
+            transform: translate(-50%, -50%);
+            -ms-transform: translate(-50%, -50%);
+            border-radius: 100px;
+
         }
     </style>
 @stop
