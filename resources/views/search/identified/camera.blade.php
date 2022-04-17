@@ -4,23 +4,30 @@
 @yield('styles')
     <link rel="stylesheet" media="print" href="{{ versioned_asset('dist/print-styles.css') }}">
 
-    <main class="content-wrap mt-m card">
-        <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <div class="container py-xl">
+        <div class="card content-wrap auto-height">
+            <h1 class="list-heading">Identify</h1>
             <form method="get"  action="{{url('search/')}}" role="search">
-                    <div class="text-center">
+                {{ csrf_field() }}
+                    <div class="text-center align-center items-center">
                         <div id="fileList">
                             <img class="cover">{{trans('entities.no_image')}}
                         </div>
-                        <div>
+                        <div style="text-align: center">
                         <a class="button outline" id="fileSelect" href="#">@icon('camera')</a>
                         <input type="file" id="image_uploads" accept="image/*" hidden>
-                        <input  id="id_image" name="term" readonly  class="button" style="display: none">
+                         <input  id="id_image" name="term" readonly  class="button outline text-center" style="display: none; margin: 0 auto">
                         </div>
-                <button style="display: none" id="search" class="identify " type="submit" >Identify</button>
+
+                        <div class="align-center">
+                            <button style="display: none; margin:10px auto" id="search" class="button" type="submit" >Identify</button>
+                        </div>
                     </div>
             </form>
 
-    </main>
+    </div>
+</div>
 @stop
 
 @section('left')
