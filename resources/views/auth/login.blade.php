@@ -30,6 +30,8 @@
                 </div>
             @endif
         </div>
+
+        <div class="my-l">&nbsp;</div>
     </div>
 
 @stop

@@ -5722,9 +5722,13 @@ html.dark-mode .entity-list-item-image .svg-icon {
   position: absolute;
   bottom: 60px;
   left: -70px;
-  background-color: #f1f1f1;
+  list-style: none;
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.18);
   min-width: 160px;
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  color: #555;
+  fill: currentColor;
+  /*box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);*/
   z-index: 1111;
 }
 
@@ -5754,14 +5758,19 @@ html.dark-mode .entity-list-item-image .svg-icon {
 }
 
 /* Change the background color of the dropup button when the dropup content is shown */
-.dropup:hover .dropbtn {
-  /*background-color: #2980B9;*/
+/*.dropup:hover .dropbtn {*/
+/*  !*background-color: #2980B9;*!*/
+/*}*/
+
+.dropup-content .text-muted {
+  color: #999;
+  fill: #999;
 }
 
-html.dark-mode .dropdown-menu {
+html.dark-mode .dropdown-menu,html.dark-mode .dropup-content {
   background-color: #333;
 }
-html.dark-mode .dropdown-menu {
+html.dark-mode .dropdown-menu,html.dark-mode .dropup-content {
   color: #eee;
 }
 .dropdown-menu.wide {
@@ -5774,7 +5783,7 @@ html.dark-mode .dropdown-menu {
 .dropdown-menu li.active a {
   font-weight: 600;
 }
-.dropdown-menu a, .dropdown-menu button {
+.dropdown-menu a, .dropdown-menu button,.dropup-content a, .dropup-content button {
   display: block;
   padding: 6px 16px;
   color: #555;
@@ -5783,7 +5792,7 @@ html.dark-mode .dropdown-menu {
   line-height: 1.6;
   cursor: pointer;
 }
-html.dark-mode .dropdown-menu a, html.dark-mode .dropdown-menu button {
+html.dark-mode .dropdown-menu a, html.dark-mode .dropdown-menu button,html.dark-mode .dropup-content a,html.dark-mode .dropup-content button {
   color: #eee;
 }
 .dropdown-menu a:hover, .dropdown-menu a:focus, .dropdown-menu button:hover, .dropdown-menu button:focus {
@@ -5791,19 +5800,47 @@ html.dark-mode .dropdown-menu a, html.dark-mode .dropdown-menu button {
   background-color: var(--color-primary-light);
   color: var(--color-primary);
 }
+
+
+.dropup-content a:hover, .dropup-content a:focus, .dropup-content button:hover, .dropup-content button:focus {
+  text-decoration: none;
+  background-color: var(--color-primary-light);
+  color: var(--color-primary);
+}
+
 .dropdown-menu a:focus, .dropdown-menu button:focus {
   outline: 1px solid var(--color-primary);
   outline-offset: -2px;
 }
+
+
+.dropup-content a:focus, .dropup-content button:focus {
+  outline: 1px solid var(--color-primary);
+  outline-offset: -2px;
+}
+
 .dropdown-menu a svg, .dropdown-menu button svg {
   margin-inline-end: 12px;
   display: inline-block;
   width: 16px;
 }
+
+.dropup-content a svg, .dropup-content button svg {
+  margin-inline-end: 12px;
+  display: inline-block;
+  width: 16px;
+}
+
 .dropdown-menu button {
   width: 100%;
   text-align: start;
 }
+
+.dropup-content button {
+  width: 100%;
+  text-align: start;
+}
+
 .dropdown-menu li.border-bottom {
   border-bottom: 1px solid #DDD;
 }
