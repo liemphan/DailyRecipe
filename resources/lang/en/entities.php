@@ -341,5 +341,6 @@ return [
 
     //Identify
     'no_image' => 'No image currently selected for upload',
+    'identify' => 'Identify',
 
 ];

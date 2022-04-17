@@ -334,5 +334,6 @@ return [
     'revision_cannot_delete_latest' => 'Không thể xóa phiên bản mới nhất.',
 
     //Identify
-    'no_image' => 'Hiện không có hình ảnh nào được chọn để tải lên',
+    'no_image' => 'Hiện không có hình ảnh nào được chọn.',
+    'identify' => 'Nhận diện',
 ];

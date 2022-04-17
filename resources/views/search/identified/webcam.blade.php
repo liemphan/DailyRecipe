@@ -36,26 +36,18 @@
                         data: form_data,
                         type: 'post',
                         success: function (api_resp) {
-
-                        },
-                        error: function (err) {
-
                             btnIngredient.style.display="block";
                             fileSelected.style.display="none";
-
                             var element = document.getElementById('id_image');
-                            element.setAttribute('value', "canh");
                             btnSearch.style.display="block"
-
-                            //dis
-                            // alert(err.responseText);
+                            element.setAttribute('value', api_resp);
+                        },
+                        error: function (err) {
+                            alert(err.responseText);
                         }
                     });
 
                 });
-
-
-
 
 
                 // fileList.innerHTML = "<img>No files selected!</img>";
@@ -122,21 +114,8 @@
         /*    background-color: #0D3F8F;*/
         /*    color: white;*/
         /*}*/
-        /*.button {*/
-        /*    background-color: #dff0d8; !* Green *!*/
-        /*    border: none;*/
-        /*    color: black;*/
-        /*    padding: 15px 32px;*/
-        /*    text-align: center;*/
-        /*    text-decoration: none;*/
-        /*    display: inline-block;*/
-        /*    font-size: 16px;*/
-        /*    position: absolute;*/
-        /*    top: 50%;*/
-        /*    left: 50%;*/
-        /*    transform: translate(-50%, -50%);*/
-        /*    -ms-transform: translate(-50%, -50%);*/
-        /*    border-radius: 5px;*/
+        /*.buttonFile {*/
+        /*    font-size: 30px;*/
         /*}*/
 
         /*.identify{*/
