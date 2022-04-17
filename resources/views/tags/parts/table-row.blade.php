@@ -12,11 +12,11 @@
            title="{{ trans('entities.tags_assigned_pages') }}"
            class="pill text-page">@icon('page'){{ $tag->page_count }}</a>
     </td>
-    <td width="70" class="px-xs">
-        <a href="{{ isset($tag->value) ? $tag->valueUrl() : $tag->nameUrl() . '+{type:chapter}' }}"
-           title="{{ trans('entities.tags_assigned_chapters') }}"
-           class="pill text-chapter">@icon('chapter'){{ $tag->chapter_count }}</a>
-    </td>
+{{--    <td width="70" class="px-xs">--}}
+{{--        <a href="{{ isset($tag->value) ? $tag->valueUrl() : $tag->nameUrl() . '+{type:chapter}' }}"--}}
+{{--           title="{{ trans('entities.tags_assigned_chapters') }}"--}}
+{{--           class="pill text-chapter">@icon('chapter'){{ $tag->chapter_count }}</a>--}}
+{{--    </td>--}}
     <td width="70" class="px-xs">
         <a href="{{ isset($tag->value) ? $tag->valueUrl() : $tag->nameUrl() . '+{type:recipe}' }}"
            title="{{ trans('entities.tags_assigned_recipes') }}"
@@ -27,7 +27,7 @@
            title="{{ trans('entities.tags_assigned_menus') }}"
            class="pill text-recipemenu">@icon('recipemenu'){{ $tag->menu_count }}</a>
     </td>
-    <td class="text-right text-muted">
+    <td class="text-right text-muted small-screen">
         @if($tag->values ?? false)
             <a href="{{ url('/tags?name=' . urlencode($tag->name)) }}">{{ trans('entities.tags_x_unique_values', ['count' => $tag->values]) }}</a>
         @elseif(empty($nameFilter))

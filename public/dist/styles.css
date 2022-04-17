@@ -716,6 +716,9 @@ h5, h6 {
   h5 {
     font-size: 1.161616em;
   }
+  .small-screen{
+    display: none;
+  }
 }
 .list-heading {
   font-size: 2rem;

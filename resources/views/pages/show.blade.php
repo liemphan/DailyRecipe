@@ -143,10 +143,12 @@
 {{--	                    <span>{{ trans('common.move') }}</span>--}}
 {{--	                </a>--}}
 {{--                @endif--}}
+                @if(userCan('restrictions-manage', $page))
                 <a href="{{ $page->getUrl('/revisions') }}" class="icon-list-item">
                     <span>@icon('history')</span>
                     <span>{{ trans('entities.revisions') }}</span>
                 </a>
+                @endif
             @endif
             @if(userCan('restrictions-manage', $page))
                 <a href="{{ $page->getUrl('/permissions') }}" class="icon-list-item">
