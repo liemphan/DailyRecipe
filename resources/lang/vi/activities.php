@@ -36,12 +36,12 @@ return [
     'recipe_sort_notification'      => 'Công thức nấu ăn đã được sắp xếp lại thành công',
 
     // Recipemenus
-    'menu_create'            => 'đã tạo giá sách',
-    'menu_create_notification'    => 'Giá sách đã được tạo thành công',
-    'menu_update'                 => 'cập nhật giá sách',
-    'menu_update_notification'    => 'Giá sách đã tạo thành công',
-    'menu_delete'                 => 'đã xóa giá sách',
-    'menu_delete_notification'    => 'Giá sách đã được xóa thành công',
+    'menu_create'            => 'đã tạo thực đơn',
+    'menu_create_notification'    => 'Thực đơn đã được tạo thành công',
+    'menu_update'                 => 'cập nhật thực đơn',
+    'menu_update_notification'    => 'Thực đơn đã tạo thành công',
+    'menu_delete'                 => 'đã xóa thực đơn',
+    'menu_delete_notification'    => 'Thực đơn đã được xóa thành công',
 
     // Favourites
     'favourite_add_notification' => '":name" đã được thêm vào danh sách yêu thích của bạn',

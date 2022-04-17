@@ -9,7 +9,7 @@
             <form method="get"  action="{{url('search/')}}" role="search">
                     <div class="text-center">
                         <div id="fileList">
-                            <img class="cover">No image currently selected for upload</img>
+                            <img class="cover">{{trans('entities.no_image')}}
                         </div>
                         <div>
                         <a class="button outline" id="fileSelect" href="#">@icon('camera')</a>

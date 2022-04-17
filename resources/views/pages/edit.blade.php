@@ -1,4 +1,4 @@
-@extends('layouts.base')
+@extends('layouts.baseMobi')
 
 @section('head')
     <script src="{{ url('/libs/tinymce/tinymce.min.js?ver=4.9.4') }}" nonce="{{ $cspNonce }}"></script>

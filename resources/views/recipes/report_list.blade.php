@@ -10,8 +10,8 @@
         </div>
 
         <div class="card content-wrap auto-height">
-            <h2 class="list-heading">Report List</h2>
-            <p class="text-muted">Below is the list of reported recipe(s), You will decide it should be keep or not</p>
+            <h2 class="list-heading">{{trans('settings.report_list')}}</h2>
+            <p class="text-muted">{{trans('settings.report_detail')}}</p>
 
             <div class="flex-container-row">
 {{--                <div component="dropdown" class="list-sort-type dropdown-container mr-m">--}}
@@ -48,9 +48,9 @@
                         @include('form.user-select', ['user' => $listDetails['user'] ? \DailyRecipe\Auth\User::query()->find($listDetails['user']) : null, 'name' => 'user', 'compact' =>  true])
                     </div>
                     <div class="form-group ml-auto" style="margin-right: 12px; margin-top: -5px;">
-                        <label for="owner">Sort by date</label><a class="button" href="{{ sortUrl('/settings/reportlist', $listDetails, ['sort' => 'created_at']) }}">Sort by created date</a>
+                        <label for="owner">{{trans('settings.sort_by_date')}}</label><a class="button" href="{{ sortUrl('/settings/reportlist', $listDetails, ['sort' => 'created_at']) }}">{{trans('settings.sort_by_date')}}</a>
                     </div>
-                        <div class="form-group mr-m " style="margin-top: -5px;"> <label for="owner">Sort by recipe</label><a class="button" href="{{ sortUrl('/settings/reportlist', $listDetails, ['sort' => 'entity_id']) }}">Sort by recipe</a>
+                        <div class="form-group mr-m " style="margin-top: -5px;"> <label for="owner">{{trans('settings.sort_by_recipe')}}</label><a class="button" href="{{ sortUrl('/settings/reportlist', $listDetails, ['sort' => 'entity_id']) }}">{{trans('settings.sort_by_recipe')}}</a>
                     </div>
                 </form>
 
@@ -62,13 +62,13 @@
             <table class="table">
                 <tbody>
                 <tr>
-                    <th>Recipe</th>
-                    <th>Status</th>
-                    <th>Title</th>
-                    <th>Content</th>
-                    <th>Created by</th>
-                    <th>Created Date</th>
-                    <th>Active/Deactive</th>
+                    <th>{{trans('entities.recipe')}}</th>
+                    <th>{{trans('settings.status')}}</th>
+                    <th>{{trans('settings.title')}}</th>
+                    <th>{{trans('settings.content')}}</th>
+                    <th>{{trans('settings.created_by')}}</th>
+                    <th>{{trans('settings.created_date')}}</th>
+                    <th>{{trans('settings.active_deactive')}}</th>
                 </tr>
                 @foreach($reports as $report)
                     @if($report->entity && is_null($report->entity->deleted_at))

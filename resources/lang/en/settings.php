@@ -233,48 +233,25 @@ return [
     'user_api_token_delete_confirm' => 'Are you sure you want to delete this API token?',
     'user_api_token_delete_success' => 'API token successfully deleted',
 
-    //Report
-    'reportlist' => 'Report',
+    //report
+    'report_list' => 'Report List',
+    'report_detail' => 'Below is the list of reported recipe(s), You will decide it should be keep or not',
+    'sort_by_date'=>'Sort by date',
+    'sort_by_recipe'=>'Sort by recipe',
+    'status'=>'Status',
+    'title'=>'Title',
+    'content'=>'Content',
+    'created_by'=>'Created by',
+    'created_date'=>'Created Date',
+    'active_deactive'=>'Active/Deactive',
+
+
     //! If editing translations files directly please ignore this in all
     //! languages apart from en. Content will be auto-copied from en.
     //!////////////////////////////////
     'language_select' => [
         'en' => 'English',
-        'ar' => 'العربية',
-        'bg' => 'Bǎlgarski',
-        'bs' => 'Bosanski',
-        'ca' => 'Català',
-        'cs' => 'Česky',
-        'da' => 'Dansk',
-        'de' => 'Deutsch (Sie)',
-        'de_informal' => 'Deutsch (Du)',
-        'es' => 'Español',
-        'es_AR' => 'Español Argentina',
-        'et' => 'Eesti keel',
-        'fr' => 'Français',
-        'he' => 'עברית',
-        'hr' => 'Hrvatski',
-        'hu' => 'Magyar',
-        'id' => 'Bahasa Indonesia',
-        'it' => 'Italian',
-        'ja' => '日本語',
-        'ko' => '한국어',
-        'lt' => 'Lietuvių Kalba',
-        'lv' => 'Latviešu Valoda',
-        'nl' => 'Nederlands',
-        'nb' => 'Norsk (Bokmål)',
-        'pl' => 'Polski',
-        'pt' => 'Português',
-        'pt_BR' => 'Português do Brasil',
-        'ru' => 'Русский',
-        'sk' => 'Slovensky',
-        'sl' => 'Slovenščina',
-        'sv' => 'Svenska',
-        'tr' => 'Türkçe',
-        'uk' => 'Українська',
         'vi' => 'Tiếng Việt',
-        'zh_CN' => '简体中文',
-        'zh_TW' => '繁體中文',
     ],
     //!////////////////////////////////
 ];

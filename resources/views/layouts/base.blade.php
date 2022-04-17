@@ -95,7 +95,9 @@
                             <a href="{{ url('/favourites') }}">@icon('star'){{ trans('entities.my_favourites') }}</a>
                             <a href="{{ $currentUser->getProfileUrl() }}">@icon('user'){{ trans('common.view_profile') }}</a>
                             <a href="{{ $currentUser->getEditUrl() }}">@icon('edit'){{ trans('common.edit_profile') }}</a>
-                            <a href="{{ url('/settings') }}">@icon('settings'){{ trans('settings.settings') }}</a>
+                            @if(signedInUser() && userCan('settings-manage'))
+                                <a href="{{ url('/settings') }}">@icon('settings'){{ trans('settings.settings') }}</a>
+                            @endif
                             <form action="{{ url(config('auth.method') === 'saml2' ? '/saml2/logout' : '/logout') }}"--}}
                                   method="post">
                                 {{ csrf_field() }}
@@ -137,6 +139,7 @@
         </div>
         </div>
         </nav>
+
     </div>
     <div back-to-top class="primary-background print-hidden">
         <div class="inner">

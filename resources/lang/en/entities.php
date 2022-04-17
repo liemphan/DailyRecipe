@@ -338,4 +338,8 @@ return [
     'revision_delete_success' => 'Revision deleted',
     'revision_cannot_delete_latest' => 'Cannot delete the latest revision.',
     'share_facebook' => 'Share with facebook',
+
+    //Identify
+    'no_image' => 'No image currently selected for upload',
+
 ];
