@@ -1,9 +1,9 @@
 
 <main class="content-wrap card margin-32">
 
-    <div class="grid half v-center">
+    <div class="grid half v-center no-row-gap">
         <h1 class="list-heading">{{ trans('entities.menus') }}</h1>
-        <div class="text-right">
+        <div class="text-m-right my-m">
             @include('entities.sort', ['options' => $sortOptions, 'order' => $order, 'sort' => $sort, 'type' => 'recipemenus'])
         </div>
     </div>
