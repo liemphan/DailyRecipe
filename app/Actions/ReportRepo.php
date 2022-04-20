@@ -15,6 +15,7 @@ class ReportRepo
     {
         $this->report = $report;
     }
+
     /**
      * Get a report by ID.
      */
@@ -22,10 +23,11 @@ class ReportRepo
     {
         return $this->report->newQuery()->findOrFail($id);
     }
+
     /**
      * Create a new report on an entity.
      */
-    public function create(string $content, string $description,Entity $entity): Report
+    public function create(string $content, string $description, Entity $entity): Report
     {
         $userId = user()->id;
         $report = $this->report->newInstance();
@@ -39,6 +41,7 @@ class ReportRepo
 
         return $report;
     }
+
     /**
      * Update the given recipe.
      */

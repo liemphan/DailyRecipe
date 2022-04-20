@@ -99,16 +99,16 @@ Route::middleware('auth')->group(function () {
     Route::post('/recipes/{recipeSlug}/content-guest-page', [RecipeController::class, 'createAsGuest']);
 
     // Pages
-   // Route::get('/recipes/{recipeSlug}/create-page', [PageController::class, 'create']);
-   // Route::post('/recipes/{recipeSlug}/create-guest-page', [PageController::class, 'createAsGuest']);
-  //  Route::get('/recipes/{recipeSlug}/draft/{pageId}', [PageController::class, 'editDraft']);
-   // Route::post('/recipes/{recipeSlug}/draft/{pageId}', [PageController::class, 'store']);
-   // Route::get('/recipes/{recipeSlug}/page/{pageSlug}', [PageController::class, 'show']);
+    // Route::get('/recipes/{recipeSlug}/create-page', [PageController::class, 'create']);
+    // Route::post('/recipes/{recipeSlug}/create-guest-page', [PageController::class, 'createAsGuest']);
+    //  Route::get('/recipes/{recipeSlug}/draft/{pageId}', [PageController::class, 'editDraft']);
+    // Route::post('/recipes/{recipeSlug}/draft/{pageId}', [PageController::class, 'store']);
+    // Route::get('/recipes/{recipeSlug}/page/{pageSlug}', [PageController::class, 'show']);
     Route::get('/recipes/{recipeSlug}/page/{pageSlug}/export/pdf', [PageExportController::class, 'pdf']);
     Route::get('/recipes/{recipeSlug}/page/{pageSlug}/export/html', [PageExportController::class, 'html']);
     Route::get('/recipes/{recipeSlug}/page/{pageSlug}/export/markdown', [PageExportController::class, 'markdown']);
     Route::get('/recipes/{recipeSlug}/page/{pageSlug}/export/plaintext', [PageExportController::class, 'plainText']);
- //   Route::get('/recipes/{recipeSlug}/page/{pageSlug}/edit', [PageController::class, 'edit']);
+    //   Route::get('/recipes/{recipeSlug}/page/{pageSlug}/edit', [PageController::class, 'edit']);
 //    Route::get('/recipes/{recipeSlug}/page/{pageSlug}/move', [PageController::class, 'showMove']);
 //    Route::put('/recipes/{recipeSlug}/page/{pageSlug}/move', [PageController::class, 'move']);
 //    Route::get('/recipes/{recipeSlug}/page/{pageSlug}/copy', [PageController::class, 'showCopy']);
@@ -118,8 +118,8 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/recipes/{recipeSlug}/content/{pageSlug}/permissions', [RecipeController::class, 'showPermissionsContent']);
     Route::put('/recipes/{recipeSlug}/content/{pageSlug}/permissions', [RecipeController::class, 'permissionsContent']);
-  //  Route::put('/recipes/{recipeSlug}/page/{pageSlug}', [PageController::class, 'update']);
-   // Route::delete('/recipes/{recipeSlug}/page/{pageSlug}', [PageController::class, 'destroy']);
+    //  Route::put('/recipes/{recipeSlug}/page/{pageSlug}', [PageController::class, 'update']);
+    // Route::delete('/recipes/{recipeSlug}/page/{pageSlug}', [PageController::class, 'destroy']);
 
     Route::delete('/recipes/{recipeSlug}/draft/{pageId}', [RecipeController::class, 'destroyDraft']);
 

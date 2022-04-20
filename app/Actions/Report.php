@@ -21,7 +21,7 @@ class Report extends Model
     use HasFactory;
     use HasCreatorAndUpdater;
 
-    protected $fillable = ['content', 'description', 'status' , 'user_id'];
+    protected $fillable = ['content', 'description', 'status', 'user_id'];
     protected $hidden = ['id', 'entity_id', 'entity_type', 'created_at', 'updated_at'];
 
     /**
@@ -42,6 +42,7 @@ class Report extends Model
     {
         return $this->created_at->diffForHumans();
     }
+
     /**
      * Get the user this activity relates to.
      */

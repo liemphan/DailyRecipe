@@ -1,45 +1,45 @@
 :root {
-  --color-primary: #206ea7;
-  --color-primary-light: rgba(32,110,167,0.15);
-  --color-page: #206ea7;
-  --color-page-draft: #7e50b1;
-  --color-chapter: #af4d0d;
-  --color-recipe: #077b70;
-  --color-recipemenu: #a94747;
+    --color-primary: #206ea7;
+    --color-primary-light: rgba(32, 110, 167, 0.15);
+    --color-page: #206ea7;
+    --color-page-draft: #7e50b1;
+    --color-chapter: #af4d0d;
+    --color-recipe: #077b70;
+    --color-recipemenu: #a94747;
 }
 
 header {
-  display: none;
+    display: none;
 }
 
 html, body {
-  font-size: 12px;
-  background-color: #FFF;
+    font-size: 12px;
+    background-color: #FFF;
 }
 
 .page-content {
-  margin: 0 auto;
+    margin: 0 auto;
 }
 
 .print-hidden {
-  display: none !important;
+    display: none !important;
 }
 
 .tri-layout-container {
-  grid-template-columns: 1fr;
-  grid-template-areas: "b";
-  margin-inline-start: 0;
-  margin-inline-end: 0;
-  display: block;
+    grid-template-columns: 1fr;
+    grid-template-areas: "b";
+    margin-inline-start: 0;
+    margin-inline-end: 0;
+    display: block;
 }
 
 .card {
-  box-shadow: none;
+    box-shadow: none;
 }
 
 .content-wrap.card {
-  padding-inline-start: 0;
-  padding-inline-end: 0;
+    padding-inline-start: 0;
+    padding-inline-end: 0;
 }
 
 /*# sourceMappingURL=print-styles.css.map */

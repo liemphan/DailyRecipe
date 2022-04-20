@@ -56,7 +56,7 @@ class RecycleBinController extends Controller
 //            if ($parent && $parent->trashed()) {
 //                $currentDeletable = $parent;
 //            } else {
-                $searching = false;
+            $searching = false;
 //            }
         }
 

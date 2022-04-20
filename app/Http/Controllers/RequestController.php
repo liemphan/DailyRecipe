@@ -39,9 +39,9 @@ class RequestController extends Controller
     {
         $user = $this->userRepo->getById($id);
         $roles = array(2);
-        $requests= $this->requestRepo->getFirstByCreateBy($id);
+        $requests = $this->requestRepo->getFirstByCreateBy($id);
         $this->userRepo->setUserRoles($user, $roles);
-        $this->requestRepo->updateStatus($requests,2);
+        $this->requestRepo->updateStatus($requests, 2);
         return redirect('/settings/users');
     }
 
@@ -51,8 +51,8 @@ class RequestController extends Controller
      */
     public function rejectRequest(Request $request, int $id)
     {
-        $requests= $this->requestRepo->getFirstByCreateBy($id);
-        $this->requestRepo->updateStatus($requests,3);
+        $requests = $this->requestRepo->getFirstByCreateBy($id);
+        $this->requestRepo->updateStatus($requests, 3);
         return redirect('/settings/users');
     }
 }

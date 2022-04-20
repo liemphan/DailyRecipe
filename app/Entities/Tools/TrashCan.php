@@ -18,6 +18,7 @@ use Exception;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Carbon;
 use DailyRecipe\Entities\Models\Report;
+
 class TrashCan
 {
     /**

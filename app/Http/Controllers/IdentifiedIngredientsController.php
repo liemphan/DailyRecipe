@@ -8,7 +8,7 @@ use DailyRecipe\Entities\Models\Recipe;
 use DailyRecipe\Entities\Queries\RecentlyViewed;
 use DailyRecipe\Entities\Queries\TopFavourites;
 
-class IdentifiedIngredientsController  extends Controller
+class IdentifiedIngredientsController extends Controller
 {
     /**
      * Shows the last revisions for this page.

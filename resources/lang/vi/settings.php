@@ -190,7 +190,7 @@ return [
     'users_none_selected' => 'Chưa chọn người dùng',
     'users_delete_success' => 'Người dùng đã được xóa thành công',
     'users_edit' => 'Sửa người dùng',
-    'users_edit_profile' => 'Sửa Hồ sơ',
+    'users_edit_profile' => 'Sửa Hồ Sơ',
     'users_edit_success' => 'Người dùng được cập nhật thành công',
     'users_avatar' => 'Ảnh đại diện',
     'users_avatar_desc' => 'Chọn ảnh đê đại hiện cho người dùng này. Ảnh nên có kích cỡ hình vuông 256px.',

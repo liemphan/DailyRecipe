@@ -66,9 +66,9 @@ class RecipeContents
     public function getTree(bool $showDrafts = false, bool $renderPages = false): Collection
     {
         $pages = $this->getPages($showDrafts, $renderPages);
-       // $chapters = Chapter::visible()->where('recipe_id', '=', $this->recipe->id)->get();
+        // $chapters = Chapter::visible()->where('recipe_id', '=', $this->recipe->id)->get();
         $all = collect()->concat($pages);
-       // $chapterMap = $chapters->keyBy('id');
+        // $chapterMap = $chapters->keyBy('id');
         $lonePages = collect();
 
 //        $pages->groupBy('chapter_id')->each(function ($pages, $chapter_id) use ($chapterMap, &$lonePages) {
@@ -171,7 +171,7 @@ class RecipeContents
 
         $priorityChanged = intval($model->priority) !== intval($sortMapItem->sort);
         $recipeChanged = intval($model->recipe_id) !== intval($sortMapItem->recipe);
-      //  $chapterChanged = ($model instanceof Page) && intval($model->chapter_id) !== $sortMapItem->parentChapter;
+        //  $chapterChanged = ($model instanceof Page) && intval($model->chapter_id) !== $sortMapItem->parentChapter;
 
         if ($recipeChanged) {
             $model->changeRecipe($sortMapItem->recipe);
@@ -197,10 +197,10 @@ class RecipeContents
             return $sortMapItem->type . ':' . $sortMapItem->id;
         });
         $pageIds = $sortMap->where('type', '=', 'page')->pluck('id');
-      //  $chapterIds = $sortMap->where('type', '=', 'chapter')->pluck('id');
+        //  $chapterIds = $sortMap->where('type', '=', 'chapter')->pluck('id');
 
         $pages = Recipe::visible()->whereIn('id', $pageIds)->get();
-  //      $chapters = Chapter::visible()->whereIn('id', $chapterIds)->get();
+        //      $chapters = Chapter::visible()->whereIn('id', $chapterIds)->get();
 
         foreach ($pages as $page) {
             $sortItem = $keyMap->get('page:' . $page->id);

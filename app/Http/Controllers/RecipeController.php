@@ -292,7 +292,7 @@ class RecipeController extends Controller
         $draftsEnabled = $this->isSignedIn();
         $templates = $this->recipeRepo->getTemplates(10);
 
-         $this->recipeRepo->publishDraftNew($draft);
+        $this->recipeRepo->publishDraftNew($draft);
 
         return view('pages.edit', [
             'page' => $draft,
@@ -501,6 +501,7 @@ class RecipeController extends Controller
 
         return response()->json($page);
     }
+
     /**
      * Redirect from a special link url which uses the page id rather than the name.
      *
@@ -512,6 +513,7 @@ class RecipeController extends Controller
 
         return redirect($page->getUrl());
     }
+
     /**
      * Remove the specified draft page from storage.
      *
@@ -530,6 +532,7 @@ class RecipeController extends Controller
 
         return redirect($page->getUrlContent());
     }
+
     /**
      * Show the Permissions view.
      *
@@ -544,6 +547,7 @@ class RecipeController extends Controller
             'page' => $page,
         ]);
     }
+
     /**
      * Set the permissions for this page.
      *
@@ -561,6 +565,7 @@ class RecipeController extends Controller
 
         return redirect($page->getUrlContent());
     }
+
     /**
      * Show a listing of recently created pages.
      */
@@ -571,7 +576,7 @@ class RecipeController extends Controller
             ->setPath(url('/pages/recently-updated'));
 
         return view('common.detailed-listing-paginated', [
-            'title'    => trans('entities.recently_updated_pages'),
+            'title' => trans('entities.recently_updated_pages'),
             'entities' => $pages,
         ]);
     }

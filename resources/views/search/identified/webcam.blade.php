@@ -28,7 +28,7 @@
                     form_data.append('file', file_data);
                     //alert(form_data);
                     $.ajax({
-                        url: 'http://192.168.1.238:8080/upload', // point to server-side PHP script
+                        url: 'http://192.168.1.67:8080/upload', // point to server-side PHP script
                         //dataType: 'text', // what to expect, back from the PHP script, if anything
                         cache: false,
                         contentType: false,

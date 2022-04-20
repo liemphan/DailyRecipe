@@ -381,7 +381,7 @@ class PermissionService
     protected function getActions(Entity $entity): array
     {
         $baseActions = ['view', 'update', 'delete'];
-        if ( $entity instanceof Recipe) {
+        if ($entity instanceof Recipe) {
             $baseActions[] = 'page-create';
         }
 //        if ($entity instanceof Recipe) {

@@ -17,7 +17,8 @@
                         <div style="text-align: center">
                         <label class="button outline" id="fileSelect" style="font-size:30px" href="#">@icon('camera')</label>
                         <input type="file" id="image_uploads" accept="image/*" hidden>
-                         <input  id="id_image" name="term" readonly  class="button outline text-center" style="display: none; margin: 0 auto">
+                         <input  id="id_image" name="term" readonly  class="button outline text-center" style="display: none; margin: 0 auto;border:1px solid transparent;color: red;
+">
                         </div>
                         <div class="align-center">
                             <button style="display: none; margin:10px auto" id="search" class="button" type="submit" >{{trans('entities.identify')}}</button>

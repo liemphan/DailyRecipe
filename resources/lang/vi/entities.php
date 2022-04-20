@@ -10,7 +10,7 @@ return [
     'recently_created_pages' => 'Trang được tạo gần đây',
     'recently_updated_pages' => 'Trang được cập nhật gần đây',
     'recently_created_chapters' => 'Chương được tạo gần đây',
-    'recently_created_recipes' => 'Sách được tạo gần đây',
+    'recently_created_recipes' => 'Công thức được tạo gần đây',
     'recently_created_menus' => 'Thực đơn được tạo gần đây',
     'recently_update' => 'Được cập nhật gần đây',
     'recently_viewed' => 'Được xem gần đây',
@@ -33,6 +33,7 @@ return [
     'no_pages_recently_created' => 'Không có trang nào được tạo gần đây',
     'no_pages_recently_updated' => 'Không có trang nào được cập nhật gần đây',
     'export' => 'Kết xuất',
+    'report' => 'Báo cáo',
     'export_html' => 'Đang chứa tệp tin Web',
     'export_pdf' => 'Tệp PDF',
     'export_text' => 'Tệp văn bản thuần túy',
@@ -306,7 +307,7 @@ return [
     'profile_created_content' => 'Đã tạo nội dung',
     'profile_not_created_pages' => ':userName chưa tạo bất kỳ trang nào',
     'profile_not_created_chapters' => ':userName chưa tạo bất kì chương nào',
-    'profile_not_created_recipes' => ':userName chưa tạo bất cứ sách nào',
+    'profile_not_created_recipes' => ':userName chưa tạo bất cứ công thức nào',
     'profile_not_created_menus' => ':userName chưa tạo bất kỳ giá sách nào',
 
     // Comments
@@ -332,8 +333,15 @@ return [
     'revision_restore_confirm' => 'Bạn có chắc bạn muốn khôi phục phiên bản này? Nội dung trang hiện tại sẽ được thay thế.',
     'revision_delete_success' => 'Phiên bản đã được xóa',
     'revision_cannot_delete_latest' => 'Không thể xóa phiên bản mới nhất.',
+    'share_facebook' => 'Chia sẻ',
 
     //Identify
     'no_image' => 'Hiện không có hình ảnh nào được chọn.',
     'identify' => 'Nhận diện',
+
+    //Report
+    'report_info'=>'Trong biểu mẫu này, bạn sẽ báo cáo một bài đăng mà bạn thấy là bất hợp pháp hoặc spam. Báo cáo sẽ được gửi cho admin để xem xét giữ lại hoặc xóa bài đã báo cáo.',
+    'title'=>'Tiêu đề',
+    'reason_report'=>'Lý do để báo cáo công thức này',
+    'submit'=>'Gửi'
 ];

@@ -71,7 +71,7 @@ class PageApiController extends ApiController
 //        if ($request->has('chapter_id')) {
 //            $parent = Chapter::visible()->findOrFail($request->get('chapter_id'));
 //        } else {
-            $parent = Recipe::visible()->findOrFail($request->get('recipe_id'));
+        $parent = Recipe::visible()->findOrFail($request->get('recipe_id'));
 
         $this->checkOwnablePermission('page-create', $parent);
 

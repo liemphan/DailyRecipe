@@ -337,10 +337,17 @@ return [
     'revision_restore_confirm' => 'Are you sure you want to restore this revision? The current page contents will be replaced.',
     'revision_delete_success' => 'Revision deleted',
     'revision_cannot_delete_latest' => 'Cannot delete the latest revision.',
-    'share_facebook' => 'Share with facebook',
+    'share_facebook' => 'Share',
 
     //Identify
     'no_image' => 'No image currently selected for upload',
     'identify' => 'Identify',
+
+    //Report
+    'report_info'=>'In this form, you will report a post that you see it illegal or spam. The report will be send to admin to consider keep or delete the reported post.',
+    'title'=>'Title',
+    'reason_report'=>'Reason to report this recipe',
+    'submit'=>'Submit',
+
 
 ];

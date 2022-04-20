@@ -107,7 +107,7 @@ class ActivityService
 //        if ($entity instanceof Recipe) {
 //            $queryIds[(new Chapter())->getMorphClass()] = $entity->chapters()->scopes('visible')->pluck('id');
 //        }
-        if ($entity instanceof Recipe ) {
+        if ($entity instanceof Recipe) {
             $queryIds[(new Page())->getMorphClass()] = $entity->pages()->scopes('visible')->pluck('id');
         }
 

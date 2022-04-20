@@ -309,7 +309,7 @@ class ExportFormatter
 //            if ($recipeChild instanceof Chapter) {
 //                $text .= $this->chapterToMarkdown($recipeChild);
 //            } else {
-                $text .= $this->pageToMarkdown($recipeChild);
+            $text .= $this->pageToMarkdown($recipeChild);
 //            }
         }
 

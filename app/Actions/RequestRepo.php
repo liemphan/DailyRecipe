@@ -47,7 +47,7 @@ class RequestRepo
      */
     public function getFirstByCreateBy(int $userId): ?Requests
     {
-        return $this->request->newQuery()->where('created_by',$userId)->first();
+        return $this->request->newQuery()->where('created_by', $userId)->first();
     }
 
     /**

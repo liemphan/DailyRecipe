@@ -74,11 +74,11 @@ return [
 
     // Header
     'header_menu_expand' => 'Expand Header Menu',
-    'profile_menu' => 'Menu Hồ sơ',
-    'view_profile' => 'Xem Hồ sơ',
-    'edit_profile' => 'Sửa Hồ sơ',
-    'dark_mode' => 'Chế độ Tối',
-    'light_mode' => 'Chế độ Sáng',
+    'profile_menu' => 'Menu Hồ Sơ',
+    'view_profile' => 'Xem Hồ Sơ',
+    'edit_profile' => 'Sửa Hồ Sơ',
+    'dark_mode' => 'Chế độ tối',
+    'light_mode' => 'Chế độ sáng',
 
     // Layout tabs
     'tab_info' => 'Thông tin',
